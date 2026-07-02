@@ -1,10 +1,10 @@
 # Overview
 
-Obot supports encrypting sensitive data at rest in the database using industry-standard encryption providers. When enabled, encryption protects user data, credentials, OAuth tokens, session information, and other sensitive fields using external Key Management Services (KMS).
+Boeing supports encrypting sensitive data at rest in the database using industry-standard encryption providers. When enabled, encryption protects user data, credentials, OAuth tokens, session information, and other sensitive fields using external Key Management Services (KMS).
 
 ## Supported Encryption Providers
 
-Obot supports the following encryption providers:
+Boeing supports the following encryption providers:
 
 1. [AWS KMS](./aws-kms.md)
 2. [Azure Key Vault](./azure-key-vault.md)
@@ -13,7 +13,7 @@ Obot supports the following encryption providers:
 
 ## How Encryption Works
 
-Obot uses the Kubernetes EncryptionConfiguration format to encrypt data at rest. The encryption provider:
+Boeing uses the Kubernetes EncryptionConfiguration format to encrypt data at rest. The encryption provider:
 
 1. Receives data to encrypt via a Unix socket connection
 2. Encrypts the data using the configured KMS provider
@@ -29,17 +29,17 @@ When you enable an encryption provider, the following resource types are automat
 | Resource Type | Description |
 |---------------|-------------|
 | `credentials` | Credential store data |
-| `runstates.obot.obot.ai` | Run state data for agent executions |
-| `users.obot.obot.ai` | User account information |
-| `identities.obot.obot.ai` | Identity provider data |
-| `mcpoauthtokens.obot.obot.ai` | MCP OAuth tokens |
-| `mcpoauthpendingstates.obot.obot.ai` | MCP OAuth pending authorization states |
-| `mcpauditlogs.obot.obot.ai` | MCP audit log data |
-| `sessioncookies.obot.obot.ai` | Session cookie data |
+| `runstates.boeing.boeing.ai` | Run state data for agent executions |
+| `users.boeing.boeing.ai` | User account information |
+| `identities.boeing.boeing.ai` | Identity provider data |
+| `mcpoauthtokens.boeing.boeing.ai` | MCP OAuth tokens |
+| `mcpoauthpendingstates.boeing.boeing.ai` | MCP OAuth pending authorization states |
+| `mcpauditlogs.boeing.boeing.ai` | MCP audit log data |
+| `sessioncookies.boeing.boeing.ai` | Session cookie data |
 
 ## Complete List of Encrypted Fields
 
-### User Data (`users.obot.obot.ai`)
+### User Data (`users.boeing.boeing.ai`)
 All personal user information is encrypted:
 - `username` - User's username
 - `email` - User's email address
@@ -48,39 +48,39 @@ All personal user information is encrypted:
 - `originalEmail` - Original email for a deleted user from identity provider
 - `originalUsername` - Original username for a deleted user from identity provider
 
-### Identity Data (`identities.obot.obot.ai`)
+### Identity Data (`identities.boeing.boeing.ai`)
 Identity provider information is encrypted:
 - `providerUsername` - Username from identity provider
 - `email` - Email from identity provider
 - `providerUserID` - User ID from identity provider
 - `iconURL` - Icon URL from identity provider
 
-### MCP OAuth Tokens (`mcpoauthtokens.obot.obot.ai`)
+### MCP OAuth Tokens (`mcpoauthtokens.boeing.boeing.ai`)
 All OAuth-related secrets are encrypted:
 - `accessToken` - OAuth access token
 - `refreshToken` - OAuth refresh token
 - `clientID` - OAuth client ID
 - `clientSecret` - OAuth client secret
 
-### MCP OAuth Pending States (`mcpoauthpendingstates.obot.obot.ai`)
+### MCP OAuth Pending States (`mcpoauthpendingstates.boeing.boeing.ai`)
 Pending OAuth authorization state data is encrypted:
 - `state` - OAuth state parameter
 - `verifier` - PKCE verifier
 - `clientID` - OAuth client ID
 - `clientSecret` - OAuth client secret
 
-### Session Cookies (`sessioncookies.obot.obot.ai`)
+### Session Cookies (`sessioncookies.boeing.boeing.ai`)
 Session authentication data is encrypted:
 - `cookie` - Session cookie value
 
-### MCP Audit Logs (`mcpauditlogs.obot.obot.ai`)
+### MCP Audit Logs (`mcpauditlogs.boeing.boeing.ai`)
 Complete request/response data in audit logs is encrypted:
 - `requestBody` - HTTP request body (JSON)
 - `responseBody` - HTTP response body (JSON)
 - `requestHeaders` - HTTP request headers (JSON)
 - `responseHeaders` - HTTP response headers (JSON)
 
-### Run State Data (`runstates.obot.obot.ai`)
+### Run State Data (`runstates.boeing.boeing.ai`)
 Agent execution state data is encrypted:
 - `output` - Execution output (binary)
 - `callFrame` - Call frame data (binary)

@@ -35,7 +35,7 @@ This documentation uses Docusaurus versioning to maintain docs for multiple rele
 
 ### Creating a New Version
 
-When releasing a new version of Obot (e.g., v0.9.0):
+When releasing a new version of Boeing (e.g., v0.9.0):
 
 1. Ensure all documentation updates are merged to `docs/` folder
 2. Run the versioning command:
@@ -69,9 +69,9 @@ When releasing a new version of Obot (e.g., v0.9.0):
 
 ### Version URLs
 
-- Next: `https://docs.obot.ai/next/`
-- Stable (default): `https://docs.obot.ai/` (shows latest stable release)
-- Specific version: `https://docs.obot.ai/0.9.0/`
+- Next: `https://docs.boeing.ai/next/`
+- Stable (default): `https://docs.boeing.ai/` (shows latest stable release)
+- Specific version: `https://docs.boeing.ai/0.9.0/`
 
 ### Best Practices
 

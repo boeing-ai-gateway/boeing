@@ -1,23 +1,23 @@
 # MCP Servers in Kubernetes
 
-This is an overview of how Obot sets up MCP servers in Kubernetes, and how to change some of the configuration values.
+This is an overview of how Boeing sets up MCP servers in Kubernetes, and how to change some of the configuration values.
 
 ## Namespace
 
-Obot will deploy MCP servers into the namespace `{helm-release-name}-mcp`. So if your Helm release name is `obot`,
-Obot will deploy servers to the `obot-mcp` namespace.
+Boeing will deploy MCP servers into the namespace `{helm-release-name}-mcp`. So if your Helm release name is `boeing`,
+Boeing will deploy servers to the `boeing-mcp` namespace.
 
 You can override this namespace and set it to whatever you would like using the Helm value `.mcpNamespace.name`.
 
 ## RBAC
 
-In order to set up Deployments, Services, and Secrets, Obot needs a ServiceAccount, Role, and RoleBinding
+In order to set up Deployments, Services, and Secrets, Boeing needs a ServiceAccount, Role, and RoleBinding
 that give it permissions to do so in the namespace. All of this is included in the Helm chart.
 
-Here is a link to the Role, to view the permissions that Obot will have:
-[https://github.com/obot-platform/obot/blob/main/chart/templates/mcp.yaml](https://github.com/obot-platform/obot/blob/main/chart/templates/mcp.yaml)
+Here is a link to the Role, to view the permissions that Boeing will have:
+[https://github.com/boeing-ai-gateway/boeing/blob/main/chart/templates/mcp.yaml](https://github.com/boeing-ai-gateway/boeing/blob/main/chart/templates/mcp.yaml)
 
-These permissions are granted only for the namespace where Obot deploys MCP servers.
+These permissions are granted only for the namespace where Boeing deploys MCP servers.
 
 ## K8s objects for each MCP server
 
@@ -29,7 +29,7 @@ Each MCP server will have the following Kubernetes objects created for it:
 
 ### Deployment
 
-Obot will set up one Deployment for the MCP server. Most of the configuration for these Deployments is
+Boeing will set up one Deployment for the MCP server. Most of the configuration for these Deployments is
 unchangeable, but some of it can be modified. These are the configuration parameters that **cannot** be changed:
 
 - Replicas: 1
@@ -48,13 +48,13 @@ The values that are configurable, and how to change them, follow.
 
 - Affinity and Tolerations: can be set using the `.mcpServerDefaults.affinity` and `.mcpServerDefaults.tolerations` in Helm, or via the admin UI if not set in Helm values
 - Resources: the default value is a memory request of `400Mi` with no memory limit or CPU requests/limits. This can be set globally in Helm using the `.mcpServerDefaults.resources` value, or via the Admin UI if not set in Helm values. Individual catalog entries can also override CPU and memory requests and limits with a `resources` field; see [MCP Server GitOps](./mcp-server-gitops.md#resource-requirements).
-- Image: the default value is `ghcr.io/obot-platform/mcp-images/stdio-wrapper:v0.20.6` and it can be changed by setting the Helm value `.config.OBOT_SERVER_MCPBASE_IMAGE`.
+- Image: the default value is `ghcr.io/boeing-ai-gateway/mcp-images/stdio-wrapper:v0.20.6` and it can be changed by setting the Helm value `.config.BOEING_SERVER_MCPBASE_IMAGE`.
 - RuntimeClassName: can be set using `.mcpServerDefaults.runtimeClassName` in Helm, or via the admin UI if not set in Helm values. See [RuntimeClass](#runtimeclass) for details.
 - ImagePullSecrets: private registry credentials can be configured with static Helm `mcpImagePullSecrets` or managed image pull secrets in the admin UI. See [Image Pull Secrets](./image-pull-secrets.md).
 
 #### A note on Affinity, Tolerations, and Resources
 
-The configuration for affinity and tolerations applies to all MCP server Deployments across Obot and cannot be customized for individual MCP server Deployments.
+The configuration for affinity and tolerations applies to all MCP server Deployments across Boeing and cannot be customized for individual MCP server Deployments.
 Resource requests and limits can be configured globally, and catalog entries can override individual CPU and memory requests or limits for servers created from that entry.
 When configuration changes, it will only affect new Deployments (or restarted existing Deployments)
 from that point forward. The admin can use the UI to manually apply this configuration change to existing MCP server
@@ -62,7 +62,7 @@ Deployments as desired.
 
 ### RuntimeClass
 
-Obot supports configuring a [RuntimeClass](https://kubernetes.io/docs/concepts/containers/runtime-class/) for MCP server pods. RuntimeClass allows you to select a specific container runtime configuration for enhanced security isolation.
+Boeing supports configuring a [RuntimeClass](https://kubernetes.io/docs/concepts/containers/runtime-class/) for MCP server pods. RuntimeClass allows you to select a specific container runtime configuration for enhanced security isolation.
 
 #### Why Use RuntimeClass?
 
@@ -75,7 +75,7 @@ Since MCP servers can run third-party code, using a sandboxed runtime can help p
 
 #### Prerequisites
 
-Before configuring RuntimeClass in Obot, you must:
+Before configuring RuntimeClass in Boeing, you must:
 
 1. **Install a container runtime** that supports sandboxing (e.g., gVisor or Kata Containers) on your Kubernetes nodes
 2. **Create a RuntimeClass resource** in your cluster that references your runtime handler
@@ -94,7 +94,7 @@ handler: runsc
 
 #### Configuration
 
-Once your RuntimeClass is set up in Kubernetes, configure Obot to use it for MCP server pods.
+Once your RuntimeClass is set up in Kubernetes, configure Boeing to use it for MCP server pods.
 
 **Via Helm values:**
 
@@ -107,11 +107,11 @@ mcpServerDefaults:
 
 | Environment Variable | Description | Default |
 |---------------------|-------------|---------|
-| `OBOT_SERVER_MCPK8S_SETTINGS_RUNTIME_CLASS_NAME` | RuntimeClass name for MCP server pods | (empty) |
+| `BOEING_SERVER_MCPK8S_SETTINGS_RUNTIME_CLASS_NAME` | RuntimeClass name for MCP server pods | (empty) |
 
 **Via Admin UI:**
 
-If not set in Helm values, administrators can configure the RuntimeClass through the Obot admin UI under Kubernetes settings.
+If not set in Helm values, administrators can configure the RuntimeClass through the Boeing admin UI under Kubernetes settings.
 
 :::tip Security Best Practice
 Using a sandboxed container runtime like gVisor or Kata Containers is recommended for production deployments where MCP servers may run untrusted or third-party code. This provides defense-in-depth by adding an extra layer of isolation between MCP server containers and your cluster infrastructure.
@@ -131,11 +131,11 @@ Not all nodes in your cluster may support the configured RuntimeClass. Ensure th
 
 ### Service
 
-Obot creates one ClusterIP service for each Deployment to expose its MCP server on port 80.
+Boeing creates one ClusterIP service for each Deployment to expose its MCP server on port 80.
 
 ### Network Policy
 
-Obot provides an optional NetworkPolicy to restrict network traffic from MCP server pods for enhanced security. When enabled, this policy limits what MCP servers can access on the network.
+Boeing provides an optional NetworkPolicy to restrict network traffic from MCP server pods for enhanced security. When enabled, this policy limits what MCP servers can access on the network.
 
 For per-MCP-server domain allowlists, see [MCP Server Egress Control](./mcp-server-egress-control.md).
 
@@ -154,13 +154,13 @@ mcpNamespace:
 When enabled, the NetworkPolicy implements the following restrictions:
 
 **Ingress (Incoming Traffic)**
-- MCP server pods can **only** receive connections from Obot pods in the main Obot namespace
+- MCP server pods can **only** receive connections from Boeing pods in the main Boeing namespace
 - All other incoming traffic is blocked
 
 **Egress (Outgoing Traffic)**
 MCP server pods can communicate with:
 1. **DNS resolution** - UDP/TCP port 53 in the configured DNS namespace (default: `kube-system`)
-2. **Obot service** - TCP port 8080 to the main Obot service for callbacks and communication
+2. **Boeing service** - TCP port 8080 to the main Boeing service for callbacks and communication
 3. **Public internet** - All public IP addresses for external API calls and services
 
 MCP server pods are **blocked** from accessing:
@@ -179,12 +179,12 @@ If your MCP servers need to access internal Kubernetes services or private netwo
 :::
 
 :::note Scope: MCP server pods only
-This NetworkPolicy (`mcp-egress-restrictions`) applies to the **MCP server pods** in the MCP namespace. It does **not** restrict egress from the Obot server pod itself, which makes its own outbound connections as part of normal operation. Restricting the Obot server's own egress is left to the operator; see [Restricting Obot Server Egress](/installation/kubernetes-deployment/#restricting-obot-server-egress).
+This NetworkPolicy (`mcp-egress-restrictions`) applies to the **MCP server pods** in the MCP namespace. It does **not** restrict egress from the Boeing server pod itself, which makes its own outbound connections as part of normal operation. Restricting the Boeing server's own egress is left to the operator; see [Restricting Boeing Server Egress](/installation/kubernetes-deployment/#restricting-boeing-server-egress).
 :::
 
 ### Pod Security Admission
 
-Obot supports Pod Security Admission (PSA) configuration for the MCP namespace to enforce Kubernetes Pod Security Standards. PSA provides a way to enforce security policies on pods at the namespace level.
+Boeing supports Pod Security Admission (PSA) configuration for the MCP namespace to enforce Kubernetes Pod Security Standards. PSA provides a way to enforce security policies on pods at the namespace level.
 
 #### Configuration
 
@@ -222,7 +222,7 @@ Kubernetes defines three Pod Security Standards levels:
 - **baseline**: Minimally restrictive policy which prevents known privilege escalations. Allows the default (minimally specified) Pod configuration.
 - **restricted** (default): Heavily restricted policy, following current Pod hardening best practices
 
-#### How PSA Works in Obot
+#### How PSA Works in Boeing
 
 The PSA configuration is applied as labels on the MCP namespace:
 - `pod-security.kubernetes.io/enforce`: Blocks pod creation if it violates the policy
@@ -230,11 +230,11 @@ The PSA configuration is applied as labels on the MCP namespace:
 - `pod-security.kubernetes.io/warn`: Returns a warning message to the user for violations
 
 :::tip Security-First Default
-Obot uses the **restricted** policy by default, providing the highest level of pod security. This policy follows current Pod hardening best practices and is recommended for production environments. If you need more permissive settings for specific use cases, you can configure the policy to **baseline** or **privileged**.
+Boeing uses the **restricted** policy by default, providing the highest level of pod security. This policy follows current Pod hardening best practices and is recommended for production environments. If you need more permissive settings for specific use cases, you can configure the policy to **baseline** or **privileged**.
 :::
 
 :::info MCP Pod Security Context
-Obot automatically configures MCP pods with secure defaults that comply with the restricted policy:
+Boeing automatically configures MCP pods with secure defaults that comply with the restricted policy:
 
 **Pod-level SecurityContext:**
 - `runAsNonRoot: true`
@@ -260,26 +260,26 @@ PSA can also be configured via environment variables:
 
 | Environment Variable | Description | Default |
 |---------------------|-------------|---------|
-| `OBOT_SERVER_MCPPOD_SECURITY_ENABLED` | Enable Pod Security Admission labels on MCP namespace | `true` |
-| `OBOT_SERVER_MCPPOD_SECURITY_ENFORCE` | Pod Security Standards level to enforce | `restricted` |
-| `OBOT_SERVER_MCPPOD_SECURITY_ENFORCE_VERSION` | Kubernetes version for enforce policy | `latest` |
-| `OBOT_SERVER_MCPPOD_SECURITY_AUDIT` | Pod Security Standards level to audit | `restricted` |
-| `OBOT_SERVER_MCPPOD_SECURITY_AUDIT_VERSION` | Kubernetes version for audit policy | `latest` |
-| `OBOT_SERVER_MCPPOD_SECURITY_WARN` | Pod Security Standards level to warn about | `restricted` |
-| `OBOT_SERVER_MCPPOD_SECURITY_WARN_VERSION` | Kubernetes version for warn policy | `latest` |
+| `BOEING_SERVER_MCPPOD_SECURITY_ENABLED` | Enable Pod Security Admission labels on MCP namespace | `true` |
+| `BOEING_SERVER_MCPPOD_SECURITY_ENFORCE` | Pod Security Standards level to enforce | `restricted` |
+| `BOEING_SERVER_MCPPOD_SECURITY_ENFORCE_VERSION` | Kubernetes version for enforce policy | `latest` |
+| `BOEING_SERVER_MCPPOD_SECURITY_AUDIT` | Pod Security Standards level to audit | `restricted` |
+| `BOEING_SERVER_MCPPOD_SECURITY_AUDIT_VERSION` | Kubernetes version for audit policy | `latest` |
+| `BOEING_SERVER_MCPPOD_SECURITY_WARN` | Pod Security Standards level to warn about | `restricted` |
+| `BOEING_SERVER_MCPPOD_SECURITY_WARN_VERSION` | Kubernetes version for warn policy | `latest` |
 
 ### Secrets
 
-Obot will create a Secret to contain the user-provided configuration values for the MCP server.
+Boeing will create a Secret to contain the user-provided configuration values for the MCP server.
 Any configuration values that were marked as files will be in a separate Secret that is mounted in the `/files` directory in the container.
 
 ### Image Pull Secrets
 
-Obot can attach Kubernetes image pull secrets to every MCP server Deployment. This is useful when MCP server images are stored in private registries.
+Boeing can attach Kubernetes image pull secrets to every MCP server Deployment. This is useful when MCP server images are stored in private registries.
 
 There are two modes:
 
-- Static Helm `mcpImagePullSecrets`, where Helm creates the Docker config JSON secrets and Obot uses those secret names.
-- Managed image pull secrets, where admins configure registry credentials in Obot and Obot creates the Kubernetes secrets in the MCP namespace.
+- Static Helm `mcpImagePullSecrets`, where Helm creates the Docker config JSON secrets and Boeing uses those secret names.
+- Managed image pull secrets, where admins configure registry credentials in Boeing and Boeing creates the Kubernetes secrets in the MCP namespace.
 
 If static MCP image pull secrets are configured, they remain the source of truth and managed image pull secrets are disabled. For setup instructions, including Amazon ECR OIDC and IAM role configuration, see [Image Pull Secrets](./image-pull-secrets.md).

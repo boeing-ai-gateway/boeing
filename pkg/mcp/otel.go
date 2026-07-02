@@ -6,11 +6,11 @@ import (
 	"strings"
 )
 
-// nanobotOTELEnv returns OTEL environment variables to inject into Nanobot containers.
+// boeingbotOTELEnv returns OTEL environment variables to inject into Boeingbot containers.
 // It copies all OTEL_* variables from the current process, optionally rewriting OTLP
 // endpoint URLs for the target runtime, and sets the service name so spans are
 // distinguishable.
-func nanobotOTELEnv(serviceName string, transformEndpoint func(string) string) map[string][]byte {
+func boeingbotOTELEnv(serviceName string, transformEndpoint func(string) string) map[string][]byte {
 	env := make(map[string][]byte)
 
 	for _, entry := range os.Environ() {

@@ -22,14 +22,15 @@
 	import { onMount, untrack } from 'svelte';
 	import { fade } from 'svelte/transition';
 
-	const nanobotIntegratedModels = [
+	const boeingbotIntegratedModels = [
 		CommonModelProviderIds.OPENAI,
 		CommonModelProviderIds.ANTHROPIC,
 		CommonModelProviderIds.AMAZON_BEDROCK,
 		CommonModelProviderIds.AMAZON_BEDROCK_API_KEY,
 		CommonModelProviderIds.AZURE,
 		CommonModelProviderIds.AZURE_ENTRA,
-		CommonModelProviderIds.GENERIC_RESPONSES
+		CommonModelProviderIds.GENERIC_RESPONSES,
+		CommonModelProviderIds.BOEING_AI
 	];
 
 	let { data } = $props();
@@ -55,7 +56,7 @@
 				)
 	);
 	let modelProvidersToShow = $derived(
-		availableModelProviders.filter((provider) => nanobotIntegratedModels.includes(provider.id))
+		availableModelProviders.filter((provider) => boeingbotIntegratedModels.includes(provider.id))
 	);
 	let isAdminReadonly = $derived(profile.current.isAdminReadonly?.());
 	const defaultModelAliases = $derived(defaultModelAliasesStore.current);
@@ -160,7 +161,7 @@
 						<p class="my-0.5 flex flex-col text-sm font-semibold">No Model Providers Configured!</p>
 					</div>
 					<span class="text-sm font-light break-all">
-						To use Obot chat features, you'll need to set up a Model Provider. Select and configure
+						To use Boeing chat features, you'll need to set up a Model Provider. Select and configure
 						one below to get started!
 					</span>
 				</div>
@@ -241,5 +242,5 @@
 />
 
 <svelte:head>
-	<title>Obot | Model Providers</title>
+	<title>Boeing | Model Providers</title>
 </svelte:head>

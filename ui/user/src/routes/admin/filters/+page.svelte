@@ -260,5 +260,5 @@
 </ResponsiveDialog>
 
 <svelte:head>
-	<title>Obot | Filters</title>
+	<title>Boeing | Filters</title>
 </svelte:head>

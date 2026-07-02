@@ -9,8 +9,8 @@ import (
 	"strings"
 
 	"github.com/adhocore/gronx"
-	"github.com/obot-platform/obot/apiclient/types"
-	v1 "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
+	v1 "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1"
 	kvalidation "k8s.io/apimachinery/pkg/util/validation"
 )
 

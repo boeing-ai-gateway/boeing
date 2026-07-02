@@ -1,7 +1,7 @@
 import type { RenderContext, SnippetBlock } from './types';
 
-function loginSubstitution(obotURL: string): string {
-	return `$(obot login --url ${obotURL} --scope llm --print-token)`;
+function loginSubstitution(boeingURL: string): string {
+	return `$(boeing login --url ${boeingURL} --scope llm --print-token)`;
 }
 
 /** Build a copy-pasteable curl example for the provider's chat/messages endpoint. */
@@ -20,7 +20,7 @@ export function renderCurlExample(ctx: RenderContext): SnippetBlock {
 		);
 		const code = [
 			`export ANTHROPIC_BASE_URL="${ctx.baseURL}"`,
-			`export ANTHROPIC_API_KEY="${loginSubstitution(ctx.obotURL)}"`,
+			`export ANTHROPIC_API_KEY="${loginSubstitution(ctx.boeingURL)}"`,
 			'',
 			'curl $ANTHROPIC_BASE_URL/v1/messages \\',
 			'  -H "x-api-key: $ANTHROPIC_API_KEY" \\',
@@ -42,7 +42,7 @@ export function renderCurlExample(ctx: RenderContext): SnippetBlock {
 	);
 	const code = [
 		`export OPENAI_BASE_URL="${ctx.baseURL}"`,
-		`export OPENAI_API_KEY="${loginSubstitution(ctx.obotURL)}"`,
+		`export OPENAI_API_KEY="${loginSubstitution(ctx.boeingURL)}"`,
 		'',
 		'curl $OPENAI_BASE_URL/v1/responses \\',
 		'  -H "Authorization: Bearer $OPENAI_API_KEY" \\',

@@ -1,4 +1,4 @@
-import type { FileTimeResult } from './services/nanobot/types';
+import type { FileTimeResult } from './services/boeingbot/types';
 import type { TimeDisplayFormat } from './time';
 
 function formatWithSuffix(value: number, suffix: string): string {

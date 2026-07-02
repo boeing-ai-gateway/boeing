@@ -10,18 +10,18 @@ import (
 	"strings"
 	"time"
 
-	"github.com/obot-platform/obot/logger"
+	"github.com/boeing-ai-gateway/boeing/logger"
 	"k8s.io/apiserver/pkg/server/options/encryptionconfig"
 )
 
 var log = logger.Package()
 
 type Options struct {
-	AWSKMSKeyARN         string `usage:"The ARN of the AWS KMS key to use for encrypting credential storage. Only used with the AWS encryption provider." env:"OBOT_AWS_KMS_KEY_ARN" name:"aws-kms-key-arn"`
-	GCPKMSKeyURI         string `usage:"The URI of the Google Cloud KMS key to use for encrypting credential storage. Only used with the GCP encryption provider." env:"OBOT_GCP_KMS_KEY_URI" name:"gcp-kms-key-uri"`
-	AzureKeyVaultName    string `usage:"The name of the Azure Key Vault to use for encrypting credential storage. Only used with the Azure encryption provider." env:"OBOT_AZURE_KEY_VAULT_NAME" name:"azure-key-vault-name"`
-	AzureKeyName         string `usage:"The name of the Azure Key Vault key to use for encrypting credential storage. Only used with the Azure encryption provider." env:"OBOT_AZURE_KEY_NAME" name:"azure-key-vault-key-name"`
-	AzureKeyVersion      string `usage:"The version of the Azure Key Vault key to use for encrypting credential storage. Only used with the Azure encryption provider." env:"OBOT_AZURE_KEY_VERSION" name:"azure-key-vault-key-version"`
+	AWSKMSKeyARN         string `usage:"The ARN of the AWS KMS key to use for encrypting credential storage. Only used with the AWS encryption provider." env:"BOEING_AWS_KMS_KEY_ARN" name:"aws-kms-key-arn"`
+	GCPKMSKeyURI         string `usage:"The URI of the Google Cloud KMS key to use for encrypting credential storage. Only used with the GCP encryption provider." env:"BOEING_GCP_KMS_KEY_URI" name:"gcp-kms-key-uri"`
+	AzureKeyVaultName    string `usage:"The name of the Azure Key Vault to use for encrypting credential storage. Only used with the Azure encryption provider." env:"BOEING_AZURE_KEY_VAULT_NAME" name:"azure-key-vault-name"`
+	AzureKeyName         string `usage:"The name of the Azure Key Vault key to use for encrypting credential storage. Only used with the Azure encryption provider." env:"BOEING_AZURE_KEY_NAME" name:"azure-key-vault-key-name"`
+	AzureKeyVersion      string `usage:"The version of the Azure Key Vault key to use for encrypting credential storage. Only used with the Azure encryption provider." env:"BOEING_AZURE_KEY_VERSION" name:"azure-key-vault-key-version"`
 	EncryptionProvider   string `usage:"The encryption provider to use. Options are AWS, GCP, None, or Custom. Default is None." default:"None"`
 	EncryptionConfigFile string `usage:"The path to the encryption configuration file. Only used with the Custom encryption provider."`
 }
@@ -81,7 +81,7 @@ func Init(ctx context.Context, opts Options) (*encryptionconfig.EncryptionConfig
 
 	if opts.EncryptionConfigFile != "" {
 		log.Infof("Encryption: Using encryption config file: %s", opts.EncryptionConfigFile)
-		ec, err := encryptionconfig.LoadEncryptionConfig(ctx, opts.EncryptionConfigFile, false, "obot")
+		ec, err := encryptionconfig.LoadEncryptionConfig(ctx, opts.EncryptionConfigFile, false, "boeing")
 		return ec, err
 	}
 

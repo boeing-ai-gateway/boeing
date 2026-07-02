@@ -20,9 +20,7 @@
 				<TriangleAlert class="size-12 text-warning" />
 				<h4 class="text-muted-content text-lg font-semibold">Limited Functionality</h4>
 				<p class="text-muted-content text-sm font-light">
-					An issue occurred with fetching the skill due to licensing. Please resolve outstanding
-					licensing issues or contact support at
-					<a href="mailto:licensing@obot.ai" class="text-link">licensing@obot.ai</a>.
+					An issue occurred with fetching the skill. Please check your configuration.
 				</p>
 			</div>
 		{:else if skill}
@@ -32,5 +30,5 @@
 </Layout>
 
 <svelte:head>
-	<title>Obot | {title}</title>
+	<title>Boeing | {title}</title>
 </svelte:head>

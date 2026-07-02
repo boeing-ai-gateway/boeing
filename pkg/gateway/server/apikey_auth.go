@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/obot-platform/obot/pkg/gateway/client"
+	"github.com/boeing-ai-gateway/boeing/pkg/gateway/client"
 	"k8s.io/apiserver/pkg/authentication/authenticator"
 	"k8s.io/apiserver/pkg/authentication/user"
 )
@@ -59,7 +59,7 @@ func (a *APIKeyAuthenticator) AuthenticateRequest(req *http.Request) (*authentic
 
 	// Look up auth provider group memberships so that group-based access
 	// rules (e.g. skill access policies) work for API-key-authenticated
-	// requests such as those made by nanobot.
+	// requests such as those made by boeingbot.
 	if authGroupIDs, err := a.client.ListGroupIDsForUser(req.Context(), u.ID); err == nil {
 		extra["auth_provider_groups"] = authGroupIDs
 	}

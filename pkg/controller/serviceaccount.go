@@ -7,9 +7,9 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/obot-platform/nah/pkg/router"
-	"github.com/obot-platform/obot/pkg/gateway/types"
-	"github.com/obot-platform/obot/pkg/serviceaccounts"
+	"github.com/boeing-ai-gateway/nah/pkg/router"
+	"github.com/boeing-ai-gateway/boeing/pkg/gateway/types"
+	"github.com/boeing-ai-gateway/boeing/pkg/serviceaccounts"
 	corev1 "k8s.io/api/core/v1"
 	apierrors "k8s.io/apimachinery/pkg/api/errors"
 	kclient "sigs.k8s.io/controller-runtime/pkg/client"
@@ -19,7 +19,7 @@ const (
 	serviceAccountRotationInterval = 10 * time.Hour
 	serviceAccountOverlapWindow    = time.Hour
 	serviceAccountRotationPeriod   = time.Minute
-	serviceAccountKeyIDAnnotation  = "obot.obot.ai/key-id"
+	serviceAccountKeyIDAnnotation  = "boeing.boeing.ai/key-id"
 )
 
 var errRuntimeK8sConfigUnavailable = errors.New("runtime Kubernetes config is not configured")
@@ -227,7 +227,7 @@ func (c *Controller) writeServiceAccountSecret(ctx context.Context, account serv
 	if secret.Labels == nil {
 		secret.Labels = map[string]string{}
 	}
-	secret.Labels["app.kubernetes.io/name"] = "obot"
+	secret.Labels["app.kubernetes.io/name"] = "boeing"
 	if secret.Annotations == nil {
 		secret.Annotations = map[string]string{}
 	}

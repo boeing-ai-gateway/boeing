@@ -6,11 +6,11 @@
 	import { onMount } from 'svelte';
 	import { fly } from 'svelte/transition';
 
-	let obotURL = $state('');
+	let boeingURL = $state('');
 	let { data } = $props();
 
 	onMount(() => {
-		obotURL = window.location.origin;
+		boeingURL = window.location.origin;
 	});
 
 	let openaiModels = $derived(
@@ -24,8 +24,8 @@
 		const provider = PROVIDER_CONNECTIONS[shortKey];
 		return {
 			provider,
-			obotURL,
-			baseURL: `${obotURL}/api/llm-proxy/${provider.shortKey}`,
+			boeingURL,
+			baseURL: `${boeingURL}/api/llm-proxy/${provider.shortKey}`,
 			exampleModel: models[0]?.name
 		};
 	}
@@ -33,7 +33,7 @@
 	let openaiCtx = $derived(buildCtx('openai', openaiModels));
 	let anthropicCtx = $derived(buildCtx('anthropic', anthropicModels));
 
-	let ready = $derived(obotURL !== '');
+	let ready = $derived(boeingURL !== '');
 
 	const duration = PAGE_TRANSITION_DURATION;
 </script>
@@ -45,7 +45,7 @@
 		out:fly={{ x: -100, duration }}
 	>
 		<p class="text-muted-content max-w-3xl text-sm">
-			Use the Obot LLM Gateway to call OpenAI and Anthropic models with your Obot credentials.
+			Use the Boeing LLM Gateway to call OpenAI and Anthropic models with your Boeing credentials.
 			Configure your client below, then pick from the models you have access to.
 		</p>
 
@@ -63,5 +63,5 @@
 </Layout>
 
 <svelte:head>
-	<title>Obot | LLM Gateway Models</title>
+	<title>Boeing | LLM Gateway Models</title>
 </svelte:head>

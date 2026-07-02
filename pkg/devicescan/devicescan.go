@@ -3,7 +3,7 @@
 //
 // Scan reads known config locations under a home directory (provided as
 // an fs.FS), parses MCP server, skill, and plugin observations, and
-// returns a types.DeviceScan suitable for submission to the Obot
+// returns a types.DeviceScan suitable for submission to the Boeing
 // backend.
 //
 // Each client is integrated as a value type implementing ClientScanner
@@ -17,8 +17,8 @@ import (
 	"io/fs"
 	"sort"
 
-	"github.com/obot-platform/obot/apiclient/types"
-	"github.com/obot-platform/obot/logger"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/logger"
 )
 
 var log = logger.Package()

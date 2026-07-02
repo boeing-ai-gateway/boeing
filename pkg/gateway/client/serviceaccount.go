@@ -10,8 +10,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/obot-platform/obot/pkg/gateway/types"
-	"github.com/obot-platform/obot/pkg/serviceaccounts"
+	"github.com/boeing-ai-gateway/boeing/pkg/gateway/types"
+	"github.com/boeing-ai-gateway/boeing/pkg/serviceaccounts"
 	"golang.org/x/crypto/bcrypt"
 	"gorm.io/gorm"
 )

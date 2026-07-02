@@ -6,10 +6,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/obot-platform/nah/pkg/router"
-	"github.com/obot-platform/obot/apiclient/types"
-	v1 "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1"
-	storagescheme "github.com/obot-platform/obot/pkg/storage/scheme"
+	"github.com/boeing-ai-gateway/nah/pkg/router"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
+	v1 "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1"
+	storagescheme "github.com/boeing-ai-gateway/boeing/pkg/storage/scheme"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -1140,7 +1140,7 @@ func TestShutdownIdleServersSchedulesRetryUsingServerSpecificInterval(t *testing
 
 func TestShutdownIdleServersUsesAgentDefaultIdleInterval(t *testing.T) {
 	server := newMCPServer("agent-server")
-	server.Spec.NanobotAgentID = "agent-1"
+	server.Spec.BoeingbotAgentID = "agent-1"
 	server.Status.LastRequestTime = metav1.NewTime(time.Now().Add(-2 * time.Hour))
 
 	req := router.Request{
@@ -1300,9 +1300,9 @@ func TestEnsureMCPNetworkPolicyDeletesPolicyWhenProviderDisabled(t *testing.T) {
 	require.Empty(t, policies.Items)
 }
 
-func TestEnsureMCPNetworkPolicySkipsNanobotAgentServer(t *testing.T) {
-	server := newMCPServer("nanobot-agent-server")
-	server.Spec.NanobotAgentID = "agent-1"
+func TestEnsureMCPNetworkPolicySkipsBoeingbotAgentServer(t *testing.T) {
+	server := newMCPServer("boeingbot-agent-server")
+	server.Spec.BoeingbotAgentID = "agent-1"
 	server.Spec.Manifest.Runtime = types.RuntimeNPX
 	server.Spec.Manifest.NPXConfig = &types.NPXRuntimeConfig{
 		Package:       "@test/package",

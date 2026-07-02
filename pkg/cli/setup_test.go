@@ -10,10 +10,10 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/obot-platform/obot/apiclient"
-	"github.com/obot-platform/obot/pkg/cli/internal/localconfig"
-	"github.com/obot-platform/obot/pkg/localagents"
-	"github.com/obot-platform/obot/pkg/skillformat"
+	"github.com/boeing-ai-gateway/boeing/apiclient"
+	"github.com/boeing-ai-gateway/boeing/pkg/cli/internal/localconfig"
+	"github.com/boeing-ai-gateway/boeing/pkg/localagents"
+	"github.com/boeing-ai-gateway/boeing/pkg/skillformat"
 	"github.com/spf13/cobra"
 )
 
@@ -31,7 +31,7 @@ func TestSetupNonInteractiveExplicitInstallsClaudeCode(t *testing.T) {
 		return "token", nil
 	})
 	setup := &Setup{
-		URL:     "https://obot.example.com/",
+		URL:     "https://boeing.example.com/",
 		Clients: "claude-code",
 		Yes:     true,
 		root:    root,
@@ -47,14 +47,14 @@ func TestSetupNonInteractiveExplicitInstallsClaudeCode(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	if cfg.DefaultURL != "https://obot.example.com" {
+	if cfg.DefaultURL != "https://boeing.example.com" {
 		t.Fatalf("DefaultURL = %q, want normalized URL", cfg.DefaultURL)
 	}
-	if tokenBaseURL != "https://obot.example.com/api" {
+	if tokenBaseURL != "https://boeing.example.com/api" {
 		t.Fatalf("token base URL = %q, want API URL", tokenBaseURL)
 	}
 
-	skillPath := filepath.Join(home, ".claude", "skills", "obot", skillformat.SkillMainFile)
+	skillPath := filepath.Join(home, ".claude", "skills", "boeing", skillformat.SkillMainFile)
 	content, err := os.ReadFile(skillPath)
 	if err != nil {
 		t.Fatal(err)
@@ -62,10 +62,10 @@ func TestSetupNonInteractiveExplicitInstallsClaudeCode(t *testing.T) {
 	if !strings.Contains(string(content), "rendered for `claude-code`") {
 		t.Fatalf("unexpected bootstrap content:\n%s", content)
 	}
-	if !strings.Contains(stdout.String(), "Installed Obot bootstrap skills for Claude Code") {
+	if !strings.Contains(stdout.String(), "Installed Boeing bootstrap skills for Claude Code") {
 		t.Fatalf("expected install message, got stdout:\n%s", stdout.String())
 	}
-	if !strings.Contains(stderr.String(), "Logged in to https://obot.example.com") {
+	if !strings.Contains(stderr.String(), "Logged in to https://boeing.example.com") {
 		t.Fatalf("expected login message, got stderr:\n%s", stderr.String())
 	}
 }
@@ -79,7 +79,7 @@ func TestSetupExplicitSharedAgents(t *testing.T) {
 		return "token", nil
 	})
 	setup := &Setup{
-		URL:     "https://obot.example.com/",
+		URL:     "https://boeing.example.com/",
 		Clients: "agents",
 		Yes:     true,
 		root:    root,
@@ -92,7 +92,7 @@ func TestSetupExplicitSharedAgents(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	skillPath := filepath.Join(home, ".agents", "skills", "obot", skillformat.SkillMainFile)
+	skillPath := filepath.Join(home, ".agents", "skills", "boeing", skillformat.SkillMainFile)
 	content, err := os.ReadFile(skillPath)
 	if err != nil {
 		t.Fatal(err)
@@ -100,7 +100,7 @@ func TestSetupExplicitSharedAgents(t *testing.T) {
 	if !strings.Contains(string(content), "rendered for `agents`") {
 		t.Fatalf("unexpected bootstrap content:\n%s", content)
 	}
-	if !strings.Contains(stdout.String(), "Installed Obot bootstrap skills for All clients that support ~/.agents") {
+	if !strings.Contains(stdout.String(), "Installed Boeing bootstrap skills for All clients that support ~/.agents") {
 		t.Fatalf("expected install message, got stdout:\n%s", stdout.String())
 	}
 }
@@ -114,7 +114,7 @@ func TestSetupExplicitInstallsMultipleTargets(t *testing.T) {
 		return "token", nil
 	})
 	setup := &Setup{
-		URL:     "https://obot.example.com/",
+		URL:     "https://boeing.example.com/",
 		Clients: "claude-code,agents",
 		Yes:     true,
 		root:    root,
@@ -124,8 +124,8 @@ func TestSetupExplicitInstallsMultipleTargets(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	assertFileContains(t, filepath.Join(home, ".claude", "skills", "obot", skillformat.SkillMainFile), "rendered for `claude-code`")
-	assertFileContains(t, filepath.Join(home, ".agents", "skills", "obot", skillformat.SkillMainFile), "rendered for `agents`")
+	assertFileContains(t, filepath.Join(home, ".claude", "skills", "boeing", skillformat.SkillMainFile), "rendered for `claude-code`")
+	assertFileContains(t, filepath.Join(home, ".agents", "skills", "boeing", skillformat.SkillMainFile), "rendered for `agents`")
 }
 
 func TestSetupNonInteractiveMissingURLFailsWithoutPrompt(t *testing.T) {
@@ -145,7 +145,7 @@ func TestSetupNonInteractiveMissingURLFailsWithoutPrompt(t *testing.T) {
 	}
 
 	var stdout bytes.Buffer
-	cmd := setupTestCommand(strings.NewReader("https://obot.example.com\n"), &stdout, nil)
+	cmd := setupTestCommand(strings.NewReader("https://boeing.example.com\n"), &stdout, nil)
 	err := setup.Run(cmd, nil)
 	if err == nil {
 		t.Fatal("expected error")
@@ -153,7 +153,7 @@ func TestSetupNonInteractiveMissingURLFailsWithoutPrompt(t *testing.T) {
 	if !strings.Contains(err.Error(), "--url is required in non-interactive mode") {
 		t.Fatalf("unexpected error: %v", err)
 	}
-	if strings.Contains(stdout.String(), "Obot URL:") {
+	if strings.Contains(stdout.String(), "Boeing URL:") {
 		t.Fatalf("non-interactive setup should not prompt, got stdout:\n%s", stdout.String())
 	}
 }
@@ -173,7 +173,7 @@ func TestSetupClientsNoneSkipsLocalClientInstall(t *testing.T) {
 		PromptConfig: PromptConfig{
 			NonInteractive: true,
 		},
-		URL:     "https://obot.example.com/",
+		URL:     "https://boeing.example.com/",
 		Clients: "none",
 		Yes:     true,
 		root:    root,
@@ -191,7 +191,7 @@ func TestSetupClientsNoneSkipsLocalClientInstall(t *testing.T) {
 	if !strings.Contains(stdout.String(), "Skipping local client bootstrap installation") {
 		t.Fatalf("expected skip message, got stdout:\n%s", stdout.String())
 	}
-	if _, err := os.Stat(filepath.Join(home, ".claude", "skills", "obot", skillformat.SkillMainFile)); !os.IsNotExist(err) {
+	if _, err := os.Stat(filepath.Join(home, ".claude", "skills", "boeing", skillformat.SkillMainFile)); !os.IsNotExist(err) {
 		t.Fatalf("expected no Claude Code skill to be installed, stat err: %v", err)
 	}
 }
@@ -211,7 +211,7 @@ func TestSetupJSONProgressSuccessfulSequence(t *testing.T) {
 		PromptConfig: PromptConfig{
 			NonInteractive: true,
 		},
-		URL:     "https://obot.example.com/",
+		URL:     "https://boeing.example.com/",
 		Clients: "claude-code",
 		Yes:     true,
 		Output:  "json",
@@ -268,7 +268,7 @@ func TestSetupJSONProgressStructuredError(t *testing.T) {
 	}
 
 	var stdout bytes.Buffer
-	cmd := setupTestCommand(strings.NewReader("https://obot.example.com\n"), &stdout, nil)
+	cmd := setupTestCommand(strings.NewReader("https://boeing.example.com\n"), &stdout, nil)
 	err := setup.Run(cmd, nil)
 	if err == nil {
 		t.Fatal("expected error")
@@ -395,7 +395,7 @@ func TestSetupPromptsForClientsWhenOmittedWithoutClaudeCode(t *testing.T) {
 		return "token", nil
 	})
 	setup := &Setup{
-		URL:  "https://obot.example.com/",
+		URL:  "https://boeing.example.com/",
 		root: root,
 	}
 
@@ -412,7 +412,7 @@ func TestSetupPromptsForClientsWhenOmittedWithoutClaudeCode(t *testing.T) {
 	if strings.Contains(output, "claude-code") {
 		t.Fatalf("claude-code should not be offered when not detected:\n%s", output)
 	}
-	assertFileContains(t, filepath.Join(home, ".agents", "skills", "obot", skillformat.SkillMainFile), "rendered for `agents`")
+	assertFileContains(t, filepath.Join(home, ".agents", "skills", "boeing", skillformat.SkillMainFile), "rendered for `agents`")
 }
 
 func TestSetupPromptsForClientsWhenOmittedWithClaudeCode(t *testing.T) {
@@ -427,7 +427,7 @@ func TestSetupPromptsForClientsWhenOmittedWithClaudeCode(t *testing.T) {
 		return "token", nil
 	})
 	setup := &Setup{
-		URL:  "https://obot.example.com/",
+		URL:  "https://boeing.example.com/",
 		root: root,
 	}
 
@@ -441,8 +441,8 @@ func TestSetupPromptsForClientsWhenOmittedWithClaudeCode(t *testing.T) {
 	if !strings.Contains(output, "claude-code Claude Code (detected)") {
 		t.Fatalf("expected claude-code prompt option, got:\n%s", output)
 	}
-	assertFileContains(t, filepath.Join(home, ".claude", "skills", "obot", skillformat.SkillMainFile), "rendered for `claude-code`")
-	assertFileContains(t, filepath.Join(home, ".agents", "skills", "obot", skillformat.SkillMainFile), "rendered for `agents`")
+	assertFileContains(t, filepath.Join(home, ".claude", "skills", "boeing", skillformat.SkillMainFile), "rendered for `claude-code`")
+	assertFileContains(t, filepath.Join(home, ".agents", "skills", "boeing", skillformat.SkillMainFile), "rendered for `agents`")
 }
 
 func TestSetupPromptEmptySelectionSkipsLocalClientInstall(t *testing.T) {
@@ -454,7 +454,7 @@ func TestSetupPromptEmptySelectionSkipsLocalClientInstall(t *testing.T) {
 		return "token", nil
 	})
 	setup := &Setup{
-		URL:  "https://obot.example.com/",
+		URL:  "https://boeing.example.com/",
 		root: root,
 	}
 
@@ -467,7 +467,7 @@ func TestSetupPromptEmptySelectionSkipsLocalClientInstall(t *testing.T) {
 	if !strings.Contains(stdout.String(), "Skipping local client bootstrap installation") {
 		t.Fatalf("expected skip message, got stdout:\n%s", stdout.String())
 	}
-	if _, err := os.Stat(filepath.Join(home, ".agents", "skills", "obot", skillformat.SkillMainFile)); !os.IsNotExist(err) {
+	if _, err := os.Stat(filepath.Join(home, ".agents", "skills", "boeing", skillformat.SkillMainFile)); !os.IsNotExist(err) {
 		t.Fatalf("expected no shared agents skill to be installed, stat err: %v", err)
 	}
 }
@@ -481,7 +481,7 @@ func TestSetupYesDefaultsToSharedAgentsWhenClientsOmitted(t *testing.T) {
 		return "token", nil
 	})
 	setup := &Setup{
-		URL:  "https://obot.example.com/",
+		URL:  "https://boeing.example.com/",
 		Yes:  true,
 		root: root,
 	}
@@ -495,7 +495,7 @@ func TestSetupYesDefaultsToSharedAgentsWhenClientsOmitted(t *testing.T) {
 	if strings.Contains(stdout.String(), "Choose local client skill targets") {
 		t.Fatalf("--yes should not prompt for clients, got stdout:\n%s", stdout.String())
 	}
-	assertFileContains(t, filepath.Join(home, ".agents", "skills", "obot", skillformat.SkillMainFile), "rendered for `agents`")
+	assertFileContains(t, filepath.Join(home, ".agents", "skills", "boeing", skillformat.SkillMainFile), "rendered for `agents`")
 }
 
 func TestSetupNonInteractiveRequiresClientsWhenOmitted(t *testing.T) {
@@ -510,7 +510,7 @@ func TestSetupNonInteractiveRequiresClientsWhenOmitted(t *testing.T) {
 		PromptConfig: PromptConfig{
 			NonInteractive: true,
 		},
-		URL:  "https://obot.example.com/",
+		URL:  "https://boeing.example.com/",
 		root: root,
 	}
 
@@ -594,7 +594,7 @@ func TestSetupStatusJSONNoConfig(t *testing.T) {
 func TestSetupStatusSetupCompleteRequiresConfiguredURLAndValidToken(t *testing.T) {
 	restore := useRootTestEnv(t)
 	defer restore()
-	if err := localconfig.Save(localconfig.Config{DefaultURL: "https://obot.example.com/"}); err != nil {
+	if err := localconfig.Save(localconfig.Config{DefaultURL: "https://boeing.example.com/"}); err != nil {
 		t.Fatal(err)
 	}
 
@@ -612,7 +612,7 @@ func TestSetupStatusSetupCompleteRequiresConfiguredURLAndValidToken(t *testing.T
 			status := &SetupStatus{
 				JSON: true,
 				tokenValid: func(_ context.Context, appURL string) (bool, error) {
-					if appURL != "https://obot.example.com" {
+					if appURL != "https://boeing.example.com" {
 						t.Fatalf("appURL = %q, want normalized URL", appURL)
 					}
 					return tt.tokenValid, nil
@@ -628,7 +628,7 @@ func TestSetupStatusSetupCompleteRequiresConfiguredURLAndValidToken(t *testing.T
 			if err := json.Unmarshal(stdout.Bytes(), &got); err != nil {
 				t.Fatalf("status output should be JSON: %v\n%s", err, stdout.String())
 			}
-			if got.DefaultURL != "https://obot.example.com" {
+			if got.DefaultURL != "https://boeing.example.com" {
 				t.Fatalf("defaultURL = %q, want normalized configured URL", got.DefaultURL)
 			}
 			if got.TokenValid != tt.tokenValid {
@@ -676,12 +676,12 @@ func TestSetupDetectClientsJSON(t *testing.T) {
 	}
 }
 
-func setupTestRoot(fetcher func(context.Context, string, apiclient.TokenFetchOptions) (string, error)) *Obot {
+func setupTestRoot(fetcher func(context.Context, string, apiclient.TokenFetchOptions) (string, error)) *Boeing {
 	client := &apiclient.Client{}
 	if fetcher != nil {
 		client = client.WithTokenFetcher(fetcher)
 	}
-	return &Obot{Client: client}
+	return &Boeing{Client: client}
 }
 
 func setupTestCommand(stdin *strings.Reader, stdout, stderr *bytes.Buffer) *cobra.Command {

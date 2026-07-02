@@ -3,8 +3,8 @@ package cleanup
 import (
 	"time"
 
-	"github.com/obot-platform/nah/pkg/router"
-	v1 "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1"
+	"github.com/boeing-ai-gateway/nah/pkg/router"
+	v1 "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1"
 )
 
 func OAuthClients(req router.Request, resp router.Response) error {

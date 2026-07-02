@@ -3,10 +3,10 @@ package oauth
 import (
 	"fmt"
 
-	"github.com/obot-platform/obot/apiclient/types"
-	"github.com/obot-platform/obot/pkg/api"
-	"github.com/obot-platform/obot/pkg/api/handlers"
-	v1 "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/pkg/api"
+	"github.com/boeing-ai-gateway/boeing/pkg/api/handlers"
+	v1 "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1"
 	kclient "sigs.k8s.io/controller-runtime/pkg/client"
 )
 

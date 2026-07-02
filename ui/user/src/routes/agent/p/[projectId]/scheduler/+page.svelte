@@ -2,17 +2,17 @@
 	import { afterNavigate } from '$app/navigation';
 	import Confirm from '$lib/components/Confirm.svelte';
 	import DotDotDot from '$lib/components/DotDotDot.svelte';
-	import ScheduledTaskDialog from '$lib/components/nanobot/ScheduledTaskDialog.svelte';
-	import { scheduleSummary } from '$lib/components/nanobot/taskSchedule';
+	import ScheduledTaskDialog from '$lib/components/boeingbot/ScheduledTaskDialog.svelte';
+	import { scheduleSummary } from '$lib/components/boeingbot/taskSchedule';
 	import type {
 		ProjectLayoutContext,
 		Resource,
 		ResourceContents,
 		ScheduledTask
-	} from '$lib/services/nanobot/types';
-	import { PROJECT_LAYOUT_CONTEXT } from '$lib/services/nanobot/types';
+	} from '$lib/services/boeingbot/types';
+	import { PROJECT_LAYOUT_CONTEXT } from '$lib/services/boeingbot/types';
 	import { errors, userDeviceSettings } from '$lib/stores';
-	import { nanobotChat } from '$lib/stores/nanobotChat.svelte';
+	import { boeingbotChat } from '$lib/stores/boeingbotChat.svelte';
 	import { goto } from '$lib/url';
 	import ConfirmScheduleToggle from './ConfirmScheduleToggle.svelte';
 	import { EllipsisVertical, Play, Plus, Search, Timer, TimerOff, Trash2 } from 'lucide-svelte';
@@ -49,7 +49,7 @@
 
 	type TaskResource = Resource & {
 		_meta?: {
-			['ai.nanobot.meta/task']?: {
+			['ai.boeingbot.meta/task']?: {
 				createdAt?: string;
 				schedule?: string;
 				enabled?: boolean;
@@ -61,7 +61,7 @@
 	};
 
 	function taskMeta(task: TaskResource) {
-		return task._meta?.['ai.nanobot.meta/task'];
+		return task._meta?.['ai.boeingbot.meta/task'];
 	}
 
 	function taskIDFor(resource: { uri: string }) {
@@ -81,7 +81,7 @@
 	}
 
 	let tasks = $derived.by(() =>
-		(($nanobotChat?.resources ?? []) as TaskResource[])
+		(($boeingbotChat?.resources ?? []) as TaskResource[])
 			.filter((resource) => resource.uri.startsWith('task:///'))
 			.sort((a, b) => (a.name ?? '').localeCompare(b.name ?? ''))
 	);
@@ -116,16 +116,16 @@
 	});
 
 	afterNavigate(({ from }) => {
-		if (!from?.url || !$nanobotChat?.api) return;
+		if (!from?.url || !$boeingbotChat?.api) return;
 		void refreshTaskData();
 	});
 
 	async function refreshResources() {
-		if (!$nanobotChat?.api) return;
+		if (!$boeingbotChat?.api) return;
 		loading = true;
 		try {
-			const resources = await $nanobotChat.api.listResources();
-			nanobotChat.update((state) => {
+			const resources = await $boeingbotChat.api.listResources();
+			boeingbotChat.update((state) => {
 				if (state) {
 					state.resources = resources;
 				}
@@ -139,10 +139,10 @@
 	}
 
 	async function refreshSessions() {
-		if (!$nanobotChat?.api) return;
+		if (!$boeingbotChat?.api) return;
 		try {
-			const sessions = await $nanobotChat.api.listSessions();
-			nanobotChat.update((state) => {
+			const sessions = await $boeingbotChat.api.listSessions();
+			boeingbotChat.update((state) => {
 				if (state) {
 					state.sessions = sessions;
 				}
@@ -168,7 +168,7 @@
 	}
 
 	$effect(() => {
-		const api = $nanobotChat?.api;
+		const api = $boeingbotChat?.api;
 		if (!api) return;
 
 		const handleChange = () => {
@@ -188,10 +188,10 @@
 	}
 
 	async function handleDeleteTask() {
-		if (!confirmDeleteTask || !$nanobotChat?.api) return;
+		if (!confirmDeleteTask || !$boeingbotChat?.api) return;
 		deleting = true;
 		try {
-			await $nanobotChat.api.deleteScheduledTask(confirmDeleteTask.uri);
+			await $boeingbotChat.api.deleteScheduledTask(confirmDeleteTask.uri);
 			await refreshTaskData();
 			confirmDeleteTask = undefined;
 		} catch (error) {
@@ -202,10 +202,10 @@
 	}
 
 	async function handleRunTask(uri: string) {
-		if (!$nanobotChat?.api) return;
+		if (!$boeingbotChat?.api) return;
 		mutatingTaskURI = uri;
 		try {
-			const response = await $nanobotChat.api.startScheduledTask(uri);
+			const response = await $boeingbotChat.api.startScheduledTask(uri);
 			goto(`/agent/p/${projectId}?tid=${response.sessionId}`);
 		} catch (error) {
 			errors.append(error);
@@ -215,17 +215,17 @@
 	}
 
 	async function handleToggleTask(task: TaskResource) {
-		if (!$nanobotChat?.api) return;
+		if (!$boeingbotChat?.api) return;
 		mutatingTaskURI = task.uri;
 		try {
-			const read = await $nanobotChat.api.readResource(task.uri);
+			const read = await $boeingbotChat.api.readResource(task.uri);
 			const content = read.contents?.[0];
 			if (!content) {
 				throw new Error('Scheduled task contents were empty');
 			}
 			const currentTask = parseTask(content, task.uri);
 
-			await $nanobotChat.api.updateScheduledTask({
+			await $boeingbotChat.api.updateScheduledTask({
 				uri: currentTask.uri,
 				name: currentTask.name,
 				prompt: currentTask.prompt,
@@ -256,7 +256,7 @@
 </script>
 
 <svelte:head>
-	<title>Obot | Scheduler</title>
+	<title>Boeing | Scheduler</title>
 </svelte:head>
 
 <div class="mx-auto flex w-full max-w-4xl flex-col gap-6 px-4 md:px-8" bind:this={tasksContainer}>
@@ -399,10 +399,10 @@
 	</table>
 </div>
 
-{#if $nanobotChat?.api}
+{#if $boeingbotChat?.api}
 	<ScheduledTaskDialog
 		bind:this={createDialog}
-		api={$nanobotChat.api}
+		api={$boeingbotChat.api}
 		onSaved={handleTaskCreated}
 	/>
 {/if}

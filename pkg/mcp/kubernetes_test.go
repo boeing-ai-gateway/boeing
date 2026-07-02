@@ -8,10 +8,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/obot-platform/nah/pkg/name"
-	"github.com/obot-platform/obot/apiclient/types"
-	v1 "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1"
-	"github.com/obot-platform/obot/pkg/system"
+	"github.com/boeing-ai-gateway/nah/pkg/name"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
+	v1 "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1"
+	"github.com/boeing-ai-gateway/boeing/pkg/system"
 	appsv1 "k8s.io/api/apps/v1"
 	corev1 "k8s.io/api/core/v1"
 	"k8s.io/apimachinery/pkg/api/resource"
@@ -35,9 +35,9 @@ func TestComputeK8sSettingsHashUsesServerSpecificResources(t *testing.T) {
 			corev1.ResourceMemory: resource.MustParse("128Mi"),
 		},
 	}
-	nanobotSettings := *resourceSettings.DeepCopy()
-	nanobotSettings.NanobotWorkspaceSize = "10Gi"
-	nanobotSettings.NanobotAgentResources = &corev1.ResourceRequirements{
+	boeingbotSettings := *resourceSettings.DeepCopy()
+	boeingbotSettings.BoeingbotWorkspaceSize = "10Gi"
+	boeingbotSettings.BoeingbotAgentResources = &corev1.ResourceRequirements{
 		Requests: corev1.ResourceList{
 			corev1.ResourceMemory: resource.MustParse("512Mi"),
 		},
@@ -61,15 +61,15 @@ func TestComputeK8sSettingsHashUsesServerSpecificResources(t *testing.T) {
 		t.Fatalf("composite base hash = %s, want remote base hash %s", compositeBaseHash, remoteBaseHash)
 	}
 
-	nanobotBaseHash := ComputeK8sSettingsHash(baseSettings, nil, types.RuntimeNPX, true, nil)
-	if got := ComputeK8sSettingsHash(resourceSettings, nil, types.RuntimeNPX, true, nil); got != nanobotBaseHash {
-		t.Fatalf("nanobot agent server hash = %s, want %s before nanobot-only settings are set", got, nanobotBaseHash)
+	boeingbotBaseHash := ComputeK8sSettingsHash(baseSettings, nil, types.RuntimeNPX, true, nil)
+	if got := ComputeK8sSettingsHash(resourceSettings, nil, types.RuntimeNPX, true, nil); got != boeingbotBaseHash {
+		t.Fatalf("boeingbot agent server hash = %s, want %s before boeingbot-only settings are set", got, boeingbotBaseHash)
 	}
-	if got := ComputeK8sSettingsHash(nanobotSettings, nil, types.RuntimeNPX, false, nil); got != ComputeK8sSettingsHash(resourceSettings, nil, types.RuntimeNPX, false, nil) {
-		t.Fatalf("non-nanobot hash = %s, want nanobot-only settings ignored", got)
+	if got := ComputeK8sSettingsHash(boeingbotSettings, nil, types.RuntimeNPX, false, nil); got != ComputeK8sSettingsHash(resourceSettings, nil, types.RuntimeNPX, false, nil) {
+		t.Fatalf("non-boeingbot hash = %s, want boeingbot-only settings ignored", got)
 	}
-	if got := ComputeK8sSettingsHash(nanobotSettings, nil, types.RuntimeNPX, true, nil); got == nanobotBaseHash {
-		t.Fatalf("nanobot hash = %s, want it to differ when nanobot-only settings are set", got)
+	if got := ComputeK8sSettingsHash(boeingbotSettings, nil, types.RuntimeNPX, true, nil); got == boeingbotBaseHash {
+		t.Fatalf("boeingbot hash = %s, want it to differ when boeingbot-only settings are set", got)
 	}
 
 	serverResources := &corev1.ResourceRequirements{
@@ -168,33 +168,33 @@ func TestReplaceHostWithServiceFQDN(t *testing.T) {
 	}{
 		{
 			name:        "replace localhost with service FQDN",
-			serviceFQDN: "obot.obot-system.svc.cluster.local",
+			serviceFQDN: "boeing.boeing-system.svc.cluster.local",
 			inputURL:    "http://localhost:8080/oauth/token",
-			expectedURL: "http://obot.obot-system.svc.cluster.local/oauth/token",
+			expectedURL: "http://boeing.boeing-system.svc.cluster.local/oauth/token",
 		},
 		{
 			name:        "replace external domain with service FQDN",
-			serviceFQDN: "obot.obot-system.svc.cluster.local",
-			inputURL:    "https://obot.example.com/oauth/token",
-			expectedURL: "http://obot.obot-system.svc.cluster.local/oauth/token",
+			serviceFQDN: "boeing.boeing-system.svc.cluster.local",
+			inputURL:    "https://boeing.example.com/oauth/token",
+			expectedURL: "http://boeing.boeing-system.svc.cluster.local/oauth/token",
 		},
 		{
 			name:        "preserve path with multiple segments",
-			serviceFQDN: "obot.obot-system.svc.cluster.local",
+			serviceFQDN: "boeing.boeing-system.svc.cluster.local",
 			inputURL:    "http://localhost:8080/api/v1/oauth/token",
-			expectedURL: "http://obot.obot-system.svc.cluster.local/api/v1/oauth/token",
+			expectedURL: "http://boeing.boeing-system.svc.cluster.local/api/v1/oauth/token",
 		},
 		{
 			name:        "handle URL with no path",
-			serviceFQDN: "obot.obot-system.svc.cluster.local",
+			serviceFQDN: "boeing.boeing-system.svc.cluster.local",
 			inputURL:    "http://localhost:8080",
-			expectedURL: "http://obot.obot-system.svc.cluster.local",
+			expectedURL: "http://boeing.boeing-system.svc.cluster.local",
 		},
 		{
 			name:        "handle URL with query string",
-			serviceFQDN: "obot.obot-system.svc.cluster.local",
+			serviceFQDN: "boeing.boeing-system.svc.cluster.local",
 			inputURL:    "http://localhost:8080/oauth/token?foo=bar",
-			expectedURL: "http://obot.obot-system.svc.cluster.local/oauth/token?foo=bar",
+			expectedURL: "http://boeing.boeing-system.svc.cluster.local/oauth/token?foo=bar",
 		},
 		{
 			name:        "empty service FQDN returns original URL",
@@ -204,27 +204,27 @@ func TestReplaceHostWithServiceFQDN(t *testing.T) {
 		},
 		{
 			name:        "empty URL returns empty string",
-			serviceFQDN: "obot.obot-system.svc.cluster.local",
+			serviceFQDN: "boeing.boeing-system.svc.cluster.local",
 			inputURL:    "",
 			expectedURL: "",
 		},
 		{
 			name:        "malformed URL without scheme returns original",
-			serviceFQDN: "obot.obot-system.svc.cluster.local",
+			serviceFQDN: "boeing.boeing-system.svc.cluster.local",
 			inputURL:    "localhost:8080/oauth/token",
 			expectedURL: "localhost:8080/oauth/token",
 		},
 		{
 			name:        "custom cluster domain",
-			serviceFQDN: "obot.obot-system.svc.custom.domain",
+			serviceFQDN: "boeing.boeing-system.svc.custom.domain",
 			inputURL:    "http://localhost:8080/oauth/token",
-			expectedURL: "http://obot.obot-system.svc.custom.domain/oauth/token",
+			expectedURL: "http://boeing.boeing-system.svc.custom.domain/oauth/token",
 		},
 		{
 			name:        "handle root path",
-			serviceFQDN: "obot.obot-system.svc.cluster.local",
+			serviceFQDN: "boeing.boeing-system.svc.cluster.local",
 			inputURL:    "http://localhost:8080/",
-			expectedURL: "http://obot.obot-system.svc.cluster.local/",
+			expectedURL: "http://boeing.boeing-system.svc.cluster.local/",
 		},
 	}
 
@@ -233,7 +233,7 @@ func TestReplaceHostWithServiceFQDN(t *testing.T) {
 			k := &kubernetesBackend{
 				serviceFQDN: tt.serviceFQDN,
 			}
-			result := k.transformObotHostname(tt.inputURL)
+			result := k.transformBoeingHostname(tt.inputURL)
 			if result != tt.expectedURL {
 				t.Errorf("replaceHostWithServiceFQDN() = %v, want %v", result, tt.expectedURL)
 			}
@@ -251,28 +251,28 @@ func TestNewKubernetesBackend_ServiceFQDN(t *testing.T) {
 	}{
 		{
 			name:             "constructs FQDN with all values",
-			serviceName:      "obot",
-			serviceNamespace: "obot-system",
+			serviceName:      "boeing",
+			serviceNamespace: "boeing-system",
 			clusterDomain:    "cluster.local",
-			expectedFQDN:     "obot.obot-system.svc.cluster.local",
+			expectedFQDN:     "boeing.boeing-system.svc.cluster.local",
 		},
 		{
 			name:             "custom cluster domain",
-			serviceName:      "obot",
+			serviceName:      "boeing",
 			serviceNamespace: "default",
 			clusterDomain:    "my-cluster.local",
-			expectedFQDN:     "obot.default.svc.my-cluster.local",
+			expectedFQDN:     "boeing.default.svc.my-cluster.local",
 		},
 		{
 			name:             "empty service name results in empty FQDN",
 			serviceName:      "",
-			serviceNamespace: "obot-system",
+			serviceNamespace: "boeing-system",
 			clusterDomain:    "cluster.local",
 			expectedFQDN:     "",
 		},
 		{
 			name:             "empty service namespace results in empty FQDN",
-			serviceName:      "obot",
+			serviceName:      "boeing",
 			serviceNamespace: "",
 			clusterDomain:    "cluster.local",
 			expectedFQDN:     "",
@@ -297,30 +297,30 @@ func TestNewKubernetesBackend_ServiceFQDN(t *testing.T) {
 	}
 }
 
-func TestK8sObjects_NanobotAgentExcludesAuditLogConfig(t *testing.T) {
+func TestK8sObjects_BoeingbotAgentExcludesAuditLogConfig(t *testing.T) {
 	k := newTestKubernetesBackend(t)
 
 	objs, err := k.k8sObjects(t.Context(), ServerConfig{
 		Runtime:              types.RuntimeContainerized,
-		MCPServerName:        "nanobot-agent-server",
-		MCPServerDisplayName: "Nanobot Agent Server",
+		MCPServerName:        "boeingbot-agent-server",
+		MCPServerDisplayName: "Boeingbot Agent Server",
 		UserID:               "user-1",
 		OwnerUserID:          "user-2",
-		ContainerImage:       "ghcr.io/obot-platform/nanobot:latest",
+		ContainerImage:       "ghcr.io/boeing-ai-gateway/boeingbot:latest",
 		ContainerPort:        8080,
 		ContainerPath:        "/mcp",
-		Command:              "nanobot",
+		Command:              "boeingbot",
 		Args:                 []string{"run"},
-		NanobotAgentName:     "agent-1",
+		BoeingbotAgentName:     "agent-1",
 		AuditLogToken:        "audit-token",
-		AuditLogEndpoint:     "https://obot.example.com/api/mcp-audit-logs",
+		AuditLogEndpoint:     "https://boeing.example.com/api/mcp-audit-logs",
 		AuditLogMetadata:     "mcpID=server-1",
 	}, nil)
 	if err != nil {
 		t.Fatalf("k8sObjects() error = %v", err)
 	}
 
-	configSecret := findSecret(t, objs, name.SafeConcatName("nanobot-agent-server", "mcp", "config"))
+	configSecret := findSecret(t, objs, name.SafeConcatName("boeingbot-agent-server", "mcp", "config"))
 	assertNoAuditLogEnv(t, configSecret.Data)
 }
 
@@ -333,13 +333,13 @@ func TestK8sObjects_NonAgentShimKeepsAuditLogConfig(t *testing.T) {
 		MCPServerDisplayName: "Standard Server",
 		UserID:               "user-1",
 		OwnerUserID:          "user-2",
-		ContainerImage:       "ghcr.io/obot-platform/mcp-images/stdio-wrapper:main",
+		ContainerImage:       "ghcr.io/boeing-ai-gateway/mcp-images/stdio-wrapper:main",
 		ContainerPort:        8080,
 		ContainerPath:        "/mcp",
 		Command:              "server",
 		Args:                 []string{"run"},
 		AuditLogToken:        "audit-token",
-		AuditLogEndpoint:     "https://obot.example.com/api/mcp-audit-logs",
+		AuditLogEndpoint:     "https://boeing.example.com/api/mcp-audit-logs",
 		AuditLogMetadata:     "mcpID=server-1",
 	}, nil)
 	if err != nil {
@@ -353,7 +353,7 @@ func TestK8sObjects_NonAgentShimKeepsAuditLogConfig(t *testing.T) {
 func TestK8sObjects_ServicePorts(t *testing.T) {
 	tests := []struct {
 		name                   string
-		nanobotAgentName       string
+		boeingbotAgentName       string
 		expectedHTTPPortTarget intstr.IntOrString
 		expectedStrategy       appsv1.DeploymentStrategyType
 	}{
@@ -362,8 +362,8 @@ func TestK8sObjects_ServicePorts(t *testing.T) {
 			expectedHTTPPortTarget: intstr.FromString("http"),
 		},
 		{
-			name:                   "nanobot agent routes http service port to mcp container",
-			nanobotAgentName:       "agent-1",
+			name:                   "boeingbot agent routes http service port to mcp container",
+			boeingbotAgentName:       "agent-1",
 			expectedHTTPPortTarget: intstr.FromString("mcp"),
 			expectedStrategy:       appsv1.RecreateDeploymentStrategyType,
 		},
@@ -378,12 +378,12 @@ func TestK8sObjects_ServicePorts(t *testing.T) {
 				MCPServerDisplayName: "Test Server",
 				UserID:               "user-1",
 				OwnerUserID:          "user-2",
-				ContainerImage:       "ghcr.io/obot-platform/mcp-images/stdio-wrapper:main",
+				ContainerImage:       "ghcr.io/boeing-ai-gateway/mcp-images/stdio-wrapper:main",
 				ContainerPort:        8080,
 				ContainerPath:        "/mcp",
 				Command:              "server",
 				Args:                 []string{"run"},
-				NanobotAgentName:     tt.nanobotAgentName,
+				BoeingbotAgentName:     tt.boeingbotAgentName,
 			}, nil)
 			if err != nil {
 				t.Fatalf("k8sObjects() error = %v", err)
@@ -417,18 +417,18 @@ func TestK8sObjects_MCPContainerResources(t *testing.T) {
 			wantMemoryRequest: "200Mi",
 		},
 		{
-			name: "nanobot agent default requests 400Mi memory",
+			name: "boeingbot agent default requests 400Mi memory",
 			server: ServerConfig{
 				Runtime:          types.RuntimeContainerized,
-				NanobotAgentName: "agent-1",
+				BoeingbotAgentName: "agent-1",
 			},
 			wantMemoryRequest: "400Mi",
 		},
 		{
-			name: "nanobot agent uses dedicated resources",
+			name: "boeingbot agent uses dedicated resources",
 			server: ServerConfig{
 				Runtime:          types.RuntimeContainerized,
-				NanobotAgentName: "agent-1",
+				BoeingbotAgentName: "agent-1",
 			},
 			settings: &v1.K8sSettings{
 				ObjectMeta: metav1.ObjectMeta{Name: system.K8sSettingsName, Namespace: system.DefaultNamespace},
@@ -436,7 +436,7 @@ func TestK8sObjects_MCPContainerResources(t *testing.T) {
 					Resources: &corev1.ResourceRequirements{
 						Requests: corev1.ResourceList{corev1.ResourceMemory: resource.MustParse("250Mi")},
 					},
-					NanobotAgentResources: &corev1.ResourceRequirements{
+					BoeingbotAgentResources: &corev1.ResourceRequirements{
 						Requests: corev1.ResourceList{corev1.ResourceMemory: resource.MustParse("512Mi")},
 						Limits:   corev1.ResourceList{corev1.ResourceMemory: resource.MustParse("1Gi")},
 					},
@@ -487,7 +487,7 @@ func TestK8sObjects_MCPContainerResources(t *testing.T) {
 				if err := v1.AddToScheme(scheme); err != nil {
 					t.Fatalf("AddToScheme() error = %v", err)
 				}
-				k.obotClient = fake.NewClientBuilder().WithScheme(scheme).WithObjects(tt.settings).Build()
+				k.boeingClient = fake.NewClientBuilder().WithScheme(scheme).WithObjects(tt.settings).Build()
 			}
 
 			server := tt.server
@@ -495,7 +495,7 @@ func TestK8sObjects_MCPContainerResources(t *testing.T) {
 			server.MCPServerDisplayName = "Test Server"
 			server.UserID = "user-1"
 			server.OwnerUserID = "user-2"
-			server.ContainerImage = "ghcr.io/obot-platform/mcp-images/stdio-wrapper:main"
+			server.ContainerImage = "ghcr.io/boeing-ai-gateway/mcp-images/stdio-wrapper:main"
 			server.ContainerPort = 8080
 			server.ContainerPath = "/mcp"
 			server.Command = "server"
@@ -691,7 +691,7 @@ func (f *fakeWithWatch) Watch(_ context.Context, _ client.ObjectList, _ ...clien
 func TestUpdatedMCPPodName_SucceededPodAgentRetryBehavior(t *testing.T) {
 	tests := []struct {
 		name            string
-		nanobotAgent    string
+		boeingbotAgent    string
 		wantErrContains string
 	}{
 		{
@@ -700,7 +700,7 @@ func TestUpdatedMCPPodName_SucceededPodAgentRetryBehavior(t *testing.T) {
 		},
 		{
 			name:            "agent succeeded pod remains retryable",
-			nanobotAgent:    "agent-1",
+			boeingbotAgent:    "agent-1",
 			wantErrContains: "watch retries",
 		},
 	}
@@ -718,7 +718,7 @@ func TestUpdatedMCPPodName_SucceededPodAgentRetryBehavior(t *testing.T) {
 			deployment := &appsv1.Deployment{
 				ObjectMeta: metav1.ObjectMeta{
 					Name:      "test-server",
-					Namespace: "obot-mcp",
+					Namespace: "boeing-mcp",
 				},
 				Status: appsv1.DeploymentStatus{
 					ObservedGeneration: 1,
@@ -728,7 +728,7 @@ func TestUpdatedMCPPodName_SucceededPodAgentRetryBehavior(t *testing.T) {
 			pod := &corev1.Pod{
 				ObjectMeta: metav1.ObjectMeta{
 					Name:              "test-server-pod",
-					Namespace:         "obot-mcp",
+					Namespace:         "boeing-mcp",
 					CreationTimestamp: metav1.Now(),
 					Labels: map[string]string{
 						"app": "test-server",
@@ -753,12 +753,12 @@ func TestUpdatedMCPPodName_SucceededPodAgentRetryBehavior(t *testing.T) {
 			k := &kubernetesBackend{
 				client:       client,
 				cachedClient: client,
-				mcpNamespace: "obot-mcp",
+				mcpNamespace: "boeing-mcp",
 			}
 
 			_, err := k.updatedMCPPodName(t.Context(), "http://mcp.example.com", "test-server", ServerConfig{
 				Runtime:          types.RuntimeRemote,
-				NanobotAgentName: tt.nanobotAgent,
+				BoeingbotAgentName: tt.boeingbotAgent,
 				StartupTimeout:   time.Second,
 			}, "")
 			if !errors.Is(err, ErrHealthCheckTimeout) {
@@ -784,7 +784,7 @@ func TestUpdatedMCPPodName_ContainerStartupDeadlineExceeded(t *testing.T) {
 	deployment := &appsv1.Deployment{
 		ObjectMeta: metav1.ObjectMeta{
 			Name:      "test-server",
-			Namespace: "obot-mcp",
+			Namespace: "boeing-mcp",
 		},
 		Status: appsv1.DeploymentStatus{
 			ObservedGeneration: 1,
@@ -794,7 +794,7 @@ func TestUpdatedMCPPodName_ContainerStartupDeadlineExceeded(t *testing.T) {
 	pod := &corev1.Pod{
 		ObjectMeta: metav1.ObjectMeta{
 			Name:              "test-server-pod",
-			Namespace:         "obot-mcp",
+			Namespace:         "boeing-mcp",
 			CreationTimestamp: metav1.NewTime(now.Add(-time.Minute)),
 			Labels: map[string]string{
 				"app": "test-server",
@@ -815,7 +815,7 @@ func TestUpdatedMCPPodName_ContainerStartupDeadlineExceeded(t *testing.T) {
 
 	go func() {
 		watcher.Add(&appsv1.Deployment{
-			ObjectMeta: metav1.ObjectMeta{Name: "test-server", Namespace: "obot-mcp"},
+			ObjectMeta: metav1.ObjectMeta{Name: "test-server", Namespace: "boeing-mcp"},
 		})
 		watcher.Stop()
 	}()
@@ -828,7 +828,7 @@ func TestUpdatedMCPPodName_ContainerStartupDeadlineExceeded(t *testing.T) {
 	k := &kubernetesBackend{
 		client:       client,
 		cachedClient: client,
-		mcpNamespace: "obot-mcp",
+		mcpNamespace: "boeing-mcp",
 	}
 
 	ctx, cancel := context.WithTimeout(t.Context(), time.Second)
@@ -874,7 +874,7 @@ func TestK8sObjects_ManagedImagePullSecrets(t *testing.T) {
 		MCPServerDisplayName: "Test Server",
 		UserID:               "user-1",
 		OwnerUserID:          "user-2",
-		ContainerImage:       "ghcr.io/obot-platform/mcp-images/stdio-wrapper:main",
+		ContainerImage:       "ghcr.io/boeing-ai-gateway/mcp-images/stdio-wrapper:main",
 		ContainerPort:        8080,
 		ContainerPath:        "/mcp",
 		Command:              "server",
@@ -888,8 +888,8 @@ func TestK8sObjects_ManagedImagePullSecrets(t *testing.T) {
 	assertImagePullSecrets(t, dep, []string{"managed-a", "managed-b"})
 
 	expectedHash := ComputeK8sSettingsHash(v1.K8sSettingsSpec{}, nil, types.RuntimeContainerized, false, []string{"managed-b", "managed-a"})
-	if dep.Annotations["obot.ai/k8s-settings-hash"] != expectedHash {
-		t.Fatalf("k8s settings hash = %q, want %q", dep.Annotations["obot.ai/k8s-settings-hash"], expectedHash)
+	if dep.Annotations["boeing.ai/k8s-settings-hash"] != expectedHash {
+		t.Fatalf("k8s settings hash = %q, want %q", dep.Annotations["boeing.ai/k8s-settings-hash"], expectedHash)
 	}
 }
 
@@ -908,7 +908,7 @@ func TestK8sObjects_StaticImagePullSecretsOverrideManaged(t *testing.T) {
 		MCPServerDisplayName: "Test Server",
 		UserID:               "user-1",
 		OwnerUserID:          "user-2",
-		ContainerImage:       "ghcr.io/obot-platform/mcp-images/stdio-wrapper:main",
+		ContainerImage:       "ghcr.io/boeing-ai-gateway/mcp-images/stdio-wrapper:main",
 		ContainerPort:        8080,
 		ContainerPath:        "/mcp",
 		Command:              "server",
@@ -935,7 +935,7 @@ func TestRestartServerAddsManagedImagePullSecretsToFreshDeployment(t *testing.T)
 		MCPServerDisplayName: "Test Server",
 		UserID:               "user-1",
 		OwnerUserID:          "user-2",
-		ContainerImage:       "ghcr.io/obot-platform/mcp-images/stdio-wrapper:main",
+		ContainerImage:       "ghcr.io/boeing-ai-gateway/mcp-images/stdio-wrapper:main",
 		ContainerPort:        8080,
 		ContainerPath:        "/mcp",
 		Command:              "server",
@@ -957,7 +957,7 @@ func TestRestartServerAddsManagedImagePullSecretsToFreshDeployment(t *testing.T)
 	}
 	k.client = fake.NewClientBuilder().WithScheme(runtimeScheme).WithObjects(dep).Build()
 
-	if err := k.obotClient.Create(t.Context(), &v1.ImagePullSecret{
+	if err := k.boeingClient.Create(t.Context(), &v1.ImagePullSecret{
 		ObjectMeta: metav1.ObjectMeta{Name: "managed", Namespace: system.DefaultNamespace},
 		Spec:       v1.ImagePullSecretSpec{Enabled: true},
 	}); err != nil {
@@ -969,7 +969,7 @@ func TestRestartServerAddsManagedImagePullSecretsToFreshDeployment(t *testing.T)
 	}
 
 	var updated appsv1.Deployment
-	if err := k.client.Get(t.Context(), client.ObjectKey{Name: "test-server", Namespace: "obot-mcp"}, &updated); err != nil {
+	if err := k.client.Get(t.Context(), client.ObjectKey{Name: "test-server", Namespace: "boeing-mcp"}, &updated); err != nil {
 		t.Fatalf("Get() error = %v", err)
 	}
 	assertImagePullSecrets(t, &updated, []string{"managed"})
@@ -1099,10 +1099,10 @@ func newTestKubernetesBackend(t *testing.T, objs ...client.Object) *kubernetesBa
 	}
 
 	return &kubernetesBackend{
-		baseImage:           "ghcr.io/obot-platform/mcp-images/stdio-wrapper:main",
-		remoteShimBaseImage: "ghcr.io/obot-platform/remote-shim:main",
-		mcpNamespace:        "obot-mcp",
-		obotClient:          clientBuilder.Build(),
+		baseImage:           "ghcr.io/boeing-ai-gateway/mcp-images/stdio-wrapper:main",
+		remoteShimBaseImage: "ghcr.io/boeing-ai-gateway/remote-shim:main",
+		mcpNamespace:        "boeing-mcp",
+		boeingClient:          clientBuilder.Build(),
 	}
 }
 
@@ -1196,7 +1196,7 @@ func assertNoAuditLogEnv(t *testing.T, env map[string][]byte) {
 	t.Helper()
 
 	for key := range env {
-		if strings.HasPrefix(key, "NANOBOT_RUN_AUDIT_LOG_") {
+		if strings.HasPrefix(key, "BOEINGBOT_RUN_AUDIT_LOG_") {
 			t.Fatalf("unexpected audit log env %q present", key)
 		}
 	}
@@ -1206,11 +1206,11 @@ func assertHasAuditLogEnv(t *testing.T, env map[string][]byte) {
 	t.Helper()
 
 	expected := []string{
-		"NANOBOT_RUN_AUDIT_LOG_TOKEN",
-		"NANOBOT_RUN_AUDIT_LOG_SEND_URL",
-		"NANOBOT_RUN_AUDIT_LOG_BATCH_SIZE",
-		"NANOBOT_RUN_AUDIT_LOG_FLUSH_INTERVAL_SECONDS",
-		"NANOBOT_RUN_AUDIT_LOG_METADATA",
+		"BOEINGBOT_RUN_AUDIT_LOG_TOKEN",
+		"BOEINGBOT_RUN_AUDIT_LOG_SEND_URL",
+		"BOEINGBOT_RUN_AUDIT_LOG_BATCH_SIZE",
+		"BOEINGBOT_RUN_AUDIT_LOG_FLUSH_INTERVAL_SECONDS",
+		"BOEINGBOT_RUN_AUDIT_LOG_METADATA",
 	}
 
 	for _, key := range expected {

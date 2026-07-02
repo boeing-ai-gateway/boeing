@@ -4,15 +4,15 @@ title: API Keys
 
 # API Keys
 
-API Keys provide programmatic access to Obot from scripts, automation tools, external MCP clients, and compatible LLM clients. Instead of using interactive browser-based OAuth authentication, you can create API keys with only the capabilities each integration needs.
+API Keys provide programmatic access to Boeing from scripts, automation tools, external MCP clients, and compatible LLM clients. Instead of using interactive browser-based OAuth authentication, you can create API keys with only the capabilities each integration needs.
 
 ## Overview
 
-API keys are designed for machine-to-machine access to Obot. Each key:
+API keys are designed for machine-to-machine access to Boeing. Each key:
 
 - Belongs to a specific user
 - Can be scoped to specific MCP servers (or all servers)
-- Can include optional capabilities for Obot API access, LLM proxy access, and skill access
+- Can include optional capabilities for Boeing API access, LLM proxy access, and skill access
 - Can have an optional expiration date
 - Is still limited by the owning user's permissions and access policies
 
@@ -29,7 +29,7 @@ API keys use the format `ok1-<userId>-<keyId>-<secret>` and are passed as Bearer
    - **Description** (optional): Additional context about what the key is used for
    - **Expiration Date** (optional): When the key should automatically expire. Keys without an expiration date remain valid until deleted.
    - **Optional Capabilities**: Select any non-MCP capabilities this key needs:
-     - **API access**: Access the Obot API using your user role permissions
+     - **API access**: Access the Boeing API using your user role permissions
      - **LLM proxy access**: Call LLM proxy endpoints
      - **Skill access**: Discover and download skills
    - **MCP Servers**: Select which MCP servers this key can access. You can:
@@ -42,7 +42,7 @@ After creation, you'll see a dialog displaying the full API key. **Copy and save
 
 ## Using an API Key
 
-Include the API key in the Authorization header when connecting to MCP servers or Obot API endpoints:
+Include the API key in the Authorization header when connecting to MCP servers or Boeing API endpoints:
 
 ```bash
 Authorization: Bearer ok1-123-456-abcdefghijklmnopqrstuvwxyz
@@ -53,7 +53,7 @@ API keys can grant access to:
 | Capability | Access granted |
 |------------|----------------|
 | Selected MCP servers | MCP server connections via the `/mcp-connect/` endpoints |
-| API access | Obot API endpoints allowed by your user role |
+| API access | Boeing API endpoints allowed by your user role |
 | LLM proxy access | LLM proxy endpoints such as `/api/llm-proxy/openai` and `/api/llm-proxy/anthropic` |
 | Skill access | Skill discovery and downloads |
 
@@ -64,41 +64,41 @@ All keys can use `/api/me` to verify authentication.
 To test an API key, you can use the `/api/me` endpoint:
 
 ```bash
-curl -H "Authorization: Bearer <key>" <obot host>/api/me
+curl -H "Authorization: Bearer <key>" <boeing host>/api/me
 ```
 
 If the key is valid, you should receive a response with your user information.
 
 ### Configuring MCP Clients
 
-Once you have an API key, you can configure various MCP clients to connect to your Obot MCP servers. The MCP endpoint URL follows this pattern:
+Once you have an API key, you can configure various MCP clients to connect to your Boeing MCP servers. The MCP endpoint URL follows this pattern:
 
 ```
-https://<obot-host>/mcp-connect/<server-name>/mcp
+https://<boeing-host>/mcp-connect/<server-name>/mcp
 ```
 
 Where `<server-name>` is the name of the MCP server you want to connect to.
 
 #### VS Code
 
-Configure your `.vscode/mcp.json` file to connect to Obot MCP servers using HTTP transport with Bearer token authentication:
+Configure your `.vscode/mcp.json` file to connect to Boeing MCP servers using HTTP transport with Bearer token authentication:
 
 ```json
 {
   "inputs": [
     {
       "type": "promptString",
-      "id": "obot-api-key",
-      "description": "Obot API Key",
+      "id": "boeing-api-key",
+      "description": "Boeing API Key",
       "password": true
     }
   ],
   "servers": {
-    "my-obot-server": {
+    "my-boeing-server": {
       "type": "http",
       "url": "<connection URL>",
       "headers": {
-        "Authorization": "Bearer ${input:obot-api-key}"
+        "Authorization": "Bearer ${input:boeing-api-key}"
       }
     }
   }
@@ -122,7 +122,7 @@ from os import getenv
 server_params = StreamableHTTPClientParams(
     url="<connection URL>",
     headers={
-        "Authorization": f"Bearer {getenv('OBOT_API_KEY')}",
+        "Authorization": f"Bearer {getenv('BOEING_API_KEY')}",
     },
 )
 
@@ -155,11 +155,11 @@ from langchain.agents import create_agent
 # Configure the MCP client with authorization
 client = MultiServerMCPClient(
     {
-        "obot-server": {
+        "boeing-server": {
             "transport": "http",
             "url": "<connection URL>",
             "headers": {
-                "Authorization": f"Bearer {getenv('OBOT_API_KEY')}",
+                "Authorization": f"Bearer {getenv('BOEING_API_KEY')}",
             },
         }
     }
@@ -208,24 +208,24 @@ MCP server access is independent from the optional capabilities. For example, yo
 
 ## Creating API Keys with the CLI
 
-The `obot login` command creates and stores an API key through the browser-based login flow. By default, it requests API access:
+The `boeing login` command creates and stores an API key through the browser-based login flow. By default, it requests API access:
 
 ```bash
-obot login --url https://obot.example.com
+boeing login --url https://boeing.example.com
 ```
 
 Use `--scope` to request narrower or additional capabilities:
 
 ```bash
-obot login --url https://obot.example.com --scope llm --print-token
-obot login --url https://obot.example.com --scope all-mcp --scope skills --print-token
+boeing login --url https://boeing.example.com --scope llm --print-token
+boeing login --url https://boeing.example.com --scope all-mcp --scope skills --print-token
 ```
 
 Valid CLI scopes are `api`, `llm`, `all-mcp`, and `skills`. You can also set a recognizable name and description for the generated key:
 
 ```bash
-obot login \
-  --url https://obot.example.com \
+boeing login \
+  --url https://boeing.example.com \
   --token-name "CI gateway key" \
   --token-description "Used by nightly automation" \
   --scope llm \

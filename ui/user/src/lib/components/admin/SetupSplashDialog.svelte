@@ -59,12 +59,12 @@
 	<div class="flex w-full items-center justify-center">
 		<Logo class="size-18" />
 	</div>
-	<h2 class="mb-8 text-center text-2xl font-semibold">Welcome to Obot!</h2>
+	<h2 class="mb-8 text-center text-2xl font-semibold">Welcome to Boeing!</h2>
 
 	<div class="w-fit self-center">
 		{#if !isAuthProviderConfigured || !storeData.modelProviderConfigured}
 			{#if isBootstrapUser}
-				<p>Before using Obot, you'll need to:</p>
+				<p>Before using Boeing, you'll need to:</p>
 			{:else}
 				<p class="text-center">
 					You're almost there! You just need to configure your model provider.
@@ -82,8 +82,8 @@
 		{/if}
 
 		<p class="pt-4">
-			By continuing, you agree to Obot's <a
-				href="https://obot.ai/eul"
+			By continuing, you agree to Boeing's <a
+				href="https://boeing.ai/eul"
 				rel="external"
 				target="_blank"
 				class="text-link">EULA</a
@@ -141,7 +141,7 @@
 		<p class="mt-1 text-sm">
 			<span class="text-muted-content">Auth is disabled.</span>
 			<a
-				href="https://docs.obot.ai/installation/enabling-authentication"
+				href="https://docs.boeing.ai/installation/enabling-authentication"
 				rel="external noopener noreferrer"
 				target="_blank"
 				class="text-link">Learn more</a

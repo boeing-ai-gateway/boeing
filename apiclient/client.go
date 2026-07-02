@@ -11,8 +11,8 @@ import (
 	"strings"
 	"unicode/utf8"
 
-	"github.com/obot-platform/obot/apiclient/types"
-	"github.com/obot-platform/obot/logger"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/logger"
 )
 
 var log = logger.Package()

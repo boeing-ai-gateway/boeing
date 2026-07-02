@@ -1,10 +1,10 @@
 <script lang="ts">
 	import { page } from '$app/state';
 	import Logo from '$lib/components/Logo.svelte';
-	import Threads from '$lib/components/nanobot/Threads.svelte';
-	import { getLayout } from '$lib/context/nanobotLayout.svelte';
+	import Threads from '$lib/components/boeingbot/Threads.svelte';
+	import { getLayout } from '$lib/context/boeingbotLayout.svelte';
 	import { errors } from '$lib/stores';
-	import { nanobotChat } from '$lib/stores/nanobotChat.svelte';
+	import { boeingbotChat } from '$lib/stores/boeingbotChat.svelte';
 	import { goto } from '$lib/url';
 	import {
 		Clock3,
@@ -29,13 +29,13 @@
 
 	const layout = getLayout();
 	async function handleRenameSession(sessionId: string, newTitle: string) {
-		if (!$nanobotChat?.api) {
-			errors.append(new Error('Nanobot API not found'));
+		if (!$boeingbotChat?.api) {
+			errors.append(new Error('Boeingbot API not found'));
 			return;
 		}
 		try {
-			await $nanobotChat.api.renameSession(sessionId, newTitle);
-			nanobotChat.update((data) => {
+			await $boeingbotChat.api.renameSession(sessionId, newTitle);
+			boeingbotChat.update((data) => {
 				if (!data) return data;
 				const sessionIndex = data.sessions.findIndex((s) => s.id === sessionId);
 				if (sessionIndex === -1) return data;
@@ -52,14 +52,14 @@
 	}
 
 	async function handleDeleteSession(sessionId: string) {
-		if (!$nanobotChat?.api) {
-			errors.append(new Error('Nanobot API not found'));
+		if (!$boeingbotChat?.api) {
+			errors.append(new Error('Boeingbot API not found'));
 			return;
 		}
 		const isCurrentViewedSession = selectedSessionId === sessionId;
 		try {
-			await $nanobotChat.api.deleteSession(sessionId);
-			nanobotChat.update((data) => {
+			await $boeingbotChat.api.deleteSession(sessionId);
+			boeingbotChat.update((data) => {
 				if (data) {
 					data.sessions = data.sessions.filter((s) => s.id !== sessionId);
 					if (data.sessionId === sessionId) {
@@ -83,7 +83,7 @@
 	}
 
 	function handleCreateSession() {
-		nanobotChat.update((data) => {
+		boeingbotChat.update((data) => {
 			if (data) {
 				data.sessionId = undefined;
 			}
@@ -112,7 +112,7 @@
 						in:slide={{ axis: 'x', duration: 150 }}
 						class="flex items-center gap-1 self-end text-2xl font-semibold"
 					>
-						obot
+						boeing
 						<span class="border-primary text-primary rounded-full border-2 px-2 text-sm">
 							agent
 						</span>
@@ -152,11 +152,11 @@
 					</button>
 
 					<Threads
-						sessions={$nanobotChat?.sessions ?? []}
+						sessions={$boeingbotChat?.sessions ?? []}
 						onRename={handleRenameSession}
 						onDelete={handleDeleteSession}
 						onCreateSession={handleCreateSession}
-						isLoading={$nanobotChat?.isThreadsLoading ?? false}
+						isLoading={$boeingbotChat?.isThreadsLoading ?? false}
 						{selectedSessionId}
 					/>
 				</div>

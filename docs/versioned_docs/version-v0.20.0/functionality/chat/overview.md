@@ -1,10 +1,10 @@
-# Obot Chat
+# Boeing Chat
 
 :::warning
-Obot Chat is deprecated as of v0.17.0 and will be removed in a future release. Please use Obot Agent instead, which provides a more flexible and powerful interface.
+Boeing Chat is deprecated as of v0.17.0 and will be removed in a future release. Please use Boeing Agent instead, which provides a more flexible and powerful interface.
 :::
 
-Obot Chat is a web-based interface for interacting with AI through customizable projects. Users create projects configured with instructions, knowledge, and MCP server connections, then chat with them through threads.
+Boeing Chat is a web-based interface for interacting with AI through customizable projects. Users create projects configured with instructions, knowledge, and MCP server connections, then chat with them through threads.
 
 ## Projects
 

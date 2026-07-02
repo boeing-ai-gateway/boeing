@@ -5,7 +5,7 @@ import (
 	"database/sql"
 	"fmt"
 
-	"github.com/obot-platform/obot/pkg/gateway/types"
+	"github.com/boeing-ai-gateway/boeing/pkg/gateway/types"
 	"gorm.io/gorm"
 )
 
@@ -72,8 +72,8 @@ func (db *DB) AutoMigrate() (err error) {
 		return fmt.Errorf("failed to remove GitHub groups: %w", err)
 	}
 
-	if err = migrateIfEntryNotFoundInMigrationsTable(tx, "drop_obot_mcp_tokens", dropObotMCPTokensTable); err != nil {
-		return fmt.Errorf("failed to drop obot_mcp_tokens table: %w", err)
+	if err = migrateIfEntryNotFoundInMigrationsTable(tx, "drop_boeing_mcp_tokens", dropBoeingMCPTokensTable); err != nil {
+		return fmt.Errorf("failed to drop boeing_mcp_tokens table: %w", err)
 	}
 
 	if err = migrateIfEntryNotFoundInMigrationsTable(tx, "drop_mcp_oauth_token_state_columns", dropMCPOAuthTokenStateColumns); err != nil {

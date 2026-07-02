@@ -6,12 +6,12 @@ import (
 	"net/http"
 
 	"github.com/jackc/pgx/v5/pgconn"
-	types2 "github.com/obot-platform/obot/apiclient/types"
-	"github.com/obot-platform/obot/pkg/api"
-	"github.com/obot-platform/obot/pkg/gateway/client"
-	"github.com/obot-platform/obot/pkg/gateway/types"
-	v1 "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1"
-	"github.com/obot-platform/obot/pkg/system"
+	types2 "github.com/boeing-ai-gateway/boeing/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/pkg/api"
+	"github.com/boeing-ai-gateway/boeing/pkg/gateway/client"
+	"github.com/boeing-ai-gateway/boeing/pkg/gateway/types"
+	v1 "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1"
+	"github.com/boeing-ai-gateway/boeing/pkg/system"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 

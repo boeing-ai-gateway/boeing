@@ -1,17 +1,17 @@
-{{- include "obot.validateNetworkPolicyProviderChartConfig" . -}}
+{{- include "boeing.validateNetworkPolicyProviderChartConfig" . -}}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "obot.fullname" . }}
+  name: {{ include "boeing.fullname" . }}
   labels:
-    {{- include "obot.labels" . | nindent 4 }}
+    {{- include "boeing.labels" . | nindent 4 }}
 spec:
   replicas: {{ .Values.replicaCount }}
   strategy:
     type: {{ if .Values.dev.useEmbeddedDb }}Recreate{{ else }}{{ .Values.updateStrategy }}{{ end }}
   selector:
     matchLabels:
-      {{- include "obot.selectorLabels" . | nindent 6 }}
+      {{- include "boeing.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       annotations:
@@ -22,33 +22,33 @@ spec:
         {{- toYaml . | nindent 8 }}
         {{- end }}
       labels:
-        {{- include "obot.labels" . | nindent 8 }}
+        {{- include "boeing.labels" . | nindent 8 }}
     spec:
       {{- if .Values.runtimeClassName }}
       runtimeClassName: {{ .Values.runtimeClassName }}
       {{- end }}
-      serviceAccountName: {{ include "obot.serviceAccountName" . }}
+      serviceAccountName: {{ include "boeing.serviceAccountName" . }}
       {{- if .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml .Values.imagePullSecrets | nindent 8 }}
       {{- end }}
       initContainers:
         - name: encryptionsetup
-          image: "{{ .Values.image.repository }}:{{ include "obot.imageTag" . }}"
+          image: "{{ .Values.image.repository }}:{{ include "boeing.imageTag" . }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           envFrom:
             - secretRef:
-                name: {{ include "obot.config.secretName" . }}
+                name: {{ include "boeing.config.secretName" . }}
           command:
           - /bin/sh
           - -c
           - |
-            provider="$(printf '%s' "${OBOT_SERVER_ENCRYPTION_PROVIDER}" | tr '[:upper:]' '[:lower:]')"
+            provider="$(printf '%s' "${BOEING_SERVER_ENCRYPTION_PROVIDER}" | tr '[:upper:]' '[:lower:]')"
             if [ "${provider}" != "custom" ]; then
               exit 0
             fi
-            if [ -z "${OBOT_SERVER_ENCRYPTION_KEY}" ]; then
-              echo "OBOT_SERVER_ENCRYPTION_KEY must be set when OBOT_SERVER_ENCRYPTION_PROVIDER=custom" >&2
+            if [ -z "${BOEING_SERVER_ENCRYPTION_KEY}" ]; then
+              echo "BOEING_SERVER_ENCRYPTION_KEY must be set when BOEING_SERVER_ENCRYPTION_PROVIDER=custom" >&2
               exit 1
             fi
             cat > /config/encryption.yaml <<EOF
@@ -56,19 +56,19 @@ spec:
             apiVersion: apiserver.config.k8s.io/v1
             resources:
               - resources:
-                  - credentials.obot.obot.ai
-                  - users.obot.obot.ai
-                  - identities.obot.obot.ai
-                  - mcpoauthtokens.obot.obot.ai
-                  - mcpauditlogs.obot.obot.ai
-                  - mcpoauthpendingstates.obot.obot.ai
-                  - policyviolations.obot.obot.ai
-                  - properties.obot.obot.ai
+                  - credentials.boeing.boeing.ai
+                  - users.boeing.boeing.ai
+                  - identities.boeing.boeing.ai
+                  - mcpoauthtokens.boeing.boeing.ai
+                  - mcpauditlogs.boeing.boeing.ai
+                  - mcpoauthpendingstates.boeing.boeing.ai
+                  - policyviolations.boeing.boeing.ai
+                  - properties.boeing.boeing.ai
                 providers:
                   - aesgcm:
                       keys:
                         - name: key0
-                          secret: "${OBOT_SERVER_ENCRYPTION_KEY}"
+                          secret: "${BOEING_SERVER_ENCRYPTION_KEY}"
                   - identity: {}
             EOF
           volumeMounts:
@@ -76,7 +76,7 @@ spec:
               mountPath: /config
       containers:
         - name: {{ .Chart.Name }}
-          image: "{{ .Values.image.repository }}:{{ include "obot.imageTag" . }}"
+          image: "{{ .Values.image.repository }}:{{ include "boeing.imageTag" . }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           volumeMounts:
             - name: config
@@ -105,13 +105,13 @@ spec:
             failureThreshold: 5
             periodSeconds: 10
           env:
-            - name: OBOT_SERVER_SERVICE_ACCOUNT_NAME
+            - name: BOEING_SERVER_SERVICE_ACCOUNT_NAME
               valueFrom:
                 fieldRef:
                   fieldPath: spec.serviceAccountName
           envFrom:
             - secretRef:
-                name: {{ include "obot.config.secretName" . }}
+                name: {{ include "boeing.config.secretName" . }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}

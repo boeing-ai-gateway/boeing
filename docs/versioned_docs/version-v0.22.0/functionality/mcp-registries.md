@@ -10,7 +10,7 @@ To manage registries, go to **MCP Management > MCP Registries** in the MCP Platf
 
 ## Default Access
 
-By default, there's an "everyone" group that's assigned to all users. This means anyone that logs into Obot will have access to all MCP servers that are added to a registry with the "everyone" group.
+By default, there's an "everyone" group that's assigned to all users. This means anyone that logs into Boeing will have access to all MCP servers that are added to a registry with the "everyone" group.
 
 If this default behavior is not what you want, you can restrict access to specific users or groups, or remove the "everyone" group entirely. However, it's recommended that administrators at least should have access to all servers.
 
@@ -40,7 +40,7 @@ This approach ensures that each team only has access to the tools they need whil
 
 ## MCP Registry API
 
-Obot implements the [MCP Registry specification](https://github.com/modelcontextprotocol/registry/blob/main/docs/reference/api/generic-registry-api.md), enabling MCP clients to programmatically discover available servers.
+Boeing implements the [MCP Registry specification](https://github.com/modelcontextprotocol/registry/blob/main/docs/reference/api/generic-registry-api.md), enabling MCP clients to programmatically discover available servers.
 
 ### API Endpoint
 
@@ -55,28 +55,28 @@ The registry is exposed at `/v0.1/servers` and supports:
 
 **No-Auth Mode (Default)**: Returns servers that have been granted access to all users via MCP Registries. Ideal for public instances.
 
-**Auth Mode**: Returns all servers the authenticated user has access to. Enable with `OBOT_SERVER_ENABLE_REGISTRY_AUTH=true`.
+**Auth Mode**: Returns all servers the authenticated user has access to. Enable with `BOEING_SERVER_ENABLE_REGISTRY_AUTH=true`.
 
 ### Server Naming
 
-Obot uses a reverse DNS naming scheme for global uniqueness:
+Boeing uses a reverse DNS naming scheme for global uniqueness:
 
 ```
 {reverse-dns}/{server-id}
 ```
 
 Examples:
-- `com.example.obot/github-server` for `https://obot.example.com`
+- `com.example.boeing/github-server` for `https://boeing.example.com`
 - `local.localhost/my-server` for `http://localhost:8080`
 
 ## Contributing to the Default Server Set
 
-To add your MCP server to Obot's default server set, submit a PR to the [mcp-catalog](https://github.com/obot-platform/mcp-catalog) repository.
+To add your MCP server to Boeing's default server set, submit a PR to the [mcp-catalog](https://github.com/boeing-ai-gateway/mcp-catalog) repository.
 
 ### Submission Requirements
 
 1. **Remote HTTP servers**: Submit only a server entry YAML file
-2. **Containerized/STDIO servers**: First submit to [mcp-images](https://github.com/obot-platform/mcp-images) for repackaging, then submit the server entry
+2. **Containerized/STDIO servers**: First submit to [mcp-images](https://github.com/boeing-ai-gateway/mcp-images) for repackaging, then submit the server entry
 
 ### Server Entry Format
 
@@ -110,4 +110,4 @@ remoteConfig:
   fixedURL: https://api.example.com/v1/mcp
 ```
 
-See the [mcp-catalog repository](https://github.com/obot-platform/mcp-catalog) for complete examples and documentation.
+See the [mcp-catalog repository](https://github.com/boeing-ai-gateway/mcp-catalog) for complete examples and documentation.

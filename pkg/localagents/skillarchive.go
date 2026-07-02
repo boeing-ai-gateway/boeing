@@ -10,7 +10,7 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/obot-platform/obot/pkg/skillformat"
+	"github.com/boeing-ai-gateway/boeing/pkg/skillformat"
 )
 
 // SkillArchive is a validated skill payload ready for agent-specific

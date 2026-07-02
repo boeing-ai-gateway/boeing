@@ -9,9 +9,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/obot-platform/obot/pkg/mcp"
-	"github.com/obot-platform/obot/pkg/serviceaccounts"
-	"github.com/obot-platform/obot/pkg/services"
+	"github.com/boeing-ai-gateway/boeing/pkg/mcp"
+	"github.com/boeing-ai-gateway/boeing/pkg/serviceaccounts"
+	"github.com/boeing-ai-gateway/boeing/pkg/services"
 	"helm.sh/helm/v3/pkg/action"
 	"helm.sh/helm/v3/pkg/chart/loader"
 	"helm.sh/helm/v3/pkg/cli"
@@ -23,8 +23,8 @@ import (
 )
 
 const (
-	networkPolicyProviderReleaseName    = "obot-network-policy-provider"
-	networkPolicyProviderTokenMountPath = "/var/run/secrets/obot-network-policy-provider"
+	networkPolicyProviderReleaseName    = "boeing-network-policy-provider"
+	networkPolicyProviderTokenMountPath = "/var/run/secrets/boeing-network-policy-provider"
 	networkPolicyProviderHelmTimeout    = 2 * time.Minute
 )
 
@@ -158,13 +158,13 @@ func (c *Controller) networkPolicyProviderValues(storageURL, releaseNamespace st
 	values := map[string]any{
 		"releaseNamespace":    releaseNamespace,
 		"mcpRuntimeNamespace": c.services.MCPServerNamespace,
-		"obotStorageURL":      storageURL,
+		"boeingStorageURL":      storageURL,
 		"secretName":          serviceaccounts.NetworkPolicySecretName,
-		"obotStorageTokenFile": filepath.Join(
+		"boeingStorageTokenFile": filepath.Join(
 			networkPolicyProviderTokenMountPath,
 			serviceaccounts.NetworkPolicySecretKey,
 		),
-		"obot": map[string]any{
+		"boeing": map[string]any{
 			"serviceAccount": map[string]any{
 				"name":      c.services.ServiceAccountName,
 				"namespace": releaseNamespace,
@@ -178,7 +178,7 @@ func (c *Controller) networkPolicyProviderValues(storageURL, releaseNamespace st
 
 	var override map[string]any
 	if err := yaml.Unmarshal([]byte(c.services.MCPNetworkPolicyProviderValues), &override); err != nil {
-		return nil, fmt.Errorf("failed to parse OBOT_SERVER_MCPNETWORK_POLICY_PROVIDER_VALUES: %w", err)
+		return nil, fmt.Errorf("failed to parse BOEING_SERVER_MCPNETWORK_POLICY_PROVIDER_VALUES: %w", err)
 	}
 
 	return deepMergeMaps(values, override), nil
@@ -348,7 +348,7 @@ func (h *helmNetworkPolicyProviderInstaller) locateChart(spec networkPolicyProvi
 		return spec.ChartPath, func() {}, nil
 	}
 
-	cacheDir, err := os.MkdirTemp("", "obot-helm-*")
+	cacheDir, err := os.MkdirTemp("", "boeing-helm-*")
 	if err != nil {
 		return "", nil, fmt.Errorf("failed to create Helm cache directory: %w", err)
 	}

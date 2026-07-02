@@ -5,14 +5,14 @@ import (
 	"fmt"
 	"maps"
 
-	"github.com/obot-platform/obot/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
 	corev1 "k8s.io/api/core/v1"
 	apierrors "k8s.io/apimachinery/pkg/api/errors"
 	kclient "sigs.k8s.io/controller-runtime/pkg/client"
 )
 
 // MergeBoundCreds resolves every secretBinding referenced by envs and (for
-// remote runtime) remoteConfig.Headers from the obot namespace and returns a
+// remote runtime) remoteConfig.Headers from the boeing namespace and returns a
 // NEW map containing credEnv merged with the resolved values:
 //
 //   - env bindings → out[env.Key] = <secret value>
@@ -44,7 +44,7 @@ import (
 func MergeBoundCreds(
 	ctx context.Context,
 	c kclient.Client,
-	obotNamespace string,
+	boeingNamespace string,
 	envs []types.MCPEnv,
 	remoteConfig *types.RemoteRuntimeConfig,
 	credEnv map[string]string,
@@ -89,13 +89,13 @@ func MergeBoundCreds(
 		data, cached := secretCache[b.Name]
 		if !cached {
 			var s corev1.Secret
-			getErr := c.Get(ctx, kclient.ObjectKey{Namespace: obotNamespace, Name: b.Name}, &s)
+			getErr := c.Get(ctx, kclient.ObjectKey{Namespace: boeingNamespace, Name: b.Name}, &s)
 			switch {
 			case apierrors.IsNotFound(getErr):
 				secretCache[b.Name] = nil
 				return "", false, nil
 			case getErr != nil:
-				return "", false, fmt.Errorf("get secret %s/%s: %w", obotNamespace, b.Name, getErr)
+				return "", false, fmt.Errorf("get secret %s/%s: %w", boeingNamespace, b.Name, getErr)
 			}
 			secretCache[b.Name] = s.Data
 			data = s.Data

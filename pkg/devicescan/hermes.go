@@ -1,6 +1,6 @@
 package devicescan
 
-import "github.com/obot-platform/obot/apiclient/types"
+import "github.com/boeing-ai-gateway/boeing/apiclient/types"
 
 const hermesGlobalConfigRel = ".hermes/config.yaml"
 

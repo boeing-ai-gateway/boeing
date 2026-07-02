@@ -4,10 +4,10 @@ import (
 	"context"
 	"testing"
 
-	"github.com/obot-platform/nah/pkg/router"
-	"github.com/obot-platform/obot/apiclient/types"
-	v1 "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1"
-	storagescheme "github.com/obot-platform/obot/pkg/storage/scheme"
+	"github.com/boeing-ai-gateway/nah/pkg/router"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
+	v1 "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1"
+	storagescheme "github.com/boeing-ai-gateway/boeing/pkg/storage/scheme"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -61,8 +61,8 @@ func TestPruneModels(t *testing.T) {
 		},
 		{
 			name:       "no update when nothing is pruned",
-			modelIDs:   []string{"m1-existing", "obot://llm", "gpt-4o*"},
-			wantIDs:    []string{"m1-existing", "obot://llm", "gpt-4o*"},
+			modelIDs:   []string{"m1-existing", "boeing://llm", "gpt-4o*"},
+			wantIDs:    []string{"m1-existing", "boeing://llm", "gpt-4o*"},
 			wantUpdate: false,
 		},
 	}

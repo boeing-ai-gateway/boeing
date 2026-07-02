@@ -10,13 +10,13 @@ import (
 	"strings"
 	"time"
 
-	"github.com/obot-platform/obot/apiclient/types"
-	"github.com/obot-platform/obot/pkg/api"
-	gateway "github.com/obot-platform/obot/pkg/gateway/client"
-	gatewaytypes "github.com/obot-platform/obot/pkg/gateway/types"
-	v1 "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1"
-	"github.com/obot-platform/obot/pkg/system"
-	"github.com/obot-platform/obot/pkg/utils"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/pkg/api"
+	gateway "github.com/boeing-ai-gateway/boeing/pkg/gateway/client"
+	gatewaytypes "github.com/boeing-ai-gateway/boeing/pkg/gateway/types"
+	v1 "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1"
+	"github.com/boeing-ai-gateway/boeing/pkg/system"
+	"github.com/boeing-ai-gateway/boeing/pkg/utils"
 	"k8s.io/apimachinery/pkg/fields"
 	kclient "sigs.k8s.io/controller-runtime/pkg/client"
 )
@@ -160,15 +160,15 @@ func (h *AuditLogHandler) SubmitAuditLogs(req api.Context) error {
 
 	var (
 		mcpServerName  string
-		nanobotAgentID string
+		boeingbotAgentID string
 		userID         string
 	)
 	if len(mcpServers.Items) == 1 {
 		mcpServerName = mcpServers.Items[0].Name
-		nanobotAgentID = mcpServers.Items[0].Spec.NanobotAgentID
+		boeingbotAgentID = mcpServers.Items[0].Spec.BoeingbotAgentID
 		userID = mcpServers.Items[0].Spec.UserID
 	} else {
-		// Also check SystemMCPServer resources (e.g. obot-mcp-server)
+		// Also check SystemMCPServer resources (e.g. boeing-mcp-server)
 		var systemServers v1.SystemMCPServerList
 		if err := req.List(&systemServers, &kclient.ListOptions{
 			FieldSelector: fields.OneTermEqualSelector("auditLogTokenHash", tokenHash),
@@ -196,9 +196,9 @@ func (h *AuditLogHandler) SubmitAuditLogs(req api.Context) error {
 		if auditLog.UserID == "" {
 			auditLog.UserID = auditLog.Subject
 		}
-		// NanobotAgent containers are single-user; attribute audit logs to the owner
+		// BoeingbotAgent containers are single-user; attribute audit logs to the owner
 		// when the container doesn't report a user (no auth middleware configured).
-		if auditLog.UserID == "" && nanobotAgentID != "" {
+		if auditLog.UserID == "" && boeingbotAgentID != "" {
 			auditLog.UserID = userID
 		}
 		if auditLog.MCPServerCatalogEntryName == "" {

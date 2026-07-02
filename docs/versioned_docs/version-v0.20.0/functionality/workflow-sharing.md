@@ -4,9 +4,9 @@ title: Workflow Sharing
 
 # Workflow Sharing
 
-Workflow sharing lets users publish a workflow from Obot Agent so it can be discovered and installed by other users as a reusable starting point.
+Workflow sharing lets users publish a workflow from Boeing Agent so it can be discovered and installed by other users as a reusable starting point.
 
-This feature is designed for sharing complete workflow packages, not just a single markdown file. When a workflow is published, Obot stores the workflow's `SKILL.md` plus every other file in the workflow directory.
+This feature is designed for sharing complete workflow packages, not just a single markdown file. When a workflow is published, Boeing stores the workflow's `SKILL.md` plus every other file in the workflow directory.
 
 ## How It Works
 
@@ -24,7 +24,7 @@ Two different users can publish workflows with the same name. They will be store
 
 ## Publishing a Workflow
 
-Workflow sharing is exposed through the workflow tools available to Obot Agent's Nanobot integration.
+Workflow sharing is exposed through the workflow tools available to Boeing Agent's Boeingbot integration.
 To publish a workflow, simply ask the agent to publish it.
 
 When publishing succeeds:
@@ -72,15 +72,15 @@ For each published version:
 - Empty subject list: only the workflow owner and admins can view or download that version
 - Specific `user` subjects: only those users can access that version
 - Specific `group` subjects: members of those groups can access that version
-- `selector:*`: all authenticated Obot users can discover and install that version
+- `selector:*`: all authenticated Boeing users can discover and install that version
 
 :::note
 The workflow owner and all users with Admin or Owner roles can download the workflow, regardless of the subjects that are selected.
 :::
 
-Published workflows start with an empty subject list on version `1` by default. In Obot Agent, sharing is managed from the published workflow details UI by editing the subject list for a selected version. The UI supports individual users, groups, and `All Obot Users`.
+Published workflows start with an empty subject list on version `1` by default. In Boeing Agent, sharing is managed from the published workflow details UI by editing the subject list for a selected version. The UI supports individual users, groups, and `All Boeing Users`.
 
-Access rules are enforced on the Obot side:
+Access rules are enforced on the Boeing side:
 
 - Search results include workflows for which you can access at least one version, plus your own owner-only workflows
 - For non-owners, the reported latest version is the newest version whose subjects match you
@@ -104,31 +104,31 @@ Older versions remain downloadable by version number as long as the published wo
 
 Workflow sharing depends on two pieces of platform configuration:
 
-- Nanobot integration must be enabled so the workflow tools are available in Obot Agent
-- Obot must have storage available for published workflow ZIP files
+- Boeingbot integration must be enabled so the workflow tools are available in Boeing Agent
+- Boeing must have storage available for published workflow ZIP files
 
-### Nanobot Integration
+### Boeingbot Integration
 
-Workflow sharing relies on Obot's Nanobot-backed workflow tools.
+Workflow sharing relies on Boeing's Boeingbot-backed workflow tools.
 
 | Environment Variable | Description | Default |
 |---------------------|-------------|---------|
-| `OBOT_SERVER_NANOBOT_INTEGRATION` | Enables the Nanobot integration used by workflow publishing, search, and install flows. | `true` |
+| `BOEING_SERVER_BOEINGBOT_INTEGRATION` | Enables the Boeingbot integration used by workflow publishing, search, and install flows. | `true` |
 
 ### Published Workflow Storage
 
-Obot stores published workflows separately from workspace files.
+Boeing stores published workflows separately from workspace files.
 
-If you do not configure a cloud storage provider, Obot falls back to local disk storage under its data directory. That is acceptable for local development and single-node testing, but it is not recommended for highly available or ephemeral deployments.
+If you do not configure a cloud storage provider, Boeing falls back to local disk storage under its data directory. That is acceptable for local development and single-node testing, but it is not recommended for highly available or ephemeral deployments.
 
 For production, configure one of the supported storage providers for published workflows:
 
 | Provider | Required Settings |
 |----------|-------------------|
-| `s3` | `OBOT_ARTIFACT_STORAGE_PROVIDER=s3`, `OBOT_ARTIFACT_STORAGE_BUCKET`, `OBOT_ARTIFACT_S3_REGION` |
-| `custom` | `OBOT_ARTIFACT_STORAGE_PROVIDER=custom`, `OBOT_ARTIFACT_STORAGE_BUCKET`, `OBOT_ARTIFACT_S3_ENDPOINT`, `OBOT_ARTIFACT_S3_REGION`, `OBOT_ARTIFACT_S3_ACCESS_KEY_ID`, `OBOT_ARTIFACT_S3_SECRET_ACCESS_KEY` |
-| `gcs` | `OBOT_ARTIFACT_STORAGE_PROVIDER=gcs`, `OBOT_ARTIFACT_STORAGE_BUCKET`, optionally `OBOT_ARTIFACT_GCS_SERVICE_ACCOUNT_JSON` |
-| `azure` | `OBOT_ARTIFACT_STORAGE_PROVIDER=azure`, `OBOT_ARTIFACT_STORAGE_BUCKET`, `OBOT_ARTIFACT_AZURE_STORAGE_ACCOUNT`, and Azure identity settings if not using default credentials |
+| `s3` | `BOEING_ARTIFACT_STORAGE_PROVIDER=s3`, `BOEING_ARTIFACT_STORAGE_BUCKET`, `BOEING_ARTIFACT_S3_REGION` |
+| `custom` | `BOEING_ARTIFACT_STORAGE_PROVIDER=custom`, `BOEING_ARTIFACT_STORAGE_BUCKET`, `BOEING_ARTIFACT_S3_ENDPOINT`, `BOEING_ARTIFACT_S3_REGION`, `BOEING_ARTIFACT_S3_ACCESS_KEY_ID`, `BOEING_ARTIFACT_S3_SECRET_ACCESS_KEY` |
+| `gcs` | `BOEING_ARTIFACT_STORAGE_PROVIDER=gcs`, `BOEING_ARTIFACT_STORAGE_BUCKET`, optionally `BOEING_ARTIFACT_GCS_SERVICE_ACCOUNT_JSON` |
+| `azure` | `BOEING_ARTIFACT_STORAGE_PROVIDER=azure`, `BOEING_ARTIFACT_STORAGE_BUCKET`, `BOEING_ARTIFACT_AZURE_STORAGE_ACCOUNT`, and Azure identity settings if not using default credentials |
 
 Provider-specific behavior:
 
@@ -142,12 +142,12 @@ Provider-specific behavior:
 For Docker or single-node development:
 
 - The default local artifact store is usually sufficient
-- Keep Obot's data volume persistent if you want shared workflows to survive container replacement
+- Keep Boeing's data volume persistent if you want shared workflows to survive container replacement
 
 For Kubernetes or multi-replica production:
 
 - External object storage is the recommended production option
-- If you do not want object storage, keep the chart's `persistence` PVC enabled because it mounts `/data`, which includes `/data/.local/share/obot/published-artifacts`
-- Use `ReadWriteOnce` only for a single Obot replica
-- Use `ReadWriteMany` for multi-replica Obot deployments so every replica can access the same artifact files
+- If you do not want object storage, keep the chart's `persistence` PVC enabled because it mounts `/data`, which includes `/data/.local/share/boeing/published-artifacts`
+- Use `ReadWriteOnce` only for a single Boeing replica
+- Use `ReadWriteMany` for multi-replica Boeing deployments so every replica can access the same artifact files
 - Treat published workflow storage the same way you treat other persistent user-generated platform data

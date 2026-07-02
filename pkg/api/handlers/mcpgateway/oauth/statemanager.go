@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/obot-platform/obot/pkg/gateway/client"
+	"github.com/boeing-ai-gateway/boeing/pkg/gateway/client"
 	"golang.org/x/oauth2"
 )
 

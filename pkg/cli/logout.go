@@ -3,19 +3,19 @@ package cli
 import (
 	"fmt"
 
-	"github.com/obot-platform/obot/pkg/cli/internal"
-	"github.com/obot-platform/obot/pkg/cli/internal/localconfig"
+	"github.com/boeing-ai-gateway/boeing/pkg/cli/internal"
+	"github.com/boeing-ai-gateway/boeing/pkg/cli/internal/localconfig"
 	"github.com/spf13/cobra"
 )
 
 type Logout struct {
-	URL  string `usage:"Obot app URL whose stored credentials should be removed"`
-	root *Obot
+	URL  string `usage:"Boeing app URL whose stored credentials should be removed"`
+	root *Boeing
 }
 
 func (l *Logout) Customize(cmd *cobra.Command) {
 	cmd.Use = "logout"
-	cmd.Short = "Remove locally stored Obot credentials"
+	cmd.Short = "Remove locally stored Boeing credentials"
 	cmd.Args = cobra.NoArgs
 }
 

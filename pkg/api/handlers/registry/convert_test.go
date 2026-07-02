@@ -4,8 +4,8 @@ import (
 	"context"
 	"testing"
 
-	"github.com/obot-platform/obot/apiclient/types"
-	v1 "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
+	v1 "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
@@ -14,18 +14,18 @@ func TestConvertMCPServerCatalogEntryToRegistryRemoteFixedURLHasRemote(t *testin
 		FixedURL: "https://api.example.com/mcp",
 	})
 
-	got, err := ConvertMCPServerCatalogEntryToRegistry(context.Background(), entry, "https://obot.example.com", "com.example.obot", newMimeFetcher())
+	got, err := ConvertMCPServerCatalogEntryToRegistry(context.Background(), entry, "https://boeing.example.com", "com.example.boeing", newMimeFetcher())
 	if err != nil {
 		t.Fatal(err)
 	}
 
-	if got.Meta.Obot != nil && got.Meta.Obot.ConfigurationRequired {
-		t.Fatalf("expected fixed URL entry to be directly connectable, got obot meta %#v", got.Meta.Obot)
+	if got.Meta.Boeing != nil && got.Meta.Boeing.ConfigurationRequired {
+		t.Fatalf("expected fixed URL entry to be directly connectable, got boeing meta %#v", got.Meta.Boeing)
 	}
 	if len(got.Server.Remotes) != 1 {
 		t.Fatalf("remote count = %d, want 1", len(got.Server.Remotes))
 	}
-	if got.Server.Remotes[0].URL != "https://obot.example.com/mcp-connect/remote-entry" {
+	if got.Server.Remotes[0].URL != "https://boeing.example.com/mcp-connect/remote-entry" {
 		t.Fatalf("remote URL = %q, want mcp-connect URL", got.Server.Remotes[0].URL)
 	}
 }
@@ -35,13 +35,13 @@ func TestConvertMCPServerCatalogEntryToRegistryRemoteHostnameRequiresConfigurati
 		Hostname: "api.example.com",
 	})
 
-	got, err := ConvertMCPServerCatalogEntryToRegistry(context.Background(), entry, "https://obot.example.com", "com.example.obot", newMimeFetcher())
+	got, err := ConvertMCPServerCatalogEntryToRegistry(context.Background(), entry, "https://boeing.example.com", "com.example.boeing", newMimeFetcher())
 	if err != nil {
 		t.Fatal(err)
 	}
 
-	if got.Meta.Obot == nil || !got.Meta.Obot.ConfigurationRequired {
-		t.Fatalf("expected hostname entry to require configuration, got obot meta %#v", got.Meta.Obot)
+	if got.Meta.Boeing == nil || !got.Meta.Boeing.ConfigurationRequired {
+		t.Fatalf("expected hostname entry to require configuration, got boeing meta %#v", got.Meta.Boeing)
 	}
 	if len(got.Server.Remotes) != 0 {
 		t.Fatalf("expected no remotes for hostname entry, got %#v", got.Server.Remotes)
@@ -53,13 +53,13 @@ func TestConvertMCPServerCatalogEntryToRegistryRemoteURLTemplateRequiresConfigur
 		URLTemplate: "https://${WORKSPACE}.example.com/mcp",
 	})
 
-	got, err := ConvertMCPServerCatalogEntryToRegistry(context.Background(), entry, "https://obot.example.com", "com.example.obot", newMimeFetcher())
+	got, err := ConvertMCPServerCatalogEntryToRegistry(context.Background(), entry, "https://boeing.example.com", "com.example.boeing", newMimeFetcher())
 	if err != nil {
 		t.Fatal(err)
 	}
 
-	if got.Meta.Obot == nil || !got.Meta.Obot.ConfigurationRequired {
-		t.Fatalf("expected URL template entry to require configuration, got obot meta %#v", got.Meta.Obot)
+	if got.Meta.Boeing == nil || !got.Meta.Boeing.ConfigurationRequired {
+		t.Fatalf("expected URL template entry to require configuration, got boeing meta %#v", got.Meta.Boeing)
 	}
 	if len(got.Server.Remotes) != 0 {
 		t.Fatalf("expected no remotes for URL template entry, got %#v", got.Server.Remotes)
@@ -72,26 +72,26 @@ func TestConvertMCPServerCatalogEntryToRegistryRemoteStaticOAuthRequiresConfigur
 		StaticOAuthRequired: true,
 	})
 
-	got, err := ConvertMCPServerCatalogEntryToRegistry(context.Background(), entry, "https://obot.example.com", "com.example.obot", newMimeFetcher())
+	got, err := ConvertMCPServerCatalogEntryToRegistry(context.Background(), entry, "https://boeing.example.com", "com.example.boeing", newMimeFetcher())
 	if err != nil {
 		t.Fatal(err)
 	}
 
-	if got.Meta.Obot == nil || !got.Meta.Obot.ConfigurationRequired {
-		t.Fatalf("expected unconfigured static OAuth entry to require configuration, got obot meta %#v", got.Meta.Obot)
+	if got.Meta.Boeing == nil || !got.Meta.Boeing.ConfigurationRequired {
+		t.Fatalf("expected unconfigured static OAuth entry to require configuration, got boeing meta %#v", got.Meta.Boeing)
 	}
 	if len(got.Server.Remotes) != 0 {
 		t.Fatalf("expected no remotes for unconfigured static OAuth entry, got %#v", got.Server.Remotes)
 	}
 
 	entry.Status.OAuthCredentialConfigured = true
-	got, err = ConvertMCPServerCatalogEntryToRegistry(context.Background(), entry, "https://obot.example.com", "com.example.obot", newMimeFetcher())
+	got, err = ConvertMCPServerCatalogEntryToRegistry(context.Background(), entry, "https://boeing.example.com", "com.example.boeing", newMimeFetcher())
 	if err != nil {
 		t.Fatal(err)
 	}
 
-	if got.Meta.Obot != nil && got.Meta.Obot.ConfigurationRequired {
-		t.Fatalf("expected configured static OAuth entry to be directly connectable, got obot meta %#v", got.Meta.Obot)
+	if got.Meta.Boeing != nil && got.Meta.Boeing.ConfigurationRequired {
+		t.Fatalf("expected configured static OAuth entry to be directly connectable, got boeing meta %#v", got.Meta.Boeing)
 	}
 	if len(got.Server.Remotes) != 1 {
 		t.Fatalf("remote count = %d, want 1", len(got.Server.Remotes))
@@ -116,13 +116,13 @@ func TestConvertMCPServerToRegistryNeedsURLRequiresConfiguration(t *testing.T) {
 		},
 	}
 
-	got, err := ConvertMCPServerToRegistry(context.Background(), server, nil, "https://obot.example.com", server.Name, "com.example.obot", "user-1", newMimeFetcher())
+	got, err := ConvertMCPServerToRegistry(context.Background(), server, nil, "https://boeing.example.com", server.Name, "com.example.boeing", "user-1", newMimeFetcher())
 	if err != nil {
 		t.Fatal(err)
 	}
 
-	if got.Meta.Obot == nil || !got.Meta.Obot.ConfigurationRequired {
-		t.Fatalf("expected server needing URL to require configuration, got obot meta %#v", got.Meta.Obot)
+	if got.Meta.Boeing == nil || !got.Meta.Boeing.ConfigurationRequired {
+		t.Fatalf("expected server needing URL to require configuration, got boeing meta %#v", got.Meta.Boeing)
 	}
 	if len(got.Server.Remotes) != 0 {
 		t.Fatalf("expected no remotes for server needing URL, got %#v", got.Server.Remotes)

@@ -1,22 +1,22 @@
 ---
 name: draft-release-blog
-description: Draft a release announcement blog post for an obot release, modeled on the existing obot.ai blog voice. Use when the user asks to draft a release blog, write a launch post, or write a blog announcement for a vX.Y.0 release. Outputs a markdown file the user can paste into the CMS. Can also create the post as a Wordpress draft via the `obot-wordpress` MCP server when the user asks, but never publishes a live post without explicit confirmation.
+description: Draft a release announcement blog post for an boeing release, modeled on the existing boeing.ai blog voice. Use when the user asks to draft a release blog, write a launch post, or write a blog announcement for a vX.Y.0 release. Outputs a markdown file the user can paste into the CMS. Can also create the post as a Wordpress draft via the `boeing-wordpress` MCP server when the user asks, but never publishes a live post without explicit confirmation.
 ---
 
 # Draft Release Blog Post
 
-Drafts a blog post announcing an obot release. Sources the feature spine from the draft GitHub release (the output of the `draft-release` skill or an existing draft on GitHub), then does additional research to add the kind of detail, context, and rationale that release notes deliberately omit but a blog post needs.
+Drafts a blog post announcing an boeing release. Sources the feature spine from the draft GitHub release (the output of the `draft-release` skill or an existing draft on GitHub), then does additional research to add the kind of detail, context, and rationale that release notes deliberately omit but a blog post needs.
 
-The blog is for obot.ai's hosted Wordpress CMS. The default output is a markdown file at `/tmp/release-blog-<VERSION>.md` that the user can paste into the CMS themselves. If the user explicitly asks to post it (e.g. "post it up there", "create the draft in Wordpress"), the skill can also create the post as a Wordpress **draft** via the `obot-wordpress` MCP server (see step 8). The skill never publishes a live post without explicit user confirmation of the `publish` status.
+The blog is for boeing.ai's hosted Wordpress CMS. The default output is a markdown file at `/tmp/release-blog-<VERSION>.md` that the user can paste into the CMS themselves. If the user explicitly asks to post it (e.g. "post it up there", "create the draft in Wordpress"), the skill can also create the post as a Wordpress **draft** via the `boeing-wordpress` MCP server (see step 8). The skill never publishes a live post without explicit user confirmation of the `publish` status.
 
 ## Voice reference
 
 Read both before drafting, every time:
 
-- https://obot.ai/blog/obot-v0210-network-egress-control-for-mcp-servers/ — single-feature deep-dive shape, first-person personal voice, ~600 words
-- https://obot.ai/blog/announcing-obot-mcp-platform-v0-16-0-api-keys-model-access-policies-and-other-enterprise-ready-controls/ — multi-feature roundup shape, "we are excited" framing, ~1200 words
+- https://boeing.ai/blog/boeing-v0210-network-egress-control-for-mcp-servers/ — single-feature deep-dive shape, first-person personal voice, ~600 words
+- https://boeing.ai/blog/announcing-boeing-mcp-platform-v0-16-0-api-keys-model-access-policies-and-other-enterprise-ready-controls/ — multi-feature roundup shape, "we are excited" framing, ~1200 words
 
-Author byline is **Craig Jellick** (`craig@obot.ai`). The personal voice in the deep-dive shape is his — when the post uses "I", that's him. Don't use "I" in the roundup shape; use "we".
+Author byline is **Craig Jellick** (`craig@boeing.ai`). The personal voice in the deep-dive shape is his — when the post uses "I", that's him. Don't use "I" in the roundup shape; use "we".
 
 ## Hard constraints
 
@@ -35,7 +35,7 @@ Confirm with the user which release the blog is for. Then find the canonical fea
 
 ```bash
 # Look for an existing draft (or published) release for the version:
-gh release view <VERSION> --repo obot-platform/obot
+gh release view <VERSION> --repo boeing-ai-gateway/boeing
 ```
 
 If a draft or published release exists, its Big Updates section is the spine. The blog highlights those same features in the same order — do not introduce features that didn't make it into the release notes, and do not silently demote features the release notes promoted.
@@ -115,11 +115,11 @@ Wait for confirmation or adjustments before writing prose.
 
 Match the reference posts:
 
-- Title format: For deep-dive, `New in Obot: <Feature Phrase>` (e.g. "New in Obot: Network Egress Control for MCP Servers"). For roundup, `Announcing Obot MCP Platform <VERSION>: <feature, feature, and other theme>`.
+- Title format: For deep-dive, `New in Boeing: <Feature Phrase>` (e.g. "New in Boeing: Network Egress Control for MCP Servers"). For roundup, `Announcing Boeing MCP Platform <VERSION>: <feature, feature, and other theme>`.
 - Open with a one-paragraph hook. Deep-dive: first person, states what was built and the partner if any. Roundup: "We're excited to announce..." + brief framing of the release theme.
 - Use `## Why we built this` / `## How it works` / `## What's next` headings in the deep-dive shape, or `## <Feature Name>` headings in the roundup shape. Match the reference structure exactly.
 - Concrete > abstract in every sentence. If a sentence could appear in any company's launch blog, rewrite or delete it.
-- End with a CTA. Reference posts use either `reach out at info@obot.ai` or `Check out our installation guide`. Default to `info@obot.ai` for deep-dives where there's a partner/conversation angle, installation guide for roundups.
+- End with a CTA. Reference posts use either `reach out at info@boeing.ai` or `Check out our installation guide`. Default to `info@boeing.ai` for deep-dives where there's a partner/conversation angle, installation guide for roundups.
 
 Add a frontmatter block at the top of the markdown for the CMS to consume:
 
@@ -147,9 +147,9 @@ End the turn there. Do not run any publish/upload commands. Do not modify the Gi
 
 Skip this step unless the user explicitly asks for it. Phrases that mean yes: "post it to Wordpress", "create the draft", "post it up there", "put it in the CMS". If the user just says "good draft" or stops at step 7, leave it as a local file.
 
-When the user does ask, post the blog as a Wordpress **draft** (never `publish` without explicit confirmation) via the `obot-wordpress` MCP server. The flow has four sub-steps.
+When the user does ask, post the blog as a Wordpress **draft** (never `publish` without explicit confirmation) via the `boeing-wordpress` MCP server. The flow has four sub-steps.
 
-**8a. Authenticate (one time per session).** Call `mcp__obot-wordpress__authenticate` to start the OAuth flow. Share the authorization URL it returns with the user; tell them the redirect to `localhost` may show a connection error and that's fine. The server's full tool set (`create_post`, `list_categories`, `list_users`, `update_post`, etc.) becomes available once auth completes. If auto-completion doesn't fire after they authorize, ask for the full callback URL from their browser and pass it to `mcp__obot-wordpress__complete_authentication`.
+**8a. Authenticate (one time per session).** Call `mcp__boeing-wordpress__authenticate` to start the OAuth flow. Share the authorization URL it returns with the user; tell them the redirect to `localhost` may show a connection error and that's fine. The server's full tool set (`create_post`, `list_categories`, `list_users`, `update_post`, etc.) becomes available once auth completes. If auto-completion doesn't fire after they authorize, ask for the full callback URL from their browser and pass it to `mcp__boeing-wordpress__complete_authentication`.
 
 **8b. Convert the markdown to HTML.** Wordpress's `create_post` expects the post body as HTML. A helper script lives next to this SKILL.md:
 
@@ -164,13 +164,13 @@ It strips the YAML frontmatter so it doesn't render in the post body and emits H
 **8c. Look up category and author IDs.** The `create_post` tool wants integer IDs, not names. Run these in parallel:
 
 ```
-mcp__obot-wordpress__list_categories(search_query="Blog")  # → expect id 6
-mcp__obot-wordpress__list_users()                           # → find Craig Jellick, expect id 9
+mcp__boeing-wordpress__list_categories(search_query="Blog")  # → expect id 6
+mcp__boeing-wordpress__list_users()                           # → find Craig Jellick, expect id 9
 ```
 
 IDs may differ if the Wordpress site is reconfigured. Always look them up; don't hardcode.
 
-**8d. Create the draft.** Call `mcp__obot-wordpress__create_post` with:
+**8d. Create the draft.** Call `mcp__boeing-wordpress__create_post` with:
 
 - `title`: the full title from the markdown frontmatter (`title:` line), unquoted.
 - `content`: the HTML from step 8b, pasted in as a single string.
@@ -178,7 +178,7 @@ IDs may differ if the Wordpress site is reconfigured. Always look them up; don't
 - `author_id`: the integer from `list_users` for Craig Jellick.
 - `categories`: the Blog category ID as a string (e.g. `"6"`), since the tool accepts a comma-separated list.
 
-The response returns a post `id` and a `link` like `https://obot.ai/?p=<id>`. Share both with the user and remind them to review and publish from the WP admin (Posts → Drafts).
+The response returns a post `id` and a `link` like `https://boeing.ai/?p=<id>`. Share both with the user and remind them to review and publish from the WP admin (Posts → Drafts).
 
 **Sanity checks before posting:**
 
@@ -190,13 +190,13 @@ The response returns a post `id` and a `link` like `https://obot.ai/?p=<id>`. Sh
 
 From v0.21.0 (deep-dive):
 
-> I'm excited to announce a new framework in Obot that lets you define and enforce network egress policies for the MCP servers running in your Obot environment.
+> I'm excited to announce a new framework in Boeing that lets you define and enforce network egress policies for the MCP servers running in your Boeing environment.
 
 > The MCP server works exactly like it did before. It just can't access external sites it shouldn't.
 
 From v0.16.0 (roundup):
 
-> We are excited to announce the release of Obot v0.16.0, a significant update focused on enterprise readiness and operational control.
+> We are excited to announce the release of Boeing v0.16.0, a significant update focused on enterprise readiness and operational control.
 
 > Perfect for CI/CD pipelines, automation scripts, monitoring tools, and other integrations.
 

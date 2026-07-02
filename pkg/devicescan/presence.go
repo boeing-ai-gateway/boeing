@@ -6,7 +6,7 @@ import (
 	"path/filepath"
 	"runtime"
 
-	"github.com/obot-platform/obot/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
 )
 
 // clientPresenceDef describes how to detect that a given AI client is

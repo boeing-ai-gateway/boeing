@@ -1,6 +1,6 @@
-ARG PROVIDERS_IMAGE=ghcr.io/obot-platform/providers:latest
-ARG ENTERPRISE_PROVIDERS_IMAGE=ghcr.io/obot-platform/enterprise-providers:latest
-ARG ENCRYPTION_BINS_IMAGE=ghcr.io/obot-platform/providers/encryption-bins:latest
+ARG PROVIDERS_IMAGE=ghcr.io/boeing-platform/providers:latest
+ARG ENTERPRISE_PROVIDERS_IMAGE=ghcr.io/boeing-platform/enterprise-providers:latest
+ARG ENCRYPTION_BINS_IMAGE=ghcr.io/boeing-platform/providers/encryption-bins:latest
 ARG BASE_IMAGE=cgr.dev/chainguard/wolfi-base
 
 FROM ${BASE_IMAGE} AS base
@@ -43,21 +43,21 @@ COPY azure-encryption.yaml /
 COPY gcp-encryption.yaml /
 COPY --chmod=0755 run.sh /bin/run.sh
 
-COPY --link --from=providers /obot-providers /obot-providers
-COPY --link --from=enterprise-providers /obot-providers /obot-providers
-COPY --link --from=encryption-bins /obot-providers /obot-providers
+COPY --link --from=providers /boeing-providers /boeing-providers
+COPY --link --from=enterprise-providers /boeing-providers /boeing-providers
+COPY --link --from=encryption-bins /boeing-providers /boeing-providers
 COPY --chmod=0755 /tools/combine-envrc.sh /
 RUN /combine-envrc.sh && rm /combine-envrc.sh
 COPY --from=encryption-bins /bin/*-encryption-provider /bin/
-COPY --from=bin /app/bin/obot /bin/
+COPY --from=bin /app/bin/boeing /bin/
 
-ENV OBOT_SERVER_DEFAULT_MCPCATALOG_PATH=https://github.com/obot-platform/mcp-catalog
-ENV OBOT_SERVER_DEFAULT_SYSTEM_MCPCATALOG_PATH=https://github.com/obot-platform/system-mcp-catalog
-ENV OBOT_CONTAINER_ENV=true
+ENV BOEING_SERVER_DEFAULT_MCPCATALOG_PATH=https://github.com/boeing-platform/mcp-catalog
+ENV BOEING_SERVER_DEFAULT_SYSTEM_MCPCATALOG_PATH=https://github.com/boeing-platform/system-mcp-catalog
+ENV BOEING_CONTAINER_ENV=true
 
-ENV POSTGRES_USER=obot
-ENV POSTGRES_PASSWORD=obot
-ENV POSTGRES_DB=obot
+ENV POSTGRES_USER=boeing
+ENV POSTGRES_PASSWORD=boeing
+ENV POSTGRES_DB=boeing
 ENV PGDATA=/data/postgresql
 
 ENV HOME=/data

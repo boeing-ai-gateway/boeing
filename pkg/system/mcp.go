@@ -20,7 +20,7 @@ func MCPConnectURL(serverURL, id string) string {
 	return fmt.Sprintf("%s/mcp-connect/%s", serverURL, id)
 }
 
-func NanobotAgentConnectURL(serverURL, id string) string {
+func BoeingbotAgentConnectURL(serverURL, id string) string {
 	return MCPConnectURL(serverURL, MCPServerPrefix+id)
 }
 

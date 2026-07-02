@@ -12,12 +12,12 @@ import (
 	"strings"
 	"time"
 
-	"github.com/obot-platform/obot/logger"
-	"github.com/obot-platform/obot/pkg/accesstoken"
-	"github.com/obot-platform/obot/pkg/api"
-	"github.com/obot-platform/obot/pkg/auth"
-	"github.com/obot-platform/obot/pkg/gateway/server/dispatcher"
-	"github.com/obot-platform/obot/pkg/system"
+	"github.com/boeing-ai-gateway/boeing/logger"
+	"github.com/boeing-ai-gateway/boeing/pkg/accesstoken"
+	"github.com/boeing-ai-gateway/boeing/pkg/api"
+	"github.com/boeing-ai-gateway/boeing/pkg/auth"
+	"github.com/boeing-ai-gateway/boeing/pkg/gateway/server/dispatcher"
+	"github.com/boeing-ai-gateway/boeing/pkg/system"
 	"k8s.io/apiserver/pkg/authentication/authenticator"
 	"k8s.io/apiserver/pkg/authentication/user"
 )
@@ -26,9 +26,9 @@ var log = logger.Package()
 
 const (
 	CurrentAuthProviderCookie  = "current_auth_provider"
-	ObotAccessTokenCookie      = "obot_access_token"
-	ObotAccessTokenCookieZero  = "obot_access_token_0"
-	ObotAuthProviderQueryParam = "obot-auth-provider"
+	BoeingAccessTokenCookie      = "boeing_access_token"
+	BoeingAccessTokenCookieZero  = "boeing_access_token_0"
+	BoeingAuthProviderQueryParam = "boeing-auth-provider"
 )
 
 var ErrInvalidSession = errors.New("invalid session")
@@ -48,7 +48,7 @@ func NewProxyManager(dispatcher *dispatcher.Dispatcher) *Manager {
 func (pm *Manager) AuthenticateRequest(req *http.Request) (*authenticator.Response, bool, error) {
 	// Check for the access token cookie.
 	// This authenticator requires the cookie in order to authenticate any users.
-	if _, err := req.Cookie(ObotAccessTokenCookie); errors.Is(err, http.ErrNoCookie) {
+	if _, err := req.Cookie(BoeingAccessTokenCookie); errors.Is(err, http.ErrNoCookie) {
 		return nil, false, nil
 	}
 
@@ -109,7 +109,7 @@ func (pm *Manager) ServeHTTP(user user.Info, w http.ResponseWriter, r *http.Requ
 			http.Error(w, "Login timed out. Please try again.", http.StatusUnauthorized)
 			return
 		}
-	} else if param := r.URL.Query().Get(ObotAuthProviderQueryParam); param != "" {
+	} else if param := r.URL.Query().Get(BoeingAuthProviderQueryParam); param != "" {
 		// If the provider is set in the query params, use that.
 		provider = param
 	}
@@ -263,7 +263,7 @@ func (p *Proxy) authenticateRequest(req *http.Request) (*authenticator.Response,
 		return nil, false, err
 	}
 
-	stateRequest, err := http.NewRequest(http.MethodPost, p.url+"/obot-get-state", strings.NewReader(string(srJSON)))
+	stateRequest, err := http.NewRequest(http.MethodPost, p.url+"/boeing-get-state", strings.NewReader(string(srJSON)))
 	if err != nil {
 		return nil, false, err
 	}

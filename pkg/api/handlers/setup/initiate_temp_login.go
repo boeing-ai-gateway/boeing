@@ -6,9 +6,9 @@ import (
 	"time"
 
 	"github.com/google/uuid"
-	"github.com/obot-platform/obot/apiclient/types"
-	"github.com/obot-platform/obot/pkg/api"
-	gwtypes "github.com/obot-platform/obot/pkg/gateway/types"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/pkg/api"
+	gwtypes "github.com/boeing-ai-gateway/boeing/pkg/gateway/types"
 )
 
 type InitiateTempLoginRequest struct {

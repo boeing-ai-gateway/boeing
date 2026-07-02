@@ -6,7 +6,7 @@
 	import Search from '$lib/components/Search.svelte';
 	import IconButton from '$lib/components/primitives/IconButton.svelte';
 	import Table from '$lib/components/table/Table.svelte';
-	import { NanobotService, type OrgUser } from '$lib/services';
+	import { BoeingbotService, type OrgUser } from '$lib/services';
 	import { getMcpServerDeploymentStatus } from '$lib/services/user/mcp';
 	import { profile, version } from '$lib/stores';
 	import { formatTimeAgo } from '$lib/time';
@@ -48,7 +48,7 @@
 		if (!agent) return;
 		launchingAgentId = agent.id;
 		try {
-			await NanobotService.launchProjectAgent(agent.projectID, agent.id);
+			await BoeingbotService.launchProjectAgent(agent.projectID, agent.id);
 			window.open(`/agent?projectId=${agent.projectID}&agentId=${agent.id}`, '_blank');
 		} catch (error) {
 			console.error('Failed to launch agent:', error);
@@ -164,5 +164,5 @@
 </Confirm>
 
 <svelte:head>
-	<title>Obot | Agents</title>
+	<title>Boeing | Agents</title>
 </svelte:head>

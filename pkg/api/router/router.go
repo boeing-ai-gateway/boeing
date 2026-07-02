@@ -5,23 +5,23 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/obot-platform/obot/pkg/api/handlers"
-	"github.com/obot-platform/obot/pkg/api/handlers/mcpgateway"
-	"github.com/obot-platform/obot/pkg/api/handlers/mcpgateway/oauth"
-	"github.com/obot-platform/obot/pkg/api/handlers/registry"
-	"github.com/obot-platform/obot/pkg/api/handlers/setup"
-	"github.com/obot-platform/obot/pkg/api/handlers/wellknown"
-	"github.com/obot-platform/obot/pkg/services"
-	v1 "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1"
-	"github.com/obot-platform/obot/ui"
+	"github.com/boeing-ai-gateway/boeing/pkg/api/handlers"
+	"github.com/boeing-ai-gateway/boeing/pkg/api/handlers/mcpgateway"
+	"github.com/boeing-ai-gateway/boeing/pkg/api/handlers/mcpgateway/oauth"
+	"github.com/boeing-ai-gateway/boeing/pkg/api/handlers/registry"
+	"github.com/boeing-ai-gateway/boeing/pkg/api/handlers/setup"
+	"github.com/boeing-ai-gateway/boeing/pkg/api/handlers/wellknown"
+	"github.com/boeing-ai-gateway/boeing/pkg/services"
+	v1 "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1"
+	"github.com/boeing-ai-gateway/boeing/ui"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"k8s.io/component-base/metrics/legacyregistry"
 	kclient "sigs.k8s.io/controller-runtime/pkg/client"
 )
 
-// resolveAgentsEnabled determines whether Obot Agent features are enabled.
+// resolveAgentsEnabled determines whether Boeing Agent features are enabled.
 //
-// An explicitly-set OBOT_ENABLE_AGENTS value (or --enable-agents flag) always
+// An explicitly-set BOEING_ENABLE_AGENTS value (or --enable-agents flag) always
 // wins. Otherwise agents are enabled only if the deployment already has at least
 // one agent: new deployments start with no agents and are therefore disabled by
 // default, while existing deployments that already use agents stay enabled.
@@ -34,9 +34,9 @@ func resolveAgentsEnabled(ctx context.Context, services *services.Services) (boo
 	}
 
 	// Only need to know whether at least one agent exists.
-	var agents v1.NanobotAgentList
+	var agents v1.BoeingbotAgentList
 	if err := services.StorageClient.List(ctx, &agents, kclient.Limit(1)); err != nil {
-		return false, fmt.Errorf("failed to list nanobot agents: %w", err)
+		return false, fmt.Errorf("failed to list boeingbot agents: %w", err)
 	}
 	return len(agents.Items) > 0, nil
 }
@@ -301,7 +301,7 @@ func Router(ctx context.Context, services *services.Services) (http.Handler, err
 
 	// System MCP Servers (admin only)
 	mux.HandleFunc("GET /api/system-mcp-servers", systemMCPServers.List)
-	mux.HandleFunc("POST /api/system-mcp-servers/restart-nanobot-agent-deployments", systemMCPServers.RestartNanobotAgentDeployments)
+	mux.HandleFunc("POST /api/system-mcp-servers/restart-boeingbot-agent-deployments", systemMCPServers.RestartBoeingbotAgentDeployments)
 	mux.HandleFunc("GET /api/system-mcp-servers/{id}", systemMCPServers.Get)
 	mux.HandleFunc("POST /api/system-mcp-servers", systemMCPServers.Create)
 	mux.HandleFunc("PUT /api/system-mcp-servers/{id}", systemMCPServers.Update)
@@ -553,15 +553,15 @@ func Router(ctx context.Context, services *services.Services) (http.Handler, err
 	mux.HandleFunc("PUT /api/projects/{project_id}", projects.Update)
 	mux.HandleFunc("DELETE /api/projects/{project_id}", projects.Delete)
 
-	// NanobotAgents
-	nanobotAgents := handlers.NewNanobotAgentHandler(services.MCPSessionManager, services.ServerURL, agentsEnabled)
-	mux.HandleFunc("GET /api/nanobot-agents", nanobotAgents.ListAll)
-	mux.HandleFunc("POST /api/projects/{project_id}/agents", nanobotAgents.Create)
-	mux.HandleFunc("GET /api/projects/{project_id}/agents", nanobotAgents.List)
-	mux.HandleFunc("GET /api/projects/{project_id}/agents/{nanobot_agent_id}", nanobotAgents.ByID)
-	mux.HandleFunc("PUT /api/projects/{project_id}/agents/{nanobot_agent_id}", nanobotAgents.Update)
-	mux.HandleFunc("DELETE /api/projects/{project_id}/agents/{nanobot_agent_id}", nanobotAgents.Delete)
-	mux.HandleFunc("POST /api/projects/{project_id}/agents/{nanobot_agent_id}/launch", nanobotAgents.Launch)
+	// BoeingbotAgents
+	boeingbotAgents := handlers.NewBoeingbotAgentHandler(services.MCPSessionManager, services.ServerURL, agentsEnabled)
+	mux.HandleFunc("GET /api/boeingbot-agents", boeingbotAgents.ListAll)
+	mux.HandleFunc("POST /api/projects/{project_id}/agents", boeingbotAgents.Create)
+	mux.HandleFunc("GET /api/projects/{project_id}/agents", boeingbotAgents.List)
+	mux.HandleFunc("GET /api/projects/{project_id}/agents/{boeingbot_agent_id}", boeingbotAgents.ByID)
+	mux.HandleFunc("PUT /api/projects/{project_id}/agents/{boeingbot_agent_id}", boeingbotAgents.Update)
+	mux.HandleFunc("DELETE /api/projects/{project_id}/agents/{boeingbot_agent_id}", boeingbotAgents.Delete)
+	mux.HandleFunc("POST /api/projects/{project_id}/agents/{boeingbot_agent_id}/launch", boeingbotAgents.Launch)
 
 	// Catch all 404 for API
 	mux.HTTPHandle("/api/", http.NotFoundHandler())
@@ -572,7 +572,7 @@ func Router(ctx context.Context, services *services.Services) (http.Handler, err
 	// Well-known
 	wellknown.SetupHandlers(services.ServerURL, services.OAuthServerConfig, services.RegistryNoAuth, mux)
 
-	// Obot OAuth
+	// Boeing OAuth
 	oauth.SetupHandlers(oauthChecker, services.MCPOAuthTokenStorage, services.PersistentTokenServer, services.OAuthServerConfig, services.ServerURL, services.MCPOAuthClientSecretExpiration, mux)
 
 	// Gateway APIs

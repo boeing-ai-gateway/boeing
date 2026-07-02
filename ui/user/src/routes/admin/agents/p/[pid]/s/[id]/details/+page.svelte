@@ -5,7 +5,7 @@
 	import McpServerK8sInfo from '$lib/components/admin/McpServerK8sInfo.svelte';
 	import { DEFAULT_MCP_CATALOG_ID, PAGE_TRANSITION_DURATION } from '$lib/constants';
 	import Loading from '$lib/icons/Loading.svelte';
-	import { NanobotService, UserService, type OrgUser } from '$lib/services';
+	import { BoeingbotService, UserService, type OrgUser } from '$lib/services';
 	import { profile } from '$lib/stores';
 	import { getUserDisplayName } from '$lib/utils';
 	import { HatGlasses } from 'lucide-svelte';
@@ -35,7 +35,7 @@
 		if (!agent) return;
 		launchingAgentId = agent.id;
 		try {
-			await NanobotService.launchProjectAgent(agent.projectID, agent.id);
+			await BoeingbotService.launchProjectAgent(agent.projectID, agent.id);
 			window.open(`/agent?projectId=${agent.projectID}&agentId=${agent.id}`, '_blank');
 		} catch (error) {
 			console.error('Failed to launch agent:', error);
@@ -106,5 +106,5 @@
 </Confirm>
 
 <svelte:head>
-	<title>Obot | {title}</title>
+	<title>Boeing | {title}</title>
 </svelte:head>

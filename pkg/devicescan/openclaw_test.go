@@ -6,7 +6,7 @@ import (
 	"runtime"
 	"testing"
 
-	"github.com/obot-platform/obot/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
 )
 
 // withCleanPath sets PATH to a single directory, optionally containing

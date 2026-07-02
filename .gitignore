@@ -47,7 +47,7 @@ vendor/
 Thumbs.db
 
 # Ignore local DB files
-obot*.db*
+boeing*.db*
 
 # Ignore http dir for http client files
 http/

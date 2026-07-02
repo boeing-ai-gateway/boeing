@@ -9,10 +9,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/obot-platform/obot/apiclient/types"
-	"github.com/obot-platform/obot/pkg/api"
-	v1 "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1"
-	"github.com/obot-platform/obot/pkg/system"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/pkg/api"
+	v1 "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1"
+	"github.com/boeing-ai-gateway/boeing/pkg/system"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	corev1 "k8s.io/api/core/v1"
@@ -813,7 +813,7 @@ func TestConvertMCPServerCompositeSkipsDisabledAndConfiguredComponents(t *testin
 }
 
 func TestEntryManifestNeedsUserConfig(t *testing.T) {
-	const ns = "obot-ns"
+	const ns = "boeing-ns"
 
 	newClient := func(t *testing.T, objects ...kclient.Object) kclient.Client {
 		t.Helper()
@@ -945,7 +945,7 @@ func TestEntryManifestNeedsUserConfig(t *testing.T) {
 }
 
 func TestEntryMissingAdminConfig(t *testing.T) {
-	const ns = "obot-ns"
+	const ns = "boeing-ns"
 
 	newClient := func(t *testing.T, objects ...kclient.Object) kclient.Client {
 		t.Helper()

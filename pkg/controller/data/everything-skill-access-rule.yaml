@@ -1,4 +1,4 @@
-apiVersion: obot.obot.ai/v1
+apiVersion: boeing.boeing.ai/v1
 kind: SkillAccessRule
 metadata:
   name: sar1-everything

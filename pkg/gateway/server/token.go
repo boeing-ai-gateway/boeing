@@ -10,10 +10,10 @@ import (
 	"time"
 
 	"github.com/google/uuid"
-	types2 "github.com/obot-platform/obot/apiclient/types"
-	loggerpkg "github.com/obot-platform/obot/logger"
-	"github.com/obot-platform/obot/pkg/api"
-	"github.com/obot-platform/obot/pkg/gateway/types"
+	types2 "github.com/boeing-ai-gateway/boeing/apiclient/types"
+	loggerpkg "github.com/boeing-ai-gateway/boeing/logger"
+	"github.com/boeing-ai-gateway/boeing/pkg/api"
+	"github.com/boeing-ai-gateway/boeing/pkg/gateway/types"
 	"gorm.io/gorm"
 	"gorm.io/gorm/clause"
 )

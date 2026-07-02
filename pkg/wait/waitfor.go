@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/obot-platform/obot/pkg/utils"
+	"github.com/boeing-ai-gateway/boeing/pkg/utils"
 	apierrors "k8s.io/apimachinery/pkg/api/errors"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime/schema"

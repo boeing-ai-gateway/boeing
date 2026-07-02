@@ -1,12 +1,12 @@
 # Custom Encryption Provider
 
-This guide explains how to set up custom encryption for Obot using a local encryption key.
+This guide explains how to set up custom encryption for Boeing using a local encryption key.
 
 ## Overview
 
 The custom encryption provider uses AES-GCM encryption with a secret key that you provide. This is useful when:
 - You want encryption at rest but don't have access to cloud KMS services
-- You're running Obot in air-gapped or on-premises environments
+- You're running Boeing in air-gapped or on-premises environments
 - You want a simpler encryption setup without external dependencies
 
 > **Note**: Unlike AWS KMS, Google Cloud KMS, or Azure Key Vault, the custom provider stores the encryption key locally. You are responsible for securing and backing up this key.
@@ -32,9 +32,9 @@ Kj8fH2lP9mQ4nR6tV8xZ0bC3dE5gF7hI9jK1lM3nO5p=
 
 > **Security Warning**: Keep this key secret and secure. Anyone with access to this key can decrypt your data. Store it in a secure location such as a password manager or secrets management system.
 
-### Obot environment variables
+### Boeing environment variables
 
-Make sure the following environment variables are set on Obot when you run it:
+Make sure the following environment variables are set on Boeing when you run it:
 
-- `OBOT_SERVER_ENCRYPTION_PROVIDER="custom"`
-- `OBOT_SERVER_ENCRYPTION_KEY="<your-base64-key>"`
+- `BOEING_SERVER_ENCRYPTION_PROVIDER="custom"`
+- `BOEING_SERVER_ENCRYPTION_KEY="<your-base64-key>"`

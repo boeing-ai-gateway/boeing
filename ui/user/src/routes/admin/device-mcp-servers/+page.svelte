@@ -52,7 +52,7 @@
 </script>
 
 <svelte:head>
-	<title>Obot | Device MCP Servers</title>
+	<title>Boeing | Device MCP Servers</title>
 </svelte:head>
 
 <Layout title="Device MCP Servers">
@@ -73,7 +73,7 @@
 				<Server class="text-muted-content size-24 opacity-50" />
 				<h4 class="text-muted-content text-lg font-semibold">No MCP servers observed yet</h4>
 				<p class="text-muted-content text-sm font-light">
-					Run <code class="font-mono">obot scan</code> from a managed device with configured MCP servers
+					Run <code class="font-mono">boeing scan</code> from a managed device with configured MCP servers
 					to populate this view.
 				</p>
 			</div>

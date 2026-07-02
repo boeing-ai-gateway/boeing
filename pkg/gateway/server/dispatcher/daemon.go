@@ -17,8 +17,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/obot-platform/nah/pkg/log"
-	"github.com/obot-platform/nanobot/pkg/system"
+	"github.com/boeing-ai-gateway/nah/pkg/log"
+	"github.com/boeing-ai-gateway/boeingbot/pkg/system"
 )
 
 type ports struct {
@@ -214,14 +214,14 @@ func (d *Dispatcher) newCommand(ctx context.Context, envMap map[string]string, c
 		command = strings.ReplaceAll(command, "/", "\\")
 	}
 
-	// Loop back to obot to help with process supervision
+	// Loop back to boeing to help with process supervision
 	cmd := exec.CommandContext(ctx, system.Bin(), append([]string{"daemon", command}, args...)...)
 
 	if envMap == nil {
 		envMap = make(map[string]string, 2)
 	}
-	envMap["OBOT_SERVER_PUBLIC_URL"] = d.serverURL
-	envMap["OBOT_SERVER_URL"] = d.sessionManager.TransformObotHostname(d.internalServerURL)
+	envMap["BOEING_SERVER_PUBLIC_URL"] = d.serverURL
+	envMap["BOEING_SERVER_URL"] = d.sessionManager.TransformBoeingHostname(d.internalServerURL)
 	cmd.Env = envAsSlice(envMap)
 
 	r, w, err := os.Pipe()

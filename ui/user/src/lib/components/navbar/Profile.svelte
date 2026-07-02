@@ -5,7 +5,7 @@
 	import Menu from '$lib/components/navbar/Menu.svelte';
 	import ProfileIcon from '$lib/components/profile/ProfileIcon.svelte';
 	import { ADMIN_AGENT_DISABLED_MESSAGE, USER_AGENT_DISABLED_MESSAGE } from '$lib/constants';
-	import { AdminService, NanobotService, UserService } from '$lib/services';
+	import { AdminService, BoeingbotService, UserService } from '$lib/services';
 	import { profile, responsive, darkMode, errors, defaultModelAliases } from '$lib/stores';
 	import { version } from '$lib/stores';
 	import { goto } from '$lib/url';
@@ -77,7 +77,7 @@
 		if (typeof value !== 'string') return;
 
 		const repoMap: Record<string, string> = {
-			obot: 'https://github.com/obot-platform/obot'
+			boeing: 'https://github.com/boeing-ai-gateway/boeing'
 		};
 
 		const [, commit] = value.split('+');
@@ -110,7 +110,7 @@
 		restartingAgent = true;
 		try {
 			await UserService.restartK8sDeployment(`ms1${agentId}`);
-			await NanobotService.launchProjectAgent(projectId, agentId);
+			await BoeingbotService.launchProjectAgent(projectId, agentId);
 			window.location.reload();
 		} catch (error) {
 			console.error('Failed to restart agent:', error);
@@ -211,7 +211,7 @@
 				</button>
 			{/if}
 			{#if responsive.isMobile}
-				<a href="https://docs.obot.ai" rel="external" target="_blank" class="dropdown-link"
+				<a href="https://docs.boeing.ai" rel="external" target="_blank" class="dropdown-link"
 					><Book class="size-4" />Docs</a
 				>
 			{/if}
@@ -270,7 +270,7 @@
 					<LayoutDashboard class="size-4" /> MCP Platform
 				</a>
 			{/if}
-			{#if version.current.obot}
+			{#if version.current.boeing}
 				{#if showUpgradeAvailable}
 					<div class="text-base-content flex items-center gap-1 p-1 text-[11px]">
 						<CircleFadingArrowUp class="text-primary size-4 shrink-0" />
@@ -280,7 +280,7 @@
 								rel="external"
 								target="_blank"
 								class="text-link"
-								href="https://github.com/obot-platform/obot/releases/latest"
+								href="https://github.com/boeing-ai-gateway/boeing/releases/latest"
 								>latest release notes.</a
 							>
 						</p>
@@ -288,12 +288,12 @@
 				{/if}
 				<div class="text-muted-content flex justify-end p-2 text-xs">
 					<div class="flex gap-2">
-						{#if version.current.obot}
-							{@const link = getLink('obot', version.current.obot)}
+						{#if version.current.boeing}
+							{@const link = getLink('boeing', version.current.boeing)}
 							{#if link}
 								<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -- external github link -->
 								<a href={link} target="_blank" rel="external">
-									{version.current.obot}
+									{version.current.boeing}
 								</a>
 							{/if}
 						{/if}

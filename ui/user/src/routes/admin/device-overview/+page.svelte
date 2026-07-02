@@ -2,7 +2,7 @@
 	import { resolve } from '$app/paths';
 	import { page } from '$app/state';
 	import Layout from '$lib/components/Layout.svelte';
-	import ObotCliBanner from '$lib/components/ObotCliBanner.svelte';
+	import BoeingCliBanner from '$lib/components/BoeingCliBanner.svelte';
 	import AuditLogCalendar from '$lib/components/admin/audit-logs/AuditLogCalendar.svelte';
 	import DeviceScanDonutCard from '$lib/components/admin/device-scan/DeviceScanDonutCard.svelte';
 	import DeviceScanTimelineCard from '$lib/components/admin/device-scan/DeviceScanTimelineCard.svelte';
@@ -171,7 +171,7 @@
 </script>
 
 <svelte:head>
-	<title>Obot | Device Dashboard</title>
+	<title>Boeing | Device Dashboard</title>
 </svelte:head>
 
 <Layout title="Dashboard">
@@ -180,7 +180,7 @@
 		in:fly={{ x: 100, duration, delay: duration }}
 		out:fly={{ x: -100, duration }}
 	>
-		<ObotCliBanner description="Gain insight into the AI tooling used in your organization." />
+		<BoeingCliBanner description="Gain insight into the AI tooling used in your organization." />
 
 		<div class="flex flex-wrap items-center gap-2">
 			<AuditLogCalendar
@@ -196,7 +196,7 @@
 				<ScanLine class="text-muted-content size-24 opacity-50" />
 				<h4 class="text-muted-content text-lg font-semibold">No device scans in this window</h4>
 				<p class="text-muted-content text-sm font-light">
-					Adjust the date range or run <code class="font-mono">obot scan</code> from a managed device.
+					Adjust the date range or run <code class="font-mono">boeing scan</code> from a managed device.
 				</p>
 			</div>
 		{:else}

@@ -4,11 +4,11 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/obot-platform/obot/apiclient/types"
-	"github.com/obot-platform/obot/pkg/api"
-	"github.com/obot-platform/obot/pkg/mcp"
-	v1 "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1"
-	"github.com/obot-platform/obot/pkg/system"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/pkg/api"
+	"github.com/boeing-ai-gateway/boeing/pkg/mcp"
+	v1 "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1"
+	"github.com/boeing-ai-gateway/boeing/pkg/system"
 	corev1 "k8s.io/api/core/v1"
 	apierrors "k8s.io/apimachinery/pkg/api/errors"
 	"k8s.io/apimachinery/pkg/api/resource"
@@ -62,7 +62,7 @@ func (h *K8sSettingsHandler) Update(req api.Context) error {
 		affinity              corev1.Affinity
 		tolerations           []corev1.Toleration
 		resources             corev1.ResourceRequirements
-		nanobotAgentResources corev1.ResourceRequirements
+		boeingbotAgentResources corev1.ResourceRequirements
 		errs                  []error
 	)
 
@@ -84,15 +84,15 @@ func (h *K8sSettingsHandler) Update(req api.Context) error {
 		}
 	}
 
-	if input.NanobotAgentResources != "" {
-		if err := yaml.UnmarshalStrict([]byte(input.NanobotAgentResources), &nanobotAgentResources); err != nil {
-			errs = append(errs, fmt.Errorf("invalid nanobotAgentResources YAML: %v", err))
+	if input.BoeingbotAgentResources != "" {
+		if err := yaml.UnmarshalStrict([]byte(input.BoeingbotAgentResources), &boeingbotAgentResources); err != nil {
+			errs = append(errs, fmt.Errorf("invalid boeingbotAgentResources YAML: %v", err))
 		}
 	}
 
-	if input.NanobotWorkspaceSize != "" {
-		if _, err := resource.ParseQuantity(input.NanobotWorkspaceSize); err != nil {
-			errs = append(errs, fmt.Errorf("invalid nanobotWorkspaceSize: %v", err))
+	if input.BoeingbotWorkspaceSize != "" {
+		if _, err := resource.ParseQuantity(input.BoeingbotWorkspaceSize); err != nil {
+			errs = append(errs, fmt.Errorf("invalid boeingbotWorkspaceSize: %v", err))
 		}
 	}
 
@@ -159,16 +159,16 @@ func (h *K8sSettingsHandler) Update(req api.Context) error {
 			settings.Spec.StorageClassName = nil
 		}
 
-		if input.NanobotWorkspaceSize != "" {
-			settings.Spec.NanobotWorkspaceSize = input.NanobotWorkspaceSize
+		if input.BoeingbotWorkspaceSize != "" {
+			settings.Spec.BoeingbotWorkspaceSize = input.BoeingbotWorkspaceSize
 		} else {
-			settings.Spec.NanobotWorkspaceSize = ""
+			settings.Spec.BoeingbotWorkspaceSize = ""
 		}
 
-		if input.NanobotAgentResources != "" {
-			settings.Spec.NanobotAgentResources = &nanobotAgentResources
+		if input.BoeingbotAgentResources != "" {
+			settings.Spec.BoeingbotAgentResources = &boeingbotAgentResources
 		} else {
-			settings.Spec.NanobotAgentResources = nil
+			settings.Spec.BoeingbotAgentResources = nil
 		}
 
 		return req.Storage.Update(req.Context(), &settings)
@@ -239,16 +239,16 @@ func convertK8sSettings(settings v1.K8sSettings) (types.K8sSettings, error) {
 		result.StorageClassName = *settings.Spec.StorageClassName
 	}
 
-	if settings.Spec.NanobotWorkspaceSize != "" {
-		result.NanobotWorkspaceSize = settings.Spec.NanobotWorkspaceSize
+	if settings.Spec.BoeingbotWorkspaceSize != "" {
+		result.BoeingbotWorkspaceSize = settings.Spec.BoeingbotWorkspaceSize
 	}
 
-	if settings.Spec.NanobotAgentResources != nil {
-		nanobotAgentResourcesYAML, err := yaml.Marshal(settings.Spec.NanobotAgentResources)
+	if settings.Spec.BoeingbotAgentResources != nil {
+		boeingbotAgentResourcesYAML, err := yaml.Marshal(settings.Spec.BoeingbotAgentResources)
 		if err != nil {
 			return types.K8sSettings{}, err
 		}
-		result.NanobotAgentResources = string(nanobotAgentResourcesYAML)
+		result.BoeingbotAgentResources = string(boeingbotAgentResourcesYAML)
 	}
 
 	// Convert PSA settings

@@ -8,11 +8,11 @@ Static OAuth allows you to:
 
 - Connect to remote MCP servers that require pre-registered OAuth applications
 - Configure a single set of OAuth credentials that all users share
-- Manage OAuth settings through the Obot admin interface
+- Manage OAuth settings through the Boeing admin interface
 
 When static OAuth is configured for a remote MCP server:
 
-1. Administrators register an OAuth application with the provider and enter the credentials in Obot
+1. Administrators register an OAuth application with the provider and enter the credentials in Boeing
 2. Users can add the MCP server to their projects without needing their own OAuth apps
 3. Each user still authenticates individually through the OAuth flow using the shared client credentials
 
@@ -20,16 +20,16 @@ When static OAuth is configured for a remote MCP server:
 
 ### Step 1: Register an OAuth application with the provider
 
-Before configuring Obot, you need to register an OAuth application with the service provider. The specific steps vary by provider, but generally:
+Before configuring Boeing, you need to register an OAuth application with the service provider. The specific steps vary by provider, but generally:
 
 1. Go to the provider's developer settings or OAuth application management page
 2. Create a new OAuth application
-3. Set the callback/redirect URL to: `https://<your-obot-host>/oauth/mcp/callback`
+3. Set the callback/redirect URL to: `https://<your-boeing-host>/oauth/mcp/callback`
 4. Note the **Client ID** and **Client Secret** provided by the service
 
 ### Step 2: Create or edit a remote MCP server
 
-1. Navigate to **MCP Management > MCP Servers** in the Obot admin interface
+1. Navigate to **MCP Management > MCP Servers** in the Boeing admin interface
 2. Click **Add MCP Server** and select **Remote Server**, or edit an existing remote server
 3. Enter the remote server URL
 4. Click **Advanced Configuration** to reveal additional options
@@ -80,14 +80,14 @@ This example demonstrates configuring the GitHub remote MCP server.
 1. Go to [GitHub Developer Settings](https://github.com/settings/developers)
 2. Click **OAuth Apps** > **New OAuth App**
 3. Fill in the application details:
-   - **Application name**: A descriptive name (e.g., "Obot MCP Integration")
-   - **Homepage URL**: Your Obot instance URL
-   - **Authorization callback URL**: `https://<your-obot-host>/oauth/mcp/callback`
+   - **Application name**: A descriptive name (e.g., "Boeing MCP Integration")
+   - **Homepage URL**: Your Boeing instance URL
+   - **Authorization callback URL**: `https://<your-boeing-host>/oauth/mcp/callback`
 4. Click **Register application**
 5. Copy the **Client ID**
 6. Click **Generate a new client secret** and copy the secret
 
-### Configure the remote MCP server in Obot
+### Configure the remote MCP server in Boeing
 
 1. Navigate to **MCP Management > MCP Servers**
 2. Click **Add MCP Server** > **Remote Server**

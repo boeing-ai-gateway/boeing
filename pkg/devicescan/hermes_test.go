@@ -6,7 +6,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/obot-platform/obot/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
 )
 
 func writeHermesConfig(t *testing.T, home, body string) {

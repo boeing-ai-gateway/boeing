@@ -1,19 +1,19 @@
 <script lang="ts">
-	import Threads from '$lib/components/nanobot/Threads.svelte';
+	import Threads from '$lib/components/boeingbot/Threads.svelte';
 	import { errors } from '$lib/stores';
-	import { nanobotChat } from '$lib/stores/nanobotChat.svelte';
+	import { boeingbotChat } from '$lib/stores/boeingbotChat.svelte';
 	import { goto } from '$lib/url';
 
 	let selectedSessionId = $state<string | undefined>(undefined);
 
 	async function handleRenameSession(sessionId: string, newTitle: string) {
-		if (!$nanobotChat?.api) {
-			errors.append(new Error('Nanobot API not found'));
+		if (!$boeingbotChat?.api) {
+			errors.append(new Error('Boeingbot API not found'));
 			return;
 		}
 		try {
-			await $nanobotChat.api.renameSession(sessionId, newTitle);
-			nanobotChat.update((data) => {
+			await $boeingbotChat.api.renameSession(sessionId, newTitle);
+			boeingbotChat.update((data) => {
 				if (!data) return data;
 				const sessionIndex = data.sessions.findIndex((s) => s.id === sessionId);
 				if (sessionIndex === -1) return data;
@@ -30,14 +30,14 @@
 	}
 
 	async function handleDeleteSession(sessionId: string) {
-		if (!$nanobotChat?.api) {
-			errors.append(new Error('Nanobot API not found'));
+		if (!$boeingbotChat?.api) {
+			errors.append(new Error('Boeingbot API not found'));
 			return;
 		}
 		const isCurrentViewedSession = selectedSessionId === sessionId;
 		try {
-			await $nanobotChat.api.deleteSession(sessionId);
-			nanobotChat.update((data) => {
+			await $boeingbotChat.api.deleteSession(sessionId);
+			boeingbotChat.update((data) => {
 				if (data) {
 					data.sessions = data.sessions.filter((s) => s.id !== sessionId);
 					if (data.sessionId === sessionId) {
@@ -61,7 +61,7 @@
 	}
 
 	function handleCreateSession() {
-		nanobotChat.update((data) => {
+		boeingbotChat.update((data) => {
 			if (data) {
 				data.sessionId = undefined;
 			}
@@ -76,15 +76,15 @@
 		<h2 class="text-xl font-semibold md:text-2xl">Sessions</h2>
 	</div>
 	<Threads
-		sessions={$nanobotChat?.sessions ?? []}
+		sessions={$boeingbotChat?.sessions ?? []}
 		onRename={handleRenameSession}
 		onDelete={handleDeleteSession}
 		onCreateSession={handleCreateSession}
-		isLoading={$nanobotChat?.isThreadsLoading ?? false}
+		isLoading={$boeingbotChat?.isThreadsLoading ?? false}
 		{selectedSessionId}
 	/>
 </div>
 
 <svelte:head>
-	<title>Obot | Sessions</title>
+	<title>Boeing | Sessions</title>
 </svelte:head>

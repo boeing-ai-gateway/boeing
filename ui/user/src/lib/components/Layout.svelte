@@ -1,5 +1,5 @@
 <script lang="ts" module>
-	const NAV_COLLAPSED_KEY = '@obot/layout/nav-collapsed';
+	const NAV_COLLAPSED_KEY = '@boeing/layout/nav-collapsed';
 
 	const defaultNavCollapsed: Record<string, boolean> = {
 		'agent-management': true,
@@ -202,7 +202,7 @@
 	let nav = $state<HTMLDivElement>();
 	let pathname = $derived(page.url.pathname);
 
-	// Whether the Obot Agent feature is enabled server-side. When false, agent entry
+	// Whether the Boeing Agent feature is enabled server-side. When false, agent entry
 	// points are removed entirely (not just disabled). When the feature is enabled but
 	// models aren't configured, agentLinkEnabled is false so links show as disabled.
 	let agentsFeatureEnabled = $derived(version.current.agentsEnabled !== false);
@@ -261,7 +261,7 @@
 			id: 'install-cli',
 			href: '/install-cli',
 			icon: LogoIcon,
-			label: 'Obot CLI',
+			label: 'Boeing CLI',
 			collapsible: false
 		},
 		...(agentsFeatureEnabled
@@ -286,7 +286,7 @@
 					{
 						id: 'agent-management',
 						icon: Bot,
-						label: 'Obot Agent Management',
+						label: 'Boeing Agent Management',
 						collapsible: true,
 						items: [
 							{
@@ -649,7 +649,7 @@
 		dismissedAt?: string;
 	};
 
-	let bannerDismissed = localState<BannerDismissState | undefined>('@obot/banner', undefined, {
+	let bannerDismissed = localState<BannerDismissState | undefined>('@boeing/banner', undefined, {
 		parse: (ls) => {
 			if (!ls) return undefined;
 			try {
@@ -917,8 +917,8 @@
 {#snippet renderAuthDisabledNote()}
 	{#if !version.current.authEnabled}
 		<p class="mt-1 text-sm">
-			Obot is running with authentication disabled. Click <a
-				href="https://docs.obot.ai/installation/enabling-authentication/"
+			Boeing is running with authentication disabled. Click <a
+				href="https://docs.boeing.ai/installation/enabling-authentication/"
 				rel="external noopener noreferrer"
 				target="_blank"
 				class="text-link">here</a

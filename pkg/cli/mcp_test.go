@@ -9,9 +9,9 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/obot-platform/cmd"
-	"github.com/obot-platform/obot/apiclient"
-	"github.com/obot-platform/obot/apiclient/types"
+	"github.com/boeing-ai-gateway/cmd"
+	"github.com/boeing-ai-gateway/boeing/apiclient"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
 )
 
 func TestMCPSearchPaginatesAndWritesTable(t *testing.T) {
@@ -36,7 +36,7 @@ func TestMCPSearchPaginatesAndWritesTable(t *testing.T) {
 			}
 			_ = json.NewEncoder(w).Encode(types.RegistryServerList{
 				Servers: []types.RegistryServerResponse{
-					registryTestServer("io.example.one", "One", "first", "https://obot.example.com/mcp-connect/one", false),
+					registryTestServer("io.example.one", "One", "first", "https://boeing.example.com/mcp-connect/one", false),
 					registryTestServer("io.example/two", "Two", "second", "", true),
 				},
 				Metadata: &types.RegistryServerListMetadata{NextCursor: "two", Count: 2},
@@ -64,7 +64,7 @@ func TestMCPSearchPaginatesAndWritesTable(t *testing.T) {
 
 	for _, want := range []string{
 		"TITLE", "DESCRIPTION", "STATUS", "URL",
-		"One", "first", "ready", "https://obot.example.com/mcp-connect/one",
+		"One", "first", "ready", "https://boeing.example.com/mcp-connect/one",
 		"Two", "second", "configuration required", server.URL + "/mcp-servers/c/two",
 		"Three", "third", "unknown",
 	} {
@@ -84,7 +84,7 @@ func TestMCPSearchJSONMode(t *testing.T) {
 		}
 		_ = json.NewEncoder(w).Encode(types.RegistryServerList{
 			Servers: []types.RegistryServerResponse{
-				registryTestServer("io.example.github", "GitHub", "GitHub MCP server", "https://obot.example.com/mcp-connect/github", false),
+				registryTestServer("io.example.github", "GitHub", "GitHub MCP server", "https://boeing.example.com/mcp-connect/github", false),
 			},
 			Metadata: &types.RegistryServerListMetadata{Count: 1},
 		})
@@ -162,7 +162,7 @@ func TestMCPSearchRegistryAuthErrors(t *testing.T) {
 		status int
 		want   string
 	}{
-		{status: http.StatusUnauthorized, want: `registry search requires login; run "obot login" first`},
+		{status: http.StatusUnauthorized, want: `registry search requires login; run "boeing login" first`},
 		{status: http.StatusForbidden, want: "authenticated user is not authorized to access the registry endpoint"},
 	}
 
@@ -184,14 +184,14 @@ func TestMCPSearchRegistryAuthErrors(t *testing.T) {
 	}
 }
 
-func mcpTestRoot(baseURL string) *Obot {
-	return &Obot{Client: &apiclient.Client{
+func mcpTestRoot(baseURL string) *Boeing {
+	return &Boeing{Client: &apiclient.Client{
 		BaseURL: baseURL + "/api",
 		Token:   "test-token",
 	}}
 }
 
-func executeMCPTestCommand(root *Obot, args ...string) (string, error) {
+func executeMCPTestCommand(root *Boeing, args ...string) (string, error) {
 	var stdout bytes.Buffer
 	cmd := cmd.Command(&MCP{root: root})
 	cmd.SetContext(context.Background())
@@ -213,7 +213,7 @@ func registryTestServer(name, title, description, remoteURL string, configuratio
 		server.Server.Remotes = []types.RegistryServerRemote{{Type: "streamable-http", URL: remoteURL}}
 	}
 	if configurationRequired {
-		server.Meta.Obot = &types.RegistryObotMeta{ConfigurationRequired: true}
+		server.Meta.Boeing = &types.RegistryBoeingMeta{ConfigurationRequired: true}
 	}
 	return server
 }

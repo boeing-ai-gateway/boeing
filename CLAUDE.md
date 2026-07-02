@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Obot is an open-source platform for implementing Model Context Protocol (MCP) technologies. It provides MCP hosting (Docker/Kubernetes), an MCP registry, an MCP gateway, and Obot Chat (a built-in chat client supporting OpenAI and Anthropic models).
+Boeing is an open-source platform for implementing Model Context Protocol (MCP) technologies. It provides MCP hosting (Docker/Kubernetes), an MCP registry, an MCP gateway, and Boeing Chat (a built-in chat client supporting OpenAI and Anthropic models).
 
 ## Tech Stack
 
@@ -22,7 +22,7 @@ make dev-open         # Same as above, but opens browser automatically
 
 ### Building
 ```bash
-make build            # Build Go binary to bin/obot
+make build            # Build Go binary to bin/boeing
 make ui               # Build user UI (both browser and Node targets)
 make all              # Build UI + Go binary
 ```
@@ -69,7 +69,7 @@ make serve-docs       # Start local docs server
   - `api/` - REST API implementation with handlers in `api/handlers/`
   - `controller/` - Kubernetes-style controllers and data handlers
   - `mcp/` - MCP protocol implementation (Docker and Kubernetes runners)
-  - `storage/` - CRD-style storage layer with resource types in `apis/obot.obot.ai/v1/`
+  - `storage/` - CRD-style storage layer with resource types in `apis/boeing.boeing.ai/v1/`
   - `gateway/` - MCP gateway for proxying and access control
   - `invoke/` - Agent/workflow invocation engine (integrates with GPTScript)
   - `services/` - Dependency injection container (`config.go` has all service dependencies)
@@ -88,9 +88,9 @@ make serve-docs       # Start local docs server
 ### MCP Server Types and Runtimes
 
 **Server Types:**
-- **Single-user**: No multitenancy - Obot deploys an instance per user. Stored as `MCPServerCatalogEntry` with runtime `npx`, `uvx`, or `containerized`
+- **Single-user**: No multitenancy - Boeing deploys an instance per user. Stored as `MCPServerCatalogEntry` with runtime `npx`, `uvx`, or `containerized`
 - **Multi-user**: Supports multitenancy - one instance for all users. Stored as `MCPServer`
-- **Remote**: Runs outside Obot. Stored as `MCPServerCatalogEntry` with runtime `remote`
+- **Remote**: Runs outside Boeing. Stored as `MCPServerCatalogEntry` with runtime `remote`
 - **Composite**: Points to tools from multiple other servers. Stored as `MCPServerCatalogEntry` with runtime `composite`
 
 **Runtimes:**
@@ -108,9 +108,9 @@ make serve-docs       # Start local docs server
 
 ### MCP Registry API
 
-Obot serves the MCP Registry API (open standard) at `/v0.1` routes.
+Boeing serves the MCP Registry API (open standard) at `/v0.1` routes.
 
-### Obot Chat
+### Boeing Chat
 
 Users create Projects (configurations of MCP servers) and can add any MCPServers/MCPServerCatalogEntries they have access to. Each project supports multiple chat threads.
 
@@ -129,6 +129,6 @@ Uses golangci-lint v2.9.0 with these linters enabled: errcheck, govet, ineffassi
 ## Module Structure
 
 Main module with local sub-modules:
-- `github.com/obot-platform/obot` (main)
-- `github.com/obot-platform/obot/apiclient` → `./apiclient`
-- `github.com/obot-platform/obot/logger` → `./logger`
+- `github.com/boeing-ai-gateway/boeing` (main)
+- `github.com/boeing-ai-gateway/boeing/apiclient` → `./apiclient`
+- `github.com/boeing-ai-gateway/boeing/logger` → `./logger`

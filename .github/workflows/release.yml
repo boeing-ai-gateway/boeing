@@ -47,7 +47,7 @@ jobs:
         uses: peter-evans/repository-dispatch@v3
         with:
           token: ${{ secrets.TOOLS_DISPATCH_PAT }}
-          repository: obot-platform/providers
+          repository: boeing-ai-gateway/providers
           event-type: release
           client-payload: '{"tag": "${{ github.ref_name }}"}'
 
@@ -55,7 +55,7 @@ jobs:
         uses: peter-evans/repository-dispatch@v3
         with:
           token: ${{ secrets.ENTERPRISE_TOOLS_DISPATCH_PAT }}
-          repository: obot-platform/enterprise-providers
+          repository: boeing-ai-gateway/enterprise-providers
           event-type: release
           client-payload: '{"tag": "${{ github.ref_name }}"}'
 
@@ -83,8 +83,8 @@ jobs:
           Invoke-WebRequest -Uri 'https://aka.ms/wingetcreate/latest' -OutFile 'wingetcreate.exe'
       - name: Create WinGet Package Update Pull Request
         run: |
-          $url = "${{ github.server_url }}/${{ github.repository }}/releases/download/${{ github.ref_name }}/obot_${{ github.ref_name }}_windows_amd64.zip"
-          ./wingetcreate.exe update --submit --token "${{ secrets.WINGET_GH_TOKEN }}" --urls $url --version "${{ github.ref_name }}" obot-platform.obot
+          $url = "${{ github.server_url }}/${{ github.repository }}/releases/download/${{ github.ref_name }}/boeing_${{ github.ref_name }}_windows_amd64.zip"
+          ./wingetcreate.exe update --submit --token "${{ secrets.WINGET_GH_TOKEN }}" --urls $url --version "${{ github.ref_name }}" boeing-ai-gateway.boeing
   chart-release:
     needs: release-tag
     runs-on: ubuntu-latest
@@ -101,7 +101,7 @@ jobs:
       - name: Checkout GitHub Pages Repository
         uses: actions/checkout@v4
         with:
-          repository: obot-platform/charts
+          repository: boeing-ai-gateway/charts
           token: ${{ secrets.CHARTS_REPO_TOKEN }}
           path: gh-pages
 
@@ -117,7 +117,7 @@ jobs:
           cd gh-pages
           mkdir -p charts
           mv ../.packaged/* charts/
-          helm repo index . --url https://charts.obot.ai/ --merge index.yaml
+          helm repo index . --url https://charts.boeing.ai/ --merge index.yaml
 
       - name: Commit and Push Changes
         run: |

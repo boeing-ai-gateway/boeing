@@ -34,14 +34,14 @@ const sitemapIgnorePatterns = [
 ];
 
 const config: Config = {
-  title: "Obot Docs",
+  title: "Boeing Docs",
   tagline: "",
   favicon: "img/favicon.ico",
-  url: "https://docs.obot.ai",
+  url: "https://docs.boeing.ai",
   baseUrl: "/",
   trailingSlash: true,
-  organizationName: "obot-platform",
-  projectName: "obot",
+  organizationName: "boeing-ai-gateway",
+  projectName: "boeing",
   onBrokenLinks: "throw",
 
   i18n: {
@@ -80,11 +80,11 @@ const config: Config = {
           },
           {
             from: "/configuration/workspace-provider",
-            to: "/concepts/obot-agent",
+            to: "/concepts/boeing-agent",
           },
           {
             from: "/functionality/chat/overview",
-            to: "/concepts/obot-agent",
+            to: "/concepts/boeing-agent",
           },
         ],
       },
@@ -97,7 +97,7 @@ const config: Config = {
       {
         docs: {
           sidebarPath: "./sidebars.ts",
-          editUrl: "https://github.com/obot-platform/obot/tree/main/docs",
+          editUrl: "https://github.com/boeing-ai-gateway/boeing/tree/main/docs",
           routeBasePath: "/", // Serve the docs at the site's root
 
           // Versioning configuration - dynamically generated from versions.json
@@ -125,12 +125,12 @@ const config: Config = {
 
   themeConfig: {
     // Replace with your project's social card
-    image: "img/obot-logo-blue-black-text.svg",
+    image: "img/boeing-logo-blue-black-text.svg",
     navbar: {
       logo: {
-        alt: "Obot Logo",
-        src: "img/obot-logo-blue-black-text.svg",
-        srcDark: "img/obot-logo-blue-white-text.svg",
+        alt: "Boeing Logo",
+        src: "img/boeing-logo-blue-black-text.svg",
+        srcDark: "img/boeing-logo-blue-white-text.svg",
       },
       items: [
         {
@@ -139,7 +139,7 @@ const config: Config = {
           dropdownActiveClassDisabled: true,
         },
         {
-          href: "https://github.com/obot-platform/obot",
+          href: "https://github.com/boeing-ai-gateway/boeing",
           label: "GitHub",
           position: "right",
         },
@@ -155,14 +155,14 @@ const config: Config = {
       links: [
         {
           label: "GitHub",
-          to: "https://github.com/obot-platform/obot",
+          to: "https://github.com/boeing-ai-gateway/boeing",
         },
         {
           label: "Discord",
           to: "https://discord.gg/9sSf4UyAMC",
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Obot AI, Inc`,
+      copyright: `Copyright © ${new Date().getFullYear()} Boeing AI, Inc`,
     },
     prism: {
       theme: prismThemes.github,

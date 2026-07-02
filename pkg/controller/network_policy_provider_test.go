@@ -4,8 +4,8 @@ import (
 	"context"
 	"testing"
 
-	"github.com/obot-platform/obot/pkg/serviceaccounts"
-	"github.com/obot-platform/obot/pkg/services"
+	"github.com/boeing-ai-gateway/boeing/pkg/serviceaccounts"
+	"github.com/boeing-ai-gateway/boeing/pkg/services"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
@@ -35,15 +35,15 @@ func newNetworkPolicyProviderController(t *testing.T, installer networkPolicyPro
 	return &Controller{
 		services: &services.Services{
 			MCPRuntimeBackend:                    "kubernetes",
-			MCPServerNamespace:                   "obot-mcp",
+			MCPServerNamespace:                   "boeing-mcp",
 			MCPClusterDomain:                     "cluster.local",
 			MCPNetworkPolicyEnabled:              true,
 			MCPNetworkPolicyProviderChartRepo:    "https://charts.example.com",
 			MCPNetworkPolicyProviderChartName:    "network-policy-provider",
 			MCPNetworkPolicyProviderChartVersion: "1.2.3",
-			ServiceName:                          "obot",
-			ServiceNamespace:                     "obot-system",
-			ServiceAccountName:                   "obot-obot",
+			ServiceName:                          "boeing",
+			ServiceNamespace:                     "boeing-system",
+			ServiceAccountName:                   "boeing-gateway",
 			StorageListenPort:                    8443,
 		},
 		providerInstaller: installer,
@@ -58,18 +58,18 @@ func TestEnsureNetworkPolicyProviderInstallsChartRelease(t *testing.T) {
 	require.NoError(t, controller.reconcileNetworkPolicyProvider(ctx))
 	require.NotNil(t, installer.installed)
 	assert.Equal(t, networkPolicyProviderReleaseName, installer.installed.ReleaseName)
-	assert.Equal(t, "obot-system", installer.installed.ReleaseNamespace)
+	assert.Equal(t, "boeing-system", installer.installed.ReleaseNamespace)
 	assert.Equal(t, "https://charts.example.com", installer.installed.ChartRepoURL)
 	assert.Equal(t, "network-policy-provider", installer.installed.ChartName)
 	assert.Equal(t, "1.2.3", installer.installed.ChartVersion)
-	assert.Equal(t, "obot-mcp", installer.installed.Values["mcpRuntimeNamespace"])
-	assert.Equal(t, "https://obot.obot-system.svc.cluster.local:8443", installer.installed.Values["obotStorageURL"])
+	assert.Equal(t, "boeing-mcp", installer.installed.Values["mcpRuntimeNamespace"])
+	assert.Equal(t, "https://boeing.boeing-system.svc.cluster.local:8443", installer.installed.Values["boeingStorageURL"])
 	assert.Equal(t, serviceaccounts.NetworkPolicySecretName, installer.installed.Values["secretName"])
-	assert.Equal(t, "/var/run/secrets/obot-network-policy-provider/apiKey", installer.installed.Values["obotStorageTokenFile"])
-	obotValues := installer.installed.Values["obot"].(map[string]any)
-	serviceAccountValues := obotValues["serviceAccount"].(map[string]any)
-	assert.Equal(t, "obot-obot", serviceAccountValues["name"])
-	assert.Equal(t, "obot-system", serviceAccountValues["namespace"])
+	assert.Equal(t, "/var/run/secrets/boeing-network-policy-provider/apiKey", installer.installed.Values["boeingStorageTokenFile"])
+	boeingValues := installer.installed.Values["boeing"].(map[string]any)
+	serviceAccountValues := boeingValues["serviceAccount"].(map[string]any)
+	assert.Equal(t, "boeing-gateway", serviceAccountValues["name"])
+	assert.Equal(t, "boeing-system", serviceAccountValues["namespace"])
 }
 
 func TestEnsureNetworkPolicyProviderMergesValuesBlob(t *testing.T) {
@@ -85,7 +85,7 @@ extraFlag: true
 	require.NotNil(t, installer.installed)
 	assert.Equal(t, "custom-runtime", installer.installed.Values["mcpRuntimeNamespace"])
 	assert.Equal(t, true, installer.installed.Values["extraFlag"])
-	assert.Equal(t, "https://obot.obot-system.svc.cluster.local:8443", installer.installed.Values["obotStorageURL"])
+	assert.Equal(t, "https://boeing.boeing-system.svc.cluster.local:8443", installer.installed.Values["boeingStorageURL"])
 }
 
 func TestEnsureNetworkPolicyProviderUninstallsWhenDisabled(t *testing.T) {
@@ -96,7 +96,7 @@ func TestEnsureNetworkPolicyProviderUninstallsWhenDisabled(t *testing.T) {
 
 	require.NoError(t, controller.reconcileNetworkPolicyProvider(ctx))
 	assert.True(t, installer.uninstallCalled)
-	assert.Equal(t, "obot-system", installer.uninstallNS)
+	assert.Equal(t, "boeing-system", installer.uninstallNS)
 	assert.Nil(t, installer.installed)
 }
 
@@ -142,5 +142,5 @@ func TestEnsureNetworkPolicyProviderUsesConfiguredClusterDomain(t *testing.T) {
 
 	require.NoError(t, controller.reconcileNetworkPolicyProvider(ctx))
 	require.NotNil(t, installer.installed)
-	assert.Equal(t, "https://obot.obot-system.svc.example.internal:8443", installer.installed.Values["obotStorageURL"])
+	assert.Equal(t, "https://boeing.boeing-system.svc.example.internal:8443", installer.installed.Values["boeingStorageURL"])
 }

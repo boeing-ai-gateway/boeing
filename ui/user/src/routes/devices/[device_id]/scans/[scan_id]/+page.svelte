@@ -203,7 +203,7 @@
 </script>
 
 <svelte:head>
-	<title>Obot | Device Scan</title>
+	<title>Boeing | Device Scan</title>
 </svelte:head>
 
 <Layout

@@ -4,7 +4,7 @@ title: Branding
 
 # Branding
 
-Branding allows administrators to customize the visual appearance of the Obot platform. Access this page from **Branding** in the sidebar.
+Branding allows administrators to customize the visual appearance of the Boeing platform. Access this page from **Branding** in the sidebar.
 
 ## Theme
 
@@ -27,7 +27,7 @@ Use the color swatch or enter a value in the text field. Supported formats inclu
 
 #### Tinted
 
-Derive surfaces from Obot’s built-in default surface ramp using three sliders for the active mode:
+Derive surfaces from Boeing’s built-in default surface ramp using three sliders for the active mode:
 
 - **Hue**: Shifts the overall surface hue
 - **Tint**: Adds color tint (0–100%)
@@ -78,11 +78,11 @@ These apply across light and dark mode:
 Full logos depend on the selected **Mode** (light or dark):
 
 - **Full Logo**: The main logo shown in the navbar (separate versions for light and dark schemes)
-- **Full Enterprise Logo**: Logo used when running enterprise version of Obot
-- **Full Chat Logo**: Logo used for agent chatting in Obot
+- **Full Enterprise Logo**: Logo used when running enterprise version of Boeing
+- **Full Chat Logo**: Logo used for agent chatting in Boeing
 
 Changes preview live in the main area; they are not stored until you click **Save**.
 
 ## Restoring Defaults
 
-Click **Restore Default** to reset all preferences to the original Obot theme.
+Click **Restore Default** to reset all preferences to the original Boeing theme.

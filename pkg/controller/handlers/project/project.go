@@ -5,10 +5,10 @@ import (
 	"fmt"
 	"maps"
 
-	"github.com/obot-platform/nah/pkg/router"
-	gclient "github.com/obot-platform/obot/pkg/gateway/client"
-	v1 "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1"
-	"github.com/obot-platform/obot/pkg/system"
+	"github.com/boeing-ai-gateway/nah/pkg/router"
+	gclient "github.com/boeing-ai-gateway/boeing/pkg/gateway/client"
+	v1 "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1"
+	"github.com/boeing-ai-gateway/boeing/pkg/system"
 	"gorm.io/gorm"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/fields"
@@ -51,7 +51,7 @@ func (h *Handler) MigrateProjectV2(req router.Request, _ router.Response) error 
 		return err
 	}
 
-	var agents v1.NanobotAgentList
+	var agents v1.BoeingbotAgentList
 	if err := req.List(&agents, &kclient.ListOptions{
 		Namespace: projectV2.Namespace,
 		FieldSelector: fields.SelectorFromSet(map[string]string{

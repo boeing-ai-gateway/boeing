@@ -3,7 +3,7 @@ package authz
 import (
 	"testing"
 
-	"github.com/obot-platform/obot/pkg/serviceaccounts"
+	"github.com/boeing-ai-gateway/boeing/pkg/serviceaccounts"
 	"k8s.io/apiserver/pkg/authentication/user"
 	"k8s.io/apiserver/pkg/authorization/authorizer"
 )
@@ -38,7 +38,7 @@ func TestNetworkPolicyProviderServiceAccountCanReadMCPNetworkPolicies(t *testing
 			User:            networkPolicyProviderUser(),
 			Verb:            verb,
 			ResourceRequest: true,
-			APIGroup:        "obot.obot.ai",
+			APIGroup:        "boeing.boeing.ai",
 			Resource:        "mcpnetworkpolicys",
 		})
 		if err != nil {
@@ -56,7 +56,7 @@ func TestNetworkPolicyProviderServiceAccountStillCannotReadUnrelatedResources(t 
 		User:            networkPolicyProviderUser(),
 		Verb:            "list",
 		ResourceRequest: true,
-		APIGroup:        "obot.obot.ai",
+		APIGroup:        "boeing.boeing.ai",
 		Resource:        "threads",
 	})
 	if err != nil {
@@ -72,7 +72,7 @@ func TestNetworkPolicyProviderServiceAccountCanReadDiscoveryEndpoints(t *testing
 	for _, path := range []string{
 		"/api",
 		"/apis",
-		"/apis/obot.obot.ai/v1",
+		"/apis/boeing.boeing.ai/v1",
 	} {
 		decision, _, err := a.Authorize(t.Context(), authorizer.AttributesRecord{
 			User:            networkPolicyProviderUser(),

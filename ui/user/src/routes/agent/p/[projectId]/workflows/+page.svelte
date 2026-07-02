@@ -1,19 +1,19 @@
 <script lang="ts">
 	import { afterNavigate } from '$app/navigation';
 	import Confirm from '$lib/components/Confirm.svelte';
-	import ConfirmDiffWorkflow from '$lib/components/nanobot/ConfirmDiffWorkflow.svelte';
-	import PublishedWorkflowInstallModal from '$lib/components/nanobot/PublishedWorkflowInstallModal.svelte';
+	import ConfirmDiffWorkflow from '$lib/components/boeingbot/ConfirmDiffWorkflow.svelte';
+	import PublishedWorkflowInstallModal from '$lib/components/boeingbot/PublishedWorkflowInstallModal.svelte';
 	import {
 		latestVersionSubjects,
 		sharingLabel
-	} from '$lib/components/nanobot/publishedArtifactSubjects';
-	import { NanobotService } from '$lib/services/index.js';
-	import type { ProjectLayoutContext, PublishedArtifactVersion } from '$lib/services/nanobot/types';
-	import { PROJECT_LAYOUT_CONTEXT } from '$lib/services/nanobot/types';
-	import type { PublishedArtifact } from '$lib/services/nanobot/types';
-	import { hasNewerVersion } from '$lib/services/nanobot/versioning';
+	} from '$lib/components/boeingbot/publishedArtifactSubjects';
+	import { BoeingbotService } from '$lib/services/index.js';
+	import type { ProjectLayoutContext, PublishedArtifactVersion } from '$lib/services/boeingbot/types';
+	import { PROJECT_LAYOUT_CONTEXT } from '$lib/services/boeingbot/types';
+	import type { PublishedArtifact } from '$lib/services/boeingbot/types';
+	import { hasNewerVersion } from '$lib/services/boeingbot/versioning';
 	import { errors, profile, responsive } from '$lib/stores';
-	import { nanobotChat } from '$lib/stores/nanobotChat.svelte';
+	import { boeingbotChat } from '$lib/stores/boeingbotChat.svelte';
 	import { formatTimeAgo } from '$lib/time.js';
 	import { goto } from '$lib/url';
 	import { CircleAlert, FolderInput, Play, Search, Trash2, Workflow } from 'lucide-svelte';
@@ -60,8 +60,8 @@
 	let deletingOrphanedWorkflows = $state(false);
 
 	let workflows = $derived(
-		$nanobotChat?.resources
-			? $nanobotChat.resources.filter((r) => r.uri.startsWith('workflow:///'))
+		$boeingbotChat?.resources
+			? $boeingbotChat.resources.filter((r) => r.uri.startsWith('workflow:///'))
 			: []
 	);
 
@@ -178,8 +178,8 @@
 	const projectLayout = getContext<ProjectLayoutContext>(PROJECT_LAYOUT_CONTEXT);
 
 	function handleSelectWorkflow(workflowName: string) {
-		$nanobotChat?.api.createSession().then((sessionClient) => {
-			nanobotChat.update((data) => {
+		$boeingbotChat?.api.createSession().then((sessionClient) => {
+			boeingbotChat.update((data) => {
 				if (data) {
 					if (data.chat) {
 						data.chat.close();
@@ -209,10 +209,10 @@
 	}
 
 	function refresh() {
-		$nanobotChat?.api
+		$boeingbotChat?.api
 			.listResources()
 			.then((resources) => {
-				nanobotChat.update((data) => {
+				boeingbotChat.update((data) => {
 					if (data) {
 						data.resources = resources;
 					}
@@ -234,11 +234,11 @@
 				installingPublishedArtifact = undefined;
 			}
 		};
-		$nanobotChat?.api
+		$boeingbotChat?.api
 			.listResources()
 			.then((resources) => {
 				const match = resources.find((r) => r.name === workflowName);
-				nanobotChat.update((data) => {
+				boeingbotChat.update((data) => {
 					if (data) {
 						data.resources = resources;
 					}
@@ -276,7 +276,7 @@
 	});
 
 	afterNavigate(({ from }) => {
-		if (!from?.url || !$nanobotChat?.api) return;
+		if (!from?.url || !$boeingbotChat?.api) return;
 		loading = true;
 		refresh();
 	});
@@ -648,11 +648,11 @@
 				(w) => w.name === confirmDeleteWorkflow?.id && w.authorID === profile.current.id
 			);
 			if (matchingPublishedArtifact) {
-				await NanobotService.deletePublishedArtifact(matchingPublishedArtifact.id);
-				publishedWorkflows = await NanobotService.listPublishedWorkflows();
+				await BoeingbotService.deletePublishedArtifact(matchingPublishedArtifact.id);
+				publishedWorkflows = await BoeingbotService.listPublishedWorkflows();
 			}
-			await $nanobotChat?.api.deleteWorkflow(confirmDeleteWorkflow.uri);
-			nanobotChat.update((data) => {
+			await $boeingbotChat?.api.deleteWorkflow(confirmDeleteWorkflow.uri);
+			boeingbotChat.update((data) => {
 				if (data) {
 					data.resources = data.resources.filter((r) => r.uri !== confirmDeleteWorkflow?.uri);
 				}
@@ -696,9 +696,9 @@
 		deletingOrphanedWorkflows = true;
 		try {
 			for (const workflow of orphanedWorkflows) {
-				await NanobotService.deletePublishedArtifact(workflow.id);
+				await BoeingbotService.deletePublishedArtifact(workflow.id);
 			}
-			publishedWorkflows = await NanobotService.listPublishedWorkflows();
+			publishedWorkflows = await BoeingbotService.listPublishedWorkflows();
 		} catch (err) {
 			errors.append(`Failed to clean up orphaned workflows: ${err}`);
 		} finally {
@@ -724,5 +724,5 @@
 </Confirm>
 
 <svelte:head>
-	<title>Obot | Workflows</title>
+	<title>Boeing | Workflows</title>
 </svelte:head>

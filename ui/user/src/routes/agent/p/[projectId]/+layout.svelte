@@ -3,14 +3,14 @@
 	import { resolve } from '$app/paths';
 	import { page } from '$app/state';
 	import Layout from '$lib/components/Layout.svelte';
-	import FileEditor from '$lib/components/nanobot/FileEditor.svelte';
-	import QuickAccess from '$lib/components/nanobot/QuickAccess.svelte';
+	import FileEditor from '$lib/components/boeingbot/FileEditor.svelte';
+	import QuickAccess from '$lib/components/boeingbot/QuickAccess.svelte';
 	import Profile from '$lib/components/navbar/Profile.svelte';
-	import * as nanobotLayout from '$lib/context/nanobotLayout.svelte';
-	import { ChatSession } from '$lib/services/nanobot/chat/index.svelte';
-	import { PROJECT_LAYOUT_CONTEXT, type ProjectLayoutContext } from '$lib/services/nanobot/types';
+	import * as boeingbotLayout from '$lib/context/boeingbotLayout.svelte';
+	import { ChatSession } from '$lib/services/boeingbot/chat/index.svelte';
+	import { PROJECT_LAYOUT_CONTEXT, type ProjectLayoutContext } from '$lib/services/boeingbot/types';
 	import { responsive, profile } from '$lib/stores';
-	import { nanobotChat } from '$lib/stores/nanobotChat.svelte';
+	import { boeingbotChat } from '$lib/stores/boeingbotChat.svelte';
 	import { clampThreadContentReportedWidth } from '$lib/utils';
 	import ImpersonateBanner from '../../ImpersonateBanner.svelte';
 	import MobileDock from '../../MobileDock.svelte';
@@ -52,7 +52,7 @@
 	let titleInterval: ReturnType<typeof setInterval> | null = null;
 	let titleIntervalAttempts = 0;
 	const MAX_TITLE_INTERVAL_ATTEMPTS = 5;
-	const layout = nanobotLayout.getLayout();
+	const layout = boeingbotLayout.getLayout();
 	const projectLayoutContext = $state<ProjectLayoutContext>({
 		handleFileOpen,
 		setThreadContentWidth: (w: number) => (threadContentWidth = clampThreadContentReportedWidth(w)),
@@ -76,7 +76,7 @@
 			titleInterval = null;
 		}
 		chat?.close();
-		nanobotChat.update((data) => {
+		boeingbotChat.update((data) => {
 			if (data) {
 				data.chat = undefined;
 				data.sessionId = undefined;
@@ -130,8 +130,8 @@
 	});
 
 	$effect(() => {
-		const api = $nanobotChat?.api;
-		const sessions = $nanobotChat?.sessions ?? [];
+		const api = $boeingbotChat?.api;
+		const sessions = $boeingbotChat?.sessions ?? [];
 		const sid = sessionId;
 		const c = chat;
 		if (!api || !sid || !c) return;
@@ -165,7 +165,7 @@
 							if (titleInterval) clearInterval(titleInterval);
 							titleInterval = null;
 							titleIntervalAttempts = 0;
-							nanobotChat.update((data) => {
+							boeingbotChat.update((data) => {
 								if (data) data.sessions = list ?? [];
 								return data;
 							});
@@ -173,7 +173,7 @@
 					});
 				}, 5000);
 			}
-			nanobotChat.update((data) => {
+			boeingbotChat.update((data) => {
 				if (data) data.sessions = list ?? [];
 				return data;
 			});
@@ -204,7 +204,7 @@
 	});
 
 	$effect(() => {
-		if (!$nanobotChat?.api) return;
+		if (!$boeingbotChat?.api) return;
 
 		const currentSessionId = sessionId;
 		const currentProjectId = projectId;
@@ -217,7 +217,7 @@
 		// Already showing the right session (e.g. restored from store or same thread) — don't replace with getSession
 		if (chat?.chatId === currentSessionId) return;
 
-		const storedChat = $nanobotChat;
+		const storedChat = $boeingbotChat;
 		const sameLiveSession =
 			storedChat?.projectId === currentProjectId &&
 			!!currentSessionId &&
@@ -241,13 +241,13 @@
 		});
 
 		if (currentSessionId) {
-			$nanobotChat.api.getSession(currentSessionId).then((existingSession) => {
+			$boeingbotChat.api.getSession(currentSessionId).then((existingSession) => {
 				const nowTid = page.url.searchParams.get('tid') ?? undefined;
 				if (nowTid !== currentSessionId) {
 					existingSession.close();
 					return;
 				}
-				const current = get(nanobotChat);
+				const current = get(boeingbotChat);
 				if (
 					current?.chat &&
 					current.chat.chatId === currentSessionId &&
@@ -257,7 +257,7 @@
 					return;
 				}
 				chat = existingSession;
-				nanobotChat.update((data) => {
+				boeingbotChat.update((data) => {
 					if (data) {
 						data.chat = existingSession;
 						data.sessionId = currentSessionId ?? undefined;
@@ -270,7 +270,7 @@
 			if (tidParam && storedChat.chat.chatId === tidParam) {
 				return;
 			}
-			nanobotChat.update((data) => {
+			boeingbotChat.update((data) => {
 				if (data) {
 					data.chat = undefined;
 					data.sessionId = undefined;
@@ -308,7 +308,7 @@
 
 <Layout
 	title={layoutName}
-	layoutContext={nanobotLayout}
+	layoutContext={boeingbotLayout}
 	classes={{
 		container: 'px-0 py-0 md:px-0',
 		childrenContainer: 'max-w-full h-[calc(100dvh-4rem)]',

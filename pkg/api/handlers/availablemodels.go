@@ -3,14 +3,14 @@ package handlers
 import (
 	"strings"
 
-	"github.com/obot-platform/obot/pkg/api/handlers/providers"
+	"github.com/boeing-ai-gateway/boeing/pkg/api/handlers/providers"
 
-	openai "github.com/obot-platform/chat-completion-client"
-	"github.com/obot-platform/obot/apiclient/types"
-	"github.com/obot-platform/obot/pkg/api"
-	"github.com/obot-platform/obot/pkg/gateway/server/dispatcher"
-	"github.com/obot-platform/obot/pkg/license"
-	v1 "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1"
+	openai "github.com/boeing-ai-gateway/chat-completion-client"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/pkg/api"
+	"github.com/boeing-ai-gateway/boeing/pkg/gateway/server/dispatcher"
+	"github.com/boeing-ai-gateway/boeing/pkg/license"
+	v1 "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1"
 	kclient "sigs.k8s.io/controller-runtime/pkg/client"
 )
 

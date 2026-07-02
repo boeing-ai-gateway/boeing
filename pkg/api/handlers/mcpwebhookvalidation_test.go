@@ -3,10 +3,10 @@ package handlers
 import (
 	"testing"
 
-	"github.com/obot-platform/obot/apiclient/types"
-	"github.com/obot-platform/obot/pkg/api"
-	v1 "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1"
-	validationpkg "github.com/obot-platform/obot/pkg/validation"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/pkg/api"
+	v1 "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1"
+	validationpkg "github.com/boeing-ai-gateway/boeing/pkg/validation"
 )
 
 func TestMCPWebhookValidationManifest_Validate(t *testing.T) {

@@ -8,7 +8,7 @@ Filters are a powerful mechanism for inspecting and controlling tool calls and t
 
 Filters can be implemented in two ways:
 
-- **MCP filter servers**: MCP servers that expose a filter tool. Obot deploys and calls the configured tool when matching MCP traffic is processed.
+- **MCP filter servers**: MCP servers that expose a filter tool. Boeing deploys and calls the configured tool when matching MCP traffic is processed.
 - **HTTP webhook filters**: HTTP endpoints that receive MCP messages from the gateway.
 
 When you configure a filter, you can narrow when it runs using selectors that target particular tool calls or MCP (Model Context Protocol) tool functions.
@@ -24,7 +24,7 @@ When you configure a filter, you can narrow when it runs using selectors that ta
 
 ## Gateway Configuration
 
-Filters can be configured in Obot as HTTP webhooks, MCP servers, or by selecting one of the built-in filters. See below for the configuration setup for each type.
+Filters can be configured in Boeing as HTTP webhooks, MCP servers, or by selecting one of the built-in filters. See below for the configuration setup for each type.
 
 ### Selectors
 
@@ -35,15 +35,15 @@ All filter types support selectors to control when your filter is triggered:
 
 ## MCP Filter Servers
 
-MCP filters can be deployed as MCP servers. Their deployment configuration is similar to other MCP servers in Obot: choose a runtime such as `remote`, `containerized`, `npx`, or `uvx`, then provide the runtime-specific configuration and any required environment variables.
+MCP filters can be deployed as MCP servers. Their deployment configuration is similar to other MCP servers in Boeing: choose a runtime such as `remote`, `containerized`, `npx`, or `uvx`, then provide the runtime-specific configuration and any required environment variables.
 
-The additional requirement for an MCP filter server is a filter tool name. Obot needs this value so it knows which tool to call when the filter runs.
+The additional requirement for an MCP filter server is a filter tool name. Boeing needs this value so it knows which tool to call when the filter runs.
 
 ### Filter Tool Contract
 
 When you write an MCP server that acts as a filter, implement the tool called by `filterConfig.toolName` with this contract:
 
-1. Obot calls one tool on the MCP server for filtering.
+1. Boeing calls one tool on the MCP server for filtering.
 2. The tool accepts the full MCP message as an argument.
 3. The tool returns a response with these fields:
 
@@ -54,17 +54,17 @@ When you write an MCP server that acts as a filter, implement the tool called by
 | `message` | The MCP message to use after filtering. For non-mutating filters, return the original message. |
 | `reason` | Human-readable explanation for the decision. Include this when rejecting or mutating a message so administrators can understand the result. |
 
-See the [obot-platform/pii-filter](https://github.com/obot-platform/pii-filter) repository for an example MCP filter server.
+See the [boeing-ai-gateway/pii-filter](https://github.com/boeing-ai-gateway/pii-filter) repository for an example MCP filter server.
 
 ## Built-in Filters
 
-Obot ships with a default set of built-in filters. These are MCP filter servers that are already configured for deployment in Obot through the system MCP catalog.
+Boeing ships with a default set of built-in filters. These are MCP filter servers that are already configured for deployment in Boeing through the system MCP catalog.
 
-The default built-in filter catalog is maintained in the [obot-platform/system-mcp-catalog](https://github.com/obot-platform/system-mcp-catalog) repository.
+The default built-in filter catalog is maintained in the [boeing-ai-gateway/system-mcp-catalog](https://github.com/boeing-ai-gateway/system-mcp-catalog) repository.
 
 ## HTTP-based Filters
 
-You can also use HTTP-based webhooks for filtering. In this case, the HTTP server would have to be deployed outside of Obot. You can then provide the following information to Obot:
+You can also use HTTP-based webhooks for filtering. In this case, the HTTP server would have to be deployed outside of Boeing. You can then provide the following information to Boeing:
 
 ### Required Configuration
 
@@ -102,7 +102,7 @@ class WebhookMessage(BaseModel):
 
 - **Signature Header**: Used for verifying the payload authenticity (when secrets are configured)
 
-`X-Obot-Signature-256`
+`X-Boeing-Signature-256`
 
 ### Response Codes
 
@@ -161,7 +161,7 @@ def validate_signature(body: bytes, signature: str, secret: str) -> bool:
     
     Args:
         body: Raw request payload
-        signature: Signature from X-Obot-Signature-256 header
+        signature: Signature from X-Boeing-Signature-256 header
         secret: Shared secret for validation
     
     Returns:
@@ -205,7 +205,7 @@ PORT = int(os.getenv("PORT", "8000"))
 @app.post("/webhook")
 async def webhook_endpoint(
     request: Request,
-    x_obot_signature_256: str = Header(alias="X-Obot-Signature-256")
+    x_boeing_signature_256: str = Header(alias="X-Boeing-Signature-256")
 ):
     """
     Main webhook endpoint that validates signatures and processes messages.
@@ -215,10 +215,10 @@ async def webhook_endpoint(
     # Log the incoming request
     logger.info(f"📥 Webhook called - Method: {request.method}, URL: {request.url}")
     logger.info(f"📄 Request body: {body.decode('utf-8', errors='replace')}")
-    logger.info(f"🔐 Signature header: {x_obot_signature_256}")
+    logger.info(f"🔐 Signature header: {x_boeing_signature_256}")
     
     # Validate signature
-    if not validate_signature(body, x_obot_signature_256, SECRET):
+    if not validate_signature(body, x_boeing_signature_256, SECRET):
         logger.error("❌ Invalid webhook signature")
         raise HTTPException(status_code=401, detail="Invalid signature")
     

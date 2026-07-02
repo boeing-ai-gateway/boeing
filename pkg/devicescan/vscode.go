@@ -3,7 +3,7 @@ package devicescan
 import (
 	"path"
 
-	"github.com/obot-platform/obot/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
 )
 
 // VS Code on-disk layout. The macOS path is relative to $HOME; on other

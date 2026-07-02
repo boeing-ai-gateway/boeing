@@ -5,21 +5,21 @@ import (
 	"os"
 
 	"github.com/fatih/color"
-	"github.com/obot-platform/cmd"
-	"github.com/obot-platform/obot/apiclient"
-	"github.com/obot-platform/obot/logger"
-	"github.com/obot-platform/obot/pkg/cli/internal"
-	"github.com/obot-platform/obot/pkg/cli/internal/localconfig"
+	"github.com/boeing-ai-gateway/cmd"
+	"github.com/boeing-ai-gateway/boeing/apiclient"
+	"github.com/boeing-ai-gateway/boeing/logger"
+	"github.com/boeing-ai-gateway/boeing/pkg/cli/internal"
+	"github.com/boeing-ai-gateway/boeing/pkg/cli/internal/localconfig"
 	"github.com/spf13/cobra"
 	"golang.org/x/term"
 )
 
-type Obot struct {
+type Boeing struct {
 	Debug  bool `usage:"Enable debug logging"`
 	Client *apiclient.Client
 }
 
-func (a *Obot) PersistentPre(*cobra.Command, []string) error {
+func (a *Boeing) PersistentPre(*cobra.Command, []string) error {
 	if os.Getenv("NO_COLOR") != "" || !term.IsTerminal(int(os.Stdout.Fd())) {
 		color.NoColor = true
 	}
@@ -36,7 +36,7 @@ func (a *Obot) PersistentPre(*cobra.Command, []string) error {
 }
 
 func New() *cobra.Command {
-	root := &Obot{
+	root := &Boeing{
 		Client: newClient(),
 	}
 	return cmd.Command(root,
@@ -52,15 +52,15 @@ func New() *cobra.Command {
 	)
 }
 
-func (a *Obot) Run(cmd *cobra.Command, _ []string) error {
+func (a *Boeing) Run(cmd *cobra.Command, _ []string) error {
 	return cmd.Help()
 }
 
 func newClient() *apiclient.Client {
-	baseURL := os.Getenv("OBOT_BASE_URL")
+	baseURL := os.Getenv("BOEING_BASE_URL")
 	if baseURL != "" {
 		if appURL, err := internal.AppURLForAPIBaseURL(baseURL); err != nil {
-			fmt.Fprintf(os.Stderr, "Warning: invalid OBOT_BASE_URL: %v\n", err)
+			fmt.Fprintf(os.Stderr, "Warning: invalid BOEING_BASE_URL: %v\n", err)
 			baseURL = ""
 		} else {
 			baseURL = localconfig.APIBaseURL(appURL)
@@ -68,7 +68,7 @@ func newClient() *apiclient.Client {
 	}
 	if baseURL == "" {
 		if cfg, err := localconfig.Load(); err != nil {
-			fmt.Fprintf(os.Stderr, "Warning: failed to load Obot config: %v\n", err)
+			fmt.Fprintf(os.Stderr, "Warning: failed to load Boeing config: %v\n", err)
 		} else if cfg.DefaultURL != "" {
 			baseURL = localconfig.APIBaseURL(cfg.DefaultURL)
 		}

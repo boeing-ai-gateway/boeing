@@ -11,10 +11,10 @@ import (
 	"strings"
 	"time"
 
-	"github.com/obot-platform/obot/pkg/auth"
-	"github.com/obot-platform/obot/pkg/gateway/types"
-	v1 "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1"
-	"github.com/obot-platform/obot/pkg/system"
+	"github.com/boeing-ai-gateway/boeing/pkg/auth"
+	"github.com/boeing-ai-gateway/boeing/pkg/gateway/types"
+	v1 "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1"
+	"github.com/boeing-ai-gateway/boeing/pkg/system"
 	"gorm.io/gorm"
 	"gorm.io/gorm/clause"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -47,7 +47,7 @@ func (c *Client) ListAuthGroups(ctx context.Context, authProviderURL, authProvid
 	// Fetch groups from the auth provider
 	var providerGroups []auth.GroupInfo
 	if authProviderURL != "" {
-		u, err := url.Parse(authProviderURL + "/obot-list-auth-groups")
+		u, err := url.Parse(authProviderURL + "/boeing-list-auth-groups")
 		if err != nil {
 			log.Warnf("failed to parse auth provider URL for group search: %v", err)
 		} else {
@@ -381,7 +381,7 @@ func (*Client) fetchGroups(ctx context.Context, authProviderURL, authProviderNam
 	var providerGroups []auth.GroupInfo
 
 	// Get the SerializableRequest from context
-	req, err := http.NewRequestWithContext(ctx, http.MethodPost, authProviderURL+"/obot-list-user-auth-groups", strings.NewReader(providerUserID))
+	req, err := http.NewRequestWithContext(ctx, http.MethodPost, authProviderURL+"/boeing-list-user-auth-groups", strings.NewReader(providerUserID))
 	if err != nil {
 		return nil, fmt.Errorf("failed to create request: %w", err)
 	}

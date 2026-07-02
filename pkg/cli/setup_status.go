@@ -7,10 +7,10 @@ import (
 	"slices"
 	"text/tabwriter"
 
-	cliinternal "github.com/obot-platform/obot/pkg/cli/internal"
-	"github.com/obot-platform/obot/pkg/cli/internal/localconfig"
-	"github.com/obot-platform/obot/pkg/localagents"
-	"github.com/obot-platform/obot/pkg/version"
+	cliinternal "github.com/boeing-ai-gateway/boeing/pkg/cli/internal"
+	"github.com/boeing-ai-gateway/boeing/pkg/cli/internal/localconfig"
+	"github.com/boeing-ai-gateway/boeing/pkg/localagents"
+	"github.com/boeing-ai-gateway/boeing/pkg/version"
 	"github.com/spf13/cobra"
 )
 
@@ -30,7 +30,7 @@ type SetupStatus struct {
 
 func (s *SetupStatus) Customize(cmd *cobra.Command) {
 	cmd.Use = "status"
-	cmd.Short = "Show local Obot setup status"
+	cmd.Short = "Show local Boeing setup status"
 	cmd.Args = cobra.NoArgs
 }
 
@@ -59,7 +59,7 @@ func (s *SetupStatus) Run(cmd *cobra.Command, _ []string) error {
 func (s *SetupStatus) status(ctx context.Context) (setupStatusOutput, error) {
 	cfg, err := localconfig.Load()
 	if err != nil {
-		return setupStatusOutput{}, fmt.Errorf("load Obot config: %w", err)
+		return setupStatusOutput{}, fmt.Errorf("load Boeing config: %w", err)
 	}
 
 	var tokenValid bool

@@ -4,7 +4,7 @@ title: User Roles
 
 # User Roles
 
-Obot uses role-based access control to manage what users can do in the MCP Platform. Each role has different permissions and sees different parts of the interface.
+Boeing uses role-based access control to manage what users can do in the MCP Platform. Each role has different permissions and sees different parts of the interface.
 
 ## Available Roles
 
@@ -14,7 +14,7 @@ Full platform management plus the ability to assign the Owner and Auditor roles 
 
 ### Admin
 
-Full platform management: MCP Management, Obot Agent Management, User Management, and App Preferences. Cannot assign the Owner or Auditor roles.
+Full platform management: MCP Management, Boeing Agent Management, User Management, and App Preferences. Cannot assign the Owner or Auditor roles.
 
 ### Power User+
 
@@ -26,7 +26,7 @@ All Basic User permissions plus publishing custom MCP servers (personal use only
 
 ### Basic User
 
-Connect to MCP servers, use Obot Agent, and create conversations and workflows.
+Connect to MCP servers, use Boeing Agent, and create conversations and workflows.
 
 ### Auditor
 
@@ -37,14 +37,14 @@ Add-on permission that grants read-only access to sensitive data across the plat
 | Capability | Basic | Power | Power+ | Admin | Owner |
 |------------|-------|-------|--------|-------|-------|
 | Connect to MCP servers | Yes | Yes | Yes | Yes | Yes   |
-| Use Obot Agent | Yes | Yes | Yes | Yes | Yes   |
+| Use Boeing Agent | Yes | Yes | Yes | Yes | Yes   |
 | View Audit Logs | | Yes* | Yes* | Yes** | Yes** |
 | View Usage | | Yes* | Yes* | Yes | Yes   |
 | Publish personal MCP servers | | Yes | Yes | Yes | Yes   |
 | Share MCP servers through registries | | | Yes | Yes | Yes   |
 | Manage Filters | | | | Yes | Yes   |
 | Server Scheduling | | | | Yes | Yes   |
-| Obot Agent Management | | | | Yes | Yes   |
+| Boeing Agent Management | | | | Yes | Yes   |
 | User Management | | | | Yes | Yes   |
 | App Preferences | | | | Yes | Yes   |
 | Assign Owner/Auditor roles | | | | | Yes   |
@@ -55,7 +55,7 @@ Add-on permission that grants read-only access to sensitive data across the plat
 
 ## Security Model
 
-Obot's MCP hosting platform runs the MCP servers that users add. The **Power User** and **Power User+** roles can publish and deploy MCP servers — including `npx` (npm) and `uvx` (PyPI) packages, and **containerized** servers that run an arbitrary OCI image with a user-supplied command, arguments, and environment. By design, these roles can therefore cause code to execute on Obot's MCP hosting backend.
+Boeing's MCP hosting platform runs the MCP servers that users add. The **Power User** and **Power User+** roles can publish and deploy MCP servers — including `npx` (npm) and `uvx` (PyPI) packages, and **containerized** servers that run an arbitrary OCI image with a user-supplied command, arguments, and environment. By design, these roles can therefore cause code to execute on Boeing's MCP hosting backend.
 
 Treat Power User and Power User+ as **privileged** roles. Grant them only to users you trust to run code on your infrastructure, and harden the hosting backend so that the code those users deploy stays contained:
 
@@ -82,6 +82,6 @@ Configure the default role for new users on the **User Management > User Roles**
 To grant admin or owner access to users before they log in, set these environment variables during deployment. See [Enabling Authentication](/installation/enabling-authentication/) for details.
 
 ```bash
-OBOT_SERVER_AUTH_ADMIN_EMAILS=admin@example.com,admin2@example.com
-OBOT_SERVER_AUTH_OWNER_EMAILS=owner@example.com
+BOEING_SERVER_AUTH_ADMIN_EMAILS=admin@example.com,admin2@example.com
+BOEING_SERVER_AUTH_OWNER_EMAILS=owner@example.com
 ```

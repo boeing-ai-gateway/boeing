@@ -10,10 +10,10 @@ import (
 	"strings"
 	"time"
 
-	types2 "github.com/obot-platform/obot/apiclient/types"
-	"github.com/obot-platform/obot/pkg/accesstoken"
-	"github.com/obot-platform/obot/pkg/gateway/types"
-	"github.com/obot-platform/obot/pkg/hash"
+	types2 "github.com/boeing-ai-gateway/boeing/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/pkg/accesstoken"
+	"github.com/boeing-ai-gateway/boeing/pkg/gateway/types"
+	"github.com/boeing-ai-gateway/boeing/pkg/hash"
 	"gorm.io/gorm"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 	kuser "k8s.io/apiserver/pkg/authentication/user"
@@ -22,7 +22,7 @@ import (
 
 var (
 	userGroupResource = schema.GroupResource{
-		Group:    "obot.obot.ai",
+		Group:    "boeing.boeing.ai",
 		Resource: "users",
 	}
 )
@@ -436,7 +436,7 @@ func (c *Client) EncryptUsers(ctx context.Context, force bool) error {
 }
 
 func (c *Client) fetchUserProfile(ctx context.Context, authProviderURL, accessToken string) (map[string]any, error) {
-	req, err := http.NewRequestWithContext(ctx, http.MethodGet, authProviderURL+"/obot-get-user-info", nil)
+	req, err := http.NewRequestWithContext(ctx, http.MethodGet, authProviderURL+"/boeing-get-user-info", nil)
 	if err != nil {
 		return nil, fmt.Errorf("failed to create request: %w", err)
 	}

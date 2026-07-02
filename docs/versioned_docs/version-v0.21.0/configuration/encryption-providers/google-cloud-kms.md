@@ -1,6 +1,6 @@
 # Google Cloud KMS
 
-This guide explains how to set up Google Cloud KMS encryption for Obot.
+This guide explains how to set up Google Cloud KMS encryption for Boeing.
 
 ### Prerequisites
 
@@ -10,40 +10,40 @@ This guide explains how to set up Google Cloud KMS encryption for Obot.
 ### 1. Create a KMS Keyring
 
 ```bash
-gcloud kms keyrings create obot-keyring \
+gcloud kms keyrings create boeing-keyring \
   --location global
 ```
 
 ### Create the KMS Key
 
 ```bash
-gcloud kms keys create obot-key \
+gcloud kms keys create boeing-key \
   --location global \
-  --keyring obot-keyring \
+  --keyring boeing-keyring \
   --purpose encryption
 ```
 
 ### Grant permissions to the serviceaccount that will be using the key
 
 ```bash
-gcloud kms keys add-iam-policy-binding obot-key \
+gcloud kms keys add-iam-policy-binding boeing-key \
   --location global \
-  --keyring obot-keyring \
-  --member "<your obot principal identity>" \
+  --keyring boeing-keyring \
+  --member "<your boeing principal identity>" \
   --role roles/cloudkms.cryptoKeyEncrypterDecrypter
 ```
 
 
-### Obot environment variables
+### Boeing environment variables
 
-Make sure the following environment variables are set on Obot when you run it:
+Make sure the following environment variables are set on Boeing when you run it:
 
-- `OBOT_SERVER_ENCRYPTION_PROVIDER=gcp`
-- `OBOT_GCP_KMS_KEY_URI=projects/<your project>/locations/<your location>/keyRings/<your key ring>/cryptoKeys/<your key>`
+- `BOEING_SERVER_ENCRYPTION_PROVIDER=gcp`
+- `BOEING_GCP_KMS_KEY_URI=projects/<your project>/locations/<your location>/keyRings/<your key ring>/cryptoKeys/<your key>`
 
 ### Google Cloud credentials
 
-Some form of credentials is required for Obot to authenticate with Google Cloud for encryption and decryption.
+Some form of credentials is required for Boeing to authenticate with Google Cloud for encryption and decryption.
 It will look for credentials in the following formats, in this order, until it finds one:
 
 1. A JSON file pointed to by the `GOOGLE_APPLICATION_CREDENTIALS` environment variable

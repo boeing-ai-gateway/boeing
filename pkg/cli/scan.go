@@ -15,21 +15,21 @@ import (
 
 	"github.com/adrg/xdg"
 	"github.com/google/uuid"
-	"github.com/obot-platform/obot/apiclient/types"
-	"github.com/obot-platform/obot/pkg/devicescan"
-	"github.com/obot-platform/obot/pkg/version"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/pkg/devicescan"
+	"github.com/boeing-ai-gateway/boeing/pkg/version"
 	"github.com/spf13/cobra"
 )
 
 type Scan struct {
 	PromptConfig
-	DeviceID string `usage:"Override the persisted device identifier. Empty resolves via OBOT_SCAN_DEVICE_ID env var or the file at $XDG_DATA_HOME/obot/device_id (generated on first run)" env:"OBOT_SCAN_DEVICE_ID" hidden:"true"`
-	Submit   bool   `usage:"Submit the scan to the configured Obot server" env:"OBOT_SCAN_SUBMIT"`
+	DeviceID string `usage:"Override the persisted device identifier. Empty resolves via BOEING_SCAN_DEVICE_ID env var or the file at $XDG_DATA_HOME/boeing/device_id (generated on first run)" env:"BOEING_SCAN_DEVICE_ID" hidden:"true"`
+	Submit   bool   `usage:"Submit the scan to the configured Boeing server" env:"BOEING_SCAN_SUBMIT"`
 	JSON     bool   `usage:"Print the scan result as JSON"`
-	Timeout  int    `usage:"Number of seconds to wait for the scan to complete" default:"60" env:"OBOT_SCAN_TIMEOUT"`
-	MaxDepth int    `usage:"Maximum path depth (in segments below $HOME) to match when crawling for project-scope configs and skills; e.g. 5 matches files up to $HOME/a/b/c/d/e" default:"5" env:"OBOT_SCAN_MAX_DEPTH"`
+	Timeout  int    `usage:"Number of seconds to wait for the scan to complete" default:"60" env:"BOEING_SCAN_TIMEOUT"`
+	MaxDepth int    `usage:"Maximum path depth (in segments below $HOME) to match when crawling for project-scope configs and skills; e.g. 5 matches files up to $HOME/a/b/c/d/e" default:"5" env:"BOEING_SCAN_MAX_DEPTH"`
 
-	root *Obot
+	root *Boeing
 }
 
 func (s *Scan) Customize(cmd *cobra.Command) {
@@ -163,16 +163,16 @@ func writeScanTable(cmd *cobra.Command, manifest types.DeviceScanManifest) error
 
 // ensureDeviceID returns deviceID if it is non-empty after trimming.
 // Otherwise it reads (or, on first call, generates and persists) a UUIDv4 at
-// xdg.DataFile("obot/device_id") with mode 0600.
+// xdg.DataFile("boeing/device_id") with mode 0600.
 //
-// On macOS the file lands at ~/Library/Application Support/obot/device_id;
-// on Linux at $XDG_DATA_HOME/obot/device_id (defaulting to
-// ~/.local/share/obot/device_id); on Windows at %LocalAppData%\obot\device_id.
+// On macOS the file lands at ~/Library/Application Support/boeing/device_id;
+// on Linux at $XDG_DATA_HOME/boeing/device_id (defaulting to
+// ~/.local/share/boeing/device_id); on Windows at %LocalAppData%\boeing\device_id.
 func ensureDeviceID(deviceID string) (string, error) {
 	if deviceID = strings.TrimSpace(deviceID); deviceID != "" {
 		return deviceID, nil
 	}
-	path, err := xdg.DataFile(filepath.Join("obot", "device_id"))
+	path, err := xdg.DataFile(filepath.Join("boeing", "device_id"))
 	if err != nil {
 		return "", err
 	}

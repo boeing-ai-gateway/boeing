@@ -4,7 +4,7 @@ import (
 	"context"
 	"testing"
 
-	"github.com/obot-platform/obot/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	corev1 "k8s.io/api/core/v1"
@@ -19,7 +19,7 @@ func binding(secretName, key string) *types.MCPSecretBinding {
 }
 
 func TestMergeBoundCreds(t *testing.T) {
-	const ns = "obot-ns"
+	const ns = "boeing-ns"
 
 	newClient := func(t *testing.T, objects ...kclient.Object) kclient.Client {
 		t.Helper()

@@ -5,7 +5,7 @@ import (
 	"context"
 
 	"github.com/google/uuid"
-	"github.com/obot-platform/obot/logger"
+	"github.com/boeing-ai-gateway/boeing/logger"
 )
 
 type reqIDKey struct{}

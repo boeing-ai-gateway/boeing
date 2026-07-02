@@ -5,11 +5,11 @@ import (
 	"slices"
 	"strings"
 
-	"github.com/obot-platform/nah/pkg/apply"
-	"github.com/obot-platform/nah/pkg/router"
-	"github.com/obot-platform/obot/pkg/mcp"
-	v1 "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1"
-	"github.com/obot-platform/obot/pkg/system"
+	"github.com/boeing-ai-gateway/nah/pkg/apply"
+	"github.com/boeing-ai-gateway/nah/pkg/router"
+	"github.com/boeing-ai-gateway/boeing/pkg/mcp"
+	v1 "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1"
+	"github.com/boeing-ai-gateway/boeing/pkg/system"
 	appsv1 "k8s.io/api/apps/v1"
 	corev1 "k8s.io/api/core/v1"
 	apierrors "k8s.io/apimachinery/pkg/api/errors"
@@ -83,7 +83,7 @@ func (h *Handler) UpdateMCPServerStatus(req router.Request, _ router.Response) e
 
 	var needsUpdate bool
 
-	if deploymentK8sSettingsHash := deployment.Annotations["obot.ai/k8s-settings-hash"]; deploymentK8sSettingsHash != "" && mcpServer.Status.K8sSettingsHash != deploymentK8sSettingsHash {
+	if deploymentK8sSettingsHash := deployment.Annotations["boeing.ai/k8s-settings-hash"]; deploymentK8sSettingsHash != "" && mcpServer.Status.K8sSettingsHash != deploymentK8sSettingsHash {
 		mcpServer.Status.K8sSettingsHash = deploymentK8sSettingsHash
 		needsUpdate = true
 	}
@@ -132,7 +132,7 @@ func (h *Handler) UpdateMCPServerStatus(req router.Request, _ router.Response) e
 			return fmt.Errorf("failed to compute core resource requirements: %w", err)
 		}
 
-		currentHash := mcp.ComputeK8sSettingsHash(k8sSettings.Spec, resources, mcpServer.Spec.Manifest.Runtime, mcpServer.Spec.NanobotAgentID != "", imagePullSecretNames)
+		currentHash := mcp.ComputeK8sSettingsHash(k8sSettings.Spec, resources, mcpServer.Spec.Manifest.Runtime, mcpServer.Spec.BoeingbotAgentID != "", imagePullSecretNames)
 
 		if k8sUpdateNeeded := mcpServer.Status.K8sSettingsHash != currentHash; k8sUpdateNeeded != mcpServer.Status.NeedsK8sUpdate {
 			mcpServer.Status.NeedsK8sUpdate = k8sUpdateNeeded

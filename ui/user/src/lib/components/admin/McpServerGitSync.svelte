@@ -86,7 +86,7 @@
 						Personal access token (optional)
 						<span
 							use:tooltip={{
-								text: 'Required scopes:\n• GitHub: repo\n• GitLab: read_repository + read_api\n\nIf no token is set, Obot falls back to the GITHUB_AUTH_TOKEN environment variable.',
+								text: 'Required scopes:\n• GitHub: repo\n• GitLab: read_repository + read_api\n\nIf no token is set, Boeing falls back to the GITHUB_AUTH_TOKEN environment variable.',
 								classes: ['max-w-md', 'whitespace-pre-line'],
 								disablePortal: true
 							}}

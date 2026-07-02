@@ -1,31 +1,31 @@
 package controller
 
 import (
-	"github.com/obot-platform/nah/pkg/router"
-	"github.com/obot-platform/obot/pkg/controller/generationed"
-	"github.com/obot-platform/obot/pkg/controller/handlers/accesscontrolrule"
-	"github.com/obot-platform/obot/pkg/controller/handlers/adminworkspace"
-	"github.com/obot-platform/obot/pkg/controller/handlers/alias"
-	"github.com/obot-platform/obot/pkg/controller/handlers/auditlogexport"
-	"github.com/obot-platform/obot/pkg/controller/handlers/cleanup"
-	"github.com/obot-platform/obot/pkg/controller/handlers/imagepullsecret"
-	"github.com/obot-platform/obot/pkg/controller/handlers/mcpcatalog"
-	"github.com/obot-platform/obot/pkg/controller/handlers/mcpserver"
-	"github.com/obot-platform/obot/pkg/controller/handlers/mcpservercatalogentry"
-	"github.com/obot-platform/obot/pkg/controller/handlers/mcpserverinstance"
-	"github.com/obot-platform/obot/pkg/controller/handlers/mcpwebhookvalidation"
-	"github.com/obot-platform/obot/pkg/controller/handlers/model"
-	"github.com/obot-platform/obot/pkg/controller/handlers/modelaccesspolicy"
-	"github.com/obot-platform/obot/pkg/controller/handlers/nanobotagent"
-	"github.com/obot-platform/obot/pkg/controller/handlers/oauthclients"
-	"github.com/obot-platform/obot/pkg/controller/handlers/oktagroupmigration"
-	"github.com/obot-platform/obot/pkg/controller/handlers/poweruserworkspace"
-	"github.com/obot-platform/obot/pkg/controller/handlers/project"
-	"github.com/obot-platform/obot/pkg/controller/handlers/provider"
-	"github.com/obot-platform/obot/pkg/controller/handlers/scheduledauditlogexport"
-	"github.com/obot-platform/obot/pkg/controller/handlers/skillrepository"
-	"github.com/obot-platform/obot/pkg/controller/handlers/systemmcpserver"
-	v1 "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1"
+	"github.com/boeing-ai-gateway/nah/pkg/router"
+	"github.com/boeing-ai-gateway/boeing/pkg/controller/generationed"
+	"github.com/boeing-ai-gateway/boeing/pkg/controller/handlers/accesscontrolrule"
+	"github.com/boeing-ai-gateway/boeing/pkg/controller/handlers/adminworkspace"
+	"github.com/boeing-ai-gateway/boeing/pkg/controller/handlers/alias"
+	"github.com/boeing-ai-gateway/boeing/pkg/controller/handlers/auditlogexport"
+	"github.com/boeing-ai-gateway/boeing/pkg/controller/handlers/cleanup"
+	"github.com/boeing-ai-gateway/boeing/pkg/controller/handlers/imagepullsecret"
+	"github.com/boeing-ai-gateway/boeing/pkg/controller/handlers/mcpcatalog"
+	"github.com/boeing-ai-gateway/boeing/pkg/controller/handlers/mcpserver"
+	"github.com/boeing-ai-gateway/boeing/pkg/controller/handlers/mcpservercatalogentry"
+	"github.com/boeing-ai-gateway/boeing/pkg/controller/handlers/mcpserverinstance"
+	"github.com/boeing-ai-gateway/boeing/pkg/controller/handlers/mcpwebhookvalidation"
+	"github.com/boeing-ai-gateway/boeing/pkg/controller/handlers/model"
+	"github.com/boeing-ai-gateway/boeing/pkg/controller/handlers/modelaccesspolicy"
+	"github.com/boeing-ai-gateway/boeing/pkg/controller/handlers/boeingbotagent"
+	"github.com/boeing-ai-gateway/boeing/pkg/controller/handlers/oauthclients"
+	"github.com/boeing-ai-gateway/boeing/pkg/controller/handlers/oktagroupmigration"
+	"github.com/boeing-ai-gateway/boeing/pkg/controller/handlers/poweruserworkspace"
+	"github.com/boeing-ai-gateway/boeing/pkg/controller/handlers/project"
+	"github.com/boeing-ai-gateway/boeing/pkg/controller/handlers/provider"
+	"github.com/boeing-ai-gateway/boeing/pkg/controller/handlers/scheduledauditlogexport"
+	"github.com/boeing-ai-gateway/boeing/pkg/controller/handlers/skillrepository"
+	"github.com/boeing-ai-gateway/boeing/pkg/controller/handlers/systemmcpserver"
+	v1 "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1"
 )
 
 func (c *Controller) setupRoutes() {
@@ -47,7 +47,7 @@ func (c *Controller) setupRoutes() {
 	scheduledAuditLogExportHandler := scheduledauditlogexport.NewHandler()
 	oauthclients := oauthclients.NewHandler(c.services.GatewayClient)
 	systemMCPServerHandler := systemmcpserver.New(c.services.GatewayClient, c.services.MCPSessionManager, c.services.ServerURL)
-	nanobotAgentHandler := nanobotagent.New(c.services.GatewayClient, c.services.LocalRouter, c.services.NanobotAgentImage, c.services.ServerURL, c.services.MCPServerNamespace, c.services.MCPSessionManager)
+	boeingbotAgentHandler := boeingbotagent.New(c.services.GatewayClient, c.services.LocalRouter, c.services.BoeingbotAgentImage, c.services.ServerURL, c.services.MCPServerNamespace, c.services.MCPSessionManager)
 	oktaGroupMigrationHandler := oktagroupmigration.New()
 	projectHandler := project.New(c.services.GatewayClient)
 	imagePullSecretHandler := imagepullsecret.New(c.services.GatewayClient, c.services.LocalK8sClient, c.services.MCPRuntimeBackend, c.services.MCPServerNamespace, c.services.ServiceNamespace, c.services.ServiceAccountName, c.services.MCPImagePullSecrets, c.services.ServiceAccountIssuerURL)
@@ -200,10 +200,10 @@ func (c *Controller) setupRoutes() {
 	//nolint:staticcheck
 	root.Type(&v1.ProjectV2{}).HandlerFunc(projectHandler.MigrateProjectV2)
 
-	// NanobotAgent
-	root.Type(&v1.NanobotAgent{}).HandlerFunc(nanobotAgentHandler.EnsureMCPServer)
-	root.Type(&v1.NanobotAgent{}).HandlerFunc(cleanup.Cleanup)
-	root.Type(&v1.NanobotAgent{}).FinalizeFunc(v1.NanobotAgentFinalizer, nanobotAgentHandler.Cleanup)
+	// BoeingbotAgent
+	root.Type(&v1.BoeingbotAgent{}).HandlerFunc(boeingbotAgentHandler.EnsureMCPServer)
+	root.Type(&v1.BoeingbotAgent{}).HandlerFunc(cleanup.Cleanup)
+	root.Type(&v1.BoeingbotAgent{}).FinalizeFunc(v1.BoeingbotAgentFinalizer, boeingbotAgentHandler.Cleanup)
 
 	c.providerHandler = providers
 	c.mcpCatalogHandler = mcpCatalog

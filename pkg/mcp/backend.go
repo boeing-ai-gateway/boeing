@@ -12,7 +12,7 @@ import (
 	"time"
 
 	"github.com/oasdiff/yaml"
-	"github.com/obot-platform/obot/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
 )
 
 const (
@@ -44,7 +44,7 @@ type backend interface {
 	getServerDetails(ctx context.Context, id string) (types.MCPServerDetails, error)
 	restartServer(ctx context.Context, server ServerConfig) error
 	shutdownServer(ctx context.Context, id string, hardShutdown bool) error
-	transformObotHostname(url string) string
+	transformBoeingHostname(url string) string
 }
 
 type ErrNotSupportedByBackend struct {
@@ -182,10 +182,10 @@ func ensureHTTPGetOK(ctx context.Context, client *http.Client, url string) error
 				return nil
 			case http.StatusServiceUnavailable:
 				lastErr = fmt.Errorf("service unavailable: %s", string(body))
-				// Older nanobot versions return 503 when tool listing permanently fails, but service mesh sidecars
+				// Older boeingbot versions return 503 when tool listing permanently fails, but service mesh sidecars
 				// (e.g. Istio's envoy) also return 503 during startup. To avoid confusing the two, we don't treat 503
 				// as a permanent failure until we've seen consecutive 503 responses for this duration.
-				// Current nanobot returns 500 instead, which is handled as an immediate failure below.
+				// Current boeingbot returns 500 instead, which is handled as an immediate failure below.
 				if firstServiceUnavailable.IsZero() {
 					firstServiceUnavailable = time.Now()
 				} else if time.Since(firstServiceUnavailable) > serviceUnavailableGracePeriod {
@@ -194,12 +194,12 @@ func ensureHTTPGetOK(ctx context.Context, client *http.Client, url string) error
 
 			case http.StatusInternalServerError:
 				lastErr = fmt.Errorf("internal server error: %s", string(body))
-				// Nanobot returns 500 when tool listing permanently fails.
+				// Boeingbot returns 500 when tool listing permanently fails.
 				return fmt.Errorf("%w: %v", ErrHealthCheckFailed, lastErr)
 			default:
 				lastErr = fmt.Errorf("unexpected status code %d: %s", resp.StatusCode, string(body))
 				// A non-503 response (e.g. 425 TooEarly) means we're reaching the actual
-				// nanobot process, not a proxy. Reset the grace period so that any subsequent
+				// boeingbot process, not a proxy. Reset the grace period so that any subsequent
 				// 503 gets a fresh window.
 				firstServiceUnavailable = time.Time{}
 			}
@@ -222,8 +222,8 @@ func urlWithPath(urlStr, path string) string {
 	return u.String()
 }
 
-func constructMCPServerNanobotYAMLForComposite(servers []ComponentServer) ([]byte, error) {
-	mcpServers := make(map[string]nanobotConfigMCPServer, len(servers))
+func constructMCPServerBoeingbotYAMLForComposite(servers []ComponentServer) ([]byte, error) {
+	mcpServers := make(map[string]boeingbotConfigMCPServer, len(servers))
 	names := make([]string, 0, len(servers))
 	replacer := strings.NewReplacer("/", "-", ":", "-", "?", "-")
 
@@ -240,7 +240,7 @@ func constructMCPServerNanobotYAMLForComposite(servers []ComponentServer) ([]byt
 		}
 
 		name := replacer.Replace(component.Name)
-		mcpServers[name] = nanobotConfigMCPServer{
+		mcpServers[name] = boeingbotConfigMCPServer{
 			BaseURL:       component.URL,
 			ToolOverrides: tools,
 			ToolPrefix:    component.ToolPrefix,
@@ -249,8 +249,8 @@ func constructMCPServerNanobotYAMLForComposite(servers []ComponentServer) ([]byt
 		names = append(names, name)
 	}
 
-	config := nanobotConfig{
-		Publish: nanobotConfigPublish{
+	config := boeingbotConfig{
+		Publish: boeingbotConfigPublish{
 			MCPServers: names,
 		},
 		MCPServers: mcpServers,
@@ -258,24 +258,24 @@ func constructMCPServerNanobotYAMLForComposite(servers []ComponentServer) ([]byt
 
 	data, err := yaml.Marshal(config)
 	if err != nil {
-		return nil, fmt.Errorf("failed to marshal nanobot.yaml: %w", err)
+		return nil, fmt.Errorf("failed to marshal boeingbot.yaml: %w", err)
 	}
 
 	return data, nil
 }
 
-func constructMCPServerNanobotYAML(name, url, command string, args, passthroughHeaders []string, env, headers map[string][]byte, webhooks []Webhook) ([]byte, error) {
+func constructMCPServerBoeingbotYAML(name, url, command string, args, passthroughHeaders []string, env, headers map[string][]byte, webhooks []Webhook) ([]byte, error) {
 	replacer := strings.NewReplacer("/", "-", ":", "-", "?", "-")
 
 	webhookDefinitions := make(map[string][]string, len(webhooks))
-	mcpServers := make(map[string]nanobotConfigMCPServer, len(webhooks)+1)
+	mcpServers := make(map[string]boeingbotConfigMCPServer, len(webhooks)+1)
 
 	for _, webhook := range webhooks {
 		webhookName := replacer.Replace(webhook.DisplayName)
 		if webhookName == "" {
 			webhookName = replacer.Replace(webhook.Name)
 		}
-		mcpServers[webhookName] = nanobotConfigMCPServer{
+		mcpServers[webhookName] = boeingbotConfigMCPServer{
 			BaseURL: webhook.URL,
 		}
 
@@ -288,7 +288,7 @@ func constructMCPServerNanobotYAML(name, url, command string, args, passthroughH
 	}
 
 	name = replacer.Replace(name)
-	mcpServers[name] = nanobotConfigMCPServer{
+	mcpServers[name] = boeingbotConfigMCPServer{
 		BaseURL:            url,
 		Command:            command,
 		Args:               args,
@@ -298,8 +298,8 @@ func constructMCPServerNanobotYAML(name, url, command string, args, passthroughH
 		Hooks:              webhookDefinitions,
 	}
 
-	config := nanobotConfig{
-		Publish: nanobotConfigPublish{
+	config := boeingbotConfig{
+		Publish: boeingbotConfigPublish{
 			MCPServers: []string{name},
 		},
 		MCPServers: mcpServers,
@@ -307,7 +307,7 @@ func constructMCPServerNanobotYAML(name, url, command string, args, passthroughH
 
 	data, err := yaml.Marshal(config)
 	if err != nil {
-		return nil, fmt.Errorf("failed to marshal nanobot.yaml: %w", err)
+		return nil, fmt.Errorf("failed to marshal boeingbot.yaml: %w", err)
 	}
 
 	return data, nil
@@ -325,16 +325,16 @@ func convertMapStringBytesToMapStringString(m map[string][]byte) map[string]stri
 	return result
 }
 
-type nanobotConfig struct {
-	Publish    nanobotConfigPublish              `json:"publish,omitzero"`
-	MCPServers map[string]nanobotConfigMCPServer `json:"mcpServers,omitempty"`
+type boeingbotConfig struct {
+	Publish    boeingbotConfigPublish              `json:"publish,omitzero"`
+	MCPServers map[string]boeingbotConfigMCPServer `json:"mcpServers,omitempty"`
 }
 
-type nanobotConfigPublish struct {
+type boeingbotConfigPublish struct {
 	MCPServers []string `json:"mcpServers,omitempty"`
 }
 
-type nanobotConfigMCPServer struct {
+type boeingbotConfigMCPServer struct {
 	Command            string              `json:"command,omitempty"`
 	Args               []string            `json:"args,omitempty"`
 	Hooks              map[string][]string `json:"hooks,omitempty"`

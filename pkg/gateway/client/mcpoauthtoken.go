@@ -9,7 +9,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/obot-platform/obot/pkg/gateway/types"
+	"github.com/boeing-ai-gateway/boeing/pkg/gateway/types"
 	"golang.org/x/oauth2"
 	"gorm.io/gorm"
 	"k8s.io/apimachinery/pkg/runtime/schema"
@@ -17,12 +17,12 @@ import (
 )
 
 var mcpOAuthTokenGroupResource = schema.GroupResource{
-	Group:    "obot.obot.ai",
+	Group:    "boeing.boeing.ai",
 	Resource: "mcpoauthtokens",
 }
 
 var mcpOAuthPendingStateGroupResource = schema.GroupResource{
-	Group:    "obot.obot.ai",
+	Group:    "boeing.boeing.ai",
 	Resource: "mcpoauthpendingstates",
 }
 

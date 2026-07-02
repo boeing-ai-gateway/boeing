@@ -2,7 +2,7 @@ package types
 
 import "time"
 
-// Credential stores secret environment variables for an Obot resource.
+// Credential stores secret environment variables for a Boeing resource.
 // List operations intentionally return Secrets keys with blank values; use RevealCredential to read values.
 type Credential struct {
 	ID        uint              `json:"id" gorm:"primaryKey;autoIncrement"`

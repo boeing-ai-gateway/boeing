@@ -1,8 +1,8 @@
 package wellknown
 
 import (
-	"github.com/obot-platform/obot/pkg/api/handlers"
-	"github.com/obot-platform/obot/pkg/api/server"
+	"github.com/boeing-ai-gateway/boeing/pkg/api/handlers"
+	"github.com/boeing-ai-gateway/boeing/pkg/api/server"
 )
 
 type handler struct {

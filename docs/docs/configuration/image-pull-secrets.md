@@ -4,12 +4,12 @@ title: Image Pull Secrets
 
 # Image Pull Secrets
 
-Obot can attach Kubernetes image pull secrets to MCP server Deployments when MCP servers run in Kubernetes. Use this when MCP server images are stored in a private registry such as GHCR, Docker Hub, a self-hosted registry, or Amazon ECR.
+Boeing can attach Kubernetes image pull secrets to MCP server Deployments when MCP servers run in Kubernetes. Use this when MCP server images are stored in a private registry such as GHCR, Docker Hub, a self-hosted registry, or Amazon ECR.
 
 There are two ways to configure MCP image pull secrets:
 
-- **Static Helm pull secrets** are configured with the `mcpImagePullSecrets` Helm value. Helm creates the Kubernetes secrets and Obot uses those names for every MCP server Deployment.
-- **Managed image pull secrets** are configured in the Obot admin UI. Obot stores the registry configuration, creates an automatically named Kubernetes `kubernetes.io/dockerconfigjson` secret in the MCP namespace, and adds every enabled managed secret to every MCP server Deployment.
+- **Static Helm pull secrets** are configured with the `mcpImagePullSecrets` Helm value. Helm creates the Kubernetes secrets and Boeing uses those names for every MCP server Deployment.
+- **Managed image pull secrets** are configured in the Boeing admin UI. Boeing stores the registry configuration, creates an automatically named Kubernetes `kubernetes.io/dockerconfigjson` secret in the MCP namespace, and adds every enabled managed secret to every MCP server Deployment.
 
 Static and managed pull secrets are mutually exclusive. If static `mcpImagePullSecrets` are configured, they remain the source of truth and the managed image pull secrets UI and API are read-only.
 
@@ -17,14 +17,14 @@ Static and managed pull secrets are mutually exclusive. If static `mcpImagePullS
 
 Managed image pull secrets are available only when both of these are true:
 
-- `OBOT_SERVER_MCPRUNTIME_BACKEND` is `kubernetes` or `k8s` (the Helm chart sets this automatically).
-- `OBOT_SERVER_MCPIMAGE_PULL_SECRETS` is unset or empty.
+- `BOEING_SERVER_MCPRUNTIME_BACKEND` is `kubernetes` or `k8s` (the Helm chart sets this automatically).
+- `BOEING_SERVER_MCPIMAGE_PULL_SECRETS` is unset or empty.
 
-When the feature is unavailable, Obot still shows existing managed image pull secret records, but mutations are blocked and no generated Kubernetes resources are created or updated.
+When the feature is unavailable, Boeing still shows existing managed image pull secret records, but mutations are blocked and no generated Kubernetes resources are created or updated.
 
 ## Deployment Behavior
 
-Obot adds all effective pull secret names to every MCP server Deployment:
+Boeing adds all effective pull secret names to every MCP server Deployment:
 
 - If static pull secrets are configured, only the static names are used.
 - If static pull secrets are not configured, every enabled managed image pull secret name is used.
@@ -34,7 +34,7 @@ Changing the effective pull secret list marks existing Kubernetes MCP servers as
 
 ## Static Helm Pull Secrets
 
-Use static pull secrets when you want credentials to be managed outside Obot, for example by GitOps or an external secret controller.
+Use static pull secrets when you want credentials to be managed outside Boeing, for example by GitOps or an external secret controller.
 
 ```yaml
 mcpImagePullSecrets:
@@ -45,10 +45,10 @@ mcpImagePullSecrets:
     email: myuser@example.com
 ```
 
-The Helm chart creates a Docker config JSON secret named `my-registry-secret` in the MCP namespace and sets `OBOT_SERVER_MCPIMAGE_PULL_SECRETS` for the Obot server.
+The Helm chart creates a Docker config JSON secret named `my-registry-secret` in the MCP namespace and sets `BOEING_SERVER_MCPIMAGE_PULL_SECRETS` for the Boeing server.
 
 :::note
-When `mcpImagePullSecrets` is set, managed image pull secrets are disabled. Remove the Helm value and restart Obot to use managed image pull secrets.
+When `mcpImagePullSecrets` is set, managed image pull secrets are disabled. Remove the Helm value and restart Boeing to use managed image pull secrets.
 :::
 
 ## Managed Basic Registry Credentials
@@ -74,7 +74,7 @@ Do not include a repository path in the registry server.
 
 ### Basic Credential Testing
 
-Basic credential tests require an image reference. Obot uses the credentials to request the image manifest through the Docker Registry HTTP API. It does not pull image layers.
+Basic credential tests require an image reference. Boeing uses the credentials to request the image manifest through the Docker Registry HTTP API. It does not pull image layers.
 
 Examples:
 
@@ -87,7 +87,7 @@ Use an image that the credential is expected to pull. Testing only proves manife
 
 ## Managed Amazon ECR Credentials
 
-Amazon ECR credentials use Kubernetes service account OIDC federation. Obot does not store AWS access keys for ECR. Instead, the Obot controller requests a projected Kubernetes service account token, calls AWS STS, assumes your IAM role, calls ECR `GetAuthorizationToken`, and writes the generated Docker config JSON secret into the MCP namespace.
+Amazon ECR credentials use Kubernetes service account OIDC federation. Boeing does not store AWS access keys for ECR. Instead, the Boeing controller requests a projected Kubernetes service account token, calls AWS STS, assumes your IAM role, calls ECR `GetAuthorizationToken`, and writes the generated Docker config JSON secret into the MCP namespace.
 
 Create one ECR image pull secret per AWS region. ECR authorization tokens are regional. If your MCP images are in multiple ECR regions, create one managed ECR credential for each region.
 
@@ -95,37 +95,37 @@ Create one ECR image pull secret per AWS region. ECR authorization tokens are re
 
 In **Admin -> Image Pull Secrets**, click **Add ECR** and configure:
 
-The ECR form shows Obot's issuer URL, service account subject, audience, trust policy, and ECR IAM policy before the credential is saved. Use those values to create the AWS IAM OIDC provider, role trust policy, and permissions policy, then return to Obot with the resulting role ARN. If the Role ARN field is empty or incomplete, Obot shows a placeholder AWS account ID in the trust policy. If Obot cannot show an issuer URL, set **Issuer URL Override** to an externally reachable issuer URL before saving.
+The ECR form shows Boeing's issuer URL, service account subject, audience, trust policy, and ECR IAM policy before the credential is saved. Use those values to create the AWS IAM OIDC provider, role trust policy, and permissions policy, then return to Boeing with the resulting role ARN. If the Role ARN field is empty or incomplete, Boeing shows a placeholder AWS account ID in the trust policy. If Boeing cannot show an issuer URL, set **Issuer URL Override** to an externally reachable issuer URL before saving.
 
-Obot uses its own Kubernetes service account subject for ECR refreshes:
+Boeing uses its own Kubernetes service account subject for ECR refreshes:
 
 ```text
-system:serviceaccount:<obot-namespace>:<obot-service-account-name>
+system:serviceaccount:<boeing-namespace>:<boeing-service-account-name>
 ```
 
 | Field                | Description                                                                                                                                                                            |
 | -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Role ARN             | IAM role that the Obot controller assumes with `sts:AssumeRoleWithWebIdentity`.                                                                                                        |
+| Role ARN             | IAM role that the Boeing controller assumes with `sts:AssumeRoleWithWebIdentity`.                                                                                                        |
 | Region               | AWS region for the ECR registry, for example `us-east-1`.                                                                                                                              |
-| Issuer URL Override  | Optional Kubernetes service account issuer URL. Use this only if Obot cannot discover the issuer or you need a different externally reachable issuer URL.                              |
+| Issuer URL Override  | Optional Kubernetes service account issuer URL. Use this only if Boeing cannot discover the issuer or you need a different externally reachable issuer URL.                              |
 | Audience             | Optional token audience. Defaults to `sts.amazonaws.com`.                                                                                                                              |
 | Refresh Schedule     | Optional cron schedule. Defaults to `0 */6 * * *` (every six hours).                                                                                                                   |
-| Display Name         | Optional user-facing name shown in the Obot UI.                                                                                                                                        |
+| Display Name         | Optional user-facing name shown in the Boeing UI.                                                                                                                                        |
 
-After the credential is saved, Obot continues to show the computed trust policy and ECR IAM policy. Use those values to confirm or update the AWS IAM role.
+After the credential is saved, Boeing continues to show the computed trust policy and ECR IAM policy. Use those values to confirm or update the AWS IAM role.
 
 ### AWS IAM Setup for ECR Pull Secrets
 
-These steps use the AWS console. Replace the example values with the values shown by Obot.
+These steps use the AWS console. Replace the example values with the values shown by Boeing.
 
 Use these example values while following the console steps:
 
 ```text
 AWS account ID: 123456789012
 AWS region: us-east-1
-Role name: obot-ecr-pull
+Role name: boeing-ecr-pull
 Issuer URL: https://issuer.example.com
-Subject: system:serviceaccount:obot:obot
+Subject: system:serviceaccount:boeing:boeing
 Audience: sts.amazonaws.com
 ```
 
@@ -136,8 +136,8 @@ Create the IAM OIDC provider if it does not already exist:
 1. In the AWS console, go to **IAM -> Identity providers**.
 2. Choose **Add provider**.
 3. Select **OpenID Connect**.
-4. Enter the **Issuer URL** shown by Obot.
-5. Enter `sts.amazonaws.com` as the audience, or the custom audience configured in Obot.
+4. Enter the **Issuer URL** shown by Boeing.
+5. Enter `sts.amazonaws.com` as the audience, or the custom audience configured in Boeing.
 6. Add the provider.
 
 Create the IAM role:
@@ -145,7 +145,7 @@ Create the IAM role:
 1. Go to **IAM -> Roles**.
 2. Choose **Create role**.
 3. Choose **Custom trust policy**.
-4. Paste the trust policy shown by Obot, or use this template.
+4. Paste the trust policy shown by Boeing, or use this template.
 
 AWS IAM condition keys use the issuer URL without the `https://` prefix:
 
@@ -161,7 +161,7 @@ AWS IAM condition keys use the issuer URL without the `https://` prefix:
       "Action": "sts:AssumeRoleWithWebIdentity",
       "Condition": {
         "StringEquals": {
-          "issuer.example.com:sub": "system:serviceaccount:obot:obot",
+          "issuer.example.com:sub": "system:serviceaccount:boeing:boeing",
           "issuer.example.com:aud": "sts.amazonaws.com"
         }
       }
@@ -175,7 +175,7 @@ Create the ECR pull policy:
 1. Go to **IAM -> Policies**.
 2. Choose **Create policy**.
 3. Choose **JSON**.
-4. Paste the ECR policy shown by Obot, or use this template.
+4. Paste the ECR policy shown by Boeing, or use this template.
 
 ```json
 {
@@ -209,10 +209,10 @@ Attach the policy:
 4. Select the ECR pull policy.
 5. Attach it to the role.
 
-Use the role ARN in Obot:
+Use the role ARN in Boeing:
 
 ```text
-arn:aws:iam::123456789012:role/obot-ecr-pull
+arn:aws:iam::123456789012:role/boeing-ecr-pull
 ```
 
 AWS references:
@@ -227,7 +227,7 @@ AWS references:
 To pull from ECR repositories in another AWS account:
 
 1. Grant the assumed IAM role permission to pull from the repository ARN in that account.
-2. If the repository policy restricts principals, allow the IAM role ARN from the Obot account.
+2. If the repository policy restricts principals, allow the IAM role ARN from the Boeing account.
 
 Example repository resource for another account:
 
@@ -239,7 +239,7 @@ The ECR credential still covers only one region. Create another ECR credential f
 
 ### ECR Refresh and Test
 
-After the ECR credential is saved, Obot creates these resources:
+After the ECR credential is saved, Boeing creates these resources:
 
 - A Docker config JSON secret.
 
@@ -251,8 +251,8 @@ The credential becomes `Ready` after the controller successfully writes the Dock
 
 Check the capability banner in **Admin -> Image Pull Secrets**.
 
-- If the backend is not Kubernetes, set `OBOT_SERVER_MCPRUNTIME_BACKEND=kubernetes` or use the Helm chart default.
-- If static pull secrets are configured, remove `mcpImagePullSecrets` from Helm values and restart Obot before using managed image pull secrets.
+- If the backend is not Kubernetes, set `BOEING_SERVER_MCPRUNTIME_BACKEND=kubernetes` or use the Helm chart default.
+- If static pull secrets are configured, remove `mcpImagePullSecrets` from Helm values and restart Boeing before using managed image pull secrets.
 
 ### Image Pull Secret Is Not on an MCP Deployment
 
@@ -273,13 +273,13 @@ Check the managed secret in the MCP namespace:
 
 ```bash
 kubectl -n <mcp-namespace> get secret \
-  -l obot.ai/managed-by=image-pull-secrets
+  -l boeing.ai/managed-by=image-pull-secrets
 ```
 
 Common causes:
 
-- The IAM OIDC provider was not created for the issuer URL shown by Obot.
-- The IAM role trust policy subject does not match the service account subject shown by Obot.
+- The IAM OIDC provider was not created for the issuer URL shown by Boeing.
+- The IAM role trust policy subject does not match the service account subject shown by Boeing.
 - The trust policy audience is not `sts.amazonaws.com` or does not match the configured audience.
 - The issuer URL is not reachable by AWS STS.
 - The IAM role policy allows `ecr:GetAuthorizationToken` but not repository pull actions.

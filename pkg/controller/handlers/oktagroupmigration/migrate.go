@@ -3,9 +3,9 @@ package oktagroupmigration
 import (
 	"fmt"
 
-	"github.com/obot-platform/nah/pkg/router"
-	types2 "github.com/obot-platform/obot/apiclient/types"
-	v1 "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1"
+	"github.com/boeing-ai-gateway/nah/pkg/router"
+	types2 "github.com/boeing-ai-gateway/boeing/apiclient/types"
+	v1 "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1"
 )
 
 type Handler struct{}

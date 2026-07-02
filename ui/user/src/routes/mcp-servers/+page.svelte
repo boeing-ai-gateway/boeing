@@ -74,5 +74,5 @@
 {/snippet}
 
 <svelte:head>
-	<title>Obot | MCP Servers</title>
+	<title>Boeing | MCP Servers</title>
 </svelte:head>

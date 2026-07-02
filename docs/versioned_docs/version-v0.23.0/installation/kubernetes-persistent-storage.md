@@ -1,6 +1,6 @@
 # Persistent Storage in Kubernetes
 
-When Obot deploys MCP servers (including Obot Agent workloads) in Kubernetes, those pods need persistent volumes if you want workspace data to survive pod restarts and rescheduling.
+When Boeing deploys MCP servers (including Boeing Agent workloads) in Kubernetes, those pods need persistent volumes if you want workspace data to survive pod restarts and rescheduling.
 
 Without persistence, agent state is stored in the pod filesystem and is lost when the pod is recreated.
 
@@ -14,25 +14,25 @@ Any Kubernetes `StorageClass` can be used, including cloud block storage and sha
 
 Choose a `StorageClass` that matches your durability, performance, and cost requirements.
 
-## Configure Obot Agent Persistence
+## Configure Boeing Agent Persistence
 
 Set the default storage class and size in your Helm values:
 
 ```yaml
 mcpServerDefaults:
   storageClassName: <your storage class>
-  nanobotWorkspaceSize: 1Gi
+  boeingbotWorkspaceSize: 1Gi
 ```
 
 - `mcpServerDefaults.storageClassName`: StorageClass used for MCP server workspaces
-- `mcpServerDefaults.nanobotWorkspaceSize`: PVC size requested for each workspace
+- `mcpServerDefaults.boeingbotWorkspaceSize`: PVC size requested for each workspace
 
 ## Configure Published Workflow Storage on a PVC
 
-If `OBOT_ARTIFACT_STORAGE_PROVIDER` is unset, Obot stores published workflows on local disk at:
+If `BOEING_ARTIFACT_STORAGE_PROVIDER` is unset, Boeing stores published workflows on local disk at:
 
 ```text
-/data/.local/share/obot/published-artifacts
+/data/.local/share/boeing/published-artifacts
 ```
 
 The Helm chart's `persistence` PVC mounts at `/data`, which includes that directory.
@@ -45,7 +45,7 @@ For `replicaCount: 1`, a `ReadWriteOnce` PVC is sufficient:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: obot-data
+  name: boeing-data
 spec:
   accessModes:
     - ReadWriteOnce
@@ -55,27 +55,27 @@ spec:
       storage: 10Gi
 ```
 
-Mount it into Obot with:
+Mount it into Boeing with:
 
 ```yaml
 replicaCount: 1
 
 persistence:
   enabled: true
-  existingClaim: obot-data
+  existingClaim: boeing-data
 ```
 
-This is the common setup when using a single Obot pod with a block-storage-backed `StorageClass`. It persists both general `/data` contents and the local published-artifact directory under `/data/.local/share/obot/published-artifacts`.
+This is the common setup when using a single Boeing pod with a block-storage-backed `StorageClass`. It persists both general `/data` contents and the local published-artifact directory under `/data/.local/share/boeing/published-artifacts`.
 
 ### Multiple Replicas with ReadWriteMany
 
-For `replicaCount: 2` or higher, all Obot pods need concurrent access to the same `/data` volume. That requires a shared `ReadWriteMany` volume:
+For `replicaCount: 2` or higher, all Boeing pods need concurrent access to the same `/data` volume. That requires a shared `ReadWriteMany` volume:
 
 ```yaml
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: obot-data-rwx
+  name: boeing-data-rwx
 spec:
   accessModes:
     - ReadWriteMany
@@ -85,17 +85,17 @@ spec:
       storage: 10Gi
 ```
 
-Mount it into Obot with:
+Mount it into Boeing with:
 
 ```yaml
 replicaCount: 2
 
 persistence:
   enabled: true
-  existingClaim: obot-data-rwx
+  existingClaim: boeing-data-rwx
 ```
 
-Use a `StorageClass` backed by a shared filesystem such as NFS. A single shared `ReadWriteOnce` claim is not suitable for multi-replica Obot deployments.
+Use a `StorageClass` backed by a shared filesystem such as NFS. A single shared `ReadWriteOnce` claim is not suitable for multi-replica Boeing deployments.
 
 ### Use an Existing Claim
 
@@ -104,10 +104,10 @@ If you already have a PVC, point the chart at it:
 ```yaml
 persistence:
   enabled: true
-  existingClaim: obot-data
+  existingClaim: boeing-data
 ```
 
-When enabled, the chart mounts that claim into the Obot container at `/data`, which includes the local published-artifact directory.
+When enabled, the chart mounts that claim into the Boeing container at `/data`, which includes the local published-artifact directory.
 
 ### Let Helm Create the Claim
 
@@ -126,18 +126,18 @@ persistence:
 
 If you do not have a cloud-managed dynamic provisioner, you can use [nfs-subdir-external-provisioner](https://github.com/kubernetes-sigs/nfs-subdir-external-provisioner) to provide dynamic PVC provisioning backed by an NFS server.
 
-After installing the provisioner and creating its `StorageClass`, set that class in your Obot values file:
+After installing the provisioner and creating its `StorageClass`, set that class in your Boeing values file:
 
 ```yaml
 mcpServerDefaults:
   storageClassName: nfs-client
-  nanobotWorkspaceSize: 1Gi
+  boeingbotWorkspaceSize: 1Gi
 ```
 
-Then install or upgrade Obot:
+Then install or upgrade Boeing:
 
 ```bash
-helm upgrade --install obot obot/obot -f values.yaml
+helm upgrade --install boeing boeing/boeing -f values.yaml
 ```
 
 ## Validation

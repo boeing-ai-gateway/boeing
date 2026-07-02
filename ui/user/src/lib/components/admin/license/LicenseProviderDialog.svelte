@@ -46,12 +46,9 @@
 		{#if provider}
 			<p>
 				{#if provider?.configured}
-					Your license for or access to {provider.name} is invalid. Please contact support at
-					<a href="mailto:licensing@obot.ai" class="text-link">licensing@obot.ai</a> to renew your license.
+					The provider {provider.name} is configured and ready to use.
 				{:else}
-					A valid license is required to use {provider.name}. Please contact support at
-					<a href="mailto:licensing@obot.ai" class="text-link">licensing@obot.ai</a> for more information
-					or to purchase a license.
+					{provider.name} is available for configuration.
 				{/if}
 			</p>
 		{/if}

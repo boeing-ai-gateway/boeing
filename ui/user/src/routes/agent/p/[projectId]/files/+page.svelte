@@ -1,11 +1,11 @@
 <script lang="ts">
 	import { afterNavigate } from '$app/navigation';
-	import FileItem from '$lib/components/nanobot/FileItem.svelte';
+	import FileItem from '$lib/components/boeingbot/FileItem.svelte';
 	import { formatFileSize, formatFileTime } from '$lib/format';
-	import type { FileTimeResult, ProjectLayoutContext } from '$lib/services/nanobot/types';
-	import { PROJECT_LAYOUT_CONTEXT } from '$lib/services/nanobot/types';
+	import type { FileTimeResult, ProjectLayoutContext } from '$lib/services/boeingbot/types';
+	import { PROJECT_LAYOUT_CONTEXT } from '$lib/services/boeingbot/types';
 	import { responsive, userDeviceSettings } from '$lib/stores';
-	import { nanobotChat } from '$lib/stores/nanobotChat.svelte';
+	import { boeingbotChat } from '$lib/stores/boeingbotChat.svelte';
 	import type { TimeDisplayFormat } from '$lib/time';
 	import { tryDecodeURIComponent } from '$lib/url';
 	import {
@@ -22,8 +22,8 @@
 	import { twMerge } from 'tailwind-merge';
 
 	let resourceFiles = $derived(
-		$nanobotChat?.resources
-			? $nanobotChat.resources.filter((r) => r.uri.startsWith('file:///'))
+		$boeingbotChat?.resources
+			? $boeingbotChat.resources.filter((r) => r.uri.startsWith('file:///'))
 			: []
 	);
 
@@ -247,12 +247,12 @@
 	});
 
 	afterNavigate(({ from }) => {
-		if (!from?.url || !$nanobotChat?.api) return;
+		if (!from?.url || !$boeingbotChat?.api) return;
 		loading = true;
-		$nanobotChat.api
+		$boeingbotChat.api
 			.listResources()
 			.then((resources) => {
-				nanobotChat.update((data) => {
+				boeingbotChat.update((data) => {
 					if (data) {
 						data.resources = resources;
 					}
@@ -464,5 +464,5 @@
 </div>
 
 <svelte:head>
-	<title>Obot | Files</title>
+	<title>Boeing | Files</title>
 </svelte:head>

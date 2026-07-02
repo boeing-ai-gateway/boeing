@@ -14,11 +14,11 @@ import (
 var templateFS embed.FS
 
 var fileSkillTemplates = []string{
-	"files/skills/obot/SKILL.md.tmpl",
-	"files/skills/obot-search-skills/SKILL.md.tmpl",
-	"files/skills/obot-search-mcp-servers/SKILL.md.tmpl",
-	"files/skills/obot-install-skill/SKILL.md.tmpl",
-	"files/skills/obot-scan/SKILL.md.tmpl",
+	"files/skills/boeing/SKILL.md.tmpl",
+	"files/skills/boeing-search-skills/SKILL.md.tmpl",
+	"files/skills/boeing-search-mcp-servers/SKILL.md.tmpl",
+	"files/skills/boeing-install-skill/SKILL.md.tmpl",
+	"files/skills/boeing-scan/SKILL.md.tmpl",
 }
 
 // TemplateData is the client-specific data used to render bootstrap
@@ -54,7 +54,7 @@ func SharedAgentsTemplateData() TemplateData {
 	}
 }
 
-// RenderAgentSkills renders all Obot bootstrap skill assets.
+// RenderAgentSkills renders all Boeing bootstrap skill assets.
 func RenderAgentSkills(data TemplateData) ([]SkillAsset, error) {
 	if err := validateTemplateData(data); err != nil {
 		return nil, err

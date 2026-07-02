@@ -8,23 +8,23 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/obot-platform/obot/apiclient/types"
-	"github.com/obot-platform/obot/pkg/api"
-	"github.com/obot-platform/obot/pkg/api/handlers/providers"
-	gateway "github.com/obot-platform/obot/pkg/gateway/client"
-	"github.com/obot-platform/obot/pkg/gateway/server/dispatcher"
-	gatewaytypes "github.com/obot-platform/obot/pkg/gateway/types"
-	"github.com/obot-platform/obot/pkg/license"
-	v1 "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1"
-	"github.com/obot-platform/obot/pkg/system"
-	"github.com/obot-platform/obot/pkg/wait"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/pkg/api"
+	"github.com/boeing-ai-gateway/boeing/pkg/api/handlers/providers"
+	gateway "github.com/boeing-ai-gateway/boeing/pkg/gateway/client"
+	"github.com/boeing-ai-gateway/boeing/pkg/gateway/server/dispatcher"
+	gatewaytypes "github.com/boeing-ai-gateway/boeing/pkg/gateway/types"
+	"github.com/boeing-ai-gateway/boeing/pkg/license"
+	v1 "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1"
+	"github.com/boeing-ai-gateway/boeing/pkg/system"
+	"github.com/boeing-ai-gateway/boeing/pkg/wait"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
 	kclient "sigs.k8s.io/controller-runtime/pkg/client"
 )
 
-const CookieSecretEnvVar = "OBOT_AUTH_PROVIDER_COOKIE_SECRET"
+const CookieSecretEnvVar = "BOEING_AUTH_PROVIDER_COOKIE_SECRET"
 
 type AuthProviderHandler struct {
 	dispatcher  *dispatcher.Dispatcher

@@ -1,9 +1,9 @@
 package oauthclients
 
 import (
-	"github.com/obot-platform/nah/pkg/router"
-	gateway "github.com/obot-platform/obot/pkg/gateway/client"
-	v1 "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1"
+	"github.com/boeing-ai-gateway/nah/pkg/router"
+	gateway "github.com/boeing-ai-gateway/boeing/pkg/gateway/client"
+	v1 "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1"
 )
 
 type Handler struct {

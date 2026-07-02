@@ -5,7 +5,7 @@ import (
 	"path"
 	"strings"
 
-	"github.com/obot-platform/obot/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
 )
 
 // Zed on-disk layout. macOS-style extensions path. Other platforms expose

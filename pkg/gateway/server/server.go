@@ -3,17 +3,17 @@ package server
 import (
 	"context"
 
-	"github.com/obot-platform/obot/pkg/accesscontrolrule"
-	"github.com/obot-platform/obot/pkg/gateway/db"
-	"github.com/obot-platform/obot/pkg/gateway/server/dispatcher"
-	"github.com/obot-platform/obot/pkg/jwt/persistent"
-	"github.com/obot-platform/obot/pkg/messagepolicy"
-	"github.com/obot-platform/obot/pkg/modelaccesspolicy"
+	"github.com/boeing-ai-gateway/boeing/pkg/accesscontrolrule"
+	"github.com/boeing-ai-gateway/boeing/pkg/gateway/db"
+	"github.com/boeing-ai-gateway/boeing/pkg/gateway/server/dispatcher"
+	"github.com/boeing-ai-gateway/boeing/pkg/jwt/persistent"
+	"github.com/boeing-ai-gateway/boeing/pkg/messagepolicy"
+	"github.com/boeing-ai-gateway/boeing/pkg/modelaccesspolicy"
 )
 
 type Options struct {
 	Hostname   string
-	UIHostname string `name:"ui-hostname" env:"OBOT_SERVER_UI_HOSTNAME"`
+	UIHostname string `name:"ui-hostname" env:"BOEING_SERVER_UI_HOSTNAME"`
 
 	DailyUserPromptTokenLimit     int `usage:"The maximum number of daily user prompt/input token to allow, <= 0 disables the limit" default:"10000000"`     // default is 10 million
 	DailyUserCompletionTokenLimit int `usage:"The maximum number of daily user completion/output tokens to allow, <= 0 disables the limit" default:"100000"` // default is 100 thousand

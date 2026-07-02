@@ -53,7 +53,7 @@
 </script>
 
 <svelte:head>
-	<title>Obot | MCP Server {server?.name ?? ''}</title>
+	<title>Boeing | MCP Server {server?.name ?? ''}</title>
 </svelte:head>
 
 <Layout

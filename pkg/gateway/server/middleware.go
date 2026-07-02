@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"runtime/debug"
 
-	"github.com/obot-platform/obot/pkg/api"
-	"github.com/obot-platform/obot/pkg/gateway/context"
-	glog "github.com/obot-platform/obot/pkg/gateway/log"
+	"github.com/boeing-ai-gateway/boeing/pkg/api"
+	"github.com/boeing-ai-gateway/boeing/pkg/gateway/context"
+	glog "github.com/boeing-ai-gateway/boeing/pkg/gateway/log"
 )
 
 func apply(h api.HandlerFunc, m ...api.Middleware) api.HandlerFunc {

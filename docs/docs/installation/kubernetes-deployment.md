@@ -1,9 +1,9 @@
 # Kubernetes Deployment
 
-Deploy Obot on Kubernetes for production-grade reliability, scalability, and high availability.
+Deploy Boeing on Kubernetes for production-grade reliability, scalability, and high availability.
 
 :::info Helm Chart Reference
-For a complete list of all available Helm chart configuration values, see [charts.obot.ai](https://charts.obot.ai/).
+For a complete list of all available Helm chart configuration values, see [charts.boeing.ai](https://charts.boeing.ai/).
 :::
 
 ## Prerequisites
@@ -23,12 +23,12 @@ For a complete list of all available Helm chart configuration values, see [chart
 ### Recommended Cluster Requirements
 
 - **HA Cluster**
-- **CPU**: 4 cores for Obot
-- **Memory**: 8GB for Obot
+- **CPU**: 4 cores for Boeing
+- **Memory**: 8GB for Boeing
 
 ## Helm Installation
 
-Obot provides a Helm chart for easy deployment [here](https://charts.obot.ai).
+Boeing provides a Helm chart for easy deployment [here](https://charts.boeing.ai).
 
 The chart has sane defaults for a test cluster.
 
@@ -40,11 +40,11 @@ Create a `values.yaml` file with your production configuration:
 # Optionally customize replica count for high availability
 # replicaCount: 2
 
-# Enable ingress or use a service of type loadbalancer to expose Obot
+# Enable ingress or use a service of type loadbalancer to expose Boeing
 ingress:
   enabled: true
   hosts:
-    - <your obot hostname>
+    - <your boeing hostname>
 
 # This can be turned off because we are persisting data externally in PostgreSQL and S3
 persistence:
@@ -61,22 +61,22 @@ config:
   GITHUB_AUTH_TOKEN: <PAT from github>
 
   # Enable encryption
-  OBOT_SERVER_ENCRYPTION_PROVIDER: aws
-  OBOT_AWS_KMS_KEY_ARN: <your kms arn>
+  BOEING_SERVER_ENCRYPTION_PROVIDER: aws
+  BOEING_AWS_KMS_KEY_ARN: <your kms arn>
 
   # Store published workflows in external object storage
   # Options are s3, azure, gcs, and custom
-  OBOT_ARTIFACT_STORAGE_PROVIDER: s3
-  OBOT_ARTIFACT_STORAGE_BUCKET: <artifact bucket name>
-  OBOT_ARTIFACT_S3_REGION: <aws region>
+  BOEING_ARTIFACT_STORAGE_PROVIDER: s3
+  BOEING_ARTIFACT_STORAGE_BUCKET: <artifact bucket name>
+  BOEING_ARTIFACT_S3_REGION: <aws region>
 
   # optional - this will be generated automatically if you do not set it
-  OBOT_BOOTSTRAP_TOKEN: <some random value>
+  BOEING_BOOTSTRAP_TOKEN: <some random value>
 
   # Point this to your postgres database
-  OBOT_SERVER_DSN: postgres://<user>:<pass>@<host>/<db>
+  BOEING_SERVER_DSN: postgres://<user>:<pass>@<host>/<db>
 
-  OBOT_SERVER_HOSTNAME: <your obot hostname>
+  BOEING_SERVER_HOSTNAME: <your boeing hostname>
   # Setting these is optional, but you'll need to setup a model provider from the Admin UI before using chat.
   # You can set either, neither or both.
   OPENAI_API_KEY: <openai api key>
@@ -120,7 +120,7 @@ mcpNamespace:
 ```
 
 When enabled, this policy:
-- Restricts MCP servers to only communicate with Obot, DNS, and public internet
+- Restricts MCP servers to only communicate with Boeing, DNS, and public internet
 - Blocks access to private IP ranges and internal cluster resources
 - Prevents potential lateral movement if an MCP server is compromised
 
@@ -128,7 +128,7 @@ For details, see [MCP Deployments in Kubernetes - Network Policy](../configurati
 
 ### Pod Security Admission for MCP Servers
 
-Obot applies Pod Security Standards to the MCP namespace using Pod Security Admission (PSA). The default configuration uses the **restricted** policy level for maximum security:
+Boeing applies Pod Security Standards to the MCP namespace using Pod Security Admission (PSA). The default configuration uses the **restricted** policy level for maximum security:
 
 ```yaml
 mcpNamespace:
@@ -145,21 +145,21 @@ The restricted policy follows current Pod hardening best practices and provides 
 
 For details, see [MCP Deployments in Kubernetes - Pod Security Admission](../configuration/mcp-deployments-in-kubernetes.md#pod-security-admission).
 
-### Restricting Obot Server Egress
+### Restricting Boeing Server Egress
 
-The [Network Policy for MCP Servers](#network-policy-for-mcp-servers) above restricts the **MCP server pods**. It does not restrict the **Obot server** itself, which makes its own outbound connections as part of normal operation. In multi-tenant deployments or deployments with untrusted users, you may want to constrain which destinations the Obot server can reach, as a defense-in-depth measure.
+The [Network Policy for MCP Servers](#network-policy-for-mcp-servers) above restricts the **MCP server pods**. It does not restrict the **Boeing server** itself, which makes its own outbound connections as part of normal operation. In multi-tenant deployments or deployments with untrusted users, you may want to constrain which destinations the Boeing server can reach, as a defense-in-depth measure.
 
-If you want to constrain the Obot server's egress as a defense-in-depth measure, scope it tightly to your specific deployment — there is no safe blanket blocklist. Depending on your setup, the Obot server legitimately needs to reach private ranges (its database and in-cluster services such as a self-hosted model provider or the MCP namespace) and, with some cloud authentication methods, the cloud instance metadata endpoint (`169.254.169.254`), where it obtains credentials for integrations such as KMS.
+If you want to constrain the Boeing server's egress as a defense-in-depth measure, scope it tightly to your specific deployment — there is no safe blanket blocklist. Depending on your setup, the Boeing server legitimately needs to reach private ranges (its database and in-cluster services such as a self-hosted model provider or the MCP namespace) and, with some cloud authentication methods, the cloud instance metadata endpoint (`169.254.169.254`), where it obtains credentials for integrations such as KMS.
 
 ## Agent Persistence
 
-By default, Obot Agent uses storage inside its pod, which means all agent state is lost if the pod restarts. For production deployments, configure a persistent `StorageClass`.
+By default, Boeing Agent uses storage inside its pod, which means all agent state is lost if the pod restarts. For production deployments, configure a persistent `StorageClass`.
 
 For complete guidance and examples (including AWS EBS, GCP Hyperdisk, and `nfs-subdir-external-provisioner`), see [Persistent Storage in Kubernetes](/installation/kubernetes-persistent-storage.md).
 
 ## Workflow Sharing in Kubernetes
 
-If `OBOT_ARTIFACT_STORAGE_PROVIDER` is unset, Obot stores published workflows on local disk at `/data/.local/share/obot/published-artifacts`.
+If `BOEING_ARTIFACT_STORAGE_PROVIDER` is unset, Boeing stores published workflows on local disk at `/data/.local/share/boeing/published-artifacts`.
 
 The Helm chart's `persistence` PVC mounts at `/data`, so it covers that path.
 
@@ -169,14 +169,14 @@ Use this when you do not want S3, GCS, Azure Blob Storage, or another object sto
 
 If you disable `persistence`, published workflow artifacts remain on pod-local disk and will be lost when the pod is replaced.
 
-For a single Obot replica:
+For a single Boeing replica:
 
 - Enable `persistence`
 - Use `ReadWriteOnce` as the access mode
 - This is appropriate for `replicaCount: 1`
 - A block-storage-backed `StorageClass` such as EBS, PD, or Azure Disk is typically fine
 
-For multiple Obot replicas:
+For multiple Boeing replicas:
 
 - Enable `persistence`
 - Use `ReadWriteMany` as the access mode
@@ -190,8 +190,8 @@ Example using dynamic provisioning for a single replica:
 replicaCount: 1
 
 config:
-  OBOT_ARTIFACT_STORAGE_PROVIDER: ""
-  OBOT_ARTIFACT_STORAGE_BUCKET: ""
+  BOEING_ARTIFACT_STORAGE_PROVIDER: ""
+  BOEING_ARTIFACT_STORAGE_BUCKET: ""
 
 persistence:
   enabled: true
@@ -207,15 +207,15 @@ Example using an existing RWX claim for multiple replicas:
 replicaCount: 2
 
 config:
-  OBOT_ARTIFACT_STORAGE_PROVIDER: ""
-  OBOT_ARTIFACT_STORAGE_BUCKET: ""
+  BOEING_ARTIFACT_STORAGE_PROVIDER: ""
+  BOEING_ARTIFACT_STORAGE_BUCKET: ""
 
 persistence:
   enabled: true
-  existingClaim: obot-data-rwx
+  existingClaim: boeing-data-rwx
 ```
 
-The `obot-data-rwx` claim itself must be provisioned with `ReadWriteMany`.
+The `boeing-data-rwx` claim itself must be provisioned with `ReadWriteMany`.
 
 For more examples and storage-class guidance, see [Persistent Storage in Kubernetes](/installation/kubernetes-persistent-storage.md).
 

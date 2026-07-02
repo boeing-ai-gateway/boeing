@@ -13,7 +13,7 @@ import (
 	"github.com/adrg/xdg"
 )
 
-const configRelPath = "obot/config.json"
+const configRelPath = "/boeing/config.json"
 
 // Config is the setup-managed CLI configuration written under the
 // user's XDG config directory.
@@ -29,7 +29,7 @@ type Store interface {
 
 type xdgStore struct{}
 
-// NormalizeAppURL returns the canonical Obot app URL used for local
+// NormalizeAppURL returns the canonical Boeing app URL used for local
 // config and keyring lookup.
 func NormalizeAppURL(raw string) (string, error) {
 	raw = strings.TrimSpace(raw)
@@ -62,7 +62,7 @@ func NormalizeAppURL(raw string) (string, error) {
 	return normalized, nil
 }
 
-// APIBaseURL derives the Obot API base URL from a normalized app URL.
+// APIBaseURL derives the Boeing API base URL from a normalized app URL.
 func APIBaseURL(appURL string) string {
 	return strings.TrimRight(appURL, "/") + "/api"
 }
@@ -89,7 +89,7 @@ func ActiveAppURL(explicit string) (string, error) {
 		return "", err
 	}
 	if strings.TrimSpace(cfg.DefaultURL) == "" {
-		return "", errors.New("no Obot URL configured")
+		return "", errors.New("no Boeing URL configured")
 	}
 	return NormalizeAppURL(cfg.DefaultURL)
 }

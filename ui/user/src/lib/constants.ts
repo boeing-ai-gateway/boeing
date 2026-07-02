@@ -1,7 +1,7 @@
 export const ABORTED_THREAD_MESSAGE = 'thread was aborted, cancelling run';
 export const ABORTED_BY_USER_MESSAGE = 'aborted by user';
 
-export const UNAUTHORIZED_PATHS = new Set(['/', '/privacy-policy', '/terms-of-service', '/admin']);
+export const UNAUTHORIZED_PATHS = new Set(['/', '/admin']);
 
 export const PAGE_TRANSITION_DURATION = 200;
 export const PAGE_SIZE = 50;
@@ -22,7 +22,8 @@ export const CommonModelProviderIds = {
 	GEMINI_VERTEX: 'gemini-vertex-model-provider',
 	GENERIC_OPENAI: 'generic-openai-model-provider',
 	AZURE: 'azure-model-provider',
-	AZURE_ENTRA: 'azure-entra-model-provider'
+	AZURE_ENTRA: 'azure-entra-model-provider',
+	BOEING_AI: 'boeing-ai-model-provider'
 };
 
 export const RecommendedModelProviders = [
@@ -41,6 +42,7 @@ export const DEFAULT_SYSTEM_MCP_CATALOG_ID = 'default';
 export const CommonAuthProviderIds = {
 	GOOGLE: 'google-auth-provider',
 	GITHUB: 'github-auth-provider',
+	GITLAB: 'gitlab-auth-provider',
 	OKTA: 'okta-auth-provider',
 	ENTRA: 'entra-auth-provider',
 	AUTH0: 'auth0-auth-provider',

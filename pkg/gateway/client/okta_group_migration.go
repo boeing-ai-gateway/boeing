@@ -9,9 +9,9 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/obot-platform/obot/pkg/gateway/types"
-	v1 "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1"
-	"github.com/obot-platform/obot/pkg/system"
+	"github.com/boeing-ai-gateway/boeing/pkg/gateway/types"
+	v1 "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1"
+	"github.com/boeing-ai-gateway/boeing/pkg/system"
 	"gorm.io/gorm"
 	"gorm.io/gorm/clause"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -189,7 +189,7 @@ func (c *Client) migrateOktaGroupIDs(ctx context.Context, authProviderURL, authP
 // fetchGroupMigrationMapping fetches the old→new group ID mapping from the auth provider.
 // Returns nil, nil if the auth provider does not support this endpoint (404).
 func fetchGroupMigrationMapping(ctx context.Context, authProviderURL string) ([]oktaGroupMigrationMapping, error) {
-	req, err := http.NewRequestWithContext(ctx, http.MethodGet, authProviderURL+"/obot-get-group-migration-mapping", nil)
+	req, err := http.NewRequestWithContext(ctx, http.MethodGet, authProviderURL+"/boeing-get-group-migration-mapping", nil)
 	if err != nil {
 		return nil, fmt.Errorf("okta migration error: failed to create request: %w", err)
 	}

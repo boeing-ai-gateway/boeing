@@ -1,30 +1,30 @@
-# Obot
+# Boeing
 
-Obot is an open-source platform that provides everything an organization needs to implement MCP technologies. It enables you to host MCP servers for internal and external users, set up MCP registries, manage and monitor MCP usage, and build feature-rich agents and chatbots that leverage MCP servers.
+Boeing is an open-source platform that provides everything an organization needs to implement MCP technologies. It enables you to host MCP servers for internal and external users, set up MCP registries, manage and monitor MCP usage, and build feature-rich agents and chatbots that leverage MCP servers.
 
 
 ## Getting Started
 
-To run Obot locally, start it with Docker:
+To run Boeing locally, start it with Docker:
 
 ```bash
-docker run -d --name obot -p 8080:8080 \
+docker run -d --name boeing -p 8080:8080 \
   -v /var/run/docker.sock:/var/run/docker.sock \
   -e OPENAI_API_KEY=<API KEY> \
-  -e OBOT_SERVER_ENABLE_AUTHENTICATION=true \
-  -e OBOT_BOOTSTRAP_TOKEN=<token> \
-  ghcr.io/obot-platform/obot:latest
+  -e BOEING_SERVER_ENABLE_AUTHENTICATION=true \
+  -e BOEING_BOOTSTRAP_TOKEN=<token> \
+  ghcr.io/boeing-ai-gateway/boeing:latest
 ```
 
 **Note**: Replace `<API KEY>` with your OpenAI API key. You can also set `ANTHROPIC_API_KEY` or configure model providers through the admin UI.
 
-The `OBOT_BOOTSTRAP_TOKEN` value can be anything you want, at least eight characters long. This is the value you will provide for initial authentication to begin configuring Obot.
+The `BOEING_BOOTSTRAP_TOKEN` value can be anything you want, at least eight characters long. This is the value you will provide for initial authentication to begin configuring Boeing.
 
-Open [http://localhost:8080](http://localhost:8080) in your browser to access the Obot UI. Check the container logs (`docker logs obot`) to see your bootstrap token for the initial setup.
+Open [http://localhost:8080](http://localhost:8080) in your browser to access the Boeing UI. Check the container logs (`docker logs boeing`) to see your bootstrap token for the initial setup.
 
-You can also leave out the `OBOT_SERVER_ENABLE_AUTHENTICATION` environment variable to disable authentication, but this means that anyone with access to make requests to port 8080 on your system will be able to manage and launch MCP servers, so it is recommended to keep authentication enabled.
+You can also leave out the `BOEING_SERVER_ENABLE_AUTHENTICATION` environment variable to disable authentication, but this means that anyone with access to make requests to port 8080 on your system will be able to manage and launch MCP servers, so it is recommended to keep authentication enabled.
 
-For additional installation options, see the Installation Guide at [https://docs.obot.ai/installation/general](https://docs.obot.ai/installation/general).
+For additional installation options, see the Installation Guide at [https://docs.boeing.ai/installation/general](https://docs.boeing.ai/installation/general).
 
 ## Platform Concepts
 
@@ -35,14 +35,14 @@ Organizations face several challenges when implementing MCP technologies:
 * **Secure**: MCP servers must be authenticated, access must be controlled, and all activity should be auditable.
 * **Use**: MCP protocol support varies widely across chat clients. A standardized chat client that provides consistent MCP support across the organization is highly desirable.
 
-Obot addresses these challenges by offering MCP hosting, an MCP registry, an MCP gateway, and an MCP-standards-compliant chat client. Popular workflow and agent frameworks such as n8n and LangGraph can interact with MCP servers managed by Obot. In addition, clients like ChatGPT, Claude Desktop, and GitHub Copilot can also leverage MCP servers managed by Obot.
+Boeing addresses these challenges by offering MCP hosting, an MCP registry, an MCP gateway, and an MCP-standards-compliant chat client. Popular workflow and agent frameworks such as n8n and LangGraph can interact with MCP servers managed by Boeing. In addition, clients like ChatGPT, Claude Desktop, and GitHub Copilot can also leverage MCP servers managed by Boeing.
 
 
-![Obot Platform Architecture](docs/static/img/obot-mcp-mgmt.png)
+![Boeing Platform Architecture](docs/static/img/boeing-mcp-mgmt.png)
 
 ### MCP Hosting
 
-Run and manage MCP servers directly within Obot:
+Run and manage MCP servers directly within Boeing:
 
 * Run MCP servers locally with Docker or deploy them to Kubernetes
 * Support for Node.js, Python, and container-based servers
@@ -68,7 +68,7 @@ A single entry point for accessing MCP servers:
 * Usage visibility to understand which servers are being used
 * Request inspection and filtering before requests reach servers
 
-### Obot Chat
+### Boeing Chat
 
 A chat client built to work directly with MCP:
 
@@ -88,13 +88,13 @@ A chat client built to work directly with MCP:
 
 ## Documentation
 
-Documentation is available at [https://docs.obot.ai](https://docs.obot.ai).
+Documentation is available at [https://docs.boeing.ai](https://docs.boeing.ai).
 
 ## Community
 
-* Documentation: [https://docs.obot.ai](https://docs.obot.ai)
+* Documentation: [https://docs.boeing.ai](https://docs.boeing.ai)
 * Discord: [https://discord.com/invite/9sSf4UyAMC](https://discord.com/invite/9sSf4UyAMC)
 
 ## License
 
-Obot is open-source software. See the LICENSE file for details.
+Boeing is open-source software. See the LICENSE file for details.

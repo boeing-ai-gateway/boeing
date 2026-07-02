@@ -2,7 +2,7 @@
 package version
 
 import (
-	"github.com/obot-platform/nah/pkg/version"
+	"github.com/boeing-ai-gateway/nah/pkg/version"
 )
 
 var (

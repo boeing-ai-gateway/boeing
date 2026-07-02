@@ -5,14 +5,14 @@ import versions from "../versions.json";
 import { escapeRegExp } from "./utils";
 
 const VERBOSE = process.env.STRUCTURED_DATA_VERBOSE === "true";
-const ORG_NAME = "Obot AI, Inc";
+const ORG_NAME = "Boeing AI, Inc";
 const ORG_DESCRIPTION =
-  "Obot is an open-source platform for hosting, managing, and securing MCP servers in enterprise environments.";
+  "Boeing is an open-source platform for hosting, managing, and securing MCP servers in enterprise environments.";
 const SITE_DESCRIPTION =
-  "Official documentation for Obot — the open-source MCP platform for hosting, registry, gateway, and chat.";
-const ORG_LOGO_URL = "https://docs.obot.ai/img/obot-logo-blue-black-text.svg";
+  "Official documentation for Boeing — the open-source MCP platform for hosting, registry, gateway, and chat.";
+const ORG_LOGO_URL = "https://docs.boeing.ai/img/boeing-logo-blue-black-text.svg";
 const ORG_SAME_AS = [
-  "https://github.com/obot-platform/obot",
+  "https://github.com/boeing-ai-gateway/boeing",
   "https://discord.gg/9sSf4UyAMC",
 ];
 const LATEST_VERSION = versions[0] ?? "current";
@@ -463,7 +463,7 @@ function toPathname(url: string, site: SiteInfo): string {
 }
 
 function deriveSection(url: string, site: SiteInfo): string {
-  // url looks like "https://docs.obot.ai/concepts/mcp-hosting/"
+  // url looks like "https://docs.boeing.ai/concepts/mcp-hosting/"
   const pathname = toPathname(url, site);
   const firstSegment = pathname.split("/").filter(Boolean)[0];
   if (firstSegment && firstSegment in SECTION_MAP) {
@@ -518,7 +518,7 @@ function deriveKeywords(
   const segments = pathname.split("/").filter(Boolean);
 
   // Start with base keywords
-  const keywords = new Set<string>(["obot", "mcp", section.toLowerCase()]);
+  const keywords = new Set<string>(["boeing", "mcp", section.toLowerCase()]);
 
   // Add meaningful words from URL path segments (skip generic ones)
   const skipWords = new Set(["overview", "index"]);
@@ -691,10 +691,10 @@ function buildGraph(meta: PageMeta): Record<string, unknown> {
 /**
  * Build a full hierarchical BreadcrumbList from the page URL.
  *
- * For a URL like `https://docs.obot.ai/installation/reference-architectures/gcp-gke/`
+ * For a URL like `https://docs.boeing.ai/installation/reference-architectures/gcp-gke/`
  * this produces:
- *   1. Home → https://docs.obot.ai/
- *   2. Installation → https://docs.obot.ai/installation/overview/
+ *   1. Home → https://docs.boeing.ai/
+ *   2. Installation → https://docs.boeing.ai/installation/overview/
  *   3. Reference Architectures
  *   4. Google Cloud GKE (current page, no item URL)
  *

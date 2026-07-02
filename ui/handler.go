@@ -9,7 +9,7 @@ import (
 	"path"
 	"strings"
 
-	"github.com/obot-platform/obot/pkg/oauth"
+	"github.com/boeing-ai-gateway/boeing/pkg/oauth"
 )
 
 //go:embed all:user/*build

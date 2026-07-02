@@ -5,9 +5,9 @@ import (
 	"errors"
 	"strings"
 
-	nmcp "github.com/obot-platform/nanobot/pkg/mcp"
-	gateway "github.com/obot-platform/obot/pkg/gateway/client"
-	"github.com/obot-platform/obot/pkg/mcp"
+	nmcp "github.com/boeing-ai-gateway/boeingbot/pkg/mcp"
+	gateway "github.com/boeing-ai-gateway/boeing/pkg/gateway/client"
+	"github.com/boeing-ai-gateway/boeing/pkg/mcp"
 	"golang.org/x/oauth2"
 	"gorm.io/gorm"
 )

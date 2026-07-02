@@ -6,14 +6,14 @@ import (
 	"fmt"
 	"strings"
 
-	nmcp "github.com/obot-platform/nanobot/pkg/mcp"
-	"github.com/obot-platform/obot/apiclient/types"
-	"github.com/obot-platform/obot/pkg/api"
-	"github.com/obot-platform/obot/pkg/api/handlers"
-	"github.com/obot-platform/obot/pkg/gateway/client"
-	"github.com/obot-platform/obot/pkg/mcp"
-	v1 "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1"
-	"github.com/obot-platform/obot/pkg/system"
+	nmcp "github.com/boeing-ai-gateway/boeingbot/pkg/mcp"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/pkg/api"
+	"github.com/boeing-ai-gateway/boeing/pkg/api/handlers"
+	"github.com/boeing-ai-gateway/boeing/pkg/gateway/client"
+	"github.com/boeing-ai-gateway/boeing/pkg/mcp"
+	v1 "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1"
+	"github.com/boeing-ai-gateway/boeing/pkg/system"
 	"golang.org/x/oauth2"
 	kclient "sigs.k8s.io/controller-runtime/pkg/client"
 )
@@ -107,7 +107,7 @@ func (f *MCPOAuthHandlerFactory) CheckForMCPAuth(req api.Context, mcpServer v1.M
 		defer close(errChan)
 		httpClientOptions := nmcp.HTTPClientOptions{
 			OAuthRedirectURL: system.MCPOAuthCallbackURL(f.baseURL),
-			OAuthClientName:  "Obot MCP Gateway",
+			OAuthClientName:  "Boeing MCP Gateway",
 			CallbackHandler:  oauthHandler,
 			ClientCredLookup: oauthHandler,
 			TokenStorage:     f.tokenStore.ForUserAndMCP(oauthHandler.userID, oauthHandler.mcpID),
@@ -116,15 +116,15 @@ func (f *MCPOAuthHandlerFactory) CheckForMCPAuth(req api.Context, mcpServer v1.M
 			httpClientOptions.OAuthClientIDMetadataDocument = system.OAuthClientIDMetadataURL(f.baseURL)
 		}
 
-		_, err := f.mcpSessionManager.ClientForMCPServerForOAuthCheck(req.Context(), "Obot OAuth Check", mcpServerConfig, nmcp.ClientOption{
-			ClientName:        "Obot MCP OAuth",
+		_, err := f.mcpSessionManager.ClientForMCPServerForOAuthCheck(req.Context(), "Boeing OAuth Check", mcpServerConfig, nmcp.ClientOption{
+			ClientName:        "Boeing MCP OAuth",
 			HTTPClientOptions: httpClientOptions,
 		})
 		if err != nil {
 			errChan <- fmt.Errorf("failed to get client for server %s: %v", mcpServer.Name, err)
 		} else {
 			// Best effort
-			_ = f.mcpSessionManager.CloseClient(req.Context(), mcpServerConfig, "Obot OAuth Check")
+			_ = f.mcpSessionManager.CloseClient(req.Context(), mcpServerConfig, "Boeing OAuth Check")
 			errChan <- nil
 		}
 	}()
@@ -182,8 +182,8 @@ func (m *mcpOAuthHandler) HandleAuthURL(ctx context.Context, _ string, authURL s
 func (m *mcpOAuthHandler) NewState(ctx context.Context, conf *oauth2.Config, verifier string) (string, <-chan nmcp.CallbackPayload, error) {
 	state := strings.ToLower(rand.Text())
 
-	// The channel is required by the nanobot CallbackHandler interface but is not used
-	// in the Obot flow. The auth URL is handled via HandleAuthURL/URLChan, and the
+	// The channel is required by the boeingbot CallbackHandler interface but is not used
+	// in the Boeing flow. The auth URL is handled via HandleAuthURL/URLChan, and the
 	// callback arrives via a separate HTTP endpoint (oauthCallback) which looks up
 	// the pending state from the DB directly.
 	ch := make(chan nmcp.CallbackPayload)

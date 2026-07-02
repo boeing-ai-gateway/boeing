@@ -10,19 +10,19 @@ import (
 	"strings"
 	"text/tabwriter"
 
-	"github.com/obot-platform/cmd"
-	"github.com/obot-platform/obot/apiclient/types"
-	"github.com/obot-platform/obot/pkg/localagents"
+	"github.com/boeing-ai-gateway/cmd"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/pkg/localagents"
 	"github.com/spf13/cobra"
 )
 
 type Skills struct {
-	root *Obot
+	root *Boeing
 }
 
 func (s *Skills) Customize(c *cobra.Command) {
 	c.Use = "skills"
-	c.Short = "Manage Obot skills"
+	c.Short = "Manage Boeing skills"
 	c.Args = cobra.NoArgs
 	c.AddCommand(cmd.Command(&SkillsSearch{root: s.root}))
 	c.AddCommand(cmd.Command(&SkillsInstall{root: s.root}))
@@ -38,12 +38,12 @@ type SkillsSearch struct {
 	Limit int  `usage:"Maximum number of skills to return" default:"50"`
 	JSON  bool `usage:"Print results as JSON"`
 
-	root *Obot
+	root *Boeing
 }
 
 func (s *SkillsSearch) Customize(cmd *cobra.Command) {
 	cmd.Use = "search [query]"
-	cmd.Short = "Search Obot for installable skills"
+	cmd.Short = "Search Boeing for installable skills"
 	cmd.Args = cobra.MaximumNArgs(1)
 }
 
@@ -115,12 +115,12 @@ type SkillsInstall struct {
 	Destination string `usage:"Target skills directory, such as ~/.claude/skills or ~/.agents/skills"`
 	JSON        bool   `usage:"Print results as JSON"`
 
-	root *Obot
+	root *Boeing
 }
 
 func (s *SkillsInstall) Customize(cmd *cobra.Command) {
 	cmd.Use = "install <skill-id>"
-	cmd.Short = "Install an Obot skill into a local skills directory"
+	cmd.Short = "Install a Boeing skill into a local skills directory"
 	cmd.Args = cobra.ExactArgs(1)
 }
 

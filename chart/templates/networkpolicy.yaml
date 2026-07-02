@@ -1,17 +1,17 @@
-{{- if and (eq .Values.config.OBOT_SERVER_MCPRUNTIME_BACKEND "kubernetes") .Values.mcpNamespace.networkPolicy.enabled }}
+{{- if and (eq .Values.config.BOEING_SERVER_MCPRUNTIME_BACKEND "kubernetes") .Values.mcpNamespace.networkPolicy.enabled }}
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
   name: mcp-egress-restrictions
-  namespace: {{ include "obot.config.mcpNamespace" . }}
+  namespace: {{ include "boeing.config.mcpNamespace" . }}
   labels:
-    {{- include "obot.labels" . | nindent 4 }}
+    {{- include "boeing.labels" . | nindent 4 }}
 spec:
   podSelector: {}
   policyTypes:
     - Egress
     - Ingress
-  # Allow ingress only from Obot pods
+  # Allow ingress only from Boeing pods
   ingress:
     - from:
         - namespaceSelector:
@@ -19,7 +19,7 @@ spec:
               kubernetes.io/metadata.name: {{ .Release.Namespace }}
           podSelector:
             matchLabels:
-              {{- include "obot.selectorLabels" . | nindent 14 }}
+              {{- include "boeing.selectorLabels" . | nindent 14 }}
   egress:
     # Allow DNS lookups to DNS namespace
     - to:
@@ -31,14 +31,14 @@ spec:
           port: 53
         - protocol: TCP
           port: 53
-    # Allow communication to Obot service
+    # Allow communication to Boeing service
     - to:
         - namespaceSelector:
             matchLabels:
               kubernetes.io/metadata.name: {{ .Release.Namespace }}
           podSelector:
             matchLabels:
-              {{- include "obot.selectorLabels" . | nindent 14 }}
+              {{- include "boeing.selectorLabels" . | nindent 14 }}
       ports:
         - protocol: TCP
           port: 8080

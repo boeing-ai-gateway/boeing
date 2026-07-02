@@ -14,17 +14,17 @@ import (
 	"strings"
 	"time"
 
-	"github.com/obot-platform/nah/pkg/apply"
-	"github.com/obot-platform/nah/pkg/name"
-	"github.com/obot-platform/nah/pkg/router"
-	"github.com/obot-platform/obot/apiclient/types"
-	"github.com/obot-platform/obot/logger"
-	"github.com/obot-platform/obot/pkg/accesscontrolrule"
-	gclient "github.com/obot-platform/obot/pkg/gateway/client"
-	"github.com/obot-platform/obot/pkg/mcp"
-	v1 "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1"
-	"github.com/obot-platform/obot/pkg/system"
-	"github.com/obot-platform/obot/pkg/validation"
+	"github.com/boeing-ai-gateway/nah/pkg/apply"
+	"github.com/boeing-ai-gateway/nah/pkg/name"
+	"github.com/boeing-ai-gateway/nah/pkg/router"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/logger"
+	"github.com/boeing-ai-gateway/boeing/pkg/accesscontrolrule"
+	gclient "github.com/boeing-ai-gateway/boeing/pkg/gateway/client"
+	"github.com/boeing-ai-gateway/boeing/pkg/mcp"
+	v1 "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1"
+	"github.com/boeing-ai-gateway/boeing/pkg/system"
+	"github.com/boeing-ai-gateway/boeing/pkg/validation"
 	apierrors "k8s.io/apimachinery/pkg/api/errors"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/fields"
@@ -57,7 +57,7 @@ const CatalogCredentialToolName = "catalog-source-tokens"
 const (
 	// These are used to force catalog sync on startup, used for times when changes are made to
 	// catalogs, and they must be synced on the next start.
-	forceSyncStartupAnnotation = "obot.ai/force-sync-startup"
+	forceSyncStartupAnnotation = "boeing.ai/force-sync-startup"
 	// Bump this any time this functionality is needed.
 	startupSyncGeneration = "1"
 )
@@ -556,13 +556,13 @@ func readCatalogDirectory[T any](catalog string) ([]T, error) {
 	var (
 		catalogPatterns       = []string{"*.json", "*.yaml", "*.yml"} // Default to all JSON and YAML files
 		ignorePatterns        []string
-		usingObotCatalogsFile bool
+		usingBoeingCatalogsFile bool
 	)
 
-	// First try to get .obotcatalogs file
-	obotCatalogsPath := filepath.Join(catalog, ".obotcatalogs")
-	if content, err := os.ReadFile(obotCatalogsPath); err == nil {
-		usingObotCatalogsFile = true
+	// First try to get .boeingcatalogs file
+	boeingCatalogsPath := filepath.Join(catalog, ".boeingcatalogs")
+	if content, err := os.ReadFile(boeingCatalogsPath); err == nil {
+		usingBoeingCatalogsFile = true
 		scanner := bufio.NewScanner(strings.NewReader(string(content)))
 		var patterns []string
 		for scanner.Scan() {
@@ -573,14 +573,14 @@ func readCatalogDirectory[T any](catalog string) ([]T, error) {
 			}
 		}
 		if scanner.Err() != nil && scanner.Err() != io.EOF {
-			log.Warnf("Failed to read .obotcatalogs file: %v", scanner.Err())
+			log.Warnf("Failed to read .boeingcatalogs file: %v", scanner.Err())
 		} else if len(patterns) > 0 {
 			catalogPatterns = patterns
 		}
 	}
 
-	obotIgnoreCatalogsPath := filepath.Join(catalog, ".ignoreobotcatalogs")
-	if content, err := os.ReadFile(obotIgnoreCatalogsPath); err == nil {
+	boeingIgnoreCatalogsPath := filepath.Join(catalog, ".ignoreboeingcatalogs")
+	if content, err := os.ReadFile(boeingIgnoreCatalogsPath); err == nil {
 		scanner := bufio.NewScanner(strings.NewReader(string(content)))
 		var patterns []string
 		for scanner.Scan() {
@@ -591,7 +591,7 @@ func readCatalogDirectory[T any](catalog string) ([]T, error) {
 			}
 		}
 		if scanner.Err() != nil && scanner.Err() != io.EOF {
-			log.Warnf("Failed to read .ignoreobotcatalogs file: %v", scanner.Err())
+			log.Warnf("Failed to read .ignoreboeingcatalogs file: %v", scanner.Err())
 		} else if len(patterns) > 0 {
 			ignorePatterns = patterns
 		}
@@ -674,7 +674,7 @@ func readCatalogDirectory[T any](catalog string) ([]T, error) {
 			// If that fails, try single object with YAML
 			var entry T
 			if err := yaml.Unmarshal(content, &entry); err != nil {
-				if usingObotCatalogsFile {
+				if usingBoeingCatalogsFile {
 					log.Warnf("Failed to parse %s as catalog entry: %v", relPath, err)
 				} else {
 					log.Debugf("Failed to parse %s as catalog entry: %v", relPath, err)
@@ -698,7 +698,7 @@ func readCatalogDirectory[T any](catalog string) ([]T, error) {
 func (h *Handler) SetUpDefaultMCPCatalog(ctx context.Context, c client.Client) error {
 	var existing v1.MCPCatalog
 	if err := c.Get(ctx, router.Key(system.DefaultNamespace, system.DefaultCatalog), &existing); err == nil {
-		// TODO: Remove this migration logic once we've migrated all Obot deployments to the new catalog path.
+		// TODO: Remove this migration logic once we've migrated all Boeing deployments to the new catalog path.
 		if i := slices.IndexFunc(existing.Spec.SourceURLs, func(url string) bool {
 			matched, _ := regexp.MatchString(`^(\./)?/?catalog$`, url)
 			return matched

@@ -4,9 +4,9 @@ import (
 	"context"
 	"testing"
 
-	v1 "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1"
-	storagescheme "github.com/obot-platform/obot/pkg/storage/scheme"
-	"github.com/obot-platform/obot/pkg/system"
+	v1 "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1"
+	storagescheme "github.com/boeing-ai-gateway/boeing/pkg/storage/scheme"
+	"github.com/boeing-ai-gateway/boeing/pkg/system"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	kclient "sigs.k8s.io/controller-runtime/pkg/client"
@@ -53,7 +53,7 @@ func TestCreateDefaultSkillRepository(t *testing.T) {
 
 	t.Run("valid URL creates repository", func(t *testing.T) {
 		c := newFakeClient(t)
-		err := createDefaultSkillRepository(ctx, c, "https://github.com/obot-platform/skills", "main")
+		err := createDefaultSkillRepository(ctx, c, "https://github.com/boeing-ai-gateway/skills", "main")
 		require.NoError(t, err)
 
 		var repo v1.SkillRepository
@@ -62,13 +62,13 @@ func TestCreateDefaultSkillRepository(t *testing.T) {
 			Name:      system.DefaultSkillRepository,
 		}, &repo))
 		assert.Equal(t, "Default", repo.Spec.DisplayName)
-		assert.Equal(t, "https://github.com/obot-platform/skills", repo.Spec.RepoURL)
+		assert.Equal(t, "https://github.com/boeing-ai-gateway/skills", repo.Spec.RepoURL)
 		assert.Equal(t, "main", repo.Spec.Ref)
 	})
 
 	t.Run("trims whitespace from URL and ref", func(t *testing.T) {
 		c := newFakeClient(t)
-		err := createDefaultSkillRepository(ctx, c, "  https://github.com/obot-platform/skills  ", "  main  ")
+		err := createDefaultSkillRepository(ctx, c, "  https://github.com/boeing-ai-gateway/skills  ", "  main  ")
 		require.NoError(t, err)
 
 		var repo v1.SkillRepository
@@ -76,7 +76,7 @@ func TestCreateDefaultSkillRepository(t *testing.T) {
 			Namespace: system.DefaultNamespace,
 			Name:      system.DefaultSkillRepository,
 		}, &repo))
-		assert.Equal(t, "https://github.com/obot-platform/skills", repo.Spec.RepoURL)
+		assert.Equal(t, "https://github.com/boeing-ai-gateway/skills", repo.Spec.RepoURL)
 		assert.Equal(t, "main", repo.Spec.Ref)
 	})
 
@@ -84,11 +84,11 @@ func TestCreateDefaultSkillRepository(t *testing.T) {
 		c := newFakeClient(t)
 
 		// Create first time
-		err := createDefaultSkillRepository(ctx, c, "https://github.com/obot-platform/skills", "main")
+		err := createDefaultSkillRepository(ctx, c, "https://github.com/boeing-ai-gateway/skills", "main")
 		require.NoError(t, err)
 
 		// Create again — should succeed (idempotent)
-		err = createDefaultSkillRepository(ctx, c, "https://github.com/obot-platform/skills", "v2")
+		err = createDefaultSkillRepository(ctx, c, "https://github.com/boeing-ai-gateway/skills", "v2")
 		require.NoError(t, err)
 
 		// Original should be unchanged

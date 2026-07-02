@@ -261,7 +261,7 @@
 </script>
 
 <svelte:head>
-	<title>Obot | Message Policy Violations</title>
+	<title>Boeing | Message Policy Violations</title>
 </svelte:head>
 
 <Layout

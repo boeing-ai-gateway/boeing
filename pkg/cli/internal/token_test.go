@@ -12,10 +12,10 @@ import (
 	"testing"
 
 	"github.com/adrg/xdg"
-	"github.com/obot-platform/obot/apiclient"
-	"github.com/obot-platform/obot/apiclient/types"
-	"github.com/obot-platform/obot/pkg/cli/internal/credentials"
-	gatewaytypes "github.com/obot-platform/obot/pkg/gateway/types"
+	"github.com/boeing-ai-gateway/boeing/apiclient"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/pkg/cli/internal/credentials"
+	gatewaytypes "github.com/boeing-ai-gateway/boeing/pkg/gateway/types"
 )
 
 type fakeCredentialStore struct {
@@ -64,18 +64,18 @@ func TestAppURLForAPIBaseURL(t *testing.T) {
 	}{
 		{
 			name:    "app URL",
-			baseURL: "https://obot.example.com",
-			want:    "https://obot.example.com",
+			baseURL: "https://boeing.example.com",
+			want:    "https://boeing.example.com",
 		},
 		{
 			name:    "API URL",
-			baseURL: "https://obot.example.com/api",
-			want:    "https://obot.example.com",
+			baseURL: "https://boeing.example.com/api",
+			want:    "https://boeing.example.com",
 		},
 		{
 			name:    "API URL trailing slash",
-			baseURL: "https://obot.example.com/api/",
-			want:    "https://obot.example.com",
+			baseURL: "https://boeing.example.com/api/",
+			want:    "https://boeing.example.com",
 		},
 	}
 
@@ -328,7 +328,7 @@ func TestTokenRequestIncludesRequestedScopes(t *testing.T) {
 
 			_, err := Token(WithNonInteractive(t.Context()), srv.URL+"/api", apiclient.TokenFetchOptions{
 				Name:         "CLI token",
-				Description:  "Created by obot login",
+				Description:  "Created by boeing login",
 				NoExpiration: tt.noExpiration,
 				Scopes:       tt.scopes,
 			})
@@ -348,8 +348,8 @@ func TestTokenRequestIncludesRequestedScopes(t *testing.T) {
 			if got.Name != "CLI token" {
 				t.Fatalf("name = %q, want CLI token", got.Name)
 			}
-			if got.Description != "Created by obot login" {
-				t.Fatalf("description = %q, want Created by obot login", got.Description)
+			if got.Description != "Created by boeing login" {
+				t.Fatalf("description = %q, want Created by boeing login", got.Description)
 			}
 			assertCreateRequestScopes(t, got, tt.want)
 		})
@@ -665,19 +665,19 @@ func TestStoredTokenValid(t *testing.T) {
 
 func TestLogoutDeletesSelectedAppURLToken(t *testing.T) {
 	store := newFakeCredentialStore()
-	store.tokens["https://obot.example.com"] = "token-a"
+	store.tokens["https://boeing.example.com"] = "token-a"
 	store.tokens["https://other.example.com"] = "token-b"
 	restore := useCredentialStore(t, store)
 	defer restore()
 
-	removed, err := Logout("https://obot.example.com/")
+	removed, err := Logout("https://boeing.example.com/")
 	if err != nil {
 		t.Fatal(err)
 	}
 	if !removed {
 		t.Fatalf("expected selected token to be removed")
 	}
-	if _, ok := store.tokens["https://obot.example.com"]; ok {
+	if _, ok := store.tokens["https://boeing.example.com"]; ok {
 		t.Fatalf("expected selected token to be deleted")
 	}
 	if got := store.tokens["https://other.example.com"]; got != "token-b" {
@@ -690,7 +690,7 @@ func TestLogoutNotFound(t *testing.T) {
 	restore := useCredentialStore(t, store)
 	defer restore()
 
-	removed, err := Logout("https://obot.example.com")
+	removed, err := Logout("https://boeing.example.com")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -705,7 +705,7 @@ func TestLegacyTokenFileIsIgnored(t *testing.T) {
 	defer restore()
 
 	configHome := useTestXDGConfigHome(t)
-	tokenFile := filepath.Join(configHome, "obot", "token")
+	tokenFile := filepath.Join(configHome, "boeing", "token")
 	if err := os.MkdirAll(filepath.Dir(tokenFile), 0o700); err != nil {
 		t.Fatal(err)
 	}

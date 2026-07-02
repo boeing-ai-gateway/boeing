@@ -98,7 +98,7 @@
 </script>
 
 <svelte:head>
-	<title>Obot | Device Clients</title>
+	<title>Boeing | Device Clients</title>
 </svelte:head>
 
 <Layout title="Device Clients">
@@ -119,7 +119,7 @@
 				<MonitorCheck class="text-muted-content size-24 opacity-50" />
 				<h4 class="text-muted-content text-lg font-semibold">No clients observed yet</h4>
 				<p class="text-muted-content text-sm font-light">
-					Run <code class="font-mono">obot scan</code> from a managed device with clients to populate
+					Run <code class="font-mono">boeing scan</code> from a managed device with clients to populate
 					this view.
 				</p>
 			</div>

@@ -6,8 +6,8 @@ import (
 	"slices"
 	"strings"
 
-	"github.com/obot-platform/obot/pkg/api"
-	"github.com/obot-platform/obot/pkg/utils"
+	"github.com/boeing-ai-gateway/boeing/pkg/api"
+	"github.com/boeing-ai-gateway/boeing/pkg/utils"
 )
 
 // UserInfoResponse represents the OpenID Connect UserInfo response

@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/obot-platform/obot/pkg/auth"
-	"github.com/obot-platform/obot/pkg/gateway/types"
+	"github.com/boeing-ai-gateway/boeing/pkg/auth"
+	"github.com/boeing-ai-gateway/boeing/pkg/gateway/types"
 	"k8s.io/apiserver/pkg/authentication/authenticator"
 	"k8s.io/apiserver/pkg/authentication/user"
 )
@@ -42,7 +42,7 @@ func (u UserDecorator) AuthenticateRequest(req *http.Request) (*authenticator.Re
 			ProviderUsername:      resp.User.GetName(),
 			ProviderUserID:        resp.User.GetUID(),
 		}
-		gatewayUser, err = u.client.EnsureIdentity(req.Context(), identity, req.Header.Get("X-Obot-User-Timezone"))
+		gatewayUser, err = u.client.EnsureIdentity(req.Context(), identity, req.Header.Get("X-Boeing-User-Timezone"))
 		if err != nil {
 			return nil, false, err
 		}

@@ -5,8 +5,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/obot-platform/obot/pkg/gateway/types"
-	"github.com/obot-platform/obot/pkg/serviceaccounts"
+	"github.com/boeing-ai-gateway/boeing/pkg/gateway/types"
+	"github.com/boeing-ai-gateway/boeing/pkg/serviceaccounts"
 	"gorm.io/gorm"
 )
 

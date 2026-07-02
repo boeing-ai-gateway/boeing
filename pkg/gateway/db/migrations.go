@@ -4,9 +4,9 @@ import (
 	"errors"
 	"fmt"
 
-	types2 "github.com/obot-platform/obot/apiclient/types"
-	"github.com/obot-platform/obot/pkg/gateway/types"
-	"github.com/obot-platform/obot/pkg/hash"
+	types2 "github.com/boeing-ai-gateway/boeing/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/pkg/gateway/types"
+	"github.com/boeing-ai-gateway/boeing/pkg/hash"
 	"gorm.io/gorm"
 )
 
@@ -41,7 +41,7 @@ func addAuthProviderNameAndNamespace(tx *gorm.DB) error {
 				ALTER TABLE identities ADD COLUMN provider_user_id text NOT NULL DEFAULT '';
 
 				-- Set placeholder values for existing records
-				UPDATE identities SET provider_user_id = 'OBOT_PLACEHOLDER_' || provider_username WHERE provider_user_id = '';
+				UPDATE identities SET provider_user_id = 'BOEING_PLACEHOLDER_' || provider_username WHERE provider_user_id = '';
 
 				-- Add new primary key
 					ALTER TABLE identities ADD PRIMARY KEY (auth_provider_name, auth_provider_namespace, provider_user_id);

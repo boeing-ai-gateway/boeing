@@ -1,6 +1,6 @@
 package devicescan
 
-import "github.com/obot-platform/obot/apiclient/types"
+import "github.com/boeing-ai-gateway/boeing/apiclient/types"
 
 // ClientScanner is the per-client integration surface. Each AI client
 // (Claude Code, Cursor, etc.) implements this with one struct in its own

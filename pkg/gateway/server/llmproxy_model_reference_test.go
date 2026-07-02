@@ -4,9 +4,9 @@ import (
 	"context"
 	"testing"
 
-	types2 "github.com/obot-platform/obot/apiclient/types"
-	v1 "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1"
-	storagescheme "github.com/obot-platform/obot/pkg/storage/scheme"
+	types2 "github.com/boeing-ai-gateway/boeing/apiclient/types"
+	v1 "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1"
+	storagescheme "github.com/boeing-ai-gateway/boeing/pkg/storage/scheme"
 	apierrors "k8s.io/apimachinery/pkg/api/errors"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"sigs.k8s.io/controller-runtime/pkg/client/fake"

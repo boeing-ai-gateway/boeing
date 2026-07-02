@@ -1,13 +1,13 @@
 <script lang="ts">
 	import Layout from '$lib/components/Layout.svelte';
-	import ProjectStartThread from '$lib/components/nanobot/ProjectStartThread.svelte';
-	import QuickAccess from '$lib/components/nanobot/QuickAccess.svelte';
+	import ProjectStartThread from '$lib/components/boeingbot/ProjectStartThread.svelte';
+	import QuickAccess from '$lib/components/boeingbot/QuickAccess.svelte';
 	import Profile from '$lib/components/navbar/Profile.svelte';
-	import * as nanobotLayout from '$lib/context/nanobotLayout.svelte';
-	import type { ChatSession } from '$lib/services/nanobot/chat/index.svelte';
-	import type { Attachment, UploadedFile } from '$lib/services/nanobot/types';
+	import * as boeingbotLayout from '$lib/context/boeingbotLayout.svelte';
+	import type { ChatSession } from '$lib/services/boeingbot/chat/index.svelte';
+	import type { Attachment, UploadedFile } from '$lib/services/boeingbot/types';
 	import { responsive, profile } from '$lib/stores';
-	import { nanobotChat } from '$lib/stores/nanobotChat.svelte';
+	import { boeingbotChat } from '$lib/stores/boeingbotChat.svelte';
 	import { goto } from '$lib/url';
 	import { clampThreadContentReportedWidth, randomUUID } from '$lib/utils';
 	import ImpersonateBanner from './ImpersonateBanner.svelte';
@@ -84,7 +84,7 @@
 
 <Layout
 	title=""
-	layoutContext={nanobotLayout}
+	layoutContext={boeingbotLayout}
 	classes={{
 		container: 'px-0 py-0 md:px-0',
 		childrenContainer: 'max-w-full h-[calc(100dvh-4rem)]',
@@ -125,18 +125,18 @@
 						if (p.uri?.startsWith('blob:')) URL.revokeObjectURL(p.uri);
 					});
 
-					$nanobotChat?.api.createSession().then(async (session) => {
+					$boeingbotChat?.api.createSession().then(async (session) => {
 						const uploadedAttachments: Attachment[] = await Promise.all(
 							toUpload.map((p) => session.uploadFile(p.file))
 						);
 						const allAttachments = [...uploadedAttachments, ...(attachments ?? [])];
 						session.sendMessage(message, allAttachments.length > 0 ? allAttachments : undefined);
-						const current = get(nanobotChat);
-						nanobotChat.set({
+						const current = get(boeingbotChat);
+						boeingbotChat.set({
 							projectId,
 							chat: session,
 							sessionId: session.chatId,
-							api: $nanobotChat?.api,
+							api: $boeingbotChat?.api,
 							sessions: current?.sessions ?? [],
 							isThreadsLoading: current?.isThreadsLoading ?? false,
 							resources: current?.resources ?? []
@@ -215,5 +215,5 @@
 </Layout>
 
 <svelte:head>
-	<title>Obot | What would you like to work on?</title>
+	<title>Boeing | What would you like to work on?</title>
 </svelte:head>

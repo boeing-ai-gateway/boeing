@@ -6,11 +6,11 @@ import (
 	"fmt"
 	"maps"
 
-	"github.com/obot-platform/obot/apiclient/types"
-	gateway "github.com/obot-platform/obot/pkg/gateway/client"
-	gatewaytypes "github.com/obot-platform/obot/pkg/gateway/types"
-	v1 "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1"
-	"github.com/obot-platform/obot/pkg/system"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
+	gateway "github.com/boeing-ai-gateway/boeing/pkg/gateway/client"
+	gatewaytypes "github.com/boeing-ai-gateway/boeing/pkg/gateway/types"
+	v1 "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1"
+	"github.com/boeing-ai-gateway/boeing/pkg/system"
 	kclient "sigs.k8s.io/controller-runtime/pkg/client"
 )
 

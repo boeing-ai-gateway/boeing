@@ -11,7 +11,7 @@ import (
 
 var dnsLabelRegex = regexp.MustCompile("[^a-z0-9-]+")
 
-// ReverseDNSFromURL converts a URL like "https://obot.example.com" to "com.example.obot"
+// ReverseDNSFromURL converts a URL like "https://boeing.example.com" to "com.example.boeing"
 // Handles localhost and IP addresses specially by returning "local.<hostname>"
 func ReverseDNSFromURL(baseURL string) (string, error) {
 	parsed, err := url.Parse(baseURL)
@@ -79,7 +79,7 @@ func isIPAddress(hostname string) bool {
 }
 
 // FormatRegistryServerName creates a full registry server name from reverse DNS and server name
-// Example: "com.example.obot/my-server"
+// Example: "com.example.boeing/my-server"
 func FormatRegistryServerName(reverseDNS, serverName string) string {
 	// Normalize server name to be DNS-compliant
 	normalizedName := normalizeDNSLabel(serverName)

@@ -370,5 +370,5 @@
 <SelectServerType bind:this={selectServerTypeDialog} onSelectServerType={selectServerType} />
 
 <svelte:head>
-	<title>Obot | MCP Management | MCP Servers</title>
+	<title>Boeing | MCP Management | MCP Servers</title>
 </svelte:head>

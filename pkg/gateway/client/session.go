@@ -5,11 +5,11 @@ import (
 	"errors"
 	"fmt"
 
-	gcontext "github.com/obot-platform/obot/pkg/gateway/context"
-	"github.com/obot-platform/obot/pkg/gateway/types"
-	"github.com/obot-platform/obot/pkg/hash"
-	v1 "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1"
-	"github.com/obot-platform/obot/pkg/system"
+	gcontext "github.com/boeing-ai-gateway/boeing/pkg/gateway/context"
+	"github.com/boeing-ai-gateway/boeing/pkg/gateway/types"
+	"github.com/boeing-ai-gateway/boeing/pkg/hash"
+	v1 "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1"
+	"github.com/boeing-ai-gateway/boeing/pkg/system"
 	"gorm.io/gorm"
 	kclient "sigs.k8s.io/controller-runtime/pkg/client"
 )

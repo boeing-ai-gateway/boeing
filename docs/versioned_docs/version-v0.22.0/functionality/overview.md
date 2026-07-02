@@ -4,7 +4,7 @@ title: Overview
 
 # Overview
 
-The MCP Platform is Obot's unified management interface for deploying, managing, and operating MCP servers. It provides role-based access to server management, registries, audit logs, usage tracking, and platform administration.
+The MCP Platform is Boeing's unified management interface for deploying, managing, and operating MCP servers. It provides role-based access to server management, registries, audit logs, usage tracking, and platform administration.
 
 For detailed permissions and role definitions, see [User Roles](/configuration/user-roles/).
 
@@ -14,7 +14,7 @@ The MCP Platform adapts its navigation and available features based on your assi
 
 ### Basic User
 
-Basic Users can deploy and use MCP servers that have been made available to them through an MCP Registry. They can interact with MCP servers via Obot Agent or external MCP clients but cannot publish or manage servers.
+Basic Users can deploy and use MCP servers that have been made available to them through an MCP Registry. They can interact with MCP servers via Boeing Agent or external MCP clients but cannot publish or manage servers.
 
 ### Power User
 
@@ -26,7 +26,7 @@ Power Users+ include all Power User capabilities and can additionally publish MC
 
 ### Admin / Owner
 
-Admins and Owners have full administrative access to the platform, including system-wide configuration, user management, and Obot Agent administration.
+Admins and Owners have full administrative access to the platform, including system-wide configuration, user management, and Boeing Agent administration.
 
 The only functional difference between Owners and Admins is that Owners can assign the **Auditor** role to users. For more information, see the [Auditor Role](/configuration/user-roles/#auditor).
 
@@ -41,7 +41,7 @@ The only functional difference between Owners and Admins is that Owners can assi
 | Usage | | ✓* | ✓* | ✓ |
 | Filters | | | | ✓ |
 | Server Scheduling | | | | ✓ |
-| **Obot Agent Management** | | | | ✓ |
+| **Boeing Agent Management** | | | | ✓ |
 | Message Policies | | | | ✓ |
 | Skills | | | | ✓ |
 | Skill Access Policies | | | | ✓ |
@@ -50,7 +50,7 @@ The only functional difference between Owners and Admins is that Owners can assi
 | API Keys (admin) | | | | ✓ |
 | **API Keys** | ✓ | ✓ | ✓ | ✓ |
 | **Branding** | | | | ✓ |
-| **Obot Agent** | ✓ | ✓ | ✓ | ✓ |
+| **Boeing Agent** | ✓ | ✓ | ✓ | ✓ |
 
 \* For servers they deployed only
 
@@ -64,7 +64,7 @@ The only functional difference between Owners and Admins is that Owners can assi
 - [Skills](/functionality/skills/) - Manage skill sources and browse discoverable skills for agents
 - [Skill Access Policies](/functionality/skill-access-policies/) - Control which users and groups can access which skills
 - [Device Management](./device-management.md) - Inventory local AI clients, MCP servers, skills, and plugins across submitted device scans
-- [Obot Agent Management](/functionality/obot-agent-management/) - Configure default agent, conversation, and workflow settings, and monitor activity
+- [Boeing Agent Management](/functionality/boeing-agent-management/) - Configure default agent, conversation, and workflow settings, and monitor activity
 - [Message Policies](/functionality/message-policies/) - Enforce content rules on user prompts and tool calls, and review violations
 - [User Management](/functionality/user-management/) - Manage users, roles, and authentication
 - [API Keys](/functionality/api-keys/) - Create and manage API keys for programmatic MCP server access

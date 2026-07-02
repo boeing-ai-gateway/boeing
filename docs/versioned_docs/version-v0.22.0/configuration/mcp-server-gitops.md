@@ -4,7 +4,7 @@ title: MCP Server GitOps
 
 ## Overview
 
-Obot supports managing MCP servers through Git repositories, enabling GitOps workflows. Instead of manually adding MCP servers one at a time, administrators can source server configurations from Git repositories. This supports collaborative workflows with proper code review, versioning, and automated validation processes.
+Boeing supports managing MCP servers through Git repositories, enabling GitOps workflows. Instead of manually adding MCP servers one at a time, administrators can source server configurations from Git repositories. This supports collaborative workflows with proper code review, versioning, and automated validation processes.
 
 ### Key Benefits
 
@@ -15,9 +15,9 @@ Obot supports managing MCP servers through Git repositories, enabling GitOps wor
 
 ## Getting Started
 
-1. **Create or Fork a Repository**: Start with the official [Obot MCP server repository](https://github.com/obot-platform/mcp-catalog) or create your own
+1. **Create or Fork a Repository**: Start with the official [Boeing MCP server repository](https://github.com/boeing-ai-gateway/mcp-catalog) or create your own
 2. **Add Server Configurations**: Create YAML files for each MCP server following the format below
-3. **Configure Obot**: Point your Obot instance to the Git repository containing your server configurations
+3. **Configure Boeing**: Point your Boeing instance to the Git repository containing your server configurations
 4. **Establish Review Workflows**: Set up branch protection rules and PR-based review processes for configuration changes
 5. **Automate Validation**: Implement CI/CD pipelines to validate YAML syntax and test server configurations
 
@@ -53,7 +53,7 @@ To pull from a private repository, enter a **Personal access token** in the opti
 - **GitHub**: `repo` (read access is sufficient)
 - **GitLab**: `read_repository` (clone access) + `read_api` (pre-clone size check)
 
-If no per-URL token is configured, Obot falls back to the `GITHUB_AUTH_TOKEN` environment variable.
+If no per-URL token is configured, Boeing falls back to the `GITHUB_AUTH_TOKEN` environment variable.
 
 ## Configuration Format
 
@@ -66,7 +66,7 @@ MCP server configurations consist of individual YAML files, each defining a sing
 - **Resource Requirements**: Optional CPU and memory requests and limits for hosted server deployments
 - **Runtime Configuration**: Deployment and connection details
 
-For examples and reference implementations, see the official Obot MCP server repository at [github.com/obot-platform/mcp-catalog](https://github.com/obot-platform/mcp-catalog).
+For examples and reference implementations, see the official Boeing MCP server repository at [github.com/boeing-ai-gateway/mcp-catalog](https://github.com/boeing-ai-gateway/mcp-catalog).
 
 ## YAML Configuration Structure
 
@@ -148,13 +148,13 @@ Supported fields are:
 
 Values use standard Kubernetes resource quantity syntax, such as `250m`, `1`, `512Mi`, or `1Gi`.
 
-When omitted, Obot uses the configured MCP server resource defaults. When specified, catalog entry resource values override the corresponding default request or limit for servers created from that catalog entry.
+When omitted, Boeing uses the configured MCP server resource defaults. When specified, catalog entry resource values override the corresponding default request or limit for servers created from that catalog entry.
 
 ### Kubernetes Secret Bindings
 
 Secret bindings let you wire an env var, header, or file to a key in an externally-managed Kubernetes Secret instead of asking the user to supply the value at install time.
 
-Secret bindings are only available on git-managed catalog entries, and only when Obot is using the Kubernetes MCP runtime backend.
+Secret bindings are only available on git-managed catalog entries, and only when Boeing is using the Kubernetes MCP runtime backend.
 
 #### Basic env var binding
 

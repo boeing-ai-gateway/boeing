@@ -5,8 +5,7 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/obot-platform/obot/apiclient/types"
-	"github.com/obot-platform/obot/pkg/storage/blob"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
 )
 
 // StorageProvider defines the interface for all storage providers.
@@ -18,37 +17,8 @@ type StorageProvider interface {
 	Upload(ctx context.Context, config types.StorageConfig, bucket, key string, data io.Reader) error
 }
 
-// blobStoreAdapter adapts blob.BlobStore to the audit log StorageProvider interface.
-// It creates a new BlobStore per call since the audit log system passes config per-call.
-type blobStoreAdapter struct {
-	providerType types.StorageProviderType
-}
-
-func (a *blobStoreAdapter) Test(ctx context.Context, config types.StorageConfig) error {
-	store, err := blob.New(a.providerType, config)
-	if err != nil {
-		return err
-	}
-	return store.Test(ctx)
-}
-
-func (a *blobStoreAdapter) Upload(ctx context.Context, config types.StorageConfig, bucket, key string, data io.Reader) error {
-	store, err := blob.New(a.providerType, config)
-	if err != nil {
-		return err
-	}
-	return store.Upload(ctx, bucket, key, data)
-}
-
-// NewStorageProvider creates a storage provider instance based on the provider type.
+// NewStorageProvider returns an error for all cloud storage provider types.
+// External cloud storage export (S3, GCS, Azure) has been disabled.
 func NewStorageProvider(providerType types.StorageProviderType) (StorageProvider, error) {
-	switch providerType {
-	case types.StorageProviderS3,
-		types.StorageProviderGCS,
-		types.StorageProviderAzureBlob,
-		types.StorageProviderCustomS3:
-		return &blobStoreAdapter{providerType: providerType}, nil
-	default:
-		return nil, fmt.Errorf("unsupported storage provider: %s", providerType)
-	}
+	return nil, fmt.Errorf("external storage provider %q is disabled: cloud export (S3, GCS, Azure) has been removed", providerType)
 }

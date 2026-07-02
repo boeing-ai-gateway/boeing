@@ -9,18 +9,18 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/obot-platform/nah/pkg/name"
-	"github.com/obot-platform/obot/apiclient/types"
-	"github.com/obot-platform/obot/pkg/accesscontrolrule"
-	"github.com/obot-platform/obot/pkg/api"
-	mcpcataloghandler "github.com/obot-platform/obot/pkg/controller/handlers/mcpcatalog"
-	gclient "github.com/obot-platform/obot/pkg/gateway/client"
-	gatewaytypes "github.com/obot-platform/obot/pkg/gateway/types"
-	"github.com/obot-platform/obot/pkg/mcp"
-	v1 "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1"
-	"github.com/obot-platform/obot/pkg/system"
-	"github.com/obot-platform/obot/pkg/utils"
-	"github.com/obot-platform/obot/pkg/validation"
+	"github.com/boeing-ai-gateway/nah/pkg/name"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/pkg/accesscontrolrule"
+	"github.com/boeing-ai-gateway/boeing/pkg/api"
+	mcpcataloghandler "github.com/boeing-ai-gateway/boeing/pkg/controller/handlers/mcpcatalog"
+	gclient "github.com/boeing-ai-gateway/boeing/pkg/gateway/client"
+	gatewaytypes "github.com/boeing-ai-gateway/boeing/pkg/gateway/types"
+	"github.com/boeing-ai-gateway/boeing/pkg/mcp"
+	v1 "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1"
+	"github.com/boeing-ai-gateway/boeing/pkg/system"
+	"github.com/boeing-ai-gateway/boeing/pkg/utils"
+	"github.com/boeing-ai-gateway/boeing/pkg/validation"
 	"golang.org/x/crypto/bcrypt"
 	apierrors "k8s.io/apimachinery/pkg/api/errors"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -501,7 +501,7 @@ func (h *MCPCatalogHandler) AdminListServersForEntryInCatalog(req api.Context) e
 			return fmt.Errorf("failed to find credential: %w", err)
 		}
 
-		mergedEnv, err := mcp.MergeBoundCreds(req.Context(), req.LocalK8sClient, req.ObotNamespace, server.Spec.Manifest.Env, server.Spec.Manifest.RemoteConfig, cred.Secrets)
+		mergedEnv, err := mcp.MergeBoundCreds(req.Context(), req.LocalK8sClient, req.BoeingNamespace, server.Spec.Manifest.Env, server.Spec.Manifest.RemoteConfig, cred.Secrets)
 		if err != nil {
 			return fmt.Errorf("failed to resolve secret bindings: %w", err)
 		}
@@ -586,7 +586,7 @@ func (h *MCPCatalogHandler) AdminListServersForAllEntriesInCatalog(req api.Conte
 			return fmt.Errorf("failed to find credential: %w", err)
 		}
 
-		mergedEnv, err := mcp.MergeBoundCreds(req.Context(), req.LocalK8sClient, req.ObotNamespace, server.Spec.Manifest.Env, server.Spec.Manifest.RemoteConfig, cred.Secrets)
+		mergedEnv, err := mcp.MergeBoundCreds(req.Context(), req.LocalK8sClient, req.BoeingNamespace, server.Spec.Manifest.Env, server.Spec.Manifest.RemoteConfig, cred.Secrets)
 		if err != nil {
 			return fmt.Errorf("failed to resolve secret bindings: %w", err)
 		}
@@ -664,7 +664,7 @@ func (h *MCPCatalogHandler) ListServersForEntry(req api.Context) error {
 			return fmt.Errorf("failed to find credential: %w", err)
 		}
 
-		mergedEnv, err := mcp.MergeBoundCreds(req.Context(), req.LocalK8sClient, req.ObotNamespace, server.Spec.Manifest.Env, server.Spec.Manifest.RemoteConfig, cred.Secrets)
+		mergedEnv, err := mcp.MergeBoundCreds(req.Context(), req.LocalK8sClient, req.BoeingNamespace, server.Spec.Manifest.Env, server.Spec.Manifest.RemoteConfig, cred.Secrets)
 		if err != nil {
 			return fmt.Errorf("failed to resolve secret bindings: %w", err)
 		}
@@ -733,7 +733,7 @@ func (h *MCPCatalogHandler) GetServerFromEntry(req api.Context) error {
 		return fmt.Errorf("failed to find credential: %w", err)
 	}
 
-	mergedEnv, err := mcp.MergeBoundCreds(req.Context(), req.LocalK8sClient, req.ObotNamespace, server.Spec.Manifest.Env, server.Spec.Manifest.RemoteConfig, cred.Secrets)
+	mergedEnv, err := mcp.MergeBoundCreds(req.Context(), req.LocalK8sClient, req.BoeingNamespace, server.Spec.Manifest.Env, server.Spec.Manifest.RemoteConfig, cred.Secrets)
 	if err != nil {
 		return fmt.Errorf("failed to resolve secret bindings: %w", err)
 	}
@@ -815,7 +815,7 @@ func (h *MCPCatalogHandler) GenerateToolPreviews(req api.Context) error {
 		req.GatewayClient,
 		req.Storage,
 		req.LocalK8sClient,
-		req.ObotNamespace,
+		req.BoeingNamespace,
 		entry.Namespace,
 		catalogName,
 		entry.Spec.Manifest,
@@ -939,7 +939,7 @@ func (h *MCPCatalogHandler) generateCompositeToolPreviews(req api.Context, entry
 			req.GatewayClient,
 			req.Storage,
 			req.LocalK8sClient,
-			req.ObotNamespace,
+			req.BoeingNamespace,
 			entry.Namespace,
 			catalogName,
 			componentEntry.Manifest,
@@ -1065,7 +1065,7 @@ func (h *MCPCatalogHandler) GenerateToolPreviewsOAuthURL(req api.Context) error 
 	if catalogName == "" {
 		catalogName = entry.Spec.PowerUserWorkspaceID
 	}
-	server, serverConfig, err := tempServerAndConfig(req.Context(), req.GatewayClient, req.Storage, req.LocalK8sClient, req.ObotNamespace, entry.Namespace, catalogName, entry.Spec.Manifest, configRequest.Config, configRequest.URL, h.serverURL)
+	server, serverConfig, err := tempServerAndConfig(req.Context(), req.GatewayClient, req.Storage, req.LocalK8sClient, req.BoeingNamespace, entry.Namespace, catalogName, entry.Spec.Manifest, configRequest.Config, configRequest.URL, h.serverURL)
 	if err != nil {
 		return types.NewErrBadRequest("failed to create temporary server and config: %v", err)
 	}
@@ -1155,7 +1155,7 @@ func (h *MCPCatalogHandler) GenerateComponentToolPreviews(req api.Context) error
 		req.GatewayClient,
 		req.Storage,
 		req.LocalK8sClient,
-		req.ObotNamespace,
+		req.BoeingNamespace,
 		composite.Namespace,
 		catalogName,
 		component.Manifest,
@@ -1279,7 +1279,7 @@ func (h *MCPCatalogHandler) GenerateComponentToolPreviewsOAuthURL(req api.Contex
 		req.GatewayClient,
 		req.Storage,
 		req.LocalK8sClient,
-		req.ObotNamespace,
+		req.BoeingNamespace,
 		composite.Namespace,
 		catalogName,
 		component.Manifest,
@@ -1362,7 +1362,7 @@ func (h *MCPCatalogHandler) generateCompositeOAuthURLs(req api.Context, entry v1
 			req.GatewayClient,
 			req.Storage,
 			req.LocalK8sClient,
-			req.ObotNamespace,
+			req.BoeingNamespace,
 			entry.Namespace,
 			catalogName,
 			componentEntry.Manifest,
@@ -1391,7 +1391,7 @@ func (h *MCPCatalogHandler) generateCompositeOAuthURLs(req api.Context, entry v1
 	return req.Write(oauthURLs)
 }
 
-func tempServerAndConfig(ctx context.Context, gatewayClient *gclient.Client, client client.Client, localK8sClient client.Client, obotNamespace, namespace, catalogName string, entryManifest types.MCPServerCatalogEntryManifest, config map[string]string, url, baseURL string) (v1.MCPServer, mcp.ServerConfig, error) {
+func tempServerAndConfig(ctx context.Context, gatewayClient *gclient.Client, client client.Client, localK8sClient client.Client, boeingNamespace, namespace, catalogName string, entryManifest types.MCPServerCatalogEntryManifest, config map[string]string, url, baseURL string) (v1.MCPServer, mcp.ServerConfig, error) {
 	// Convert catalog entry to server manifest
 	serverManifest, err := types.MapCatalogEntryToServer(entryManifest, url, false)
 	if err != nil {
@@ -1401,7 +1401,7 @@ func tempServerAndConfig(ctx context.Context, gatewayClient *gclient.Client, cli
 	// Merge any secretBinding-resolved values into the user-supplied
 	// config so URL-template substitution and ServerToServerConfig see
 	// them. The caller's config map is not mutated.
-	config, err = mcp.MergeBoundCreds(ctx, localK8sClient, obotNamespace, serverManifest.Env, serverManifest.RemoteConfig, config)
+	config, err = mcp.MergeBoundCreds(ctx, localK8sClient, boeingNamespace, serverManifest.Env, serverManifest.RemoteConfig, config)
 	if err != nil {
 		return v1.MCPServer{}, mcp.ServerConfig{}, fmt.Errorf("failed to resolve secret bindings: %w", err)
 	}

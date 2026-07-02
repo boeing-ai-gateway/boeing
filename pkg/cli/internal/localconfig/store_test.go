@@ -17,8 +17,8 @@ func TestNormalizeAppURL(t *testing.T) {
 	}{
 		{
 			name: "https",
-			raw:  "https://obot.example.com",
-			want: "https://obot.example.com",
+			raw:  "https://boeing.example.com",
+			want: "https://boeing.example.com",
 		},
 		{
 			name: "http",
@@ -27,23 +27,23 @@ func TestNormalizeAppURL(t *testing.T) {
 		},
 		{
 			name: "trim whitespace and slash",
-			raw:  "  https://obot.example.com/  ",
-			want: "https://obot.example.com",
+			raw:  "  https://boeing.example.com/  ",
+			want: "https://boeing.example.com",
 		},
 		{
 			name: "trim multiple trailing slashes",
-			raw:  "https://obot.example.com/path///",
-			want: "https://obot.example.com/path",
+			raw:  "https://boeing.example.com/path///",
+			want: "https://boeing.example.com/path",
 		},
 		{
 			name: "accept API base URL",
-			raw:  "https://obot.example.com/api",
-			want: "https://obot.example.com",
+			raw:  "https://boeing.example.com/api",
+			want: "https://boeing.example.com",
 		},
 		{
 			name: "accept nested API base URL",
-			raw:  "https://obot.example.com/obot/api/",
-			want: "https://obot.example.com/obot",
+			raw:  "https://boeing.example.com/boeing/api/",
+			want: "https://boeing.example.com/boeing",
 		},
 		{
 			name:    "empty",
@@ -52,32 +52,32 @@ func TestNormalizeAppURL(t *testing.T) {
 		},
 		{
 			name:    "unsupported scheme",
-			raw:     "ftp://obot.example.com",
+			raw:     "ftp://boeing.example.com",
 			wantErr: true,
 		},
 		{
 			name:    "missing scheme",
-			raw:     "obot.example.com",
+			raw:     "boeing.example.com",
 			wantErr: true,
 		},
 		{
 			name:    "missing host",
-			raw:     "https:///obot",
+			raw:     "https:///boeing",
 			wantErr: true,
 		},
 		{
 			name:    "userinfo",
-			raw:     "https://user:pass@obot.example.com",
+			raw:     "https://user:pass@boeing.example.com",
 			wantErr: true,
 		},
 		{
 			name:    "query string",
-			raw:     "https://obot.example.com?x=y",
+			raw:     "https://boeing.example.com?x=y",
 			wantErr: true,
 		},
 		{
 			name:    "fragment",
-			raw:     "https://obot.example.com#section",
+			raw:     "https://boeing.example.com#section",
 			wantErr: true,
 		},
 	}
@@ -102,22 +102,22 @@ func TestNormalizeAppURL(t *testing.T) {
 }
 
 func TestAPIBaseURL(t *testing.T) {
-	got := APIBaseURL("https://obot.example.com")
-	if got != "https://obot.example.com/api" {
+	got := APIBaseURL("https://boeing.example.com")
+	if got != "https://boeing.example.com/api" {
 		t.Fatalf("expected API URL, got %q", got)
 	}
 
-	got = APIBaseURL("https://obot.example.com/")
-	if got != "https://obot.example.com/api" {
+	got = APIBaseURL("https://boeing.example.com/")
+	if got != "https://boeing.example.com/api" {
 		t.Fatalf("expected API URL from trailing slash input, got %q", got)
 	}
 
-	appURL, err := NormalizeAppURL("https://obot.example.com/api")
+	appURL, err := NormalizeAppURL("https://boeing.example.com/api")
 	if err != nil {
 		t.Fatal(err)
 	}
 	got = APIBaseURL(appURL)
-	if got != "https://obot.example.com/api" {
+	if got != "https://boeing.example.com/api" {
 		t.Fatalf("expected API URL from API base URL input, got %q", got)
 	}
 }
@@ -125,7 +125,7 @@ func TestAPIBaseURL(t *testing.T) {
 func TestLoadSaveConfig(t *testing.T) {
 	configHome := useTestXDGConfigHome(t)
 
-	if err := Save(Config{DefaultURL: " https://obot.example.com/ "}); err != nil {
+	if err := Save(Config{DefaultURL: " https://boeing.example.com/ "}); err != nil {
 		t.Fatal(err)
 	}
 
@@ -133,15 +133,15 @@ func TestLoadSaveConfig(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	if cfg.DefaultURL != "https://obot.example.com" {
+	if cfg.DefaultURL != "https://boeing.example.com" {
 		t.Fatalf("expected normalized default URL, got %q", cfg.DefaultURL)
 	}
 
-	data, err := os.ReadFile(filepath.Join(configHome, "obot", "config.json"))
+	data, err := os.ReadFile(filepath.Join(configHome, "boeing", "config.json"))
 	if err != nil {
 		t.Fatal(err)
 	}
-	if string(data) != "{\n  \"defaultURL\": \"https://obot.example.com\"\n}\n" {
+	if string(data) != "{\n  \"defaultURL\": \"https://boeing.example.com\"\n}\n" {
 		t.Fatalf("unexpected config file:\n%s", string(data))
 	}
 }

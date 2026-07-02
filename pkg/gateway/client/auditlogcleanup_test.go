@@ -5,9 +5,9 @@ import (
 	"testing"
 	"time"
 
-	gatewaydb "github.com/obot-platform/obot/pkg/gateway/db"
-	"github.com/obot-platform/obot/pkg/gateway/types"
-	sservices "github.com/obot-platform/obot/pkg/storage/services"
+	gatewaydb "github.com/boeing-ai-gateway/boeing/pkg/gateway/db"
+	"github.com/boeing-ai-gateway/boeing/pkg/gateway/types"
+	sservices "github.com/boeing-ai-gateway/boeing/pkg/storage/services"
 )
 
 func newTestClient(t *testing.T) *Client {

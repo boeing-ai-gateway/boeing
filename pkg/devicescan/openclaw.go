@@ -3,7 +3,7 @@ package devicescan
 import (
 	"os"
 
-	"github.com/obot-platform/obot/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
 )
 
 // openclawScanner is presence-only: OpenClaw has no public config or

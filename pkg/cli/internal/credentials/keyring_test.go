@@ -49,16 +49,16 @@ func (f *fakeKeyring) Delete(service, user string) error {
 
 func TestKeyringStoreScopesTokensByAppURL(t *testing.T) {
 	kr := newFakeKeyring()
-	store := newKeyringStoreWith("obot-test", kr)
+	store := newKeyringStoreWith("boeing-test", kr)
 
-	if err := store.Set("https://obot.example.com", "token-a"); err != nil {
+	if err := store.Set("https://boeing.example.com", "token-a"); err != nil {
 		t.Fatal(err)
 	}
 	if err := store.Set("https://other.example.com", "token-b"); err != nil {
 		t.Fatal(err)
 	}
 
-	got, err := store.Get("https://obot.example.com")
+	got, err := store.Get("https://boeing.example.com")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -68,14 +68,14 @@ func TestKeyringStoreScopesTokensByAppURL(t *testing.T) {
 }
 
 func TestKeyringStoreMapsNotFound(t *testing.T) {
-	store := newKeyringStoreWith("obot-test", newFakeKeyring())
+	store := newKeyringStoreWith("boeing-test", newFakeKeyring())
 
-	_, err := store.Get("https://obot.example.com")
+	_, err := store.Get("https://boeing.example.com")
 	if !IsNotFound(err) {
 		t.Fatalf("expected ErrNotFound from Get, got %v", err)
 	}
 
-	err = store.Delete("https://obot.example.com")
+	err = store.Delete("https://boeing.example.com")
 	if err != nil {
 		t.Fatalf("expected nil from Delete, got %v", err)
 	}
@@ -85,15 +85,15 @@ func TestKeyringStorePreservesKeyringErrors(t *testing.T) {
 	keyringErr := errors.New("keyring unavailable")
 	kr := newFakeKeyring()
 	kr.err = keyringErr
-	store := newKeyringStoreWith("obot-test", kr)
+	store := newKeyringStoreWith("boeing-test", kr)
 
-	if _, err := store.Get("https://obot.example.com"); !errors.Is(err, keyringErr) {
+	if _, err := store.Get("https://boeing.example.com"); !errors.Is(err, keyringErr) {
 		t.Fatalf("expected keyring error from Get, got %v", err)
 	}
-	if err := store.Set("https://obot.example.com", "token"); !errors.Is(err, keyringErr) {
+	if err := store.Set("https://boeing.example.com", "token"); !errors.Is(err, keyringErr) {
 		t.Fatalf("expected keyring error from Set, got %v", err)
 	}
-	if err := store.Delete("https://obot.example.com"); !errors.Is(err, keyringErr) {
+	if err := store.Delete("https://boeing.example.com"); !errors.Is(err, keyringErr) {
 		t.Fatalf("expected keyring error from Delete, got %v", err)
 	}
 }

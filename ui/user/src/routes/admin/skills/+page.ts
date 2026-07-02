@@ -1,7 +1,7 @@
 import { handleRouteError, HttpError } from '$lib/errors';
 import { AdminService } from '$lib/services';
 import type { SkillRepository } from '$lib/services/admin/types';
-import type { Skill } from '$lib/services/nanobot/types';
+import type { Skill } from '$lib/services/boeingbot/types';
 import type { PageLoad } from './$types';
 
 export const load: PageLoad = async ({ fetch, parent, url }) => {

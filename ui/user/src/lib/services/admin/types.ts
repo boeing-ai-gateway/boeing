@@ -454,7 +454,7 @@ export interface K8sSettings {
 	resources?: string;
 	runtimeClassName?: string;
 	storageClassName?: string;
-	nanobotWorkspaceSize?: string;
+	boeingbotWorkspaceSize?: string;
 	setViaHelm?: boolean;
 }
 export interface K8sSettingsManifest {
@@ -463,7 +463,7 @@ export interface K8sSettingsManifest {
 	resources?: string;
 	runtimeClassName?: string;
 	storageClassName?: string;
-	nanobotWorkspaceSize?: string;
+	boeingbotWorkspaceSize?: string;
 }
 export interface ServerK8sSettings {
 	needsK8sUpdate: boolean;
@@ -733,7 +733,7 @@ export interface MCPServerOAuthCredentialStatus {
 	clientID?: string;
 }
 
-/** Subset of RFC 7591 / Obot OAuth client registration response used by the MCP OAuth debugger. */
+/** Subset of RFC 7591 / Boeing OAuth client registration response used by the MCP OAuth debugger. */
 export interface OAuthClient {
 	client_id?: string;
 	client_secret?: string;
@@ -883,7 +883,7 @@ export const ModelUsageLabels = {
 	[ModelUsage.Other]: 'Other',
 	[ModelUsage.Unknown]: 'Unknown'
 } as const;
-export const NanobotModelAlias = {
+export const BoeingbotModelAlias = {
 	Llm: 'llm',
 	LlmMini: 'llm-mini'
 } as const;
@@ -1075,18 +1075,18 @@ export interface SystemMCPServer {
 	deploymentReplicas?: number;
 	k8sSettingsHash?: string;
 }
-export interface RestartNanobotAgentDeploymentsFailure {
+export interface RestartBoeingbotAgentDeploymentsFailure {
 	serverID: string;
 	error: string;
 }
-export interface RestartNanobotAgentDeploymentsResult {
+export interface RestartBoeingbotAgentDeploymentsResult {
 	dryRun: boolean;
-	totalNanobotAgentServers: number;
+	totalBoeingbotAgentServers: number;
 	targetedServerIDs: string[];
 	restartedCount: number;
 	restartedServerIDs: string[];
 	failedCount: number;
-	failed: RestartNanobotAgentDeploymentsFailure[];
+	failed: RestartBoeingbotAgentDeploymentsFailure[];
 }
 
 // Token usage

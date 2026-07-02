@@ -120,7 +120,7 @@
 			[CommonAuthProviderIds.JUMPCLOUD]: 'jumpcloud-enterprise-only'
 		};
 		return idRef[authProviderId as keyof typeof idRef]
-			? `https://docs.obot.ai/configuration/auth-providers/#${idRef[authProviderId as keyof typeof idRef]}`
+			? `https://docs.boeing.ai/configuration/auth-providers/#${idRef[authProviderId as keyof typeof idRef]}`
 			: undefined;
 	}
 
@@ -216,7 +216,7 @@
 						<p class="my-0.5 flex flex-col text-sm font-semibold">No Auth Providers Configured!</p>
 					</div>
 					<span class="text-sm font-light break-all">
-						To finish setting up Obot, you'll need to configure an Auth Provider. Select one below
+						To finish setting up Boeing, you'll need to configure an Auth Provider. Select one below
 						to get started!
 					</span>
 				</div>
@@ -246,7 +246,7 @@
 							} else {
 								// no credentials set, set initial default value for allowed domains
 								configuringAuthProviderValues = {
-									OBOT_AUTH_PROVIDER_EMAIL_DOMAINS: '*'
+									BOEING_AUTH_PROVIDER_EMAIL_DOMAINS: '*'
 								};
 							}
 						}
@@ -370,5 +370,5 @@
 />
 
 <svelte:head>
-	<title>Obot | Auth Providers</title>
+	<title>Boeing | Auth Providers</title>
 </svelte:head>

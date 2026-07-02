@@ -8,12 +8,12 @@ import (
 	"strings"
 	"time"
 
-	"github.com/obot-platform/nah/pkg/router"
-	"github.com/obot-platform/obot/apiclient/types"
-	"github.com/obot-platform/obot/pkg/auditlogexport"
-	client "github.com/obot-platform/obot/pkg/gateway/client"
-	gatewaytypes "github.com/obot-platform/obot/pkg/gateway/types"
-	v1 "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1"
+	"github.com/boeing-ai-gateway/nah/pkg/router"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/pkg/auditlogexport"
+	client "github.com/boeing-ai-gateway/boeing/pkg/gateway/client"
+	gatewaytypes "github.com/boeing-ai-gateway/boeing/pkg/gateway/types"
+	v1 "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 

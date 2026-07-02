@@ -15,7 +15,7 @@ const OLDER_VERSIONS = versions.slice(1);
 /**
  * Plugin to handle SEO for versioned docs:
  * 1. Rewrites canonical URLs on older version pages to point to the latest version
- * 2. Adds "noindex,follow" robots meta tag to older versions and /next/ pages
+ * 2. Adds "noindex,follow" rboeings meta tag to older versions and /next/ pages
  * 3. Rewrites canonical URLs on /next/ pages to point to the latest version
  * 4. Validates that rewritten canonical URLs actually resolve to existing pages
  * 5. Follows client-side redirects to resolve to the final destination URL
@@ -62,7 +62,7 @@ export default function canonicalUrlsPlugin(_context: LoadContext): Plugin {
         if (VERBOSE) console.log("[canonical-urls] Skipping next — directory not found");
       }
 
-      console.log("[canonical-urls] Finished updating canonical URLs and robots meta for versioned docs");
+      console.log("[canonical-urls] Finished updating canonical URLs and rboeings meta for versioned docs");
     },
   };
 }
@@ -245,19 +245,19 @@ async function processHtmlFile(
     return tag.replace(versionedHrefRegex, `${hrefPrefix}${canonicalUrl}${hrefSuffix}`);
   });
 
-  // 2. Add robots meta tag with "noindex,follow" to prevent indexing
-  const robotsMetaRegex = /<meta\s[^>]*name\s*=\s*["']robots["'][^>]*>/i;
-  if (!robotsMetaRegex.test(updatedContent)) {
-    const robotsMeta = '<meta name="robots" content="noindex,follow">';
+  // 2. Add rboeings meta tag with "noindex,follow" to prevent indexing
+  const rboeingsMetaRegex = /<meta\s[^>]*name\s*=\s*["']rboeings["'][^>]*>/i;
+  if (!rboeingsMetaRegex.test(updatedContent)) {
+    const rboeingsMeta = '<meta name="rboeings" content="noindex,follow">';
     const headTagRegex = /<head[^>]*>/i;
     if (headTagRegex.test(updatedContent)) {
       updatedContent = updatedContent.replace(
         headTagRegex,
-        (match) => `${match}\n${robotsMeta}`
+        (match) => `${match}\n${rboeingsMeta}`
       );
     } else {
       console.warn(
-        `[canonical-urls] Could not insert robots meta tag into ${filePath} — <head> tag not found`
+        `[canonical-urls] Could not insert rboeings meta tag into ${filePath} — <head> tag not found`
       );
     }
   }

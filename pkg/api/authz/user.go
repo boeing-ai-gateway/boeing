@@ -1,7 +1,7 @@
 package authz
 
 import (
-	"github.com/obot-platform/obot/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
 	kuser "k8s.io/apiserver/pkg/authentication/user"
 )
 

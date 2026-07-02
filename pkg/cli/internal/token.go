@@ -17,11 +17,11 @@ import (
 
 	"github.com/fatih/color"
 	"github.com/google/uuid"
-	"github.com/obot-platform/obot/apiclient"
-	types2 "github.com/obot-platform/obot/apiclient/types"
-	"github.com/obot-platform/obot/pkg/cli/internal/credentials"
-	"github.com/obot-platform/obot/pkg/cli/internal/localconfig"
-	"github.com/obot-platform/obot/pkg/gateway/types"
+	"github.com/boeing-ai-gateway/boeing/apiclient"
+	types2 "github.com/boeing-ai-gateway/boeing/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/pkg/cli/internal/credentials"
+	"github.com/boeing-ai-gateway/boeing/pkg/cli/internal/localconfig"
+	"github.com/boeing-ai-gateway/boeing/pkg/gateway/types"
 	"github.com/pkg/browser"
 )
 
@@ -30,7 +30,7 @@ var (
 	openBrowser                       = browser.OpenURL
 )
 
-const TokenEnvVar = "OBOT_TOKEN"
+const TokenEnvVar = "BOEING_TOKEN"
 
 func init() {
 	// Browser launchers (e.g. xdg-open) may write to stdout; keep stdout
@@ -67,7 +67,7 @@ func outputWriter(ctx context.Context) io.Writer {
 		return w
 	}
 	// User-facing auth prompts go to stderr so stdout stays clean for
-	// piping (e.g. `obot login --print-token`).
+	// piping (e.g. `boeing login --print-token`).
 	return os.Stderr
 }
 

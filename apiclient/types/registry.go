@@ -22,7 +22,7 @@ type RegistryServerResponse struct {
 }
 
 // RegistryServerDetail matches the Registry API RegistryServerDetail schema
-// For Obot, configured servers always use Remotes (never Packages)
+// For Boeing, configured servers always use Remotes (never Packages)
 type RegistryServerDetail struct {
 	Name        string                    `json:"name"`
 	Description string                    `json:"description"`
@@ -45,9 +45,9 @@ type RegistryServerIcon struct {
 }
 
 // RegistryServerRemote represents a remote server configuration
-// All Obot servers are exposed as streamable-http remotes via mcp-connect
+// All Boeing servers are exposed as streamable-http remotes via mcp-connect
 type RegistryServerRemote struct {
-	Type string `json:"type"` // Always "streamable-http" for configured Obot servers
+	Type string `json:"type"` // Always "streamable-http" for configured Boeing servers
 	URL  string `json:"url"`  // The mcp-connect URL
 }
 
@@ -61,7 +61,7 @@ type RegistryServerRepository struct {
 
 // RegistryMeta contains registry-managed metadata
 type RegistryMeta struct {
-	Obot     *RegistryObotMeta    `json:"ai.obot/server,omitempty"`
+	Boeing     *RegistryBoeingMeta    `json:"ai.boeing/server,omitempty"`
 	Official RegistryOfficialMeta `json:"io.modelcontextprotocol.registry/official"`
 }
 
@@ -71,8 +71,8 @@ type RegistryOfficialMeta struct {
 	CreatedAt string `json:"createdAt,omitempty"`
 }
 
-// RegistryObotMeta contains Obot-specific metadata
-type RegistryObotMeta struct {
+// RegistryBoeingMeta contains Boeing-specific metadata
+type RegistryBoeingMeta struct {
 	ConfigurationRequired bool   `json:"configurationRequired,omitempty"`
 	ConfigurationMessage  string `json:"configurationMessage,omitempty"`
 }

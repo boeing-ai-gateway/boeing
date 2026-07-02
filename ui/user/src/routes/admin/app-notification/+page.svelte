@@ -257,5 +257,5 @@
 </Layout>
 
 <svelte:head>
-	<title>Obot | App Notification</title>
+	<title>Boeing | App Notification</title>
 </svelte:head>

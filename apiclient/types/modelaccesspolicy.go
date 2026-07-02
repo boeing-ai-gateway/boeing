@@ -5,7 +5,7 @@ import (
 	"strings"
 )
 
-const DefaultModelAliasRefPrefix = "obot://"
+const DefaultModelAliasRefPrefix = "boeing://"
 
 type ModelAccessPolicy struct {
 	Metadata                  `json:",inline"`
@@ -67,7 +67,7 @@ type ModelResource struct {
 	// It either be:
 	// - the wildcard '*', which selects all available models
 	// - the model ID of a specific model
-	// - an Obot default model alias in the form "obot://<alias>"
+	// - a Boeing default model alias in the form "boeing://<alias>"
 	// - a wildcard suffix pattern in the form "<prefix>*" (e.g. "claude-haiku-4-5*"), which selects
 	//   every current and future model, from any provider, whose provider-native target model
 	//   starts with <prefix> (case-sensitive)

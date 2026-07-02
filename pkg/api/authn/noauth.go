@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"net/http"
 
-	types2 "github.com/obot-platform/obot/apiclient/types"
-	"github.com/obot-platform/obot/pkg/gateway/client"
-	"github.com/obot-platform/obot/pkg/gateway/types"
+	types2 "github.com/boeing-ai-gateway/boeing/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/pkg/gateway/client"
+	"github.com/boeing-ai-gateway/boeing/pkg/gateway/types"
 	"k8s.io/apiserver/pkg/authentication/authenticator"
 	"k8s.io/apiserver/pkg/authentication/user"
 )
@@ -28,7 +28,7 @@ func (n *NoAuth) AuthenticateRequest(req *http.Request) (*authenticator.Response
 			ProviderUsername: "nobody",
 			ProviderUserID:   "nobody",
 		},
-		req.Header.Get("X-Obot-User-Timezone"),
+		req.Header.Get("X-Boeing-User-Timezone"),
 		types2.RoleOwner|types2.RoleAuditor,
 	)
 	if err != nil {

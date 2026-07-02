@@ -1,6 +1,6 @@
 import { getContext, setContext } from 'svelte';
 
-const CONTEXT_KEY = '@obot/context/dragable-root';
+const CONTEXT_KEY = '@boeing/context/dragable-root';
 
 export type DraggableItem<T = unknown> = {
 	id: string;

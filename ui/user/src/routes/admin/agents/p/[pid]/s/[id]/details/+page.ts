@@ -1,6 +1,6 @@
 import { handleRouteError } from '$lib/errors';
-import { AdminService, NanobotService, type MCPCatalogServer } from '$lib/services';
-import type { ProjectV2Agent } from '$lib/services/nanobot/types';
+import { AdminService, BoeingbotService, type MCPCatalogServer } from '$lib/services';
+import type { ProjectV2Agent } from '$lib/services/boeingbot/types';
 import type { PageLoad } from './$types';
 
 export const load: PageLoad = async ({ params, parent, fetch }) => {
@@ -11,7 +11,7 @@ export const load: PageLoad = async ({ params, parent, fetch }) => {
 	let agent: ProjectV2Agent | undefined;
 
 	try {
-		agent = await NanobotService.getProjectAgent(pid, id, {
+		agent = await BoeingbotService.getProjectAgent(pid, id, {
 			fetch
 		});
 	} catch (err) {

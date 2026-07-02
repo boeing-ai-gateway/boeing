@@ -1,11 +1,11 @@
 <script lang="ts">
 	import { page } from '$app/state';
-	import { initLayout } from '$lib/context/nanobotLayout.svelte';
-	import { NanobotService } from '$lib/services';
-	import { ChatAPI } from '$lib/services/nanobot/chat/index.svelte';
-	import type { Chat, Resource } from '$lib/services/nanobot/types';
+	import { initLayout } from '$lib/context/boeingbotLayout.svelte';
+	import { BoeingbotService } from '$lib/services';
+	import { ChatAPI } from '$lib/services/boeingbot/chat/index.svelte';
+	import type { Chat, Resource } from '$lib/services/boeingbot/types';
 	import { darkMode, errors } from '$lib/stores';
-	import { nanobotChat } from '$lib/stores/nanobotChat.svelte';
+	import { boeingbotChat } from '$lib/stores/boeingbotChat.svelte';
 	import { onMount, untrack } from 'svelte';
 	import { get } from 'svelte/store';
 
@@ -15,7 +15,7 @@
 	let isNewAgent = $derived(data.isNewAgent);
 	const chatApi = $derived(new ChatAPI(agent.connectURL));
 
-	const initialChat = get(nanobotChat);
+	const initialChat = get(boeingbotChat);
 	let loading = $state(untrack(() => !initialChat || data.isNewAgent));
 
 	let isRootRoute = $derived(page.url.pathname === '/agent');
@@ -33,17 +33,17 @@
 		!!(
 			tid &&
 			projectIdFromPath &&
-			$nanobotChat?.projectId === projectIdFromPath &&
-			$nanobotChat?.sessionId === tid
+			$boeingbotChat?.projectId === projectIdFromPath &&
+			$boeingbotChat?.sessionId === tid
 		)
 	);
 	const showLoading = $derived(loading && !skipLoadingForStoredThread);
 
-	// Initialize layout context for all nanobot child routes
+	// Initialize layout context for all boeingbot child routes
 	initLayout();
 
-	async function initNanobotStore() {
-		nanobotChat.set({
+	async function initBoeingbotStore() {
+		boeingbotChat.set({
 			isThreadsLoading: true,
 			projectId: projects[0].id,
 			sessionId: undefined,
@@ -62,7 +62,7 @@
 			console.error(`Error listing sessions or resources`, error);
 			errors.append(error);
 		} finally {
-			nanobotChat.update((data) => {
+			boeingbotChat.update((data) => {
 				if (data) {
 					data.sessions = sessions;
 					data.resources = resources;
@@ -74,7 +74,7 @@
 	}
 
 	onMount(async () => {
-		const storedChat = get(nanobotChat);
+		const storedChat = get(boeingbotChat);
 		// Re-initialize when there's no stored chat, it's a new agent, or
 		// the project changed (e.g. switching between own agent and impersonation).
 		const projectChanged = storedChat && storedChat.projectId !== projects[0].id;
@@ -82,7 +82,7 @@
 			loading = true;
 			if (isNewAgent) {
 				try {
-					await NanobotService.launchProjectAgent(projects[0].id, agent.id);
+					await BoeingbotService.launchProjectAgent(projects[0].id, agent.id);
 				} catch (error) {
 					console.error(error);
 					errors.append(error);
@@ -90,16 +90,16 @@
 			}
 
 			try {
-				await initNanobotStore();
+				await initBoeingbotStore();
 			} catch (error) {
-				console.error(`Error initializing nanobot store`, error);
+				console.error(`Error initializing boeingbot store`, error);
 			}
 			loading = false;
 		}
 	});
 </script>
 
-<div class="nanobot" data-theme={darkMode.isDark ? 'nanobotdark' : 'nanobotlight'}>
+<div class="boeingbot" data-theme={darkMode.isDark ? 'boeingbotdark' : 'boeingbotlight'}>
 	{#if showLoading}
 		{#if isNewAgent || isRootRoute}
 			<div class="h-dvh w-full px-4">

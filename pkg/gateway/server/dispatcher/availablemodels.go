@@ -7,8 +7,8 @@ import (
 	"io"
 	"net/http"
 
-	openai "github.com/obot-platform/chat-completion-client"
-	v1 "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1"
+	openai "github.com/boeing-ai-gateway/chat-completion-client"
+	v1 "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1"
 )
 
 func (d *Dispatcher) ModelsForProvider(ctx context.Context, modelProvider v1.ModelProvider) (*openai.ModelsList, error) {

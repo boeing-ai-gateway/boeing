@@ -9,11 +9,11 @@ const (
 	DefaultECRAudience        = "sts.amazonaws.com"
 	DefaultECRRefreshSchedule = "0 */6 * * *"
 
-	LabelManagedBy       = "obot.ai/managed-by"
+	LabelManagedBy       = "boeing.ai/managed-by"
 	LabelManagedByValue  = "image-pull-secrets"
-	LabelImagePullSecret = "obot.ai/image-pull-secret"
+	LabelImagePullSecret = "boeing.ai/image-pull-secret"
 
-	AnnotationECRRefreshRequestedAt = "obot.ai/ecr-refresh-requested-at"
+	AnnotationECRRefreshRequestedAt = "boeing.ai/ecr-refresh-requested-at"
 )
 
 type Capability struct {

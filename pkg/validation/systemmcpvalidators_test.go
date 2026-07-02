@@ -3,8 +3,8 @@ package validation
 import (
 	"testing"
 
-	"github.com/obot-platform/obot/apiclient/types"
-	"github.com/obot-platform/obot/pkg/mcp"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/pkg/mcp"
 	"github.com/stretchr/testify/assert"
 )
 

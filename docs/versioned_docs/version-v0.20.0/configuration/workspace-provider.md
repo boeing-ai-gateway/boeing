@@ -1,6 +1,6 @@
 # Workspace Providers
 
-Workspaces are where files are stored and manipulated in Obot. The default installation uses a local disk directory to provide workspaces. For production deployments, we recommend using cloud object stores like AWS S3 or Azure Blob Storage to ensure adequate storage capacity and high availability.
+Workspaces are where files are stored and manipulated in Boeing. The default installation uses a local disk directory to provide workspaces. For production deployments, we recommend using cloud object stores like AWS S3 or Azure Blob Storage to ensure adequate storage capacity and high availability.
 
 :::note
 Published workflows use a separate storage configuration from workspace files. See [Workflow Sharing](../functionality/workflow-sharing.md) and [Server Configuration](./server-configuration.md) for the published workflow storage settings.
@@ -16,7 +16,7 @@ This section describes the configuration of the workspace provider.
 
 | Environment Variable | Description | Available Options |
 |----------------------|-------------|-------------------|
-| `OBOT_WORKSPACE_PROVIDER_TYPE` | The type of provider to use | `directory`, `s3`, `azure` |
+| `BOEING_WORKSPACE_PROVIDER_TYPE` | The type of provider to use | `directory`, `s3`, `azure` |
 
 :::note
 The `s3` provider is compatible with S3-compatible services like CloudFlare R2. The `azure` provider is for Azure Blob Storage.
@@ -26,7 +26,7 @@ The `s3` provider is compatible with S3-compatible services like CloudFlare R2. 
 
 | Environment Variable | Description | Default |
 |----------------------|-------------|---------|
-| `WORKSPACE_PROVIDER_DATA_HOME` | Directory where workspaces are nested | `$XDG_CONFIG_HOME/obot/workspace-provider` |
+| `WORKSPACE_PROVIDER_DATA_HOME` | Directory where workspaces are nested | `$XDG_CONFIG_HOME/boeing/workspace-provider` |
 
 ## S3 Provider Configuration
 

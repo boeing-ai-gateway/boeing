@@ -5,8 +5,8 @@ import (
 	"os/signal"
 	"syscall"
 
-	"github.com/obot-platform/obot/pkg/server"
-	"github.com/obot-platform/obot/pkg/services"
+	"github.com/boeing-ai-gateway/boeing/pkg/server"
+	"github.com/boeing-ai-gateway/boeing/pkg/services"
 	"github.com/spf13/cobra"
 )
 

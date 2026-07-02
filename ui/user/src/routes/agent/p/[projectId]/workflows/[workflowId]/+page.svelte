@@ -1,23 +1,23 @@
 <script lang="ts">
 	import Confirm from '$lib/components/Confirm.svelte';
-	import ConfirmDiffWorkflow from '$lib/components/nanobot/ConfirmDiffWorkflow.svelte';
-	import FileItem from '$lib/components/nanobot/FileItem.svelte';
-	import MarkdownEditor from '$lib/components/nanobot/MarkdownEditor.svelte';
-	import PublishedWorkflowInstallModal from '$lib/components/nanobot/PublishedWorkflowInstallModal.svelte';
-	import PublishedWorkflowVersionDialog from '$lib/components/nanobot/PublishedWorkflowVersionDialog.svelte';
-	import { latestVersionSubjects } from '$lib/components/nanobot/publishedArtifactSubjects';
+	import ConfirmDiffWorkflow from '$lib/components/boeingbot/ConfirmDiffWorkflow.svelte';
+	import FileItem from '$lib/components/boeingbot/FileItem.svelte';
+	import MarkdownEditor from '$lib/components/boeingbot/MarkdownEditor.svelte';
+	import PublishedWorkflowInstallModal from '$lib/components/boeingbot/PublishedWorkflowInstallModal.svelte';
+	import PublishedWorkflowVersionDialog from '$lib/components/boeingbot/PublishedWorkflowVersionDialog.svelte';
+	import { latestVersionSubjects } from '$lib/components/boeingbot/publishedArtifactSubjects';
 	import { formatFileSize, formatFileTime } from '$lib/format';
-	import { NanobotService } from '$lib/services';
+	import { BoeingbotService } from '$lib/services';
 	import type {
 		ProjectLayoutContext,
 		ResourceContents,
 		Chat,
 		PublishedArtifact
-	} from '$lib/services/nanobot/types';
-	import { PROJECT_LAYOUT_CONTEXT } from '$lib/services/nanobot/types';
-	import { hasNewerVersion } from '$lib/services/nanobot/versioning';
+	} from '$lib/services/boeingbot/types';
+	import { PROJECT_LAYOUT_CONTEXT } from '$lib/services/boeingbot/types';
+	import { hasNewerVersion } from '$lib/services/boeingbot/versioning';
 	import { profile, responsive, userDeviceSettings } from '$lib/stores';
-	import { nanobotChat } from '$lib/stores/nanobotChat.svelte';
+	import { boeingbotChat } from '$lib/stores/boeingbotChat.svelte';
 	import { formatTimeAgo } from '$lib/time';
 	import { goto } from '$lib/url';
 	import { PencilLine, Play, Workflow, Eye, FolderInput, Trash2 } from 'lucide-svelte';
@@ -37,13 +37,13 @@
 	let latestVersion = $derived(publishedInfo?.latestVersion ?? 0);
 
 	let workflow = $derived(
-		$nanobotChat?.resources?.length
-			? $nanobotChat.resources.find((r) => r.name === workflowId)
+		$boeingbotChat?.resources?.length
+			? $boeingbotChat.resources.find((r) => r.name === workflowId)
 			: undefined
 	);
 	let workflowDisplayName = $derived(workflow?._meta?.displayName ?? workflow?._meta?.name);
 	let workflowResources = $derived(
-		$nanobotChat?.resources?.filter((r) => r.uri.startsWith(`file:///workflows/${workflowId}/`)) ??
+		$boeingbotChat?.resources?.filter((r) => r.uri.startsWith(`file:///workflows/${workflowId}/`)) ??
 			[]
 	);
 
@@ -122,8 +122,8 @@
 	});
 
 	$effect(() => {
-		if (!resource && workflow && $nanobotChat?.api) {
-			$nanobotChat.api
+		if (!resource && workflow && $boeingbotChat?.api) {
+			$boeingbotChat.api
 				.readResource(workflow.uri)
 				.then((result) => {
 					if (result.contents?.length) {
@@ -134,7 +134,7 @@
 					console.error(error);
 				});
 
-			$nanobotChat.api.listSessions().then((sessionData) => {
+			$boeingbotChat.api.listSessions().then((sessionData) => {
 				sessions = sessionData.filter(
 					(t) => t.workflowURIs && t.workflowURIs.includes(workflow.uri)
 				);
@@ -151,8 +151,8 @@
 
 	function handleSetupWorkflowThread(message: string, showFile: boolean = false) {
 		loading = true;
-		$nanobotChat?.api.createSession().then((sessionClient) => {
-			nanobotChat.update((data) => {
+		$boeingbotChat?.api.createSession().then((sessionClient) => {
+			boeingbotChat.update((data) => {
 				if (data) {
 					if (data.chat) {
 						data.chat.close();
@@ -182,10 +182,10 @@
 
 	function handlePublishWorkflow() {
 		publishing = true;
-		$nanobotChat?.api
+		$boeingbotChat?.api
 			.publishArtifact(workflowId)
 			.then(async () => {
-				publishedWorkflows = await NanobotService.listPublishedWorkflows();
+				publishedWorkflows = await BoeingbotService.listPublishedWorkflows();
 				showPublishSuccess = true;
 			})
 			.finally(() => {
@@ -195,8 +195,8 @@
 
 	async function handleUnpublish() {
 		if (!publishedInfo?.id) return;
-		await NanobotService.deletePublishedArtifact(publishedInfo.id);
-		publishedWorkflows = await NanobotService.listPublishedWorkflows();
+		await BoeingbotService.deletePublishedArtifact(publishedInfo.id);
+		publishedWorkflows = await BoeingbotService.listPublishedWorkflows();
 		confirmUnpublish = false;
 	}
 
@@ -465,11 +465,11 @@
 	onsuccess={async () => {
 		if (!workflow) return;
 		if (publishedInfo) {
-			await NanobotService.deletePublishedArtifact(publishedInfo.id);
-			publishedWorkflows = await NanobotService.listPublishedWorkflows();
+			await BoeingbotService.deletePublishedArtifact(publishedInfo.id);
+			publishedWorkflows = await BoeingbotService.listPublishedWorkflows();
 		}
-		await $nanobotChat?.api.deleteWorkflow(workflow.uri);
-		nanobotChat.update((data) => {
+		await $boeingbotChat?.api.deleteWorkflow(workflow.uri);
+		boeingbotChat.update((data) => {
 			if (data) {
 				data.resources = data.resources.filter((r) => r.uri !== workflow.uri);
 			}
@@ -602,7 +602,7 @@
 </Confirm>
 
 <svelte:head>
-	<title>Obot | {workflowDisplayName ?? workflowId}</title>
+	<title>Boeing | {workflowDisplayName ?? workflowId}</title>
 </svelte:head>
 
 <style lang="postcss">

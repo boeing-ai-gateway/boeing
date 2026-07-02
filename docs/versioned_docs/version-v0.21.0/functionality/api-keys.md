@@ -13,7 +13,7 @@ API keys are designed for machine-to-machine communication with MCP servers. Eac
 - Belongs to a specific user
 - Is scoped to specific MCP servers (or all servers)
 - Can have an optional expiration date
-- Provides access only to MCP server connections (not the full Obot API)
+- Provides access only to MCP server connections (not the full Boeing API)
 
 API keys use the format `ok1-<userId>-<keyId>-<secret>` and are passed as Bearer tokens in the Authorization header.
 
@@ -46,48 +46,48 @@ API keys only grant access to:
 - MCP server connections via the `/mcp-connect/` endpoints
 - The `/api/me` endpoint to verify authentication
 
-They cannot be used to access other Obot API endpoints.
+They cannot be used to access other Boeing API endpoints.
 
 ### Testing an API Key
 
 To test an API key, you can use the `/api/me` endpoint:
 
 ```bash
-curl -H "Authorization: Bearer <key>" <obot host>/api/me
+curl -H "Authorization: Bearer <key>" <boeing host>/api/me
 ```
 
 If the key is valid, you should receive a response with your user information.
 
 ### Configuring MCP Clients
 
-Once you have an API key, you can configure various MCP clients to connect to your Obot MCP servers. The MCP endpoint URL follows this pattern:
+Once you have an API key, you can configure various MCP clients to connect to your Boeing MCP servers. The MCP endpoint URL follows this pattern:
 
 ```
-https://<obot-host>/mcp-connect/<server-name>/mcp
+https://<boeing-host>/mcp-connect/<server-name>/mcp
 ```
 
 Where `<server-name>` is the name of the MCP server you want to connect to.
 
 #### VS Code
 
-Configure your `.vscode/mcp.json` file to connect to Obot MCP servers using HTTP transport with Bearer token authentication:
+Configure your `.vscode/mcp.json` file to connect to Boeing MCP servers using HTTP transport with Bearer token authentication:
 
 ```json
 {
   "inputs": [
     {
       "type": "promptString",
-      "id": "obot-api-key",
-      "description": "Obot API Key",
+      "id": "boeing-api-key",
+      "description": "Boeing API Key",
       "password": true
     }
   ],
   "servers": {
-    "my-obot-server": {
+    "my-boeing-server": {
       "type": "http",
       "url": "<connection URL>",
       "headers": {
-        "Authorization": "Bearer ${input:obot-api-key}"
+        "Authorization": "Bearer ${input:boeing-api-key}"
       }
     }
   }
@@ -111,7 +111,7 @@ from os import getenv
 server_params = StreamableHTTPClientParams(
     url="<connection URL>",
     headers={
-        "Authorization": f"Bearer {getenv('OBOT_API_KEY')}",
+        "Authorization": f"Bearer {getenv('BOEING_API_KEY')}",
     },
 )
 
@@ -144,11 +144,11 @@ from langchain.agents import create_agent
 # Configure the MCP client with authorization
 client = MultiServerMCPClient(
     {
-        "obot-server": {
+        "boeing-server": {
             "transport": "http",
             "url": "<connection URL>",
             "headers": {
-                "Authorization": f"Bearer {getenv('OBOT_API_KEY')}",
+                "Authorization": f"Bearer {getenv('BOEING_API_KEY')}",
             },
         }
     }

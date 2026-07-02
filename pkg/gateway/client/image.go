@@ -3,7 +3,7 @@ package client
 import (
 	"context"
 
-	"github.com/obot-platform/obot/pkg/gateway/types"
+	"github.com/boeing-ai-gateway/boeing/pkg/gateway/types"
 )
 
 // CreateImage stores a new image in the database

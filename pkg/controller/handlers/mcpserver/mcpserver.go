@@ -11,17 +11,17 @@ import (
 	"strings"
 	"time"
 
-	"github.com/obot-platform/nah/pkg/router"
-	"github.com/obot-platform/nah/pkg/untriggered"
-	nmcp "github.com/obot-platform/nanobot/pkg/mcp"
-	"github.com/obot-platform/obot/apiclient/types"
-	"github.com/obot-platform/obot/logger"
-	gateway "github.com/obot-platform/obot/pkg/gateway/client"
-	gatewaytypes "github.com/obot-platform/obot/pkg/gateway/types"
-	"github.com/obot-platform/obot/pkg/mcp"
-	v1 "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1"
-	"github.com/obot-platform/obot/pkg/system"
-	"github.com/obot-platform/obot/pkg/utils"
+	"github.com/boeing-ai-gateway/nah/pkg/router"
+	"github.com/boeing-ai-gateway/nah/pkg/untriggered"
+	nmcp "github.com/boeing-ai-gateway/boeingbot/pkg/mcp"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/logger"
+	gateway "github.com/boeing-ai-gateway/boeing/pkg/gateway/client"
+	gatewaytypes "github.com/boeing-ai-gateway/boeing/pkg/gateway/types"
+	"github.com/boeing-ai-gateway/boeing/pkg/mcp"
+	v1 "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1"
+	"github.com/boeing-ai-gateway/boeing/pkg/system"
+	"github.com/boeing-ai-gateway/boeing/pkg/utils"
 	"golang.org/x/crypto/bcrypt"
 	"gorm.io/gorm"
 	apierrors "k8s.io/apimachinery/pkg/api/errors"
@@ -107,7 +107,7 @@ func (h *Handler) EnsureMCPNetworkPolicy(req router.Request, _ router.Response) 
 	}
 
 	// Don't create an MCPNetworkPolicy if this is an agent pod
-	if server.Spec.NanobotAgentID != "" {
+	if server.Spec.BoeingbotAgentID != "" {
 		return nil
 	}
 
@@ -246,7 +246,7 @@ func (h *Handler) DetectK8sSettingsDrift(req router.Request, _ router.Response) 
 		return fmt.Errorf("failed to compute core resource requirements: %w", err)
 	}
 
-	currentHash := mcp.ComputeK8sSettingsHash(k8sSettings.Spec, resources, server.Spec.Manifest.Runtime, server.Spec.NanobotAgentID != "", imagePullSecretNames)
+	currentHash := mcp.ComputeK8sSettingsHash(k8sSettings.Spec, resources, server.Spec.Manifest.Runtime, server.Spec.BoeingbotAgentID != "", imagePullSecretNames)
 	shouldSetNeedsK8sUpdate := server.Status.K8sSettingsHash != currentHash && !server.Status.NeedsK8sUpdate
 
 	if shouldSetNeedsK8sUpdate {
@@ -958,7 +958,7 @@ func (h *Handler) SyncOAuthMetadata(req router.Request, _ router.Response) error
 	metadata, err := nmcp.GetOAuthMetadata(req.Ctx, nmcp.Server{
 		BaseURL: serverConfig.URL,
 		Headers: serverConfigHeaders(serverConfig),
-	}, "Obot Test MCP OAuth Client", system.MCPOAuthCallbackURL(h.baseURL))
+	}, "Boeing Test MCP OAuth Client", system.MCPOAuthCallbackURL(h.baseURL))
 	if err != nil {
 		return fmt.Errorf("failed to get OAuth metadata: %w", err)
 	}
@@ -1053,7 +1053,7 @@ func (h *Handler) ShutdownIdleServers(req router.Request, resp router.Response) 
 	idleInterval := time.Duration(mcpServer.Spec.Manifest.IdleShutdownIntervalHours) * time.Hour
 	if idleInterval == 0 {
 		idleInterval = h.singleUserIdleShutdownDelay
-		if mcpServer.Spec.NanobotAgentID != "" {
+		if mcpServer.Spec.BoeingbotAgentID != "" {
 			idleInterval = h.agentIdleShutdownDelay
 		} else if !mcpServer.Spec.IsSingleUser() {
 			idleInterval = h.multiUserIdleShutdownDelay

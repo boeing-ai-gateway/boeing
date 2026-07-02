@@ -4,7 +4,7 @@ import (
 	"slices"
 	"testing"
 
-	apitypes "github.com/obot-platform/obot/apiclient/types"
+	apitypes "github.com/boeing-ai-gateway/boeing/apiclient/types"
 )
 
 func TestAPIKeyScopesGroups(t *testing.T) {

@@ -1,6 +1,6 @@
 import { DEFAULT_MCP_CATALOG_ID } from '$lib/constants';
 import { HttpError } from '$lib/errors';
-import type { Skill } from '$lib/services/nanobot/types';
+import type { Skill } from '$lib/services/boeingbot/types';
 import { buildQueryString } from '$lib/url';
 import {
 	doDelete,
@@ -70,7 +70,7 @@ import type {
 	MessagePolicyViolation,
 	MessagePolicyViolationFilters,
 	MessagePolicyViolationStats,
-	RestartNanobotAgentDeploymentsResult,
+	RestartBoeingbotAgentDeploymentsResult,
 	SystemMCPCatalog,
 	SystemMCPCatalogManifest,
 	SystemMCPServer,
@@ -1796,19 +1796,19 @@ export async function getSystemMCPServerTools(
 	return (await doGet(`/system-mcp-servers/${id}/tools`, opts)) as MCPServerTool[];
 }
 
-export async function restartNanobotAgentDeployments(opts?: {
+export async function restartBoeingbotAgentDeployments(opts?: {
 	fetch?: Fetcher;
 	dryRun?: boolean;
-}): Promise<RestartNanobotAgentDeploymentsResult> {
+}): Promise<RestartBoeingbotAgentDeploymentsResult> {
 	const params = new URLSearchParams();
 	if (opts?.dryRun != null) {
 		params.set('dryRun', String(opts.dryRun));
 	}
 	const qs = params.toString();
 	const path = qs
-		? `/system-mcp-servers/restart-nanobot-agent-deployments?${qs}`
-		: '/system-mcp-servers/restart-nanobot-agent-deployments';
-	return (await doPost(path, {}, opts)) as RestartNanobotAgentDeploymentsResult;
+		? `/system-mcp-servers/restart-boeingbot-agent-deployments?${qs}`
+		: '/system-mcp-servers/restart-boeingbot-agent-deployments';
+	return (await doPost(path, {}, opts)) as RestartBoeingbotAgentDeploymentsResult;
 }
 
 // Token usage

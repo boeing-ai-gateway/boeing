@@ -18,12 +18,12 @@ import (
 	"github.com/aws/aws-sdk-go-v2/service/ecr"
 	"github.com/aws/aws-sdk-go-v2/service/sts"
 	ststypes "github.com/aws/aws-sdk-go-v2/service/sts/types"
-	"github.com/obot-platform/nah/pkg/router"
-	apitypes "github.com/obot-platform/obot/apiclient/types"
-	gateway "github.com/obot-platform/obot/pkg/gateway/client"
-	"github.com/obot-platform/obot/pkg/imagepullsecrets"
-	"github.com/obot-platform/obot/pkg/mcp"
-	v1 "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1"
+	"github.com/boeing-ai-gateway/nah/pkg/router"
+	apitypes "github.com/boeing-ai-gateway/boeing/apiclient/types"
+	gateway "github.com/boeing-ai-gateway/boeing/pkg/gateway/client"
+	"github.com/boeing-ai-gateway/boeing/pkg/imagepullsecrets"
+	"github.com/boeing-ai-gateway/boeing/pkg/mcp"
+	v1 "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1"
 	authenticationv1 "k8s.io/api/authentication/v1"
 	corev1 "k8s.io/api/core/v1"
 	"k8s.io/apimachinery/pkg/api/equality"
@@ -34,7 +34,7 @@ import (
 )
 
 const (
-	annotationECRConfigHash = "obot.ai/ecr-config-hash"
+	annotationECRConfigHash = "boeing.ai/ecr-config-hash"
 )
 
 type Handler struct {
@@ -291,7 +291,7 @@ func (h *Handler) ecrClient(ctx context.Context, ecrSpec *apitypes.ECRImagePullS
 		return nil, fmt.Errorf("failed to load AWS config: %w", err)
 	}
 	stsClient := sts.NewFromConfig(stsConfig)
-	sessionName := "obot-" + h.serviceAccountName
+	sessionName := "boeing-" + h.serviceAccountName
 	assumed, err := stsClient.AssumeRoleWithWebIdentity(ctx, &sts.AssumeRoleWithWebIdentityInput{
 		RoleArn:          aws.String(ecrSpec.RoleARN),
 		RoleSessionName:  aws.String(sessionName),

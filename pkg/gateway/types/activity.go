@@ -4,7 +4,7 @@ package types
 import (
 	"time"
 
-	types2 "github.com/obot-platform/obot/apiclient/types"
+	types2 "github.com/boeing-ai-gateway/boeing/apiclient/types"
 )
 
 type LLMProxyActivity struct {

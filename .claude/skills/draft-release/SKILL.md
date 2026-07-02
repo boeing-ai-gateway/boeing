@@ -1,11 +1,11 @@
 ---
 name: draft-release
-description: Draft a GitHub release (as a draft, not published) for an upcoming obot minor release by analyzing git history since the previous release. Use when the user asks to draft a release, prepare release notes, or write release notes for an upcoming vX.Y.0 release. Creates a DRAFT GitHub release; never publishes it and never creates the git tag.
+description: Draft a GitHub release (as a draft, not published) for an upcoming boeing minor release by analyzing git history since the previous release. Use when the user asks to draft a release, prepare release notes, or write release notes for an upcoming vX.Y.0 release. Creates a DRAFT GitHub release; never publishes it and never creates the git tag.
 ---
 
 # Draft Release Notes
 
-Drafts release notes for the next obot minor release and creates a draft (unpublished) GitHub release containing them. The release stays in draft state for the user to review, edit, and publish themselves. Never creates the git tag, never publishes the release, never pushes anything.
+Drafts release notes for the next boeing minor release and creates a draft (unpublished) GitHub release containing them. The release stays in draft state for the user to review, edit, and publish themselves. Never creates the git tag, never publishes the release, never pushes anything.
 
 ## Inputs
 
@@ -40,16 +40,16 @@ Confirm the target version, diff baseline, and style reference with the user bef
 ### 2. Read the style reference's notes for tone and structure
 
 ```bash
-gh release view <STYLE_REF> --repo obot-platform/obot
+gh release view <STYLE_REF> --repo boeing-ai-gateway/boeing
 ```
 
 Match its structure exactly:
-1. One-paragraph opener: `We're excited to announce the <VERSION> release of the Obot MCP Platform. This release <one-sentence theme summary>.`
-2. `## Big Updates` with 3-6 `### Feature Name` subsections. Each subsection is 1-3 short paragraphs in plain prose. Link to docs with `[docs](https://docs.obot.ai/...)` when a docs page exists.
+1. One-paragraph opener: `We're excited to announce the <VERSION> release of the Boeing MCP Platform. This release <one-sentence theme summary>.`
+2. `## Big Updates` with 3-6 `### Feature Name` subsections. Each subsection is 1-3 short paragraphs in plain prose. Link to docs with `[docs](https://docs.boeing.ai/...)` when a docs page exists.
 3. Optional `## Improvements` section with a short bulleted list of smaller usability/perf items. Include only if there are clearly several smaller user-facing improvements worth calling out. Omit otherwise (v0.21.0 has no Improvements section).
 4. `## Upgrade Notes` — usually `There are no major breaking changes in this release.` If the diff contains breaking changes (removed APIs, renamed config, schema migrations, removed env vars), call them out explicitly and concretely. Check commits with `chore: remove`, `BREAKING`, or schema/migration changes.
 5. `## What's Changed` — generated via API (see step 5).
-6. Trailing `**Full Changelog**: https://github.com/obot-platform/obot/compare/<DIFF_BASELINE>...<VERSION>`.
+6. Trailing `**Full Changelog**: https://github.com/boeing-ai-gateway/boeing/compare/<DIFF_BASELINE>...<VERSION>`.
 
 ### 3. Survey the commit range
 
@@ -70,22 +70,22 @@ Aim for 3-6 Big Updates. If the range is small, fewer is fine. If many candidate
 
 ```bash
 # Full PR body + comments + reviewers:
-gh pr view <NUM> --repo obot-platform/obot --comments
+gh pr view <NUM> --repo boeing-ai-gateway/boeing --comments
 
 # Files changed (helps confirm scope and spot user-facing surface area):
-gh pr view <NUM> --repo obot-platform/obot --json files --jq '.files[].path'
+gh pr view <NUM> --repo boeing-ai-gateway/boeing --json files --jq '.files[].path'
 ```
 
 **Finding linked issues.** This repo deliberately does NOT use GitHub's `closes #N` / `fixes #N` keywords, so the `closingIssuesReferences` field will almost always be empty. Issues are referenced in PR body or comments as plain text. Grep the PR body and the comment thread (both come back from `gh pr view --comments`) for:
 - bare `#<number>` references
-- `obot-platform/obot#<number>`
-- full URLs like `https://github.com/obot-platform/obot/issues/<number>`
+- `boeing-ai-gateway/boeing#<number>`
+- full URLs like `https://github.com/boeing-ai-gateway/boeing/issues/<number>`
 - "issue 1234", "see 1234", or similar prose mentions of a 3-5 digit number near words like "issue", "tracked in", "addresses", "from"
 
 For every issue number found that way, read it:
 
 ```bash
-gh issue view <ISSUE_NUM> --repo obot-platform/obot --comments
+gh issue view <ISSUE_NUM> --repo boeing-ai-gateway/boeing --comments
 ```
 
 Be slightly generous — false positives (numbers that turn out to be PR numbers, version numbers, or unrelated) are cheap to read and discard. Missing the issue that explains the *why* is what you're avoiding. Linked issues usually contain the user problem, the design discussion, and the constraints that the PR body and commit message omit. That context is what makes the difference between a release note that says "added X" and one that explains what X actually unlocks for users.
@@ -102,16 +102,16 @@ Look them up:
 
 ```bash
 # Try the version both with and without the leading "v" — milestones are usually "v0.22.0" but check both.
-gh issue list --repo obot-platform/obot --milestone "<VERSION>" --label "release-note" --state all \
+gh issue list --repo boeing-ai-gateway/boeing --milestone "<VERSION>" --label "release-note" --state all \
   --json number,title,body,url,state,labels --limit 50
-gh issue list --repo obot-platform/obot --milestone "<VERSION_NO_V>" --label "release-note" --state all \
+gh issue list --repo boeing-ai-gateway/boeing --milestone "<VERSION_NO_V>" --label "release-note" --state all \
   --json number,title,body,url,state,labels --limit 50
 ```
 
 If neither returns results, also check whether the milestone exists at all:
 
 ```bash
-gh api repos/obot-platform/obot/milestones --jq '.[] | {title, number, state}'
+gh api repos/boeing-ai-gateway/boeing/milestones --jq '.[] | {title, number, state}'
 ```
 
 If the milestone is missing or has no `release-note` issues, note that to the user and continue without callouts. Do not invent callouts.
@@ -181,7 +181,7 @@ For feature-attached callouts: render the confirmed note as a blockquote (`> ...
 Use the GitHub-authoritative source — the same endpoint the release UI uses:
 
 ```bash
-gh api -X POST repos/obot-platform/obot/releases/generate-notes \
+gh api -X POST repos/boeing-ai-gateway/boeing/releases/generate-notes \
   -f tag_name="<VERSION>" \
   -f previous_tag_name="<DIFF_BASELINE>" \
   -f target_commitish="main" \
@@ -193,7 +193,7 @@ Paste the `## What's Changed` section and `**Full Changelog**` line from the res
 If `gh api` fails (auth, network), fall back to:
 
 ```bash
-gh pr list --repo obot-platform/obot --state merged \
+gh pr list --repo boeing-ai-gateway/boeing --state merged \
   --search "merged:>=<DIFF_BASELINE_DATE> base:main" \
   --json number,title,author,url --limit 200
 ```
@@ -206,7 +206,7 @@ First write the assembled notes to `/tmp/release-notes-<VERSION>.md` so there's 
 
 ```bash
 gh release create <VERSION> \
-  --repo obot-platform/obot \
+  --repo boeing-ai-gateway/boeing \
   --draft \
   --title "<VERSION>" \
   --target main \
@@ -219,19 +219,19 @@ Notes on the flags:
 - `--target main` so the tag, when eventually published, points at `main`. Adjust only if the user has explicitly told you to release from another branch.
 - Do NOT pass `--latest`, `--prerelease`, or `--generate-notes`. We already have the notes; we are not publishing; this is not a pre-release.
 
-If a draft already exists for this version, `gh release create` will fail with "already exists". In that case ask the user whether to delete the existing draft (`gh release delete <VERSION> --repo obot-platform/obot --yes`) and recreate, or leave the existing one alone. Do not delete without asking.
+If a draft already exists for this version, `gh release create` will fail with "already exists". In that case ask the user whether to delete the existing draft (`gh release delete <VERSION> --repo boeing-ai-gateway/boeing --yes`) and recreate, or leave the existing one alone. Do not delete without asking.
 
 Print the draft URL returned by `gh release create` and a one-line summary of what's in the draft (feature count, callout count). End the turn telling the user the release exists as a draft on GitHub — they should review it there, edit if needed, and publish manually when ready. Remind them publishing is what creates the actual tag.
 
 ## Tone reference (from v0.21.0)
 
-> We're excited to announce the v0.21.0 release of the Obot MCP Platform. This release introduces MCP server egress control with an Aviatrix integration and improves the admin dashboard experience.
+> We're excited to announce the v0.21.0 release of the Boeing MCP Platform. This release introduces MCP server egress control with an Aviatrix integration and improves the admin dashboard experience.
 >
 > ## Big Updates
 >
 > ### Aviatrix Integration for MCP Server Egress Control
 >
-> Obot now supports MCP server egress control for Kubernetes-hosted MCP servers, with Aviatrix as the first supported network policy provider.
+> Boeing now supports MCP server egress control for Kubernetes-hosted MCP servers, with Aviatrix as the first supported network policy provider.
 >
 > Administrators can configure domain allowlists for individual `npx`, `uvx`, and `containerized` MCP servers. ...
 

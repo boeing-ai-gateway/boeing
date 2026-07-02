@@ -1,0 +1,27 @@
+---
+name: boeing-search-mcp-servers
+description: Search Boeing for MCP servers.
+disable-model-invocation: true
+---
+
+# Search Boeing MCP Servers
+
+Search the configured Boeing server for available MCP servers.
+
+If the user provided a query, run:
+
+```sh
+boeing mcp search --non-interactive "<query>"
+```
+
+If the user did not provide a query, list all available MCP servers by running:
+
+```sh
+boeing mcp search --non-interactive
+```
+
+Show the MCP servers returned by the CLI, including their connection or configuration URLs.
+
+If a result says `configuration required`, tell the user that the MCP server must be configured in Boeing before use and that they should open the URL shown by the CLI.
+
+If the user wants to install a server, explain to them how to set it up as a remote MCP server using the connection URL, if there is one. If you can do it yourself using your CLI, then ask whether they would like you to do it for them.

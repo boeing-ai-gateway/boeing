@@ -5,9 +5,9 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/obot-platform/obot/apiclient"
-	"github.com/obot-platform/obot/pkg/cli/internal"
-	"github.com/obot-platform/obot/pkg/cli/internal/localconfig"
+	"github.com/boeing-ai-gateway/boeing/apiclient"
+	"github.com/boeing-ai-gateway/boeing/pkg/cli/internal"
+	"github.com/boeing-ai-gateway/boeing/pkg/cli/internal/localconfig"
 	"github.com/spf13/cobra"
 )
 
@@ -19,13 +19,13 @@ type Login struct {
 	ForceRefresh     bool     `usage:"Force refresh the token even if a valid one is cached"`
 	Scopes           []string `usage:"Scopes to request for this token, valid scopes are llm, skills, device-scans, all-mcp" name:"scope" default:"llm,skills,device-scans"`
 	PrintToken       bool     `usage:"Print the token to stdout after logging in"`
-	URL              string   `usage:"Obot app URL to authenticate against"`
-	root             *Obot
+	URL              string   `usage:"Boeing app URL to authenticate against"`
+	root             *Boeing
 }
 
 func (l *Login) Customize(cmd *cobra.Command) {
 	cmd.Use = "login"
-	cmd.Short = "Authenticate with an Obot server and store credentials locally"
+	cmd.Short = "Authenticate with an Boeing server and store credentials locally"
 	cmd.Args = cobra.NoArgs
 }
 
@@ -61,7 +61,7 @@ func (l *Login) Run(cmd *cobra.Command, _ []string) error {
 // PromptConfig contains shared local options for commands that may require interactive input from users.
 // e.g. Any command that performs just-in-time authentication for unauthenticated users.
 type PromptConfig struct {
-	NonInteractive bool `usage:"Never read from stdin; fail if required input is missing" env:"OBOT_NON_INTERACTIVE" local:"true"`
+	NonInteractive bool `usage:"Never read from stdin; fail if required input is missing" env:"BOEING_NON_INTERACTIVE" local:"true"`
 }
 
 func (p PromptConfig) Pre(cmd *cobra.Command, _ []string) error {

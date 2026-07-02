@@ -5,7 +5,7 @@ import (
 	"path"
 	"strings"
 
-	"github.com/obot-platform/obot/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
 )
 
 const (

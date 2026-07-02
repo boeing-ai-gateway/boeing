@@ -11,7 +11,7 @@
 		type SkillAccessPolicyResource,
 		type SkillRepository
 	} from '$lib/services';
-	import type { Skill } from '$lib/services/nanobot/types';
+	import type { Skill } from '$lib/services/boeingbot/types';
 	import { errors } from '$lib/stores';
 	import { goto } from '$lib/url';
 	import { getUserDisplayName } from '$lib/utils';
@@ -205,7 +205,7 @@
 
 					return {
 						id: subject.id,
-						displayName: subject.id === '*' ? 'All Obot Users' : subject.id,
+						displayName: subject.id === '*' ? 'All Boeing Users' : subject.id,
 						type: 'Selector'
 					};
 				})

@@ -309,5 +309,5 @@
 />
 
 <svelte:head>
-	<title>Obot | {catalogEntry?.manifest?.name ?? 'MCP Server'}</title>
+	<title>Boeing | {catalogEntry?.manifest?.name ?? 'MCP Server'}</title>
 </svelte:head>

@@ -1,0 +1,31 @@
+---
+name: boeing-install-skill
+description: Install a skill from Boeing.
+disable-model-invocation: true
+---
+
+# Install Boeing Skill
+
+Use this flow to determine which skill to install:
+
+- If the user did not provide an argument, ask which skill they want to install, then continue with their response.
+- If the user provided a skill ID, install that skill directly. Skill IDs start with `sk1`, such as `sk1abc123` or `sk1-default-github-review-a1b2c3d4`.
+- If the user provided anything other than a skill ID, use it as a search query:
+
+```sh
+boeing skills search --non-interactive "<query>"
+```
+
+Handle the search results this way:
+
+- If there are no results, tell the user no matching skills were found.
+- If there is one result, ask the user whether they want to install it.
+- If there is more than one result, ask the user which skill they want to install.
+
+When a skill has been selected, run the Boeing CLI install command for this client:
+
+```sh
+boeing skills install --non-interactive --destination {{ .InstallDestination }} <skill>
+```
+
+Report the CLI result to the user.

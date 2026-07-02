@@ -13,10 +13,10 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/obot-platform/cmd"
-	"github.com/obot-platform/obot/apiclient"
-	"github.com/obot-platform/obot/apiclient/types"
-	"github.com/obot-platform/obot/pkg/skillformat"
+	"github.com/boeing-ai-gateway/cmd"
+	"github.com/boeing-ai-gateway/boeing/apiclient"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/pkg/skillformat"
 )
 
 func TestSkillsSearchCallsAPIWithQueryAndLimit(t *testing.T) {
@@ -215,14 +215,14 @@ func TestNewIncludesSkillsCommands(t *testing.T) {
 	}
 }
 
-func skillsTestRoot(baseURL string) *Obot {
-	return &Obot{Client: &apiclient.Client{
+func skillsTestRoot(baseURL string) *Boeing {
+	return &Boeing{Client: &apiclient.Client{
 		BaseURL: baseURL,
 		Token:   "test-token",
 	}}
 }
 
-func executeSkillsTestCommand(root *Obot, args ...string) (string, error) {
+func executeSkillsTestCommand(root *Boeing, args ...string) (string, error) {
 	var stdout bytes.Buffer
 	cmd := cmd.Command(&Skills{root: root})
 	cmd.SetContext(context.Background())

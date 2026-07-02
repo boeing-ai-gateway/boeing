@@ -9,8 +9,8 @@ import (
 	"net/http"
 	"time"
 
-	gateway "github.com/obot-platform/obot/pkg/gateway/client"
-	gatewaytypes "github.com/obot-platform/obot/pkg/gateway/types"
+	gateway "github.com/boeing-ai-gateway/boeing/pkg/gateway/client"
+	gatewaytypes "github.com/boeing-ai-gateway/boeing/pkg/gateway/types"
 )
 
 // StreamLogsOptions configures SSE log streaming behavior.

@@ -3,7 +3,7 @@ package system
 import (
 	"strings"
 
-	"github.com/obot-platform/nah/pkg/name"
+	"github.com/boeing-ai-gateway/nah/pkg/name"
 )
 
 const (
@@ -38,11 +38,11 @@ const (
 	SystemMCPServerPrefix         = "sms1"
 	ModelAccessPolicyPrefix       = "map1"
 	MessagePolicyPrefix           = "mp1"
-	NanobotAgentPrefix            = "nba1"
+	BoeingbotAgentPrefix            = "nba1"
 	PublishedArtifactPrefix       = "pa1"
 	OktaGroupMigrationPrefix      = "ogm1"
 
-	ObotMCPServerName = SystemMCPServerPrefix + "obot-mcp-server"
+	BoeingMCPServerName = SystemMCPServerPrefix + "boeing-mcp-server"
 )
 
 func IsMCPServerID(id string) bool {

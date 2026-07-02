@@ -6,7 +6,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/obot-platform/obot/pkg/oauth"
+	"github.com/boeing-ai-gateway/boeing/pkg/oauth"
 )
 
 func Wrap(next http.Handler, dir string) (http.Handler, error) {

@@ -16,7 +16,7 @@ if (typeof window !== 'undefined') {
 }
 
 // API token for development - set VITE_API_TOKEN to bypass OAuth
-// Use `OBOT_BASE_URL=https://<hostname>/api obot token` to get a token
+// Use `BOEING_BASE_URL=https://<hostname>/api boeing token` to get a token
 const apiToken = import.meta.env.VITE_API_TOKEN as string | undefined;
 
 function getAuthHeaders(): Record<string, string> {
@@ -59,9 +59,9 @@ export async function doGet(path: string, opts?: GetOptions): Promise<unknown> {
 		headers: {
 			...getAuthHeaders(),
 			// Pass the browser timezone as a request header.
-			// This is consumed during authentication to set the user's default timezone in Obot.
+			// This is consumed during authentication to set the user's default timezone in Boeing.
 			// The timezone is plumbed down to tools at runtime as an environment variable.
-			'x-obot-user-timezone': Intl.DateTimeFormat().resolvedOptions().timeZone
+			'x-boeing-user-timezone': Intl.DateTimeFormat().resolvedOptions().timeZone
 		},
 		signal: opts?.signal
 	});

@@ -11,7 +11,7 @@ import (
 )
 
 type DiskStoreOptions struct {
-	AuditLogsStoreDir string `usage:"Audit log store directory, defaults to $XDG_DATA_HOME/obot/audit"`
+	AuditLogsStoreDir string `usage:"Audit log store directory, defaults to $XDG_DATA_HOME/boeing/audit"`
 }
 
 type diskStore struct {
@@ -23,7 +23,7 @@ type diskStore struct {
 func NewDiskStore(host string, compress bool, options DiskStoreOptions) (Store, error) {
 	dir := options.AuditLogsStoreDir
 	if dir == "" {
-		dir = filepath.Join(xdg.DataHome, "obot", "audit")
+		dir = filepath.Join(xdg.DataHome, "boeing", "audit")
 	}
 
 	d := &diskStore{dir: dir, host: host, compress: compress}

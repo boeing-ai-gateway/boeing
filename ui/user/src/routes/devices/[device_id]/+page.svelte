@@ -187,7 +187,7 @@
 </script>
 
 <svelte:head>
-	<title>Obot | Device {deviceId.slice(0, 12)}</title>
+	<title>Boeing | Device {deviceId.slice(0, 12)}</title>
 </svelte:head>
 
 <Layout

@@ -141,8 +141,8 @@
 			{/if}
 
 			<p class="text-sm">
-				{consent.clientName} wants to authenticate with Obot for an MCP server connection. If you approve,
-				Obot will redirect you back to the OAuth client that started this request.
+				{consent.clientName} wants to authenticate with Boeing for an MCP server connection. If you approve,
+				Boeing will redirect you back to the OAuth client that started this request.
 			</p>
 
 			<div>

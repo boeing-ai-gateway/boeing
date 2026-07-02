@@ -13,13 +13,13 @@ func TestReverseDNSFromURL(t *testing.T) {
 	}{
 		{
 			name:     "standard domain",
-			baseURL:  "https://obot.example.com",
-			expected: "com.example.obot",
+			baseURL:  "https://boeing.example.com",
+			expected: "com.example.boeing",
 		},
 		{
 			name:     "subdomain",
-			baseURL:  "https://app.obot.example.com",
-			expected: "com.example.obot.app",
+			baseURL:  "https://app.boeing.example.com",
+			expected: "com.example.boeing.app",
 		},
 		{
 			name:     "localhost",
@@ -33,13 +33,13 @@ func TestReverseDNSFromURL(t *testing.T) {
 		},
 		{
 			name:     "single label domain",
-			baseURL:  "http://obot",
-			expected: "obot",
+			baseURL:  "http://boeing",
+			expected: "boeing",
 		},
 		{
 			name:     "with port",
-			baseURL:  "https://obot.ai:443",
-			expected: "ai.obot",
+			baseURL:  "https://boeing.ai:443",
+			expected: "ai.boeing",
 		},
 		{
 			name:        "invalid URL",
@@ -77,9 +77,9 @@ func TestFormatRegistryServerName(t *testing.T) {
 	}{
 		{
 			name:       "standard names",
-			reverseDNS: "ai.obot",
+			reverseDNS: "ai.boeing",
 			serverName: "filesystem",
-			expected:   "ai.obot/filesystem",
+			expected:   "ai.boeing/filesystem",
 		},
 		{
 			name:       "name with special chars",

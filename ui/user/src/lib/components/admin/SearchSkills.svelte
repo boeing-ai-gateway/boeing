@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { SkillRepository, SkillAccessPolicyResource } from '$lib/services/admin/types';
-	import type { Skill } from '$lib/services/nanobot/types';
+	import type { Skill } from '$lib/services/boeingbot/types';
 	import ResponsiveDialog from '../ResponsiveDialog.svelte';
 	import Search from '../Search.svelte';
 	import { Check, PencilRuler } from 'lucide-svelte';

@@ -16,15 +16,15 @@ import (
 	"sync"
 	"time"
 
-	"github.com/obot-platform/nah/pkg/apply"
-	"github.com/obot-platform/nah/pkg/name"
-	"github.com/obot-platform/obot/apiclient/types"
-	"github.com/obot-platform/obot/logger"
-	"github.com/obot-platform/obot/pkg/imagepullsecrets"
-	v1 "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1"
-	"github.com/obot-platform/obot/pkg/system"
-	"github.com/obot-platform/obot/pkg/utils"
-	"github.com/obot-platform/obot/pkg/wait"
+	"github.com/boeing-ai-gateway/nah/pkg/apply"
+	"github.com/boeing-ai-gateway/nah/pkg/name"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/logger"
+	"github.com/boeing-ai-gateway/boeing/pkg/imagepullsecrets"
+	v1 "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1"
+	"github.com/boeing-ai-gateway/boeing/pkg/system"
+	"github.com/boeing-ai-gateway/boeing/pkg/utils"
+	"github.com/boeing-ai-gateway/boeing/pkg/wait"
 	appsv1 "k8s.io/api/apps/v1"
 	corev1 "k8s.io/api/core/v1"
 	apierrors "k8s.io/apimachinery/pkg/api/errors"
@@ -62,7 +62,7 @@ type kubernetesBackend struct {
 	auditLogsBatchSize            int
 	auditLogsFlushIntervalSeconds int
 	authEnabled                   bool
-	obotClient                    kclient.Client
+	boeingClient                    kclient.Client
 	deploymentCacheMu             sync.RWMutex
 	deploymentCache               map[string]*kubernetesDeploymentCacheEntry
 }
@@ -72,7 +72,7 @@ type kubernetesDeploymentCacheEntry struct {
 	podName string
 }
 
-func newKubernetesBackend(authEnabled bool, clientset *kubernetes.Clientset, client, cachedClient, obotClient kclient.WithWatch, opts Options) backend {
+func newKubernetesBackend(authEnabled bool, clientset *kubernetes.Clientset, client, cachedClient, boeingClient kclient.WithWatch, opts Options) backend {
 	var serviceFQDN string
 	if opts.ServiceName != "" && opts.ServiceNamespace != "" {
 		serviceFQDN = fmt.Sprintf("%s.%s.svc.%s", opts.ServiceName, opts.ServiceNamespace, opts.MCPClusterDomain)
@@ -91,7 +91,7 @@ func newKubernetesBackend(authEnabled bool, clientset *kubernetes.Clientset, cli
 		imagePullSecrets:              opts.MCPImagePullSecrets,
 		auditLogsBatchSize:            opts.MCPAuditLogsPersistBatchSize,
 		auditLogsFlushIntervalSeconds: opts.MCPAuditLogPersistIntervalSeconds,
-		obotClient:                    obotClient,
+		boeingClient:                    boeingClient,
 		deploymentCache:               map[string]*kubernetesDeploymentCacheEntry{},
 	}
 }
@@ -130,7 +130,7 @@ func (k *kubernetesBackend) deployServerObjects(ctx context.Context, server Serv
 func (k *kubernetesBackend) ensureServerDeployment(ctx context.Context, server ServerConfig, webhooks []Webhook) (ServerConfig, error) {
 	// Transform component URLs to use internal service FQDN
 	for i, component := range server.Components {
-		component.URL = k.transformObotHostname(component.URL)
+		component.URL = k.transformBoeingHostname(component.URL)
 		server.Components[i] = component
 	}
 
@@ -190,7 +190,7 @@ func (k *kubernetesBackend) ensureServerDeployment(ctx context.Context, server S
 			Issuer:               server.Issuer,
 			ContainerPort:        server.ContainerPort,
 			ContainerPath:        server.ContainerPath,
-			NanobotAgentName:     server.NanobotAgentName,
+			BoeingbotAgentName:     server.BoeingbotAgentName,
 			StartupTimeout:       server.StartupTimeout,
 		}, nil
 	}
@@ -347,8 +347,8 @@ func (k *kubernetesBackend) transformConfig(ctx context.Context, serverConfig Se
 	return &ServerConfig{URL: fmt.Sprintf("http://%s.%s.svc.%s/%s", serverConfig.MCPServerName, k.mcpNamespace, k.mcpClusterDomain, strings.TrimPrefix(serverConfig.ContainerPath, "/")), MCPServerName: pods.Items[0].Name}, nil
 }
 
-// transformObotHostname replaces the host and port in a URL with the internal service FQDN.
-func (k *kubernetesBackend) transformObotHostname(url string) string {
+// transformBoeingHostname replaces the host and port in a URL with the internal service FQDN.
+func (k *kubernetesBackend) transformBoeingHostname(url string) string {
 	if k.serviceFQDN == "" || url == "" {
 		return url
 	}
@@ -395,7 +395,7 @@ func (k *kubernetesBackend) k8sObjects(ctx context.Context, server ServerConfig,
 		command  []string
 		objs     = make([]kclient.Object, 0, 5)
 		image    = k.baseImage
-		args     = []string{"run", "--disable-ui", "--listen-address", fmt.Sprintf(":%d", defaultContainerPort), "--exclude-built-in-agents", "--config", "/config/nanobot.yaml"}
+		args     = []string{"run", "--disable-ui", "--listen-address", fmt.Sprintf(":%d", defaultContainerPort), "--exclude-built-in-agents", "--config", "/config/boeingbot.yaml"}
 		port     = defaultContainerPort
 		portName = "http"
 
@@ -467,61 +467,61 @@ func (k *kubernetesBackend) k8sObjects(ctx context.Context, server ServerConfig,
 	}
 
 	for i, webhook := range webhooks {
-		webhook.URL = k.transformObotHostname(webhook.URL)
+		webhook.URL = k.transformBoeingHostname(webhook.URL)
 		webhooks[i] = webhook
 	}
 
-	// Set this environment variable for our nanobot image to read
-	secretEnvData["NANOBOT_META_ENV"] = []byte(strings.Join(metaEnv, ","))
+	// Set this environment variable for our boeingbot image to read
+	secretEnvData["BOEINGBOT_META_ENV"] = []byte(strings.Join(metaEnv, ","))
 
 	// Set an environment variable to indicate that the MCP server is running in Kubernetes.
 	// This is something that our special images read and react to.
-	secretEnvData["OBOT_KUBERNETES_MODE"] = []byte("true")
+	secretEnvData["BOEING_KUBERNETES_MODE"] = []byte("true")
 
 	// Set an environment variable to force fetch tool list
-	secretEnvData["NANOBOT_RUN_FORCE_FETCH_TOOL_LIST"] = []byte("true")
+	secretEnvData["BOEINGBOT_RUN_FORCE_FETCH_TOOL_LIST"] = []byte("true")
 
-	// Tell nanobot to expose the healthz endpoint
-	secretEnvData["NANOBOT_RUN_HEALTHZ_PATH"] = []byte("/healthz")
+	// Tell boeingbot to expose the healthz endpoint
+	secretEnvData["BOEINGBOT_RUN_HEALTHZ_PATH"] = []byte("/healthz")
 
 	// JWT environment variables
 	if server.NeedsShim() {
-		secretEnvData["NANOBOT_RUN_OAUTH_SCOPES"] = []byte("profile")
-		secretEnvData["NANOBOT_RUN_TRUSTED_ISSUER"] = []byte(server.Issuer)
-		secretEnvData["NANOBOT_RUN_OAUTH_JWKSURL"] = []byte(k.transformObotHostname(server.JWKSEndpoint))
-		secretEnvData["NANOBOT_RUN_TRUSTED_AUDIENCES"] = []byte(strings.Join(server.Audiences, ","))
-		secretEnvData["NANOBOT_RUN_OAUTH_CLIENT_ID"] = []byte(server.TokenExchangeClientID)
-		secretEnvData["NANOBOT_RUN_OAUTH_CLIENT_SECRET"] = []byte(server.TokenExchangeClientSecret)
-		secretEnvData["NANOBOT_RUN_OAUTH_TOKEN_URL"] = []byte(k.transformObotHostname(server.TokenExchangeEndpoint))
-		secretEnvData["NANOBOT_RUN_OAUTH_AUTHORIZE_URL"] = []byte(k.transformObotHostname(server.AuthorizeEndpoint))
-		secretEnvData["NANOBOT_DISABLE_HEALTH_CHECKER"] = []byte(strconv.FormatBool(server.Runtime == types.RuntimeRemote || server.Runtime == types.RuntimeComposite))
+		secretEnvData["BOEINGBOT_RUN_OAUTH_SCOPES"] = []byte("profile")
+		secretEnvData["BOEINGBOT_RUN_TRUSTED_ISSUER"] = []byte(server.Issuer)
+		secretEnvData["BOEINGBOT_RUN_OAUTH_JWKSURL"] = []byte(k.transformBoeingHostname(server.JWKSEndpoint))
+		secretEnvData["BOEINGBOT_RUN_TRUSTED_AUDIENCES"] = []byte(strings.Join(server.Audiences, ","))
+		secretEnvData["BOEINGBOT_RUN_OAUTH_CLIENT_ID"] = []byte(server.TokenExchangeClientID)
+		secretEnvData["BOEINGBOT_RUN_OAUTH_CLIENT_SECRET"] = []byte(server.TokenExchangeClientSecret)
+		secretEnvData["BOEINGBOT_RUN_OAUTH_TOKEN_URL"] = []byte(k.transformBoeingHostname(server.TokenExchangeEndpoint))
+		secretEnvData["BOEINGBOT_RUN_OAUTH_AUTHORIZE_URL"] = []byte(k.transformBoeingHostname(server.AuthorizeEndpoint))
+		secretEnvData["BOEINGBOT_DISABLE_HEALTH_CHECKER"] = []byte(strconv.FormatBool(server.Runtime == types.RuntimeRemote || server.Runtime == types.RuntimeComposite))
 		// API key authentication webhook URL
 		if server.Issuer != "" {
 			// If the issuer is not set then authentication not on.
-			secretEnvData["NANOBOT_RUN_APIKEY_AUTH_WEBHOOK_URL"] = []byte(k.transformObotHostname(server.Issuer + "/api/api-keys/auth"))
+			secretEnvData["BOEINGBOT_RUN_APIKEY_AUTH_WEBHOOK_URL"] = []byte(k.transformBoeingHostname(server.Issuer + "/api/api-keys/auth"))
 		}
-		secretEnvData["NANOBOT_RUN_MCPSERVER_ID"] = []byte(strings.TrimSuffix(server.MCPServerName, "-shim"))
+		secretEnvData["BOEINGBOT_RUN_MCPSERVER_ID"] = []byte(strings.TrimSuffix(server.MCPServerName, "-shim"))
 
-		// Nanobot-agent-backed MCP servers should not emit MCP audit logs.
-		secretEnvData["NANOBOT_RUN_AUDIT_LOG_TOKEN"] = []byte(server.AuditLogToken)
-		secretEnvData["NANOBOT_RUN_AUDIT_LOG_SEND_URL"] = []byte(k.transformObotHostname(server.AuditLogEndpoint))
-		secretEnvData["NANOBOT_RUN_AUDIT_LOG_BATCH_SIZE"] = []byte(strconv.Itoa(k.auditLogsBatchSize))
-		secretEnvData["NANOBOT_RUN_AUDIT_LOG_FLUSH_INTERVAL_SECONDS"] = []byte(strconv.Itoa(k.auditLogsFlushIntervalSeconds))
-		secretEnvData["NANOBOT_RUN_AUDIT_LOG_METADATA"] = []byte(server.AuditLogMetadata)
+		// Boeingbot-agent-backed MCP servers should not emit MCP audit logs.
+		secretEnvData["BOEINGBOT_RUN_AUDIT_LOG_TOKEN"] = []byte(server.AuditLogToken)
+		secretEnvData["BOEINGBOT_RUN_AUDIT_LOG_SEND_URL"] = []byte(k.transformBoeingHostname(server.AuditLogEndpoint))
+		secretEnvData["BOEINGBOT_RUN_AUDIT_LOG_BATCH_SIZE"] = []byte(strconv.Itoa(k.auditLogsBatchSize))
+		secretEnvData["BOEINGBOT_RUN_AUDIT_LOG_FLUSH_INTERVAL_SECONDS"] = []byte(strconv.Itoa(k.auditLogsFlushIntervalSeconds))
+		secretEnvData["BOEINGBOT_RUN_AUDIT_LOG_METADATA"] = []byte(server.AuditLogMetadata)
 
 		if server.Runtime == types.RuntimeRemote {
 			// non-remote runtimes will have their otel config added to the shim container below
-			maps.Copy(secretEnvData, nanobotOTELEnv("nanobot-shim", nil))
+			maps.Copy(secretEnvData, boeingbotOTELEnv("boeingbot-shim", nil))
 		}
 	} else {
-		maps.Copy(secretEnvData, nanobotOTELEnv("nanobot-agent", nil))
+		maps.Copy(secretEnvData, boeingbotOTELEnv("boeingbot-agent", nil))
 	}
 
 	// Resolved secretBinding values are merged into secretEnvData by the
 	// caller (sm.ServerToServerConfig), so any rotation naturally bumps
 	// this revision via utils.Digest(secretEnvData) — no separate term
 	// needed.
-	annotations["obot-revision"] = utils.Digest(utils.Digest(secretEnvData) + utils.Digest(nonDynamicFileData) + utils.Digest(webhooks) + utils.Digest(headerData))
+	annotations["boeing-revision"] = utils.Digest(utils.Digest(secretEnvData) + utils.Digest(nonDynamicFileData) + utils.Digest(webhooks) + utils.Digest(headerData))
 
 	// Fetch K8s settings
 	k8sSettings := k.getK8sSettings(ctx)
@@ -531,18 +531,18 @@ func (k *kubernetesBackend) k8sObjects(ctx context.Context, server ServerConfig,
 		return nil, fmt.Errorf("failed to get effective image pull secrets: %w", err)
 	}
 
-	annotations["obot.ai/k8s-settings-hash"] = ComputeK8sSettingsHash(k8sSettings, server.Resources, server.Runtime, server.NanobotAgentName != "", effectiveImagePullSecrets)
+	annotations["boeing.ai/k8s-settings-hash"] = ComputeK8sSettingsHash(k8sSettings, server.Resources, server.Runtime, server.BoeingbotAgentName != "", effectiveImagePullSecrets)
 
 	// Get PSA enforce level for security context decisions
 	psaLevel := GetPSAEnforceLevelFromSpec(k8sSettings)
 
 	var workspacePVCName string
-	if server.NanobotAgentName != "" {
+	if server.BoeingbotAgentName != "" {
 		workspacePVCName = name.SafeConcatName(server.MCPServerName, "workspace")
 
-		workspaceSizeDef := k8sSettings.NanobotWorkspaceSize
+		workspaceSizeDef := k8sSettings.BoeingbotWorkspaceSize
 		if workspaceSizeDef == "" {
-			workspaceSizeDef = nanobotWorkspaceDefaultSize
+			workspaceSizeDef = boeingbotWorkspaceDefaultSize
 		}
 		workspaceSize, err := resource.ParseQuantity(workspaceSizeDef)
 		if err != nil {
@@ -576,7 +576,7 @@ func (k *kubernetesBackend) k8sObjects(ctx context.Context, server ServerConfig,
 		if server.NeedsShim() {
 			// If this is anything other than a remote runtime, then we need to add a special shim container.
 			// The remote runtime will just be the shim and is deployed as the "real" container.
-			nanobotFileString, err := constructMCPServerNanobotYAML(
+			boeingbotFileString, err := constructMCPServerBoeingbotYAML(
 				server.MCPServerDisplayName+" Shim",
 				fmt.Sprintf("http://127.0.0.1:%d/%s", port, strings.TrimPrefix(server.ContainerPath, "/")),
 				"",
@@ -586,10 +586,10 @@ func (k *kubernetesBackend) k8sObjects(ctx context.Context, server ServerConfig,
 				nil, webhooks,
 			)
 			if err != nil {
-				return nil, fmt.Errorf("failed to construct nanobot.yaml: %w", err)
+				return nil, fmt.Errorf("failed to construct boeingbot.yaml: %w", err)
 			}
 
-			annotations["nanobot-file-rev"] = utils.Digest(nanobotFileString)
+			annotations["boeingbot-file-rev"] = utils.Digest(boeingbotFileString)
 
 			objs = append(objs, &corev1.Secret{
 				ObjectMeta: metav1.ObjectMeta{
@@ -598,7 +598,7 @@ func (k *kubernetesBackend) k8sObjects(ctx context.Context, server ServerConfig,
 					Annotations: annotations,
 				},
 				Data: map[string][]byte{
-					"nanobot.yaml": nanobotFileString,
+					"boeingbot.yaml": boeingbotFileString,
 				},
 			})
 
@@ -616,29 +616,29 @@ func (k *kubernetesBackend) k8sObjects(ctx context.Context, server ServerConfig,
 					// TODO There has to be a less confusing way to write this logic, but I didn't want to try to refactor it
 					vars := make(map[string][]byte, 15)
 					for k, v := range secretEnvData {
-						if k == "NANOBOT_DISABLE_HEALTH_CHECKER" {
+						if k == "BOEINGBOT_DISABLE_HEALTH_CHECKER" {
 							vars[k] = []byte("true")
 							if server.Runtime != types.RuntimeComposite {
 								delete(secretEnvData, k)
 							}
-						} else if strings.HasPrefix(k, "NANOBOT_RUN_") {
+						} else if strings.HasPrefix(k, "BOEINGBOT_RUN_") {
 							vars[k] = v
 							// Audit log env always belongs on the shim. For non-composite runtimes,
-							// almost every NANOBOT_RUN_* setting is shim-only; the healthz path is
+							// almost every BOEINGBOT_RUN_* setting is shim-only; the healthz path is
 							// the exception because the downstream mcp container also exposes it.
-							if strings.HasPrefix(k, "NANOBOT_RUN_AUDIT_LOG_") || k != "NANOBOT_RUN_HEALTHZ_PATH" && server.Runtime != types.RuntimeComposite {
+							if strings.HasPrefix(k, "BOEINGBOT_RUN_AUDIT_LOG_") || k != "BOEINGBOT_RUN_HEALTHZ_PATH" && server.Runtime != types.RuntimeComposite {
 								delete(secretEnvData, k)
 							}
 						}
 					}
 
 					// OTEL env is added directly here because the shim secret only copies
-					// NANOBOT_* values from secretEnvData above.
-					otelEnv := nanobotOTELEnv("nanobot-shim", nil)
+					// BOEINGBOT_* values from secretEnvData above.
+					otelEnv := boeingbotOTELEnv("boeingbot-shim", nil)
 					maps.Copy(vars, otelEnv)
 
 					// Add the hash of the OTEL env vars to the revision annotation so that changes to OTEL config trigger a redeploy.
-					annotations["obot-revision"] = utils.Digest(annotations["obot-revision"] + utils.Digest(otelEnv))
+					annotations["boeing-revision"] = utils.Digest(annotations["boeing-revision"] + utils.Digest(otelEnv))
 
 					return vars
 				}(),
@@ -655,7 +655,7 @@ func (k *kubernetesBackend) k8sObjects(ctx context.Context, server ServerConfig,
 					ContainerPort: int32(shimPort),
 				}},
 				SecurityContext: getContainerSecurityContext(psaLevel),
-				Args:            []string{"run", "--disable-ui", "--listen-address", fmt.Sprintf(":%d", shimPort), "--exclude-built-in-agents", "--config", "/config/nanobot.yaml"},
+				Args:            []string{"run", "--disable-ui", "--listen-address", fmt.Sprintf(":%d", shimPort), "--exclude-built-in-agents", "--config", "/config/boeingbot.yaml"},
 				VolumeMounts: []corev1.VolumeMount{
 					{
 						Name:      "run-shim-file",
@@ -713,8 +713,8 @@ func (k *kubernetesBackend) k8sObjects(ctx context.Context, server ServerConfig,
 	}
 	if workspacePVCName != "" {
 		volumeMounts = append(volumeMounts, corev1.VolumeMount{
-			Name:      nanobotWorkspaceVolumeName,
-			MountPath: nanobotWorkspaceMountPath,
+			Name:      boeingbotWorkspaceVolumeName,
+			MountPath: boeingbotWorkspaceMountPath,
 		})
 	}
 
@@ -727,13 +727,13 @@ func (k *kubernetesBackend) k8sObjects(ctx context.Context, server ServerConfig,
 			Name:          portName,
 			ContainerPort: int32(port),
 		}},
-		Resources:       mcpContainerResources(server.Resources, server.Runtime, server.NanobotAgentName != "", k8sSettings),
+		Resources:       mcpContainerResources(server.Resources, server.Runtime, server.BoeingbotAgentName != "", k8sSettings),
 		SecurityContext: getContainerSecurityContext(psaLevel),
 		Command:         command,
 		Args:            args,
 		WorkingDir: func() string {
 			if workspacePVCName != "" {
-				return nanobotWorkspaceMountPath
+				return boeingbotWorkspaceMountPath
 			}
 			return ""
 		}(),
@@ -807,7 +807,7 @@ func (k *kubernetesBackend) k8sObjects(ctx context.Context, server ServerConfig,
 
 						if workspacePVCName != "" {
 							volumes = append(volumes, corev1.Volume{
-								Name: nanobotWorkspaceVolumeName,
+								Name: boeingbotWorkspaceVolumeName,
 								VolumeSource: corev1.VolumeSource{
 									PersistentVolumeClaim: &corev1.PersistentVolumeClaimVolumeSource{
 										ClaimName: workspacePVCName,
@@ -827,17 +827,17 @@ func (k *kubernetesBackend) k8sObjects(ctx context.Context, server ServerConfig,
 	objs = append(objs, dep)
 
 	if server.Runtime != types.RuntimeContainerized {
-		// Setup the MCP server nanobot config (nanobot.yaml that configures how nanobot proxies
+		// Setup the MCP server boeingbot config (boeingbot.yaml that configures how boeingbot proxies
 		// to the underlying MCP server) and mount it into the last container in the deployment.
-		var nanobotFileString []byte
+		var boeingbotFileString []byte
 		if server.Runtime == types.RuntimeComposite {
-			nanobotFileString, err = constructMCPServerNanobotYAMLForComposite(server.Components)
-			annotations["nanobot-composite-file-rev"] = utils.Digest(nanobotFileString)
+			boeingbotFileString, err = constructMCPServerBoeingbotYAMLForComposite(server.Components)
+			annotations["boeingbot-composite-file-rev"] = utils.Digest(boeingbotFileString)
 		} else {
-			nanobotFileString, err = constructMCPServerNanobotYAML(server.MCPServerDisplayName, server.URL, server.Command, server.Args, server.PassthroughHeaderNames, secretEnvData, headerData, webhooks)
+			boeingbotFileString, err = constructMCPServerBoeingbotYAML(server.MCPServerDisplayName, server.URL, server.Command, server.Args, server.PassthroughHeaderNames, secretEnvData, headerData, webhooks)
 		}
 		if err != nil {
-			return nil, fmt.Errorf("failed to construct nanobot.yaml: %w", err)
+			return nil, fmt.Errorf("failed to construct boeingbot.yaml: %w", err)
 		}
 
 		objs = append(objs, &corev1.Secret{
@@ -847,7 +847,7 @@ func (k *kubernetesBackend) k8sObjects(ctx context.Context, server ServerConfig,
 				Annotations: annotations,
 			},
 			Data: map[string][]byte{
-				"nanobot.yaml": nanobotFileString,
+				"boeingbot.yaml": boeingbotFileString,
 			},
 		})
 
@@ -875,7 +875,7 @@ func (k *kubernetesBackend) k8sObjects(ctx context.Context, server ServerConfig,
 	if !server.NeedsShim() {
 		// For direct container-backed servers, allow access via the "mcp" port.
 		port80 = "mcp"
-		if server.NanobotAgentName != "" {
+		if server.BoeingbotAgentName != "" {
 			// We also need to replace since there is a PVC involved.
 			dep.Spec.Strategy.Type = appsv1.RecreateDeploymentStrategyType
 		}
@@ -1035,7 +1035,7 @@ func (k *kubernetesBackend) updatedMCPPodName(ctx context.Context, url, id strin
 					return false, nil // Keep waiting
 				}
 
-				shouldRetry, podErr := analyzePodStatus(newestPod, server.NanobotAgentName != "")
+				shouldRetry, podErr := analyzePodStatus(newestPod, server.BoeingbotAgentName != "")
 				if !shouldRetry {
 					// Permanent failure - return the error with the appropriate type already wrapped
 					olog.Debugf("pod in non-retryable state: id=%s error=%v attempt=%d", id, podErr, attempt+1)
@@ -1139,13 +1139,13 @@ func (k *kubernetesBackend) deleteDeploymentCache(mcpServerName string) {
 	delete(k.deploymentCache, mcpServerName)
 }
 
-func mcpContainerResources(serverSpecificResources *corev1.ResourceRequirements, runtime types.Runtime, nanobotAgent bool, k8sSettings v1.K8sSettingsSpec) corev1.ResourceRequirements {
+func mcpContainerResources(serverSpecificResources *corev1.ResourceRequirements, runtime types.Runtime, boeingbotAgent bool, k8sSettings v1.K8sSettingsSpec) corev1.ResourceRequirements {
 	var defaults corev1.ResourceRequirements
 	if runtime == types.RuntimeRemote || runtime == types.RuntimeComposite {
 		defaults = memoryRequestResources(remoteMemoryRequest)
-	} else if nanobotAgent {
-		if k8sSettings.NanobotAgentResources != nil {
-			defaults = *k8sSettings.NanobotAgentResources
+	} else if boeingbotAgent {
+		if k8sSettings.BoeingbotAgentResources != nil {
+			defaults = *k8sSettings.BoeingbotAgentResources
 		} else {
 			defaults = memoryRequestResources(defaultAgentMemoryRequest)
 		}
@@ -1217,8 +1217,8 @@ func (k *kubernetesBackend) restartServer(ctx context.Context, server ServerConf
 	}
 
 	// Compute K8s settings hash
-	k8sSettingsHash := ComputeK8sSettingsHash(k8sSettings, server.Resources, server.Runtime, server.NanobotAgentName != "", effectiveImagePullSecrets)
-	desiredResources := mcpContainerResources(server.Resources, server.Runtime, server.NanobotAgentName != "", k8sSettings)
+	k8sSettingsHash := ComputeK8sSettingsHash(k8sSettings, server.Resources, server.Runtime, server.BoeingbotAgentName != "", effectiveImagePullSecrets)
+	desiredResources := mcpContainerResources(server.Resources, server.Runtime, server.BoeingbotAgentName != "", k8sSettings)
 
 	// Get PSA enforce level for security context decisions
 	psaLevel := GetPSAEnforceLevelFromSpec(k8sSettings)
@@ -1524,16 +1524,16 @@ func (k *kubernetesBackend) patchDeploymentHash(ctx context.Context, deployment 
 	patch := map[string]any{
 		"metadata": map[string]any{
 			"annotations": map[string]string{
-				"obot.ai/k8s-settings-hash": k8sSettingsHash,
-				"obot.ai/last-restart":      now,
+				"boeing.ai/k8s-settings-hash": k8sSettingsHash,
+				"boeing.ai/last-restart":      now,
 			},
 		},
 		"spec": map[string]any{
 			"template": map[string]any{
 				"metadata": map[string]any{
 					"annotations": map[string]string{
-						"obot.ai/k8s-settings-hash": k8sSettingsHash,
-						"obot.ai/last-restart":      now,
+						"boeing.ai/k8s-settings-hash": k8sSettingsHash,
+						"boeing.ai/last-restart":      now,
 					},
 				},
 			},
@@ -1816,7 +1816,7 @@ func getPodSecurityContextPatch(psaLevel PSAEnforceLevel) map[string]any {
 // MCP Deployment needs to be updated. The API/status field is still named
 // K8sSettingsHash, but managed image pull secret names are part of the same
 // v1 drift path.
-func ComputeK8sSettingsHash(settings v1.K8sSettingsSpec, serverSpecificResources *corev1.ResourceRequirements, serverRuntime types.Runtime, nanobotAgentServer bool, imagePullSecretNames []string) string {
+func ComputeK8sSettingsHash(settings v1.K8sSettingsSpec, serverSpecificResources *corev1.ResourceRequirements, serverRuntime types.Runtime, boeingbotAgentServer bool, imagePullSecretNames []string) string {
 	var buf bytes.Buffer
 
 	// Hash affinity
@@ -1833,7 +1833,7 @@ func ComputeK8sSettingsHash(settings v1.K8sSettingsSpec, serverSpecificResources
 
 	// Resources are server specific
 	// Ignoring errors from JSON encoding since the inputs are well-defined structs that should always marshal successfully
-	_ = json.NewEncoder(&buf).Encode(mcpContainerResources(serverSpecificResources, serverRuntime, nanobotAgentServer, settings))
+	_ = json.NewEncoder(&buf).Encode(mcpContainerResources(serverSpecificResources, serverRuntime, boeingbotAgentServer, settings))
 
 	// Hash runtimeClassName
 	if settings.RuntimeClassName != nil && *settings.RuntimeClassName != "" {
@@ -1845,10 +1845,10 @@ func ComputeK8sSettingsHash(settings v1.K8sSettingsSpec, serverSpecificResources
 		buf.WriteString(*settings.StorageClassName)
 	}
 
-	// Hash nanobot-only settings
-	if nanobotAgentServer {
-		if settings.NanobotWorkspaceSize != "" {
-			buf.WriteString(settings.NanobotWorkspaceSize)
+	// Hash boeingbot-only settings
+	if boeingbotAgentServer {
+		if settings.BoeingbotWorkspaceSize != "" {
+			buf.WriteString(settings.BoeingbotWorkspaceSize)
 		}
 	}
 
@@ -1901,12 +1901,12 @@ func currentImagePullSecretNames(ctx context.Context, client kclient.Client, sta
 }
 
 func (k *kubernetesBackend) effectiveImagePullSecretNames(ctx context.Context) ([]string, error) {
-	return currentImagePullSecretNames(ctx, k.obotClient, k.imagePullSecrets)
+	return currentImagePullSecretNames(ctx, k.boeingClient, k.imagePullSecrets)
 }
 
 func (k *kubernetesBackend) getK8sSettings(ctx context.Context) v1.K8sSettingsSpec {
 	var settings v1.K8sSettings
-	if err := k.obotClient.Get(ctx, kclient.ObjectKey{
+	if err := k.boeingClient.Get(ctx, kclient.ObjectKey{
 		Namespace: system.DefaultNamespace,
 		Name:      system.K8sSettingsName,
 	}, &settings); err != nil {
@@ -2059,7 +2059,7 @@ func (k *kubernetesBackend) CheckCapacity(ctx context.Context, server ServerConf
 
 	memoryRequest := resource.MustParse("0")
 	cpuRequest := resource.MustParse("0")
-	resources := mcpContainerResources(server.Resources, server.Runtime, server.NanobotAgentName != "", k8sSettings)
+	resources := mcpContainerResources(server.Resources, server.Runtime, server.BoeingbotAgentName != "", k8sSettings)
 	if mem, ok := resources.Requests[corev1.ResourceMemory]; ok {
 		memoryRequest = mem
 	}

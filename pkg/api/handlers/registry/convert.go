@@ -6,12 +6,12 @@ import (
 	"strings"
 	"time"
 
-	obottypes "github.com/obot-platform/obot/apiclient/types"
-	"github.com/obot-platform/obot/pkg/api/handlers"
-	v1 "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1"
+	boeingtypes "github.com/boeing-ai-gateway/boeing/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/pkg/api/handlers"
+	v1 "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1"
 )
 
-// ConvertMCPServerToRegistry converts an Obot MCPServer to a Registry ServerResponse
+// ConvertMCPServerToRegistry converts an Boeing MCPServer to a Registry ServerResponse
 // Uses the existing ConvertMCPServer function to ensure consistency with the rest of the codebase
 func ConvertMCPServerToRegistry(
 	ctx context.Context,
@@ -22,7 +22,7 @@ func ConvertMCPServerToRegistry(
 	reverseDNS string,
 	userID string,
 	mimeFetcher *mimeFetcher,
-) (obottypes.RegistryServerResponse, error) {
+) (boeingtypes.RegistryServerResponse, error) {
 	// Use existing conversion function to get types.MCPServer
 	convertedServer := handlers.ConvertMCPServer(server, credEnv, serverURL, slug)
 
@@ -38,15 +38,15 @@ func ConvertMCPServerToRegistry(
 
 	registryName := FormatRegistryServerName(reverseDNS, slug)
 
-	serverDetail := obottypes.RegistryServerDetail{
+	serverDetail := boeingtypes.RegistryServerDetail{
 		Name:        registryName,
 		Description: convertedServer.MCPServerManifest.ShortDescription,
 		Title:       displayName,
 		Version:     "latest",
 		Schema:      "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
-		Meta: obottypes.RegistryServerMeta{
-			PublisherProvided: &obottypes.RegistryPublisherProvidedMeta{
-				GitHub: &obottypes.RegistryGitHubMeta{
+		Meta: boeingtypes.RegistryServerMeta{
+			PublisherProvided: &boeingtypes.RegistryPublisherProvidedMeta{
+				GitHub: &boeingtypes.RegistryGitHubMeta{
 					Readme: server.Spec.Manifest.Description,
 				},
 			},
@@ -55,7 +55,7 @@ func ConvertMCPServerToRegistry(
 
 	// Add icon if present
 	if convertedServer.MCPServerManifest.Icon != "" {
-		serverDetail.Icons = []obottypes.RegistryServerIcon{
+		serverDetail.Icons = []boeingtypes.RegistryServerIcon{
 			{
 				Src:      convertedServer.MCPServerManifest.Icon,
 				MimeType: mimeFetcher.guessMimeType(ctx, convertedServer.MCPServerManifest.Icon),
@@ -64,8 +64,8 @@ func ConvertMCPServerToRegistry(
 	}
 
 	// Create metadata
-	meta := obottypes.RegistryMeta{
-		Official: obottypes.RegistryOfficialMeta{
+	meta := boeingtypes.RegistryMeta{
+		Official: boeingtypes.RegistryOfficialMeta{
 			IsLatest:  true,
 			CreatedAt: server.CreationTimestamp.Format(time.RFC3339),
 			Status:    "active",
@@ -77,10 +77,10 @@ func ConvertMCPServerToRegistry(
 	isMultiUserServer := !convertedServer.IsSingleUser()
 
 	// For configured servers, add remote with mcp-connect URL
-	// All Obot servers are exposed as streamable-http remotes regardless of underlying runtime
+	// All Boeing servers are exposed as streamable-http remotes regardless of underlying runtime
 	if isPersonalServer && convertedServer.Configured && !convertedServer.NeedsURL && convertedServer.ConnectURL != "" {
 		// This is a personal server that is configured and ready to go.
-		serverDetail.Remotes = []obottypes.RegistryServerRemote{
+		serverDetail.Remotes = []boeingtypes.RegistryServerRemote{
 			{
 				Type: "streamable-http",
 				URL:  convertedServer.ConnectURL,
@@ -89,7 +89,7 @@ func ConvertMCPServerToRegistry(
 	} else if isMultiUserServer {
 		// Multi-user servers are pre-configured by admins, so they always get a connection URL
 		connectURL := fmt.Sprintf("%s/mcp-connect/%s", serverURL, server.Name)
-		serverDetail.Remotes = []obottypes.RegistryServerRemote{
+		serverDetail.Remotes = []boeingtypes.RegistryServerRemote{
 			{
 				Type: "streamable-http",
 				URL:  connectURL,
@@ -97,15 +97,15 @@ func ConvertMCPServerToRegistry(
 		}
 	} else {
 		// Personal server that is not configured
-		meta.Obot = &obottypes.RegistryObotMeta{
+		meta.Boeing = &boeingtypes.RegistryBoeingMeta{
 			ConfigurationRequired: true,
-			ConfigurationMessage:  "This server requires configuration. Please visit the Obot UI to configure it.",
+			ConfigurationMessage:  "This server requires configuration. Please visit the Boeing UI to configure it.",
 		}
 
-		serverDetail.Meta.PublisherProvided.GitHub.Readme = fmt.Sprintf("> Note: This server requires configuration and cannot be installed directly from your client. Please visit [Obot](%s) to to configure this server and obtain a connection URL.\n\n%s", serverURL, serverDetail.Meta.PublisherProvided.GitHub.Readme)
+		serverDetail.Meta.PublisherProvided.GitHub.Readme = fmt.Sprintf("> Note: This server requires configuration and cannot be installed directly from your client. Please visit [Boeing](%s) to to configure this server and obtain a connection URL.\n\n%s", serverURL, serverDetail.Meta.PublisherProvided.GitHub.Readme)
 	}
 
-	return obottypes.RegistryServerResponse{
+	return boeingtypes.RegistryServerResponse{
 		Server:        serverDetail,
 		Meta:          meta,
 		CreatedAtUnix: server.CreationTimestamp.Unix(),
@@ -119,7 +119,7 @@ func ConvertMCPServerCatalogEntryToRegistry(
 	serverURL string,
 	reverseDNS string,
 	mimeFetcher *mimeFetcher,
-) (obottypes.RegistryServerResponse, error) {
+) (boeingtypes.RegistryServerResponse, error) {
 	manifest := entry.Spec.Manifest
 
 	// Generate registry server name
@@ -129,15 +129,15 @@ func ConvertMCPServerCatalogEntryToRegistry(
 	}
 	registryName := FormatRegistryServerName(reverseDNS, entry.Name)
 
-	serverDetail := obottypes.RegistryServerDetail{
+	serverDetail := boeingtypes.RegistryServerDetail{
 		Name:        registryName,
 		Description: manifest.ShortDescription,
 		Title:       displayName,
 		Version:     "latest",
 		Schema:      "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
-		Meta: obottypes.RegistryServerMeta{
-			PublisherProvided: &obottypes.RegistryPublisherProvidedMeta{
-				GitHub: &obottypes.RegistryGitHubMeta{
+		Meta: boeingtypes.RegistryServerMeta{
+			PublisherProvided: &boeingtypes.RegistryPublisherProvidedMeta{
+				GitHub: &boeingtypes.RegistryGitHubMeta{
 					Readme: entry.Spec.Manifest.Description,
 				},
 			},
@@ -146,7 +146,7 @@ func ConvertMCPServerCatalogEntryToRegistry(
 
 	// Add icon if present
 	if manifest.Icon != "" {
-		serverDetail.Icons = []obottypes.RegistryServerIcon{
+		serverDetail.Icons = []boeingtypes.RegistryServerIcon{
 			{
 				Src:      manifest.Icon,
 				MimeType: mimeFetcher.guessMimeType(ctx, manifest.Icon),
@@ -158,7 +158,7 @@ func ConvertMCPServerCatalogEntryToRegistry(
 	if manifest.RepoURL != "" {
 		source := guessRepoSource(manifest.RepoURL)
 		if source != "" {
-			serverDetail.Repository = &obottypes.RegistryServerRepository{
+			serverDetail.Repository = &boeingtypes.RegistryServerRepository{
 				URL:    manifest.RepoURL,
 				Source: source,
 			}
@@ -168,8 +168,8 @@ func ConvertMCPServerCatalogEntryToRegistry(
 	requiresConfiguration := catalogEntryRequiresConfiguration(entry)
 
 	// Create metadata
-	meta := obottypes.RegistryMeta{
-		Official: obottypes.RegistryOfficialMeta{
+	meta := boeingtypes.RegistryMeta{
+		Official: boeingtypes.RegistryOfficialMeta{
 			IsLatest:  true,
 			CreatedAt: entry.CreationTimestamp.Format(time.RFC3339),
 			Status:    "active",
@@ -178,15 +178,15 @@ func ConvertMCPServerCatalogEntryToRegistry(
 
 	if requiresConfiguration {
 		// Requires configuration - show configuration message
-		meta.Obot = &obottypes.RegistryObotMeta{
+		meta.Boeing = &boeingtypes.RegistryBoeingMeta{
 			ConfigurationRequired: true,
-			ConfigurationMessage:  "This server needs to be configured before use. Please visit the Obot UI to set it up.",
+			ConfigurationMessage:  "This server needs to be configured before use. Please visit the Boeing UI to set it up.",
 		}
 
-		serverDetail.Meta.PublisherProvided.GitHub.Readme = fmt.Sprintf("> Note: This server requires configuration and cannot be installed directly from your client. Please visit [Obot](%s) to to configure this server and obtain a connection URL.\n\n%s", serverURL, serverDetail.Meta.PublisherProvided.GitHub.Readme)
+		serverDetail.Meta.PublisherProvided.GitHub.Readme = fmt.Sprintf("> Note: This server requires configuration and cannot be installed directly from your client. Please visit [Boeing](%s) to to configure this server and obtain a connection URL.\n\n%s", serverURL, serverDetail.Meta.PublisherProvided.GitHub.Readme)
 	} else {
 		// No configuration required - provide connection URL
-		serverDetail.Remotes = []obottypes.RegistryServerRemote{
+		serverDetail.Remotes = []boeingtypes.RegistryServerRemote{
 			{
 				Type: "streamable-http",
 				URL:  fmt.Sprintf("%s/mcp-connect/%s", serverURL, entry.Name),
@@ -194,7 +194,7 @@ func ConvertMCPServerCatalogEntryToRegistry(
 		}
 	}
 
-	return obottypes.RegistryServerResponse{
+	return boeingtypes.RegistryServerResponse{
 		Server:        serverDetail,
 		Meta:          meta,
 		CreatedAtUnix: entry.CreationTimestamp.Unix(),
@@ -207,7 +207,7 @@ func catalogEntryRequiresConfiguration(entry v1.MCPServerCatalogEntry) bool {
 	manifest := entry.Spec.Manifest
 
 	// Composite servers always require configuration in the UI before they can be used.
-	if manifest.Runtime == obottypes.RuntimeComposite {
+	if manifest.Runtime == boeingtypes.RuntimeComposite {
 		return true
 	}
 
@@ -218,7 +218,7 @@ func catalogEntryRequiresConfiguration(entry v1.MCPServerCatalogEntry) bool {
 		}
 	}
 
-	if manifest.Runtime == obottypes.RuntimeRemote && manifest.RemoteConfig != nil {
+	if manifest.Runtime == boeingtypes.RuntimeRemote && manifest.RemoteConfig != nil {
 		if manifest.RemoteConfig.StaticOAuthRequired && !entry.Status.OAuthCredentialConfigured {
 			return true
 		}

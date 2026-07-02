@@ -3,8 +3,8 @@ package handlers
 import (
 	"testing"
 
-	"github.com/obot-platform/obot/apiclient/types"
-	v1 "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
+	v1 "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1"
 )
 
 func TestImagePullSecretSpecFromInputDefaultsECRIssuerURL(t *testing.T) {
@@ -13,7 +13,7 @@ func TestImagePullSecretSpecFromInputDefaultsECRIssuerURL(t *testing.T) {
 	spec, err := handler.specFromInput(types.ImagePullSecretManifest{
 		Type: types.ImagePullSecretTypeECR,
 		ECR: &types.ECRImagePullSecretConfig{
-			RoleARN: "arn:aws:iam::123456789012:role/obot-ecr",
+			RoleARN: "arn:aws:iam::123456789012:role/boeing-ecr",
 			Region:  "us-east-1",
 		},
 	}, nil)
@@ -30,7 +30,7 @@ func TestImagePullSecretSpecFromInputDefaultsECRIssuerURL(t *testing.T) {
 	spec, err = handler.specFromInput(types.ImagePullSecretManifest{
 		Type: types.ImagePullSecretTypeECR,
 		ECR: &types.ECRImagePullSecretConfig{
-			RoleARN:   "arn:aws:iam::123456789012:role/obot-ecr",
+			RoleARN:   "arn:aws:iam::123456789012:role/boeing-ecr",
 			Region:    "us-east-1",
 			IssuerURL: "https://custom-issuer.example.com/",
 		},
@@ -49,7 +49,7 @@ func TestImagePullSecretSpecFromInputRequiresECRIssuerURLWhenDefaultMissing(t *t
 	_, err := handler.specFromInput(types.ImagePullSecretManifest{
 		Type: types.ImagePullSecretTypeECR,
 		ECR: &types.ECRImagePullSecretConfig{
-			RoleARN: "arn:aws:iam::123456789012:role/obot-ecr",
+			RoleARN: "arn:aws:iam::123456789012:role/boeing-ecr",
 			Region:  "us-east-1",
 		},
 	}, nil)
@@ -60,7 +60,7 @@ func TestImagePullSecretSpecFromInputRequiresECRIssuerURLWhenDefaultMissing(t *t
 	spec, err := handler.specFromInput(types.ImagePullSecretManifest{
 		Type: types.ImagePullSecretTypeECR,
 		ECR: &types.ECRImagePullSecretConfig{
-			RoleARN:   "arn:aws:iam::123456789012:role/obot-ecr",
+			RoleARN:   "arn:aws:iam::123456789012:role/boeing-ecr",
 			Region:    "us-east-1",
 			IssuerURL: "https://custom-issuer.example.com",
 		},

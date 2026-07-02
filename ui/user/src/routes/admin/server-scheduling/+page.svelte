@@ -23,7 +23,7 @@
 			tolerations: data.k8sSettings?.tolerations ?? '',
 			runtimeClassName: data.k8sSettings?.runtimeClassName ?? '',
 			storageClassName: data.k8sSettings?.storageClassName ?? '',
-			nanobotWorkspaceSize: data.k8sSettings?.nanobotWorkspaceSize ?? '',
+			boeingbotWorkspaceSize: data.k8sSettings?.boeingbotWorkspaceSize ?? '',
 			...data.k8sSettings
 		}))
 	);
@@ -358,9 +358,9 @@
 				</div>
 				<div class="paper mt-1">
 					<div>
-						{@render headerContent('Nanobot Workspace Storage')}
+						{@render headerContent('Boeingbot Workspace Storage')}
 						<p class="text-sm">
-							Configure the storage class and volume size used for nanobot workspace volumes. These
+							Configure the storage class and volume size used for boeingbot workspace volumes. These
 							values map to Kubernetes StorageClass configuration and persistent volume sizes. See
 							the Kubernetes <a
 								href="https://kubernetes.io/docs/concepts/storage/storage-classes/"
@@ -386,11 +386,11 @@
 							</p>
 						</div>
 						<div class="flex flex-col gap-1">
-							<label class="input-label" for="nanobot-workspace-size">Workspace Volume Size</label>
+							<label class="input-label" for="boeingbot-workspace-size">Workspace Volume Size</label>
 							<input
 								type="text"
-								id="nanobot-workspace-size"
-								bind:value={k8sSettings.nanobotWorkspaceSize}
+								id="boeingbot-workspace-size"
+								bind:value={k8sSettings.boeingbotWorkspaceSize}
 								class="text-input-filled dark:bg-base-100"
 								disabled={readonly}
 								placeholder="example: 10Gi"
@@ -456,5 +456,5 @@
 {/snippet}
 
 <svelte:head>
-	<title>Obot | Chat Configuration</title>
+	<title>Boeing | Chat Configuration</title>
 </svelte:head>

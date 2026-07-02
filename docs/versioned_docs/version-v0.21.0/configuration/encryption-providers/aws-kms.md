@@ -1,6 +1,6 @@
 # AWS KMS
 
-This guide explains how to set up AWS KMS encryption for Obot.
+This guide explains how to set up AWS KMS encryption for Boeing.
 
 ### Prerequisites
 
@@ -10,13 +10,13 @@ This guide explains how to set up AWS KMS encryption for Obot.
 
 ```bash
 aws kms create-key \
-  --description "Obot Encryption Key" \
+  --description "Boeing Encryption Key" \
   --key-usage ENCRYPT_DECRYPT \
   --key-spec SYMMETRIC_DEFAULT
 
 # Optional, but recommended - Create an Alias
 aws kms create-alias \
-  --alias-name alias/obot-encryption-key \
+  --alias-name alias/boeing-encryption-key \
   --target-key-id <key-id>
 ```
 
@@ -34,13 +34,13 @@ Example `kms-policy.json`:
 ```json
 {
   "Version": "2012-10-17",
-  "Id": "obot-encryption-policy",
+  "Id": "boeing-encryption-policy",
   "Statement": [
     {
-      "Sid": "Allow access for Obot",
+      "Sid": "Allow access for Boeing",
       "Effect": "Allow",
       "Principal": {
-        "AWS": "arn:aws:iam::<ACCOUNT_ID>:<OBOT_IAM_IDENTITY_NAME>"
+        "AWS": "arn:aws:iam::<ACCOUNT_ID>:<BOEING_IAM_IDENTITY_NAME>"
       },
       "Action": [
         "kms:Encrypt",
@@ -54,13 +54,13 @@ Example `kms-policy.json`:
 }
 ```
 
-### Obot environment variables
+### Boeing environment variables
 
-Make sure the following environment variables are set on Obot when you run it:
+Make sure the following environment variables are set on Boeing when you run it:
 
-- `OBOT_SERVER_ENCRYPTION_PROVIDER=aws`
-- `OBOT_AWS_KMS_KEY_ARN=<your key ARN>`
+- `BOEING_SERVER_ENCRYPTION_PROVIDER=aws`
+- `BOEING_AWS_KMS_KEY_ARN=<your key ARN>`
 
 ### AWS credentials
 
-The credentials can be provided to Obot either via the standard AWS environment variables (`AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `AWS_SESSION_TOKEN`, `AWS_REGION`) or through a metadata server setup with EC2 or IRSA in Kubernetes.
+The credentials can be provided to Boeing either via the standard AWS environment variables (`AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `AWS_SESSION_TOKEN`, `AWS_REGION`) or through a metadata server setup with EC2 or IRSA in Kubernetes.

@@ -13,7 +13,7 @@ import (
 
 	jose "github.com/go-jose/go-jose/v4"
 	"github.com/golang-jwt/jwt/v5"
-	v1 "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1"
+	v1 "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1"
 )
 
 const (

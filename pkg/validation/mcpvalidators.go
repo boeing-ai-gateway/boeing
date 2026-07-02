@@ -10,8 +10,8 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/obot-platform/obot/apiclient/types"
-	"github.com/obot-platform/obot/pkg/mcp"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/pkg/mcp"
 	"k8s.io/apimachinery/pkg/api/resource"
 )
 

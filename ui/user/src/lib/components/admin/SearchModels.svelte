@@ -42,7 +42,7 @@
 	// prefix that doesn't begin or end with whitespace.
 	let patternPrefix = $derived.by(() => {
 		const s = search.trim();
-		if (!s.endsWith('*') || s.length < 2 || s.startsWith('obot://')) return null;
+		if (!s.endsWith('*') || s.length < 2 || s.startsWith('boeing://')) return null;
 		const prefix = s.slice(0, -1);
 		if (prefix.includes('*') || prefix !== prefix.trim()) return null;
 		return prefix;
@@ -54,7 +54,7 @@
 	let patternOption = $derived.by(() => {
 		if (patternPrefix !== null) return { id: `${patternPrefix}*`, prefix: patternPrefix };
 		const s = search.trim();
-		if (!s || s.includes('*') || s.startsWith('obot://')) return null;
+		if (!s || s.includes('*') || s.startsWith('boeing://')) return null;
 		return { id: `${s}*`, prefix: s };
 	});
 
@@ -125,7 +125,7 @@
 	// Prepare default aliases for display
 	let aliasDisplayData = $derived(
 		Object.values(ModelAlias).map((aliasName) => {
-			const aliasId = `obot://${aliasName}`;
+			const aliasId = `boeing://${aliasName}`;
 			const aliasData = defaultModelAliases.find((a) => a.alias === aliasName);
 			const model = aliasData?.model ? modelsMap.get(aliasData.model) : undefined;
 

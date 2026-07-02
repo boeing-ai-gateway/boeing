@@ -10,15 +10,15 @@ import (
 	"strings"
 	"time"
 
-	"github.com/obot-platform/obot/apiclient/types"
-	"github.com/obot-platform/obot/pkg/api"
-	"github.com/obot-platform/obot/pkg/controller/handlers/systemmcpserver"
-	gateway "github.com/obot-platform/obot/pkg/gateway/client"
-	gatewaytypes "github.com/obot-platform/obot/pkg/gateway/types"
-	"github.com/obot-platform/obot/pkg/mcp"
-	v1 "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1"
-	"github.com/obot-platform/obot/pkg/system"
-	"github.com/obot-platform/obot/pkg/validation"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/pkg/api"
+	"github.com/boeing-ai-gateway/boeing/pkg/controller/handlers/systemmcpserver"
+	gateway "github.com/boeing-ai-gateway/boeing/pkg/gateway/client"
+	gatewaytypes "github.com/boeing-ai-gateway/boeing/pkg/gateway/types"
+	"github.com/boeing-ai-gateway/boeing/pkg/mcp"
+	v1 "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1"
+	"github.com/boeing-ai-gateway/boeing/pkg/system"
+	"github.com/boeing-ai-gateway/boeing/pkg/validation"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	kwait "k8s.io/apimachinery/pkg/util/wait"
 	"k8s.io/client-go/util/retry"
@@ -180,7 +180,7 @@ func (h *SystemMCPServerHandler) Configure(req api.Context) error {
 	if systemServer.Annotations == nil {
 		systemServer.Annotations = make(map[string]string, 1)
 	}
-	systemServer.Annotations["obot.obot.ai/configured-at"] = metav1.Now().Format(time.RFC3339)
+	systemServer.Annotations["boeing.boeing.ai/configured-at"] = metav1.Now().Format(time.RFC3339)
 
 	if err := req.Update(&systemServer); err != nil {
 		return fmt.Errorf("failed to update system MCP server: %w", err)
@@ -209,7 +209,7 @@ func (h *SystemMCPServerHandler) Deconfigure(req api.Context) error {
 
 	// Remove configuration annotation
 	if systemServer.Annotations != nil {
-		delete(systemServer.Annotations, "obot.obot.ai/configured-at")
+		delete(systemServer.Annotations, "boeing.boeing.ai/configured-at")
 	}
 
 	if err := req.Update(&systemServer); err != nil {
@@ -254,10 +254,10 @@ func (h *SystemMCPServerHandler) Restart(req api.Context) error {
 	return nil
 }
 
-// RestartNanobotAgentDeployments restarts all nanobot-agent-backed MCP server deployments.
-func (h *SystemMCPServerHandler) RestartNanobotAgentDeployments(req api.Context) error {
+// RestartBoeingbotAgentDeployments restarts all boeingbot-agent-backed MCP server deployments.
+func (h *SystemMCPServerHandler) RestartBoeingbotAgentDeployments(req api.Context) error {
 	if !req.UserIsAdmin() {
-		return types.NewErrForbidden("only admins can restart nanobot agent deployments")
+		return types.NewErrForbidden("only admins can restart boeingbot agent deployments")
 	}
 
 	dryRun := false
@@ -279,7 +279,7 @@ func (h *SystemMCPServerHandler) RestartNanobotAgentDeployments(req api.Context)
 	failed := make([]map[string]string, 0)
 
 	for _, server := range servers.Items {
-		if server.Spec.NanobotAgentID == "" {
+		if server.Spec.BoeingbotAgentID == "" {
 			continue
 		}
 
@@ -321,7 +321,7 @@ func (h *SystemMCPServerHandler) RestartNanobotAgentDeployments(req api.Context)
 
 	result := map[string]any{
 		"dryRun":                   dryRun,
-		"totalNanobotAgentServers": len(targetedServerIDs),
+		"totalBoeingbotAgentServers": len(targetedServerIDs),
 		"targetedServerIDs":        targetedServerIDs,
 		"restartedCount":           len(restartedServerIDs),
 		"restartedServerIDs":       restartedServerIDs,

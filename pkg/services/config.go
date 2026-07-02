@@ -13,46 +13,46 @@ import (
 
 	"github.com/adrg/xdg"
 	"github.com/glebarez/sqlite"
-	"github.com/obot-platform/nah"
-	"github.com/obot-platform/nah/pkg/apply"
-	"github.com/obot-platform/nah/pkg/leader"
-	"github.com/obot-platform/nah/pkg/router"
-	apiclienttypes "github.com/obot-platform/obot/apiclient/types"
-	"github.com/obot-platform/obot/logger"
-	"github.com/obot-platform/obot/pkg/accesscontrolrule"
-	"github.com/obot-platform/obot/pkg/api/authn"
-	"github.com/obot-platform/obot/pkg/api/authz"
-	"github.com/obot-platform/obot/pkg/api/handlers"
-	"github.com/obot-platform/obot/pkg/api/handlers/mcpgateway"
-	"github.com/obot-platform/obot/pkg/api/server"
-	"github.com/obot-platform/obot/pkg/api/server/audit"
-	"github.com/obot-platform/obot/pkg/api/server/ratelimiter"
-	"github.com/obot-platform/obot/pkg/bootstrap"
-	"github.com/obot-platform/obot/pkg/encryption"
-	"github.com/obot-platform/obot/pkg/gateway/client"
-	"github.com/obot-platform/obot/pkg/gateway/db"
-	gserver "github.com/obot-platform/obot/pkg/gateway/server"
-	"github.com/obot-platform/obot/pkg/gateway/server/dispatcher"
-	otime "github.com/obot-platform/obot/pkg/gateway/time"
-	"github.com/obot-platform/obot/pkg/gateway/types"
-	"github.com/obot-platform/obot/pkg/hash"
-	"github.com/obot-platform/obot/pkg/imagepullsecrets"
-	"github.com/obot-platform/obot/pkg/jwt/persistent"
-	"github.com/obot-platform/obot/pkg/license"
-	"github.com/obot-platform/obot/pkg/logutil"
-	"github.com/obot-platform/obot/pkg/mcp"
-	"github.com/obot-platform/obot/pkg/messagepolicy"
-	"github.com/obot-platform/obot/pkg/modelaccesspolicy"
-	"github.com/obot-platform/obot/pkg/proxy"
-	"github.com/obot-platform/obot/pkg/serviceaccounts"
-	"github.com/obot-platform/obot/pkg/skillaccessrule"
-	"github.com/obot-platform/obot/pkg/storage"
-	v1 "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1"
-	storageauthn "github.com/obot-platform/obot/pkg/storage/authn"
-	"github.com/obot-platform/obot/pkg/storage/blob"
-	"github.com/obot-platform/obot/pkg/storage/scheme"
-	"github.com/obot-platform/obot/pkg/storage/services"
-	"github.com/obot-platform/obot/pkg/system"
+	"github.com/boeing-ai-gateway/nah"
+	"github.com/boeing-ai-gateway/nah/pkg/apply"
+	"github.com/boeing-ai-gateway/nah/pkg/leader"
+	"github.com/boeing-ai-gateway/nah/pkg/router"
+	apiclienttypes "github.com/boeing-ai-gateway/boeing/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/logger"
+	"github.com/boeing-ai-gateway/boeing/pkg/accesscontrolrule"
+	"github.com/boeing-ai-gateway/boeing/pkg/api/authn"
+	"github.com/boeing-ai-gateway/boeing/pkg/api/authz"
+	"github.com/boeing-ai-gateway/boeing/pkg/api/handlers"
+	"github.com/boeing-ai-gateway/boeing/pkg/api/handlers/mcpgateway"
+	"github.com/boeing-ai-gateway/boeing/pkg/api/server"
+	"github.com/boeing-ai-gateway/boeing/pkg/api/server/audit"
+	"github.com/boeing-ai-gateway/boeing/pkg/api/server/ratelimiter"
+	"github.com/boeing-ai-gateway/boeing/pkg/bootstrap"
+	"github.com/boeing-ai-gateway/boeing/pkg/encryption"
+	"github.com/boeing-ai-gateway/boeing/pkg/gateway/client"
+	"github.com/boeing-ai-gateway/boeing/pkg/gateway/db"
+	gserver "github.com/boeing-ai-gateway/boeing/pkg/gateway/server"
+	"github.com/boeing-ai-gateway/boeing/pkg/gateway/server/dispatcher"
+	otime "github.com/boeing-ai-gateway/boeing/pkg/gateway/time"
+	"github.com/boeing-ai-gateway/boeing/pkg/gateway/types"
+	"github.com/boeing-ai-gateway/boeing/pkg/hash"
+	"github.com/boeing-ai-gateway/boeing/pkg/imagepullsecrets"
+	"github.com/boeing-ai-gateway/boeing/pkg/jwt/persistent"
+	"github.com/boeing-ai-gateway/boeing/pkg/license"
+	"github.com/boeing-ai-gateway/boeing/pkg/logutil"
+	"github.com/boeing-ai-gateway/boeing/pkg/mcp"
+	"github.com/boeing-ai-gateway/boeing/pkg/messagepolicy"
+	"github.com/boeing-ai-gateway/boeing/pkg/modelaccesspolicy"
+	"github.com/boeing-ai-gateway/boeing/pkg/proxy"
+	"github.com/boeing-ai-gateway/boeing/pkg/serviceaccounts"
+	"github.com/boeing-ai-gateway/boeing/pkg/skillaccessrule"
+	"github.com/boeing-ai-gateway/boeing/pkg/storage"
+	v1 "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1"
+	storageauthn "github.com/boeing-ai-gateway/boeing/pkg/storage/authn"
+	"github.com/boeing-ai-gateway/boeing/pkg/storage/blob"
+	"github.com/boeing-ai-gateway/boeing/pkg/storage/scheme"
+	"github.com/boeing-ai-gateway/boeing/pkg/storage/services"
+	"github.com/boeing-ai-gateway/boeing/pkg/system"
 	"gorm.io/gorm"
 	gormlogger "gorm.io/gorm/logger"
 	coordinationv1 "k8s.io/api/coordination/v1"
@@ -70,7 +70,7 @@ import (
 	kclient "sigs.k8s.io/controller-runtime/pkg/client"
 
 	// Setup nah logging
-	_ "github.com/obot-platform/nah/pkg/logrus"
+	_ "github.com/boeing-ai-gateway/nah/pkg/logrus"
 )
 
 var pkgLog = logger.Package()
@@ -90,9 +90,9 @@ type MetricsAuthConfig struct {
 
 type Config struct {
 	HTTPListenPort       int      `usage:"HTTP port to listen on" default:"8080" name:"http-listen-port"`
-	DevMode              bool     `usage:"Enable development mode" default:"false" name:"dev-mode" env:"OBOT_DEV_MODE"`
+	DevMode              bool     `usage:"Enable development mode" default:"false" name:"dev-mode" env:"BOEING_DEV_MODE"`
 	DevUIPort            int      `usage:"The port on localhost running the dev instance of the UI" default:"5174"`
-	UserUIPort           int      `usage:"The port on localhost running the user production instance of the UI" env:"OBOT_SERVER_USER_UI_PORT"`
+	UserUIPort           int      `usage:"The port on localhost running the user production instance of the UI" env:"BOEING_SERVER_USER_UI_PORT"`
 	AllowedOrigin        string   `usage:"Allowed origin for CORS"`
 	ProviderRegistries   []string `usage:"Local filesystem paths to provider registries (directories) to load providers from"`
 	ElectionFile         string   `usage:"Use this file for leader election instead of database leases"`
@@ -104,15 +104,15 @@ type Config struct {
 
 	DefaultMCPCatalogPath                string `usage:"The path to the default MCP catalog (accessible to all users)" default:""`
 	DefaultSystemMCPCatalogPath          string `usage:"The path to the default System MCP catalog" default:""`
-	DefaultSkillRepoURL                  string `usage:"The default skill repository URL (must be HTTPS GitHub URL)" default:"https://github.com/obot-platform/skills" env:"OBOT_DEFAULT_SKILL_REPO_URL"`
-	DefaultSkillRepoRef                  string `usage:"The ref (branch/tag) for the default skill repository" default:"" env:"OBOT_DEFAULT_SKILL_REPO_REF"`
-	DisableUpdateCheck                   bool   `usage:"Disable Obot server update checks"`
-	EnableRegistryAuth                   bool   `usage:"Enable authentication for the MCP registry API" default:"false" env:"OBOT_SERVER_ENABLE_REGISTRY_AUTH"`
+	DefaultSkillRepoURL                  string `usage:"The default skill repository URL (must be HTTPS GitHub URL)" default:"" env:"BOEING_DEFAULT_SKILL_REPO_URL"`
+	DefaultSkillRepoRef                  string `usage:"The ref (branch/tag) for the default skill repository" default:"" env:"BOEING_DEFAULT_SKILL_REPO_REF"`
+	DisableUpdateCheck                   bool   `usage:"Disable Boeing server update checks"`
+	EnableRegistryAuth                   bool   `usage:"Enable authentication for the MCP registry API" default:"false" env:"BOEING_SERVER_ENABLE_REGISTRY_AUTH"`
 	EnableMessagePolicies                bool   `usage:"Enable message policies for LLM proxy content enforcement" default:"false"`
-	EnableAgents                         *bool  `usage:"Enable Obot Agent features. When unset, agents are disabled for new deployments but grandfathered in for deployments that already have agents. Explicitly set to true to force-enable, or false to force-disable, regardless of grandfathering." env:"OBOT_ENABLE_AGENTS"`
+	EnableAgents                         *bool  `usage:"Enable Boeing Agent features. When unset, agents are disabled for new deployments but grandfathered in for deployments that already have agents. Explicitly set to true to force-enable, or false to force-disable, regardless of grandfathering." env:"BOEING_ENABLE_AGENTS"`
 	MCPOAuthClientExpiration             string `usage:"The expiration time in dynamically registered MCP OAuth clients, must be a valid duration string and may include days, hours, or minutes" default:"30d"`
-	MCPServerSearchImage                 string `usage:"Container image for the obot MCP server" default:"ghcr.io/obot-platform/obot-mcp-server:v0.2.0"`
-	NanobotAgentImage                    string `usage:"Container image for the Nanobot agent MCP server" default:"ghcr.io/obot-platform/nanobot-agent:v0.0.85"`
+	MCPServerSearchImage                 string `usage:"Container image for the boeing MCP server" default:""`
+	BoeingbotAgentImage                    string `usage:"Container image for the Boeingbot agent MCP server" default:""`
 	MCPNetworkPolicyProviderChartRepo    string `usage:"Helm repository URL for the network policy provider chart"`
 	MCPNetworkPolicyProviderChartName    string `usage:"Helm chart name for the network policy provider chart"`
 	MCPNetworkPolicyProviderChartVersion string `usage:"Helm chart version for the network policy provider chart"`
@@ -121,17 +121,17 @@ type Config struct {
 	MCPDefaultDenyAllEgress              bool   `usage:"Default new MCP servers to deny all egress when network policy enforcement is enabled" default:"false"`
 
 	// Published artifact storage
-	ArtifactStorageProvider       string `usage:"Storage provider for published artifacts (s3, gcs, azure, custom)" name:"artifact-storage-provider" env:"OBOT_ARTIFACT_STORAGE_PROVIDER"`
-	ArtifactStorageBucket         string `usage:"Bucket for published artifacts" name:"artifact-storage-bucket" env:"OBOT_ARTIFACT_STORAGE_BUCKET"`
-	ArtifactS3Region              string `usage:"S3 region for artifact storage" name:"artifact-s3-region" env:"OBOT_ARTIFACT_S3_REGION"`
-	ArtifactS3AccessKeyID         string `usage:"S3 access key ID for artifact storage" name:"artifact-s3-access-key-id" env:"OBOT_ARTIFACT_S3_ACCESS_KEY_ID"`
-	ArtifactS3SecretAccessKey     string `usage:"S3 secret access key for artifact storage" name:"artifact-s3-secret-access-key" env:"OBOT_ARTIFACT_S3_SECRET_ACCESS_KEY"`
-	ArtifactS3Endpoint            string `usage:"Custom S3 endpoint for artifact storage" name:"artifact-s3-endpoint" env:"OBOT_ARTIFACT_S3_ENDPOINT"`
-	ArtifactGCSServiceAccountJSON string `usage:"GCS service account JSON for artifact storage (omit to use Application Default Credentials)" name:"artifact-gcs-service-account-json" env:"OBOT_ARTIFACT_GCS_SERVICE_ACCOUNT_JSON"`
-	ArtifactAzureStorageAccount   string `usage:"Azure storage account name for artifact storage" name:"artifact-azure-storage-account" env:"OBOT_ARTIFACT_AZURE_STORAGE_ACCOUNT"`
-	ArtifactAzureTenantID         string `usage:"Azure tenant ID for artifact storage" name:"artifact-azure-tenant-id" env:"OBOT_ARTIFACT_AZURE_TENANT_ID"`
-	ArtifactAzureClientID         string `usage:"Azure client ID for artifact storage" name:"artifact-azure-client-id" env:"OBOT_ARTIFACT_AZURE_CLIENT_ID"`
-	ArtifactAzureClientSecret     string `usage:"Azure client secret for artifact storage" name:"artifact-azure-client-secret" env:"OBOT_ARTIFACT_AZURE_CLIENT_SECRET"`
+	ArtifactStorageProvider       string `usage:"Storage provider for published artifacts (s3, gcs, azure, custom)" name:"artifact-storage-provider" env:"BOEING_ARTIFACT_STORAGE_PROVIDER"`
+	ArtifactStorageBucket         string `usage:"Bucket for published artifacts" name:"artifact-storage-bucket" env:"BOEING_ARTIFACT_STORAGE_BUCKET"`
+	ArtifactS3Region              string `usage:"S3 region for artifact storage" name:"artifact-s3-region" env:"BOEING_ARTIFACT_S3_REGION"`
+	ArtifactS3AccessKeyID         string `usage:"S3 access key ID for artifact storage" name:"artifact-s3-access-key-id" env:"BOEING_ARTIFACT_S3_ACCESS_KEY_ID"`
+	ArtifactS3SecretAccessKey     string `usage:"S3 secret access key for artifact storage" name:"artifact-s3-secret-access-key" env:"BOEING_ARTIFACT_S3_SECRET_ACCESS_KEY"`
+	ArtifactS3Endpoint            string `usage:"Custom S3 endpoint for artifact storage" name:"artifact-s3-endpoint" env:"BOEING_ARTIFACT_S3_ENDPOINT"`
+	ArtifactGCSServiceAccountJSON string `usage:"GCS service account JSON for artifact storage (omit to use Application Default Credentials)" name:"artifact-gcs-service-account-json" env:"BOEING_ARTIFACT_GCS_SERVICE_ACCOUNT_JSON"`
+	ArtifactAzureStorageAccount   string `usage:"Azure storage account name for artifact storage" name:"artifact-azure-storage-account" env:"BOEING_ARTIFACT_AZURE_STORAGE_ACCOUNT"`
+	ArtifactAzureTenantID         string `usage:"Azure tenant ID for artifact storage" name:"artifact-azure-tenant-id" env:"BOEING_ARTIFACT_AZURE_TENANT_ID"`
+	ArtifactAzureClientID         string `usage:"Azure client ID for artifact storage" name:"artifact-azure-client-id" env:"BOEING_ARTIFACT_AZURE_CLIENT_ID"`
+	ArtifactAzureClientSecret     string `usage:"Azure client secret for artifact storage" name:"artifact-azure-client-secret" env:"BOEING_ARTIFACT_AZURE_CLIENT_SECRET"`
 
 	GatewayConfig
 	EncryptionConfig
@@ -193,7 +193,7 @@ type Services struct {
 	MCPOAuthClientSecretExpiration time.Duration
 
 	// LocalK8sClient is a kclient for the local Kubernetes cluster — the
-	// cluster the obot pod runs in, where source Secrets for
+	// cluster the boeing pod runs in, where source Secrets for
 	// secretBindings live. Nil on the docker backend.
 	LocalK8sClient kclient.Client
 	// LocalK8sConfig is the Kubernetes config for the MCP runtime cluster.
@@ -208,9 +208,9 @@ type Services struct {
 	ServiceAccountName        string
 	StorageListenPort         int
 
-	// ObotNamespace is the Kubernetes namespace in which the obot server
+	// BoeingNamespace is the Kubernetes namespace in which the boeing server
 	// runs; mcp.MergeBoundCreds reads source Secrets from here.
-	ObotNamespace string
+	BoeingNamespace string
 
 	// Parsed settings from Helm for k8s to pass to controller
 	// PodSchedulingSettingsFromHelm contains affinity, tolerations, resources, runtimeClassName
@@ -231,7 +231,7 @@ type Services struct {
 	MCPNetworkPolicyEnabled              bool
 	MCPDefaultDenyAllEgress              bool
 	MCPServerSearchImage                 string
-	NanobotAgentImage                    string
+	BoeingbotAgentImage                    string
 	MCPNetworkPolicyProviderChartRepo    string
 	MCPNetworkPolicyProviderChartName    string
 	MCPNetworkPolicyProviderChartVersion string
@@ -311,10 +311,10 @@ func parsePodSchedulingSettingsFromHelm(opts mcp.Options) (*v1.K8sSettingsSpec, 
 	hasPodSettings := (opts.MCPK8sSettingsAffinity != "" && opts.MCPK8sSettingsAffinity != "{}") ||
 		(opts.MCPK8sSettingsTolerations != "" && opts.MCPK8sSettingsTolerations != "[]") ||
 		(opts.MCPK8sSettingsResources != "" && opts.MCPK8sSettingsResources != "{}") ||
-		(opts.MCPK8sSettingsNanobotAgentResources != "" && opts.MCPK8sSettingsNanobotAgentResources != "{}") ||
+		(opts.MCPK8sSettingsBoeingbotAgentResources != "" && opts.MCPK8sSettingsBoeingbotAgentResources != "{}") ||
 		opts.MCPK8sSettingsRuntimeClassName != "" ||
 		opts.MCPK8sSettingsStorageClassName != "" ||
-		opts.MCPK8sSettingsNanobotWorkspaceSize != ""
+		opts.MCPK8sSettingsBoeingbotWorkspaceSize != ""
 
 	if !hasPodSettings {
 		return nil, nil
@@ -346,12 +346,12 @@ func parsePodSchedulingSettingsFromHelm(opts mcp.Options) (*v1.K8sSettingsSpec, 
 		spec.Resources = &resources
 	}
 
-	if opts.MCPK8sSettingsNanobotAgentResources != "" && opts.MCPK8sSettingsNanobotAgentResources != "{}" {
+	if opts.MCPK8sSettingsBoeingbotAgentResources != "" && opts.MCPK8sSettingsBoeingbotAgentResources != "{}" {
 		var resources corev1.ResourceRequirements
-		if err := unmarshalJSONStrict([]byte(opts.MCPK8sSettingsNanobotAgentResources), &resources); err != nil {
-			return nil, fmt.Errorf("failed to parse nanobot agent resources from Helm: %w", err)
+		if err := unmarshalJSONStrict([]byte(opts.MCPK8sSettingsBoeingbotAgentResources), &resources); err != nil {
+			return nil, fmt.Errorf("failed to parse boeingbot agent resources from Helm: %w", err)
 		}
-		spec.NanobotAgentResources = &resources
+		spec.BoeingbotAgentResources = &resources
 	}
 
 	if opts.MCPK8sSettingsRuntimeClassName != "" {
@@ -363,11 +363,11 @@ func parsePodSchedulingSettingsFromHelm(opts mcp.Options) (*v1.K8sSettingsSpec, 
 		spec.StorageClassName = &storageClassName
 	}
 
-	if opts.MCPK8sSettingsNanobotWorkspaceSize != "" {
-		if _, err := resource.ParseQuantity(opts.MCPK8sSettingsNanobotWorkspaceSize); err != nil {
-			return nil, fmt.Errorf("invalid nanobot workspace size from Helm: %w", err)
+	if opts.MCPK8sSettingsBoeingbotWorkspaceSize != "" {
+		if _, err := resource.ParseQuantity(opts.MCPK8sSettingsBoeingbotWorkspaceSize); err != nil {
+			return nil, fmt.Errorf("invalid boeingbot workspace size from Helm: %w", err)
 		}
-		spec.NanobotWorkspaceSize = opts.MCPK8sSettingsNanobotWorkspaceSize
+		spec.BoeingbotWorkspaceSize = opts.MCPK8sSettingsBoeingbotWorkspaceSize
 	}
 
 	return spec, nil
@@ -436,7 +436,7 @@ func New(ctx context.Context, config Config) (*Services, error) {
 	if config.ElectionFile != "" {
 		electionConfig = leader.NewFileElectionConfig(config.ElectionFile)
 	} else {
-		electionConfig = leader.NewDefaultElectionConfig("", "obot-controller", restConfig)
+		electionConfig = leader.NewDefaultElectionConfig("", "boeing-controller", restConfig)
 	}
 
 	// For now, always auto-migrate.
@@ -554,7 +554,7 @@ func New(ctx context.Context, config Config) (*Services, error) {
 		return nil, fmt.Errorf("failed to setup persistent token service: %w", err)
 	}
 
-	r, err := nah.NewRouter("obot-controller", &nah.Options{
+	r, err := nah.NewRouter("boeing-controller", &nah.Options{
 		RESTConfig:     restConfig,
 		Scheme:         scheme.Scheme,
 		ElectionConfig: electionConfig,
@@ -635,12 +635,12 @@ func New(ctx context.Context, config Config) (*Services, error) {
 		}
 
 		// Create a scheme that includes the types we need to watch
-		localRouter, err = nah.NewRouter("obot-local-k8s", &nah.Options{
+		localRouter, err = nah.NewRouter("boeing-local-k8s", &nah.Options{
 			RESTConfig: localK8sConfig,
 			Scheme:     k8sscheme.Scheme,
 			Namespace:  config.MCPNamespace,
 			// The router is scoped to the MCP namespace, but the managed provider token
-			// secret lives in Obot's runtime namespace.
+			// secret lives in Boeing's runtime namespace.
 			ByObject:       localK8sCacheByObject(config.MCPNamespace, config.ServiceNamespace),
 			ElectionConfig: nil, // No leader election for local router
 			HealthzPort:    -1,  // Disable healthz port
@@ -813,7 +813,7 @@ func New(ctx context.Context, config Config) (*Services, error) {
 		}
 	}
 
-	apply.AddValidOwnerChange("otto-controller", "obot-controller")
+	apply.AddValidOwnerChange("otto-controller", "boeing-controller")
 	apply.AddValidOwnerChange("mcpcatalogentries", "catalog-default")
 
 	var proxyManager *proxy.Manager
@@ -927,7 +927,7 @@ func New(ctx context.Context, config Config) (*Services, error) {
 		ProviderRegistryPaths: config.ProviderRegistries,
 		StorageClient:         storageClient,
 		Router:                r,
-		ObotNamespace:         config.ServiceNamespace,
+		BoeingNamespace:         config.ServiceNamespace,
 		APIServer: server.NewServer(
 			storageClient,
 			gatewayClient,
@@ -995,7 +995,7 @@ func New(ctx context.Context, config Config) (*Services, error) {
 		MCPNetworkPolicyEnabled:              mcpNetworkPolicyEnabled,
 		MCPDefaultDenyAllEgress:              config.MCPDefaultDenyAllEgress,
 		MCPServerSearchImage:                 config.MCPServerSearchImage,
-		NanobotAgentImage:                    config.NanobotAgentImage,
+		BoeingbotAgentImage:                    config.BoeingbotAgentImage,
 		MCPNetworkPolicyProviderChartRepo:    config.MCPNetworkPolicyProviderChartRepo,
 		MCPNetworkPolicyProviderChartName:    config.MCPNetworkPolicyProviderChartName,
 		MCPNetworkPolicyProviderChartVersion: config.MCPNetworkPolicyProviderChartVersion,
@@ -1006,7 +1006,7 @@ func New(ctx context.Context, config Config) (*Services, error) {
 	}
 
 	if (config.ArtifactStorageProvider == "") != (config.ArtifactStorageBucket == "") {
-		return nil, fmt.Errorf("both OBOT_ARTIFACT_STORAGE_PROVIDER and OBOT_ARTIFACT_STORAGE_BUCKET must be set together")
+		return nil, fmt.Errorf("both BOEING_ARTIFACT_STORAGE_PROVIDER and BOEING_ARTIFACT_STORAGE_BUCKET must be set together")
 	}
 
 	if config.ArtifactStorageProvider != "" && config.ArtifactStorageBucket != "" {
@@ -1021,7 +1021,7 @@ func New(ctx context.Context, config Config) (*Services, error) {
 		svcs.ArtifactBlobStore = artifactBlobStore
 	} else {
 		// Fallback: local directory storage when no cloud provider is configured.
-		defaultDir := filepath.Join(xdg.DataHome, "obot", "published-artifacts")
+		defaultDir := filepath.Join(xdg.DataHome, "boeing", "published-artifacts")
 		artifactBlobStore, err := blob.NewDirectoryStore(defaultDir)
 		if err != nil {
 			return nil, fmt.Errorf("failed to create local artifact blob store: %w", err)
@@ -1137,7 +1137,7 @@ func configureDevMode(config Config) (int, Config) {
 func startDevMode(ctx context.Context, storageClient storage.Client) {
 	_ = storageClient.Delete(ctx, &coordinationv1.Lease{
 		ObjectMeta: metav1.ObjectMeta{
-			Name:      "obot-controller",
+			Name:      "boeing-controller",
 			Namespace: "kube-system",
 		},
 	})

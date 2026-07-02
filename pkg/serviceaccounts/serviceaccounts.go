@@ -10,7 +10,7 @@ const (
 	Group                   = "system:serviceaccounts"
 	TokenPrefix             = "osa1"
 	NetworkPolicyProvider   = "NetworkPolicyProvider"
-	NetworkPolicySecretName = "obot-network-policy-provider"
+	NetworkPolicySecretName = "boeing-network-policy-provider"
 	NetworkPolicySecretKey  = "apiKey"
 	ServiceAccountNameKey   = "serviceAccountName"
 	RotatedAtKey            = "rotatedAt"

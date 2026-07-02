@@ -12,7 +12,7 @@ The MCP Registry is a central place to list and discover MCP servers. It provide
 
 MCP server definitions can come from:
 
-- **Official Obot repository**: The default set from [obot-platform/mcp-catalog](https://github.com/obot-platform/mcp-catalog)
+- **Official Boeing repository**: The default set from [boeing-ai-gateway/mcp-catalog](https://github.com/boeing-ai-gateway/mcp-catalog)
 - **Custom Git repositories**: Your own repositories containing server definitions (see [MCP Server GitOps](../configuration/mcp-server-gitops.md))
 - **Direct entry**: Servers added manually through the UI
 
@@ -32,7 +32,7 @@ Administrators and Power Users+ control which servers are visible to which users
 
 ## MCP Registry API
 
-Obot implements the [MCP Registry specification](https://github.com/modelcontextprotocol/registry/blob/main/docs/reference/api/generic-registry-api.md), enabling MCP clients to programmatically discover available servers.
+Boeing implements the [MCP Registry specification](https://github.com/modelcontextprotocol/registry/blob/main/docs/reference/api/generic-registry-api.md), enabling MCP clients to programmatically discover available servers.
 
 ## Learn More
 

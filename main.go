@@ -8,15 +8,15 @@ import (
 	"os"
 	_ "time/tzdata"
 
-	"github.com/obot-platform/cmd"
-	"github.com/obot-platform/nanobot/pkg/supervise"
-	"github.com/obot-platform/obot/pkg/cli"
+	"github.com/boeing-ai-gateway/cmd"
+	"github.com/boeing-ai-gateway/boeingbot/pkg/supervise"
+	"github.com/boeing-ai-gateway/boeing/pkg/cli"
 )
 
 func main() {
 	if len(os.Args) > 1 && os.Args[1] == "_exec" {
 		if err := supervise.Daemon(); err != nil {
-			fmt.Printf("failed to run nanobot daemon: %v\n", err)
+			fmt.Printf("failed to run boeingbot daemon: %v\n", err)
 			os.Exit(1)
 		}
 		os.Exit(0)

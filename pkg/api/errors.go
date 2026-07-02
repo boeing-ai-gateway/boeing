@@ -4,7 +4,7 @@ package api
 import (
 	"net/http"
 
-	"github.com/obot-platform/obot/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
 )
 
 var ErrMustAuth = &types.ErrHTTP{

@@ -8,8 +8,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/obot-platform/obot/apiclient/types"
-	v1 "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
+	v1 "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -223,7 +223,7 @@ func TestBuildSkill(t *testing.T) {
 name: full-skill
 description: A fully specified skill
 license: MIT
-compatibility: "nanobot >= 1.0"
+compatibility: "boeingbot >= 1.0"
 metadata:
   author: tester
   version: "1.0"
@@ -237,7 +237,7 @@ allowed-tools: tool1,tool2
 		require.NoError(t, err)
 		assert.True(t, skill.Status.Valid)
 		assert.Equal(t, "MIT", skill.Spec.License)
-		assert.Equal(t, "nanobot >= 1.0", skill.Spec.Compatibility)
+		assert.Equal(t, "boeingbot >= 1.0", skill.Spec.Compatibility)
 		assert.Equal(t, "tool1,tool2", skill.Spec.AllowedTools)
 		assert.Equal(t, "tester", skill.Spec.MetadataValues["author"])
 		assert.Equal(t, "1.0", skill.Spec.MetadataValues["version"])

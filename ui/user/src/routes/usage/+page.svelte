@@ -14,5 +14,5 @@
 </Layout>
 
 <svelte:head>
-	<title>Obot | Usage</title>
+	<title>Boeing | Usage</title>
 </svelte:head>

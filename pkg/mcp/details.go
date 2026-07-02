@@ -6,7 +6,7 @@ import (
 	"io"
 	"slices"
 
-	"github.com/obot-platform/obot/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
 )
 
 // ErrServerNotRunning is returned when an MCP server is not running

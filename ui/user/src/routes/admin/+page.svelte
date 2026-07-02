@@ -126,7 +126,7 @@
 									class="text-link"
 									target="_blank"
 									rel="external"
-									href="https://docs.obot.ai/configuration/auth-providers#preconfiguring-owner--admin-users"
+									href="https://docs.boeing.ai/configuration/auth-providers#preconfiguring-owner--admin-users"
 									>Preconfiguring Owner & Admin Users</a
 								> for more information.)
 							{:else}
@@ -228,7 +228,7 @@
 							localStorage.setItem('preAuthRedirect', window.location.href);
 							window.location.href = `/oauth2/start?rd=${encodeURIComponent(
 								'/admin'
-							)}&obot-auth-provider=${authProvider.namespace}/${authProvider.id}`;
+							)}&boeing-auth-provider=${authProvider.namespace}/${authProvider.id}`;
 						}}
 					>
 						{#if authProvider.icon}
@@ -266,7 +266,7 @@
 				</div>
 
 				<i class="text-xs font-light">
-					You can find the bootstrap token in the server logs when starting Obot by searching for
+					You can find the bootstrap token in the server logs when starting Boeing by searching for
 					'Bootstrap Token', or configure it directly through environment variables at startup.
 				</i>
 
@@ -277,5 +277,5 @@
 {/snippet}
 
 <svelte:head>
-	<title>Obot | Admin</title>
+	<title>Boeing | Admin</title>
 </svelte:head>

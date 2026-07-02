@@ -9,10 +9,10 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/obot-platform/obot/apiclient/types"
-	"github.com/obot-platform/obot/logger"
-	v1 "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1"
-	"github.com/obot-platform/obot/pkg/utils"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/logger"
+	v1 "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1"
+	"github.com/boeing-ai-gateway/boeing/pkg/utils"
 	corev1 "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/client-go/kubernetes"
@@ -23,10 +23,10 @@ import (
 var log = logger.Package()
 
 type Options struct {
-	MCPBaseImage                      string   `usage:"The base image to use for MCP containers" default:"ghcr.io/obot-platform/mcp-images/stdio-wrapper:v0.20.6"`
-	MCPHTTPWebhookBaseImage           string   `usage:"The base image to use for HTTP-based MCP webhook containers" default:"ghcr.io/obot-platform/mcp-images/http-webhook-mcp-converter:v0.20.6"`
-	MCPRemoteShimBaseImage            string   `usage:"The base image to use for MCP remote shim containers" default:"ghcr.io/obot-platform/nanobot:v0.0.85"`
-	MCPNamespace                      string   `usage:"The namespace to use for MCP containers" default:"obot-mcp"`
+	MCPBaseImage                      string   `usage:"The base image to use for MCP containers" default:"ghcr.io/boeing-ai-gateway/mcp-images/stdio-wrapper:v0.20.6"`
+	MCPHTTPWebhookBaseImage           string   `usage:"The base image to use for HTTP-based MCP webhook containers" default:"ghcr.io/boeing-ai-gateway/mcp-images/http-webhook-mcp-converter:v0.20.6"`
+	MCPRemoteShimBaseImage            string   `usage:"The base image to use for MCP remote shim containers" default:"ghcr.io/boeing-ai-gateway/boeingbot:v0.0.85"`
+	MCPNamespace                      string   `usage:"The namespace to use for MCP containers" default:"boeing-mcp"`
 	MCPClusterDomain                  string   `usage:"The cluster domain to use for MCP containers" default:"cluster.local"`
 	DisallowLocalhostMCP              bool     `usage:"Disallow MCP containers from connecting to localhost" default:"true"`
 	DisallowPrivateIPMCP              bool     `usage:"Disallow MCP containers from connecting to private IPs" default:"true"`
@@ -41,17 +41,17 @@ type Options struct {
 	MCPK8sSettingsAffinity              string `usage:"Affinity rules for MCP server pods (JSON)"`
 	MCPK8sSettingsTolerations           string `usage:"Tolerations for MCP server pods (JSON)"`
 	MCPK8sSettingsResources             string `usage:"Resource requests/limits for MCP server pods (JSON)"`
-	MCPK8sSettingsNanobotAgentResources string `usage:"Resource requests/limits for NanobotAgent pods (JSON)"`
+	MCPK8sSettingsBoeingbotAgentResources string `usage:"Resource requests/limits for BoeingbotAgent pods (JSON)"`
 	MCPK8sSettingsRuntimeClassName      string `usage:"RuntimeClass name for MCP server pods (e.g., gvisor, kata)"`
-	MCPK8sSettingsStorageClassName      string `usage:"StorageClass name for nanobot workspace volumes"`
-	MCPK8sSettingsNanobotWorkspaceSize  string `usage:"Nanobot workspace size for MCP server pods (e.g., 1Gi)"`
+	MCPK8sSettingsStorageClassName      string `usage:"StorageClass name for boeingbot workspace volumes"`
+	MCPK8sSettingsBoeingbotWorkspaceSize  string `usage:"Boeingbot workspace size for MCP server pods (e.g., 1Gi)"`
 
-	// Obot service configuration for constructing internal service FQDN
-	ServiceName      string `usage:"The Kubernetes service name for the obot server"`
-	ServiceNamespace string `usage:"The Kubernetes namespace where the obot server runs"`
+	// Boeing service configuration for constructing internal service FQDN
+	ServiceName      string `usage:"The Kubernetes service name for the boeing server"`
+	ServiceNamespace string `usage:"The Kubernetes namespace where the boeing server runs"`
 
 	// Auto-populated by the Helm chart - used for network policy provider deployment
-	ServiceAccountName string `usage:"The Kubernetes service account name for the obot server"`
+	ServiceAccountName string `usage:"The Kubernetes service account name for the boeing server"`
 
 	// Audit log configuration
 	MCPAuditLogPersistIntervalSeconds int `usage:"The interval in seconds to persist MCP audit logs to the database" default:"5"`
@@ -102,7 +102,7 @@ const streamableHTTPHealthcheckBody string = `{
     }
 }`
 
-func NewSessionManager(ctx context.Context, authEnabled bool, tokenService TokenService, baseURL string, httpListenPort int, opts Options, webhookHelper *WebhookHelper, localK8sConfig *rest.Config, client, cachedClient, obotStorageClient kclient.WithWatch) (*SessionManager, error) {
+func NewSessionManager(ctx context.Context, authEnabled bool, tokenService TokenService, baseURL string, httpListenPort int, opts Options, webhookHelper *WebhookHelper, localK8sConfig *rest.Config, client, cachedClient, boeingStorageClient kclient.WithWatch) (*SessionManager, error) {
 	var backend backend
 
 	switch opts.MCPRuntimeBackend {
@@ -146,7 +146,7 @@ func NewSessionManager(ctx context.Context, authEnabled bool, tokenService Token
 			return nil, err
 		}
 
-		backend = newKubernetesBackend(authEnabled, clientset, client, cachedClient, obotStorageClient, opts)
+		backend = newKubernetesBackend(authEnabled, clientset, client, cachedClient, boeingStorageClient, opts)
 	default:
 		return nil, fmt.Errorf("unknown runtime backend: %s", opts.MCPRuntimeBackend)
 	}
@@ -173,8 +173,8 @@ func (sm *SessionManager) RemoteMCPURLValidationConfig() RemoteMCPURLValidationC
 	return sm.remoteURLValidationConfig
 }
 
-func (sm *SessionManager) TransformObotHostname(hostname string) string {
-	return sm.backend.transformObotHostname(hostname)
+func (sm *SessionManager) TransformBoeingHostname(hostname string) string {
+	return sm.backend.transformBoeingHostname(hostname)
 }
 
 // Close does nothing with the deployments and services. It just closes the local session.

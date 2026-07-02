@@ -13,19 +13,19 @@ import (
 
 	"golang.org/x/sync/errgroup"
 
-	nahbackend "github.com/obot-platform/nah/pkg/backend"
-	nmcp "github.com/obot-platform/nanobot/pkg/mcp"
-	"github.com/obot-platform/obot/apiclient/types"
-	"github.com/obot-platform/obot/pkg/accesscontrolrule"
-	"github.com/obot-platform/obot/pkg/api"
-	gateway "github.com/obot-platform/obot/pkg/gateway/client"
-	gatewaytypes "github.com/obot-platform/obot/pkg/gateway/types"
-	"github.com/obot-platform/obot/pkg/mcp"
-	v1 "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1"
-	"github.com/obot-platform/obot/pkg/system"
-	"github.com/obot-platform/obot/pkg/utils"
-	"github.com/obot-platform/obot/pkg/validation"
-	"github.com/obot-platform/obot/pkg/wait"
+	nahbackend "github.com/boeing-ai-gateway/nah/pkg/backend"
+	nmcp "github.com/boeing-ai-gateway/boeingbot/pkg/mcp"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/pkg/accesscontrolrule"
+	"github.com/boeing-ai-gateway/boeing/pkg/api"
+	gateway "github.com/boeing-ai-gateway/boeing/pkg/gateway/client"
+	gatewaytypes "github.com/boeing-ai-gateway/boeing/pkg/gateway/types"
+	"github.com/boeing-ai-gateway/boeing/pkg/mcp"
+	v1 "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1"
+	"github.com/boeing-ai-gateway/boeing/pkg/system"
+	"github.com/boeing-ai-gateway/boeing/pkg/utils"
+	"github.com/boeing-ai-gateway/boeing/pkg/validation"
+	"github.com/boeing-ai-gateway/boeing/pkg/wait"
 	apierrors "k8s.io/apimachinery/pkg/api/errors"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/fields"
@@ -89,7 +89,7 @@ func (m *MCPHandler) currentK8sSettingsHashWithImagePullSecrets(settings v1.K8sS
 	if err != nil {
 		return "", fmt.Errorf("failed to compute core resource requirements: %w", err)
 	}
-	return mcp.ComputeK8sSettingsHash(settings, resources, mcpServer.Spec.Manifest.Runtime, mcpServer.Spec.NanobotAgentID != "", imagePullSecretNames), nil
+	return mcp.ComputeK8sSettingsHash(settings, resources, mcpServer.Spec.Manifest.Runtime, mcpServer.Spec.BoeingbotAgentID != "", imagePullSecretNames), nil
 }
 
 func (m *MCPHandler) GetEntryFromAllSources(req api.Context) error {
@@ -325,7 +325,7 @@ func (m *MCPHandler) ListServer(req api.Context) error {
 				return err
 			}
 		}
-		mergedEnv, err := mcp.MergeBoundCreds(req.Context(), req.LocalK8sClient, req.ObotNamespace, server.Spec.Manifest.Env, server.Spec.Manifest.RemoteConfig, credMap[server.Name])
+		mergedEnv, err := mcp.MergeBoundCreds(req.Context(), req.LocalK8sClient, req.BoeingNamespace, server.Spec.Manifest.Env, server.Spec.Manifest.RemoteConfig, credMap[server.Name])
 		if err != nil {
 			return fmt.Errorf("failed to resolve secret bindings for server %s: %w", server.Name, err)
 		}
@@ -372,7 +372,7 @@ func (m *MCPHandler) GetServer(req api.Context) error {
 		return fmt.Errorf("failed to find credential: %w", err)
 	}
 
-	mergedEnv, err := mcp.MergeBoundCreds(req.Context(), req.LocalK8sClient, req.ObotNamespace, server.Spec.Manifest.Env, server.Spec.Manifest.RemoteConfig, cred.Secrets)
+	mergedEnv, err := mcp.MergeBoundCreds(req.Context(), req.LocalK8sClient, req.BoeingNamespace, server.Spec.Manifest.Env, server.Spec.Manifest.RemoteConfig, cred.Secrets)
 	if err != nil {
 		return fmt.Errorf("failed to resolve secret bindings: %w", err)
 	}
@@ -990,7 +990,7 @@ func mcpServerOrInstanceFromConnectURL(req api.Context, id string) (v1.MCPServer
 		if len(servers.Items) == 0 {
 			// If the user has not configured an MCP server for the catalog entry, and the catalog
 			// entry can be launched without further configuration, then create a server for the user.
-			missingAdminConfig, err := entryMissingAdminConfig(req.Context(), req.LocalK8sClient, req.ObotNamespace, entry)
+			missingAdminConfig, err := entryMissingAdminConfig(req.Context(), req.LocalK8sClient, req.BoeingNamespace, entry)
 			if err != nil {
 				return v1.MCPServer{}, v1.MCPServerInstance{}, fmt.Errorf("failed to determine required admin configuration for catalog entry %s: %w", id, err)
 			}
@@ -998,7 +998,7 @@ func mcpServerOrInstanceFromConnectURL(req api.Context, id string) (v1.MCPServer
 				return v1.MCPServer{}, v1.MCPServerInstance{}, err
 			}
 
-			needsConfig, err := entryNeedsUserConfig(req.Context(), req.LocalK8sClient, req.ObotNamespace, entry)
+			needsConfig, err := entryNeedsUserConfig(req.Context(), req.LocalK8sClient, req.BoeingNamespace, entry)
 			if err != nil {
 				return v1.MCPServer{}, v1.MCPServerInstance{}, fmt.Errorf("failed to determine required configuration for catalog entry %s: %w", id, err)
 			}
@@ -1030,7 +1030,7 @@ func mcpServerOrInstanceFromConnectURL(req api.Context, id string) (v1.MCPServer
 			}
 
 			// The composite's component servers are created asynchronously by the controller
-			// (EnsureCompositeComponents). The connect path builds the nanobot config by listing
+			// (EnsureCompositeComponents). The connect path builds the boeingbot config by listing
 			// components synchronously, so wait for the controller to reconcile them before
 			// returning to avoid baking a config with missing components.
 			if server.Spec.Manifest.Runtime == types.RuntimeComposite &&
@@ -1072,7 +1072,7 @@ func (m missingCatalogEntryAdminConfig) err(entryID string) error {
 	return types.NewErrBadRequest("catalog entry %s cannot be connected because %s", entryID, strings.Join(parts, "; "))
 }
 
-func entryMissingAdminConfig(ctx context.Context, client kclient.Client, obotNamespace string, entry v1.MCPServerCatalogEntry) (missingCatalogEntryAdminConfig, error) {
+func entryMissingAdminConfig(ctx context.Context, client kclient.Client, boeingNamespace string, entry v1.MCPServerCatalogEntry) (missingCatalogEntryAdminConfig, error) {
 	missing := missingCatalogEntryAdminConfig{
 		StaticOAuth: entryRequiresStaticOAuthCreds(entry),
 	}
@@ -1107,7 +1107,7 @@ func entryMissingAdminConfig(ctx context.Context, client kclient.Client, obotNam
 			remote = &types.RemoteRuntimeConfig{Headers: cm.RemoteConfig.Headers}
 		}
 
-		resolved, err := mcp.MergeBoundCreds(ctx, client, obotNamespace, cm.Env, remote, nil)
+		resolved, err := mcp.MergeBoundCreds(ctx, client, boeingNamespace, cm.Env, remote, nil)
 		if err != nil {
 			return missing, err
 		}
@@ -1152,7 +1152,7 @@ func secretBoundFieldLabel(prefix, kind string, h types.MCPHeader) string {
 // further configuration. Call entryMissingAdminConfig first when producing user-facing errors so
 // unresolved admin-managed configuration does not get reported as missing user configuration.
 // For composite entries, every component is checked.
-func entryNeedsUserConfig(ctx context.Context, client kclient.Client, obotNamespace string, entry v1.MCPServerCatalogEntry) (bool, error) {
+func entryNeedsUserConfig(ctx context.Context, client kclient.Client, boeingNamespace string, entry v1.MCPServerCatalogEntry) (bool, error) {
 	// Static OAuth is admin config: if it's required but not configured yet, the entry can't launch.
 	if entryRequiresStaticOAuthCreds(entry) {
 		return true, nil
@@ -1192,7 +1192,7 @@ func entryNeedsUserConfig(ctx context.Context, client kclient.Client, obotNamesp
 		if cm.RemoteConfig != nil {
 			remote = &types.RemoteRuntimeConfig{Headers: cm.RemoteConfig.Headers}
 		}
-		resolved, err := mcp.MergeBoundCreds(ctx, client, obotNamespace, cm.Env, remote, nil)
+		resolved, err := mcp.MergeBoundCreds(ctx, client, boeingNamespace, cm.Env, remote, nil)
 		if err != nil {
 			return false, err
 		}
@@ -1324,7 +1324,7 @@ func serverFromMCPServerInstance(req api.Context, instance v1.MCPServerInstance)
 		return server, mcp.ServerConfig{}, fmt.Errorf("failed to find token exchange credential: %w", err)
 	}
 
-	mergedEnv, err := mcp.MergeBoundCreds(req.Context(), req.LocalK8sClient, req.ObotNamespace, server.Spec.Manifest.Env, server.Spec.Manifest.RemoteConfig, cred.Secrets)
+	mergedEnv, err := mcp.MergeBoundCreds(req.Context(), req.LocalK8sClient, req.BoeingNamespace, server.Spec.Manifest.Env, server.Spec.Manifest.RemoteConfig, cred.Secrets)
 	if err != nil {
 		return server, mcp.ServerConfig{}, fmt.Errorf("failed to resolve secret bindings: %w", err)
 	}
@@ -1402,7 +1402,7 @@ func serverConfigForAction(req api.Context, server v1.MCPServer) (mcp.ServerConf
 		return mcp.ServerConfig{}, fmt.Errorf("failed to find credential: %w", err)
 	}
 
-	mergedEnv, err := mcp.MergeBoundCreds(req.Context(), req.LocalK8sClient, req.ObotNamespace, server.Spec.Manifest.Env, server.Spec.Manifest.RemoteConfig, cred.Secrets)
+	mergedEnv, err := mcp.MergeBoundCreds(req.Context(), req.LocalK8sClient, req.BoeingNamespace, server.Spec.Manifest.Env, server.Spec.Manifest.RemoteConfig, cred.Secrets)
 	if err != nil {
 		return mcp.ServerConfig{}, fmt.Errorf("failed to resolve secret bindings: %w", err)
 	}
@@ -1839,7 +1839,7 @@ func (m *MCPHandler) CreateServer(req api.Context) error {
 		return fmt.Errorf("failed to find credential: %w", err)
 	}
 
-	mergedEnv, err := mcp.MergeBoundCreds(req.Context(), req.LocalK8sClient, req.ObotNamespace, server.Spec.Manifest.Env, server.Spec.Manifest.RemoteConfig, cred.Secrets)
+	mergedEnv, err := mcp.MergeBoundCreds(req.Context(), req.LocalK8sClient, req.BoeingNamespace, server.Spec.Manifest.Env, server.Spec.Manifest.RemoteConfig, cred.Secrets)
 	if err != nil {
 		return fmt.Errorf("failed to resolve secret bindings: %w", err)
 	}
@@ -1951,7 +1951,7 @@ func (m *MCPHandler) UpdateServer(req api.Context) error {
 		return fmt.Errorf("failed to generate slug: %w", err)
 	}
 
-	mergedEnv, err := mcp.MergeBoundCreds(req.Context(), req.LocalK8sClient, req.ObotNamespace, existing.Spec.Manifest.Env, existing.Spec.Manifest.RemoteConfig, cred.Secrets)
+	mergedEnv, err := mcp.MergeBoundCreds(req.Context(), req.LocalK8sClient, req.BoeingNamespace, existing.Spec.Manifest.Env, existing.Spec.Manifest.RemoteConfig, cred.Secrets)
 	if err != nil {
 		return fmt.Errorf("failed to resolve secret bindings: %w", err)
 	}
@@ -2096,7 +2096,7 @@ func (m *MCPHandler) ConfigureServer(req api.Context) error {
 		return fmt.Errorf("failed to generate slug: %w", err)
 	}
 
-	mergedEnv, err := mcp.MergeBoundCreds(req.Context(), req.LocalK8sClient, req.ObotNamespace, mcpServer.Spec.Manifest.Env, mcpServer.Spec.Manifest.RemoteConfig, envVars)
+	mergedEnv, err := mcp.MergeBoundCreds(req.Context(), req.LocalK8sClient, req.BoeingNamespace, mcpServer.Spec.Manifest.Env, mcpServer.Spec.Manifest.RemoteConfig, envVars)
 	if err != nil {
 		return fmt.Errorf("failed to resolve secret bindings: %w", err)
 	}
@@ -2298,7 +2298,7 @@ func (m *MCPHandler) configureCompositeServer(req api.Context, compositeServer v
 		return fmt.Errorf("failed to generate slug: %w", err)
 	}
 
-	mergedEnv, err := mcp.MergeBoundCreds(req.Context(), req.LocalK8sClient, req.ObotNamespace, compositeServer.Spec.Manifest.Env, compositeServer.Spec.Manifest.RemoteConfig, nil)
+	mergedEnv, err := mcp.MergeBoundCreds(req.Context(), req.LocalK8sClient, req.BoeingNamespace, compositeServer.Spec.Manifest.Env, compositeServer.Spec.Manifest.RemoteConfig, nil)
 	if err != nil {
 		return fmt.Errorf("failed to resolve secret bindings: %w", err)
 	}
@@ -2866,7 +2866,7 @@ func ConvertMCPServer(server v1.MCPServer, credEnv map[string]string, serverURL,
 		K8sSettingsHash:             server.Status.K8sSettingsHash,
 		Template:                    server.Spec.Template,
 		CompositeName:               server.Spec.CompositeName,
-		NanobotAgentID:              server.Spec.NanobotAgentID,
+		BoeingbotAgentID:              server.Spec.BoeingbotAgentID,
 	}
 
 	if server.Spec.IsSingleUser() {
@@ -3022,7 +3022,7 @@ func resolveCompositeComponents(req api.Context, composite v1.MCPServer) ([]type
 		}
 
 		addExtractedEnvVars(&component)
-		mergedEnv, err := mcp.MergeBoundCreds(req.Context(), req.LocalK8sClient, req.ObotNamespace, component.Spec.Manifest.Env, component.Spec.Manifest.RemoteConfig, cred.Secrets)
+		mergedEnv, err := mcp.MergeBoundCreds(req.Context(), req.LocalK8sClient, req.BoeingNamespace, component.Spec.Manifest.Env, component.Spec.Manifest.RemoteConfig, cred.Secrets)
 		if err != nil {
 			return nil, fmt.Errorf("failed to resolve secret bindings for component %s: %w", component.Name, err)
 		}
@@ -3149,7 +3149,7 @@ func (m *MCPHandler) ListServersFromAllSources(req api.Context) error {
 				return err
 			}
 		}
-		mergedEnv, err := mcp.MergeBoundCreds(req.Context(), req.LocalK8sClient, req.ObotNamespace, server.Spec.Manifest.Env, server.Spec.Manifest.RemoteConfig, credMap[server.Name])
+		mergedEnv, err := mcp.MergeBoundCreds(req.Context(), req.LocalK8sClient, req.BoeingNamespace, server.Spec.Manifest.Env, server.Spec.Manifest.RemoteConfig, credMap[server.Name])
 		if err != nil {
 			return fmt.Errorf("failed to resolve secret bindings for server %s: %w", server.Name, err)
 		}
@@ -3201,7 +3201,7 @@ func (m *MCPHandler) GetServerFromAllSources(req api.Context) error {
 		// Don't fail if catalog entry is missing, just continue without preview
 	}
 
-	mergedEnv, err := mcp.MergeBoundCreds(req.Context(), req.LocalK8sClient, req.ObotNamespace, server.Spec.Manifest.Env, server.Spec.Manifest.RemoteConfig, cred.Secrets)
+	mergedEnv, err := mcp.MergeBoundCreds(req.Context(), req.LocalK8sClient, req.BoeingNamespace, server.Spec.Manifest.Env, server.Spec.Manifest.RemoteConfig, cred.Secrets)
 	if err != nil {
 		return fmt.Errorf("failed to resolve secret bindings: %w", err)
 	}
@@ -3551,7 +3551,7 @@ func (m *MCPHandler) RedeployWithK8sSettings(req api.Context) error {
 		return fmt.Errorf("failed to find credential: %w", err)
 	}
 
-	mergedEnv, err := mcp.MergeBoundCreds(req.Context(), req.LocalK8sClient, req.ObotNamespace, server.Spec.Manifest.Env, server.Spec.Manifest.RemoteConfig, cred.Secrets)
+	mergedEnv, err := mcp.MergeBoundCreds(req.Context(), req.LocalK8sClient, req.BoeingNamespace, server.Spec.Manifest.Env, server.Spec.Manifest.RemoteConfig, cred.Secrets)
 	if err != nil {
 		return fmt.Errorf("failed to resolve secret bindings: %w", err)
 	}

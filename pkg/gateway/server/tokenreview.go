@@ -5,9 +5,9 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/obot-platform/obot/pkg/auth"
-	"github.com/obot-platform/obot/pkg/gateway/client"
-	"github.com/obot-platform/obot/pkg/gateway/server/dispatcher"
+	"github.com/boeing-ai-gateway/boeing/pkg/auth"
+	"github.com/boeing-ai-gateway/boeing/pkg/gateway/client"
+	"github.com/boeing-ai-gateway/boeing/pkg/gateway/server/dispatcher"
 	"gorm.io/gorm"
 	"k8s.io/apiserver/pkg/authentication/authenticator"
 	"k8s.io/apiserver/pkg/authentication/user"

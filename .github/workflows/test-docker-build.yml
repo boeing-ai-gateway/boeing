@@ -24,4 +24,4 @@ jobs:
           context: .
           platforms: linux/amd64,linux/arm64
           build-args: |
-            BASE_IMAGE=ghcr.io/obot-platform/obot/base:latest
+            BASE_IMAGE=ghcr.io/boeing-ai-gateway/boeing/base:latest

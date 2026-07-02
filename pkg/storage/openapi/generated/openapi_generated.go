@@ -6,7 +6,7 @@
 package generated
 
 import (
-	types "github.com/obot-platform/obot/apiclient/types"
+	types "github.com/boeing-ai-gateway/boeing/apiclient/types"
 	resource "k8s.io/apimachinery/pkg/api/resource"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	intstr "k8s.io/apimachinery/pkg/util/intstr"
@@ -16,380 +16,380 @@ import (
 
 func GetOpenAPIDefinitions(ref common.ReferenceCallback) map[string]common.OpenAPIDefinition {
 	return map[string]common.OpenAPIDefinition{
-		"github.com/obot-platform/obot/apiclient/types.APIActivity":                                        schema_obot_platform_obot_apiclient_types_APIActivity(ref),
-		"github.com/obot-platform/obot/apiclient/types.APIActivityList":                                    schema_obot_platform_obot_apiclient_types_APIActivityList(ref),
-		"github.com/obot-platform/obot/apiclient/types.AccessControlRule":                                  schema_obot_platform_obot_apiclient_types_AccessControlRule(ref),
-		"github.com/obot-platform/obot/apiclient/types.AccessControlRuleList":                              schema_obot_platform_obot_apiclient_types_AccessControlRuleList(ref),
-		"github.com/obot-platform/obot/apiclient/types.AccessControlRuleManifest":                          schema_obot_platform_obot_apiclient_types_AccessControlRuleManifest(ref),
-		"github.com/obot-platform/obot/apiclient/types.AppNotification":                                    schema_obot_platform_obot_apiclient_types_AppNotification(ref),
-		"github.com/obot-platform/obot/apiclient/types.AppPreferences":                                     schema_obot_platform_obot_apiclient_types_AppPreferences(ref),
-		"github.com/obot-platform/obot/apiclient/types.AuditLogExportCreateRequest":                        schema_obot_platform_obot_apiclient_types_AuditLogExportCreateRequest(ref),
-		"github.com/obot-platform/obot/apiclient/types.AuditLogExportFilters":                              schema_obot_platform_obot_apiclient_types_AuditLogExportFilters(ref),
-		"github.com/obot-platform/obot/apiclient/types.AuditLogExportListResponse":                         schema_obot_platform_obot_apiclient_types_AuditLogExportListResponse(ref),
-		"github.com/obot-platform/obot/apiclient/types.AuditLogExportResponse":                             schema_obot_platform_obot_apiclient_types_AuditLogExportResponse(ref),
-		"github.com/obot-platform/obot/apiclient/types.AuthProvider":                                       schema_obot_platform_obot_apiclient_types_AuthProvider(ref),
-		"github.com/obot-platform/obot/apiclient/types.AuthProviderList":                                   schema_obot_platform_obot_apiclient_types_AuthProviderList(ref),
-		"github.com/obot-platform/obot/apiclient/types.AuthProviderManifest":                               schema_obot_platform_obot_apiclient_types_AuthProviderManifest(ref),
-		"github.com/obot-platform/obot/apiclient/types.AuthProviderStatus":                                 schema_obot_platform_obot_apiclient_types_AuthProviderStatus(ref),
-		"github.com/obot-platform/obot/apiclient/types.AzureConfig":                                        schema_obot_platform_obot_apiclient_types_AzureConfig(ref),
-		"github.com/obot-platform/obot/apiclient/types.BannerNotification":                                 schema_obot_platform_obot_apiclient_types_BannerNotification(ref),
-		"github.com/obot-platform/obot/apiclient/types.BasicImagePullSecretConfig":                         schema_obot_platform_obot_apiclient_types_BasicImagePullSecretConfig(ref),
-		"github.com/obot-platform/obot/apiclient/types.CatalogComponentServer":                             schema_obot_platform_obot_apiclient_types_CatalogComponentServer(ref),
-		"github.com/obot-platform/obot/apiclient/types.ClientInfo":                                         schema_obot_platform_obot_apiclient_types_ClientInfo(ref),
-		"github.com/obot-platform/obot/apiclient/types.CommonProviderMetadata":                             schema_obot_platform_obot_apiclient_types_CommonProviderMetadata(ref),
-		"github.com/obot-platform/obot/apiclient/types.CommonProviderStatus":                               schema_obot_platform_obot_apiclient_types_CommonProviderStatus(ref),
-		"github.com/obot-platform/obot/apiclient/types.ComponentServer":                                    schema_obot_platform_obot_apiclient_types_ComponentServer(ref),
-		"github.com/obot-platform/obot/apiclient/types.CompositeCatalogConfig":                             schema_obot_platform_obot_apiclient_types_CompositeCatalogConfig(ref),
-		"github.com/obot-platform/obot/apiclient/types.CompositeRuntimeConfig":                             schema_obot_platform_obot_apiclient_types_CompositeRuntimeConfig(ref),
-		"github.com/obot-platform/obot/apiclient/types.ContainerizedRuntimeConfig":                         schema_obot_platform_obot_apiclient_types_ContainerizedRuntimeConfig(ref),
-		"github.com/obot-platform/obot/apiclient/types.CustomS3Config":                                     schema_obot_platform_obot_apiclient_types_CustomS3Config(ref),
-		"github.com/obot-platform/obot/apiclient/types.DefaultModelAlias":                                  schema_obot_platform_obot_apiclient_types_DefaultModelAlias(ref),
-		"github.com/obot-platform/obot/apiclient/types.DefaultModelAliasList":                              schema_obot_platform_obot_apiclient_types_DefaultModelAliasList(ref),
-		"github.com/obot-platform/obot/apiclient/types.DefaultModelAliasManifest":                          schema_obot_platform_obot_apiclient_types_DefaultModelAliasManifest(ref),
-		"github.com/obot-platform/obot/apiclient/types.DeploymentCondition":                                schema_obot_platform_obot_apiclient_types_DeploymentCondition(ref),
-		"github.com/obot-platform/obot/apiclient/types.DeviceClientFleetSkill":                             schema_obot_platform_obot_apiclient_types_DeviceClientFleetSkill(ref),
-		"github.com/obot-platform/obot/apiclient/types.DeviceClientFleetSummary":                           schema_obot_platform_obot_apiclient_types_DeviceClientFleetSummary(ref),
-		"github.com/obot-platform/obot/apiclient/types.DeviceClientFleetSummaryList":                       schema_obot_platform_obot_apiclient_types_DeviceClientFleetSummaryList(ref),
-		"github.com/obot-platform/obot/apiclient/types.DeviceClientFleetSummaryResponse":                   schema_obot_platform_obot_apiclient_types_DeviceClientFleetSummaryResponse(ref),
-		"github.com/obot-platform/obot/apiclient/types.DeviceClientStat":                                   schema_obot_platform_obot_apiclient_types_DeviceClientStat(ref),
-		"github.com/obot-platform/obot/apiclient/types.DeviceMCPServerDetail":                              schema_obot_platform_obot_apiclient_types_DeviceMCPServerDetail(ref),
-		"github.com/obot-platform/obot/apiclient/types.DeviceMCPServerOccurrence":                          schema_obot_platform_obot_apiclient_types_DeviceMCPServerOccurrence(ref),
-		"github.com/obot-platform/obot/apiclient/types.DeviceMCPServerOccurrenceList":                      schema_obot_platform_obot_apiclient_types_DeviceMCPServerOccurrenceList(ref),
-		"github.com/obot-platform/obot/apiclient/types.DeviceMCPServerOccurrenceResponse":                  schema_obot_platform_obot_apiclient_types_DeviceMCPServerOccurrenceResponse(ref),
-		"github.com/obot-platform/obot/apiclient/types.DeviceMCPServerStat":                                schema_obot_platform_obot_apiclient_types_DeviceMCPServerStat(ref),
-		"github.com/obot-platform/obot/apiclient/types.DeviceScan":                                         schema_obot_platform_obot_apiclient_types_DeviceScan(ref),
-		"github.com/obot-platform/obot/apiclient/types.DeviceScanClient":                                   schema_obot_platform_obot_apiclient_types_DeviceScanClient(ref),
-		"github.com/obot-platform/obot/apiclient/types.DeviceScanFile":                                     schema_obot_platform_obot_apiclient_types_DeviceScanFile(ref),
-		"github.com/obot-platform/obot/apiclient/types.DeviceScanList":                                     schema_obot_platform_obot_apiclient_types_DeviceScanList(ref),
-		"github.com/obot-platform/obot/apiclient/types.DeviceScanMCPServer":                                schema_obot_platform_obot_apiclient_types_DeviceScanMCPServer(ref),
-		"github.com/obot-platform/obot/apiclient/types.DeviceScanManifest":                                 schema_obot_platform_obot_apiclient_types_DeviceScanManifest(ref),
-		"github.com/obot-platform/obot/apiclient/types.DeviceScanPlugin":                                   schema_obot_platform_obot_apiclient_types_DeviceScanPlugin(ref),
-		"github.com/obot-platform/obot/apiclient/types.DeviceScanResponse":                                 schema_obot_platform_obot_apiclient_types_DeviceScanResponse(ref),
-		"github.com/obot-platform/obot/apiclient/types.DeviceScanSkill":                                    schema_obot_platform_obot_apiclient_types_DeviceScanSkill(ref),
-		"github.com/obot-platform/obot/apiclient/types.DeviceScanStats":                                    schema_obot_platform_obot_apiclient_types_DeviceScanStats(ref),
-		"github.com/obot-platform/obot/apiclient/types.DeviceSkillDetail":                                  schema_obot_platform_obot_apiclient_types_DeviceSkillDetail(ref),
-		"github.com/obot-platform/obot/apiclient/types.DeviceSkillOccurrence":                              schema_obot_platform_obot_apiclient_types_DeviceSkillOccurrence(ref),
-		"github.com/obot-platform/obot/apiclient/types.DeviceSkillOccurrenceList":                          schema_obot_platform_obot_apiclient_types_DeviceSkillOccurrenceList(ref),
-		"github.com/obot-platform/obot/apiclient/types.DeviceSkillOccurrenceResponse":                      schema_obot_platform_obot_apiclient_types_DeviceSkillOccurrenceResponse(ref),
-		"github.com/obot-platform/obot/apiclient/types.DeviceSkillStat":                                    schema_obot_platform_obot_apiclient_types_DeviceSkillStat(ref),
-		"github.com/obot-platform/obot/apiclient/types.DeviceSkillStatList":                                schema_obot_platform_obot_apiclient_types_DeviceSkillStatList(ref),
-		"github.com/obot-platform/obot/apiclient/types.DeviceSkillStatResponse":                            schema_obot_platform_obot_apiclient_types_DeviceSkillStatResponse(ref),
-		"github.com/obot-platform/obot/apiclient/types.ECRImagePullSecretConfig":                           schema_obot_platform_obot_apiclient_types_ECRImagePullSecretConfig(ref),
-		"github.com/obot-platform/obot/apiclient/types.ErrHTTP":                                            schema_obot_platform_obot_apiclient_types_ErrHTTP(ref),
-		"github.com/obot-platform/obot/apiclient/types.EulaStatus":                                         schema_obot_platform_obot_apiclient_types_EulaStatus(ref),
-		"github.com/obot-platform/obot/apiclient/types.FilterConfig":                                       schema_obot_platform_obot_apiclient_types_FilterConfig(ref),
-		"github.com/obot-platform/obot/apiclient/types.GCSConfig":                                          schema_obot_platform_obot_apiclient_types_GCSConfig(ref),
-		"github.com/obot-platform/obot/apiclient/types.GroupRoleAssignment":                                schema_obot_platform_obot_apiclient_types_GroupRoleAssignment(ref),
-		"github.com/obot-platform/obot/apiclient/types.GroupRoleAssignmentList":                            schema_obot_platform_obot_apiclient_types_GroupRoleAssignmentList(ref),
-		"github.com/obot-platform/obot/apiclient/types.ImagePullSecret":                                    schema_obot_platform_obot_apiclient_types_ImagePullSecret(ref),
-		"github.com/obot-platform/obot/apiclient/types.ImagePullSecretCapability":                          schema_obot_platform_obot_apiclient_types_ImagePullSecretCapability(ref),
-		"github.com/obot-platform/obot/apiclient/types.ImagePullSecretList":                                schema_obot_platform_obot_apiclient_types_ImagePullSecretList(ref),
-		"github.com/obot-platform/obot/apiclient/types.ImagePullSecretManifest":                            schema_obot_platform_obot_apiclient_types_ImagePullSecretManifest(ref),
-		"github.com/obot-platform/obot/apiclient/types.ImagePullSecretRefreshResponse":                     schema_obot_platform_obot_apiclient_types_ImagePullSecretRefreshResponse(ref),
-		"github.com/obot-platform/obot/apiclient/types.ImagePullSecretStatus":                              schema_obot_platform_obot_apiclient_types_ImagePullSecretStatus(ref),
-		"github.com/obot-platform/obot/apiclient/types.ImagePullSecretTestRequest":                         schema_obot_platform_obot_apiclient_types_ImagePullSecretTestRequest(ref),
-		"github.com/obot-platform/obot/apiclient/types.ImagePullSecretTestResponse":                        schema_obot_platform_obot_apiclient_types_ImagePullSecretTestResponse(ref),
-		"github.com/obot-platform/obot/apiclient/types.K8sSettings":                                        schema_obot_platform_obot_apiclient_types_K8sSettings(ref),
-		"github.com/obot-platform/obot/apiclient/types.K8sSettingsStatus":                                  schema_obot_platform_obot_apiclient_types_K8sSettingsStatus(ref),
-		"github.com/obot-platform/obot/apiclient/types.LogoPreferences":                                    schema_obot_platform_obot_apiclient_types_LogoPreferences(ref),
-		"github.com/obot-platform/obot/apiclient/types.MCPAuditLog":                                        schema_obot_platform_obot_apiclient_types_MCPAuditLog(ref),
-		"github.com/obot-platform/obot/apiclient/types.MCPAuditLogList":                                    schema_obot_platform_obot_apiclient_types_MCPAuditLogList(ref),
-		"github.com/obot-platform/obot/apiclient/types.MCPAuditLogResponse":                                schema_obot_platform_obot_apiclient_types_MCPAuditLogResponse(ref),
-		"github.com/obot-platform/obot/apiclient/types.MCPCapacityInfo":                                    schema_obot_platform_obot_apiclient_types_MCPCapacityInfo(ref),
-		"github.com/obot-platform/obot/apiclient/types.MCPCatalog":                                         schema_obot_platform_obot_apiclient_types_MCPCatalog(ref),
-		"github.com/obot-platform/obot/apiclient/types.MCPCatalogList":                                     schema_obot_platform_obot_apiclient_types_MCPCatalogList(ref),
-		"github.com/obot-platform/obot/apiclient/types.MCPCatalogManifest":                                 schema_obot_platform_obot_apiclient_types_MCPCatalogManifest(ref),
-		"github.com/obot-platform/obot/apiclient/types.MCPEnv":                                             schema_obot_platform_obot_apiclient_types_MCPEnv(ref),
-		"github.com/obot-platform/obot/apiclient/types.MCPHeader":                                          schema_obot_platform_obot_apiclient_types_MCPHeader(ref),
-		"github.com/obot-platform/obot/apiclient/types.MCPPromptReadStats":                                 schema_obot_platform_obot_apiclient_types_MCPPromptReadStats(ref),
-		"github.com/obot-platform/obot/apiclient/types.MCPResourceReadStats":                               schema_obot_platform_obot_apiclient_types_MCPResourceReadStats(ref),
-		"github.com/obot-platform/obot/apiclient/types.MCPResourceRequests":                                schema_obot_platform_obot_apiclient_types_MCPResourceRequests(ref),
-		"github.com/obot-platform/obot/apiclient/types.MCPResourceRequirements":                            schema_obot_platform_obot_apiclient_types_MCPResourceRequirements(ref),
-		"github.com/obot-platform/obot/apiclient/types.MCPSecretBinding":                                   schema_obot_platform_obot_apiclient_types_MCPSecretBinding(ref),
-		"github.com/obot-platform/obot/apiclient/types.MCPSelector":                                        schema_obot_platform_obot_apiclient_types_MCPSelector(ref),
-		"github.com/obot-platform/obot/apiclient/types.MCPServer":                                          schema_obot_platform_obot_apiclient_types_MCPServer(ref),
-		"github.com/obot-platform/obot/apiclient/types.MCPServerCatalogEntry":                              schema_obot_platform_obot_apiclient_types_MCPServerCatalogEntry(ref),
-		"github.com/obot-platform/obot/apiclient/types.MCPServerCatalogEntryList":                          schema_obot_platform_obot_apiclient_types_MCPServerCatalogEntryList(ref),
-		"github.com/obot-platform/obot/apiclient/types.MCPServerCatalogEntryManifest":                      schema_obot_platform_obot_apiclient_types_MCPServerCatalogEntryManifest(ref),
-		"github.com/obot-platform/obot/apiclient/types.MCPServerDetails":                                   schema_obot_platform_obot_apiclient_types_MCPServerDetails(ref),
-		"github.com/obot-platform/obot/apiclient/types.MCPServerEvent":                                     schema_obot_platform_obot_apiclient_types_MCPServerEvent(ref),
-		"github.com/obot-platform/obot/apiclient/types.MCPServerInstance":                                  schema_obot_platform_obot_apiclient_types_MCPServerInstance(ref),
-		"github.com/obot-platform/obot/apiclient/types.MCPServerInstanceList":                              schema_obot_platform_obot_apiclient_types_MCPServerInstanceList(ref),
-		"github.com/obot-platform/obot/apiclient/types.MCPServerList":                                      schema_obot_platform_obot_apiclient_types_MCPServerList(ref),
-		"github.com/obot-platform/obot/apiclient/types.MCPServerManifest":                                  schema_obot_platform_obot_apiclient_types_MCPServerManifest(ref),
-		"github.com/obot-platform/obot/apiclient/types.MCPServerNeedingK8sUpdate":                          schema_obot_platform_obot_apiclient_types_MCPServerNeedingK8sUpdate(ref),
-		"github.com/obot-platform/obot/apiclient/types.MCPServerOAuthCredentialRequest":                    schema_obot_platform_obot_apiclient_types_MCPServerOAuthCredentialRequest(ref),
-		"github.com/obot-platform/obot/apiclient/types.MCPServerOAuthCredentialStatus":                     schema_obot_platform_obot_apiclient_types_MCPServerOAuthCredentialStatus(ref),
-		"github.com/obot-platform/obot/apiclient/types.MCPServerTool":                                      schema_obot_platform_obot_apiclient_types_MCPServerTool(ref),
-		"github.com/obot-platform/obot/apiclient/types.MCPServersNeedingK8sUpdateList":                     schema_obot_platform_obot_apiclient_types_MCPServersNeedingK8sUpdateList(ref),
-		"github.com/obot-platform/obot/apiclient/types.MCPToolCallStats":                                   schema_obot_platform_obot_apiclient_types_MCPToolCallStats(ref),
-		"github.com/obot-platform/obot/apiclient/types.MCPToolCallStatsItem":                               schema_obot_platform_obot_apiclient_types_MCPToolCallStatsItem(ref),
-		"github.com/obot-platform/obot/apiclient/types.MCPUsageStatItem":                                   schema_obot_platform_obot_apiclient_types_MCPUsageStatItem(ref),
-		"github.com/obot-platform/obot/apiclient/types.MCPUsageStats":                                      schema_obot_platform_obot_apiclient_types_MCPUsageStats(ref),
-		"github.com/obot-platform/obot/apiclient/types.MCPUsageStatsList":                                  schema_obot_platform_obot_apiclient_types_MCPUsageStatsList(ref),
-		"github.com/obot-platform/obot/apiclient/types.MCPWebhookValidation":                               schema_obot_platform_obot_apiclient_types_MCPWebhookValidation(ref),
-		"github.com/obot-platform/obot/apiclient/types.MCPWebhookValidationList":                           schema_obot_platform_obot_apiclient_types_MCPWebhookValidationList(ref),
-		"github.com/obot-platform/obot/apiclient/types.MCPWebhookValidationManifest":                       schema_obot_platform_obot_apiclient_types_MCPWebhookValidationManifest(ref),
-		"github.com/obot-platform/obot/apiclient/types.MessagePolicy":                                      schema_obot_platform_obot_apiclient_types_MessagePolicy(ref),
-		"github.com/obot-platform/obot/apiclient/types.MessagePolicyList":                                  schema_obot_platform_obot_apiclient_types_MessagePolicyList(ref),
-		"github.com/obot-platform/obot/apiclient/types.MessagePolicyManifest":                              schema_obot_platform_obot_apiclient_types_MessagePolicyManifest(ref),
-		"github.com/obot-platform/obot/apiclient/types.MessagePolicyViolation":                             schema_obot_platform_obot_apiclient_types_MessagePolicyViolation(ref),
-		"github.com/obot-platform/obot/apiclient/types.MessagePolicyViolationDirectionCounts":              schema_obot_platform_obot_apiclient_types_MessagePolicyViolationDirectionCounts(ref),
-		"github.com/obot-platform/obot/apiclient/types.MessagePolicyViolationList":                         schema_obot_platform_obot_apiclient_types_MessagePolicyViolationList(ref),
-		"github.com/obot-platform/obot/apiclient/types.MessagePolicyViolationPolicyCount":                  schema_obot_platform_obot_apiclient_types_MessagePolicyViolationPolicyCount(ref),
-		"github.com/obot-platform/obot/apiclient/types.MessagePolicyViolationResponse":                     schema_obot_platform_obot_apiclient_types_MessagePolicyViolationResponse(ref),
-		"github.com/obot-platform/obot/apiclient/types.MessagePolicyViolationStats":                        schema_obot_platform_obot_apiclient_types_MessagePolicyViolationStats(ref),
-		"github.com/obot-platform/obot/apiclient/types.MessagePolicyViolationTimeBucket":                   schema_obot_platform_obot_apiclient_types_MessagePolicyViolationTimeBucket(ref),
-		"github.com/obot-platform/obot/apiclient/types.MessagePolicyViolationUserCount":                    schema_obot_platform_obot_apiclient_types_MessagePolicyViolationUserCount(ref),
-		"github.com/obot-platform/obot/apiclient/types.Metadata":                                           schema_obot_platform_obot_apiclient_types_Metadata(ref),
-		"github.com/obot-platform/obot/apiclient/types.Model":                                              schema_obot_platform_obot_apiclient_types_Model(ref),
-		"github.com/obot-platform/obot/apiclient/types.ModelAccessPolicy":                                  schema_obot_platform_obot_apiclient_types_ModelAccessPolicy(ref),
-		"github.com/obot-platform/obot/apiclient/types.ModelAccessPolicyList":                              schema_obot_platform_obot_apiclient_types_ModelAccessPolicyList(ref),
-		"github.com/obot-platform/obot/apiclient/types.ModelAccessPolicyManifest":                          schema_obot_platform_obot_apiclient_types_ModelAccessPolicyManifest(ref),
-		"github.com/obot-platform/obot/apiclient/types.ModelList":                                          schema_obot_platform_obot_apiclient_types_ModelList(ref),
-		"github.com/obot-platform/obot/apiclient/types.ModelManifest":                                      schema_obot_platform_obot_apiclient_types_ModelManifest(ref),
-		"github.com/obot-platform/obot/apiclient/types.ModelProvider":                                      schema_obot_platform_obot_apiclient_types_ModelProvider(ref),
-		"github.com/obot-platform/obot/apiclient/types.ModelProviderList":                                  schema_obot_platform_obot_apiclient_types_ModelProviderList(ref),
-		"github.com/obot-platform/obot/apiclient/types.ModelProviderManifest":                              schema_obot_platform_obot_apiclient_types_ModelProviderManifest(ref),
-		"github.com/obot-platform/obot/apiclient/types.ModelProviderStatus":                                schema_obot_platform_obot_apiclient_types_ModelProviderStatus(ref),
-		"github.com/obot-platform/obot/apiclient/types.ModelResource":                                      schema_obot_platform_obot_apiclient_types_ModelResource(ref),
-		"github.com/obot-platform/obot/apiclient/types.ModelStatus":                                        schema_obot_platform_obot_apiclient_types_ModelStatus(ref),
-		"github.com/obot-platform/obot/apiclient/types.MultiUserConfig":                                    schema_obot_platform_obot_apiclient_types_MultiUserConfig(ref),
-		"github.com/obot-platform/obot/apiclient/types.NPXRuntimeConfig":                                   schema_obot_platform_obot_apiclient_types_NPXRuntimeConfig(ref),
-		"github.com/obot-platform/obot/apiclient/types.NanobotAgent":                                       schema_obot_platform_obot_apiclient_types_NanobotAgent(ref),
-		"github.com/obot-platform/obot/apiclient/types.NanobotAgentList":                                   schema_obot_platform_obot_apiclient_types_NanobotAgentList(ref),
-		"github.com/obot-platform/obot/apiclient/types.NanobotAgentManifest":                               schema_obot_platform_obot_apiclient_types_NanobotAgentManifest(ref),
-		"github.com/obot-platform/obot/apiclient/types.OAuthClient":                                        schema_obot_platform_obot_apiclient_types_OAuthClient(ref),
-		"github.com/obot-platform/obot/apiclient/types.OAuthClientList":                                    schema_obot_platform_obot_apiclient_types_OAuthClientList(ref),
-		"github.com/obot-platform/obot/apiclient/types.OAuthClientManifest":                                schema_obot_platform_obot_apiclient_types_OAuthClientManifest(ref),
-		"github.com/obot-platform/obot/apiclient/types.OAuthDebuggerAuthorizationURL":                      schema_obot_platform_obot_apiclient_types_OAuthDebuggerAuthorizationURL(ref),
-		"github.com/obot-platform/obot/apiclient/types.OAuthDebuggerAuthorizationURLRequest":               schema_obot_platform_obot_apiclient_types_OAuthDebuggerAuthorizationURLRequest(ref),
-		"github.com/obot-platform/obot/apiclient/types.OAuthDebuggerTokenRequest":                          schema_obot_platform_obot_apiclient_types_OAuthDebuggerTokenRequest(ref),
-		"github.com/obot-platform/obot/apiclient/types.OAuthMetadata":                                      schema_obot_platform_obot_apiclient_types_OAuthMetadata(ref),
-		"github.com/obot-platform/obot/apiclient/types.OAuthToken":                                         schema_obot_platform_obot_apiclient_types_OAuthToken(ref),
-		"github.com/obot-platform/obot/apiclient/types.PodSecurityAdmissionSettings":                       schema_obot_platform_obot_apiclient_types_PodSecurityAdmissionSettings(ref),
-		"github.com/obot-platform/obot/apiclient/types.PowerUserWorkspace":                                 schema_obot_platform_obot_apiclient_types_PowerUserWorkspace(ref),
-		"github.com/obot-platform/obot/apiclient/types.PowerUserWorkspaceList":                             schema_obot_platform_obot_apiclient_types_PowerUserWorkspaceList(ref),
-		"github.com/obot-platform/obot/apiclient/types.Project":                                            schema_obot_platform_obot_apiclient_types_Project(ref),
-		"github.com/obot-platform/obot/apiclient/types.ProjectList":                                        schema_obot_platform_obot_apiclient_types_ProjectList(ref),
-		"github.com/obot-platform/obot/apiclient/types.ProjectManifest":                                    schema_obot_platform_obot_apiclient_types_ProjectManifest(ref),
-		"github.com/obot-platform/obot/apiclient/types.ProviderConfigurationParameter":                     schema_obot_platform_obot_apiclient_types_ProviderConfigurationParameter(ref),
-		"github.com/obot-platform/obot/apiclient/types.PublishedArtifact":                                  schema_obot_platform_obot_apiclient_types_PublishedArtifact(ref),
-		"github.com/obot-platform/obot/apiclient/types.PublishedArtifactList":                              schema_obot_platform_obot_apiclient_types_PublishedArtifactList(ref),
-		"github.com/obot-platform/obot/apiclient/types.PublishedArtifactManifest":                          schema_obot_platform_obot_apiclient_types_PublishedArtifactManifest(ref),
-		"github.com/obot-platform/obot/apiclient/types.PublishedArtifactVersionEntry":                      schema_obot_platform_obot_apiclient_types_PublishedArtifactVersionEntry(ref),
-		"github.com/obot-platform/obot/apiclient/types.PublishedArtifactVersionSummary":                    schema_obot_platform_obot_apiclient_types_PublishedArtifactVersionSummary(ref),
-		"github.com/obot-platform/obot/apiclient/types.RegistryGitHubMeta":                                 schema_obot_platform_obot_apiclient_types_RegistryGitHubMeta(ref),
-		"github.com/obot-platform/obot/apiclient/types.RegistryMeta":                                       schema_obot_platform_obot_apiclient_types_RegistryMeta(ref),
-		"github.com/obot-platform/obot/apiclient/types.RegistryObotMeta":                                   schema_obot_platform_obot_apiclient_types_RegistryObotMeta(ref),
-		"github.com/obot-platform/obot/apiclient/types.RegistryOfficialMeta":                               schema_obot_platform_obot_apiclient_types_RegistryOfficialMeta(ref),
-		"github.com/obot-platform/obot/apiclient/types.RegistryPublisherProvidedMeta":                      schema_obot_platform_obot_apiclient_types_RegistryPublisherProvidedMeta(ref),
-		"github.com/obot-platform/obot/apiclient/types.RegistryServerDetail":                               schema_obot_platform_obot_apiclient_types_RegistryServerDetail(ref),
-		"github.com/obot-platform/obot/apiclient/types.RegistryServerIcon":                                 schema_obot_platform_obot_apiclient_types_RegistryServerIcon(ref),
-		"github.com/obot-platform/obot/apiclient/types.RegistryServerList":                                 schema_obot_platform_obot_apiclient_types_RegistryServerList(ref),
-		"github.com/obot-platform/obot/apiclient/types.RegistryServerListMetadata":                         schema_obot_platform_obot_apiclient_types_RegistryServerListMetadata(ref),
-		"github.com/obot-platform/obot/apiclient/types.RegistryServerMeta":                                 schema_obot_platform_obot_apiclient_types_RegistryServerMeta(ref),
-		"github.com/obot-platform/obot/apiclient/types.RegistryServerRemote":                               schema_obot_platform_obot_apiclient_types_RegistryServerRemote(ref),
-		"github.com/obot-platform/obot/apiclient/types.RegistryServerRepository":                           schema_obot_platform_obot_apiclient_types_RegistryServerRepository(ref),
-		"github.com/obot-platform/obot/apiclient/types.RegistryServerResponse":                             schema_obot_platform_obot_apiclient_types_RegistryServerResponse(ref),
-		"github.com/obot-platform/obot/apiclient/types.RemainingTokenUsage":                                schema_obot_platform_obot_apiclient_types_RemainingTokenUsage(ref),
-		"github.com/obot-platform/obot/apiclient/types.RemoteCatalogConfig":                                schema_obot_platform_obot_apiclient_types_RemoteCatalogConfig(ref),
-		"github.com/obot-platform/obot/apiclient/types.RemoteRuntimeConfig":                                schema_obot_platform_obot_apiclient_types_RemoteRuntimeConfig(ref),
-		"github.com/obot-platform/obot/apiclient/types.Resource":                                           schema_obot_platform_obot_apiclient_types_Resource(ref),
-		"github.com/obot-platform/obot/apiclient/types.RuntimeValidationError":                             schema_obot_platform_obot_apiclient_types_RuntimeValidationError(ref),
-		"github.com/obot-platform/obot/apiclient/types.S3Config":                                           schema_obot_platform_obot_apiclient_types_S3Config(ref),
-		"github.com/obot-platform/obot/apiclient/types.Schedule":                                           schema_obot_platform_obot_apiclient_types_Schedule(ref),
-		"github.com/obot-platform/obot/apiclient/types.ScheduledAuditLogExportCreateRequest":               schema_obot_platform_obot_apiclient_types_ScheduledAuditLogExportCreateRequest(ref),
-		"github.com/obot-platform/obot/apiclient/types.ScheduledAuditLogExportListResponse":                schema_obot_platform_obot_apiclient_types_ScheduledAuditLogExportListResponse(ref),
-		"github.com/obot-platform/obot/apiclient/types.ScheduledAuditLogExportResponse":                    schema_obot_platform_obot_apiclient_types_ScheduledAuditLogExportResponse(ref),
-		"github.com/obot-platform/obot/apiclient/types.ScheduledAuditLogExportUpdateRequest":               schema_obot_platform_obot_apiclient_types_ScheduledAuditLogExportUpdateRequest(ref),
-		"github.com/obot-platform/obot/apiclient/types.Skill":                                              schema_obot_platform_obot_apiclient_types_Skill(ref),
-		"github.com/obot-platform/obot/apiclient/types.SkillAccessRule":                                    schema_obot_platform_obot_apiclient_types_SkillAccessRule(ref),
-		"github.com/obot-platform/obot/apiclient/types.SkillAccessRuleList":                                schema_obot_platform_obot_apiclient_types_SkillAccessRuleList(ref),
-		"github.com/obot-platform/obot/apiclient/types.SkillAccessRuleManifest":                            schema_obot_platform_obot_apiclient_types_SkillAccessRuleManifest(ref),
-		"github.com/obot-platform/obot/apiclient/types.SkillList":                                          schema_obot_platform_obot_apiclient_types_SkillList(ref),
-		"github.com/obot-platform/obot/apiclient/types.SkillManifest":                                      schema_obot_platform_obot_apiclient_types_SkillManifest(ref),
-		"github.com/obot-platform/obot/apiclient/types.SkillRepository":                                    schema_obot_platform_obot_apiclient_types_SkillRepository(ref),
-		"github.com/obot-platform/obot/apiclient/types.SkillRepositoryList":                                schema_obot_platform_obot_apiclient_types_SkillRepositoryList(ref),
-		"github.com/obot-platform/obot/apiclient/types.SkillRepositoryManifest":                            schema_obot_platform_obot_apiclient_types_SkillRepositoryManifest(ref),
-		"github.com/obot-platform/obot/apiclient/types.SkillResource":                                      schema_obot_platform_obot_apiclient_types_SkillResource(ref),
-		"github.com/obot-platform/obot/apiclient/types.StorageConfig":                                      schema_obot_platform_obot_apiclient_types_StorageConfig(ref),
-		"github.com/obot-platform/obot/apiclient/types.StorageCredentialsResponse":                         schema_obot_platform_obot_apiclient_types_StorageCredentialsResponse(ref),
-		"github.com/obot-platform/obot/apiclient/types.StorageCredentialsTestRequest":                      schema_obot_platform_obot_apiclient_types_StorageCredentialsTestRequest(ref),
-		"github.com/obot-platform/obot/apiclient/types.StorageCredentialsTestResponse":                     schema_obot_platform_obot_apiclient_types_StorageCredentialsTestResponse(ref),
-		"github.com/obot-platform/obot/apiclient/types.StorageProviderConfigInput":                         schema_obot_platform_obot_apiclient_types_StorageProviderConfigInput(ref),
-		"github.com/obot-platform/obot/apiclient/types.Subject":                                            schema_obot_platform_obot_apiclient_types_Subject(ref),
-		"github.com/obot-platform/obot/apiclient/types.SystemMCPCatalog":                                   schema_obot_platform_obot_apiclient_types_SystemMCPCatalog(ref),
-		"github.com/obot-platform/obot/apiclient/types.SystemMCPCatalogList":                               schema_obot_platform_obot_apiclient_types_SystemMCPCatalogList(ref),
-		"github.com/obot-platform/obot/apiclient/types.SystemMCPCatalogManifest":                           schema_obot_platform_obot_apiclient_types_SystemMCPCatalogManifest(ref),
-		"github.com/obot-platform/obot/apiclient/types.SystemMCPServer":                                    schema_obot_platform_obot_apiclient_types_SystemMCPServer(ref),
-		"github.com/obot-platform/obot/apiclient/types.SystemMCPServerCatalogEntry":                        schema_obot_platform_obot_apiclient_types_SystemMCPServerCatalogEntry(ref),
-		"github.com/obot-platform/obot/apiclient/types.SystemMCPServerCatalogEntryList":                    schema_obot_platform_obot_apiclient_types_SystemMCPServerCatalogEntryList(ref),
-		"github.com/obot-platform/obot/apiclient/types.SystemMCPServerCatalogEntryManifest":                schema_obot_platform_obot_apiclient_types_SystemMCPServerCatalogEntryManifest(ref),
-		"github.com/obot-platform/obot/apiclient/types.SystemMCPServerList":                                schema_obot_platform_obot_apiclient_types_SystemMCPServerList(ref),
-		"github.com/obot-platform/obot/apiclient/types.SystemMCPServerManifest":                            schema_obot_platform_obot_apiclient_types_SystemMCPServerManifest(ref),
-		"github.com/obot-platform/obot/apiclient/types.ThemePreferences":                                   schema_obot_platform_obot_apiclient_types_ThemePreferences(ref),
-		"github.com/obot-platform/obot/apiclient/types.Time":                                               schema_obot_platform_obot_apiclient_types_Time(ref),
-		"github.com/obot-platform/obot/apiclient/types.TokenUsage":                                         schema_obot_platform_obot_apiclient_types_TokenUsage(ref),
-		"github.com/obot-platform/obot/apiclient/types.TokenUsageList":                                     schema_obot_platform_obot_apiclient_types_TokenUsageList(ref),
-		"github.com/obot-platform/obot/apiclient/types.ToolOverride":                                       schema_obot_platform_obot_apiclient_types_ToolOverride(ref),
-		"github.com/obot-platform/obot/apiclient/types.UVXRuntimeConfig":                                   schema_obot_platform_obot_apiclient_types_UVXRuntimeConfig(ref),
-		"github.com/obot-platform/obot/apiclient/types.User":                                               schema_obot_platform_obot_apiclient_types_User(ref),
-		"github.com/obot-platform/obot/apiclient/types.UserDefaultRoleSetting":                             schema_obot_platform_obot_apiclient_types_UserDefaultRoleSetting(ref),
-		"github.com/obot-platform/obot/apiclient/types.UserList":                                           schema_obot_platform_obot_apiclient_types_UserList(ref),
-		"github.com/obot-platform/obot/apiclient/types.WebhookStatus":                                      schema_obot_platform_obot_apiclient_types_WebhookStatus(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.AccessControlRule":                 schema_storage_apis_obotobotai_v1_AccessControlRule(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.AccessControlRuleList":             schema_storage_apis_obotobotai_v1_AccessControlRuleList(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.AccessControlRuleSpec":             schema_storage_apis_obotobotai_v1_AccessControlRuleSpec(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.Alias":                             schema_storage_apis_obotobotai_v1_Alias(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.AliasList":                         schema_storage_apis_obotobotai_v1_AliasList(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.AliasSpec":                         schema_storage_apis_obotobotai_v1_AliasSpec(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.AppNotification":                   schema_storage_apis_obotobotai_v1_AppNotification(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.AppNotificationList":               schema_storage_apis_obotobotai_v1_AppNotificationList(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.AppNotificationSpec":               schema_storage_apis_obotobotai_v1_AppNotificationSpec(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.AppNotificationStatus":             schema_storage_apis_obotobotai_v1_AppNotificationStatus(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.AppPreferences":                    schema_storage_apis_obotobotai_v1_AppPreferences(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.AppPreferencesList":                schema_storage_apis_obotobotai_v1_AppPreferencesList(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.AppPreferencesSpec":                schema_storage_apis_obotobotai_v1_AppPreferencesSpec(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.AppPreferencesStatus":              schema_storage_apis_obotobotai_v1_AppPreferencesStatus(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.AuditLogExport":                    schema_storage_apis_obotobotai_v1_AuditLogExport(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.AuditLogExportList":                schema_storage_apis_obotobotai_v1_AuditLogExportList(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.AuditLogExportSpec":                schema_storage_apis_obotobotai_v1_AuditLogExportSpec(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.AuditLogExportStatus":              schema_storage_apis_obotobotai_v1_AuditLogExportStatus(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.AuthProvider":                      schema_storage_apis_obotobotai_v1_AuthProvider(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.AuthProviderList":                  schema_storage_apis_obotobotai_v1_AuthProviderList(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.AuthProviderSpec":                  schema_storage_apis_obotobotai_v1_AuthProviderSpec(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.AuthProviderStatus":                schema_storage_apis_obotobotai_v1_AuthProviderStatus(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.DefaultModelAlias":                 schema_storage_apis_obotobotai_v1_DefaultModelAlias(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.DefaultModelAliasList":             schema_storage_apis_obotobotai_v1_DefaultModelAliasList(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.DefaultModelAliasSpec":             schema_storage_apis_obotobotai_v1_DefaultModelAliasSpec(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.DefaultModelAliasStatus":           schema_storage_apis_obotobotai_v1_DefaultModelAliasStatus(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.DeploymentCondition":               schema_storage_apis_obotobotai_v1_DeploymentCondition(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.EmptyStatus":                       schema_storage_apis_obotobotai_v1_EmptyStatus(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.GroupRoleChange":                   schema_storage_apis_obotobotai_v1_GroupRoleChange(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.GroupRoleChangeList":               schema_storage_apis_obotobotai_v1_GroupRoleChangeList(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.GroupRoleChangeSpec":               schema_storage_apis_obotobotai_v1_GroupRoleChangeSpec(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.ImagePullSecret":                   schema_storage_apis_obotobotai_v1_ImagePullSecret(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.ImagePullSecretList":               schema_storage_apis_obotobotai_v1_ImagePullSecretList(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.ImagePullSecretSpec":               schema_storage_apis_obotobotai_v1_ImagePullSecretSpec(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.ImagePullSecretStatus":             schema_storage_apis_obotobotai_v1_ImagePullSecretStatus(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.K8sSettings":                       schema_storage_apis_obotobotai_v1_K8sSettings(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.K8sSettingsList":                   schema_storage_apis_obotobotai_v1_K8sSettingsList(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.K8sSettingsSpec":                   schema_storage_apis_obotobotai_v1_K8sSettingsSpec(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.K8sSettingsStatus":                 schema_storage_apis_obotobotai_v1_K8sSettingsStatus(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.MCPCatalog":                        schema_storage_apis_obotobotai_v1_MCPCatalog(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.MCPCatalogList":                    schema_storage_apis_obotobotai_v1_MCPCatalogList(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.MCPCatalogSpec":                    schema_storage_apis_obotobotai_v1_MCPCatalogSpec(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.MCPCatalogStatus":                  schema_storage_apis_obotobotai_v1_MCPCatalogStatus(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.MCPNetworkPolicy":                  schema_storage_apis_obotobotai_v1_MCPNetworkPolicy(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.MCPNetworkPolicyList":              schema_storage_apis_obotobotai_v1_MCPNetworkPolicyList(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.MCPNetworkPolicySpec":              schema_storage_apis_obotobotai_v1_MCPNetworkPolicySpec(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.MCPNetworkPolicyStatus":            schema_storage_apis_obotobotai_v1_MCPNetworkPolicyStatus(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.MCPServer":                         schema_storage_apis_obotobotai_v1_MCPServer(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.MCPServerCatalogEntry":             schema_storage_apis_obotobotai_v1_MCPServerCatalogEntry(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.MCPServerCatalogEntryList":         schema_storage_apis_obotobotai_v1_MCPServerCatalogEntryList(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.MCPServerCatalogEntrySpec":         schema_storage_apis_obotobotai_v1_MCPServerCatalogEntrySpec(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.MCPServerCatalogEntryStatus":       schema_storage_apis_obotobotai_v1_MCPServerCatalogEntryStatus(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.MCPServerInstance":                 schema_storage_apis_obotobotai_v1_MCPServerInstance(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.MCPServerInstanceList":             schema_storage_apis_obotobotai_v1_MCPServerInstanceList(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.MCPServerInstanceSpec":             schema_storage_apis_obotobotai_v1_MCPServerInstanceSpec(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.MCPServerList":                     schema_storage_apis_obotobotai_v1_MCPServerList(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.MCPServerSpec":                     schema_storage_apis_obotobotai_v1_MCPServerSpec(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.MCPServerStatus":                   schema_storage_apis_obotobotai_v1_MCPServerStatus(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.MCPWebhookValidation":              schema_storage_apis_obotobotai_v1_MCPWebhookValidation(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.MCPWebhookValidationList":          schema_storage_apis_obotobotai_v1_MCPWebhookValidationList(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.MCPWebhookValidationSpec":          schema_storage_apis_obotobotai_v1_MCPWebhookValidationSpec(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.MCPWebhookValidationStatus":        schema_storage_apis_obotobotai_v1_MCPWebhookValidationStatus(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.MessagePolicy":                     schema_storage_apis_obotobotai_v1_MessagePolicy(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.MessagePolicyList":                 schema_storage_apis_obotobotai_v1_MessagePolicyList(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.MessagePolicySpec":                 schema_storage_apis_obotobotai_v1_MessagePolicySpec(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.Model":                             schema_storage_apis_obotobotai_v1_Model(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.ModelAccessPolicy":                 schema_storage_apis_obotobotai_v1_ModelAccessPolicy(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.ModelAccessPolicyList":             schema_storage_apis_obotobotai_v1_ModelAccessPolicyList(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.ModelAccessPolicySpec":             schema_storage_apis_obotobotai_v1_ModelAccessPolicySpec(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.ModelList":                         schema_storage_apis_obotobotai_v1_ModelList(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.ModelProvider":                     schema_storage_apis_obotobotai_v1_ModelProvider(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.ModelProviderList":                 schema_storage_apis_obotobotai_v1_ModelProviderList(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.ModelProviderSpec":                 schema_storage_apis_obotobotai_v1_ModelProviderSpec(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.ModelProviderStatus":               schema_storage_apis_obotobotai_v1_ModelProviderStatus(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.ModelSpec":                         schema_storage_apis_obotobotai_v1_ModelSpec(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.ModelStatus":                       schema_storage_apis_obotobotai_v1_ModelStatus(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.NanobotAgent":                      schema_storage_apis_obotobotai_v1_NanobotAgent(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.NanobotAgentList":                  schema_storage_apis_obotobotai_v1_NanobotAgentList(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.NanobotAgentSpec":                  schema_storage_apis_obotobotai_v1_NanobotAgentSpec(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.NanobotAgentStatus":                schema_storage_apis_obotobotai_v1_NanobotAgentStatus(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.OAuthAuthRequest":                  schema_storage_apis_obotobotai_v1_OAuthAuthRequest(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.OAuthAuthRequestList":              schema_storage_apis_obotobotai_v1_OAuthAuthRequestList(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.OAuthAuthRequestSpec":              schema_storage_apis_obotobotai_v1_OAuthAuthRequestSpec(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.OAuthAuthRequestStatus":            schema_storage_apis_obotobotai_v1_OAuthAuthRequestStatus(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.OAuthClient":                       schema_storage_apis_obotobotai_v1_OAuthClient(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.OAuthClientList":                   schema_storage_apis_obotobotai_v1_OAuthClientList(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.OAuthClientSpec":                   schema_storage_apis_obotobotai_v1_OAuthClientSpec(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.OAuthClientStatus":                 schema_storage_apis_obotobotai_v1_OAuthClientStatus(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.OAuthMetadata":                     schema_storage_apis_obotobotai_v1_OAuthMetadata(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.OAuthToken":                        schema_storage_apis_obotobotai_v1_OAuthToken(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.OAuthTokenList":                    schema_storage_apis_obotobotai_v1_OAuthTokenList(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.OAuthTokenSpec":                    schema_storage_apis_obotobotai_v1_OAuthTokenSpec(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.OAuthTokenStatus":                  schema_storage_apis_obotobotai_v1_OAuthTokenStatus(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.OktaGroupMigration":                schema_storage_apis_obotobotai_v1_OktaGroupMigration(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.OktaGroupMigrationList":            schema_storage_apis_obotobotai_v1_OktaGroupMigrationList(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.OktaGroupMigrationSpec":            schema_storage_apis_obotobotai_v1_OktaGroupMigrationSpec(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.PodSecurityAdmissionSettings":      schema_storage_apis_obotobotai_v1_PodSecurityAdmissionSettings(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.PowerUserWorkspace":                schema_storage_apis_obotobotai_v1_PowerUserWorkspace(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.PowerUserWorkspaceList":            schema_storage_apis_obotobotai_v1_PowerUserWorkspaceList(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.PowerUserWorkspaceSpec":            schema_storage_apis_obotobotai_v1_PowerUserWorkspaceSpec(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.PowerUserWorkspaceStatus":          schema_storage_apis_obotobotai_v1_PowerUserWorkspaceStatus(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.Project":                           schema_storage_apis_obotobotai_v1_Project(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.ProjectList":                       schema_storage_apis_obotobotai_v1_ProjectList(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.ProjectSpec":                       schema_storage_apis_obotobotai_v1_ProjectSpec(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.ProjectStatus":                     schema_storage_apis_obotobotai_v1_ProjectStatus(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.ProjectV2":                         schema_storage_apis_obotobotai_v1_ProjectV2(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.ProjectV2List":                     schema_storage_apis_obotobotai_v1_ProjectV2List(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.PublishedArtifact":                 schema_storage_apis_obotobotai_v1_PublishedArtifact(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.PublishedArtifactList":             schema_storage_apis_obotobotai_v1_PublishedArtifactList(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.PublishedArtifactSpec":             schema_storage_apis_obotobotai_v1_PublishedArtifactSpec(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.PublishedArtifactStatus":           schema_storage_apis_obotobotai_v1_PublishedArtifactStatus(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.Ref":                               schema_storage_apis_obotobotai_v1_Ref(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.Schedule":                          schema_storage_apis_obotobotai_v1_Schedule(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.ScheduledAuditLogExport":           schema_storage_apis_obotobotai_v1_ScheduledAuditLogExport(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.ScheduledAuditLogExportList":       schema_storage_apis_obotobotai_v1_ScheduledAuditLogExportList(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.ScheduledAuditLogExportSpec":       schema_storage_apis_obotobotai_v1_ScheduledAuditLogExportSpec(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.ScheduledAuditLogExportStatus":     schema_storage_apis_obotobotai_v1_ScheduledAuditLogExportStatus(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.Skill":                             schema_storage_apis_obotobotai_v1_Skill(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.SkillAccessRule":                   schema_storage_apis_obotobotai_v1_SkillAccessRule(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.SkillAccessRuleList":               schema_storage_apis_obotobotai_v1_SkillAccessRuleList(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.SkillAccessRuleSpec":               schema_storage_apis_obotobotai_v1_SkillAccessRuleSpec(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.SkillList":                         schema_storage_apis_obotobotai_v1_SkillList(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.SkillRepository":                   schema_storage_apis_obotobotai_v1_SkillRepository(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.SkillRepositoryList":               schema_storage_apis_obotobotai_v1_SkillRepositoryList(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.SkillRepositorySpec":               schema_storage_apis_obotobotai_v1_SkillRepositorySpec(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.SkillRepositoryStatus":             schema_storage_apis_obotobotai_v1_SkillRepositoryStatus(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.SkillSpec":                         schema_storage_apis_obotobotai_v1_SkillSpec(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.SkillStatus":                       schema_storage_apis_obotobotai_v1_SkillStatus(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.SystemMCPCatalog":                  schema_storage_apis_obotobotai_v1_SystemMCPCatalog(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.SystemMCPCatalogList":              schema_storage_apis_obotobotai_v1_SystemMCPCatalogList(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.SystemMCPCatalogSpec":              schema_storage_apis_obotobotai_v1_SystemMCPCatalogSpec(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.SystemMCPCatalogStatus":            schema_storage_apis_obotobotai_v1_SystemMCPCatalogStatus(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.SystemMCPServer":                   schema_storage_apis_obotobotai_v1_SystemMCPServer(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.SystemMCPServerCatalogEntry":       schema_storage_apis_obotobotai_v1_SystemMCPServerCatalogEntry(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.SystemMCPServerCatalogEntryList":   schema_storage_apis_obotobotai_v1_SystemMCPServerCatalogEntryList(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.SystemMCPServerCatalogEntrySpec":   schema_storage_apis_obotobotai_v1_SystemMCPServerCatalogEntrySpec(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.SystemMCPServerCatalogEntryStatus": schema_storage_apis_obotobotai_v1_SystemMCPServerCatalogEntryStatus(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.SystemMCPServerList":               schema_storage_apis_obotobotai_v1_SystemMCPServerList(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.SystemMCPServerSpec":               schema_storage_apis_obotobotai_v1_SystemMCPServerSpec(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.SystemMCPServerStatus":             schema_storage_apis_obotobotai_v1_SystemMCPServerStatus(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.UserDefaultRoleSetting":            schema_storage_apis_obotobotai_v1_UserDefaultRoleSetting(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.UserDefaultRoleSettingList":        schema_storage_apis_obotobotai_v1_UserDefaultRoleSettingList(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.UserDefaultRoleSettingSpec":        schema_storage_apis_obotobotai_v1_UserDefaultRoleSettingSpec(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.UserDelete":                        schema_storage_apis_obotobotai_v1_UserDelete(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.UserDeleteList":                    schema_storage_apis_obotobotai_v1_UserDeleteList(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.UserDeleteSpec":                    schema_storage_apis_obotobotai_v1_UserDeleteSpec(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.UserGroupChange":                   schema_storage_apis_obotobotai_v1_UserGroupChange(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.UserGroupChangeList":               schema_storage_apis_obotobotai_v1_UserGroupChangeList(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.UserGroupChangeSpec":               schema_storage_apis_obotobotai_v1_UserGroupChangeSpec(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.UserRoleChange":                    schema_storage_apis_obotobotai_v1_UserRoleChange(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.UserRoleChangeList":                schema_storage_apis_obotobotai_v1_UserRoleChangeList(ref),
-		"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.UserRoleChangeSpec":                schema_storage_apis_obotobotai_v1_UserRoleChangeSpec(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.APIActivity":                                        schema_boeing_platform_boeing_apiclient_types_APIActivity(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.APIActivityList":                                    schema_boeing_platform_boeing_apiclient_types_APIActivityList(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.AccessControlRule":                                  schema_boeing_platform_boeing_apiclient_types_AccessControlRule(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.AccessControlRuleList":                              schema_boeing_platform_boeing_apiclient_types_AccessControlRuleList(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.AccessControlRuleManifest":                          schema_boeing_platform_boeing_apiclient_types_AccessControlRuleManifest(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.AppNotification":                                    schema_boeing_platform_boeing_apiclient_types_AppNotification(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.AppPreferences":                                     schema_boeing_platform_boeing_apiclient_types_AppPreferences(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.AuditLogExportCreateRequest":                        schema_boeing_platform_boeing_apiclient_types_AuditLogExportCreateRequest(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.AuditLogExportFilters":                              schema_boeing_platform_boeing_apiclient_types_AuditLogExportFilters(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.AuditLogExportListResponse":                         schema_boeing_platform_boeing_apiclient_types_AuditLogExportListResponse(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.AuditLogExportResponse":                             schema_boeing_platform_boeing_apiclient_types_AuditLogExportResponse(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.AuthProvider":                                       schema_boeing_platform_boeing_apiclient_types_AuthProvider(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.AuthProviderList":                                   schema_boeing_platform_boeing_apiclient_types_AuthProviderList(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.AuthProviderManifest":                               schema_boeing_platform_boeing_apiclient_types_AuthProviderManifest(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.AuthProviderStatus":                                 schema_boeing_platform_boeing_apiclient_types_AuthProviderStatus(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.AzureConfig":                                        schema_boeing_platform_boeing_apiclient_types_AzureConfig(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.BannerNotification":                                 schema_boeing_platform_boeing_apiclient_types_BannerNotification(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.BasicImagePullSecretConfig":                         schema_boeing_platform_boeing_apiclient_types_BasicImagePullSecretConfig(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.CatalogComponentServer":                             schema_boeing_platform_boeing_apiclient_types_CatalogComponentServer(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.ClientInfo":                                         schema_boeing_platform_boeing_apiclient_types_ClientInfo(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.CommonProviderMetadata":                             schema_boeing_platform_boeing_apiclient_types_CommonProviderMetadata(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.CommonProviderStatus":                               schema_boeing_platform_boeing_apiclient_types_CommonProviderStatus(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.ComponentServer":                                    schema_boeing_platform_boeing_apiclient_types_ComponentServer(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.CompositeCatalogConfig":                             schema_boeing_platform_boeing_apiclient_types_CompositeCatalogConfig(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.CompositeRuntimeConfig":                             schema_boeing_platform_boeing_apiclient_types_CompositeRuntimeConfig(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.ContainerizedRuntimeConfig":                         schema_boeing_platform_boeing_apiclient_types_ContainerizedRuntimeConfig(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.CustomS3Config":                                     schema_boeing_platform_boeing_apiclient_types_CustomS3Config(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.DefaultModelAlias":                                  schema_boeing_platform_boeing_apiclient_types_DefaultModelAlias(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.DefaultModelAliasList":                              schema_boeing_platform_boeing_apiclient_types_DefaultModelAliasList(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.DefaultModelAliasManifest":                          schema_boeing_platform_boeing_apiclient_types_DefaultModelAliasManifest(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.DeploymentCondition":                                schema_boeing_platform_boeing_apiclient_types_DeploymentCondition(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.DeviceClientFleetSkill":                             schema_boeing_platform_boeing_apiclient_types_DeviceClientFleetSkill(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.DeviceClientFleetSummary":                           schema_boeing_platform_boeing_apiclient_types_DeviceClientFleetSummary(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.DeviceClientFleetSummaryList":                       schema_boeing_platform_boeing_apiclient_types_DeviceClientFleetSummaryList(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.DeviceClientFleetSummaryResponse":                   schema_boeing_platform_boeing_apiclient_types_DeviceClientFleetSummaryResponse(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.DeviceClientStat":                                   schema_boeing_platform_boeing_apiclient_types_DeviceClientStat(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.DeviceMCPServerDetail":                              schema_boeing_platform_boeing_apiclient_types_DeviceMCPServerDetail(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.DeviceMCPServerOccurrence":                          schema_boeing_platform_boeing_apiclient_types_DeviceMCPServerOccurrence(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.DeviceMCPServerOccurrenceList":                      schema_boeing_platform_boeing_apiclient_types_DeviceMCPServerOccurrenceList(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.DeviceMCPServerOccurrenceResponse":                  schema_boeing_platform_boeing_apiclient_types_DeviceMCPServerOccurrenceResponse(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.DeviceMCPServerStat":                                schema_boeing_platform_boeing_apiclient_types_DeviceMCPServerStat(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.DeviceScan":                                         schema_boeing_platform_boeing_apiclient_types_DeviceScan(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.DeviceScanClient":                                   schema_boeing_platform_boeing_apiclient_types_DeviceScanClient(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.DeviceScanFile":                                     schema_boeing_platform_boeing_apiclient_types_DeviceScanFile(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.DeviceScanList":                                     schema_boeing_platform_boeing_apiclient_types_DeviceScanList(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.DeviceScanMCPServer":                                schema_boeing_platform_boeing_apiclient_types_DeviceScanMCPServer(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.DeviceScanManifest":                                 schema_boeing_platform_boeing_apiclient_types_DeviceScanManifest(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.DeviceScanPlugin":                                   schema_boeing_platform_boeing_apiclient_types_DeviceScanPlugin(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.DeviceScanResponse":                                 schema_boeing_platform_boeing_apiclient_types_DeviceScanResponse(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.DeviceScanSkill":                                    schema_boeing_platform_boeing_apiclient_types_DeviceScanSkill(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.DeviceScanStats":                                    schema_boeing_platform_boeing_apiclient_types_DeviceScanStats(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.DeviceSkillDetail":                                  schema_boeing_platform_boeing_apiclient_types_DeviceSkillDetail(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.DeviceSkillOccurrence":                              schema_boeing_platform_boeing_apiclient_types_DeviceSkillOccurrence(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.DeviceSkillOccurrenceList":                          schema_boeing_platform_boeing_apiclient_types_DeviceSkillOccurrenceList(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.DeviceSkillOccurrenceResponse":                      schema_boeing_platform_boeing_apiclient_types_DeviceSkillOccurrenceResponse(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.DeviceSkillStat":                                    schema_boeing_platform_boeing_apiclient_types_DeviceSkillStat(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.DeviceSkillStatList":                                schema_boeing_platform_boeing_apiclient_types_DeviceSkillStatList(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.DeviceSkillStatResponse":                            schema_boeing_platform_boeing_apiclient_types_DeviceSkillStatResponse(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.ECRImagePullSecretConfig":                           schema_boeing_platform_boeing_apiclient_types_ECRImagePullSecretConfig(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.ErrHTTP":                                            schema_boeing_platform_boeing_apiclient_types_ErrHTTP(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.EulaStatus":                                         schema_boeing_platform_boeing_apiclient_types_EulaStatus(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.FilterConfig":                                       schema_boeing_platform_boeing_apiclient_types_FilterConfig(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.GCSConfig":                                          schema_boeing_platform_boeing_apiclient_types_GCSConfig(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.GroupRoleAssignment":                                schema_boeing_platform_boeing_apiclient_types_GroupRoleAssignment(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.GroupRoleAssignmentList":                            schema_boeing_platform_boeing_apiclient_types_GroupRoleAssignmentList(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.ImagePullSecret":                                    schema_boeing_platform_boeing_apiclient_types_ImagePullSecret(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.ImagePullSecretCapability":                          schema_boeing_platform_boeing_apiclient_types_ImagePullSecretCapability(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.ImagePullSecretList":                                schema_boeing_platform_boeing_apiclient_types_ImagePullSecretList(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.ImagePullSecretManifest":                            schema_boeing_platform_boeing_apiclient_types_ImagePullSecretManifest(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.ImagePullSecretRefreshResponse":                     schema_boeing_platform_boeing_apiclient_types_ImagePullSecretRefreshResponse(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.ImagePullSecretStatus":                              schema_boeing_platform_boeing_apiclient_types_ImagePullSecretStatus(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.ImagePullSecretTestRequest":                         schema_boeing_platform_boeing_apiclient_types_ImagePullSecretTestRequest(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.ImagePullSecretTestResponse":                        schema_boeing_platform_boeing_apiclient_types_ImagePullSecretTestResponse(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.K8sSettings":                                        schema_boeing_platform_boeing_apiclient_types_K8sSettings(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.K8sSettingsStatus":                                  schema_boeing_platform_boeing_apiclient_types_K8sSettingsStatus(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.LogoPreferences":                                    schema_boeing_platform_boeing_apiclient_types_LogoPreferences(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.MCPAuditLog":                                        schema_boeing_platform_boeing_apiclient_types_MCPAuditLog(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.MCPAuditLogList":                                    schema_boeing_platform_boeing_apiclient_types_MCPAuditLogList(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.MCPAuditLogResponse":                                schema_boeing_platform_boeing_apiclient_types_MCPAuditLogResponse(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.MCPCapacityInfo":                                    schema_boeing_platform_boeing_apiclient_types_MCPCapacityInfo(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.MCPCatalog":                                         schema_boeing_platform_boeing_apiclient_types_MCPCatalog(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.MCPCatalogList":                                     schema_boeing_platform_boeing_apiclient_types_MCPCatalogList(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.MCPCatalogManifest":                                 schema_boeing_platform_boeing_apiclient_types_MCPCatalogManifest(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.MCPEnv":                                             schema_boeing_platform_boeing_apiclient_types_MCPEnv(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.MCPHeader":                                          schema_boeing_platform_boeing_apiclient_types_MCPHeader(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.MCPPromptReadStats":                                 schema_boeing_platform_boeing_apiclient_types_MCPPromptReadStats(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.MCPResourceReadStats":                               schema_boeing_platform_boeing_apiclient_types_MCPResourceReadStats(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.MCPResourceRequests":                                schema_boeing_platform_boeing_apiclient_types_MCPResourceRequests(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.MCPResourceRequirements":                            schema_boeing_platform_boeing_apiclient_types_MCPResourceRequirements(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.MCPSecretBinding":                                   schema_boeing_platform_boeing_apiclient_types_MCPSecretBinding(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.MCPSelector":                                        schema_boeing_platform_boeing_apiclient_types_MCPSelector(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.MCPServer":                                          schema_boeing_platform_boeing_apiclient_types_MCPServer(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.MCPServerCatalogEntry":                              schema_boeing_platform_boeing_apiclient_types_MCPServerCatalogEntry(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.MCPServerCatalogEntryList":                          schema_boeing_platform_boeing_apiclient_types_MCPServerCatalogEntryList(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.MCPServerCatalogEntryManifest":                      schema_boeing_platform_boeing_apiclient_types_MCPServerCatalogEntryManifest(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.MCPServerDetails":                                   schema_boeing_platform_boeing_apiclient_types_MCPServerDetails(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.MCPServerEvent":                                     schema_boeing_platform_boeing_apiclient_types_MCPServerEvent(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.MCPServerInstance":                                  schema_boeing_platform_boeing_apiclient_types_MCPServerInstance(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.MCPServerInstanceList":                              schema_boeing_platform_boeing_apiclient_types_MCPServerInstanceList(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.MCPServerList":                                      schema_boeing_platform_boeing_apiclient_types_MCPServerList(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.MCPServerManifest":                                  schema_boeing_platform_boeing_apiclient_types_MCPServerManifest(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.MCPServerNeedingK8sUpdate":                          schema_boeing_platform_boeing_apiclient_types_MCPServerNeedingK8sUpdate(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.MCPServerOAuthCredentialRequest":                    schema_boeing_platform_boeing_apiclient_types_MCPServerOAuthCredentialRequest(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.MCPServerOAuthCredentialStatus":                     schema_boeing_platform_boeing_apiclient_types_MCPServerOAuthCredentialStatus(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.MCPServerTool":                                      schema_boeing_platform_boeing_apiclient_types_MCPServerTool(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.MCPServersNeedingK8sUpdateList":                     schema_boeing_platform_boeing_apiclient_types_MCPServersNeedingK8sUpdateList(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.MCPToolCallStats":                                   schema_boeing_platform_boeing_apiclient_types_MCPToolCallStats(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.MCPToolCallStatsItem":                               schema_boeing_platform_boeing_apiclient_types_MCPToolCallStatsItem(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.MCPUsageStatItem":                                   schema_boeing_platform_boeing_apiclient_types_MCPUsageStatItem(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.MCPUsageStats":                                      schema_boeing_platform_boeing_apiclient_types_MCPUsageStats(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.MCPUsageStatsList":                                  schema_boeing_platform_boeing_apiclient_types_MCPUsageStatsList(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.MCPWebhookValidation":                               schema_boeing_platform_boeing_apiclient_types_MCPWebhookValidation(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.MCPWebhookValidationList":                           schema_boeing_platform_boeing_apiclient_types_MCPWebhookValidationList(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.MCPWebhookValidationManifest":                       schema_boeing_platform_boeing_apiclient_types_MCPWebhookValidationManifest(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.MessagePolicy":                                      schema_boeing_platform_boeing_apiclient_types_MessagePolicy(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.MessagePolicyList":                                  schema_boeing_platform_boeing_apiclient_types_MessagePolicyList(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.MessagePolicyManifest":                              schema_boeing_platform_boeing_apiclient_types_MessagePolicyManifest(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.MessagePolicyViolation":                             schema_boeing_platform_boeing_apiclient_types_MessagePolicyViolation(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.MessagePolicyViolationDirectionCounts":              schema_boeing_platform_boeing_apiclient_types_MessagePolicyViolationDirectionCounts(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.MessagePolicyViolationList":                         schema_boeing_platform_boeing_apiclient_types_MessagePolicyViolationList(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.MessagePolicyViolationPolicyCount":                  schema_boeing_platform_boeing_apiclient_types_MessagePolicyViolationPolicyCount(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.MessagePolicyViolationResponse":                     schema_boeing_platform_boeing_apiclient_types_MessagePolicyViolationResponse(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.MessagePolicyViolationStats":                        schema_boeing_platform_boeing_apiclient_types_MessagePolicyViolationStats(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.MessagePolicyViolationTimeBucket":                   schema_boeing_platform_boeing_apiclient_types_MessagePolicyViolationTimeBucket(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.MessagePolicyViolationUserCount":                    schema_boeing_platform_boeing_apiclient_types_MessagePolicyViolationUserCount(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.Metadata":                                           schema_boeing_platform_boeing_apiclient_types_Metadata(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.Model":                                              schema_boeing_platform_boeing_apiclient_types_Model(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.ModelAccessPolicy":                                  schema_boeing_platform_boeing_apiclient_types_ModelAccessPolicy(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.ModelAccessPolicyList":                              schema_boeing_platform_boeing_apiclient_types_ModelAccessPolicyList(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.ModelAccessPolicyManifest":                          schema_boeing_platform_boeing_apiclient_types_ModelAccessPolicyManifest(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.ModelList":                                          schema_boeing_platform_boeing_apiclient_types_ModelList(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.ModelManifest":                                      schema_boeing_platform_boeing_apiclient_types_ModelManifest(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.ModelProvider":                                      schema_boeing_platform_boeing_apiclient_types_ModelProvider(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.ModelProviderList":                                  schema_boeing_platform_boeing_apiclient_types_ModelProviderList(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.ModelProviderManifest":                              schema_boeing_platform_boeing_apiclient_types_ModelProviderManifest(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.ModelProviderStatus":                                schema_boeing_platform_boeing_apiclient_types_ModelProviderStatus(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.ModelResource":                                      schema_boeing_platform_boeing_apiclient_types_ModelResource(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.ModelStatus":                                        schema_boeing_platform_boeing_apiclient_types_ModelStatus(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.MultiUserConfig":                                    schema_boeing_platform_boeing_apiclient_types_MultiUserConfig(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.NPXRuntimeConfig":                                   schema_boeing_platform_boeing_apiclient_types_NPXRuntimeConfig(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.BoeingbotAgent":                                       schema_boeing_platform_boeing_apiclient_types_BoeingbotAgent(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.BoeingbotAgentList":                                   schema_boeing_platform_boeing_apiclient_types_BoeingbotAgentList(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.BoeingbotAgentManifest":                               schema_boeing_platform_boeing_apiclient_types_BoeingbotAgentManifest(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.OAuthClient":                                        schema_boeing_platform_boeing_apiclient_types_OAuthClient(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.OAuthClientList":                                    schema_boeing_platform_boeing_apiclient_types_OAuthClientList(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.OAuthClientManifest":                                schema_boeing_platform_boeing_apiclient_types_OAuthClientManifest(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.OAuthDebuggerAuthorizationURL":                      schema_boeing_platform_boeing_apiclient_types_OAuthDebuggerAuthorizationURL(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.OAuthDebuggerAuthorizationURLRequest":               schema_boeing_platform_boeing_apiclient_types_OAuthDebuggerAuthorizationURLRequest(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.OAuthDebuggerTokenRequest":                          schema_boeing_platform_boeing_apiclient_types_OAuthDebuggerTokenRequest(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.OAuthMetadata":                                      schema_boeing_platform_boeing_apiclient_types_OAuthMetadata(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.OAuthToken":                                         schema_boeing_platform_boeing_apiclient_types_OAuthToken(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.PodSecurityAdmissionSettings":                       schema_boeing_platform_boeing_apiclient_types_PodSecurityAdmissionSettings(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.PowerUserWorkspace":                                 schema_boeing_platform_boeing_apiclient_types_PowerUserWorkspace(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.PowerUserWorkspaceList":                             schema_boeing_platform_boeing_apiclient_types_PowerUserWorkspaceList(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.Project":                                            schema_boeing_platform_boeing_apiclient_types_Project(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.ProjectList":                                        schema_boeing_platform_boeing_apiclient_types_ProjectList(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.ProjectManifest":                                    schema_boeing_platform_boeing_apiclient_types_ProjectManifest(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.ProviderConfigurationParameter":                     schema_boeing_platform_boeing_apiclient_types_ProviderConfigurationParameter(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.PublishedArtifact":                                  schema_boeing_platform_boeing_apiclient_types_PublishedArtifact(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.PublishedArtifactList":                              schema_boeing_platform_boeing_apiclient_types_PublishedArtifactList(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.PublishedArtifactManifest":                          schema_boeing_platform_boeing_apiclient_types_PublishedArtifactManifest(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.PublishedArtifactVersionEntry":                      schema_boeing_platform_boeing_apiclient_types_PublishedArtifactVersionEntry(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.PublishedArtifactVersionSummary":                    schema_boeing_platform_boeing_apiclient_types_PublishedArtifactVersionSummary(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.RegistryGitHubMeta":                                 schema_boeing_platform_boeing_apiclient_types_RegistryGitHubMeta(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.RegistryMeta":                                       schema_boeing_platform_boeing_apiclient_types_RegistryMeta(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.RegistryBoeingMeta":                                   schema_boeing_platform_boeing_apiclient_types_RegistryBoeingMeta(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.RegistryOfficialMeta":                               schema_boeing_platform_boeing_apiclient_types_RegistryOfficialMeta(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.RegistryPublisherProvidedMeta":                      schema_boeing_platform_boeing_apiclient_types_RegistryPublisherProvidedMeta(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.RegistryServerDetail":                               schema_boeing_platform_boeing_apiclient_types_RegistryServerDetail(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.RegistryServerIcon":                                 schema_boeing_platform_boeing_apiclient_types_RegistryServerIcon(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.RegistryServerList":                                 schema_boeing_platform_boeing_apiclient_types_RegistryServerList(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.RegistryServerListMetadata":                         schema_boeing_platform_boeing_apiclient_types_RegistryServerListMetadata(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.RegistryServerMeta":                                 schema_boeing_platform_boeing_apiclient_types_RegistryServerMeta(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.RegistryServerRemote":                               schema_boeing_platform_boeing_apiclient_types_RegistryServerRemote(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.RegistryServerRepository":                           schema_boeing_platform_boeing_apiclient_types_RegistryServerRepository(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.RegistryServerResponse":                             schema_boeing_platform_boeing_apiclient_types_RegistryServerResponse(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.RemainingTokenUsage":                                schema_boeing_platform_boeing_apiclient_types_RemainingTokenUsage(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.RemoteCatalogConfig":                                schema_boeing_platform_boeing_apiclient_types_RemoteCatalogConfig(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.RemoteRuntimeConfig":                                schema_boeing_platform_boeing_apiclient_types_RemoteRuntimeConfig(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.Resource":                                           schema_boeing_platform_boeing_apiclient_types_Resource(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.RuntimeValidationError":                             schema_boeing_platform_boeing_apiclient_types_RuntimeValidationError(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.S3Config":                                           schema_boeing_platform_boeing_apiclient_types_S3Config(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.Schedule":                                           schema_boeing_platform_boeing_apiclient_types_Schedule(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.ScheduledAuditLogExportCreateRequest":               schema_boeing_platform_boeing_apiclient_types_ScheduledAuditLogExportCreateRequest(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.ScheduledAuditLogExportListResponse":                schema_boeing_platform_boeing_apiclient_types_ScheduledAuditLogExportListResponse(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.ScheduledAuditLogExportResponse":                    schema_boeing_platform_boeing_apiclient_types_ScheduledAuditLogExportResponse(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.ScheduledAuditLogExportUpdateRequest":               schema_boeing_platform_boeing_apiclient_types_ScheduledAuditLogExportUpdateRequest(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.Skill":                                              schema_boeing_platform_boeing_apiclient_types_Skill(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.SkillAccessRule":                                    schema_boeing_platform_boeing_apiclient_types_SkillAccessRule(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.SkillAccessRuleList":                                schema_boeing_platform_boeing_apiclient_types_SkillAccessRuleList(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.SkillAccessRuleManifest":                            schema_boeing_platform_boeing_apiclient_types_SkillAccessRuleManifest(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.SkillList":                                          schema_boeing_platform_boeing_apiclient_types_SkillList(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.SkillManifest":                                      schema_boeing_platform_boeing_apiclient_types_SkillManifest(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.SkillRepository":                                    schema_boeing_platform_boeing_apiclient_types_SkillRepository(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.SkillRepositoryList":                                schema_boeing_platform_boeing_apiclient_types_SkillRepositoryList(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.SkillRepositoryManifest":                            schema_boeing_platform_boeing_apiclient_types_SkillRepositoryManifest(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.SkillResource":                                      schema_boeing_platform_boeing_apiclient_types_SkillResource(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.StorageConfig":                                      schema_boeing_platform_boeing_apiclient_types_StorageConfig(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.StorageCredentialsResponse":                         schema_boeing_platform_boeing_apiclient_types_StorageCredentialsResponse(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.StorageCredentialsTestRequest":                      schema_boeing_platform_boeing_apiclient_types_StorageCredentialsTestRequest(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.StorageCredentialsTestResponse":                     schema_boeing_platform_boeing_apiclient_types_StorageCredentialsTestResponse(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.StorageProviderConfigInput":                         schema_boeing_platform_boeing_apiclient_types_StorageProviderConfigInput(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.Subject":                                            schema_boeing_platform_boeing_apiclient_types_Subject(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.SystemMCPCatalog":                                   schema_boeing_platform_boeing_apiclient_types_SystemMCPCatalog(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.SystemMCPCatalogList":                               schema_boeing_platform_boeing_apiclient_types_SystemMCPCatalogList(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.SystemMCPCatalogManifest":                           schema_boeing_platform_boeing_apiclient_types_SystemMCPCatalogManifest(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.SystemMCPServer":                                    schema_boeing_platform_boeing_apiclient_types_SystemMCPServer(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.SystemMCPServerCatalogEntry":                        schema_boeing_platform_boeing_apiclient_types_SystemMCPServerCatalogEntry(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.SystemMCPServerCatalogEntryList":                    schema_boeing_platform_boeing_apiclient_types_SystemMCPServerCatalogEntryList(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.SystemMCPServerCatalogEntryManifest":                schema_boeing_platform_boeing_apiclient_types_SystemMCPServerCatalogEntryManifest(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.SystemMCPServerList":                                schema_boeing_platform_boeing_apiclient_types_SystemMCPServerList(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.SystemMCPServerManifest":                            schema_boeing_platform_boeing_apiclient_types_SystemMCPServerManifest(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.ThemePreferences":                                   schema_boeing_platform_boeing_apiclient_types_ThemePreferences(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.Time":                                               schema_boeing_platform_boeing_apiclient_types_Time(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.TokenUsage":                                         schema_boeing_platform_boeing_apiclient_types_TokenUsage(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.TokenUsageList":                                     schema_boeing_platform_boeing_apiclient_types_TokenUsageList(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.ToolOverride":                                       schema_boeing_platform_boeing_apiclient_types_ToolOverride(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.UVXRuntimeConfig":                                   schema_boeing_platform_boeing_apiclient_types_UVXRuntimeConfig(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.User":                                               schema_boeing_platform_boeing_apiclient_types_User(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.UserDefaultRoleSetting":                             schema_boeing_platform_boeing_apiclient_types_UserDefaultRoleSetting(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.UserList":                                           schema_boeing_platform_boeing_apiclient_types_UserList(ref),
+		"github.com/boeing-ai-gateway/boeing/apiclient/types.WebhookStatus":                                      schema_boeing_platform_boeing_apiclient_types_WebhookStatus(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.AccessControlRule":                 schema_storage_apis_boeingboeingai_v1_AccessControlRule(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.AccessControlRuleList":             schema_storage_apis_boeingboeingai_v1_AccessControlRuleList(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.AccessControlRuleSpec":             schema_storage_apis_boeingboeingai_v1_AccessControlRuleSpec(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.Alias":                             schema_storage_apis_boeingboeingai_v1_Alias(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.AliasList":                         schema_storage_apis_boeingboeingai_v1_AliasList(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.AliasSpec":                         schema_storage_apis_boeingboeingai_v1_AliasSpec(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.AppNotification":                   schema_storage_apis_boeingboeingai_v1_AppNotification(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.AppNotificationList":               schema_storage_apis_boeingboeingai_v1_AppNotificationList(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.AppNotificationSpec":               schema_storage_apis_boeingboeingai_v1_AppNotificationSpec(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.AppNotificationStatus":             schema_storage_apis_boeingboeingai_v1_AppNotificationStatus(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.AppPreferences":                    schema_storage_apis_boeingboeingai_v1_AppPreferences(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.AppPreferencesList":                schema_storage_apis_boeingboeingai_v1_AppPreferencesList(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.AppPreferencesSpec":                schema_storage_apis_boeingboeingai_v1_AppPreferencesSpec(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.AppPreferencesStatus":              schema_storage_apis_boeingboeingai_v1_AppPreferencesStatus(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.AuditLogExport":                    schema_storage_apis_boeingboeingai_v1_AuditLogExport(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.AuditLogExportList":                schema_storage_apis_boeingboeingai_v1_AuditLogExportList(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.AuditLogExportSpec":                schema_storage_apis_boeingboeingai_v1_AuditLogExportSpec(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.AuditLogExportStatus":              schema_storage_apis_boeingboeingai_v1_AuditLogExportStatus(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.AuthProvider":                      schema_storage_apis_boeingboeingai_v1_AuthProvider(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.AuthProviderList":                  schema_storage_apis_boeingboeingai_v1_AuthProviderList(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.AuthProviderSpec":                  schema_storage_apis_boeingboeingai_v1_AuthProviderSpec(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.AuthProviderStatus":                schema_storage_apis_boeingboeingai_v1_AuthProviderStatus(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.DefaultModelAlias":                 schema_storage_apis_boeingboeingai_v1_DefaultModelAlias(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.DefaultModelAliasList":             schema_storage_apis_boeingboeingai_v1_DefaultModelAliasList(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.DefaultModelAliasSpec":             schema_storage_apis_boeingboeingai_v1_DefaultModelAliasSpec(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.DefaultModelAliasStatus":           schema_storage_apis_boeingboeingai_v1_DefaultModelAliasStatus(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.DeploymentCondition":               schema_storage_apis_boeingboeingai_v1_DeploymentCondition(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.EmptyStatus":                       schema_storage_apis_boeingboeingai_v1_EmptyStatus(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.GroupRoleChange":                   schema_storage_apis_boeingboeingai_v1_GroupRoleChange(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.GroupRoleChangeList":               schema_storage_apis_boeingboeingai_v1_GroupRoleChangeList(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.GroupRoleChangeSpec":               schema_storage_apis_boeingboeingai_v1_GroupRoleChangeSpec(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.ImagePullSecret":                   schema_storage_apis_boeingboeingai_v1_ImagePullSecret(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.ImagePullSecretList":               schema_storage_apis_boeingboeingai_v1_ImagePullSecretList(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.ImagePullSecretSpec":               schema_storage_apis_boeingboeingai_v1_ImagePullSecretSpec(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.ImagePullSecretStatus":             schema_storage_apis_boeingboeingai_v1_ImagePullSecretStatus(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.K8sSettings":                       schema_storage_apis_boeingboeingai_v1_K8sSettings(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.K8sSettingsList":                   schema_storage_apis_boeingboeingai_v1_K8sSettingsList(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.K8sSettingsSpec":                   schema_storage_apis_boeingboeingai_v1_K8sSettingsSpec(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.K8sSettingsStatus":                 schema_storage_apis_boeingboeingai_v1_K8sSettingsStatus(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.MCPCatalog":                        schema_storage_apis_boeingboeingai_v1_MCPCatalog(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.MCPCatalogList":                    schema_storage_apis_boeingboeingai_v1_MCPCatalogList(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.MCPCatalogSpec":                    schema_storage_apis_boeingboeingai_v1_MCPCatalogSpec(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.MCPCatalogStatus":                  schema_storage_apis_boeingboeingai_v1_MCPCatalogStatus(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.MCPNetworkPolicy":                  schema_storage_apis_boeingboeingai_v1_MCPNetworkPolicy(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.MCPNetworkPolicyList":              schema_storage_apis_boeingboeingai_v1_MCPNetworkPolicyList(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.MCPNetworkPolicySpec":              schema_storage_apis_boeingboeingai_v1_MCPNetworkPolicySpec(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.MCPNetworkPolicyStatus":            schema_storage_apis_boeingboeingai_v1_MCPNetworkPolicyStatus(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.MCPServer":                         schema_storage_apis_boeingboeingai_v1_MCPServer(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.MCPServerCatalogEntry":             schema_storage_apis_boeingboeingai_v1_MCPServerCatalogEntry(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.MCPServerCatalogEntryList":         schema_storage_apis_boeingboeingai_v1_MCPServerCatalogEntryList(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.MCPServerCatalogEntrySpec":         schema_storage_apis_boeingboeingai_v1_MCPServerCatalogEntrySpec(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.MCPServerCatalogEntryStatus":       schema_storage_apis_boeingboeingai_v1_MCPServerCatalogEntryStatus(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.MCPServerInstance":                 schema_storage_apis_boeingboeingai_v1_MCPServerInstance(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.MCPServerInstanceList":             schema_storage_apis_boeingboeingai_v1_MCPServerInstanceList(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.MCPServerInstanceSpec":             schema_storage_apis_boeingboeingai_v1_MCPServerInstanceSpec(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.MCPServerList":                     schema_storage_apis_boeingboeingai_v1_MCPServerList(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.MCPServerSpec":                     schema_storage_apis_boeingboeingai_v1_MCPServerSpec(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.MCPServerStatus":                   schema_storage_apis_boeingboeingai_v1_MCPServerStatus(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.MCPWebhookValidation":              schema_storage_apis_boeingboeingai_v1_MCPWebhookValidation(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.MCPWebhookValidationList":          schema_storage_apis_boeingboeingai_v1_MCPWebhookValidationList(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.MCPWebhookValidationSpec":          schema_storage_apis_boeingboeingai_v1_MCPWebhookValidationSpec(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.MCPWebhookValidationStatus":        schema_storage_apis_boeingboeingai_v1_MCPWebhookValidationStatus(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.MessagePolicy":                     schema_storage_apis_boeingboeingai_v1_MessagePolicy(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.MessagePolicyList":                 schema_storage_apis_boeingboeingai_v1_MessagePolicyList(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.MessagePolicySpec":                 schema_storage_apis_boeingboeingai_v1_MessagePolicySpec(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.Model":                             schema_storage_apis_boeingboeingai_v1_Model(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.ModelAccessPolicy":                 schema_storage_apis_boeingboeingai_v1_ModelAccessPolicy(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.ModelAccessPolicyList":             schema_storage_apis_boeingboeingai_v1_ModelAccessPolicyList(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.ModelAccessPolicySpec":             schema_storage_apis_boeingboeingai_v1_ModelAccessPolicySpec(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.ModelList":                         schema_storage_apis_boeingboeingai_v1_ModelList(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.ModelProvider":                     schema_storage_apis_boeingboeingai_v1_ModelProvider(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.ModelProviderList":                 schema_storage_apis_boeingboeingai_v1_ModelProviderList(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.ModelProviderSpec":                 schema_storage_apis_boeingboeingai_v1_ModelProviderSpec(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.ModelProviderStatus":               schema_storage_apis_boeingboeingai_v1_ModelProviderStatus(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.ModelSpec":                         schema_storage_apis_boeingboeingai_v1_ModelSpec(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.ModelStatus":                       schema_storage_apis_boeingboeingai_v1_ModelStatus(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.BoeingbotAgent":                      schema_storage_apis_boeingboeingai_v1_BoeingbotAgent(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.BoeingbotAgentList":                  schema_storage_apis_boeingboeingai_v1_BoeingbotAgentList(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.BoeingbotAgentSpec":                  schema_storage_apis_boeingboeingai_v1_BoeingbotAgentSpec(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.BoeingbotAgentStatus":                schema_storage_apis_boeingboeingai_v1_BoeingbotAgentStatus(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.OAuthAuthRequest":                  schema_storage_apis_boeingboeingai_v1_OAuthAuthRequest(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.OAuthAuthRequestList":              schema_storage_apis_boeingboeingai_v1_OAuthAuthRequestList(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.OAuthAuthRequestSpec":              schema_storage_apis_boeingboeingai_v1_OAuthAuthRequestSpec(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.OAuthAuthRequestStatus":            schema_storage_apis_boeingboeingai_v1_OAuthAuthRequestStatus(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.OAuthClient":                       schema_storage_apis_boeingboeingai_v1_OAuthClient(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.OAuthClientList":                   schema_storage_apis_boeingboeingai_v1_OAuthClientList(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.OAuthClientSpec":                   schema_storage_apis_boeingboeingai_v1_OAuthClientSpec(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.OAuthClientStatus":                 schema_storage_apis_boeingboeingai_v1_OAuthClientStatus(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.OAuthMetadata":                     schema_storage_apis_boeingboeingai_v1_OAuthMetadata(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.OAuthToken":                        schema_storage_apis_boeingboeingai_v1_OAuthToken(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.OAuthTokenList":                    schema_storage_apis_boeingboeingai_v1_OAuthTokenList(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.OAuthTokenSpec":                    schema_storage_apis_boeingboeingai_v1_OAuthTokenSpec(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.OAuthTokenStatus":                  schema_storage_apis_boeingboeingai_v1_OAuthTokenStatus(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.OktaGroupMigration":                schema_storage_apis_boeingboeingai_v1_OktaGroupMigration(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.OktaGroupMigrationList":            schema_storage_apis_boeingboeingai_v1_OktaGroupMigrationList(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.OktaGroupMigrationSpec":            schema_storage_apis_boeingboeingai_v1_OktaGroupMigrationSpec(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.PodSecurityAdmissionSettings":      schema_storage_apis_boeingboeingai_v1_PodSecurityAdmissionSettings(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.PowerUserWorkspace":                schema_storage_apis_boeingboeingai_v1_PowerUserWorkspace(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.PowerUserWorkspaceList":            schema_storage_apis_boeingboeingai_v1_PowerUserWorkspaceList(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.PowerUserWorkspaceSpec":            schema_storage_apis_boeingboeingai_v1_PowerUserWorkspaceSpec(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.PowerUserWorkspaceStatus":          schema_storage_apis_boeingboeingai_v1_PowerUserWorkspaceStatus(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.Project":                           schema_storage_apis_boeingboeingai_v1_Project(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.ProjectList":                       schema_storage_apis_boeingboeingai_v1_ProjectList(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.ProjectSpec":                       schema_storage_apis_boeingboeingai_v1_ProjectSpec(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.ProjectStatus":                     schema_storage_apis_boeingboeingai_v1_ProjectStatus(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.ProjectV2":                         schema_storage_apis_boeingboeingai_v1_ProjectV2(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.ProjectV2List":                     schema_storage_apis_boeingboeingai_v1_ProjectV2List(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.PublishedArtifact":                 schema_storage_apis_boeingboeingai_v1_PublishedArtifact(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.PublishedArtifactList":             schema_storage_apis_boeingboeingai_v1_PublishedArtifactList(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.PublishedArtifactSpec":             schema_storage_apis_boeingboeingai_v1_PublishedArtifactSpec(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.PublishedArtifactStatus":           schema_storage_apis_boeingboeingai_v1_PublishedArtifactStatus(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.Ref":                               schema_storage_apis_boeingboeingai_v1_Ref(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.Schedule":                          schema_storage_apis_boeingboeingai_v1_Schedule(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.ScheduledAuditLogExport":           schema_storage_apis_boeingboeingai_v1_ScheduledAuditLogExport(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.ScheduledAuditLogExportList":       schema_storage_apis_boeingboeingai_v1_ScheduledAuditLogExportList(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.ScheduledAuditLogExportSpec":       schema_storage_apis_boeingboeingai_v1_ScheduledAuditLogExportSpec(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.ScheduledAuditLogExportStatus":     schema_storage_apis_boeingboeingai_v1_ScheduledAuditLogExportStatus(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.Skill":                             schema_storage_apis_boeingboeingai_v1_Skill(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.SkillAccessRule":                   schema_storage_apis_boeingboeingai_v1_SkillAccessRule(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.SkillAccessRuleList":               schema_storage_apis_boeingboeingai_v1_SkillAccessRuleList(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.SkillAccessRuleSpec":               schema_storage_apis_boeingboeingai_v1_SkillAccessRuleSpec(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.SkillList":                         schema_storage_apis_boeingboeingai_v1_SkillList(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.SkillRepository":                   schema_storage_apis_boeingboeingai_v1_SkillRepository(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.SkillRepositoryList":               schema_storage_apis_boeingboeingai_v1_SkillRepositoryList(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.SkillRepositorySpec":               schema_storage_apis_boeingboeingai_v1_SkillRepositorySpec(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.SkillRepositoryStatus":             schema_storage_apis_boeingboeingai_v1_SkillRepositoryStatus(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.SkillSpec":                         schema_storage_apis_boeingboeingai_v1_SkillSpec(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.SkillStatus":                       schema_storage_apis_boeingboeingai_v1_SkillStatus(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.SystemMCPCatalog":                  schema_storage_apis_boeingboeingai_v1_SystemMCPCatalog(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.SystemMCPCatalogList":              schema_storage_apis_boeingboeingai_v1_SystemMCPCatalogList(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.SystemMCPCatalogSpec":              schema_storage_apis_boeingboeingai_v1_SystemMCPCatalogSpec(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.SystemMCPCatalogStatus":            schema_storage_apis_boeingboeingai_v1_SystemMCPCatalogStatus(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.SystemMCPServer":                   schema_storage_apis_boeingboeingai_v1_SystemMCPServer(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.SystemMCPServerCatalogEntry":       schema_storage_apis_boeingboeingai_v1_SystemMCPServerCatalogEntry(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.SystemMCPServerCatalogEntryList":   schema_storage_apis_boeingboeingai_v1_SystemMCPServerCatalogEntryList(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.SystemMCPServerCatalogEntrySpec":   schema_storage_apis_boeingboeingai_v1_SystemMCPServerCatalogEntrySpec(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.SystemMCPServerCatalogEntryStatus": schema_storage_apis_boeingboeingai_v1_SystemMCPServerCatalogEntryStatus(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.SystemMCPServerList":               schema_storage_apis_boeingboeingai_v1_SystemMCPServerList(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.SystemMCPServerSpec":               schema_storage_apis_boeingboeingai_v1_SystemMCPServerSpec(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.SystemMCPServerStatus":             schema_storage_apis_boeingboeingai_v1_SystemMCPServerStatus(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.UserDefaultRoleSetting":            schema_storage_apis_boeingboeingai_v1_UserDefaultRoleSetting(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.UserDefaultRoleSettingList":        schema_storage_apis_boeingboeingai_v1_UserDefaultRoleSettingList(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.UserDefaultRoleSettingSpec":        schema_storage_apis_boeingboeingai_v1_UserDefaultRoleSettingSpec(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.UserDelete":                        schema_storage_apis_boeingboeingai_v1_UserDelete(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.UserDeleteList":                    schema_storage_apis_boeingboeingai_v1_UserDeleteList(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.UserDeleteSpec":                    schema_storage_apis_boeingboeingai_v1_UserDeleteSpec(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.UserGroupChange":                   schema_storage_apis_boeingboeingai_v1_UserGroupChange(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.UserGroupChangeList":               schema_storage_apis_boeingboeingai_v1_UserGroupChangeList(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.UserGroupChangeSpec":               schema_storage_apis_boeingboeingai_v1_UserGroupChangeSpec(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.UserRoleChange":                    schema_storage_apis_boeingboeingai_v1_UserRoleChange(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.UserRoleChangeList":                schema_storage_apis_boeingboeingai_v1_UserRoleChangeList(ref),
+		"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.UserRoleChangeSpec":                schema_storage_apis_boeingboeingai_v1_UserRoleChangeSpec(ref),
 		"k8s.io/api/coordination/v1.Lease":                                                                 schema_k8sio_api_coordination_v1_Lease(ref),
 		"k8s.io/api/coordination/v1.LeaseList":                                                             schema_k8sio_api_coordination_v1_LeaseList(ref),
 		"k8s.io/api/coordination/v1.LeaseSpec":                                                             schema_k8sio_api_coordination_v1_LeaseSpec(ref),
@@ -452,7 +452,7 @@ func GetOpenAPIDefinitions(ref common.ReferenceCallback) map[string]common.OpenA
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_APIActivity(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_APIActivity(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -467,7 +467,7 @@ func schema_obot_platform_obot_apiclient_types_APIActivity(ref common.ReferenceC
 					},
 					"date": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("github.com/obot-platform/obot/apiclient/types.Time"),
+							Ref: ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Time"),
 						},
 					},
 				},
@@ -475,11 +475,11 @@ func schema_obot_platform_obot_apiclient_types_APIActivity(ref common.ReferenceC
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.Time"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.Time"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_APIActivityList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_APIActivityList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -492,7 +492,7 @@ func schema_obot_platform_obot_apiclient_types_APIActivityList(ref common.Refere
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.APIActivity"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.APIActivity"),
 									},
 								},
 							},
@@ -503,11 +503,11 @@ func schema_obot_platform_obot_apiclient_types_APIActivityList(ref common.Refere
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.APIActivity"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.APIActivity"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_AccessControlRule(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_AccessControlRule(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -521,12 +521,12 @@ func schema_obot_platform_obot_apiclient_types_AccessControlRule(ref common.Refe
 					},
 					"created": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("github.com/obot-platform/obot/apiclient/types.Time"),
+							Ref: ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Time"),
 						},
 					},
 					"deleted": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("github.com/obot-platform/obot/apiclient/types.Time"),
+							Ref: ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Time"),
 						},
 					},
 					"links": {
@@ -603,7 +603,7 @@ func schema_obot_platform_obot_apiclient_types_AccessControlRule(ref common.Refe
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.Subject"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Subject"),
 									},
 								},
 							},
@@ -616,7 +616,7 @@ func schema_obot_platform_obot_apiclient_types_AccessControlRule(ref common.Refe
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.Resource"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Resource"),
 									},
 								},
 							},
@@ -627,11 +627,11 @@ func schema_obot_platform_obot_apiclient_types_AccessControlRule(ref common.Refe
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.Resource", "github.com/obot-platform/obot/apiclient/types.Subject", "github.com/obot-platform/obot/apiclient/types.Time"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.Resource", "github.com/boeing-ai-gateway/boeing/apiclient/types.Subject", "github.com/boeing-ai-gateway/boeing/apiclient/types.Time"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_AccessControlRuleList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_AccessControlRuleList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -644,7 +644,7 @@ func schema_obot_platform_obot_apiclient_types_AccessControlRuleList(ref common.
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.AccessControlRule"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.AccessControlRule"),
 									},
 								},
 							},
@@ -655,11 +655,11 @@ func schema_obot_platform_obot_apiclient_types_AccessControlRuleList(ref common.
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.AccessControlRule"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.AccessControlRule"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_AccessControlRuleManifest(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_AccessControlRuleManifest(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -678,7 +678,7 @@ func schema_obot_platform_obot_apiclient_types_AccessControlRuleManifest(ref com
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.Subject"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Subject"),
 									},
 								},
 							},
@@ -691,7 +691,7 @@ func schema_obot_platform_obot_apiclient_types_AccessControlRuleManifest(ref com
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.Resource"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Resource"),
 									},
 								},
 							},
@@ -701,11 +701,11 @@ func schema_obot_platform_obot_apiclient_types_AccessControlRuleManifest(ref com
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.Resource", "github.com/obot-platform/obot/apiclient/types.Subject"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.Resource", "github.com/boeing-ai-gateway/boeing/apiclient/types.Subject"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_AppNotification(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_AppNotification(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -715,23 +715,23 @@ func schema_obot_platform_obot_apiclient_types_AppNotification(ref common.Refere
 					"banner": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/apiclient/types.BannerNotification"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.BannerNotification"),
 						},
 					},
 					"updated": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("github.com/obot-platform/obot/apiclient/types.Time"),
+							Ref: ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Time"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.BannerNotification", "github.com/obot-platform/obot/apiclient/types.Time"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.BannerNotification", "github.com/boeing-ai-gateway/boeing/apiclient/types.Time"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_AppPreferences(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_AppPreferences(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -741,30 +741,30 @@ func schema_obot_platform_obot_apiclient_types_AppPreferences(ref common.Referen
 					"logos": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/apiclient/types.LogoPreferences"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.LogoPreferences"),
 						},
 					},
 					"theme": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/apiclient/types.ThemePreferences"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.ThemePreferences"),
 						},
 					},
 					"metadata": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/apiclient/types.Metadata"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Metadata"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.LogoPreferences", "github.com/obot-platform/obot/apiclient/types.Metadata", "github.com/obot-platform/obot/apiclient/types.ThemePreferences"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.LogoPreferences", "github.com/boeing-ai-gateway/boeing/apiclient/types.Metadata", "github.com/boeing-ai-gateway/boeing/apiclient/types.ThemePreferences"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_AuditLogExportCreateRequest(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_AuditLogExportCreateRequest(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -780,18 +780,18 @@ func schema_obot_platform_obot_apiclient_types_AuditLogExportCreateRequest(ref c
 					},
 					"startTime": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("github.com/obot-platform/obot/apiclient/types.Time"),
+							Ref: ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Time"),
 						},
 					},
 					"endTime": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("github.com/obot-platform/obot/apiclient/types.Time"),
+							Ref: ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Time"),
 						},
 					},
 					"filters": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/apiclient/types.AuditLogExportFilters"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.AuditLogExportFilters"),
 						},
 					},
 					"bucket": {
@@ -811,11 +811,11 @@ func schema_obot_platform_obot_apiclient_types_AuditLogExportCreateRequest(ref c
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.AuditLogExportFilters", "github.com/obot-platform/obot/apiclient/types.Time"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.AuditLogExportFilters", "github.com/boeing-ai-gateway/boeing/apiclient/types.Time"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_AuditLogExportFilters(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_AuditLogExportFilters(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -988,7 +988,7 @@ func schema_obot_platform_obot_apiclient_types_AuditLogExportFilters(ref common.
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_AuditLogExportListResponse(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_AuditLogExportListResponse(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -1002,7 +1002,7 @@ func schema_obot_platform_obot_apiclient_types_AuditLogExportListResponse(ref co
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.AuditLogExportResponse"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.AuditLogExportResponse"),
 									},
 								},
 							},
@@ -1020,11 +1020,11 @@ func schema_obot_platform_obot_apiclient_types_AuditLogExportListResponse(ref co
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.AuditLogExportResponse"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.AuditLogExportResponse"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_AuditLogExportResponse(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_AuditLogExportResponse(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -1066,18 +1066,18 @@ func schema_obot_platform_obot_apiclient_types_AuditLogExportResponse(ref common
 					},
 					"startTime": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("github.com/obot-platform/obot/apiclient/types.Time"),
+							Ref: ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Time"),
 						},
 					},
 					"endTime": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("github.com/obot-platform/obot/apiclient/types.Time"),
+							Ref: ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Time"),
 						},
 					},
 					"filters": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/apiclient/types.AuditLogExportFilters"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.AuditLogExportFilters"),
 						},
 					},
 					"state": {
@@ -1107,17 +1107,17 @@ func schema_obot_platform_obot_apiclient_types_AuditLogExportResponse(ref common
 					},
 					"startedAt": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("github.com/obot-platform/obot/apiclient/types.Time"),
+							Ref: ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Time"),
 						},
 					},
 					"completedAt": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("github.com/obot-platform/obot/apiclient/types.Time"),
+							Ref: ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Time"),
 						},
 					},
 					"createdAt": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("github.com/obot-platform/obot/apiclient/types.Time"),
+							Ref: ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Time"),
 						},
 					},
 				},
@@ -1125,11 +1125,11 @@ func schema_obot_platform_obot_apiclient_types_AuditLogExportResponse(ref common
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.AuditLogExportFilters", "github.com/obot-platform/obot/apiclient/types.Time"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.AuditLogExportFilters", "github.com/boeing-ai-gateway/boeing/apiclient/types.Time"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_AuthProvider(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_AuthProvider(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -1138,19 +1138,19 @@ func schema_obot_platform_obot_apiclient_types_AuthProvider(ref common.Reference
 					"Metadata": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/apiclient/types.Metadata"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Metadata"),
 						},
 					},
 					"AuthProviderManifest": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/apiclient/types.AuthProviderManifest"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.AuthProviderManifest"),
 						},
 					},
 					"AuthProviderStatus": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/apiclient/types.AuthProviderStatus"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.AuthProviderStatus"),
 						},
 					},
 				},
@@ -1158,11 +1158,11 @@ func schema_obot_platform_obot_apiclient_types_AuthProvider(ref common.Reference
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.AuthProviderManifest", "github.com/obot-platform/obot/apiclient/types.AuthProviderStatus", "github.com/obot-platform/obot/apiclient/types.Metadata"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.AuthProviderManifest", "github.com/boeing-ai-gateway/boeing/apiclient/types.AuthProviderStatus", "github.com/boeing-ai-gateway/boeing/apiclient/types.Metadata"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_AuthProviderList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_AuthProviderList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -1175,7 +1175,7 @@ func schema_obot_platform_obot_apiclient_types_AuthProviderList(ref common.Refer
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.AuthProvider"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.AuthProvider"),
 									},
 								},
 							},
@@ -1186,11 +1186,11 @@ func schema_obot_platform_obot_apiclient_types_AuthProviderList(ref common.Refer
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.AuthProvider"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.AuthProvider"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_AuthProviderManifest(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_AuthProviderManifest(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -1268,7 +1268,7 @@ func schema_obot_platform_obot_apiclient_types_AuthProviderManifest(ref common.R
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.ProviderConfigurationParameter"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.ProviderConfigurationParameter"),
 									},
 								},
 							},
@@ -1281,7 +1281,7 @@ func schema_obot_platform_obot_apiclient_types_AuthProviderManifest(ref common.R
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.ProviderConfigurationParameter"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.ProviderConfigurationParameter"),
 									},
 								},
 							},
@@ -1298,11 +1298,11 @@ func schema_obot_platform_obot_apiclient_types_AuthProviderManifest(ref common.R
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.ProviderConfigurationParameter"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.ProviderConfigurationParameter"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_AuthProviderStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_AuthProviderStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -1311,7 +1311,7 @@ func schema_obot_platform_obot_apiclient_types_AuthProviderStatus(ref common.Ref
 					"CommonProviderStatus": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/apiclient/types.CommonProviderStatus"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.CommonProviderStatus"),
 						},
 					},
 					"namespace": {
@@ -1325,11 +1325,11 @@ func schema_obot_platform_obot_apiclient_types_AuthProviderStatus(ref common.Ref
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.CommonProviderStatus"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.CommonProviderStatus"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_AzureConfig(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_AzureConfig(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -1365,7 +1365,7 @@ func schema_obot_platform_obot_apiclient_types_AzureConfig(ref common.ReferenceC
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_BannerNotification(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_BannerNotification(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -1408,7 +1408,7 @@ func schema_obot_platform_obot_apiclient_types_BannerNotification(ref common.Ref
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_BasicImagePullSecretConfig(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_BasicImagePullSecretConfig(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -1438,7 +1438,7 @@ func schema_obot_platform_obot_apiclient_types_BasicImagePullSecretConfig(ref co
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_CatalogComponentServer(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_CatalogComponentServer(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -1462,7 +1462,7 @@ func schema_obot_platform_obot_apiclient_types_CatalogComponentServer(ref common
 						SchemaProps: spec.SchemaProps{
 							Description: "Manifest is the catalog entry manifest of the component server",
 							Default:     map[string]interface{}{},
-							Ref:         ref("github.com/obot-platform/obot/apiclient/types.MCPServerCatalogEntryManifest"),
+							Ref:         ref("github.com/boeing-ai-gateway/boeing/apiclient/types.MCPServerCatalogEntryManifest"),
 						},
 					},
 					"toolOverrides": {
@@ -1473,7 +1473,7 @@ func schema_obot_platform_obot_apiclient_types_CatalogComponentServer(ref common
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.ToolOverride"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.ToolOverride"),
 									},
 								},
 							},
@@ -1491,11 +1491,11 @@ func schema_obot_platform_obot_apiclient_types_CatalogComponentServer(ref common
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.MCPServerCatalogEntryManifest", "github.com/obot-platform/obot/apiclient/types.ToolOverride"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.MCPServerCatalogEntryManifest", "github.com/boeing-ai-gateway/boeing/apiclient/types.ToolOverride"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_ClientInfo(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_ClientInfo(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -1522,7 +1522,7 @@ func schema_obot_platform_obot_apiclient_types_ClientInfo(ref common.ReferenceCa
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_CommonProviderMetadata(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_CommonProviderMetadata(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -1600,7 +1600,7 @@ func schema_obot_platform_obot_apiclient_types_CommonProviderMetadata(ref common
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.ProviderConfigurationParameter"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.ProviderConfigurationParameter"),
 									},
 								},
 							},
@@ -1613,7 +1613,7 @@ func schema_obot_platform_obot_apiclient_types_CommonProviderMetadata(ref common
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.ProviderConfigurationParameter"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.ProviderConfigurationParameter"),
 									},
 								},
 							},
@@ -1624,11 +1624,11 @@ func schema_obot_platform_obot_apiclient_types_CommonProviderMetadata(ref common
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.ProviderConfigurationParameter"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.ProviderConfigurationParameter"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_CommonProviderStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_CommonProviderStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -1676,7 +1676,7 @@ func schema_obot_platform_obot_apiclient_types_CommonProviderStatus(ref common.R
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_ComponentServer(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_ComponentServer(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -1700,7 +1700,7 @@ func schema_obot_platform_obot_apiclient_types_ComponentServer(ref common.Refere
 						SchemaProps: spec.SchemaProps{
 							Description: "Manifest is the runtime manifest of the component server",
 							Default:     map[string]interface{}{},
-							Ref:         ref("github.com/obot-platform/obot/apiclient/types.MCPServerManifest"),
+							Ref:         ref("github.com/boeing-ai-gateway/boeing/apiclient/types.MCPServerManifest"),
 						},
 					},
 					"toolOverrides": {
@@ -1711,7 +1711,7 @@ func schema_obot_platform_obot_apiclient_types_ComponentServer(ref common.Refere
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.ToolOverride"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.ToolOverride"),
 									},
 								},
 							},
@@ -1736,11 +1736,11 @@ func schema_obot_platform_obot_apiclient_types_ComponentServer(ref common.Refere
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.MCPServerManifest", "github.com/obot-platform/obot/apiclient/types.ToolOverride"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.MCPServerManifest", "github.com/boeing-ai-gateway/boeing/apiclient/types.ToolOverride"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_CompositeCatalogConfig(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_CompositeCatalogConfig(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -1754,7 +1754,7 @@ func schema_obot_platform_obot_apiclient_types_CompositeCatalogConfig(ref common
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.CatalogComponentServer"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.CatalogComponentServer"),
 									},
 								},
 							},
@@ -1765,11 +1765,11 @@ func schema_obot_platform_obot_apiclient_types_CompositeCatalogConfig(ref common
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.CatalogComponentServer"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.CatalogComponentServer"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_CompositeRuntimeConfig(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_CompositeRuntimeConfig(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -1782,7 +1782,7 @@ func schema_obot_platform_obot_apiclient_types_CompositeRuntimeConfig(ref common
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.ComponentServer"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.ComponentServer"),
 									},
 								},
 							},
@@ -1793,11 +1793,11 @@ func schema_obot_platform_obot_apiclient_types_CompositeRuntimeConfig(ref common
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.ComponentServer"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.ComponentServer"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_ContainerizedRuntimeConfig(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_ContainerizedRuntimeConfig(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -1892,7 +1892,7 @@ func schema_obot_platform_obot_apiclient_types_ContainerizedRuntimeConfig(ref co
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_CustomS3Config(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_CustomS3Config(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -1931,7 +1931,7 @@ func schema_obot_platform_obot_apiclient_types_CustomS3Config(ref common.Referen
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_DefaultModelAlias(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_DefaultModelAlias(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -1940,7 +1940,7 @@ func schema_obot_platform_obot_apiclient_types_DefaultModelAlias(ref common.Refe
 					"DefaultModelAliasManifest": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/apiclient/types.DefaultModelAliasManifest"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.DefaultModelAliasManifest"),
 						},
 					},
 				},
@@ -1948,11 +1948,11 @@ func schema_obot_platform_obot_apiclient_types_DefaultModelAlias(ref common.Refe
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.DefaultModelAliasManifest"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.DefaultModelAliasManifest"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_DefaultModelAliasList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_DefaultModelAliasList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -1965,7 +1965,7 @@ func schema_obot_platform_obot_apiclient_types_DefaultModelAliasList(ref common.
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.DefaultModelAlias"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.DefaultModelAlias"),
 									},
 								},
 							},
@@ -1976,11 +1976,11 @@ func schema_obot_platform_obot_apiclient_types_DefaultModelAliasList(ref common.
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.DefaultModelAlias"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.DefaultModelAlias"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_DefaultModelAliasManifest(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_DefaultModelAliasManifest(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -2007,7 +2007,7 @@ func schema_obot_platform_obot_apiclient_types_DefaultModelAliasManifest(ref com
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_DeploymentCondition(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_DeploymentCondition(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -2046,13 +2046,13 @@ func schema_obot_platform_obot_apiclient_types_DeploymentCondition(ref common.Re
 					"lastTransitionTime": {
 						SchemaProps: spec.SchemaProps{
 							Description: "Last time the condition transitioned from one status to another.",
-							Ref:         ref("github.com/obot-platform/obot/apiclient/types.Time"),
+							Ref:         ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Time"),
 						},
 					},
 					"lastUpdateTime": {
 						SchemaProps: spec.SchemaProps{
 							Description: "Last time the condition was updated.",
-							Ref:         ref("github.com/obot-platform/obot/apiclient/types.Time"),
+							Ref:         ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Time"),
 						},
 					},
 				},
@@ -2060,11 +2060,11 @@ func schema_obot_platform_obot_apiclient_types_DeploymentCondition(ref common.Re
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.Time"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.Time"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_DeviceClientFleetSkill(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_DeviceClientFleetSkill(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -2109,7 +2109,7 @@ func schema_obot_platform_obot_apiclient_types_DeviceClientFleetSkill(ref common
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_DeviceClientFleetSummary(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_DeviceClientFleetSummary(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -2147,7 +2147,7 @@ func schema_obot_platform_obot_apiclient_types_DeviceClientFleetSummary(ref comm
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.DeviceClientFleetSkill"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.DeviceClientFleetSkill"),
 									},
 								},
 							},
@@ -2161,7 +2161,7 @@ func schema_obot_platform_obot_apiclient_types_DeviceClientFleetSummary(ref comm
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.DeviceMCPServerStat"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.DeviceMCPServerStat"),
 									},
 								},
 							},
@@ -2172,11 +2172,11 @@ func schema_obot_platform_obot_apiclient_types_DeviceClientFleetSummary(ref comm
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.DeviceClientFleetSkill", "github.com/obot-platform/obot/apiclient/types.DeviceMCPServerStat"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.DeviceClientFleetSkill", "github.com/boeing-ai-gateway/boeing/apiclient/types.DeviceMCPServerStat"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_DeviceClientFleetSummaryList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_DeviceClientFleetSummaryList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -2189,7 +2189,7 @@ func schema_obot_platform_obot_apiclient_types_DeviceClientFleetSummaryList(ref 
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.DeviceClientFleetSummary"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.DeviceClientFleetSummary"),
 									},
 								},
 							},
@@ -2200,11 +2200,11 @@ func schema_obot_platform_obot_apiclient_types_DeviceClientFleetSummaryList(ref 
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.DeviceClientFleetSummary"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.DeviceClientFleetSummary"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_DeviceClientFleetSummaryResponse(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_DeviceClientFleetSummaryResponse(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -2218,7 +2218,7 @@ func schema_obot_platform_obot_apiclient_types_DeviceClientFleetSummaryResponse(
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.DeviceClientFleetSummary"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.DeviceClientFleetSummary"),
 									},
 								},
 							},
@@ -2250,11 +2250,11 @@ func schema_obot_platform_obot_apiclient_types_DeviceClientFleetSummaryResponse(
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.DeviceClientFleetSummary"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.DeviceClientFleetSummary"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_DeviceClientStat(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_DeviceClientStat(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -2300,7 +2300,7 @@ func schema_obot_platform_obot_apiclient_types_DeviceClientStat(ref common.Refer
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_DeviceMCPServerDetail(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_DeviceMCPServerDetail(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -2310,7 +2310,7 @@ func schema_obot_platform_obot_apiclient_types_DeviceMCPServerDetail(ref common.
 					"DeviceMCPServerStat": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/apiclient/types.DeviceMCPServerStat"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.DeviceMCPServerStat"),
 						},
 					},
 					"envKeys": {
@@ -2348,11 +2348,11 @@ func schema_obot_platform_obot_apiclient_types_DeviceMCPServerDetail(ref common.
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.DeviceMCPServerStat"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.DeviceMCPServerStat"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_DeviceMCPServerOccurrence(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_DeviceMCPServerOccurrence(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -2394,7 +2394,7 @@ func schema_obot_platform_obot_apiclient_types_DeviceMCPServerOccurrence(ref com
 					"scannedAt": {
 						SchemaProps: spec.SchemaProps{
 							Description: "ScannedAt is when the parent scan was collected on the device.",
-							Ref:         ref("github.com/obot-platform/obot/apiclient/types.Time"),
+							Ref:         ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Time"),
 						},
 					},
 					"id": {
@@ -2410,11 +2410,11 @@ func schema_obot_platform_obot_apiclient_types_DeviceMCPServerOccurrence(ref com
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.Time"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.Time"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_DeviceMCPServerOccurrenceList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_DeviceMCPServerOccurrenceList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -2427,7 +2427,7 @@ func schema_obot_platform_obot_apiclient_types_DeviceMCPServerOccurrenceList(ref
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.DeviceMCPServerOccurrence"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.DeviceMCPServerOccurrence"),
 									},
 								},
 							},
@@ -2438,11 +2438,11 @@ func schema_obot_platform_obot_apiclient_types_DeviceMCPServerOccurrenceList(ref
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.DeviceMCPServerOccurrence"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.DeviceMCPServerOccurrence"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_DeviceMCPServerOccurrenceResponse(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_DeviceMCPServerOccurrenceResponse(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -2456,7 +2456,7 @@ func schema_obot_platform_obot_apiclient_types_DeviceMCPServerOccurrenceResponse
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.DeviceMCPServerOccurrence"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.DeviceMCPServerOccurrence"),
 									},
 								},
 							},
@@ -2488,11 +2488,11 @@ func schema_obot_platform_obot_apiclient_types_DeviceMCPServerOccurrenceResponse
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.DeviceMCPServerOccurrence"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.DeviceMCPServerOccurrence"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_DeviceMCPServerStat(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_DeviceMCPServerStat(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -2586,7 +2586,7 @@ func schema_obot_platform_obot_apiclient_types_DeviceMCPServerStat(ref common.Re
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_DeviceScan(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_DeviceScan(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -2595,7 +2595,7 @@ func schema_obot_platform_obot_apiclient_types_DeviceScan(ref common.ReferenceCa
 				Properties: map[string]spec.Schema{
 					"scannerVersion": {
 						SchemaProps: spec.SchemaProps{
-							Description: "ScannerVersion is the obot version that produced the scan.",
+							Description: "ScannerVersion is the boeing version that produced the scan.",
 							Default:     "",
 							Type:        []string{"string"},
 							Format:      "",
@@ -2604,7 +2604,7 @@ func schema_obot_platform_obot_apiclient_types_DeviceScan(ref common.ReferenceCa
 					"scannedAt": {
 						SchemaProps: spec.SchemaProps{
 							Description: "ScannedAt is when the scanner finished collecting on the device.",
-							Ref:         ref("github.com/obot-platform/obot/apiclient/types.Time"),
+							Ref:         ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Time"),
 						},
 					},
 					"deviceID": {
@@ -2654,7 +2654,7 @@ func schema_obot_platform_obot_apiclient_types_DeviceScan(ref common.ReferenceCa
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.DeviceScanFile"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.DeviceScanFile"),
 									},
 								},
 							},
@@ -2668,7 +2668,7 @@ func schema_obot_platform_obot_apiclient_types_DeviceScan(ref common.ReferenceCa
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.DeviceScanMCPServer"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.DeviceScanMCPServer"),
 									},
 								},
 							},
@@ -2682,7 +2682,7 @@ func schema_obot_platform_obot_apiclient_types_DeviceScan(ref common.ReferenceCa
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.DeviceScanSkill"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.DeviceScanSkill"),
 									},
 								},
 							},
@@ -2696,7 +2696,7 @@ func schema_obot_platform_obot_apiclient_types_DeviceScan(ref common.ReferenceCa
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.DeviceScanPlugin"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.DeviceScanPlugin"),
 									},
 								},
 							},
@@ -2710,7 +2710,7 @@ func schema_obot_platform_obot_apiclient_types_DeviceScan(ref common.ReferenceCa
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.DeviceScanClient"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.DeviceScanClient"),
 									},
 								},
 							},
@@ -2727,7 +2727,7 @@ func schema_obot_platform_obot_apiclient_types_DeviceScan(ref common.ReferenceCa
 					"receivedAt": {
 						SchemaProps: spec.SchemaProps{
 							Description: "ReceivedAt is the server's receipt timestamp.",
-							Ref:         ref("github.com/obot-platform/obot/apiclient/types.Time"),
+							Ref:         ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Time"),
 						},
 					},
 					"submittedBy": {
@@ -2743,11 +2743,11 @@ func schema_obot_platform_obot_apiclient_types_DeviceScan(ref common.ReferenceCa
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.DeviceScanClient", "github.com/obot-platform/obot/apiclient/types.DeviceScanFile", "github.com/obot-platform/obot/apiclient/types.DeviceScanMCPServer", "github.com/obot-platform/obot/apiclient/types.DeviceScanPlugin", "github.com/obot-platform/obot/apiclient/types.DeviceScanSkill", "github.com/obot-platform/obot/apiclient/types.Time"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.DeviceScanClient", "github.com/boeing-ai-gateway/boeing/apiclient/types.DeviceScanFile", "github.com/boeing-ai-gateway/boeing/apiclient/types.DeviceScanMCPServer", "github.com/boeing-ai-gateway/boeing/apiclient/types.DeviceScanPlugin", "github.com/boeing-ai-gateway/boeing/apiclient/types.DeviceScanSkill", "github.com/boeing-ai-gateway/boeing/apiclient/types.Time"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_DeviceScanClient(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_DeviceScanClient(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -2821,7 +2821,7 @@ func schema_obot_platform_obot_apiclient_types_DeviceScanClient(ref common.Refer
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_DeviceScanFile(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_DeviceScanFile(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -2866,7 +2866,7 @@ func schema_obot_platform_obot_apiclient_types_DeviceScanFile(ref common.Referen
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_DeviceScanList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_DeviceScanList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -2879,7 +2879,7 @@ func schema_obot_platform_obot_apiclient_types_DeviceScanList(ref common.Referen
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.DeviceScan"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.DeviceScan"),
 									},
 								},
 							},
@@ -2890,11 +2890,11 @@ func schema_obot_platform_obot_apiclient_types_DeviceScanList(ref common.Referen
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.DeviceScan"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.DeviceScan"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_DeviceScanMCPServer(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_DeviceScanMCPServer(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -3019,16 +3019,16 @@ func schema_obot_platform_obot_apiclient_types_DeviceScanMCPServer(ref common.Re
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_DeviceScanManifest(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_DeviceScanManifest(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "DeviceScanManifest is what `obot scan` submits. Server-assigned fields (id, receivedAt, submittedBy) live on DeviceScan instead. Child observations share the same wire type for submission and response — the ID field is server-set and decoded into a zero value on submission, which DeviceScanFromManifest deliberately does not copy. Submitters cannot trample existing row PKs.",
+				Description: "DeviceScanManifest is what `boeing scan` submits. Server-assigned fields (id, receivedAt, submittedBy) live on DeviceScan instead. Child observations share the same wire type for submission and response — the ID field is server-set and decoded into a zero value on submission, which DeviceScanFromManifest deliberately does not copy. Submitters cannot trample existing row PKs.",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"scannerVersion": {
 						SchemaProps: spec.SchemaProps{
-							Description: "ScannerVersion is the obot version that produced the scan.",
+							Description: "ScannerVersion is the boeing version that produced the scan.",
 							Default:     "",
 							Type:        []string{"string"},
 							Format:      "",
@@ -3037,7 +3037,7 @@ func schema_obot_platform_obot_apiclient_types_DeviceScanManifest(ref common.Ref
 					"scannedAt": {
 						SchemaProps: spec.SchemaProps{
 							Description: "ScannedAt is when the scanner finished collecting on the device.",
-							Ref:         ref("github.com/obot-platform/obot/apiclient/types.Time"),
+							Ref:         ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Time"),
 						},
 					},
 					"deviceID": {
@@ -3087,7 +3087,7 @@ func schema_obot_platform_obot_apiclient_types_DeviceScanManifest(ref common.Ref
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.DeviceScanFile"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.DeviceScanFile"),
 									},
 								},
 							},
@@ -3101,7 +3101,7 @@ func schema_obot_platform_obot_apiclient_types_DeviceScanManifest(ref common.Ref
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.DeviceScanMCPServer"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.DeviceScanMCPServer"),
 									},
 								},
 							},
@@ -3115,7 +3115,7 @@ func schema_obot_platform_obot_apiclient_types_DeviceScanManifest(ref common.Ref
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.DeviceScanSkill"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.DeviceScanSkill"),
 									},
 								},
 							},
@@ -3129,7 +3129,7 @@ func schema_obot_platform_obot_apiclient_types_DeviceScanManifest(ref common.Ref
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.DeviceScanPlugin"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.DeviceScanPlugin"),
 									},
 								},
 							},
@@ -3143,7 +3143,7 @@ func schema_obot_platform_obot_apiclient_types_DeviceScanManifest(ref common.Ref
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.DeviceScanClient"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.DeviceScanClient"),
 									},
 								},
 							},
@@ -3154,11 +3154,11 @@ func schema_obot_platform_obot_apiclient_types_DeviceScanManifest(ref common.Ref
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.DeviceScanClient", "github.com/obot-platform/obot/apiclient/types.DeviceScanFile", "github.com/obot-platform/obot/apiclient/types.DeviceScanMCPServer", "github.com/obot-platform/obot/apiclient/types.DeviceScanPlugin", "github.com/obot-platform/obot/apiclient/types.DeviceScanSkill", "github.com/obot-platform/obot/apiclient/types.Time"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.DeviceScanClient", "github.com/boeing-ai-gateway/boeing/apiclient/types.DeviceScanFile", "github.com/boeing-ai-gateway/boeing/apiclient/types.DeviceScanMCPServer", "github.com/boeing-ai-gateway/boeing/apiclient/types.DeviceScanPlugin", "github.com/boeing-ai-gateway/boeing/apiclient/types.DeviceScanSkill", "github.com/boeing-ai-gateway/boeing/apiclient/types.Time"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_DeviceScanPlugin(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_DeviceScanPlugin(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -3308,7 +3308,7 @@ func schema_obot_platform_obot_apiclient_types_DeviceScanPlugin(ref common.Refer
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_DeviceScanResponse(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_DeviceScanResponse(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -3322,7 +3322,7 @@ func schema_obot_platform_obot_apiclient_types_DeviceScanResponse(ref common.Ref
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.DeviceScan"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.DeviceScan"),
 									},
 								},
 							},
@@ -3354,11 +3354,11 @@ func schema_obot_platform_obot_apiclient_types_DeviceScanResponse(ref common.Ref
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.DeviceScan"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.DeviceScan"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_DeviceScanSkill(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_DeviceScanSkill(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -3446,7 +3446,7 @@ func schema_obot_platform_obot_apiclient_types_DeviceScanSkill(ref common.Refere
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_DeviceScanStats(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_DeviceScanStats(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -3456,13 +3456,13 @@ func schema_obot_platform_obot_apiclient_types_DeviceScanStats(ref common.Refere
 					"timeStart": {
 						SchemaProps: spec.SchemaProps{
 							Description: "TimeStart is the inclusive lower bound of the rollup window.",
-							Ref:         ref("github.com/obot-platform/obot/apiclient/types.Time"),
+							Ref:         ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Time"),
 						},
 					},
 					"timeEnd": {
 						SchemaProps: spec.SchemaProps{
 							Description: "TimeEnd is the exclusive upper bound of the rollup window.",
-							Ref:         ref("github.com/obot-platform/obot/apiclient/types.Time"),
+							Ref:         ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Time"),
 						},
 					},
 					"deviceCount": {
@@ -3489,7 +3489,7 @@ func schema_obot_platform_obot_apiclient_types_DeviceScanStats(ref common.Refere
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.DeviceClientStat"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.DeviceClientStat"),
 									},
 								},
 							},
@@ -3503,7 +3503,7 @@ func schema_obot_platform_obot_apiclient_types_DeviceScanStats(ref common.Refere
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.DeviceMCPServerStat"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.DeviceMCPServerStat"),
 									},
 								},
 							},
@@ -3517,7 +3517,7 @@ func schema_obot_platform_obot_apiclient_types_DeviceScanStats(ref common.Refere
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.DeviceSkillStat"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.DeviceSkillStat"),
 									},
 								},
 							},
@@ -3530,7 +3530,7 @@ func schema_obot_platform_obot_apiclient_types_DeviceScanStats(ref common.Refere
 							Items: &spec.SchemaOrArray{
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
-										Ref: ref("github.com/obot-platform/obot/apiclient/types.Time"),
+										Ref: ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Time"),
 									},
 								},
 							},
@@ -3541,11 +3541,11 @@ func schema_obot_platform_obot_apiclient_types_DeviceScanStats(ref common.Refere
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.DeviceClientStat", "github.com/obot-platform/obot/apiclient/types.DeviceMCPServerStat", "github.com/obot-platform/obot/apiclient/types.DeviceSkillStat", "github.com/obot-platform/obot/apiclient/types.Time"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.DeviceClientStat", "github.com/boeing-ai-gateway/boeing/apiclient/types.DeviceMCPServerStat", "github.com/boeing-ai-gateway/boeing/apiclient/types.DeviceSkillStat", "github.com/boeing-ai-gateway/boeing/apiclient/types.Time"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_DeviceSkillDetail(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_DeviceSkillDetail(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -3555,7 +3555,7 @@ func schema_obot_platform_obot_apiclient_types_DeviceSkillDetail(ref common.Refe
 					"DeviceSkillStat": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/apiclient/types.DeviceSkillStat"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.DeviceSkillStat"),
 						},
 					},
 					"description": {
@@ -3600,11 +3600,11 @@ func schema_obot_platform_obot_apiclient_types_DeviceSkillDetail(ref common.Refe
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.DeviceSkillStat"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.DeviceSkillStat"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_DeviceSkillOccurrence(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_DeviceSkillOccurrence(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -3653,7 +3653,7 @@ func schema_obot_platform_obot_apiclient_types_DeviceSkillOccurrence(ref common.
 					"scannedAt": {
 						SchemaProps: spec.SchemaProps{
 							Description: "ScannedAt is when the parent scan was collected on the device.",
-							Ref:         ref("github.com/obot-platform/obot/apiclient/types.Time"),
+							Ref:         ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Time"),
 						},
 					},
 					"id": {
@@ -3669,11 +3669,11 @@ func schema_obot_platform_obot_apiclient_types_DeviceSkillOccurrence(ref common.
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.Time"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.Time"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_DeviceSkillOccurrenceList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_DeviceSkillOccurrenceList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -3686,7 +3686,7 @@ func schema_obot_platform_obot_apiclient_types_DeviceSkillOccurrenceList(ref com
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.DeviceSkillOccurrence"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.DeviceSkillOccurrence"),
 									},
 								},
 							},
@@ -3697,11 +3697,11 @@ func schema_obot_platform_obot_apiclient_types_DeviceSkillOccurrenceList(ref com
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.DeviceSkillOccurrence"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.DeviceSkillOccurrence"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_DeviceSkillOccurrenceResponse(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_DeviceSkillOccurrenceResponse(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -3715,7 +3715,7 @@ func schema_obot_platform_obot_apiclient_types_DeviceSkillOccurrenceResponse(ref
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.DeviceSkillOccurrence"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.DeviceSkillOccurrence"),
 									},
 								},
 							},
@@ -3747,11 +3747,11 @@ func schema_obot_platform_obot_apiclient_types_DeviceSkillOccurrenceResponse(ref
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.DeviceSkillOccurrence"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.DeviceSkillOccurrence"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_DeviceSkillStat(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_DeviceSkillStat(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -3797,7 +3797,7 @@ func schema_obot_platform_obot_apiclient_types_DeviceSkillStat(ref common.Refere
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_DeviceSkillStatList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_DeviceSkillStatList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -3810,7 +3810,7 @@ func schema_obot_platform_obot_apiclient_types_DeviceSkillStatList(ref common.Re
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.DeviceSkillStat"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.DeviceSkillStat"),
 									},
 								},
 							},
@@ -3821,11 +3821,11 @@ func schema_obot_platform_obot_apiclient_types_DeviceSkillStatList(ref common.Re
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.DeviceSkillStat"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.DeviceSkillStat"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_DeviceSkillStatResponse(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_DeviceSkillStatResponse(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -3839,7 +3839,7 @@ func schema_obot_platform_obot_apiclient_types_DeviceSkillStatResponse(ref commo
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.DeviceSkillStat"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.DeviceSkillStat"),
 									},
 								},
 							},
@@ -3871,11 +3871,11 @@ func schema_obot_platform_obot_apiclient_types_DeviceSkillStatResponse(ref commo
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.DeviceSkillStat"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.DeviceSkillStat"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_ECRImagePullSecretConfig(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_ECRImagePullSecretConfig(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -3917,7 +3917,7 @@ func schema_obot_platform_obot_apiclient_types_ECRImagePullSecretConfig(ref comm
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_ErrHTTP(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_ErrHTTP(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -3944,7 +3944,7 @@ func schema_obot_platform_obot_apiclient_types_ErrHTTP(ref common.ReferenceCallb
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_EulaStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_EulaStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -3966,7 +3966,7 @@ func schema_obot_platform_obot_apiclient_types_EulaStatus(ref common.ReferenceCa
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_FilterConfig(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_FilterConfig(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -3986,7 +3986,7 @@ func schema_obot_platform_obot_apiclient_types_FilterConfig(ref common.Reference
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_GCSConfig(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_GCSConfig(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -4004,7 +4004,7 @@ func schema_obot_platform_obot_apiclient_types_GCSConfig(ref common.ReferenceCal
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_GroupRoleAssignment(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_GroupRoleAssignment(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -4041,7 +4041,7 @@ func schema_obot_platform_obot_apiclient_types_GroupRoleAssignment(ref common.Re
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_GroupRoleAssignmentList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_GroupRoleAssignmentList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -4055,7 +4055,7 @@ func schema_obot_platform_obot_apiclient_types_GroupRoleAssignmentList(ref commo
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.GroupRoleAssignment"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.GroupRoleAssignment"),
 									},
 								},
 							},
@@ -4066,11 +4066,11 @@ func schema_obot_platform_obot_apiclient_types_GroupRoleAssignmentList(ref commo
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.GroupRoleAssignment"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.GroupRoleAssignment"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_ImagePullSecret(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_ImagePullSecret(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -4080,19 +4080,19 @@ func schema_obot_platform_obot_apiclient_types_ImagePullSecret(ref common.Refere
 					"Metadata": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/apiclient/types.Metadata"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Metadata"),
 						},
 					},
 					"manifest": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/apiclient/types.ImagePullSecretManifest"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.ImagePullSecretManifest"),
 						},
 					},
 					"status": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/apiclient/types.ImagePullSecretStatus"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.ImagePullSecretStatus"),
 						},
 					},
 				},
@@ -4100,11 +4100,11 @@ func schema_obot_platform_obot_apiclient_types_ImagePullSecret(ref common.Refere
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.ImagePullSecretManifest", "github.com/obot-platform/obot/apiclient/types.ImagePullSecretStatus", "github.com/obot-platform/obot/apiclient/types.Metadata"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.ImagePullSecretManifest", "github.com/boeing-ai-gateway/boeing/apiclient/types.ImagePullSecretStatus", "github.com/boeing-ai-gateway/boeing/apiclient/types.Metadata"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_ImagePullSecretCapability(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_ImagePullSecretCapability(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -4148,7 +4148,7 @@ func schema_obot_platform_obot_apiclient_types_ImagePullSecretCapability(ref com
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_ImagePullSecretList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_ImagePullSecretList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -4161,7 +4161,7 @@ func schema_obot_platform_obot_apiclient_types_ImagePullSecretList(ref common.Re
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.ImagePullSecret"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.ImagePullSecret"),
 									},
 								},
 							},
@@ -4172,11 +4172,11 @@ func schema_obot_platform_obot_apiclient_types_ImagePullSecretList(ref common.Re
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.ImagePullSecret"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.ImagePullSecret"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_ImagePullSecretManifest(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_ImagePullSecretManifest(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -4203,12 +4203,12 @@ func schema_obot_platform_obot_apiclient_types_ImagePullSecretManifest(ref commo
 					},
 					"basic": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("github.com/obot-platform/obot/apiclient/types.BasicImagePullSecretConfig"),
+							Ref: ref("github.com/boeing-ai-gateway/boeing/apiclient/types.BasicImagePullSecretConfig"),
 						},
 					},
 					"ecr": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("github.com/obot-platform/obot/apiclient/types.ECRImagePullSecretConfig"),
+							Ref: ref("github.com/boeing-ai-gateway/boeing/apiclient/types.ECRImagePullSecretConfig"),
 						},
 					},
 				},
@@ -4216,11 +4216,11 @@ func schema_obot_platform_obot_apiclient_types_ImagePullSecretManifest(ref commo
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.BasicImagePullSecretConfig", "github.com/obot-platform/obot/apiclient/types.ECRImagePullSecretConfig"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.BasicImagePullSecretConfig", "github.com/boeing-ai-gateway/boeing/apiclient/types.ECRImagePullSecretConfig"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_ImagePullSecretRefreshResponse(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_ImagePullSecretRefreshResponse(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -4238,7 +4238,7 @@ func schema_obot_platform_obot_apiclient_types_ImagePullSecretRefreshResponse(re
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_ImagePullSecretStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_ImagePullSecretStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -4270,12 +4270,12 @@ func schema_obot_platform_obot_apiclient_types_ImagePullSecretStatus(ref common.
 					},
 					"lastReconciledTime": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("github.com/obot-platform/obot/apiclient/types.Time"),
+							Ref: ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Time"),
 						},
 					},
 					"lastSuccessTime": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("github.com/obot-platform/obot/apiclient/types.Time"),
+							Ref: ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Time"),
 						},
 					},
 					"lastError": {
@@ -4286,7 +4286,7 @@ func schema_obot_platform_obot_apiclient_types_ImagePullSecretStatus(ref common.
 					},
 					"tokenExpiresAt": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("github.com/obot-platform/obot/apiclient/types.Time"),
+							Ref: ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Time"),
 						},
 					},
 					"registryEndpoints": {
@@ -4307,11 +4307,11 @@ func schema_obot_platform_obot_apiclient_types_ImagePullSecretStatus(ref common.
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.Time"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.Time"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_ImagePullSecretTestRequest(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_ImagePullSecretTestRequest(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -4329,7 +4329,7 @@ func schema_obot_platform_obot_apiclient_types_ImagePullSecretTestRequest(ref co
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_ImagePullSecretTestResponse(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_ImagePullSecretTestResponse(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -4355,7 +4355,7 @@ func schema_obot_platform_obot_apiclient_types_ImagePullSecretTestResponse(ref c
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_K8sSettings(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_K8sSettings(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -4392,21 +4392,21 @@ func schema_obot_platform_obot_apiclient_types_K8sSettings(ref common.ReferenceC
 					},
 					"storageClassName": {
 						SchemaProps: spec.SchemaProps{
-							Description: "StorageClassName specifies the StorageClass for nanobot workspace volumes",
+							Description: "StorageClassName specifies the StorageClass for boeingbot workspace volumes",
 							Type:        []string{"string"},
 							Format:      "",
 						},
 					},
-					"nanobotWorkspaceSize": {
+					"boeingbotWorkspaceSize": {
 						SchemaProps: spec.SchemaProps{
-							Description: "NanobotWorkspaceSize specifies the size for nanobot workspace volumes",
+							Description: "BoeingbotWorkspaceSize specifies the size for boeingbot workspace volumes",
 							Type:        []string{"string"},
 							Format:      "",
 						},
 					},
-					"nanobotAgentResources": {
+					"boeingbotAgentResources": {
 						SchemaProps: spec.SchemaProps{
-							Description: "NanobotAgentResources specifies resource requests/limits for nanobot containers (JSON/YAML blob)",
+							Description: "BoeingbotAgentResources specifies resource requests/limits for boeingbot containers (JSON/YAML blob)",
 							Type:        []string{"string"},
 							Format:      "",
 						},
@@ -4414,7 +4414,7 @@ func schema_obot_platform_obot_apiclient_types_K8sSettings(ref common.ReferenceC
 					"podSecurityAdmission": {
 						SchemaProps: spec.SchemaProps{
 							Description: "PodSecurityAdmission contains Pod Security Admission settings for the MCP namespace",
-							Ref:         ref("github.com/obot-platform/obot/apiclient/types.PodSecurityAdmissionSettings"),
+							Ref:         ref("github.com/boeing-ai-gateway/boeing/apiclient/types.PodSecurityAdmissionSettings"),
 						},
 					},
 					"setViaHelm": {
@@ -4427,18 +4427,18 @@ func schema_obot_platform_obot_apiclient_types_K8sSettings(ref common.ReferenceC
 					"metadata": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/apiclient/types.Metadata"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Metadata"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.Metadata", "github.com/obot-platform/obot/apiclient/types.PodSecurityAdmissionSettings"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.Metadata", "github.com/boeing-ai-gateway/boeing/apiclient/types.PodSecurityAdmissionSettings"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_K8sSettingsStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_K8sSettingsStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -4456,7 +4456,7 @@ func schema_obot_platform_obot_apiclient_types_K8sSettingsStatus(ref common.Refe
 					"currentSettings": {
 						SchemaProps: spec.SchemaProps{
 							Description: "CurrentSettings are the current global K8s settings",
-							Ref:         ref("github.com/obot-platform/obot/apiclient/types.K8sSettings"),
+							Ref:         ref("github.com/boeing-ai-gateway/boeing/apiclient/types.K8sSettings"),
 						},
 					},
 					"deployedSettingsHash": {
@@ -4471,11 +4471,11 @@ func schema_obot_platform_obot_apiclient_types_K8sSettingsStatus(ref common.Refe
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.K8sSettings"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.K8sSettings"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_LogoPreferences(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_LogoPreferences(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -4541,7 +4541,7 @@ func schema_obot_platform_obot_apiclient_types_LogoPreferences(ref common.Refere
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_MCPAuditLog(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_MCPAuditLog(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -4557,7 +4557,7 @@ func schema_obot_platform_obot_apiclient_types_MCPAuditLog(ref common.ReferenceC
 					},
 					"createdAt": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("github.com/obot-platform/obot/apiclient/types.Time"),
+							Ref: ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Time"),
 						},
 					},
 					"userID": {
@@ -4603,7 +4603,7 @@ func schema_obot_platform_obot_apiclient_types_MCPAuditLog(ref common.ReferenceC
 					"client": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/apiclient/types.ClientInfo"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.ClientInfo"),
 						},
 					},
 					"clientIP": {
@@ -4678,7 +4678,7 @@ func schema_obot_platform_obot_apiclient_types_MCPAuditLog(ref common.ReferenceC
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.WebhookStatus"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.WebhookStatus"),
 									},
 								},
 							},
@@ -4732,11 +4732,11 @@ func schema_obot_platform_obot_apiclient_types_MCPAuditLog(ref common.ReferenceC
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.ClientInfo", "github.com/obot-platform/obot/apiclient/types.Time", "github.com/obot-platform/obot/apiclient/types.WebhookStatus"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.ClientInfo", "github.com/boeing-ai-gateway/boeing/apiclient/types.Time", "github.com/boeing-ai-gateway/boeing/apiclient/types.WebhookStatus"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_MCPAuditLogList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_MCPAuditLogList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -4750,7 +4750,7 @@ func schema_obot_platform_obot_apiclient_types_MCPAuditLogList(ref common.Refere
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.MCPAuditLog"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.MCPAuditLog"),
 									},
 								},
 							},
@@ -4761,11 +4761,11 @@ func schema_obot_platform_obot_apiclient_types_MCPAuditLogList(ref common.Refere
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.MCPAuditLog"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.MCPAuditLog"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_MCPAuditLogResponse(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_MCPAuditLogResponse(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -4778,7 +4778,7 @@ func schema_obot_platform_obot_apiclient_types_MCPAuditLogResponse(ref common.Re
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.MCPAuditLog"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.MCPAuditLog"),
 									},
 								},
 							},
@@ -4810,11 +4810,11 @@ func schema_obot_platform_obot_apiclient_types_MCPAuditLogResponse(ref common.Re
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.MCPAuditLog"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.MCPAuditLog"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_MCPCapacityInfo(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_MCPCapacityInfo(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -4879,7 +4879,7 @@ func schema_obot_platform_obot_apiclient_types_MCPCapacityInfo(ref common.Refere
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_MCPCatalog(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_MCPCatalog(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -4888,18 +4888,18 @@ func schema_obot_platform_obot_apiclient_types_MCPCatalog(ref common.ReferenceCa
 					"Metadata": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/apiclient/types.Metadata"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Metadata"),
 						},
 					},
 					"MCPCatalogManifest": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/apiclient/types.MCPCatalogManifest"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.MCPCatalogManifest"),
 						},
 					},
 					"lastSynced": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("github.com/obot-platform/obot/apiclient/types.Time"),
+							Ref: ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Time"),
 						},
 					},
 					"syncErrors": {
@@ -4928,11 +4928,11 @@ func schema_obot_platform_obot_apiclient_types_MCPCatalog(ref common.ReferenceCa
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.MCPCatalogManifest", "github.com/obot-platform/obot/apiclient/types.Metadata", "github.com/obot-platform/obot/apiclient/types.Time"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.MCPCatalogManifest", "github.com/boeing-ai-gateway/boeing/apiclient/types.Metadata", "github.com/boeing-ai-gateway/boeing/apiclient/types.Time"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_MCPCatalogList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_MCPCatalogList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -4945,7 +4945,7 @@ func schema_obot_platform_obot_apiclient_types_MCPCatalogList(ref common.Referen
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.MCPCatalog"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.MCPCatalog"),
 									},
 								},
 							},
@@ -4956,11 +4956,11 @@ func schema_obot_platform_obot_apiclient_types_MCPCatalogList(ref common.Referen
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.MCPCatalog"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.MCPCatalog"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_MCPCatalogManifest(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_MCPCatalogManifest(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -5009,7 +5009,7 @@ func schema_obot_platform_obot_apiclient_types_MCPCatalogManifest(ref common.Ref
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_MCPEnv(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_MCPEnv(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -5068,7 +5068,7 @@ func schema_obot_platform_obot_apiclient_types_MCPEnv(ref common.ReferenceCallba
 					"secretBinding": {
 						SchemaProps: spec.SchemaProps{
 							Description: "SecretBinding binds this value to a key in a pre-existing Kubernetes Secret",
-							Ref:         ref("github.com/obot-platform/obot/apiclient/types.MCPSecretBinding"),
+							Ref:         ref("github.com/boeing-ai-gateway/boeing/apiclient/types.MCPSecretBinding"),
 						},
 					},
 					"file": {
@@ -5090,11 +5090,11 @@ func schema_obot_platform_obot_apiclient_types_MCPEnv(ref common.ReferenceCallba
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.MCPSecretBinding"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.MCPSecretBinding"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_MCPHeader(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_MCPHeader(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -5153,7 +5153,7 @@ func schema_obot_platform_obot_apiclient_types_MCPHeader(ref common.ReferenceCal
 					"secretBinding": {
 						SchemaProps: spec.SchemaProps{
 							Description: "SecretBinding binds this value to a key in a pre-existing Kubernetes Secret",
-							Ref:         ref("github.com/obot-platform/obot/apiclient/types.MCPSecretBinding"),
+							Ref:         ref("github.com/boeing-ai-gateway/boeing/apiclient/types.MCPSecretBinding"),
 						},
 					},
 				},
@@ -5161,11 +5161,11 @@ func schema_obot_platform_obot_apiclient_types_MCPHeader(ref common.ReferenceCal
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.MCPSecretBinding"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.MCPSecretBinding"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_MCPPromptReadStats(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_MCPPromptReadStats(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -5193,7 +5193,7 @@ func schema_obot_platform_obot_apiclient_types_MCPPromptReadStats(ref common.Ref
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_MCPResourceReadStats(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_MCPResourceReadStats(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -5221,7 +5221,7 @@ func schema_obot_platform_obot_apiclient_types_MCPResourceReadStats(ref common.R
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_MCPResourceRequests(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_MCPResourceRequests(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -5246,7 +5246,7 @@ func schema_obot_platform_obot_apiclient_types_MCPResourceRequests(ref common.Re
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_MCPResourceRequirements(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_MCPResourceRequirements(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -5255,28 +5255,28 @@ func schema_obot_platform_obot_apiclient_types_MCPResourceRequirements(ref commo
 					"requests": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/apiclient/types.MCPResourceRequests"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.MCPResourceRequests"),
 						},
 					},
 					"limits": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/apiclient/types.MCPResourceRequests"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.MCPResourceRequests"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.MCPResourceRequests"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.MCPResourceRequests"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_MCPSecretBinding(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_MCPSecretBinding(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "MCPSecretBinding references a single key in a pre-existing Kubernetes Secret in the Obot namespace (the namespace where the Obot server runs)",
+				Description: "MCPSecretBinding references a single key in a pre-existing Kubernetes Secret in the Boeing namespace (the namespace where the Boeing server runs)",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"name": {
@@ -5300,7 +5300,7 @@ func schema_obot_platform_obot_apiclient_types_MCPSecretBinding(ref common.Refer
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_MCPSelector(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_MCPSelector(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -5332,7 +5332,7 @@ func schema_obot_platform_obot_apiclient_types_MCPSelector(ref common.ReferenceC
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_MCPServer(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_MCPServer(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -5341,13 +5341,13 @@ func schema_obot_platform_obot_apiclient_types_MCPServer(ref common.ReferenceCal
 					"Metadata": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/apiclient/types.Metadata"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Metadata"),
 						},
 					},
 					"manifest": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/apiclient/types.MCPServerManifest"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.MCPServerManifest"),
 						},
 					},
 					"alias": {
@@ -5438,7 +5438,7 @@ func schema_obot_platform_obot_apiclient_types_MCPServer(ref common.ReferenceCal
 							Format:      "",
 						},
 					},
-					"nanobotAgentID": {
+					"boeingbotAgentID": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -5515,7 +5515,7 @@ func schema_obot_platform_obot_apiclient_types_MCPServer(ref common.ReferenceCal
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.DeploymentCondition"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.DeploymentCondition"),
 									},
 								},
 							},
@@ -5524,7 +5524,7 @@ func schema_obot_platform_obot_apiclient_types_MCPServer(ref common.ReferenceCal
 					"oauthMetadata": {
 						SchemaProps: spec.SchemaProps{
 							Description: "OAuthMetadata contains discovered OAuth metadata for remote MCP servers.",
-							Ref:         ref("github.com/obot-platform/obot/apiclient/types.OAuthMetadata"),
+							Ref:         ref("github.com/boeing-ai-gateway/boeing/apiclient/types.OAuthMetadata"),
 						},
 					},
 					"k8sSettingsHash": {
@@ -5553,11 +5553,11 @@ func schema_obot_platform_obot_apiclient_types_MCPServer(ref common.ReferenceCal
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.DeploymentCondition", "github.com/obot-platform/obot/apiclient/types.MCPServerManifest", "github.com/obot-platform/obot/apiclient/types.Metadata", "github.com/obot-platform/obot/apiclient/types.OAuthMetadata"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.DeploymentCondition", "github.com/boeing-ai-gateway/boeing/apiclient/types.MCPServerManifest", "github.com/boeing-ai-gateway/boeing/apiclient/types.Metadata", "github.com/boeing-ai-gateway/boeing/apiclient/types.OAuthMetadata"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_MCPServerCatalogEntry(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_MCPServerCatalogEntry(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -5566,13 +5566,13 @@ func schema_obot_platform_obot_apiclient_types_MCPServerCatalogEntry(ref common.
 					"Metadata": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/apiclient/types.Metadata"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Metadata"),
 						},
 					},
 					"manifest": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/apiclient/types.MCPServerCatalogEntryManifest"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.MCPServerCatalogEntryManifest"),
 						},
 					},
 					"editable": {
@@ -5601,12 +5601,12 @@ func schema_obot_platform_obot_apiclient_types_MCPServerCatalogEntry(ref common.
 					},
 					"lastUpdated": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("github.com/obot-platform/obot/apiclient/types.Time"),
+							Ref: ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Time"),
 						},
 					},
 					"toolPreviewsLastGenerated": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("github.com/obot-platform/obot/apiclient/types.Time"),
+							Ref: ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Time"),
 						},
 					},
 					"powerUserWorkspaceID": {
@@ -5645,11 +5645,11 @@ func schema_obot_platform_obot_apiclient_types_MCPServerCatalogEntry(ref common.
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.MCPServerCatalogEntryManifest", "github.com/obot-platform/obot/apiclient/types.Metadata", "github.com/obot-platform/obot/apiclient/types.Time"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.MCPServerCatalogEntryManifest", "github.com/boeing-ai-gateway/boeing/apiclient/types.Metadata", "github.com/boeing-ai-gateway/boeing/apiclient/types.Time"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_MCPServerCatalogEntryList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_MCPServerCatalogEntryList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -5662,7 +5662,7 @@ func schema_obot_platform_obot_apiclient_types_MCPServerCatalogEntryList(ref com
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.MCPServerCatalogEntry"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.MCPServerCatalogEntry"),
 									},
 								},
 							},
@@ -5673,11 +5673,11 @@ func schema_obot_platform_obot_apiclient_types_MCPServerCatalogEntryList(ref com
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.MCPServerCatalogEntry"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.MCPServerCatalogEntry"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_MCPServerCatalogEntryManifest(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_MCPServerCatalogEntryManifest(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -5739,7 +5739,7 @@ func schema_obot_platform_obot_apiclient_types_MCPServerCatalogEntryManifest(ref
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.MCPServerTool"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.MCPServerTool"),
 									},
 								},
 							},
@@ -5756,33 +5756,33 @@ func schema_obot_platform_obot_apiclient_types_MCPServerCatalogEntryManifest(ref
 					"uvxConfig": {
 						SchemaProps: spec.SchemaProps{
 							Description: "Runtime-specific configurations (only one should be populated based on runtime)",
-							Ref:         ref("github.com/obot-platform/obot/apiclient/types.UVXRuntimeConfig"),
+							Ref:         ref("github.com/boeing-ai-gateway/boeing/apiclient/types.UVXRuntimeConfig"),
 						},
 					},
 					"npxConfig": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("github.com/obot-platform/obot/apiclient/types.NPXRuntimeConfig"),
+							Ref: ref("github.com/boeing-ai-gateway/boeing/apiclient/types.NPXRuntimeConfig"),
 						},
 					},
 					"containerizedConfig": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("github.com/obot-platform/obot/apiclient/types.ContainerizedRuntimeConfig"),
+							Ref: ref("github.com/boeing-ai-gateway/boeing/apiclient/types.ContainerizedRuntimeConfig"),
 						},
 					},
 					"remoteConfig": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("github.com/obot-platform/obot/apiclient/types.RemoteCatalogConfig"),
+							Ref: ref("github.com/boeing-ai-gateway/boeing/apiclient/types.RemoteCatalogConfig"),
 						},
 					},
 					"compositeConfig": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("github.com/obot-platform/obot/apiclient/types.CompositeCatalogConfig"),
+							Ref: ref("github.com/boeing-ai-gateway/boeing/apiclient/types.CompositeCatalogConfig"),
 						},
 					},
 					"multiUserConfig": {
 						SchemaProps: spec.SchemaProps{
 							Description: "MultiUserConfig is the multi-user specific configuration for this component server, if applicable.",
-							Ref:         ref("github.com/obot-platform/obot/apiclient/types.MultiUserConfig"),
+							Ref:         ref("github.com/boeing-ai-gateway/boeing/apiclient/types.MultiUserConfig"),
 						},
 					},
 					"serverUserType": {
@@ -5799,7 +5799,7 @@ func schema_obot_platform_obot_apiclient_types_MCPServerCatalogEntryManifest(ref
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.MCPEnv"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.MCPEnv"),
 									},
 								},
 							},
@@ -5807,7 +5807,7 @@ func schema_obot_platform_obot_apiclient_types_MCPServerCatalogEntryManifest(ref
 					},
 					"resources": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("github.com/obot-platform/obot/apiclient/types.MCPResourceRequirements"),
+							Ref: ref("github.com/boeing-ai-gateway/boeing/apiclient/types.MCPResourceRequirements"),
 						},
 					},
 				},
@@ -5815,11 +5815,11 @@ func schema_obot_platform_obot_apiclient_types_MCPServerCatalogEntryManifest(ref
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.CompositeCatalogConfig", "github.com/obot-platform/obot/apiclient/types.ContainerizedRuntimeConfig", "github.com/obot-platform/obot/apiclient/types.MCPEnv", "github.com/obot-platform/obot/apiclient/types.MCPResourceRequirements", "github.com/obot-platform/obot/apiclient/types.MCPServerTool", "github.com/obot-platform/obot/apiclient/types.MultiUserConfig", "github.com/obot-platform/obot/apiclient/types.NPXRuntimeConfig", "github.com/obot-platform/obot/apiclient/types.RemoteCatalogConfig", "github.com/obot-platform/obot/apiclient/types.UVXRuntimeConfig"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.CompositeCatalogConfig", "github.com/boeing-ai-gateway/boeing/apiclient/types.ContainerizedRuntimeConfig", "github.com/boeing-ai-gateway/boeing/apiclient/types.MCPEnv", "github.com/boeing-ai-gateway/boeing/apiclient/types.MCPResourceRequirements", "github.com/boeing-ai-gateway/boeing/apiclient/types.MCPServerTool", "github.com/boeing-ai-gateway/boeing/apiclient/types.MultiUserConfig", "github.com/boeing-ai-gateway/boeing/apiclient/types.NPXRuntimeConfig", "github.com/boeing-ai-gateway/boeing/apiclient/types.RemoteCatalogConfig", "github.com/boeing-ai-gateway/boeing/apiclient/types.UVXRuntimeConfig"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_MCPServerDetails(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_MCPServerDetails(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -5841,7 +5841,7 @@ func schema_obot_platform_obot_apiclient_types_MCPServerDetails(ref common.Refer
 					},
 					"lastRestart": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("github.com/obot-platform/obot/apiclient/types.Time"),
+							Ref: ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Time"),
 						},
 					},
 					"readyReplicas": {
@@ -5872,7 +5872,7 @@ func schema_obot_platform_obot_apiclient_types_MCPServerDetails(ref common.Refer
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.MCPServerEvent"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.MCPServerEvent"),
 									},
 								},
 							},
@@ -5883,11 +5883,11 @@ func schema_obot_platform_obot_apiclient_types_MCPServerDetails(ref common.Refer
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.MCPServerEvent", "github.com/obot-platform/obot/apiclient/types.Time"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.MCPServerEvent", "github.com/boeing-ai-gateway/boeing/apiclient/types.Time"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_MCPServerEvent(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_MCPServerEvent(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -5895,7 +5895,7 @@ func schema_obot_platform_obot_apiclient_types_MCPServerEvent(ref common.Referen
 				Properties: map[string]spec.Schema{
 					"time": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("github.com/obot-platform/obot/apiclient/types.Time"),
+							Ref: ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Time"),
 						},
 					},
 					"reason": {
@@ -5952,11 +5952,11 @@ func schema_obot_platform_obot_apiclient_types_MCPServerEvent(ref common.Referen
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.Time"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.Time"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_MCPServerInstance(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_MCPServerInstance(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -5965,7 +5965,7 @@ func schema_obot_platform_obot_apiclient_types_MCPServerInstance(ref common.Refe
 					"Metadata": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/apiclient/types.Metadata"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Metadata"),
 						},
 					},
 					"configured": {
@@ -6036,7 +6036,7 @@ func schema_obot_platform_obot_apiclient_types_MCPServerInstance(ref common.Refe
 					"multiUserConfig": {
 						SchemaProps: spec.SchemaProps{
 							Description: "MultiUserConfig is the multi-user configuration for this instance, which is copied from the MCP server's manifest. This will be nil if the MCP server does not have multi-user config.",
-							Ref:         ref("github.com/obot-platform/obot/apiclient/types.MultiUserConfig"),
+							Ref:         ref("github.com/boeing-ai-gateway/boeing/apiclient/types.MultiUserConfig"),
 						},
 					},
 				},
@@ -6044,11 +6044,11 @@ func schema_obot_platform_obot_apiclient_types_MCPServerInstance(ref common.Refe
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.Metadata", "github.com/obot-platform/obot/apiclient/types.MultiUserConfig"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.Metadata", "github.com/boeing-ai-gateway/boeing/apiclient/types.MultiUserConfig"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_MCPServerInstanceList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_MCPServerInstanceList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -6061,7 +6061,7 @@ func schema_obot_platform_obot_apiclient_types_MCPServerInstanceList(ref common.
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.MCPServerInstance"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.MCPServerInstance"),
 									},
 								},
 							},
@@ -6072,11 +6072,11 @@ func schema_obot_platform_obot_apiclient_types_MCPServerInstanceList(ref common.
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.MCPServerInstance"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.MCPServerInstance"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_MCPServerList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_MCPServerList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -6089,7 +6089,7 @@ func schema_obot_platform_obot_apiclient_types_MCPServerList(ref common.Referenc
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.MCPServer"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.MCPServer"),
 									},
 								},
 							},
@@ -6100,11 +6100,11 @@ func schema_obot_platform_obot_apiclient_types_MCPServerList(ref common.Referenc
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.MCPServer"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.MCPServer"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_MCPServerManifest(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_MCPServerManifest(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -6160,7 +6160,7 @@ func schema_obot_platform_obot_apiclient_types_MCPServerManifest(ref common.Refe
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.MCPServerTool"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.MCPServerTool"),
 									},
 								},
 							},
@@ -6177,33 +6177,33 @@ func schema_obot_platform_obot_apiclient_types_MCPServerManifest(ref common.Refe
 					"uvxConfig": {
 						SchemaProps: spec.SchemaProps{
 							Description: "Runtime-specific configurations (only one should be populated based on runtime)",
-							Ref:         ref("github.com/obot-platform/obot/apiclient/types.UVXRuntimeConfig"),
+							Ref:         ref("github.com/boeing-ai-gateway/boeing/apiclient/types.UVXRuntimeConfig"),
 						},
 					},
 					"npxConfig": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("github.com/obot-platform/obot/apiclient/types.NPXRuntimeConfig"),
+							Ref: ref("github.com/boeing-ai-gateway/boeing/apiclient/types.NPXRuntimeConfig"),
 						},
 					},
 					"containerizedConfig": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("github.com/obot-platform/obot/apiclient/types.ContainerizedRuntimeConfig"),
+							Ref: ref("github.com/boeing-ai-gateway/boeing/apiclient/types.ContainerizedRuntimeConfig"),
 						},
 					},
 					"remoteConfig": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("github.com/obot-platform/obot/apiclient/types.RemoteRuntimeConfig"),
+							Ref: ref("github.com/boeing-ai-gateway/boeing/apiclient/types.RemoteRuntimeConfig"),
 						},
 					},
 					"compositeConfig": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("github.com/obot-platform/obot/apiclient/types.CompositeRuntimeConfig"),
+							Ref: ref("github.com/boeing-ai-gateway/boeing/apiclient/types.CompositeRuntimeConfig"),
 						},
 					},
 					"multiUserConfig": {
 						SchemaProps: spec.SchemaProps{
 							Description: "Multi-user specific configuration",
-							Ref:         ref("github.com/obot-platform/obot/apiclient/types.MultiUserConfig"),
+							Ref:         ref("github.com/boeing-ai-gateway/boeing/apiclient/types.MultiUserConfig"),
 						},
 					},
 					"env": {
@@ -6213,7 +6213,7 @@ func schema_obot_platform_obot_apiclient_types_MCPServerManifest(ref common.Refe
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.MCPEnv"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.MCPEnv"),
 									},
 								},
 							},
@@ -6221,7 +6221,7 @@ func schema_obot_platform_obot_apiclient_types_MCPServerManifest(ref common.Refe
 					},
 					"resources": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("github.com/obot-platform/obot/apiclient/types.MCPResourceRequirements"),
+							Ref: ref("github.com/boeing-ai-gateway/boeing/apiclient/types.MCPResourceRequirements"),
 						},
 					},
 					"command": {
@@ -6258,7 +6258,7 @@ func schema_obot_platform_obot_apiclient_types_MCPServerManifest(ref common.Refe
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.MCPHeader"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.MCPHeader"),
 									},
 								},
 							},
@@ -6275,11 +6275,11 @@ func schema_obot_platform_obot_apiclient_types_MCPServerManifest(ref common.Refe
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.CompositeRuntimeConfig", "github.com/obot-platform/obot/apiclient/types.ContainerizedRuntimeConfig", "github.com/obot-platform/obot/apiclient/types.MCPEnv", "github.com/obot-platform/obot/apiclient/types.MCPHeader", "github.com/obot-platform/obot/apiclient/types.MCPResourceRequirements", "github.com/obot-platform/obot/apiclient/types.MCPServerTool", "github.com/obot-platform/obot/apiclient/types.MultiUserConfig", "github.com/obot-platform/obot/apiclient/types.NPXRuntimeConfig", "github.com/obot-platform/obot/apiclient/types.RemoteRuntimeConfig", "github.com/obot-platform/obot/apiclient/types.UVXRuntimeConfig"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.CompositeRuntimeConfig", "github.com/boeing-ai-gateway/boeing/apiclient/types.ContainerizedRuntimeConfig", "github.com/boeing-ai-gateway/boeing/apiclient/types.MCPEnv", "github.com/boeing-ai-gateway/boeing/apiclient/types.MCPHeader", "github.com/boeing-ai-gateway/boeing/apiclient/types.MCPResourceRequirements", "github.com/boeing-ai-gateway/boeing/apiclient/types.MCPServerTool", "github.com/boeing-ai-gateway/boeing/apiclient/types.MultiUserConfig", "github.com/boeing-ai-gateway/boeing/apiclient/types.NPXRuntimeConfig", "github.com/boeing-ai-gateway/boeing/apiclient/types.RemoteRuntimeConfig", "github.com/boeing-ai-gateway/boeing/apiclient/types.UVXRuntimeConfig"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_MCPServerNeedingK8sUpdate(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_MCPServerNeedingK8sUpdate(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -6315,7 +6315,7 @@ func schema_obot_platform_obot_apiclient_types_MCPServerNeedingK8sUpdate(ref com
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_MCPServerOAuthCredentialRequest(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_MCPServerOAuthCredentialRequest(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -6343,7 +6343,7 @@ func schema_obot_platform_obot_apiclient_types_MCPServerOAuthCredentialRequest(r
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_MCPServerOAuthCredentialStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_MCPServerOAuthCredentialStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -6372,7 +6372,7 @@ func schema_obot_platform_obot_apiclient_types_MCPServerOAuthCredentialStatus(re
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_MCPServerTool(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_MCPServerTool(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -6446,7 +6446,7 @@ func schema_obot_platform_obot_apiclient_types_MCPServerTool(ref common.Referenc
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_MCPServersNeedingK8sUpdateList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_MCPServersNeedingK8sUpdateList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -6460,7 +6460,7 @@ func schema_obot_platform_obot_apiclient_types_MCPServersNeedingK8sUpdateList(re
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.MCPServerNeedingK8sUpdate"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.MCPServerNeedingK8sUpdate"),
 									},
 								},
 							},
@@ -6471,11 +6471,11 @@ func schema_obot_platform_obot_apiclient_types_MCPServersNeedingK8sUpdateList(re
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.MCPServerNeedingK8sUpdate"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.MCPServerNeedingK8sUpdate"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_MCPToolCallStats(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_MCPToolCallStats(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -6503,7 +6503,7 @@ func schema_obot_platform_obot_apiclient_types_MCPToolCallStats(ref common.Refer
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.MCPToolCallStatsItem"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.MCPToolCallStatsItem"),
 									},
 								},
 							},
@@ -6514,11 +6514,11 @@ func schema_obot_platform_obot_apiclient_types_MCPToolCallStats(ref common.Refer
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.MCPToolCallStatsItem"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.MCPToolCallStatsItem"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_MCPToolCallStatsItem(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_MCPToolCallStatsItem(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -6527,7 +6527,7 @@ func schema_obot_platform_obot_apiclient_types_MCPToolCallStatsItem(ref common.R
 				Properties: map[string]spec.Schema{
 					"createdAt": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("github.com/obot-platform/obot/apiclient/types.Time"),
+							Ref: ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Time"),
 						},
 					},
 					"userID": {
@@ -6563,11 +6563,11 @@ func schema_obot_platform_obot_apiclient_types_MCPToolCallStatsItem(ref common.R
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.Time"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.Time"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_MCPUsageStatItem(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_MCPUsageStatItem(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -6602,7 +6602,7 @@ func schema_obot_platform_obot_apiclient_types_MCPUsageStatItem(ref common.Refer
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.MCPToolCallStats"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.MCPToolCallStats"),
 									},
 								},
 							},
@@ -6615,7 +6615,7 @@ func schema_obot_platform_obot_apiclient_types_MCPUsageStatItem(ref common.Refer
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.MCPResourceReadStats"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.MCPResourceReadStats"),
 									},
 								},
 							},
@@ -6628,7 +6628,7 @@ func schema_obot_platform_obot_apiclient_types_MCPUsageStatItem(ref common.Refer
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.MCPPromptReadStats"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.MCPPromptReadStats"),
 									},
 								},
 							},
@@ -6639,11 +6639,11 @@ func schema_obot_platform_obot_apiclient_types_MCPUsageStatItem(ref common.Refer
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.MCPPromptReadStats", "github.com/obot-platform/obot/apiclient/types.MCPResourceReadStats", "github.com/obot-platform/obot/apiclient/types.MCPToolCallStats"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.MCPPromptReadStats", "github.com/boeing-ai-gateway/boeing/apiclient/types.MCPResourceReadStats", "github.com/boeing-ai-gateway/boeing/apiclient/types.MCPToolCallStats"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_MCPUsageStats(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_MCPUsageStats(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -6665,12 +6665,12 @@ func schema_obot_platform_obot_apiclient_types_MCPUsageStats(ref common.Referenc
 					},
 					"timeStart": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("github.com/obot-platform/obot/apiclient/types.Time"),
+							Ref: ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Time"),
 						},
 					},
 					"timeEnd": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("github.com/obot-platform/obot/apiclient/types.Time"),
+							Ref: ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Time"),
 						},
 					},
 					"items": {
@@ -6680,7 +6680,7 @@ func schema_obot_platform_obot_apiclient_types_MCPUsageStats(ref common.Referenc
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.MCPUsageStatItem"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.MCPUsageStatItem"),
 									},
 								},
 							},
@@ -6691,11 +6691,11 @@ func schema_obot_platform_obot_apiclient_types_MCPUsageStats(ref common.Referenc
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.MCPUsageStatItem", "github.com/obot-platform/obot/apiclient/types.Time"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.MCPUsageStatItem", "github.com/boeing-ai-gateway/boeing/apiclient/types.Time"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_MCPUsageStatsList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_MCPUsageStatsList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -6709,7 +6709,7 @@ func schema_obot_platform_obot_apiclient_types_MCPUsageStatsList(ref common.Refe
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.MCPUsageStatItem"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.MCPUsageStatItem"),
 									},
 								},
 							},
@@ -6720,11 +6720,11 @@ func schema_obot_platform_obot_apiclient_types_MCPUsageStatsList(ref common.Refe
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.MCPUsageStatItem"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.MCPUsageStatItem"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_MCPWebhookValidation(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_MCPWebhookValidation(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -6738,12 +6738,12 @@ func schema_obot_platform_obot_apiclient_types_MCPWebhookValidation(ref common.R
 					},
 					"created": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("github.com/obot-platform/obot/apiclient/types.Time"),
+							Ref: ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Time"),
 						},
 					},
 					"deleted": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("github.com/obot-platform/obot/apiclient/types.Time"),
+							Ref: ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Time"),
 						},
 					},
 					"links": {
@@ -6795,7 +6795,7 @@ func schema_obot_platform_obot_apiclient_types_MCPWebhookValidation(ref common.R
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.Resource"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Resource"),
 									},
 								},
 							},
@@ -6815,7 +6815,7 @@ func schema_obot_platform_obot_apiclient_types_MCPWebhookValidation(ref common.R
 					},
 					"mcpServerManifest": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("github.com/obot-platform/obot/apiclient/types.SystemMCPServerManifest"),
+							Ref: ref("github.com/boeing-ai-gateway/boeing/apiclient/types.SystemMCPServerManifest"),
 						},
 					},
 					"systemMCPServerCatalogEntryID": {
@@ -6837,7 +6837,7 @@ func schema_obot_platform_obot_apiclient_types_MCPWebhookValidation(ref common.R
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.MCPSelector"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.MCPSelector"),
 									},
 								},
 							},
@@ -6887,11 +6887,11 @@ func schema_obot_platform_obot_apiclient_types_MCPWebhookValidation(ref common.R
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.MCPSelector", "github.com/obot-platform/obot/apiclient/types.Resource", "github.com/obot-platform/obot/apiclient/types.SystemMCPServerManifest", "github.com/obot-platform/obot/apiclient/types.Time"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.MCPSelector", "github.com/boeing-ai-gateway/boeing/apiclient/types.Resource", "github.com/boeing-ai-gateway/boeing/apiclient/types.SystemMCPServerManifest", "github.com/boeing-ai-gateway/boeing/apiclient/types.Time"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_MCPWebhookValidationList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_MCPWebhookValidationList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -6904,7 +6904,7 @@ func schema_obot_platform_obot_apiclient_types_MCPWebhookValidationList(ref comm
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.MCPWebhookValidation"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.MCPWebhookValidation"),
 									},
 								},
 							},
@@ -6915,11 +6915,11 @@ func schema_obot_platform_obot_apiclient_types_MCPWebhookValidationList(ref comm
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.MCPWebhookValidation"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.MCPWebhookValidation"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_MCPWebhookValidationManifest(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_MCPWebhookValidationManifest(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -6938,7 +6938,7 @@ func schema_obot_platform_obot_apiclient_types_MCPWebhookValidationManifest(ref 
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.Resource"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Resource"),
 									},
 								},
 							},
@@ -6958,7 +6958,7 @@ func schema_obot_platform_obot_apiclient_types_MCPWebhookValidationManifest(ref 
 					},
 					"mcpServerManifest": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("github.com/obot-platform/obot/apiclient/types.SystemMCPServerManifest"),
+							Ref: ref("github.com/boeing-ai-gateway/boeing/apiclient/types.SystemMCPServerManifest"),
 						},
 					},
 					"systemMCPServerCatalogEntryID": {
@@ -6980,7 +6980,7 @@ func schema_obot_platform_obot_apiclient_types_MCPWebhookValidationManifest(ref 
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.MCPSelector"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.MCPSelector"),
 									},
 								},
 							},
@@ -7002,11 +7002,11 @@ func schema_obot_platform_obot_apiclient_types_MCPWebhookValidationManifest(ref 
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.MCPSelector", "github.com/obot-platform/obot/apiclient/types.Resource", "github.com/obot-platform/obot/apiclient/types.SystemMCPServerManifest"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.MCPSelector", "github.com/boeing-ai-gateway/boeing/apiclient/types.Resource", "github.com/boeing-ai-gateway/boeing/apiclient/types.SystemMCPServerManifest"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_MessagePolicy(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_MessagePolicy(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -7020,12 +7020,12 @@ func schema_obot_platform_obot_apiclient_types_MessagePolicy(ref common.Referenc
 					},
 					"created": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("github.com/obot-platform/obot/apiclient/types.Time"),
+							Ref: ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Time"),
 						},
 					},
 					"deleted": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("github.com/obot-platform/obot/apiclient/types.Time"),
+							Ref: ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Time"),
 						},
 					},
 					"links": {
@@ -7092,7 +7092,7 @@ func schema_obot_platform_obot_apiclient_types_MessagePolicy(ref common.Referenc
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.Subject"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Subject"),
 									},
 								},
 							},
@@ -7103,11 +7103,11 @@ func schema_obot_platform_obot_apiclient_types_MessagePolicy(ref common.Referenc
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.Subject", "github.com/obot-platform/obot/apiclient/types.Time"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.Subject", "github.com/boeing-ai-gateway/boeing/apiclient/types.Time"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_MessagePolicyList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_MessagePolicyList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -7120,7 +7120,7 @@ func schema_obot_platform_obot_apiclient_types_MessagePolicyList(ref common.Refe
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.MessagePolicy"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.MessagePolicy"),
 									},
 								},
 							},
@@ -7131,11 +7131,11 @@ func schema_obot_platform_obot_apiclient_types_MessagePolicyList(ref common.Refe
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.MessagePolicy"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.MessagePolicy"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_MessagePolicyManifest(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_MessagePolicyManifest(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -7169,7 +7169,7 @@ func schema_obot_platform_obot_apiclient_types_MessagePolicyManifest(ref common.
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.Subject"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Subject"),
 									},
 								},
 							},
@@ -7180,11 +7180,11 @@ func schema_obot_platform_obot_apiclient_types_MessagePolicyManifest(ref common.
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.Subject"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.Subject"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_MessagePolicyViolation(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_MessagePolicyViolation(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -7199,7 +7199,7 @@ func schema_obot_platform_obot_apiclient_types_MessagePolicyViolation(ref common
 					},
 					"createdAt": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("github.com/obot-platform/obot/apiclient/types.Time"),
+							Ref: ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Time"),
 						},
 					},
 					"userID": {
@@ -7269,11 +7269,11 @@ func schema_obot_platform_obot_apiclient_types_MessagePolicyViolation(ref common
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.Time"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.Time"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_MessagePolicyViolationDirectionCounts(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_MessagePolicyViolationDirectionCounts(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -7300,7 +7300,7 @@ func schema_obot_platform_obot_apiclient_types_MessagePolicyViolationDirectionCo
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_MessagePolicyViolationList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_MessagePolicyViolationList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -7313,7 +7313,7 @@ func schema_obot_platform_obot_apiclient_types_MessagePolicyViolationList(ref co
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.MessagePolicyViolation"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.MessagePolicyViolation"),
 									},
 								},
 							},
@@ -7324,11 +7324,11 @@ func schema_obot_platform_obot_apiclient_types_MessagePolicyViolationList(ref co
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.MessagePolicyViolation"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.MessagePolicyViolation"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_MessagePolicyViolationPolicyCount(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_MessagePolicyViolationPolicyCount(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -7362,7 +7362,7 @@ func schema_obot_platform_obot_apiclient_types_MessagePolicyViolationPolicyCount
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_MessagePolicyViolationResponse(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_MessagePolicyViolationResponse(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -7375,7 +7375,7 @@ func schema_obot_platform_obot_apiclient_types_MessagePolicyViolationResponse(re
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.MessagePolicyViolation"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.MessagePolicyViolation"),
 									},
 								},
 							},
@@ -7407,11 +7407,11 @@ func schema_obot_platform_obot_apiclient_types_MessagePolicyViolationResponse(re
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.MessagePolicyViolation"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.MessagePolicyViolation"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_MessagePolicyViolationStats(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_MessagePolicyViolationStats(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -7424,7 +7424,7 @@ func schema_obot_platform_obot_apiclient_types_MessagePolicyViolationStats(ref c
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.MessagePolicyViolationTimeBucket"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.MessagePolicyViolationTimeBucket"),
 									},
 								},
 							},
@@ -7437,7 +7437,7 @@ func schema_obot_platform_obot_apiclient_types_MessagePolicyViolationStats(ref c
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.MessagePolicyViolationPolicyCount"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.MessagePolicyViolationPolicyCount"),
 									},
 								},
 							},
@@ -7450,7 +7450,7 @@ func schema_obot_platform_obot_apiclient_types_MessagePolicyViolationStats(ref c
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.MessagePolicyViolationUserCount"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.MessagePolicyViolationUserCount"),
 									},
 								},
 							},
@@ -7459,7 +7459,7 @@ func schema_obot_platform_obot_apiclient_types_MessagePolicyViolationStats(ref c
 					"byDirection": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/apiclient/types.MessagePolicyViolationDirectionCounts"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.MessagePolicyViolationDirectionCounts"),
 						},
 					},
 				},
@@ -7467,11 +7467,11 @@ func schema_obot_platform_obot_apiclient_types_MessagePolicyViolationStats(ref c
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.MessagePolicyViolationDirectionCounts", "github.com/obot-platform/obot/apiclient/types.MessagePolicyViolationPolicyCount", "github.com/obot-platform/obot/apiclient/types.MessagePolicyViolationTimeBucket", "github.com/obot-platform/obot/apiclient/types.MessagePolicyViolationUserCount"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.MessagePolicyViolationDirectionCounts", "github.com/boeing-ai-gateway/boeing/apiclient/types.MessagePolicyViolationPolicyCount", "github.com/boeing-ai-gateway/boeing/apiclient/types.MessagePolicyViolationTimeBucket", "github.com/boeing-ai-gateway/boeing/apiclient/types.MessagePolicyViolationUserCount"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_MessagePolicyViolationTimeBucket(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_MessagePolicyViolationTimeBucket(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -7479,7 +7479,7 @@ func schema_obot_platform_obot_apiclient_types_MessagePolicyViolationTimeBucket(
 				Properties: map[string]spec.Schema{
 					"time": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("github.com/obot-platform/obot/apiclient/types.Time"),
+							Ref: ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Time"),
 						},
 					},
 					"category": {
@@ -7501,11 +7501,11 @@ func schema_obot_platform_obot_apiclient_types_MessagePolicyViolationTimeBucket(
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.Time"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.Time"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_MessagePolicyViolationUserCount(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_MessagePolicyViolationUserCount(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -7532,7 +7532,7 @@ func schema_obot_platform_obot_apiclient_types_MessagePolicyViolationUserCount(r
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_Metadata(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_Metadata(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -7546,12 +7546,12 @@ func schema_obot_platform_obot_apiclient_types_Metadata(ref common.ReferenceCall
 					},
 					"created": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("github.com/obot-platform/obot/apiclient/types.Time"),
+							Ref: ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Time"),
 						},
 					},
 					"deleted": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("github.com/obot-platform/obot/apiclient/types.Time"),
+							Ref: ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Time"),
 						},
 					},
 					"links": {
@@ -7595,11 +7595,11 @@ func schema_obot_platform_obot_apiclient_types_Metadata(ref common.ReferenceCall
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.Time"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.Time"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_Model(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_Model(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -7608,19 +7608,19 @@ func schema_obot_platform_obot_apiclient_types_Model(ref common.ReferenceCallbac
 					"Metadata": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/apiclient/types.Metadata"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Metadata"),
 						},
 					},
 					"ModelManifest": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/apiclient/types.ModelManifest"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.ModelManifest"),
 						},
 					},
 					"ModelStatus": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/apiclient/types.ModelStatus"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.ModelStatus"),
 						},
 					},
 				},
@@ -7628,11 +7628,11 @@ func schema_obot_platform_obot_apiclient_types_Model(ref common.ReferenceCallbac
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.Metadata", "github.com/obot-platform/obot/apiclient/types.ModelManifest", "github.com/obot-platform/obot/apiclient/types.ModelStatus"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.Metadata", "github.com/boeing-ai-gateway/boeing/apiclient/types.ModelManifest", "github.com/boeing-ai-gateway/boeing/apiclient/types.ModelStatus"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_ModelAccessPolicy(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_ModelAccessPolicy(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -7646,12 +7646,12 @@ func schema_obot_platform_obot_apiclient_types_ModelAccessPolicy(ref common.Refe
 					},
 					"created": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("github.com/obot-platform/obot/apiclient/types.Time"),
+							Ref: ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Time"),
 						},
 					},
 					"deleted": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("github.com/obot-platform/obot/apiclient/types.Time"),
+							Ref: ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Time"),
 						},
 					},
 					"links": {
@@ -7703,7 +7703,7 @@ func schema_obot_platform_obot_apiclient_types_ModelAccessPolicy(ref common.Refe
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.Subject"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Subject"),
 									},
 								},
 							},
@@ -7716,7 +7716,7 @@ func schema_obot_platform_obot_apiclient_types_ModelAccessPolicy(ref common.Refe
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.ModelResource"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.ModelResource"),
 									},
 								},
 							},
@@ -7727,11 +7727,11 @@ func schema_obot_platform_obot_apiclient_types_ModelAccessPolicy(ref common.Refe
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.ModelResource", "github.com/obot-platform/obot/apiclient/types.Subject", "github.com/obot-platform/obot/apiclient/types.Time"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.ModelResource", "github.com/boeing-ai-gateway/boeing/apiclient/types.Subject", "github.com/boeing-ai-gateway/boeing/apiclient/types.Time"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_ModelAccessPolicyList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_ModelAccessPolicyList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -7744,7 +7744,7 @@ func schema_obot_platform_obot_apiclient_types_ModelAccessPolicyList(ref common.
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.ModelAccessPolicy"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.ModelAccessPolicy"),
 									},
 								},
 							},
@@ -7755,11 +7755,11 @@ func schema_obot_platform_obot_apiclient_types_ModelAccessPolicyList(ref common.
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.ModelAccessPolicy"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.ModelAccessPolicy"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_ModelAccessPolicyManifest(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_ModelAccessPolicyManifest(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -7778,7 +7778,7 @@ func schema_obot_platform_obot_apiclient_types_ModelAccessPolicyManifest(ref com
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.Subject"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Subject"),
 									},
 								},
 							},
@@ -7791,7 +7791,7 @@ func schema_obot_platform_obot_apiclient_types_ModelAccessPolicyManifest(ref com
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.ModelResource"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.ModelResource"),
 									},
 								},
 							},
@@ -7801,11 +7801,11 @@ func schema_obot_platform_obot_apiclient_types_ModelAccessPolicyManifest(ref com
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.ModelResource", "github.com/obot-platform/obot/apiclient/types.Subject"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.ModelResource", "github.com/boeing-ai-gateway/boeing/apiclient/types.Subject"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_ModelList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_ModelList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -7818,7 +7818,7 @@ func schema_obot_platform_obot_apiclient_types_ModelList(ref common.ReferenceCal
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.Model"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Model"),
 									},
 								},
 							},
@@ -7829,11 +7829,11 @@ func schema_obot_platform_obot_apiclient_types_ModelList(ref common.ReferenceCal
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.Model"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.Model"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_ModelManifest(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_ModelManifest(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -7896,7 +7896,7 @@ func schema_obot_platform_obot_apiclient_types_ModelManifest(ref common.Referenc
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_ModelProvider(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_ModelProvider(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -7905,19 +7905,19 @@ func schema_obot_platform_obot_apiclient_types_ModelProvider(ref common.Referenc
 					"Metadata": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/apiclient/types.Metadata"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Metadata"),
 						},
 					},
 					"ModelProviderManifest": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/apiclient/types.ModelProviderManifest"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.ModelProviderManifest"),
 						},
 					},
 					"ModelProviderStatus": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/apiclient/types.ModelProviderStatus"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.ModelProviderStatus"),
 						},
 					},
 				},
@@ -7925,11 +7925,11 @@ func schema_obot_platform_obot_apiclient_types_ModelProvider(ref common.Referenc
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.Metadata", "github.com/obot-platform/obot/apiclient/types.ModelProviderManifest", "github.com/obot-platform/obot/apiclient/types.ModelProviderStatus"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.Metadata", "github.com/boeing-ai-gateway/boeing/apiclient/types.ModelProviderManifest", "github.com/boeing-ai-gateway/boeing/apiclient/types.ModelProviderStatus"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_ModelProviderList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_ModelProviderList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -7942,7 +7942,7 @@ func schema_obot_platform_obot_apiclient_types_ModelProviderList(ref common.Refe
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.ModelProvider"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.ModelProvider"),
 									},
 								},
 							},
@@ -7953,11 +7953,11 @@ func schema_obot_platform_obot_apiclient_types_ModelProviderList(ref common.Refe
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.ModelProvider"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.ModelProvider"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_ModelProviderManifest(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_ModelProviderManifest(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -8035,7 +8035,7 @@ func schema_obot_platform_obot_apiclient_types_ModelProviderManifest(ref common.
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.ProviderConfigurationParameter"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.ProviderConfigurationParameter"),
 									},
 								},
 							},
@@ -8048,7 +8048,7 @@ func schema_obot_platform_obot_apiclient_types_ModelProviderManifest(ref common.
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.ProviderConfigurationParameter"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.ProviderConfigurationParameter"),
 									},
 								},
 							},
@@ -8080,11 +8080,11 @@ func schema_obot_platform_obot_apiclient_types_ModelProviderManifest(ref common.
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.ProviderConfigurationParameter"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.ProviderConfigurationParameter"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_ModelProviderStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_ModelProviderStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -8093,7 +8093,7 @@ func schema_obot_platform_obot_apiclient_types_ModelProviderStatus(ref common.Re
 					"CommonProviderStatus": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/apiclient/types.CommonProviderStatus"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.CommonProviderStatus"),
 						},
 					},
 					"modelsBackPopulated": {
@@ -8113,11 +8113,11 @@ func schema_obot_platform_obot_apiclient_types_ModelProviderStatus(ref common.Re
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.CommonProviderStatus"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.CommonProviderStatus"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_ModelResource(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_ModelResource(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -8125,7 +8125,7 @@ func schema_obot_platform_obot_apiclient_types_ModelResource(ref common.Referenc
 				Properties: map[string]spec.Schema{
 					"id": {
 						SchemaProps: spec.SchemaProps{
-							Description: "ID is the unique identifier of the model resource. It either be: - the wildcard '*', which selects all available models - the model ID of a specific model - an Obot default model alias in the form \"obot://<alias>\" - a wildcard suffix pattern in the form \"<prefix>*\" (e.g. \"claude-haiku-4-5*\"), which selects\n  every current and future model, from any provider, whose provider-native target model\n  starts with <prefix> (case-sensitive)\n\nWhen a model ID is provided, it must match the ID field of an existing referenced model.",
+							Description: "ID is the unique identifier of the model resource. It either be: - the wildcard '*', which selects all available models - the model ID of a specific model - a Boeing default model alias in the form \"boeing://<alias>\" - a wildcard suffix pattern in the form \"<prefix>*\" (e.g. \"claude-haiku-4-5*\"), which selects\n  every current and future model, from any provider, whose provider-native target model\n  starts with <prefix> (case-sensitive)\n\nWhen a model ID is provided, it must match the ID field of an existing referenced model.",
 							Default:     "",
 							Type:        []string{"string"},
 							Format:      "",
@@ -8138,7 +8138,7 @@ func schema_obot_platform_obot_apiclient_types_ModelResource(ref common.Referenc
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_ModelStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_ModelStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -8176,7 +8176,7 @@ func schema_obot_platform_obot_apiclient_types_ModelStatus(ref common.ReferenceC
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_MultiUserConfig(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_MultiUserConfig(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -8191,7 +8191,7 @@ func schema_obot_platform_obot_apiclient_types_MultiUserConfig(ref common.Refere
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.MCPHeader"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.MCPHeader"),
 									},
 								},
 							},
@@ -8201,11 +8201,11 @@ func schema_obot_platform_obot_apiclient_types_MultiUserConfig(ref common.Refere
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.MCPHeader"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.MCPHeader"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_NPXRuntimeConfig(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_NPXRuntimeConfig(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -8270,23 +8270,23 @@ func schema_obot_platform_obot_apiclient_types_NPXRuntimeConfig(ref common.Refer
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_NanobotAgent(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_BoeingbotAgent(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "NanobotAgent represents a nanobot workflow in the API",
+				Description: "BoeingbotAgent represents a boeingbot workflow in the API",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"Metadata": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/apiclient/types.Metadata"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Metadata"),
 						},
 					},
-					"NanobotAgentManifest": {
+					"BoeingbotAgentManifest": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/apiclient/types.NanobotAgentManifest"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.BoeingbotAgentManifest"),
 						},
 					},
 					"userID": {
@@ -8338,19 +8338,19 @@ func schema_obot_platform_obot_apiclient_types_NanobotAgent(ref common.Reference
 						},
 					},
 				},
-				Required: []string{"Metadata", "NanobotAgentManifest"},
+				Required: []string{"Metadata", "BoeingbotAgentManifest"},
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.Metadata", "github.com/obot-platform/obot/apiclient/types.NanobotAgentManifest"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.Metadata", "github.com/boeing-ai-gateway/boeing/apiclient/types.BoeingbotAgentManifest"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_NanobotAgentList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_BoeingbotAgentList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "NanobotAgentList is a list of nanobot workflows",
+				Description: "BoeingbotAgentList is a list of boeingbot workflows",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"items": {
@@ -8360,7 +8360,7 @@ func schema_obot_platform_obot_apiclient_types_NanobotAgentList(ref common.Refer
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.NanobotAgent"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.BoeingbotAgent"),
 									},
 								},
 							},
@@ -8371,15 +8371,15 @@ func schema_obot_platform_obot_apiclient_types_NanobotAgentList(ref common.Refer
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.NanobotAgent"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.BoeingbotAgent"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_NanobotAgentManifest(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_BoeingbotAgentManifest(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "NanobotAgentManifest contains the user-editable fields for a nanobot workflow",
+				Description: "BoeingbotAgentManifest contains the user-editable fields for a boeingbot workflow",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"displayName": {
@@ -8406,7 +8406,7 @@ func schema_obot_platform_obot_apiclient_types_NanobotAgentManifest(ref common.R
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_OAuthClient(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_OAuthClient(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -8415,13 +8415,13 @@ func schema_obot_platform_obot_apiclient_types_OAuthClient(ref common.ReferenceC
 					"Metadata": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/apiclient/types.Metadata"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Metadata"),
 						},
 					},
 					"OAuthClientManifest": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/apiclient/types.OAuthClientManifest"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.OAuthClientManifest"),
 						},
 					},
 					"registration_access_token": {
@@ -8497,11 +8497,11 @@ func schema_obot_platform_obot_apiclient_types_OAuthClient(ref common.ReferenceC
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.Metadata", "github.com/obot-platform/obot/apiclient/types.OAuthClientManifest"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.Metadata", "github.com/boeing-ai-gateway/boeing/apiclient/types.OAuthClientManifest"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_OAuthClientList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_OAuthClientList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -8514,7 +8514,7 @@ func schema_obot_platform_obot_apiclient_types_OAuthClientList(ref common.Refere
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.OAuthClient"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.OAuthClient"),
 									},
 								},
 							},
@@ -8525,11 +8525,11 @@ func schema_obot_platform_obot_apiclient_types_OAuthClientList(ref common.Refere
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.OAuthClient"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.OAuthClient"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_OAuthClientManifest(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_OAuthClientManifest(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -8692,7 +8692,7 @@ func schema_obot_platform_obot_apiclient_types_OAuthClientManifest(ref common.Re
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_OAuthDebuggerAuthorizationURL(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_OAuthDebuggerAuthorizationURL(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -8718,7 +8718,7 @@ func schema_obot_platform_obot_apiclient_types_OAuthDebuggerAuthorizationURL(ref
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_OAuthDebuggerAuthorizationURLRequest(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_OAuthDebuggerAuthorizationURLRequest(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -8738,7 +8738,7 @@ func schema_obot_platform_obot_apiclient_types_OAuthDebuggerAuthorizationURLRequ
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_OAuthDebuggerTokenRequest(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_OAuthDebuggerTokenRequest(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -8765,7 +8765,7 @@ func schema_obot_platform_obot_apiclient_types_OAuthDebuggerTokenRequest(ref com
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_OAuthMetadata(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_OAuthMetadata(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -8819,7 +8819,7 @@ func schema_obot_platform_obot_apiclient_types_OAuthMetadata(ref common.Referenc
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_OAuthToken(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_OAuthToken(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -8860,7 +8860,7 @@ func schema_obot_platform_obot_apiclient_types_OAuthToken(ref common.ReferenceCa
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_PodSecurityAdmissionSettings(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_PodSecurityAdmissionSettings(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -8922,7 +8922,7 @@ func schema_obot_platform_obot_apiclient_types_PodSecurityAdmissionSettings(ref 
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_PowerUserWorkspace(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_PowerUserWorkspace(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -8931,7 +8931,7 @@ func schema_obot_platform_obot_apiclient_types_PowerUserWorkspace(ref common.Ref
 					"Metadata": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/apiclient/types.Metadata"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Metadata"),
 						},
 					},
 					"userID": {
@@ -8951,11 +8951,11 @@ func schema_obot_platform_obot_apiclient_types_PowerUserWorkspace(ref common.Ref
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.Metadata"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.Metadata"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_PowerUserWorkspaceList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_PowerUserWorkspaceList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -8968,7 +8968,7 @@ func schema_obot_platform_obot_apiclient_types_PowerUserWorkspaceList(ref common
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.PowerUserWorkspace"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.PowerUserWorkspace"),
 									},
 								},
 							},
@@ -8979,11 +8979,11 @@ func schema_obot_platform_obot_apiclient_types_PowerUserWorkspaceList(ref common
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.PowerUserWorkspace"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.PowerUserWorkspace"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_Project(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_Project(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -8993,13 +8993,13 @@ func schema_obot_platform_obot_apiclient_types_Project(ref common.ReferenceCallb
 					"Metadata": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/apiclient/types.Metadata"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Metadata"),
 						},
 					},
 					"ProjectManifest": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/apiclient/types.ProjectManifest"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.ProjectManifest"),
 						},
 					},
 					"userID": {
@@ -9013,11 +9013,11 @@ func schema_obot_platform_obot_apiclient_types_Project(ref common.ReferenceCallb
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.Metadata", "github.com/obot-platform/obot/apiclient/types.ProjectManifest"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.Metadata", "github.com/boeing-ai-gateway/boeing/apiclient/types.ProjectManifest"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_ProjectList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_ProjectList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -9031,7 +9031,7 @@ func schema_obot_platform_obot_apiclient_types_ProjectList(ref common.ReferenceC
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.Project"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Project"),
 									},
 								},
 							},
@@ -9042,11 +9042,11 @@ func schema_obot_platform_obot_apiclient_types_ProjectList(ref common.ReferenceC
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.Project"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.Project"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_ProjectManifest(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_ProjectManifest(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -9065,7 +9065,7 @@ func schema_obot_platform_obot_apiclient_types_ProjectManifest(ref common.Refere
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_ProviderConfigurationParameter(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_ProviderConfigurationParameter(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -9115,7 +9115,7 @@ func schema_obot_platform_obot_apiclient_types_ProviderConfigurationParameter(re
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_PublishedArtifact(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_PublishedArtifact(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -9125,13 +9125,13 @@ func schema_obot_platform_obot_apiclient_types_PublishedArtifact(ref common.Refe
 					"Metadata": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/apiclient/types.Metadata"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Metadata"),
 						},
 					},
 					"PublishedArtifactManifest": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/apiclient/types.PublishedArtifactManifest"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.PublishedArtifactManifest"),
 						},
 					},
 					"displayName": {
@@ -9161,7 +9161,7 @@ func schema_obot_platform_obot_apiclient_types_PublishedArtifact(ref common.Refe
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.PublishedArtifactVersionSummary"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.PublishedArtifactVersionSummary"),
 									},
 								},
 							},
@@ -9172,11 +9172,11 @@ func schema_obot_platform_obot_apiclient_types_PublishedArtifact(ref common.Refe
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.Metadata", "github.com/obot-platform/obot/apiclient/types.PublishedArtifactManifest", "github.com/obot-platform/obot/apiclient/types.PublishedArtifactVersionSummary"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.Metadata", "github.com/boeing-ai-gateway/boeing/apiclient/types.PublishedArtifactManifest", "github.com/boeing-ai-gateway/boeing/apiclient/types.PublishedArtifactVersionSummary"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_PublishedArtifactList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_PublishedArtifactList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -9190,7 +9190,7 @@ func schema_obot_platform_obot_apiclient_types_PublishedArtifactList(ref common.
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.PublishedArtifact"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.PublishedArtifact"),
 									},
 								},
 							},
@@ -9201,11 +9201,11 @@ func schema_obot_platform_obot_apiclient_types_PublishedArtifactList(ref common.
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.PublishedArtifact"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.PublishedArtifact"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_PublishedArtifactManifest(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_PublishedArtifactManifest(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -9245,7 +9245,7 @@ func schema_obot_platform_obot_apiclient_types_PublishedArtifactManifest(ref com
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_PublishedArtifactVersionEntry(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_PublishedArtifactVersionEntry(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -9274,7 +9274,7 @@ func schema_obot_platform_obot_apiclient_types_PublishedArtifactVersionEntry(ref
 					},
 					"createdAt": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("github.com/obot-platform/obot/apiclient/types.Time"),
+							Ref: ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Time"),
 						},
 					},
 					"subjects": {
@@ -9284,7 +9284,7 @@ func schema_obot_platform_obot_apiclient_types_PublishedArtifactVersionEntry(ref
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.Subject"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Subject"),
 									},
 								},
 							},
@@ -9295,11 +9295,11 @@ func schema_obot_platform_obot_apiclient_types_PublishedArtifactVersionEntry(ref
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.Subject", "github.com/obot-platform/obot/apiclient/types.Time"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.Subject", "github.com/boeing-ai-gateway/boeing/apiclient/types.Time"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_PublishedArtifactVersionSummary(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_PublishedArtifactVersionSummary(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -9321,7 +9321,7 @@ func schema_obot_platform_obot_apiclient_types_PublishedArtifactVersionSummary(r
 					},
 					"createdAt": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("github.com/obot-platform/obot/apiclient/types.Time"),
+							Ref: ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Time"),
 						},
 					},
 					"subjects": {
@@ -9331,7 +9331,7 @@ func schema_obot_platform_obot_apiclient_types_PublishedArtifactVersionSummary(r
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.Subject"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Subject"),
 									},
 								},
 							},
@@ -9342,11 +9342,11 @@ func schema_obot_platform_obot_apiclient_types_PublishedArtifactVersionSummary(r
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.Subject", "github.com/obot-platform/obot/apiclient/types.Time"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.Subject", "github.com/boeing-ai-gateway/boeing/apiclient/types.Time"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_RegistryGitHubMeta(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_RegistryGitHubMeta(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -9365,22 +9365,22 @@ func schema_obot_platform_obot_apiclient_types_RegistryGitHubMeta(ref common.Ref
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_RegistryMeta(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_RegistryMeta(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
 				Description: "RegistryMeta contains registry-managed metadata",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
-					"ai.obot/server": {
+					"ai.boeing/server": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("github.com/obot-platform/obot/apiclient/types.RegistryObotMeta"),
+							Ref: ref("github.com/boeing-ai-gateway/boeing/apiclient/types.RegistryBoeingMeta"),
 						},
 					},
 					"io.modelcontextprotocol.registry/official": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/apiclient/types.RegistryOfficialMeta"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.RegistryOfficialMeta"),
 						},
 					},
 				},
@@ -9388,15 +9388,15 @@ func schema_obot_platform_obot_apiclient_types_RegistryMeta(ref common.Reference
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.RegistryObotMeta", "github.com/obot-platform/obot/apiclient/types.RegistryOfficialMeta"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.RegistryBoeingMeta", "github.com/boeing-ai-gateway/boeing/apiclient/types.RegistryOfficialMeta"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_RegistryObotMeta(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_RegistryBoeingMeta(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "RegistryObotMeta contains Obot-specific metadata",
+				Description: "RegistryBoeingMeta contains Boeing-specific metadata",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"configurationRequired": {
@@ -9417,7 +9417,7 @@ func schema_obot_platform_obot_apiclient_types_RegistryObotMeta(ref common.Refer
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_RegistryOfficialMeta(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_RegistryOfficialMeta(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -9449,7 +9449,7 @@ func schema_obot_platform_obot_apiclient_types_RegistryOfficialMeta(ref common.R
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_RegistryPublisherProvidedMeta(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_RegistryPublisherProvidedMeta(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -9457,22 +9457,22 @@ func schema_obot_platform_obot_apiclient_types_RegistryPublisherProvidedMeta(ref
 				Properties: map[string]spec.Schema{
 					"github": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("github.com/obot-platform/obot/apiclient/types.RegistryGitHubMeta"),
+							Ref: ref("github.com/boeing-ai-gateway/boeing/apiclient/types.RegistryGitHubMeta"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.RegistryGitHubMeta"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.RegistryGitHubMeta"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_RegistryServerDetail(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_RegistryServerDetail(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "RegistryServerDetail matches the Registry API RegistryServerDetail schema For Obot, configured servers always use Remotes (never Packages)",
+				Description: "RegistryServerDetail matches the Registry API RegistryServerDetail schema For Boeing, configured servers always use Remotes (never Packages)",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"name": {
@@ -9515,7 +9515,7 @@ func schema_obot_platform_obot_apiclient_types_RegistryServerDetail(ref common.R
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.RegistryServerIcon"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.RegistryServerIcon"),
 									},
 								},
 							},
@@ -9528,7 +9528,7 @@ func schema_obot_platform_obot_apiclient_types_RegistryServerDetail(ref common.R
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.RegistryServerRemote"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.RegistryServerRemote"),
 									},
 								},
 							},
@@ -9536,7 +9536,7 @@ func schema_obot_platform_obot_apiclient_types_RegistryServerDetail(ref common.R
 					},
 					"repository": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("github.com/obot-platform/obot/apiclient/types.RegistryServerRepository"),
+							Ref: ref("github.com/boeing-ai-gateway/boeing/apiclient/types.RegistryServerRepository"),
 						},
 					},
 					"$schema": {
@@ -9548,7 +9548,7 @@ func schema_obot_platform_obot_apiclient_types_RegistryServerDetail(ref common.R
 					"_meta": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/apiclient/types.RegistryServerMeta"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.RegistryServerMeta"),
 						},
 					},
 				},
@@ -9556,11 +9556,11 @@ func schema_obot_platform_obot_apiclient_types_RegistryServerDetail(ref common.R
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.RegistryServerIcon", "github.com/obot-platform/obot/apiclient/types.RegistryServerMeta", "github.com/obot-platform/obot/apiclient/types.RegistryServerRemote", "github.com/obot-platform/obot/apiclient/types.RegistryServerRepository"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.RegistryServerIcon", "github.com/boeing-ai-gateway/boeing/apiclient/types.RegistryServerMeta", "github.com/boeing-ai-gateway/boeing/apiclient/types.RegistryServerRemote", "github.com/boeing-ai-gateway/boeing/apiclient/types.RegistryServerRepository"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_RegistryServerIcon(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_RegistryServerIcon(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -9607,7 +9607,7 @@ func schema_obot_platform_obot_apiclient_types_RegistryServerIcon(ref common.Ref
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_RegistryServerList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_RegistryServerList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -9621,7 +9621,7 @@ func schema_obot_platform_obot_apiclient_types_RegistryServerList(ref common.Ref
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.RegistryServerResponse"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.RegistryServerResponse"),
 									},
 								},
 							},
@@ -9629,7 +9629,7 @@ func schema_obot_platform_obot_apiclient_types_RegistryServerList(ref common.Ref
 					},
 					"metadata": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("github.com/obot-platform/obot/apiclient/types.RegistryServerListMetadata"),
+							Ref: ref("github.com/boeing-ai-gateway/boeing/apiclient/types.RegistryServerListMetadata"),
 						},
 					},
 				},
@@ -9637,11 +9637,11 @@ func schema_obot_platform_obot_apiclient_types_RegistryServerList(ref common.Ref
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.RegistryServerListMetadata", "github.com/obot-platform/obot/apiclient/types.RegistryServerResponse"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.RegistryServerListMetadata", "github.com/boeing-ai-gateway/boeing/apiclient/types.RegistryServerResponse"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_RegistryServerListMetadata(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_RegistryServerListMetadata(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -9666,7 +9666,7 @@ func schema_obot_platform_obot_apiclient_types_RegistryServerListMetadata(ref co
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_RegistryServerMeta(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_RegistryServerMeta(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -9674,22 +9674,22 @@ func schema_obot_platform_obot_apiclient_types_RegistryServerMeta(ref common.Ref
 				Properties: map[string]spec.Schema{
 					"io.modelcontextprotocol.registry/publisher-provided": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("github.com/obot-platform/obot/apiclient/types.RegistryPublisherProvidedMeta"),
+							Ref: ref("github.com/boeing-ai-gateway/boeing/apiclient/types.RegistryPublisherProvidedMeta"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.RegistryPublisherProvidedMeta"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.RegistryPublisherProvidedMeta"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_RegistryServerRemote(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_RegistryServerRemote(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "RegistryServerRemote represents a remote server configuration All Obot servers are exposed as streamable-http remotes via mcp-connect",
+				Description: "RegistryServerRemote represents a remote server configuration All Boeing servers are exposed as streamable-http remotes via mcp-connect",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"type": {
@@ -9701,7 +9701,7 @@ func schema_obot_platform_obot_apiclient_types_RegistryServerRemote(ref common.R
 					},
 					"url": {
 						SchemaProps: spec.SchemaProps{
-							Description: "Always \"streamable-http\" for configured Obot servers",
+							Description: "Always \"streamable-http\" for configured Boeing servers",
 							Default:     "",
 							Type:        []string{"string"},
 							Format:      "",
@@ -9714,7 +9714,7 @@ func schema_obot_platform_obot_apiclient_types_RegistryServerRemote(ref common.R
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_RegistryServerRepository(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_RegistryServerRepository(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -9754,7 +9754,7 @@ func schema_obot_platform_obot_apiclient_types_RegistryServerRepository(ref comm
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_RegistryServerResponse(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_RegistryServerResponse(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -9764,13 +9764,13 @@ func schema_obot_platform_obot_apiclient_types_RegistryServerResponse(ref common
 					"server": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/apiclient/types.RegistryServerDetail"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.RegistryServerDetail"),
 						},
 					},
 					"_meta": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/apiclient/types.RegistryMeta"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.RegistryMeta"),
 						},
 					},
 				},
@@ -9778,11 +9778,11 @@ func schema_obot_platform_obot_apiclient_types_RegistryServerResponse(ref common
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.RegistryMeta", "github.com/obot-platform/obot/apiclient/types.RegistryServerDetail"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.RegistryMeta", "github.com/boeing-ai-gateway/boeing/apiclient/types.RegistryServerDetail"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_RemainingTokenUsage(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_RemainingTokenUsage(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -9829,7 +9829,7 @@ func schema_obot_platform_obot_apiclient_types_RemainingTokenUsage(ref common.Re
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_RemoteCatalogConfig(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_RemoteCatalogConfig(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -9864,7 +9864,7 @@ func schema_obot_platform_obot_apiclient_types_RemoteCatalogConfig(ref common.Re
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.MCPHeader"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.MCPHeader"),
 									},
 								},
 							},
@@ -9881,11 +9881,11 @@ func schema_obot_platform_obot_apiclient_types_RemoteCatalogConfig(ref common.Re
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.MCPHeader"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.MCPHeader"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_RemoteRuntimeConfig(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_RemoteRuntimeConfig(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -9929,7 +9929,7 @@ func schema_obot_platform_obot_apiclient_types_RemoteRuntimeConfig(ref common.Re
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.MCPHeader"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.MCPHeader"),
 									},
 								},
 							},
@@ -9947,11 +9947,11 @@ func schema_obot_platform_obot_apiclient_types_RemoteRuntimeConfig(ref common.Re
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.MCPHeader"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.MCPHeader"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_Resource(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_Resource(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -9978,7 +9978,7 @@ func schema_obot_platform_obot_apiclient_types_Resource(ref common.ReferenceCall
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_RuntimeValidationError(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_RuntimeValidationError(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -10013,7 +10013,7 @@ func schema_obot_platform_obot_apiclient_types_RuntimeValidationError(ref common
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_S3Config(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_S3Config(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -10045,7 +10045,7 @@ func schema_obot_platform_obot_apiclient_types_S3Config(ref common.ReferenceCall
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_Schedule(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_Schedule(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -10101,7 +10101,7 @@ func schema_obot_platform_obot_apiclient_types_Schedule(ref common.ReferenceCall
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_ScheduledAuditLogExportCreateRequest(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_ScheduledAuditLogExportCreateRequest(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -10130,7 +10130,7 @@ func schema_obot_platform_obot_apiclient_types_ScheduledAuditLogExportCreateRequ
 					"schedule": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/apiclient/types.Schedule"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Schedule"),
 						},
 					},
 					"retentionPeriodInDays": {
@@ -10142,7 +10142,7 @@ func schema_obot_platform_obot_apiclient_types_ScheduledAuditLogExportCreateRequ
 					"filters": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/apiclient/types.AuditLogExportFilters"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.AuditLogExportFilters"),
 						},
 					},
 				},
@@ -10150,11 +10150,11 @@ func schema_obot_platform_obot_apiclient_types_ScheduledAuditLogExportCreateRequ
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.AuditLogExportFilters", "github.com/obot-platform/obot/apiclient/types.Schedule"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.AuditLogExportFilters", "github.com/boeing-ai-gateway/boeing/apiclient/types.Schedule"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_ScheduledAuditLogExportListResponse(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_ScheduledAuditLogExportListResponse(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -10168,7 +10168,7 @@ func schema_obot_platform_obot_apiclient_types_ScheduledAuditLogExportListRespon
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.ScheduledAuditLogExportResponse"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.ScheduledAuditLogExportResponse"),
 									},
 								},
 							},
@@ -10186,11 +10186,11 @@ func schema_obot_platform_obot_apiclient_types_ScheduledAuditLogExportListRespon
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.ScheduledAuditLogExportResponse"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.ScheduledAuditLogExportResponse"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_ScheduledAuditLogExportResponse(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_ScheduledAuditLogExportResponse(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -10235,7 +10235,7 @@ func schema_obot_platform_obot_apiclient_types_ScheduledAuditLogExportResponse(r
 					"schedule": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/apiclient/types.Schedule"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Schedule"),
 						},
 					},
 					"retentionPeriodInDays": {
@@ -10247,12 +10247,12 @@ func schema_obot_platform_obot_apiclient_types_ScheduledAuditLogExportResponse(r
 					"filters": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/apiclient/types.AuditLogExportFilters"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.AuditLogExportFilters"),
 						},
 					},
 					"lastRunAt": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("github.com/obot-platform/obot/apiclient/types.Time"),
+							Ref: ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Time"),
 						},
 					},
 				},
@@ -10260,11 +10260,11 @@ func schema_obot_platform_obot_apiclient_types_ScheduledAuditLogExportResponse(r
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.AuditLogExportFilters", "github.com/obot-platform/obot/apiclient/types.Schedule", "github.com/obot-platform/obot/apiclient/types.Time"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.AuditLogExportFilters", "github.com/boeing-ai-gateway/boeing/apiclient/types.Schedule", "github.com/boeing-ai-gateway/boeing/apiclient/types.Time"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_ScheduledAuditLogExportUpdateRequest(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_ScheduledAuditLogExportUpdateRequest(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -10285,7 +10285,7 @@ func schema_obot_platform_obot_apiclient_types_ScheduledAuditLogExportUpdateRequ
 					},
 					"schedule": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("github.com/obot-platform/obot/apiclient/types.Schedule"),
+							Ref: ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Schedule"),
 						},
 					},
 					"retentionPeriodInDays": {
@@ -10296,7 +10296,7 @@ func schema_obot_platform_obot_apiclient_types_ScheduledAuditLogExportUpdateRequ
 					},
 					"filters": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("github.com/obot-platform/obot/apiclient/types.AuditLogExportFilters"),
+							Ref: ref("github.com/boeing-ai-gateway/boeing/apiclient/types.AuditLogExportFilters"),
 						},
 					},
 					"bucket": {
@@ -10315,11 +10315,11 @@ func schema_obot_platform_obot_apiclient_types_ScheduledAuditLogExportUpdateRequ
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.AuditLogExportFilters", "github.com/obot-platform/obot/apiclient/types.Schedule"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.AuditLogExportFilters", "github.com/boeing-ai-gateway/boeing/apiclient/types.Schedule"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_Skill(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_Skill(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -10328,13 +10328,13 @@ func schema_obot_platform_obot_apiclient_types_Skill(ref common.ReferenceCallbac
 					"Metadata": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/apiclient/types.Metadata"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Metadata"),
 						},
 					},
 					"SkillManifest": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/apiclient/types.SkillManifest"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.SkillManifest"),
 						},
 					},
 					"repoID": {
@@ -10387,7 +10387,7 @@ func schema_obot_platform_obot_apiclient_types_Skill(ref common.ReferenceCallbac
 					},
 					"lastIndexedAt": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("github.com/obot-platform/obot/apiclient/types.Time"),
+							Ref: ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Time"),
 						},
 					},
 				},
@@ -10395,11 +10395,11 @@ func schema_obot_platform_obot_apiclient_types_Skill(ref common.ReferenceCallbac
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.Metadata", "github.com/obot-platform/obot/apiclient/types.SkillManifest", "github.com/obot-platform/obot/apiclient/types.Time"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.Metadata", "github.com/boeing-ai-gateway/boeing/apiclient/types.SkillManifest", "github.com/boeing-ai-gateway/boeing/apiclient/types.Time"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_SkillAccessRule(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_SkillAccessRule(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -10408,7 +10408,7 @@ func schema_obot_platform_obot_apiclient_types_SkillAccessRule(ref common.Refere
 					"Metadata": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/apiclient/types.Metadata"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Metadata"),
 						},
 					},
 					"displayName": {
@@ -10424,7 +10424,7 @@ func schema_obot_platform_obot_apiclient_types_SkillAccessRule(ref common.Refere
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.Subject"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Subject"),
 									},
 								},
 							},
@@ -10437,7 +10437,7 @@ func schema_obot_platform_obot_apiclient_types_SkillAccessRule(ref common.Refere
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.SkillResource"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.SkillResource"),
 									},
 								},
 							},
@@ -10448,11 +10448,11 @@ func schema_obot_platform_obot_apiclient_types_SkillAccessRule(ref common.Refere
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.Metadata", "github.com/obot-platform/obot/apiclient/types.SkillResource", "github.com/obot-platform/obot/apiclient/types.Subject"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.Metadata", "github.com/boeing-ai-gateway/boeing/apiclient/types.SkillResource", "github.com/boeing-ai-gateway/boeing/apiclient/types.Subject"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_SkillAccessRuleList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_SkillAccessRuleList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -10465,7 +10465,7 @@ func schema_obot_platform_obot_apiclient_types_SkillAccessRuleList(ref common.Re
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.SkillAccessRule"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.SkillAccessRule"),
 									},
 								},
 							},
@@ -10476,11 +10476,11 @@ func schema_obot_platform_obot_apiclient_types_SkillAccessRuleList(ref common.Re
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.SkillAccessRule"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.SkillAccessRule"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_SkillAccessRuleManifest(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_SkillAccessRuleManifest(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -10499,7 +10499,7 @@ func schema_obot_platform_obot_apiclient_types_SkillAccessRuleManifest(ref commo
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.Subject"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Subject"),
 									},
 								},
 							},
@@ -10512,7 +10512,7 @@ func schema_obot_platform_obot_apiclient_types_SkillAccessRuleManifest(ref commo
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.SkillResource"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.SkillResource"),
 									},
 								},
 							},
@@ -10522,11 +10522,11 @@ func schema_obot_platform_obot_apiclient_types_SkillAccessRuleManifest(ref commo
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.SkillResource", "github.com/obot-platform/obot/apiclient/types.Subject"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.SkillResource", "github.com/boeing-ai-gateway/boeing/apiclient/types.Subject"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_SkillList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_SkillList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -10539,7 +10539,7 @@ func schema_obot_platform_obot_apiclient_types_SkillList(ref common.ReferenceCal
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.Skill"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Skill"),
 									},
 								},
 							},
@@ -10550,11 +10550,11 @@ func schema_obot_platform_obot_apiclient_types_SkillList(ref common.ReferenceCal
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.Skill"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.Skill"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_SkillManifest(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_SkillManifest(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -10617,7 +10617,7 @@ func schema_obot_platform_obot_apiclient_types_SkillManifest(ref common.Referenc
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_SkillRepository(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_SkillRepository(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -10626,18 +10626,18 @@ func schema_obot_platform_obot_apiclient_types_SkillRepository(ref common.Refere
 					"Metadata": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/apiclient/types.Metadata"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Metadata"),
 						},
 					},
 					"SkillRepositoryManifest": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/apiclient/types.SkillRepositoryManifest"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.SkillRepositoryManifest"),
 						},
 					},
 					"lastSyncTime": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("github.com/obot-platform/obot/apiclient/types.Time"),
+							Ref: ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Time"),
 						},
 					},
 					"isSyncing": {
@@ -10670,11 +10670,11 @@ func schema_obot_platform_obot_apiclient_types_SkillRepository(ref common.Refere
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.Metadata", "github.com/obot-platform/obot/apiclient/types.SkillRepositoryManifest", "github.com/obot-platform/obot/apiclient/types.Time"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.Metadata", "github.com/boeing-ai-gateway/boeing/apiclient/types.SkillRepositoryManifest", "github.com/boeing-ai-gateway/boeing/apiclient/types.Time"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_SkillRepositoryList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_SkillRepositoryList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -10687,7 +10687,7 @@ func schema_obot_platform_obot_apiclient_types_SkillRepositoryList(ref common.Re
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.SkillRepository"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.SkillRepository"),
 									},
 								},
 							},
@@ -10698,11 +10698,11 @@ func schema_obot_platform_obot_apiclient_types_SkillRepositoryList(ref common.Re
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.SkillRepository"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.SkillRepository"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_SkillRepositoryManifest(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_SkillRepositoryManifest(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -10732,7 +10732,7 @@ func schema_obot_platform_obot_apiclient_types_SkillRepositoryManifest(ref commo
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_SkillResource(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_SkillResource(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -10759,7 +10759,7 @@ func schema_obot_platform_obot_apiclient_types_SkillResource(ref common.Referenc
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_StorageConfig(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_StorageConfig(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -10768,36 +10768,36 @@ func schema_obot_platform_obot_apiclient_types_StorageConfig(ref common.Referenc
 					"s3Config": {
 						SchemaProps: spec.SchemaProps{
 							Description: "S3-compatible storage config",
-							Ref:         ref("github.com/obot-platform/obot/apiclient/types.S3Config"),
+							Ref:         ref("github.com/boeing-ai-gateway/boeing/apiclient/types.S3Config"),
 						},
 					},
 					"gcsConfig": {
 						SchemaProps: spec.SchemaProps{
 							Description: "Google Cloud Storage config",
-							Ref:         ref("github.com/obot-platform/obot/apiclient/types.GCSConfig"),
+							Ref:         ref("github.com/boeing-ai-gateway/boeing/apiclient/types.GCSConfig"),
 						},
 					},
 					"azureConfig": {
 						SchemaProps: spec.SchemaProps{
 							Description: "Azure Blob Storage config",
-							Ref:         ref("github.com/obot-platform/obot/apiclient/types.AzureConfig"),
+							Ref:         ref("github.com/boeing-ai-gateway/boeing/apiclient/types.AzureConfig"),
 						},
 					},
 					"customS3Config": {
 						SchemaProps: spec.SchemaProps{
 							Description: "Custom S3-compatible storage config",
-							Ref:         ref("github.com/obot-platform/obot/apiclient/types.CustomS3Config"),
+							Ref:         ref("github.com/boeing-ai-gateway/boeing/apiclient/types.CustomS3Config"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.AzureConfig", "github.com/obot-platform/obot/apiclient/types.CustomS3Config", "github.com/obot-platform/obot/apiclient/types.GCSConfig", "github.com/obot-platform/obot/apiclient/types.S3Config"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.AzureConfig", "github.com/boeing-ai-gateway/boeing/apiclient/types.CustomS3Config", "github.com/boeing-ai-gateway/boeing/apiclient/types.GCSConfig", "github.com/boeing-ai-gateway/boeing/apiclient/types.S3Config"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_StorageCredentialsResponse(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_StorageCredentialsResponse(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -10820,7 +10820,7 @@ func schema_obot_platform_obot_apiclient_types_StorageCredentialsResponse(ref co
 					"StorageConfig": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/apiclient/types.StorageConfig"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.StorageConfig"),
 						},
 					},
 				},
@@ -10828,11 +10828,11 @@ func schema_obot_platform_obot_apiclient_types_StorageCredentialsResponse(ref co
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.StorageConfig"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.StorageConfig"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_StorageCredentialsTestRequest(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_StorageCredentialsTestRequest(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -10849,7 +10849,7 @@ func schema_obot_platform_obot_apiclient_types_StorageCredentialsTestRequest(ref
 					"StorageConfig": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/apiclient/types.StorageConfig"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.StorageConfig"),
 						},
 					},
 				},
@@ -10857,11 +10857,11 @@ func schema_obot_platform_obot_apiclient_types_StorageCredentialsTestRequest(ref
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.StorageConfig"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.StorageConfig"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_StorageCredentialsTestResponse(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_StorageCredentialsTestResponse(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -10889,7 +10889,7 @@ func schema_obot_platform_obot_apiclient_types_StorageCredentialsTestResponse(re
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_StorageProviderConfigInput(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_StorageProviderConfigInput(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -10911,7 +10911,7 @@ func schema_obot_platform_obot_apiclient_types_StorageProviderConfigInput(ref co
 					"StorageConfig": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/apiclient/types.StorageConfig"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.StorageConfig"),
 						},
 					},
 				},
@@ -10919,11 +10919,11 @@ func schema_obot_platform_obot_apiclient_types_StorageProviderConfigInput(ref co
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.StorageConfig"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.StorageConfig"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_Subject(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_Subject(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -10950,7 +10950,7 @@ func schema_obot_platform_obot_apiclient_types_Subject(ref common.ReferenceCallb
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_SystemMCPCatalog(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_SystemMCPCatalog(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -10959,18 +10959,18 @@ func schema_obot_platform_obot_apiclient_types_SystemMCPCatalog(ref common.Refer
 					"Metadata": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/apiclient/types.Metadata"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Metadata"),
 						},
 					},
 					"SystemMCPCatalogManifest": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/apiclient/types.SystemMCPCatalogManifest"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.SystemMCPCatalogManifest"),
 						},
 					},
 					"lastSynced": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("github.com/obot-platform/obot/apiclient/types.Time"),
+							Ref: ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Time"),
 						},
 					},
 					"syncErrors": {
@@ -10999,11 +10999,11 @@ func schema_obot_platform_obot_apiclient_types_SystemMCPCatalog(ref common.Refer
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.Metadata", "github.com/obot-platform/obot/apiclient/types.SystemMCPCatalogManifest", "github.com/obot-platform/obot/apiclient/types.Time"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.Metadata", "github.com/boeing-ai-gateway/boeing/apiclient/types.SystemMCPCatalogManifest", "github.com/boeing-ai-gateway/boeing/apiclient/types.Time"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_SystemMCPCatalogList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_SystemMCPCatalogList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -11016,7 +11016,7 @@ func schema_obot_platform_obot_apiclient_types_SystemMCPCatalogList(ref common.R
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.SystemMCPCatalog"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.SystemMCPCatalog"),
 									},
 								},
 							},
@@ -11027,11 +11027,11 @@ func schema_obot_platform_obot_apiclient_types_SystemMCPCatalogList(ref common.R
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.SystemMCPCatalog"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.SystemMCPCatalog"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_SystemMCPCatalogManifest(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_SystemMCPCatalogManifest(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -11080,7 +11080,7 @@ func schema_obot_platform_obot_apiclient_types_SystemMCPCatalogManifest(ref comm
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_SystemMCPServer(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_SystemMCPServer(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -11089,13 +11089,13 @@ func schema_obot_platform_obot_apiclient_types_SystemMCPServer(ref common.Refere
 					"Metadata": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/apiclient/types.Metadata"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Metadata"),
 						},
 					},
 					"manifest": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/apiclient/types.SystemMCPServerManifest"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.SystemMCPServerManifest"),
 						},
 					},
 					"configured": {
@@ -11165,7 +11165,7 @@ func schema_obot_platform_obot_apiclient_types_SystemMCPServer(ref common.Refere
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.DeploymentCondition"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.DeploymentCondition"),
 									},
 								},
 							},
@@ -11182,11 +11182,11 @@ func schema_obot_platform_obot_apiclient_types_SystemMCPServer(ref common.Refere
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.DeploymentCondition", "github.com/obot-platform/obot/apiclient/types.Metadata", "github.com/obot-platform/obot/apiclient/types.SystemMCPServerManifest"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.DeploymentCondition", "github.com/boeing-ai-gateway/boeing/apiclient/types.Metadata", "github.com/boeing-ai-gateway/boeing/apiclient/types.SystemMCPServerManifest"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_SystemMCPServerCatalogEntry(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_SystemMCPServerCatalogEntry(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -11195,13 +11195,13 @@ func schema_obot_platform_obot_apiclient_types_SystemMCPServerCatalogEntry(ref c
 					"Metadata": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/apiclient/types.Metadata"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Metadata"),
 						},
 					},
 					"manifest": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/apiclient/types.SystemMCPServerCatalogEntryManifest"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.SystemMCPServerCatalogEntryManifest"),
 						},
 					},
 					"editable": {
@@ -11224,12 +11224,12 @@ func schema_obot_platform_obot_apiclient_types_SystemMCPServerCatalogEntry(ref c
 					},
 					"lastUpdated": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("github.com/obot-platform/obot/apiclient/types.Time"),
+							Ref: ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Time"),
 						},
 					},
 					"toolPreviewsLastGenerated": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("github.com/obot-platform/obot/apiclient/types.Time"),
+							Ref: ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Time"),
 						},
 					},
 					"needsUpdate": {
@@ -11249,11 +11249,11 @@ func schema_obot_platform_obot_apiclient_types_SystemMCPServerCatalogEntry(ref c
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.Metadata", "github.com/obot-platform/obot/apiclient/types.SystemMCPServerCatalogEntryManifest", "github.com/obot-platform/obot/apiclient/types.Time"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.Metadata", "github.com/boeing-ai-gateway/boeing/apiclient/types.SystemMCPServerCatalogEntryManifest", "github.com/boeing-ai-gateway/boeing/apiclient/types.Time"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_SystemMCPServerCatalogEntryList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_SystemMCPServerCatalogEntryList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -11266,7 +11266,7 @@ func schema_obot_platform_obot_apiclient_types_SystemMCPServerCatalogEntryList(r
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.SystemMCPServerCatalogEntry"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.SystemMCPServerCatalogEntry"),
 									},
 								},
 							},
@@ -11277,11 +11277,11 @@ func schema_obot_platform_obot_apiclient_types_SystemMCPServerCatalogEntryList(r
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.SystemMCPServerCatalogEntry"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.SystemMCPServerCatalogEntry"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_SystemMCPServerCatalogEntryManifest(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_SystemMCPServerCatalogEntryManifest(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -11343,7 +11343,7 @@ func schema_obot_platform_obot_apiclient_types_SystemMCPServerCatalogEntryManife
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.MCPServerTool"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.MCPServerTool"),
 									},
 								},
 							},
@@ -11357,7 +11357,7 @@ func schema_obot_platform_obot_apiclient_types_SystemMCPServerCatalogEntryManife
 					},
 					"filterConfig": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("github.com/obot-platform/obot/apiclient/types.FilterConfig"),
+							Ref: ref("github.com/boeing-ai-gateway/boeing/apiclient/types.FilterConfig"),
 						},
 					},
 					"runtime": {
@@ -11369,22 +11369,22 @@ func schema_obot_platform_obot_apiclient_types_SystemMCPServerCatalogEntryManife
 					},
 					"uvxConfig": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("github.com/obot-platform/obot/apiclient/types.UVXRuntimeConfig"),
+							Ref: ref("github.com/boeing-ai-gateway/boeing/apiclient/types.UVXRuntimeConfig"),
 						},
 					},
 					"npxConfig": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("github.com/obot-platform/obot/apiclient/types.NPXRuntimeConfig"),
+							Ref: ref("github.com/boeing-ai-gateway/boeing/apiclient/types.NPXRuntimeConfig"),
 						},
 					},
 					"containerizedConfig": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("github.com/obot-platform/obot/apiclient/types.ContainerizedRuntimeConfig"),
+							Ref: ref("github.com/boeing-ai-gateway/boeing/apiclient/types.ContainerizedRuntimeConfig"),
 						},
 					},
 					"remoteConfig": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("github.com/obot-platform/obot/apiclient/types.RemoteCatalogConfig"),
+							Ref: ref("github.com/boeing-ai-gateway/boeing/apiclient/types.RemoteCatalogConfig"),
 						},
 					},
 					"serverUserType": {
@@ -11401,7 +11401,7 @@ func schema_obot_platform_obot_apiclient_types_SystemMCPServerCatalogEntryManife
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.MCPEnv"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.MCPEnv"),
 									},
 								},
 							},
@@ -11409,7 +11409,7 @@ func schema_obot_platform_obot_apiclient_types_SystemMCPServerCatalogEntryManife
 					},
 					"resources": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("github.com/obot-platform/obot/apiclient/types.MCPResourceRequirements"),
+							Ref: ref("github.com/boeing-ai-gateway/boeing/apiclient/types.MCPResourceRequirements"),
 						},
 					},
 				},
@@ -11417,11 +11417,11 @@ func schema_obot_platform_obot_apiclient_types_SystemMCPServerCatalogEntryManife
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.ContainerizedRuntimeConfig", "github.com/obot-platform/obot/apiclient/types.FilterConfig", "github.com/obot-platform/obot/apiclient/types.MCPEnv", "github.com/obot-platform/obot/apiclient/types.MCPResourceRequirements", "github.com/obot-platform/obot/apiclient/types.MCPServerTool", "github.com/obot-platform/obot/apiclient/types.NPXRuntimeConfig", "github.com/obot-platform/obot/apiclient/types.RemoteCatalogConfig", "github.com/obot-platform/obot/apiclient/types.UVXRuntimeConfig"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.ContainerizedRuntimeConfig", "github.com/boeing-ai-gateway/boeing/apiclient/types.FilterConfig", "github.com/boeing-ai-gateway/boeing/apiclient/types.MCPEnv", "github.com/boeing-ai-gateway/boeing/apiclient/types.MCPResourceRequirements", "github.com/boeing-ai-gateway/boeing/apiclient/types.MCPServerTool", "github.com/boeing-ai-gateway/boeing/apiclient/types.NPXRuntimeConfig", "github.com/boeing-ai-gateway/boeing/apiclient/types.RemoteCatalogConfig", "github.com/boeing-ai-gateway/boeing/apiclient/types.UVXRuntimeConfig"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_SystemMCPServerList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_SystemMCPServerList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -11434,7 +11434,7 @@ func schema_obot_platform_obot_apiclient_types_SystemMCPServerList(ref common.Re
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.SystemMCPServer"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.SystemMCPServer"),
 									},
 								},
 							},
@@ -11445,11 +11445,11 @@ func schema_obot_platform_obot_apiclient_types_SystemMCPServerList(ref common.Re
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.SystemMCPServer"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.SystemMCPServer"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_SystemMCPServerManifest(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_SystemMCPServerManifest(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -11516,22 +11516,22 @@ func schema_obot_platform_obot_apiclient_types_SystemMCPServerManifest(ref commo
 					"uvxConfig": {
 						SchemaProps: spec.SchemaProps{
 							Description: "Runtime-specific configurations (only one should be populated based on runtime)",
-							Ref:         ref("github.com/obot-platform/obot/apiclient/types.UVXRuntimeConfig"),
+							Ref:         ref("github.com/boeing-ai-gateway/boeing/apiclient/types.UVXRuntimeConfig"),
 						},
 					},
 					"npxConfig": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("github.com/obot-platform/obot/apiclient/types.NPXRuntimeConfig"),
+							Ref: ref("github.com/boeing-ai-gateway/boeing/apiclient/types.NPXRuntimeConfig"),
 						},
 					},
 					"containerizedConfig": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("github.com/obot-platform/obot/apiclient/types.ContainerizedRuntimeConfig"),
+							Ref: ref("github.com/boeing-ai-gateway/boeing/apiclient/types.ContainerizedRuntimeConfig"),
 						},
 					},
 					"remoteConfig": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("github.com/obot-platform/obot/apiclient/types.RemoteRuntimeConfig"),
+							Ref: ref("github.com/boeing-ai-gateway/boeing/apiclient/types.RemoteRuntimeConfig"),
 						},
 					},
 					"env": {
@@ -11541,7 +11541,7 @@ func schema_obot_platform_obot_apiclient_types_SystemMCPServerManifest(ref commo
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.MCPEnv"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.MCPEnv"),
 									},
 								},
 							},
@@ -11549,7 +11549,7 @@ func schema_obot_platform_obot_apiclient_types_SystemMCPServerManifest(ref commo
 					},
 					"resources": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("github.com/obot-platform/obot/apiclient/types.MCPResourceRequirements"),
+							Ref: ref("github.com/boeing-ai-gateway/boeing/apiclient/types.MCPResourceRequirements"),
 						},
 					},
 				},
@@ -11557,11 +11557,11 @@ func schema_obot_platform_obot_apiclient_types_SystemMCPServerManifest(ref commo
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.ContainerizedRuntimeConfig", "github.com/obot-platform/obot/apiclient/types.MCPEnv", "github.com/obot-platform/obot/apiclient/types.MCPResourceRequirements", "github.com/obot-platform/obot/apiclient/types.NPXRuntimeConfig", "github.com/obot-platform/obot/apiclient/types.RemoteRuntimeConfig", "github.com/obot-platform/obot/apiclient/types.UVXRuntimeConfig"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.ContainerizedRuntimeConfig", "github.com/boeing-ai-gateway/boeing/apiclient/types.MCPEnv", "github.com/boeing-ai-gateway/boeing/apiclient/types.MCPResourceRequirements", "github.com/boeing-ai-gateway/boeing/apiclient/types.NPXRuntimeConfig", "github.com/boeing-ai-gateway/boeing/apiclient/types.RemoteRuntimeConfig", "github.com/boeing-ai-gateway/boeing/apiclient/types.UVXRuntimeConfig"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_ThemePreferences(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_ThemePreferences(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -11747,7 +11747,7 @@ func schema_obot_platform_obot_apiclient_types_ThemePreferences(ref common.Refer
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_Time(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_Time(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -11758,7 +11758,7 @@ func schema_obot_platform_obot_apiclient_types_Time(ref common.ReferenceCallback
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_TokenUsage(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_TokenUsage(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -11805,7 +11805,7 @@ func schema_obot_platform_obot_apiclient_types_TokenUsage(ref common.ReferenceCa
 					},
 					"date": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("github.com/obot-platform/obot/apiclient/types.Time"),
+							Ref: ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Time"),
 						},
 					},
 					"personalToken": {
@@ -11820,11 +11820,11 @@ func schema_obot_platform_obot_apiclient_types_TokenUsage(ref common.ReferenceCa
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.Time"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.Time"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_TokenUsageList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_TokenUsageList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -11837,7 +11837,7 @@ func schema_obot_platform_obot_apiclient_types_TokenUsageList(ref common.Referen
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.TokenUsage"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.TokenUsage"),
 									},
 								},
 							},
@@ -11848,11 +11848,11 @@ func schema_obot_platform_obot_apiclient_types_TokenUsageList(ref common.Referen
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.TokenUsage"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.TokenUsage"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_ToolOverride(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_ToolOverride(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -11902,7 +11902,7 @@ func schema_obot_platform_obot_apiclient_types_ToolOverride(ref common.Reference
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_UVXRuntimeConfig(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_UVXRuntimeConfig(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -11975,7 +11975,7 @@ func schema_obot_platform_obot_apiclient_types_UVXRuntimeConfig(ref common.Refer
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_User(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_User(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -11984,7 +11984,7 @@ func schema_obot_platform_obot_apiclient_types_User(ref common.ReferenceCallback
 					"Metadata": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/apiclient/types.Metadata"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Metadata"),
 						},
 					},
 					"username": {
@@ -12051,7 +12051,7 @@ func schema_obot_platform_obot_apiclient_types_User(ref common.ReferenceCallback
 					},
 					"lastActiveDay": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("github.com/obot-platform/obot/apiclient/types.Time"),
+							Ref: ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Time"),
 						},
 					},
 					"internal": {
@@ -12080,7 +12080,7 @@ func schema_obot_platform_obot_apiclient_types_User(ref common.ReferenceCallback
 					},
 					"deletedAt": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("github.com/obot-platform/obot/apiclient/types.Time"),
+							Ref: ref("github.com/boeing-ai-gateway/boeing/apiclient/types.Time"),
 						},
 					},
 					"originalEmail": {
@@ -12100,11 +12100,11 @@ func schema_obot_platform_obot_apiclient_types_User(ref common.ReferenceCallback
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.Metadata", "github.com/obot-platform/obot/apiclient/types.Time"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.Metadata", "github.com/boeing-ai-gateway/boeing/apiclient/types.Time"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_UserDefaultRoleSetting(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_UserDefaultRoleSetting(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -12124,7 +12124,7 @@ func schema_obot_platform_obot_apiclient_types_UserDefaultRoleSetting(ref common
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_UserList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_UserList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -12137,7 +12137,7 @@ func schema_obot_platform_obot_apiclient_types_UserList(ref common.ReferenceCall
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.User"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.User"),
 									},
 								},
 							},
@@ -12148,11 +12148,11 @@ func schema_obot_platform_obot_apiclient_types_UserList(ref common.ReferenceCall
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.User"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.User"},
 	}
 }
 
-func schema_obot_platform_obot_apiclient_types_WebhookStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_boeing_platform_boeing_apiclient_types_WebhookStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -12208,7 +12208,7 @@ func schema_obot_platform_obot_apiclient_types_WebhookStatus(ref common.Referenc
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_AccessControlRule(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_AccessControlRule(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -12237,18 +12237,18 @@ func schema_storage_apis_obotobotai_v1_AccessControlRule(ref common.ReferenceCal
 					"spec": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.AccessControlRuleSpec"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.AccessControlRuleSpec"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.AccessControlRuleSpec", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
+			"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.AccessControlRuleSpec", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_AccessControlRuleList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_AccessControlRuleList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -12281,7 +12281,7 @@ func schema_storage_apis_obotobotai_v1_AccessControlRuleList(ref common.Referenc
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.AccessControlRule"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.AccessControlRule"),
 									},
 								},
 							},
@@ -12292,11 +12292,11 @@ func schema_storage_apis_obotobotai_v1_AccessControlRuleList(ref common.Referenc
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.AccessControlRule", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
+			"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.AccessControlRule", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_AccessControlRuleSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_AccessControlRuleSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -12311,7 +12311,7 @@ func schema_storage_apis_obotobotai_v1_AccessControlRuleSpec(ref common.Referenc
 					"manifest": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/apiclient/types.AccessControlRuleManifest"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.AccessControlRuleManifest"),
 						},
 					},
 					"powerUserWorkspaceID": {
@@ -12333,11 +12333,11 @@ func schema_storage_apis_obotobotai_v1_AccessControlRuleSpec(ref common.Referenc
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.AccessControlRuleManifest"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.AccessControlRuleManifest"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_Alias(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_Alias(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -12366,24 +12366,24 @@ func schema_storage_apis_obotobotai_v1_Alias(ref common.ReferenceCallback) commo
 					"spec": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.AliasSpec"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.AliasSpec"),
 						},
 					},
 					"status": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.EmptyStatus"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.EmptyStatus"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.AliasSpec", "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.EmptyStatus", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
+			"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.AliasSpec", "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.EmptyStatus", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_AliasList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_AliasList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -12416,7 +12416,7 @@ func schema_storage_apis_obotobotai_v1_AliasList(ref common.ReferenceCallback) c
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.Alias"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.Alias"),
 									},
 								},
 							},
@@ -12427,11 +12427,11 @@ func schema_storage_apis_obotobotai_v1_AliasList(ref common.ReferenceCallback) c
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.Alias", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
+			"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.Alias", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_AliasSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_AliasSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -12467,7 +12467,7 @@ func schema_storage_apis_obotobotai_v1_AliasSpec(ref common.ReferenceCallback) c
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_AppNotification(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_AppNotification(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -12496,24 +12496,24 @@ func schema_storage_apis_obotobotai_v1_AppNotification(ref common.ReferenceCallb
 					"spec": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.AppNotificationSpec"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.AppNotificationSpec"),
 						},
 					},
 					"status": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.AppNotificationStatus"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.AppNotificationStatus"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.AppNotificationSpec", "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.AppNotificationStatus", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
+			"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.AppNotificationSpec", "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.AppNotificationStatus", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_AppNotificationList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_AppNotificationList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -12546,7 +12546,7 @@ func schema_storage_apis_obotobotai_v1_AppNotificationList(ref common.ReferenceC
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.AppNotification"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.AppNotification"),
 									},
 								},
 							},
@@ -12557,11 +12557,11 @@ func schema_storage_apis_obotobotai_v1_AppNotificationList(ref common.ReferenceC
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.AppNotification", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
+			"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.AppNotification", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_AppNotificationSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_AppNotificationSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -12570,7 +12570,7 @@ func schema_storage_apis_obotobotai_v1_AppNotificationSpec(ref common.ReferenceC
 					"banner": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/apiclient/types.BannerNotification"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.BannerNotification"),
 						},
 					},
 					"updated": {
@@ -12583,11 +12583,11 @@ func schema_storage_apis_obotobotai_v1_AppNotificationSpec(ref common.ReferenceC
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.BannerNotification", "k8s.io/apimachinery/pkg/apis/meta/v1.Time"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.BannerNotification", "k8s.io/apimachinery/pkg/apis/meta/v1.Time"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_AppNotificationStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_AppNotificationStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -12597,7 +12597,7 @@ func schema_storage_apis_obotobotai_v1_AppNotificationStatus(ref common.Referenc
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_AppPreferences(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_AppPreferences(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -12626,24 +12626,24 @@ func schema_storage_apis_obotobotai_v1_AppPreferences(ref common.ReferenceCallba
 					"spec": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.AppPreferencesSpec"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.AppPreferencesSpec"),
 						},
 					},
 					"status": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.AppPreferencesStatus"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.AppPreferencesStatus"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.AppPreferencesSpec", "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.AppPreferencesStatus", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
+			"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.AppPreferencesSpec", "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.AppPreferencesStatus", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_AppPreferencesList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_AppPreferencesList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -12676,7 +12676,7 @@ func schema_storage_apis_obotobotai_v1_AppPreferencesList(ref common.ReferenceCa
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.AppPreferences"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.AppPreferences"),
 									},
 								},
 							},
@@ -12687,11 +12687,11 @@ func schema_storage_apis_obotobotai_v1_AppPreferencesList(ref common.ReferenceCa
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.AppPreferences", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
+			"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.AppPreferences", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_AppPreferencesSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_AppPreferencesSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -12700,24 +12700,24 @@ func schema_storage_apis_obotobotai_v1_AppPreferencesSpec(ref common.ReferenceCa
 					"logos": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/apiclient/types.LogoPreferences"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.LogoPreferences"),
 						},
 					},
 					"theme": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/apiclient/types.ThemePreferences"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.ThemePreferences"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.LogoPreferences", "github.com/obot-platform/obot/apiclient/types.ThemePreferences"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.LogoPreferences", "github.com/boeing-ai-gateway/boeing/apiclient/types.ThemePreferences"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_AppPreferencesStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_AppPreferencesStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -12727,7 +12727,7 @@ func schema_storage_apis_obotobotai_v1_AppPreferencesStatus(ref common.Reference
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_AuditLogExport(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_AuditLogExport(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -12756,24 +12756,24 @@ func schema_storage_apis_obotobotai_v1_AuditLogExport(ref common.ReferenceCallba
 					"spec": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.AuditLogExportSpec"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.AuditLogExportSpec"),
 						},
 					},
 					"status": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.AuditLogExportStatus"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.AuditLogExportStatus"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.AuditLogExportSpec", "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.AuditLogExportStatus", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
+			"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.AuditLogExportSpec", "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.AuditLogExportStatus", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_AuditLogExportList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_AuditLogExportList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -12806,7 +12806,7 @@ func schema_storage_apis_obotobotai_v1_AuditLogExportList(ref common.ReferenceCa
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.AuditLogExport"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.AuditLogExport"),
 									},
 								},
 							},
@@ -12817,11 +12817,11 @@ func schema_storage_apis_obotobotai_v1_AuditLogExportList(ref common.ReferenceCa
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.AuditLogExport", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
+			"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.AuditLogExport", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_AuditLogExportSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_AuditLogExportSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -12860,7 +12860,7 @@ func schema_storage_apis_obotobotai_v1_AuditLogExportSpec(ref common.ReferenceCa
 					"filters": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/apiclient/types.AuditLogExportFilters"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.AuditLogExportFilters"),
 						},
 					},
 					"withRequestAndResponse": {
@@ -12874,11 +12874,11 @@ func schema_storage_apis_obotobotai_v1_AuditLogExportSpec(ref common.ReferenceCa
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.AuditLogExportFilters", "k8s.io/apimachinery/pkg/apis/meta/v1.Time"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.AuditLogExportFilters", "k8s.io/apimachinery/pkg/apis/meta/v1.Time"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_AuditLogExportStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_AuditLogExportStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -12934,7 +12934,7 @@ func schema_storage_apis_obotobotai_v1_AuditLogExportStatus(ref common.Reference
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_AuthProvider(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_AuthProvider(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -12963,24 +12963,24 @@ func schema_storage_apis_obotobotai_v1_AuthProvider(ref common.ReferenceCallback
 					"spec": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.AuthProviderSpec"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.AuthProviderSpec"),
 						},
 					},
 					"status": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.AuthProviderStatus"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.AuthProviderStatus"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.AuthProviderSpec", "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.AuthProviderStatus", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
+			"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.AuthProviderSpec", "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.AuthProviderStatus", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_AuthProviderList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_AuthProviderList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -13013,7 +13013,7 @@ func schema_storage_apis_obotobotai_v1_AuthProviderList(ref common.ReferenceCall
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.AuthProvider"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.AuthProvider"),
 									},
 								},
 							},
@@ -13024,11 +13024,11 @@ func schema_storage_apis_obotobotai_v1_AuthProviderList(ref common.ReferenceCall
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.AuthProvider", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
+			"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.AuthProvider", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_AuthProviderSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_AuthProviderSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -13106,7 +13106,7 @@ func schema_storage_apis_obotobotai_v1_AuthProviderSpec(ref common.ReferenceCall
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.ProviderConfigurationParameter"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.ProviderConfigurationParameter"),
 									},
 								},
 							},
@@ -13119,7 +13119,7 @@ func schema_storage_apis_obotobotai_v1_AuthProviderSpec(ref common.ReferenceCall
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.ProviderConfigurationParameter"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.ProviderConfigurationParameter"),
 									},
 								},
 							},
@@ -13136,11 +13136,11 @@ func schema_storage_apis_obotobotai_v1_AuthProviderSpec(ref common.ReferenceCall
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.ProviderConfigurationParameter"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.ProviderConfigurationParameter"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_AuthProviderStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_AuthProviderStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -13180,7 +13180,7 @@ func schema_storage_apis_obotobotai_v1_AuthProviderStatus(ref common.ReferenceCa
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_DefaultModelAlias(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_DefaultModelAlias(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -13209,13 +13209,13 @@ func schema_storage_apis_obotobotai_v1_DefaultModelAlias(ref common.ReferenceCal
 					"spec": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.DefaultModelAliasSpec"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.DefaultModelAliasSpec"),
 						},
 					},
 					"status": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.DefaultModelAliasStatus"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.DefaultModelAliasStatus"),
 						},
 					},
 				},
@@ -13223,11 +13223,11 @@ func schema_storage_apis_obotobotai_v1_DefaultModelAlias(ref common.ReferenceCal
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.DefaultModelAliasSpec", "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.DefaultModelAliasStatus", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
+			"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.DefaultModelAliasSpec", "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.DefaultModelAliasStatus", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_DefaultModelAliasList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_DefaultModelAliasList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -13260,7 +13260,7 @@ func schema_storage_apis_obotobotai_v1_DefaultModelAliasList(ref common.Referenc
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.DefaultModelAlias"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.DefaultModelAlias"),
 									},
 								},
 							},
@@ -13271,11 +13271,11 @@ func schema_storage_apis_obotobotai_v1_DefaultModelAliasList(ref common.Referenc
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.DefaultModelAlias", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
+			"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.DefaultModelAlias", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_DefaultModelAliasSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_DefaultModelAliasSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -13284,7 +13284,7 @@ func schema_storage_apis_obotobotai_v1_DefaultModelAliasSpec(ref common.Referenc
 					"manifest": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/apiclient/types.DefaultModelAliasManifest"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.DefaultModelAliasManifest"),
 						},
 					},
 				},
@@ -13292,11 +13292,11 @@ func schema_storage_apis_obotobotai_v1_DefaultModelAliasSpec(ref common.Referenc
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.DefaultModelAliasManifest"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.DefaultModelAliasManifest"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_DefaultModelAliasStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_DefaultModelAliasStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -13316,7 +13316,7 @@ func schema_storage_apis_obotobotai_v1_DefaultModelAliasStatus(ref common.Refere
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_DeploymentCondition(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_DeploymentCondition(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -13373,7 +13373,7 @@ func schema_storage_apis_obotobotai_v1_DeploymentCondition(ref common.ReferenceC
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_EmptyStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_EmptyStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -13383,7 +13383,7 @@ func schema_storage_apis_obotobotai_v1_EmptyStatus(ref common.ReferenceCallback)
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_GroupRoleChange(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_GroupRoleChange(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -13412,24 +13412,24 @@ func schema_storage_apis_obotobotai_v1_GroupRoleChange(ref common.ReferenceCallb
 					"spec": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.GroupRoleChangeSpec"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.GroupRoleChangeSpec"),
 						},
 					},
 					"status": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.EmptyStatus"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.EmptyStatus"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.EmptyStatus", "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.GroupRoleChangeSpec", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
+			"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.EmptyStatus", "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.GroupRoleChangeSpec", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_GroupRoleChangeList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_GroupRoleChangeList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -13462,7 +13462,7 @@ func schema_storage_apis_obotobotai_v1_GroupRoleChangeList(ref common.ReferenceC
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.GroupRoleChange"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.GroupRoleChange"),
 									},
 								},
 							},
@@ -13473,11 +13473,11 @@ func schema_storage_apis_obotobotai_v1_GroupRoleChangeList(ref common.ReferenceC
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.GroupRoleChange", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
+			"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.GroupRoleChange", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_GroupRoleChangeSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_GroupRoleChangeSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -13495,7 +13495,7 @@ func schema_storage_apis_obotobotai_v1_GroupRoleChangeSpec(ref common.ReferenceC
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_ImagePullSecret(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_ImagePullSecret(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -13524,24 +13524,24 @@ func schema_storage_apis_obotobotai_v1_ImagePullSecret(ref common.ReferenceCallb
 					"spec": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.ImagePullSecretSpec"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.ImagePullSecretSpec"),
 						},
 					},
 					"status": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.ImagePullSecretStatus"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.ImagePullSecretStatus"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.ImagePullSecretSpec", "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.ImagePullSecretStatus", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
+			"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.ImagePullSecretSpec", "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.ImagePullSecretStatus", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_ImagePullSecretList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_ImagePullSecretList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -13574,7 +13574,7 @@ func schema_storage_apis_obotobotai_v1_ImagePullSecretList(ref common.ReferenceC
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.ImagePullSecret"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.ImagePullSecret"),
 									},
 								},
 							},
@@ -13585,11 +13585,11 @@ func schema_storage_apis_obotobotai_v1_ImagePullSecretList(ref common.ReferenceC
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.ImagePullSecret", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
+			"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.ImagePullSecret", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_ImagePullSecretSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_ImagePullSecretSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -13615,23 +13615,23 @@ func schema_storage_apis_obotobotai_v1_ImagePullSecretSpec(ref common.ReferenceC
 					},
 					"basic": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("github.com/obot-platform/obot/apiclient/types.BasicImagePullSecretConfig"),
+							Ref: ref("github.com/boeing-ai-gateway/boeing/apiclient/types.BasicImagePullSecretConfig"),
 						},
 					},
 					"ecr": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("github.com/obot-platform/obot/apiclient/types.ECRImagePullSecretConfig"),
+							Ref: ref("github.com/boeing-ai-gateway/boeing/apiclient/types.ECRImagePullSecretConfig"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.BasicImagePullSecretConfig", "github.com/obot-platform/obot/apiclient/types.ECRImagePullSecretConfig"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.BasicImagePullSecretConfig", "github.com/boeing-ai-gateway/boeing/apiclient/types.ECRImagePullSecretConfig"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_ImagePullSecretStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_ImagePullSecretStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -13698,7 +13698,7 @@ func schema_storage_apis_obotobotai_v1_ImagePullSecretStatus(ref common.Referenc
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_K8sSettings(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_K8sSettings(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -13727,24 +13727,24 @@ func schema_storage_apis_obotobotai_v1_K8sSettings(ref common.ReferenceCallback)
 					"spec": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.K8sSettingsSpec"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.K8sSettingsSpec"),
 						},
 					},
 					"status": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.K8sSettingsStatus"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.K8sSettingsStatus"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.K8sSettingsSpec", "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.K8sSettingsStatus", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
+			"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.K8sSettingsSpec", "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.K8sSettingsStatus", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_K8sSettingsList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_K8sSettingsList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -13777,7 +13777,7 @@ func schema_storage_apis_obotobotai_v1_K8sSettingsList(ref common.ReferenceCallb
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.K8sSettings"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.K8sSettings"),
 									},
 								},
 							},
@@ -13788,11 +13788,11 @@ func schema_storage_apis_obotobotai_v1_K8sSettingsList(ref common.ReferenceCallb
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.K8sSettings", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
+			"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.K8sSettings", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_K8sSettingsSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_K8sSettingsSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -13800,14 +13800,14 @@ func schema_storage_apis_obotobotai_v1_K8sSettingsSpec(ref common.ReferenceCallb
 				Properties: map[string]spec.Schema{
 					"storageClassName": {
 						SchemaProps: spec.SchemaProps{
-							Description: "StorageClassName specifies the StorageClass for nanobot workspace volumes",
+							Description: "StorageClassName specifies the StorageClass for boeingbot workspace volumes",
 							Type:        []string{"string"},
 							Format:      "",
 						},
 					},
-					"nanobotWorkspaceSize": {
+					"boeingbotWorkspaceSize": {
 						SchemaProps: spec.SchemaProps{
-							Description: "NanobotWorkspaceSize specifies the size for nanobot workspace volumes",
+							Description: "BoeingbotWorkspaceSize specifies the size for boeingbot workspace volumes",
 							Type:        []string{"string"},
 							Format:      "",
 						},
@@ -13815,7 +13815,7 @@ func schema_storage_apis_obotobotai_v1_K8sSettingsSpec(ref common.ReferenceCallb
 					"podSecurityAdmission": {
 						SchemaProps: spec.SchemaProps{
 							Description: "PodSecurityAdmission contains Pod Security Admission settings for the MCP namespace",
-							Ref:         ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.PodSecurityAdmissionSettings"),
+							Ref:         ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.PodSecurityAdmissionSettings"),
 						},
 					},
 					"setViaHelm": {
@@ -13829,11 +13829,11 @@ func schema_storage_apis_obotobotai_v1_K8sSettingsSpec(ref common.ReferenceCallb
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.PodSecurityAdmissionSettings"},
+			"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.PodSecurityAdmissionSettings"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_K8sSettingsStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_K8sSettingsStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -13843,7 +13843,7 @@ func schema_storage_apis_obotobotai_v1_K8sSettingsStatus(ref common.ReferenceCal
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_MCPCatalog(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_MCPCatalog(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -13872,24 +13872,24 @@ func schema_storage_apis_obotobotai_v1_MCPCatalog(ref common.ReferenceCallback) 
 					"spec": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.MCPCatalogSpec"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.MCPCatalogSpec"),
 						},
 					},
 					"status": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.MCPCatalogStatus"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.MCPCatalogStatus"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.MCPCatalogSpec", "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.MCPCatalogStatus", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
+			"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.MCPCatalogSpec", "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.MCPCatalogStatus", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_MCPCatalogList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_MCPCatalogList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -13922,7 +13922,7 @@ func schema_storage_apis_obotobotai_v1_MCPCatalogList(ref common.ReferenceCallba
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.MCPCatalog"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.MCPCatalog"),
 									},
 								},
 							},
@@ -13933,11 +13933,11 @@ func schema_storage_apis_obotobotai_v1_MCPCatalogList(ref common.ReferenceCallba
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.MCPCatalog", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
+			"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.MCPCatalog", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_MCPCatalogSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_MCPCatalogSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -13969,7 +13969,7 @@ func schema_storage_apis_obotobotai_v1_MCPCatalogSpec(ref common.ReferenceCallba
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_MCPCatalogStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_MCPCatalogStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -14011,7 +14011,7 @@ func schema_storage_apis_obotobotai_v1_MCPCatalogStatus(ref common.ReferenceCall
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_MCPNetworkPolicy(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_MCPNetworkPolicy(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -14040,24 +14040,24 @@ func schema_storage_apis_obotobotai_v1_MCPNetworkPolicy(ref common.ReferenceCall
 					"spec": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.MCPNetworkPolicySpec"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.MCPNetworkPolicySpec"),
 						},
 					},
 					"status": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.MCPNetworkPolicyStatus"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.MCPNetworkPolicyStatus"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.MCPNetworkPolicySpec", "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.MCPNetworkPolicyStatus", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
+			"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.MCPNetworkPolicySpec", "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.MCPNetworkPolicyStatus", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_MCPNetworkPolicyList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_MCPNetworkPolicyList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -14090,7 +14090,7 @@ func schema_storage_apis_obotobotai_v1_MCPNetworkPolicyList(ref common.Reference
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.MCPNetworkPolicy"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.MCPNetworkPolicy"),
 									},
 								},
 							},
@@ -14101,11 +14101,11 @@ func schema_storage_apis_obotobotai_v1_MCPNetworkPolicyList(ref common.Reference
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.MCPNetworkPolicy", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
+			"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.MCPNetworkPolicy", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_MCPNetworkPolicySpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_MCPNetworkPolicySpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -14158,7 +14158,7 @@ func schema_storage_apis_obotobotai_v1_MCPNetworkPolicySpec(ref common.Reference
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_MCPNetworkPolicyStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_MCPNetworkPolicyStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -14168,53 +14168,7 @@ func schema_storage_apis_obotobotai_v1_MCPNetworkPolicyStatus(ref common.Referen
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_MCPServer(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Type: []string{"object"},
-				Properties: map[string]spec.Schema{
-					"kind": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"apiVersion": {
-						SchemaProps: spec.SchemaProps{
-							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"metadata": {
-						SchemaProps: spec.SchemaProps{
-							Default: map[string]interface{}{},
-							Ref:     ref("k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"),
-						},
-					},
-					"spec": {
-						SchemaProps: spec.SchemaProps{
-							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.MCPServerSpec"),
-						},
-					},
-					"status": {
-						SchemaProps: spec.SchemaProps{
-							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.MCPServerStatus"),
-						},
-					},
-				},
-			},
-		},
-		Dependencies: []string{
-			"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.MCPServerSpec", "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.MCPServerStatus", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
-	}
-}
-
-func schema_storage_apis_obotobotai_v1_MCPServerCatalogEntry(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_MCPServer(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -14243,24 +14197,70 @@ func schema_storage_apis_obotobotai_v1_MCPServerCatalogEntry(ref common.Referenc
 					"spec": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.MCPServerCatalogEntrySpec"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.MCPServerSpec"),
 						},
 					},
 					"status": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.MCPServerCatalogEntryStatus"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.MCPServerStatus"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.MCPServerCatalogEntrySpec", "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.MCPServerCatalogEntryStatus", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
+			"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.MCPServerSpec", "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.MCPServerStatus", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_MCPServerCatalogEntryList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_MCPServerCatalogEntry(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Default: map[string]interface{}{},
+							Ref:     ref("k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"),
+						},
+					},
+					"spec": {
+						SchemaProps: spec.SchemaProps{
+							Default: map[string]interface{}{},
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.MCPServerCatalogEntrySpec"),
+						},
+					},
+					"status": {
+						SchemaProps: spec.SchemaProps{
+							Default: map[string]interface{}{},
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.MCPServerCatalogEntryStatus"),
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.MCPServerCatalogEntrySpec", "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.MCPServerCatalogEntryStatus", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
+	}
+}
+
+func schema_storage_apis_boeingboeingai_v1_MCPServerCatalogEntryList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -14293,7 +14293,7 @@ func schema_storage_apis_obotobotai_v1_MCPServerCatalogEntryList(ref common.Refe
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.MCPServerCatalogEntry"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.MCPServerCatalogEntry"),
 									},
 								},
 							},
@@ -14304,11 +14304,11 @@ func schema_storage_apis_obotobotai_v1_MCPServerCatalogEntryList(ref common.Refe
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.MCPServerCatalogEntry", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
+			"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.MCPServerCatalogEntry", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_MCPServerCatalogEntrySpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_MCPServerCatalogEntrySpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -14317,7 +14317,7 @@ func schema_storage_apis_obotobotai_v1_MCPServerCatalogEntrySpec(ref common.Refe
 					"manifest": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/apiclient/types.MCPServerCatalogEntryManifest"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.MCPServerCatalogEntryManifest"),
 						},
 					},
 					"unsupportedTools": {
@@ -14363,11 +14363,11 @@ func schema_storage_apis_obotobotai_v1_MCPServerCatalogEntrySpec(ref common.Refe
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.MCPServerCatalogEntryManifest"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.MCPServerCatalogEntryManifest"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_MCPServerCatalogEntryStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_MCPServerCatalogEntryStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -14421,7 +14421,7 @@ func schema_storage_apis_obotobotai_v1_MCPServerCatalogEntryStatus(ref common.Re
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_MCPServerInstance(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_MCPServerInstance(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -14450,18 +14450,18 @@ func schema_storage_apis_obotobotai_v1_MCPServerInstance(ref common.ReferenceCal
 					"spec": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.MCPServerInstanceSpec"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.MCPServerInstanceSpec"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.MCPServerInstanceSpec", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
+			"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.MCPServerInstanceSpec", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_MCPServerInstanceList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_MCPServerInstanceList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -14494,7 +14494,7 @@ func schema_storage_apis_obotobotai_v1_MCPServerInstanceList(ref common.Referenc
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.MCPServerInstance"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.MCPServerInstance"),
 									},
 								},
 							},
@@ -14505,11 +14505,11 @@ func schema_storage_apis_obotobotai_v1_MCPServerInstanceList(ref common.Referenc
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.MCPServerInstance", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
+			"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.MCPServerInstance", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_MCPServerInstanceSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_MCPServerInstanceSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -14567,18 +14567,18 @@ func schema_storage_apis_obotobotai_v1_MCPServerInstanceSpec(ref common.Referenc
 					"multiUserConfig": {
 						SchemaProps: spec.SchemaProps{
 							Description: "MultiUserConfig indicates the configuration required from the MCP server that this instance points to.",
-							Ref:         ref("github.com/obot-platform/obot/apiclient/types.MultiUserConfig"),
+							Ref:         ref("github.com/boeing-ai-gateway/boeing/apiclient/types.MultiUserConfig"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.MultiUserConfig"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.MultiUserConfig"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_MCPServerList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_MCPServerList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -14611,7 +14611,7 @@ func schema_storage_apis_obotobotai_v1_MCPServerList(ref common.ReferenceCallbac
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.MCPServer"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.MCPServer"),
 									},
 								},
 							},
@@ -14622,11 +14622,11 @@ func schema_storage_apis_obotobotai_v1_MCPServerList(ref common.ReferenceCallbac
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.MCPServer", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
+			"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.MCPServer", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_MCPServerSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_MCPServerSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -14635,12 +14635,12 @@ func schema_storage_apis_obotobotai_v1_MCPServerSpec(ref common.ReferenceCallbac
 					"manifest": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/apiclient/types.MCPServerManifest"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.MCPServerManifest"),
 						},
 					},
 					"unsupportedTools": {
 						SchemaProps: spec.SchemaProps{
-							Description: "List of tool names that are known to not work well in Obot.",
+							Description: "List of tool names that are known to not work well in Boeing.",
 							Type:        []string{"array"},
 							Items: &spec.SchemaOrArray{
 								Schema: &spec.Schema{
@@ -14723,9 +14723,9 @@ func schema_storage_apis_obotobotai_v1_MCPServerSpec(ref common.ReferenceCallbac
 							Format:      "",
 						},
 					},
-					"nanobotAgentID": {
+					"boeingbotAgentID": {
 						SchemaProps: spec.SchemaProps{
-							Description: "NanobotAgentID is the name of the NanobotAgent that created this MCP server, if there is one.",
+							Description: "BoeingbotAgentID is the name of the BoeingbotAgent that created this MCP server, if there is one.",
 							Type:        []string{"string"},
 							Format:      "",
 						},
@@ -14735,11 +14735,11 @@ func schema_storage_apis_obotobotai_v1_MCPServerSpec(ref common.ReferenceCallbac
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.MCPServerManifest"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.MCPServerManifest"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_MCPServerStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_MCPServerStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -14802,7 +14802,7 @@ func schema_storage_apis_obotobotai_v1_MCPServerStatus(ref common.ReferenceCallb
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.DeploymentCondition"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.DeploymentCondition"),
 									},
 								},
 							},
@@ -14846,7 +14846,7 @@ func schema_storage_apis_obotobotai_v1_MCPServerStatus(ref common.ReferenceCallb
 					"oauthMetadata": {
 						SchemaProps: spec.SchemaProps{
 							Description: "OAuthMetadata contains discovered OAuth metadata for remote MCP servers.",
-							Ref:         ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.OAuthMetadata"),
+							Ref:         ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.OAuthMetadata"),
 						},
 					},
 					"userHasAuthenticated": {
@@ -14880,11 +14880,11 @@ func schema_storage_apis_obotobotai_v1_MCPServerStatus(ref common.ReferenceCallb
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.DeploymentCondition", "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.OAuthMetadata", "k8s.io/apimachinery/pkg/apis/meta/v1.Time"},
+			"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.DeploymentCondition", "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.OAuthMetadata", "k8s.io/apimachinery/pkg/apis/meta/v1.Time"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_MCPWebhookValidation(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_MCPWebhookValidation(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -14913,24 +14913,24 @@ func schema_storage_apis_obotobotai_v1_MCPWebhookValidation(ref common.Reference
 					"spec": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.MCPWebhookValidationSpec"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.MCPWebhookValidationSpec"),
 						},
 					},
 					"status": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.MCPWebhookValidationStatus"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.MCPWebhookValidationStatus"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.MCPWebhookValidationSpec", "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.MCPWebhookValidationStatus", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
+			"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.MCPWebhookValidationSpec", "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.MCPWebhookValidationStatus", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_MCPWebhookValidationList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_MCPWebhookValidationList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -14963,7 +14963,7 @@ func schema_storage_apis_obotobotai_v1_MCPWebhookValidationList(ref common.Refer
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.MCPWebhookValidation"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.MCPWebhookValidation"),
 									},
 								},
 							},
@@ -14974,11 +14974,11 @@ func schema_storage_apis_obotobotai_v1_MCPWebhookValidationList(ref common.Refer
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.MCPWebhookValidation", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
+			"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.MCPWebhookValidation", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_MCPWebhookValidationSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_MCPWebhookValidationSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -14987,7 +14987,7 @@ func schema_storage_apis_obotobotai_v1_MCPWebhookValidationSpec(ref common.Refer
 					"manifest": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/apiclient/types.MCPWebhookValidationManifest"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.MCPWebhookValidationManifest"),
 						},
 					},
 				},
@@ -14995,11 +14995,11 @@ func schema_storage_apis_obotobotai_v1_MCPWebhookValidationSpec(ref common.Refer
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.MCPWebhookValidationManifest"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.MCPWebhookValidationManifest"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_MCPWebhookValidationStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_MCPWebhookValidationStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -15019,7 +15019,7 @@ func schema_storage_apis_obotobotai_v1_MCPWebhookValidationStatus(ref common.Ref
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_MessagePolicy(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_MessagePolicy(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -15048,24 +15048,24 @@ func schema_storage_apis_obotobotai_v1_MessagePolicy(ref common.ReferenceCallbac
 					"spec": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.MessagePolicySpec"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.MessagePolicySpec"),
 						},
 					},
 					"status": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.EmptyStatus"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.EmptyStatus"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.EmptyStatus", "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.MessagePolicySpec", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
+			"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.EmptyStatus", "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.MessagePolicySpec", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_MessagePolicyList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_MessagePolicyList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -15098,7 +15098,7 @@ func schema_storage_apis_obotobotai_v1_MessagePolicyList(ref common.ReferenceCal
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.MessagePolicy"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.MessagePolicy"),
 									},
 								},
 							},
@@ -15109,11 +15109,11 @@ func schema_storage_apis_obotobotai_v1_MessagePolicyList(ref common.ReferenceCal
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.MessagePolicy", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
+			"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.MessagePolicy", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_MessagePolicySpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_MessagePolicySpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -15122,7 +15122,7 @@ func schema_storage_apis_obotobotai_v1_MessagePolicySpec(ref common.ReferenceCal
 					"manifest": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/apiclient/types.MessagePolicyManifest"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.MessagePolicyManifest"),
 						},
 					},
 				},
@@ -15130,11 +15130,11 @@ func schema_storage_apis_obotobotai_v1_MessagePolicySpec(ref common.ReferenceCal
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.MessagePolicyManifest"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.MessagePolicyManifest"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_Model(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_Model(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -15163,24 +15163,24 @@ func schema_storage_apis_obotobotai_v1_Model(ref common.ReferenceCallback) commo
 					"spec": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.ModelSpec"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.ModelSpec"),
 						},
 					},
 					"status": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.ModelStatus"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.ModelStatus"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.ModelSpec", "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.ModelStatus", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
+			"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.ModelSpec", "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.ModelStatus", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_ModelAccessPolicy(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_ModelAccessPolicy(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -15209,24 +15209,24 @@ func schema_storage_apis_obotobotai_v1_ModelAccessPolicy(ref common.ReferenceCal
 					"spec": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.ModelAccessPolicySpec"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.ModelAccessPolicySpec"),
 						},
 					},
 					"status": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.EmptyStatus"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.EmptyStatus"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.EmptyStatus", "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.ModelAccessPolicySpec", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
+			"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.EmptyStatus", "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.ModelAccessPolicySpec", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_ModelAccessPolicyList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_ModelAccessPolicyList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -15259,7 +15259,7 @@ func schema_storage_apis_obotobotai_v1_ModelAccessPolicyList(ref common.Referenc
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.ModelAccessPolicy"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.ModelAccessPolicy"),
 									},
 								},
 							},
@@ -15270,11 +15270,11 @@ func schema_storage_apis_obotobotai_v1_ModelAccessPolicyList(ref common.Referenc
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.ModelAccessPolicy", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
+			"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.ModelAccessPolicy", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_ModelAccessPolicySpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_ModelAccessPolicySpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -15283,7 +15283,7 @@ func schema_storage_apis_obotobotai_v1_ModelAccessPolicySpec(ref common.Referenc
 					"manifest": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/apiclient/types.ModelAccessPolicyManifest"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.ModelAccessPolicyManifest"),
 						},
 					},
 				},
@@ -15291,11 +15291,11 @@ func schema_storage_apis_obotobotai_v1_ModelAccessPolicySpec(ref common.Referenc
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.ModelAccessPolicyManifest"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.ModelAccessPolicyManifest"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_ModelList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_ModelList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -15328,7 +15328,7 @@ func schema_storage_apis_obotobotai_v1_ModelList(ref common.ReferenceCallback) c
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.Model"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.Model"),
 									},
 								},
 							},
@@ -15339,11 +15339,11 @@ func schema_storage_apis_obotobotai_v1_ModelList(ref common.ReferenceCallback) c
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.Model", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
+			"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.Model", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_ModelProvider(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_ModelProvider(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -15372,24 +15372,24 @@ func schema_storage_apis_obotobotai_v1_ModelProvider(ref common.ReferenceCallbac
 					"spec": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.ModelProviderSpec"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.ModelProviderSpec"),
 						},
 					},
 					"status": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.ModelProviderStatus"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.ModelProviderStatus"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.ModelProviderSpec", "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.ModelProviderStatus", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
+			"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.ModelProviderSpec", "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.ModelProviderStatus", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_ModelProviderList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_ModelProviderList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -15422,7 +15422,7 @@ func schema_storage_apis_obotobotai_v1_ModelProviderList(ref common.ReferenceCal
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.ModelProvider"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.ModelProvider"),
 									},
 								},
 							},
@@ -15433,11 +15433,11 @@ func schema_storage_apis_obotobotai_v1_ModelProviderList(ref common.ReferenceCal
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.ModelProvider", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
+			"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.ModelProvider", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_ModelProviderSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_ModelProviderSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -15515,7 +15515,7 @@ func schema_storage_apis_obotobotai_v1_ModelProviderSpec(ref common.ReferenceCal
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.ProviderConfigurationParameter"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.ProviderConfigurationParameter"),
 									},
 								},
 							},
@@ -15528,7 +15528,7 @@ func schema_storage_apis_obotobotai_v1_ModelProviderSpec(ref common.ReferenceCal
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.ProviderConfigurationParameter"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.ProviderConfigurationParameter"),
 									},
 								},
 							},
@@ -15560,11 +15560,11 @@ func schema_storage_apis_obotobotai_v1_ModelProviderSpec(ref common.ReferenceCal
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.ProviderConfigurationParameter"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.ProviderConfigurationParameter"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_ModelProviderStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_ModelProviderStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -15616,7 +15616,7 @@ func schema_storage_apis_obotobotai_v1_ModelProviderStatus(ref common.ReferenceC
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_ModelSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_ModelSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -15625,18 +15625,18 @@ func schema_storage_apis_obotobotai_v1_ModelSpec(ref common.ReferenceCallback) c
 					"manifest": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/apiclient/types.ModelManifest"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.ModelManifest"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.ModelManifest"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.ModelManifest"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_ModelStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_ModelStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -15660,7 +15660,7 @@ func schema_storage_apis_obotobotai_v1_ModelStatus(ref common.ReferenceCallback)
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_NanobotAgent(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_BoeingbotAgent(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -15689,24 +15689,24 @@ func schema_storage_apis_obotobotai_v1_NanobotAgent(ref common.ReferenceCallback
 					"spec": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.NanobotAgentSpec"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.BoeingbotAgentSpec"),
 						},
 					},
 					"status": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.NanobotAgentStatus"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.BoeingbotAgentStatus"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.NanobotAgentSpec", "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.NanobotAgentStatus", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
+			"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.BoeingbotAgentSpec", "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.BoeingbotAgentStatus", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_NanobotAgentList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_BoeingbotAgentList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -15739,7 +15739,7 @@ func schema_storage_apis_obotobotai_v1_NanobotAgentList(ref common.ReferenceCall
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.NanobotAgent"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.BoeingbotAgent"),
 									},
 								},
 							},
@@ -15750,11 +15750,11 @@ func schema_storage_apis_obotobotai_v1_NanobotAgentList(ref common.ReferenceCall
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.NanobotAgent", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
+			"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.BoeingbotAgent", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_NanobotAgentSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_BoeingbotAgentSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -15780,7 +15780,7 @@ func schema_storage_apis_obotobotai_v1_NanobotAgentSpec(ref common.ReferenceCall
 					},
 					"userID": {
 						SchemaProps: spec.SchemaProps{
-							Description: "UserID is the user that created this nanobot workflow",
+							Description: "UserID is the user that created this boeingbot workflow",
 							Type:        []string{"string"},
 							Format:      "",
 						},
@@ -15805,7 +15805,7 @@ func schema_storage_apis_obotobotai_v1_NanobotAgentSpec(ref common.ReferenceCall
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_NanobotAgentStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_BoeingbotAgentStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -15815,7 +15815,7 @@ func schema_storage_apis_obotobotai_v1_NanobotAgentStatus(ref common.ReferenceCa
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_OAuthAuthRequest(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_OAuthAuthRequest(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -15844,13 +15844,13 @@ func schema_storage_apis_obotobotai_v1_OAuthAuthRequest(ref common.ReferenceCall
 					"spec": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.OAuthAuthRequestSpec"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.OAuthAuthRequestSpec"),
 						},
 					},
 					"status": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.OAuthAuthRequestStatus"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.OAuthAuthRequestStatus"),
 						},
 					},
 				},
@@ -15858,11 +15858,11 @@ func schema_storage_apis_obotobotai_v1_OAuthAuthRequest(ref common.ReferenceCall
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.OAuthAuthRequestSpec", "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.OAuthAuthRequestStatus", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
+			"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.OAuthAuthRequestSpec", "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.OAuthAuthRequestStatus", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_OAuthAuthRequestList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_OAuthAuthRequestList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -15895,7 +15895,7 @@ func schema_storage_apis_obotobotai_v1_OAuthAuthRequestList(ref common.Reference
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.OAuthAuthRequest"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.OAuthAuthRequest"),
 									},
 								},
 							},
@@ -15906,11 +15906,11 @@ func schema_storage_apis_obotobotai_v1_OAuthAuthRequestList(ref common.Reference
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.OAuthAuthRequest", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
+			"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.OAuthAuthRequest", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_OAuthAuthRequestSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_OAuthAuthRequestSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -16070,7 +16070,7 @@ func schema_storage_apis_obotobotai_v1_OAuthAuthRequestSpec(ref common.Reference
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_OAuthAuthRequestStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_OAuthAuthRequestStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -16112,7 +16112,7 @@ func schema_storage_apis_obotobotai_v1_OAuthAuthRequestStatus(ref common.Referen
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_OAuthClient(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_OAuthClient(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -16141,24 +16141,24 @@ func schema_storage_apis_obotobotai_v1_OAuthClient(ref common.ReferenceCallback)
 					"spec": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.OAuthClientSpec"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.OAuthClientSpec"),
 						},
 					},
 					"status": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.OAuthClientStatus"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.OAuthClientStatus"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.OAuthClientSpec", "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.OAuthClientStatus", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
+			"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.OAuthClientSpec", "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.OAuthClientStatus", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_OAuthClientList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_OAuthClientList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -16191,7 +16191,7 @@ func schema_storage_apis_obotobotai_v1_OAuthClientList(ref common.ReferenceCallb
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.OAuthClient"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.OAuthClient"),
 									},
 								},
 							},
@@ -16202,11 +16202,11 @@ func schema_storage_apis_obotobotai_v1_OAuthClientList(ref common.ReferenceCallb
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.OAuthClient", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
+			"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.OAuthClient", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_OAuthClientSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_OAuthClientSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -16215,7 +16215,7 @@ func schema_storage_apis_obotobotai_v1_OAuthClientSpec(ref common.ReferenceCallb
 					"manifest": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/apiclient/types.OAuthClientManifest"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.OAuthClientManifest"),
 						},
 					},
 					"clientSecretHash": {
@@ -16278,11 +16278,11 @@ func schema_storage_apis_obotobotai_v1_OAuthClientSpec(ref common.ReferenceCallb
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.OAuthClientManifest", "k8s.io/apimachinery/pkg/apis/meta/v1.Time"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.OAuthClientManifest", "k8s.io/apimachinery/pkg/apis/meta/v1.Time"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_OAuthClientStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_OAuthClientStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -16292,7 +16292,7 @@ func schema_storage_apis_obotobotai_v1_OAuthClientStatus(ref common.ReferenceCal
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_OAuthMetadata(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_OAuthMetadata(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -16346,7 +16346,7 @@ func schema_storage_apis_obotobotai_v1_OAuthMetadata(ref common.ReferenceCallbac
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_OAuthToken(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_OAuthToken(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -16375,13 +16375,13 @@ func schema_storage_apis_obotobotai_v1_OAuthToken(ref common.ReferenceCallback) 
 					"spec": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.OAuthTokenSpec"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.OAuthTokenSpec"),
 						},
 					},
 					"status": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.OAuthTokenStatus"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.OAuthTokenStatus"),
 						},
 					},
 				},
@@ -16389,11 +16389,11 @@ func schema_storage_apis_obotobotai_v1_OAuthToken(ref common.ReferenceCallback) 
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.OAuthTokenSpec", "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.OAuthTokenStatus", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
+			"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.OAuthTokenSpec", "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.OAuthTokenStatus", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_OAuthTokenList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_OAuthTokenList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -16426,7 +16426,7 @@ func schema_storage_apis_obotobotai_v1_OAuthTokenList(ref common.ReferenceCallba
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.OAuthToken"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.OAuthToken"),
 									},
 								},
 							},
@@ -16437,11 +16437,11 @@ func schema_storage_apis_obotobotai_v1_OAuthTokenList(ref common.ReferenceCallba
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.OAuthToken", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
+			"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.OAuthToken", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_OAuthTokenSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_OAuthTokenSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -16510,7 +16510,7 @@ func schema_storage_apis_obotobotai_v1_OAuthTokenSpec(ref common.ReferenceCallba
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_OAuthTokenStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_OAuthTokenStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -16520,7 +16520,7 @@ func schema_storage_apis_obotobotai_v1_OAuthTokenStatus(ref common.ReferenceCall
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_OktaGroupMigration(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_OktaGroupMigration(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -16549,24 +16549,24 @@ func schema_storage_apis_obotobotai_v1_OktaGroupMigration(ref common.ReferenceCa
 					"spec": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.OktaGroupMigrationSpec"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.OktaGroupMigrationSpec"),
 						},
 					},
 					"status": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.EmptyStatus"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.EmptyStatus"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.EmptyStatus", "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.OktaGroupMigrationSpec", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
+			"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.EmptyStatus", "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.OktaGroupMigrationSpec", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_OktaGroupMigrationList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_OktaGroupMigrationList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -16599,7 +16599,7 @@ func schema_storage_apis_obotobotai_v1_OktaGroupMigrationList(ref common.Referen
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.OktaGroupMigration"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.OktaGroupMigration"),
 									},
 								},
 							},
@@ -16610,11 +16610,11 @@ func schema_storage_apis_obotobotai_v1_OktaGroupMigrationList(ref common.Referen
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.OktaGroupMigration", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
+			"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.OktaGroupMigration", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_OktaGroupMigrationSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_OktaGroupMigrationSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -16642,7 +16642,7 @@ func schema_storage_apis_obotobotai_v1_OktaGroupMigrationSpec(ref common.Referen
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_PodSecurityAdmissionSettings(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_PodSecurityAdmissionSettings(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -16704,7 +16704,7 @@ func schema_storage_apis_obotobotai_v1_PodSecurityAdmissionSettings(ref common.R
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_PowerUserWorkspace(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_PowerUserWorkspace(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -16733,24 +16733,24 @@ func schema_storage_apis_obotobotai_v1_PowerUserWorkspace(ref common.ReferenceCa
 					"spec": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.PowerUserWorkspaceSpec"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.PowerUserWorkspaceSpec"),
 						},
 					},
 					"status": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.PowerUserWorkspaceStatus"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.PowerUserWorkspaceStatus"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.PowerUserWorkspaceSpec", "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.PowerUserWorkspaceStatus", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
+			"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.PowerUserWorkspaceSpec", "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.PowerUserWorkspaceStatus", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_PowerUserWorkspaceList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_PowerUserWorkspaceList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -16783,7 +16783,7 @@ func schema_storage_apis_obotobotai_v1_PowerUserWorkspaceList(ref common.Referen
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.PowerUserWorkspace"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.PowerUserWorkspace"),
 									},
 								},
 							},
@@ -16794,11 +16794,11 @@ func schema_storage_apis_obotobotai_v1_PowerUserWorkspaceList(ref common.Referen
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.PowerUserWorkspace", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
+			"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.PowerUserWorkspace", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_PowerUserWorkspaceSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_PowerUserWorkspaceSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -16824,7 +16824,7 @@ func schema_storage_apis_obotobotai_v1_PowerUserWorkspaceSpec(ref common.Referen
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_PowerUserWorkspaceStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_PowerUserWorkspaceStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -16842,7 +16842,7 @@ func schema_storage_apis_obotobotai_v1_PowerUserWorkspaceStatus(ref common.Refer
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_Project(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_Project(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -16871,24 +16871,24 @@ func schema_storage_apis_obotobotai_v1_Project(ref common.ReferenceCallback) com
 					"spec": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.ProjectSpec"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.ProjectSpec"),
 						},
 					},
 					"status": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.ProjectStatus"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.ProjectStatus"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.ProjectSpec", "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.ProjectStatus", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
+			"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.ProjectSpec", "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.ProjectStatus", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_ProjectList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_ProjectList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -16921,7 +16921,7 @@ func schema_storage_apis_obotobotai_v1_ProjectList(ref common.ReferenceCallback)
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.Project"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.Project"),
 									},
 								},
 							},
@@ -16932,11 +16932,11 @@ func schema_storage_apis_obotobotai_v1_ProjectList(ref common.ReferenceCallback)
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.Project", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
+			"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.Project", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_ProjectSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_ProjectSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -16961,7 +16961,7 @@ func schema_storage_apis_obotobotai_v1_ProjectSpec(ref common.ReferenceCallback)
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_ProjectStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_ProjectStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -16971,7 +16971,7 @@ func schema_storage_apis_obotobotai_v1_ProjectStatus(ref common.ReferenceCallbac
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_ProjectV2(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_ProjectV2(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -17001,24 +17001,24 @@ func schema_storage_apis_obotobotai_v1_ProjectV2(ref common.ReferenceCallback) c
 					"spec": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.ProjectSpec"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.ProjectSpec"),
 						},
 					},
 					"status": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.ProjectStatus"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.ProjectStatus"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.ProjectSpec", "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.ProjectStatus", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
+			"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.ProjectSpec", "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.ProjectStatus", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_ProjectV2List(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_ProjectV2List(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -17051,7 +17051,7 @@ func schema_storage_apis_obotobotai_v1_ProjectV2List(ref common.ReferenceCallbac
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.ProjectV2"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.ProjectV2"),
 									},
 								},
 							},
@@ -17062,11 +17062,11 @@ func schema_storage_apis_obotobotai_v1_ProjectV2List(ref common.ReferenceCallbac
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.ProjectV2", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
+			"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.ProjectV2", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_PublishedArtifact(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_PublishedArtifact(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -17095,24 +17095,24 @@ func schema_storage_apis_obotobotai_v1_PublishedArtifact(ref common.ReferenceCal
 					"spec": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.PublishedArtifactSpec"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.PublishedArtifactSpec"),
 						},
 					},
 					"status": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.PublishedArtifactStatus"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.PublishedArtifactStatus"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.PublishedArtifactSpec", "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.PublishedArtifactStatus", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
+			"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.PublishedArtifactSpec", "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.PublishedArtifactStatus", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_PublishedArtifactList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_PublishedArtifactList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -17145,7 +17145,7 @@ func schema_storage_apis_obotobotai_v1_PublishedArtifactList(ref common.Referenc
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.PublishedArtifact"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.PublishedArtifact"),
 									},
 								},
 							},
@@ -17156,11 +17156,11 @@ func schema_storage_apis_obotobotai_v1_PublishedArtifactList(ref common.Referenc
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.PublishedArtifact", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
+			"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.PublishedArtifact", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_PublishedArtifactSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_PublishedArtifactSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -17227,7 +17227,7 @@ func schema_storage_apis_obotobotai_v1_PublishedArtifactSpec(ref common.Referenc
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_PublishedArtifactStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_PublishedArtifactStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -17241,7 +17241,7 @@ func schema_storage_apis_obotobotai_v1_PublishedArtifactStatus(ref common.Refere
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/apiclient/types.PublishedArtifactVersionEntry"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.PublishedArtifactVersionEntry"),
 									},
 								},
 							},
@@ -17251,11 +17251,11 @@ func schema_storage_apis_obotobotai_v1_PublishedArtifactStatus(ref common.Refere
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.PublishedArtifactVersionEntry"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.PublishedArtifactVersionEntry"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_Ref(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_Ref(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -17303,7 +17303,7 @@ func schema_storage_apis_obotobotai_v1_Ref(ref common.ReferenceCallback) common.
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_Schedule(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_Schedule(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -17359,7 +17359,7 @@ func schema_storage_apis_obotobotai_v1_Schedule(ref common.ReferenceCallback) co
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_ScheduledAuditLogExport(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_ScheduledAuditLogExport(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -17388,24 +17388,24 @@ func schema_storage_apis_obotobotai_v1_ScheduledAuditLogExport(ref common.Refere
 					"spec": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.ScheduledAuditLogExportSpec"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.ScheduledAuditLogExportSpec"),
 						},
 					},
 					"status": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.ScheduledAuditLogExportStatus"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.ScheduledAuditLogExportStatus"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.ScheduledAuditLogExportSpec", "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.ScheduledAuditLogExportStatus", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
+			"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.ScheduledAuditLogExportSpec", "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.ScheduledAuditLogExportStatus", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_ScheduledAuditLogExportList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_ScheduledAuditLogExportList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -17438,7 +17438,7 @@ func schema_storage_apis_obotobotai_v1_ScheduledAuditLogExportList(ref common.Re
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.ScheduledAuditLogExport"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.ScheduledAuditLogExport"),
 									},
 								},
 							},
@@ -17449,11 +17449,11 @@ func schema_storage_apis_obotobotai_v1_ScheduledAuditLogExportList(ref common.Re
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.ScheduledAuditLogExport", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
+			"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.ScheduledAuditLogExport", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_ScheduledAuditLogExportSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_ScheduledAuditLogExportSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -17489,7 +17489,7 @@ func schema_storage_apis_obotobotai_v1_ScheduledAuditLogExportSpec(ref common.Re
 					"schedule": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.Schedule"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.Schedule"),
 						},
 					},
 					"retentionPeriodInDays": {
@@ -17501,7 +17501,7 @@ func schema_storage_apis_obotobotai_v1_ScheduledAuditLogExportSpec(ref common.Re
 					"filters": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/apiclient/types.AuditLogExportFilters"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.AuditLogExportFilters"),
 						},
 					},
 					"withRequestAndResponse": {
@@ -17515,11 +17515,11 @@ func schema_storage_apis_obotobotai_v1_ScheduledAuditLogExportSpec(ref common.Re
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.AuditLogExportFilters", "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.Schedule"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.AuditLogExportFilters", "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.Schedule"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_ScheduledAuditLogExportStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_ScheduledAuditLogExportStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -17555,7 +17555,7 @@ func schema_storage_apis_obotobotai_v1_ScheduledAuditLogExportStatus(ref common.
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_Skill(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_Skill(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -17584,24 +17584,24 @@ func schema_storage_apis_obotobotai_v1_Skill(ref common.ReferenceCallback) commo
 					"spec": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.SkillSpec"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.SkillSpec"),
 						},
 					},
 					"status": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.SkillStatus"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.SkillStatus"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.SkillSpec", "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.SkillStatus", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
+			"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.SkillSpec", "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.SkillStatus", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_SkillAccessRule(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_SkillAccessRule(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -17630,24 +17630,24 @@ func schema_storage_apis_obotobotai_v1_SkillAccessRule(ref common.ReferenceCallb
 					"spec": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.SkillAccessRuleSpec"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.SkillAccessRuleSpec"),
 						},
 					},
 					"status": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.EmptyStatus"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.EmptyStatus"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.EmptyStatus", "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.SkillAccessRuleSpec", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
+			"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.EmptyStatus", "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.SkillAccessRuleSpec", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_SkillAccessRuleList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_SkillAccessRuleList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -17680,7 +17680,7 @@ func schema_storage_apis_obotobotai_v1_SkillAccessRuleList(ref common.ReferenceC
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.SkillAccessRule"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.SkillAccessRule"),
 									},
 								},
 							},
@@ -17691,11 +17691,11 @@ func schema_storage_apis_obotobotai_v1_SkillAccessRuleList(ref common.ReferenceC
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.SkillAccessRule", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
+			"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.SkillAccessRule", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_SkillAccessRuleSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_SkillAccessRuleSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -17704,7 +17704,7 @@ func schema_storage_apis_obotobotai_v1_SkillAccessRuleSpec(ref common.ReferenceC
 					"manifest": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/apiclient/types.SkillAccessRuleManifest"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.SkillAccessRuleManifest"),
 						},
 					},
 				},
@@ -17712,11 +17712,11 @@ func schema_storage_apis_obotobotai_v1_SkillAccessRuleSpec(ref common.ReferenceC
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.SkillAccessRuleManifest"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.SkillAccessRuleManifest"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_SkillList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_SkillList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -17749,7 +17749,7 @@ func schema_storage_apis_obotobotai_v1_SkillList(ref common.ReferenceCallback) c
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.Skill"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.Skill"),
 									},
 								},
 							},
@@ -17760,11 +17760,11 @@ func schema_storage_apis_obotobotai_v1_SkillList(ref common.ReferenceCallback) c
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.Skill", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
+			"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.Skill", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_SkillRepository(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_SkillRepository(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -17793,24 +17793,24 @@ func schema_storage_apis_obotobotai_v1_SkillRepository(ref common.ReferenceCallb
 					"spec": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.SkillRepositorySpec"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.SkillRepositorySpec"),
 						},
 					},
 					"status": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.SkillRepositoryStatus"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.SkillRepositoryStatus"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.SkillRepositorySpec", "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.SkillRepositoryStatus", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
+			"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.SkillRepositorySpec", "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.SkillRepositoryStatus", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_SkillRepositoryList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_SkillRepositoryList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -17843,7 +17843,7 @@ func schema_storage_apis_obotobotai_v1_SkillRepositoryList(ref common.ReferenceC
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.SkillRepository"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.SkillRepository"),
 									},
 								},
 							},
@@ -17854,11 +17854,11 @@ func schema_storage_apis_obotobotai_v1_SkillRepositoryList(ref common.ReferenceC
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.SkillRepository", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
+			"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.SkillRepository", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_SkillRepositorySpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_SkillRepositorySpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -17888,7 +17888,7 @@ func schema_storage_apis_obotobotai_v1_SkillRepositorySpec(ref common.ReferenceC
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_SkillRepositoryStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_SkillRepositoryStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -17933,7 +17933,7 @@ func schema_storage_apis_obotobotai_v1_SkillRepositoryStatus(ref common.Referenc
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_SkillSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_SkillSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -18032,7 +18032,7 @@ func schema_storage_apis_obotobotai_v1_SkillSpec(ref common.ReferenceCallback) c
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_SkillStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_SkillStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -18064,7 +18064,7 @@ func schema_storage_apis_obotobotai_v1_SkillStatus(ref common.ReferenceCallback)
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_SystemMCPCatalog(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_SystemMCPCatalog(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -18093,24 +18093,24 @@ func schema_storage_apis_obotobotai_v1_SystemMCPCatalog(ref common.ReferenceCall
 					"spec": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.SystemMCPCatalogSpec"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.SystemMCPCatalogSpec"),
 						},
 					},
 					"status": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.SystemMCPCatalogStatus"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.SystemMCPCatalogStatus"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.SystemMCPCatalogSpec", "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.SystemMCPCatalogStatus", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
+			"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.SystemMCPCatalogSpec", "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.SystemMCPCatalogStatus", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_SystemMCPCatalogList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_SystemMCPCatalogList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -18143,7 +18143,7 @@ func schema_storage_apis_obotobotai_v1_SystemMCPCatalogList(ref common.Reference
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.SystemMCPCatalog"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.SystemMCPCatalog"),
 									},
 								},
 							},
@@ -18154,11 +18154,11 @@ func schema_storage_apis_obotobotai_v1_SystemMCPCatalogList(ref common.Reference
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.SystemMCPCatalog", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
+			"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.SystemMCPCatalog", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_SystemMCPCatalogSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_SystemMCPCatalogSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -18190,7 +18190,7 @@ func schema_storage_apis_obotobotai_v1_SystemMCPCatalogSpec(ref common.Reference
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_SystemMCPCatalogStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_SystemMCPCatalogStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -18231,7 +18231,7 @@ func schema_storage_apis_obotobotai_v1_SystemMCPCatalogStatus(ref common.Referen
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_SystemMCPServer(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_SystemMCPServer(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -18260,24 +18260,24 @@ func schema_storage_apis_obotobotai_v1_SystemMCPServer(ref common.ReferenceCallb
 					"spec": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.SystemMCPServerSpec"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.SystemMCPServerSpec"),
 						},
 					},
 					"status": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.SystemMCPServerStatus"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.SystemMCPServerStatus"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.SystemMCPServerSpec", "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.SystemMCPServerStatus", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
+			"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.SystemMCPServerSpec", "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.SystemMCPServerStatus", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_SystemMCPServerCatalogEntry(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_SystemMCPServerCatalogEntry(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -18306,24 +18306,24 @@ func schema_storage_apis_obotobotai_v1_SystemMCPServerCatalogEntry(ref common.Re
 					"spec": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.SystemMCPServerCatalogEntrySpec"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.SystemMCPServerCatalogEntrySpec"),
 						},
 					},
 					"status": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.SystemMCPServerCatalogEntryStatus"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.SystemMCPServerCatalogEntryStatus"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.SystemMCPServerCatalogEntrySpec", "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.SystemMCPServerCatalogEntryStatus", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
+			"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.SystemMCPServerCatalogEntrySpec", "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.SystemMCPServerCatalogEntryStatus", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_SystemMCPServerCatalogEntryList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_SystemMCPServerCatalogEntryList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -18356,7 +18356,7 @@ func schema_storage_apis_obotobotai_v1_SystemMCPServerCatalogEntryList(ref commo
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.SystemMCPServerCatalogEntry"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.SystemMCPServerCatalogEntry"),
 									},
 								},
 							},
@@ -18367,11 +18367,11 @@ func schema_storage_apis_obotobotai_v1_SystemMCPServerCatalogEntryList(ref commo
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.SystemMCPServerCatalogEntry", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
+			"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.SystemMCPServerCatalogEntry", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_SystemMCPServerCatalogEntrySpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_SystemMCPServerCatalogEntrySpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -18380,7 +18380,7 @@ func schema_storage_apis_obotobotai_v1_SystemMCPServerCatalogEntrySpec(ref commo
 					"manifest": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/apiclient/types.SystemMCPServerCatalogEntryManifest"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/apiclient/types.SystemMCPServerCatalogEntryManifest"),
 						},
 					},
 					"sourceURL": {
@@ -18405,11 +18405,11 @@ func schema_storage_apis_obotobotai_v1_SystemMCPServerCatalogEntrySpec(ref commo
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.SystemMCPServerCatalogEntryManifest"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.SystemMCPServerCatalogEntryManifest"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_SystemMCPServerCatalogEntryStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_SystemMCPServerCatalogEntryStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -18451,7 +18451,7 @@ func schema_storage_apis_obotobotai_v1_SystemMCPServerCatalogEntryStatus(ref com
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_SystemMCPServerList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_SystemMCPServerList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -18484,7 +18484,7 @@ func schema_storage_apis_obotobotai_v1_SystemMCPServerList(ref common.ReferenceC
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.SystemMCPServer"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.SystemMCPServer"),
 									},
 								},
 							},
@@ -18495,11 +18495,11 @@ func schema_storage_apis_obotobotai_v1_SystemMCPServerList(ref common.ReferenceC
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.SystemMCPServer", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
+			"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.SystemMCPServer", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_SystemMCPServerSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_SystemMCPServerSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -18509,7 +18509,7 @@ func schema_storage_apis_obotobotai_v1_SystemMCPServerSpec(ref common.ReferenceC
 						SchemaProps: spec.SchemaProps{
 							Description: "Manifest contains the server configuration",
 							Default:     map[string]interface{}{},
-							Ref:         ref("github.com/obot-platform/obot/apiclient/types.SystemMCPServerManifest"),
+							Ref:         ref("github.com/boeing-ai-gateway/boeing/apiclient/types.SystemMCPServerManifest"),
 						},
 					},
 					"webhookValidationName": {
@@ -18524,11 +18524,11 @@ func schema_storage_apis_obotobotai_v1_SystemMCPServerSpec(ref common.ReferenceC
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/apiclient/types.SystemMCPServerManifest"},
+			"github.com/boeing-ai-gateway/boeing/apiclient/types.SystemMCPServerManifest"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_SystemMCPServerStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_SystemMCPServerStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -18570,7 +18570,7 @@ func schema_storage_apis_obotobotai_v1_SystemMCPServerStatus(ref common.Referenc
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.DeploymentCondition"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.DeploymentCondition"),
 									},
 								},
 							},
@@ -18594,11 +18594,11 @@ func schema_storage_apis_obotobotai_v1_SystemMCPServerStatus(ref common.Referenc
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.DeploymentCondition"},
+			"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.DeploymentCondition"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_UserDefaultRoleSetting(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_UserDefaultRoleSetting(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -18627,18 +18627,18 @@ func schema_storage_apis_obotobotai_v1_UserDefaultRoleSetting(ref common.Referen
 					"spec": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.UserDefaultRoleSettingSpec"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.UserDefaultRoleSettingSpec"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.UserDefaultRoleSettingSpec", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
+			"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.UserDefaultRoleSettingSpec", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_UserDefaultRoleSettingList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_UserDefaultRoleSettingList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -18671,7 +18671,7 @@ func schema_storage_apis_obotobotai_v1_UserDefaultRoleSettingList(ref common.Ref
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.UserDefaultRoleSetting"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.UserDefaultRoleSetting"),
 									},
 								},
 							},
@@ -18682,11 +18682,11 @@ func schema_storage_apis_obotobotai_v1_UserDefaultRoleSettingList(ref common.Ref
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.UserDefaultRoleSetting", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
+			"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.UserDefaultRoleSetting", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_UserDefaultRoleSettingSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_UserDefaultRoleSettingSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -18705,7 +18705,7 @@ func schema_storage_apis_obotobotai_v1_UserDefaultRoleSettingSpec(ref common.Ref
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_UserDelete(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_UserDelete(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -18734,24 +18734,24 @@ func schema_storage_apis_obotobotai_v1_UserDelete(ref common.ReferenceCallback) 
 					"spec": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.UserDeleteSpec"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.UserDeleteSpec"),
 						},
 					},
 					"status": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.EmptyStatus"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.EmptyStatus"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.EmptyStatus", "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.UserDeleteSpec", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
+			"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.EmptyStatus", "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.UserDeleteSpec", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_UserDeleteList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_UserDeleteList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -18784,7 +18784,7 @@ func schema_storage_apis_obotobotai_v1_UserDeleteList(ref common.ReferenceCallba
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.UserDelete"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.UserDelete"),
 									},
 								},
 							},
@@ -18795,11 +18795,11 @@ func schema_storage_apis_obotobotai_v1_UserDeleteList(ref common.ReferenceCallba
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.UserDelete", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
+			"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.UserDelete", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_UserDeleteSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_UserDeleteSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -18817,7 +18817,7 @@ func schema_storage_apis_obotobotai_v1_UserDeleteSpec(ref common.ReferenceCallba
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_UserGroupChange(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_UserGroupChange(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -18846,24 +18846,24 @@ func schema_storage_apis_obotobotai_v1_UserGroupChange(ref common.ReferenceCallb
 					"spec": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.UserGroupChangeSpec"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.UserGroupChangeSpec"),
 						},
 					},
 					"status": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.EmptyStatus"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.EmptyStatus"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.EmptyStatus", "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.UserGroupChangeSpec", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
+			"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.EmptyStatus", "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.UserGroupChangeSpec", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_UserGroupChangeList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_UserGroupChangeList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -18896,7 +18896,7 @@ func schema_storage_apis_obotobotai_v1_UserGroupChangeList(ref common.ReferenceC
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.UserGroupChange"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.UserGroupChange"),
 									},
 								},
 							},
@@ -18907,11 +18907,11 @@ func schema_storage_apis_obotobotai_v1_UserGroupChangeList(ref common.ReferenceC
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.UserGroupChange", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
+			"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.UserGroupChange", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_UserGroupChangeSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_UserGroupChangeSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -18929,7 +18929,7 @@ func schema_storage_apis_obotobotai_v1_UserGroupChangeSpec(ref common.ReferenceC
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_UserRoleChange(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_UserRoleChange(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -18958,24 +18958,24 @@ func schema_storage_apis_obotobotai_v1_UserRoleChange(ref common.ReferenceCallba
 					"spec": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.UserRoleChangeSpec"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.UserRoleChangeSpec"),
 						},
 					},
 					"status": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.EmptyStatus"),
+							Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.EmptyStatus"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.EmptyStatus", "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.UserRoleChangeSpec", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
+			"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.EmptyStatus", "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.UserRoleChangeSpec", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_UserRoleChangeList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_UserRoleChangeList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -19008,7 +19008,7 @@ func schema_storage_apis_obotobotai_v1_UserRoleChangeList(ref common.ReferenceCa
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.UserRoleChange"),
+										Ref:     ref("github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.UserRoleChange"),
 									},
 								},
 							},
@@ -19019,11 +19019,11 @@ func schema_storage_apis_obotobotai_v1_UserRoleChangeList(ref common.ReferenceCa
 			},
 		},
 		Dependencies: []string{
-			"github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1.UserRoleChange", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
+			"github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1.UserRoleChange", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
 	}
 }
 
-func schema_storage_apis_obotobotai_v1_UserRoleChangeSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_storage_apis_boeingboeingai_v1_UserRoleChangeSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{

@@ -5,7 +5,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	v1 "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1"
+	v1 "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1"
 )
 
 func TestReadLocalProviderRegistryFromSubdirectories(t *testing.T) {

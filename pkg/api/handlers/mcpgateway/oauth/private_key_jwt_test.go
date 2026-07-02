@@ -13,12 +13,12 @@ import (
 
 	jose "github.com/go-jose/go-jose/v4"
 	"github.com/golang-jwt/jwt/v5"
-	"github.com/obot-platform/obot/apiclient/types"
-	"github.com/obot-platform/obot/pkg/api"
-	"github.com/obot-platform/obot/pkg/api/handlers"
-	v1 "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1"
-	storagescheme "github.com/obot-platform/obot/pkg/storage/scheme"
-	"github.com/obot-platform/obot/pkg/system"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/pkg/api"
+	"github.com/boeing-ai-gateway/boeing/pkg/api/handlers"
+	v1 "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1"
+	storagescheme "github.com/boeing-ai-gateway/boeing/pkg/storage/scheme"
+	"github.com/boeing-ai-gateway/boeing/pkg/system"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	clientfake "sigs.k8s.io/controller-runtime/pkg/client/fake"
 )
@@ -28,7 +28,7 @@ func TestValidatePrivateKeyJWT(t *testing.T) {
 
 	const (
 		clientID      = "https://client.example/oauth/client.json"
-		tokenEndpoint = "https://obot.example/oauth/token"
+		tokenEndpoint = "https://boeing.example/oauth/token"
 	)
 
 	key, err := rsa.GenerateKey(rand.Reader, 2048)
@@ -89,7 +89,7 @@ func TestClientIDFromClientAssertion(t *testing.T) {
 	}
 
 	const clientID = "https://client.example/oauth/client.json"
-	assertion := signClientAssertion(t, key, "test-key", clientID, "https://obot.example/oauth/token")
+	assertion := signClientAssertion(t, key, "test-key", clientID, "https://boeing.example/oauth/token")
 	got, err := clientIDFromClientAssertion(url.Values{
 		"client_assertion_type": {clientAssertionTypeJWTBearer},
 		"client_assertion":      {assertion},
@@ -127,7 +127,7 @@ func TestTokenExtractsClientIDFromClientAssertion(t *testing.T) {
 	form := url.Values{
 		"grant_type":            {"unsupported"},
 		"client_assertion_type": {clientAssertionTypeJWTBearer},
-		"client_assertion":      {signClientAssertion(t, key, "test-key", clientID, "https://obot.example/oauth/token")},
+		"client_assertion":      {signClientAssertion(t, key, "test-key", clientID, "https://boeing.example/oauth/token")},
 	}
 	req := httptest.NewRequest("POST", "/oauth/token", strings.NewReader(form.Encode()))
 	req.Header.Set("Content-Type", "application/x-www-form-urlencoded")

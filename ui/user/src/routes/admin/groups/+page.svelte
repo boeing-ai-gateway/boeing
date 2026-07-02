@@ -359,7 +359,7 @@
 />
 
 <svelte:head>
-	<title>Obot | Groups</title>
+	<title>Boeing | Groups</title>
 </svelte:head>
 
 <style>

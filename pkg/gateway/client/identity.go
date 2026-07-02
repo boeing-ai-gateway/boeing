@@ -9,13 +9,13 @@ import (
 	"strings"
 	"time"
 
-	types2 "github.com/obot-platform/obot/apiclient/types"
-	"github.com/obot-platform/obot/pkg/accesstoken"
-	"github.com/obot-platform/obot/pkg/auth"
-	"github.com/obot-platform/obot/pkg/gateway/types"
-	"github.com/obot-platform/obot/pkg/hash"
-	v1 "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1"
-	"github.com/obot-platform/obot/pkg/system"
+	types2 "github.com/boeing-ai-gateway/boeing/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/pkg/accesstoken"
+	"github.com/boeing-ai-gateway/boeing/pkg/auth"
+	"github.com/boeing-ai-gateway/boeing/pkg/gateway/types"
+	"github.com/boeing-ai-gateway/boeing/pkg/hash"
+	v1 "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1"
+	"github.com/boeing-ai-gateway/boeing/pkg/system"
 	"gorm.io/gorm"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime/schema"
@@ -30,7 +30,7 @@ var (
 	}
 
 	identityGroupResource = schema.GroupResource{
-		Group:    "obot.obot.ai",
+		Group:    "boeing.boeing.ai",
 		Resource: "identities",
 	}
 )
@@ -156,7 +156,7 @@ func (c *Client) ensureIdentity(ctx context.Context, tx *gorm.DB, id *types.Iden
 		// Before we try creating a new identity, we need to check if there is one that has not been fully migrated yet.
 		migratedIdentity := &types.Identity{
 			ProviderUsername:      id.ProviderUsername,
-			HashedProviderUserID:  hash.String(fmt.Sprintf("OBOT_PLACEHOLDER_%s", id.ProviderUsername)),
+			HashedProviderUserID:  hash.String(fmt.Sprintf("BOEING_PLACEHOLDER_%s", id.ProviderUsername)),
 			AuthProviderName:      id.AuthProviderName,
 			AuthProviderNamespace: id.AuthProviderNamespace,
 		}
@@ -367,7 +367,7 @@ func (c *Client) ensureIdentity(ctx context.Context, tx *gorm.DB, id *types.Iden
 	return user, created, nil
 }
 
-// fetchProviderGroupLookupID calls the auth provider's /obot-get-user-info endpoint
+// fetchProviderGroupLookupID calls the auth provider's /boeing-get-user-info endpoint
 // to get the provider-native user ID for group lookups.
 func (c *Client) fetchProviderGroupLookupID(ctx context.Context) (string, error) {
 	providerURL := auth.ProviderURLFromContext(ctx)

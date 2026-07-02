@@ -14,14 +14,14 @@ import (
 	"strings"
 	"time"
 
-	"github.com/obot-platform/obot/apiclient/types"
-	"github.com/obot-platform/obot/logger"
-	"github.com/obot-platform/obot/pkg/api"
-	gwtypes "github.com/obot-platform/obot/pkg/gateway/types"
-	"github.com/obot-platform/obot/pkg/jwt/persistent"
-	v1 "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1"
-	"github.com/obot-platform/obot/pkg/storage/selectors"
-	"github.com/obot-platform/obot/pkg/system"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/logger"
+	"github.com/boeing-ai-gateway/boeing/pkg/api"
+	gwtypes "github.com/boeing-ai-gateway/boeing/pkg/gateway/types"
+	"github.com/boeing-ai-gateway/boeing/pkg/jwt/persistent"
+	v1 "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1"
+	"github.com/boeing-ai-gateway/boeing/pkg/storage/selectors"
+	"github.com/boeing-ai-gateway/boeing/pkg/system"
 	"golang.org/x/crypto/bcrypt"
 	apierrors "k8s.io/apimachinery/pkg/api/errors"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -35,7 +35,7 @@ const (
 	tokenExpiration      = 10 * time.Minute
 	tokenTypeJWT         = "urn:ietf:params:oauth:token-type:jwt"
 	tokenTypeAccessToken = "urn:ietf:params:oauth:token-type:access_token"
-	tokenTypeAPIKey      = "urn:obot:token-type:api-key"
+	tokenTypeAPIKey      = "urn:boeing:token-type:api-key"
 
 	ErrUnsupportedGrantType = ErrorCode("unsupported_grant_type")
 )
@@ -389,7 +389,7 @@ func (h *handler) doTokenExchange(req api.Context, oauthClient v1.OAuthClient, r
 	if subjectTokenType != tokenTypeJWT && subjectTokenType != tokenTypeAPIKey {
 		return types.NewErrBadRequest("%v", Error{
 			Code:        ErrInvalidRequest,
-			Description: "subject_token_type must be urn:ietf:params:oauth:token-type:jwt or urn:obot:token-type:api-key",
+			Description: "subject_token_type must be urn:ietf:params:oauth:token-type:jwt or urn:boeing:token-type:api-key",
 		})
 	}
 
@@ -588,7 +588,7 @@ func (h *handler) doTokenExchange(req api.Context, oauthClient v1.OAuthClient, r
 		}
 	} else if mcpServerInstance != nil {
 		return types.NewErrNotFound("no token exchange for %s", resource)
-	} else if mcpID == system.ObotMCPServerName {
+	} else if mcpID == system.BoeingMCPServerName {
 		now := time.Now()
 		expiresAt := now.Add(time.Hour)
 		token, err := h.tokenService.NewToken(req.Context(), persistent.TokenContext{

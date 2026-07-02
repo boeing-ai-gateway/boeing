@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/obot-platform/obot/pkg/api"
+	"github.com/boeing-ai-gateway/boeing/pkg/api"
 	apierrors "k8s.io/apimachinery/pkg/api/errors"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 )

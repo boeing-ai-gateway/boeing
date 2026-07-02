@@ -6,7 +6,7 @@ title: MCP Server Egress Control
 
 MCP server egress control restricts which external domains Kubernetes-hosted MCP servers can reach. It is intended for production deployments where MCP servers may run third-party code and should only be allowed to call known external services.
 
-When this feature is enabled, individual MCP servers can be configured with a whitelist of allowed domains. Enforcement is handled by an external controller that Obot deploys using Helm. Currently, the only supported provider for this feature is Aviatrix.
+When this feature is enabled, individual MCP servers can be configured with a whitelist of allowed domains. Enforcement is handled by an external controller that Boeing deploys using Helm. Currently, the only supported provider for this feature is Aviatrix.
 The Aviatrix provider translates the whitelist of domains for an MCP server into an Aviatrix `FirewallPolicy` in the MCP runtime namespace, that targets the pod for that MCP server. Aviatrix Distributed Cloud Firewall (DCF) then enforces the generated policy.
 
 There will be other provider options besides Aviatrix in the future.
@@ -15,36 +15,36 @@ There will be other provider options besides Aviatrix in the future.
 
 Before enabling MCP server egress control, make sure:
 
-- Obot is using the Kubernetes MCP runtime backend.
-- Aviatrix [Distributed Cloud Firewall for Kubernetes](https://docs.aviatrix.com/documentation/latest/security/dcf-kubernetes.html?expand=true) is already configured for the Kubernetes cluster that runs Obot MCP servers.
+- Boeing is using the Kubernetes MCP runtime backend.
+- Aviatrix [Distributed Cloud Firewall for Kubernetes](https://docs.aviatrix.com/documentation/latest/security/dcf-kubernetes.html?expand=true) is already configured for the Kubernetes cluster that runs Boeing MCP servers.
 - The Aviatrix `FirewallPolicy` CRD is installed in the cluster. The required CRD group is `networking.aviatrix.com`, kind `FirewallPolicy`.
 - Aviatrix DCF can discover the cluster and apply Kubernetes firewall policies. See the Aviatrix [DCF overview](https://docs.aviatrix.com/documentation/latest/security/dcf-overview.html) for the broader enforcement model.
 
 :::info
-Obot's built-in Kubernetes `NetworkPolicy` is separate from this feature. That policy restricts private and reserved IP ranges, but it is not domain-aware. MCP server egress control adds per-server domain allowlists through Aviatrix.
+Boeing's built-in Kubernetes `NetworkPolicy` is separate from this feature. That policy restricts private and reserved IP ranges, but it is not domain-aware. MCP server egress control adds per-server domain allowlists through Aviatrix.
 :::
 
 ## Enable the Aviatrix provider
 
-Add the Aviatrix provider chart values to your Obot Helm values:
+Add the Aviatrix provider chart values to your Boeing Helm values:
 
 ```yaml
 config:
-  OBOT_SERVER_MCPNETWORK_POLICY_PROVIDER_CHART_REPO: "https://charts.obot.ai"
-  OBOT_SERVER_MCPNETWORK_POLICY_PROVIDER_CHART_NAME: "aviatrix-network-policy-controller"
-  OBOT_SERVER_MCPNETWORK_POLICY_PROVIDER_CHART_VERSION: "v0.0.1"
+  BOEING_SERVER_MCPNETWORK_POLICY_PROVIDER_CHART_REPO: "https://charts.boeing.ai"
+  BOEING_SERVER_MCPNETWORK_POLICY_PROVIDER_CHART_NAME: "aviatrix-network-policy-controller"
+  BOEING_SERVER_MCPNETWORK_POLICY_PROVIDER_CHART_VERSION: "v0.0.1"
 ```
 
-Then install or upgrade Obot:
+Then install or upgrade Boeing:
 
 ```bash
-helm upgrade --install obot obot/obot \
-  --namespace obot \
+helm upgrade --install boeing boeing/boeing \
+  --namespace boeing \
   --create-namespace \
   -f values.yaml
 ```
 
-When these values are set, Obot installs the Aviatrix provider chart as the Helm release `obot-network-policy-provider` in the namespace where Obot is installed. The chart is configured to manage egress-control resources for the MCP runtime namespace.
+When these values are set, Boeing installs the Aviatrix provider chart as the Helm release `boeing-network-policy-provider` in the namespace where Boeing is installed. The chart is configured to manage egress-control resources for the MCP runtime namespace.
 
 ## Configure default egress behavior
 
@@ -52,7 +52,7 @@ By default, an MCP server with no egress domains configured is treated as allow 
 
 ```yaml
 config:
-  OBOT_SERVER_MCPDEFAULT_DENY_ALL_EGRESS: "true"
+  BOEING_SERVER_MCPDEFAULT_DENY_ALL_EGRESS: "true"
 ```
 
 With the default set to deny all, admins can still allow unrestricted egress for an individual MCP server by using the server's egress control toggle in the MCP server configuration.
@@ -117,7 +117,7 @@ Domain values must be hostnames only:
 
 ## How enforcement works
 
-For each supported MCP server, Obot creates an `MCPNetworkPolicy` with the server name, pod selector, allowed domains, and deny-all setting. The Aviatrix provider watches these objects from Obot storage and creates a corresponding `FirewallPolicy` in the MCP runtime namespace.
+For each supported MCP server, Boeing creates an `MCPNetworkPolicy` with the server name, pod selector, allowed domains, and deny-all setting. The Aviatrix provider watches these objects from Boeing storage and creates a corresponding `FirewallPolicy` in the MCP runtime namespace.
 
 The generated Aviatrix policy includes:
 
@@ -128,16 +128,16 @@ The generated Aviatrix policy includes:
 - A deny rule that blocks other external egress when domains are configured or deny-all is enabled.
 
 :::warning
-Domain allowlists are enforced for HTTPS egress on TCP port `443`. Traffic to all other ports will be blocked. Remote MCP servers are not covered by this feature because they are external endpoints rather than Obot-hosted MCP server workloads.
+Domain allowlists are enforced for HTTPS egress on TCP port `443`. Traffic to all other ports will be blocked. Remote MCP servers are not covered by this feature because they are external endpoints rather tha Boeing-hosted MCP server workloads.
 :::
 
 ## Verify the setup
 
-Check that Obot installed the provider:
+Check that Boeing installed the provider:
 
 ```bash
-helm status obot-network-policy-provider -n <obot-namespace>
-kubectl get pods -n <obot-namespace> -l app.kubernetes.io/name=aviatrix-network-policy-controller
+helm status boeing-network-policy-provider -n <boeing-namespace>
+kubectl get pods -n <boeing-namespace> -l app.kubernetes.io/name=aviatrix-network-policy-controller
 ```
 
 Check that the Aviatrix provider created a `FirewallPolicy`:
@@ -151,5 +151,5 @@ If the expected `FirewallPolicy` does not appear after configuring egress domain
 
 ```bash
 kubectl get crd firewallpolicies.networking.aviatrix.com
-kubectl logs -n <obot-namespace> -l app.kubernetes.io/name=aviatrix-network-policy-controller
+kubectl logs -n <boeing-namespace> -l app.kubernetes.io/name=aviatrix-network-policy-controller
 ```

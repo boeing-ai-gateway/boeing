@@ -12,8 +12,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/obot-platform/obot/apiclient/types"
-	v1 "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
+	v1 "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
@@ -53,13 +53,13 @@ func TestAvailability(t *testing.T) {
 }
 
 func TestECRSubject(t *testing.T) {
-	if got := ECRSubject(" obot ", " obot "); got != "system:serviceaccount:obot:obot" {
+	if got := ECRSubject(" boeing ", " boeing "); got != "system:serviceaccount:boeing:boeing" {
 		t.Fatalf("unexpected ECR subject: %q", got)
 	}
-	if got := ECRSubject(" ", "obot"); got != "" {
+	if got := ECRSubject(" ", "boeing"); got != "" {
 		t.Fatalf("expected empty subject for empty namespace, got %q", got)
 	}
-	if got := ECRSubject("obot", " "); got != "" {
+	if got := ECRSubject("boeing", " "); got != "" {
 		t.Fatalf("expected empty subject for empty service account name, got %q", got)
 	}
 }
@@ -420,7 +420,7 @@ func TestValidateSpec(t *testing.T) {
 	spec, err := ValidateSpec(v1.ImagePullSecretSpec{
 		Type: types.ImagePullSecretTypeECR,
 		ECR: &types.ECRImagePullSecretConfig{
-			RoleARN:   "arn:aws:iam::123456789012:role/obot-ecr",
+			RoleARN:   "arn:aws:iam::123456789012:role/boeing-ecr",
 			Region:    "us-east-1",
 			IssuerURL: "https://issuer.example.com/",
 		},

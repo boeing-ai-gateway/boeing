@@ -2,10 +2,10 @@
 	import { page } from '$app/state';
 	import { tooltip } from '$lib/actions/tooltip.svelte';
 	import Layout from '$lib/components/Layout.svelte';
-	import ObotCliBanner from '$lib/components/ObotCliBanner.svelte';
+	import BoeingCliBanner from '$lib/components/BoeingCliBanner.svelte';
 	import Search from '$lib/components/Search.svelte';
 	import Table from '$lib/components/table/Table.svelte';
-	import type { Skill } from '$lib/services/nanobot/types';
+	import type { Skill } from '$lib/services/boeingbot/types';
 	import { MCP_CONNECTION_INVALID_LICENSE_MESSAGE } from '$lib/services/user/constants.js';
 	import { formatTimeAgo } from '$lib/time';
 	import { setUrlParamAndUpdateUrl } from '$lib/url.js';
@@ -34,7 +34,7 @@
 
 <Layout classes={{ navbar: 'bg-base-200' }} title="Skills">
 	<div class="flex min-h-full flex-col gap-2">
-		<ObotCliBanner description="Easily discover and install skills." />
+		<BoeingCliBanner description="Easily discover and install skills." />
 		<div class="flex min-h-full flex-col">
 			<div class="bg-base-200 dark:bg-base-100 sticky top-16 left-0 z-20 w-full py-1">
 				<div class="mb-2">
@@ -121,5 +121,5 @@
 {/snippet}
 
 <svelte:head>
-	<title>Obot | Skills</title>
+	<title>Boeing | Skills</title>
 </svelte:head>

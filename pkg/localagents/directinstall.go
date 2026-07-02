@@ -8,7 +8,7 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/obot-platform/obot/pkg/localagents/assets"
+	"github.com/boeing-ai-gateway/boeing/pkg/localagents/assets"
 )
 
 func resolveHome(explicit, configured string) (string, error) {

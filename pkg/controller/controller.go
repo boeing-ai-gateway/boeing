@@ -5,18 +5,18 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/obot-platform/obot/apiclient/types"
-	"github.com/obot-platform/obot/logger"
-	"github.com/obot-platform/obot/pkg/controller/data"
-	"github.com/obot-platform/obot/pkg/controller/handlers/adminworkspace"
-	"github.com/obot-platform/obot/pkg/controller/handlers/deployment"
-	"github.com/obot-platform/obot/pkg/controller/handlers/mcpcatalog"
-	"github.com/obot-platform/obot/pkg/controller/handlers/provider"
-	"github.com/obot-platform/obot/pkg/controller/handlers/secret"
-	"github.com/obot-platform/obot/pkg/serviceaccounts"
-	"github.com/obot-platform/obot/pkg/services"
-	v1 "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1"
-	"github.com/obot-platform/obot/pkg/system"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/logger"
+	"github.com/boeing-ai-gateway/boeing/pkg/controller/data"
+	"github.com/boeing-ai-gateway/boeing/pkg/controller/handlers/adminworkspace"
+	"github.com/boeing-ai-gateway/boeing/pkg/controller/handlers/deployment"
+	"github.com/boeing-ai-gateway/boeing/pkg/controller/handlers/mcpcatalog"
+	"github.com/boeing-ai-gateway/boeing/pkg/controller/handlers/provider"
+	"github.com/boeing-ai-gateway/boeing/pkg/controller/handlers/secret"
+	"github.com/boeing-ai-gateway/boeing/pkg/serviceaccounts"
+	"github.com/boeing-ai-gateway/boeing/pkg/services"
+	v1 "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1"
+	"github.com/boeing-ai-gateway/boeing/pkg/system"
 	appsv1 "k8s.io/api/apps/v1"
 	corev1 "k8s.io/api/core/v1"
 	"k8s.io/apimachinery/pkg/api/equality"
@@ -25,7 +25,7 @@ import (
 	kclient "sigs.k8s.io/controller-runtime/pkg/client"
 
 	// Enable logrus logging in nah
-	_ "github.com/obot-platform/nah/pkg/logrus"
+	_ "github.com/boeing-ai-gateway/nah/pkg/logrus"
 )
 
 var log = logger.Package()
@@ -91,8 +91,8 @@ func (c *Controller) PreStart(ctx context.Context) error {
 		return fmt.Errorf("failed to ensure admin workspaces: %w", err)
 	}
 
-	if err := c.ensureObotMCPServer(ctx); err != nil {
-		return fmt.Errorf("failed to ensure obot MCP server: %w", err)
+	if err := c.ensureBoeingMCPServer(ctx); err != nil {
+		return fmt.Errorf("failed to ensure boeing MCP server: %w", err)
 	}
 
 	if err := c.reconcileServiceAccountKeys(ctx); err != nil {
@@ -106,14 +106,14 @@ func (c *Controller) PreStart(ctx context.Context) error {
 	return nil
 }
 
-func (c *Controller) ensureObotMCPServer(ctx context.Context) error {
-	internalURL := c.services.MCPSessionManager.TransformObotHostname(c.services.ServerURL)
+func (c *Controller) ensureBoeingMCPServer(ctx context.Context) error {
+	internalURL := c.services.MCPSessionManager.TransformBoeingHostname(c.services.ServerURL)
 	image := c.services.MCPServerSearchImage
 
 	var existing v1.SystemMCPServer
 	err := c.services.StorageClient.Get(ctx, kclient.ObjectKey{
 		Namespace: system.DefaultNamespace,
-		Name:      system.ObotMCPServerName,
+		Name:      system.BoeingMCPServerName,
 	}, &existing)
 	if err == nil {
 		// Reconcile all critical fields to ensure the server is correctly configured
@@ -158,22 +158,22 @@ func (c *Controller) ensureObotMCPServer(ctx context.Context) error {
 			}
 		}
 
-		// Check OBOT_URL env var
-		var foundOBOTURLEntry bool
+		// Check BOEING_URL env var
+		var foundBOEINGURLEntry bool
 		for i, env := range existing.Spec.Manifest.Env {
-			if env.Key == "OBOT_URL" {
-				foundOBOTURLEntry = true
+			if env.Key == "BOEING_URL" {
+				foundBOEINGURLEntry = true
 				if env.Value != internalURL {
 					existing.Spec.Manifest.Env[i].Value = internalURL
 					needsUpdate = true
 				}
 			}
 		}
-		if !foundOBOTURLEntry {
+		if !foundBOEINGURLEntry {
 			existing.Spec.Manifest.Env = append(existing.Spec.Manifest.Env, types.MCPEnv{
 				MCPHeader: types.MCPHeader{
-					Name:     "OBOT_URL",
-					Key:      "OBOT_URL",
+					Name:     "BOEING_URL",
+					Key:      "BOEING_URL",
 					Required: true,
 					Value:    internalURL,
 				},
@@ -182,7 +182,7 @@ func (c *Controller) ensureObotMCPServer(ctx context.Context) error {
 		}
 
 		if needsUpdate {
-			log.Infof("Updating obot MCP server (image=%s)", image)
+			log.Infof("Updating boeing MCP server (image=%s)", image)
 			return c.services.StorageClient.Update(ctx, &existing)
 		}
 		return nil
@@ -192,16 +192,16 @@ func (c *Controller) ensureObotMCPServer(ctx context.Context) error {
 	}
 
 	// Create the SystemMCPServer
-	log.Infof("Creating obot MCP server (image=%s)", image)
+	log.Infof("Creating boeing MCP server (image=%s)", image)
 	server := &v1.SystemMCPServer{
 		ObjectMeta: metav1.ObjectMeta{
-			Name:       system.ObotMCPServerName,
+			Name:       system.BoeingMCPServerName,
 			Namespace:  system.DefaultNamespace,
 			Finalizers: []string{v1.SystemMCPServerFinalizer},
 		},
 		Spec: v1.SystemMCPServerSpec{
 			Manifest: types.SystemMCPServerManifest{
-				Name:             "Obot MCP Server",
+				Name:             "Boeing MCP Server",
 				ShortDescription: "MCP server for discovering and searching available MCP servers",
 				Runtime:          types.RuntimeContainerized,
 				ContainerizedConfig: &types.ContainerizedRuntimeConfig{
@@ -212,8 +212,8 @@ func (c *Controller) ensureObotMCPServer(ctx context.Context) error {
 				Env: []types.MCPEnv{
 					{
 						MCPHeader: types.MCPHeader{
-							Name:     "OBOT_URL",
-							Key:      "OBOT_URL",
+							Name:     "BOEING_URL",
+							Key:      "BOEING_URL",
 							Required: true,
 							Value:    internalURL,
 						},
@@ -298,7 +298,7 @@ func (c *Controller) retriggerCatalogEntries(ctx context.Context, client kclient
 		if entry.Annotations == nil {
 			entry.Annotations = make(map[string]string)
 		}
-		entry.Annotations["obot.ai/startup-retrigger"] = time.Now().Format(time.RFC3339)
+		entry.Annotations["boeing.ai/startup-retrigger"] = time.Now().Format(time.RFC3339)
 
 		if err := client.Patch(ctx, &entry, patch); err != nil {
 			log.Warnf("Failed to re-trigger MCPServerCatalogEntry %s: %v", entry.Name, err)
@@ -393,7 +393,7 @@ func ensureK8sSettings(ctx context.Context, client kclient.Client, podScheduling
 			k8sSettings.Spec.Resources = podSchedulingSettings.Resources
 			k8sSettings.Spec.RuntimeClassName = podSchedulingSettings.RuntimeClassName
 			k8sSettings.Spec.StorageClassName = podSchedulingSettings.StorageClassName
-			k8sSettings.Spec.NanobotWorkspaceSize = podSchedulingSettings.NanobotWorkspaceSize
+			k8sSettings.Spec.BoeingbotWorkspaceSize = podSchedulingSettings.BoeingbotWorkspaceSize
 		}
 
 		// PSA settings are always applied from environment/Helm (independent of SetViaHelm)
@@ -416,14 +416,14 @@ func ensureK8sSettings(ctx context.Context, client kclient.Client, podScheduling
 			!resourcesEqual(k8sSettings.Spec.Resources, podSchedulingSettings.Resources) ||
 			!classNameEqual(k8sSettings.Spec.RuntimeClassName, podSchedulingSettings.RuntimeClassName) ||
 			!classNameEqual(k8sSettings.Spec.StorageClassName, podSchedulingSettings.StorageClassName) ||
-			!workspaceSizeEqual(k8sSettings.Spec.NanobotWorkspaceSize, podSchedulingSettings.NanobotWorkspaceSize) {
+			!workspaceSizeEqual(k8sSettings.Spec.BoeingbotWorkspaceSize, podSchedulingSettings.BoeingbotWorkspaceSize) {
 			k8sSettings.Spec.SetViaHelm = true
 			k8sSettings.Spec.Affinity = podSchedulingSettings.Affinity
 			k8sSettings.Spec.Tolerations = podSchedulingSettings.Tolerations
 			k8sSettings.Spec.Resources = podSchedulingSettings.Resources
 			k8sSettings.Spec.RuntimeClassName = podSchedulingSettings.RuntimeClassName
 			k8sSettings.Spec.StorageClassName = podSchedulingSettings.StorageClassName
-			k8sSettings.Spec.NanobotWorkspaceSize = podSchedulingSettings.NanobotWorkspaceSize
+			k8sSettings.Spec.BoeingbotWorkspaceSize = podSchedulingSettings.BoeingbotWorkspaceSize
 			needsUpdate = true
 		}
 	} else if k8sSettings.Spec.SetViaHelm {
@@ -435,7 +435,7 @@ func ensureK8sSettings(ctx context.Context, client kclient.Client, podScheduling
 		k8sSettings.Spec.Resources = nil
 		k8sSettings.Spec.RuntimeClassName = nil
 		k8sSettings.Spec.StorageClassName = nil
-		k8sSettings.Spec.NanobotWorkspaceSize = ""
+		k8sSettings.Spec.BoeingbotWorkspaceSize = ""
 		needsUpdate = true
 	}
 
@@ -540,7 +540,7 @@ func (c *Controller) setupLocalK8sRoutes() {
 	c.services.LocalRouter.Type(&appsv1.Deployment{}).HandlerFunc(deploymentHandler.CleanupOldIDs)
 
 	secretHandler := secret.New(c.services.MCPServerNamespace, c.services.GatewayClient)
-	c.services.LocalRouter.Type(&corev1.Secret{}).Namespace(c.services.MCPServerNamespace).HandlerFunc(secretHandler.UpdateNanobotAgentCreds)
+	c.services.LocalRouter.Type(&corev1.Secret{}).Namespace(c.services.MCPServerNamespace).HandlerFunc(secretHandler.UpdateBoeingbotAgentCreds)
 	// Reconcile delete/update events for the provider token secret immediately,
 	// instead of waiting for the periodic service-account key rotation loop.
 	c.services.LocalRouter.Type(&corev1.Secret{}).Namespace(c.services.ServiceNamespace).Name(serviceaccounts.NetworkPolicySecretName).IncludeRemoved().HandlerFunc(c.reconcileServiceAccountSecretChange)

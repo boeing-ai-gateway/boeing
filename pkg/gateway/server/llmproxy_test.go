@@ -11,8 +11,8 @@ import (
 	"strings"
 	"testing"
 
-	types2 "github.com/obot-platform/obot/apiclient/types"
-	"github.com/obot-platform/obot/pkg/messagepolicy"
+	types2 "github.com/boeing-ai-gateway/boeing/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/pkg/messagepolicy"
 	"github.com/tidwall/gjson"
 )
 
@@ -384,8 +384,8 @@ func TestLLMTransformRequest_RemovesInternalRequestTypeHeader(t *testing.T) {
 
 // TestLLMTransformRequest_UpstreamPath asserts the upstream URL.Path produced
 // by llmTransformRequest for every (base URL, reqPath) combination the proxy
-// should support. Every reqPath is grounded in real source — either nanobot
-// (nanobot/pkg/llm/{anthropic,responses,completions,bifrost}/client.go) or the
+// should support. Every reqPath is grounded in real source — either boeingbot
+// (boeingbot/pkg/llm/{anthropic,responses,completions,bifrost}/client.go) or the
 // official SDK each documented external coding tool uses.
 //
 // The expected paths are also what modifyResponse in llmproxy.go checks against
@@ -397,38 +397,38 @@ func TestLLMTransformRequest_UpstreamPath(t *testing.T) {
 		reqPath string
 		want    string
 	}{
-		// --- Nanobot dialects (exact suffixes from nanobot source) ---
-		// nanobot/pkg/llm/anthropic/client.go → BaseURL + "/messages"
+		// --- Boeingbot dialects (exact suffixes from boeingbot source) ---
+		// boeingbot/pkg/llm/anthropic/client.go → BaseURL + "/messages"
 		{
-			name:    "nanobot AnthropicMessages dialect",
+			name:    "boeingbot AnthropicMessages dialect",
 			baseURL: "https://api.anthropic.com/v1",
 			reqPath: "messages",
 			want:    "/v1/messages",
 		},
-		// nanobot/pkg/llm/responses/client.go → BaseURL + "/responses"
+		// boeingbot/pkg/llm/responses/client.go → BaseURL + "/responses"
 		{
-			name:    "nanobot OpenAIResponses dialect",
+			name:    "boeingbot OpenAIResponses dialect",
 			baseURL: "https://api.openai.com/v1",
 			reqPath: "responses",
 			want:    "/v1/responses",
 		},
-		// nanobot/pkg/llm/client.go: OpenResponses uses the responses client
+		// boeingbot/pkg/llm/client.go: OpenResponses uses the responses client
 		{
-			name:    "nanobot OpenResponses dialect (dispatch)",
+			name:    "boeingbot OpenResponses dialect (dispatch)",
 			baseURL: "http://127.0.0.1:8080",
 			reqPath: "responses",
 			want:    "/v1/responses",
 		},
-		// nanobot/pkg/llm/completions/client.go → BaseURL + "/chat/completions"
+		// boeingbot/pkg/llm/completions/client.go → BaseURL + "/chat/completions"
 		{
-			name:    "nanobot OpenAIChatCompletions dialect (dispatch)",
+			name:    "boeingbot OpenAIChatCompletions dialect (dispatch)",
 			baseURL: "http://127.0.0.1:8080",
 			reqPath: "chat/completions",
 			want:    "/v1/chat/completions",
 		},
-		// nanobot/pkg/llm/bifrost/client.go → BaseURL + "/v1/responses"
+		// boeingbot/pkg/llm/bifrost/client.go → BaseURL + "/v1/responses"
 		{
-			name:    "nanobot BifrostRequest dialect (dispatch)",
+			name:    "boeingbot BifrostRequest dialect (dispatch)",
 			baseURL: "http://127.0.0.1:8080",
 			reqPath: "v1/responses",
 			want:    "/v1/responses",

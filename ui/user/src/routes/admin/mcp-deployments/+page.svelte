@@ -110,5 +110,5 @@
 {/snippet}
 
 <svelte:head>
-	<title>Obot | MCP Management | MCP Deployments</title>
+	<title>Boeing | MCP Management | MCP Deployments</title>
 </svelte:head>

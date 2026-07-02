@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"testing"
 
-	"github.com/obot-platform/obot/pkg/serviceaccounts"
+	"github.com/boeing-ai-gateway/boeing/pkg/serviceaccounts"
 )
 
 func TestAuthenticateRequestAdminToken(t *testing.T) {

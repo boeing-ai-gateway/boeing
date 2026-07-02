@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/obot-platform/nanobot/pkg/mcp"
+	"github.com/boeing-ai-gateway/boeingbot/pkg/mcp"
 )
 
 func (sm *SessionManager) ListPrompts(ctx context.Context, serverConfig ServerConfig) ([]mcp.Prompt, error) {

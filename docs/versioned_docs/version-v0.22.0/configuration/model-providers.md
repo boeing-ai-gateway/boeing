@@ -4,7 +4,7 @@ The Model Providers page allows administrators to configure and manage various A
 
 ### Configuring Model Providers
 
-Obot supports a variety of model providers, including:
+Boeing supports a variety of model providers, including:
 
 **Community**
 - OpenAI
@@ -65,7 +65,7 @@ Setting a default model here does not automatically grant users access to it. Us
 
 #### Azure (Enterprise only)
 
-Obot supports two Azure providers, each with a different authentication method. These are compatible with both Azure OpenAI deployments and Foundry deployments.
+Boeing supports two Azure providers, each with a different authentication method. These are compatible with both Azure OpenAI deployments and Foundry deployments.
 
 ##### API Key Authentication
 
@@ -102,7 +102,7 @@ az cognitiveservices account show \
 
 ###### 3. Configure the provider
 
-Obot requires:
+Boeing requires:
 - **Azure Endpoint** — your Azure OpenAI endpoint URL (`https://<resource_name>.openai.azure.com`)
 - **Client ID** — the Entra app's application (client) ID
 - **Client Secret** — the Entra app's client secret
@@ -113,16 +113,16 @@ Obot requires:
 
 You can also optionally specify the API version (defaults to `2025-01-01-preview`).
 
-The service principal requires at minimum the `Cognitive Services OpenAI User` or `Cognitive Services User` role on the account to read deployments. Deployments are discovered automatically — each deployment's base model name becomes the model ID exposed to Obot.
+The service principal requires at minimum the `Cognitive Services OpenAI User` or `Cognitive Services User` role on the account to read deployments. Deployments are discovered automatically — each deployment's base model name becomes the model ID exposed to Boeing.
 
 See the [Microsoft docs](https://learn.microsoft.com/en-us/azure/foundry/foundry-models/how-to/configure-entra-id) for more details.
 
 #### Amazon Bedrock (Enterprise only)
 
-Obot supports two Amazon Bedrock providers, each with a different authentication method.
+Boeing supports two Amazon Bedrock providers, each with a different authentication method.
 
 :::note
-Both Bedrock providers use _AWS Bedrock Inference Profiles_ rather than direct on-demand model access. Inference profiles are resources that route model invocation requests and enable cost tracking — AWS provides system-defined cross-region inference profiles by default for supported models, so no manual setup is typically required. Only models with an available inference profile will appear in Obot. See the [AWS documentation](https://docs.aws.amazon.com/bedrock/latest/userguide/inference-profiles-use.html) for more details.
+Both Bedrock providers use _AWS Bedrock Inference Profiles_ rather than direct on-demand model access. Inference profiles are resources that route model invocation requests and enable cost tracking — AWS provides system-defined cross-region inference profiles by default for supported models, so no manual setup is typically required. Only models with an available inference profile will appear in Boeing. See the [AWS documentation](https://docs.aws.amazon.com/bedrock/latest/userguide/inference-profiles-use.html) for more details.
 :::
 
 :::warning
@@ -137,7 +137,7 @@ This is expected AWS behavior — Anthropic models on Bedrock require you to sub
 
 Use the **Amazon Bedrock (Static Credentials)** provider to authenticate with long-lived AWS credentials.
 
-Obot requires:
+Boeing requires:
 - **AWS Access Key ID** — your IAM user's access key
 - **AWS Secret Access Key** — your IAM user's secret key
 - **AWS Region** — the region where your inference profiles are configured (e.g. `us-east-1`)
@@ -147,13 +147,13 @@ Obot requires:
 
 Use the **Amazon Bedrock (API Key)** provider to authenticate with a Bedrock API key.
 
-Obot requires:
+Boeing requires:
 - **API Key** — your Bedrock API key
 - **AWS Region** — the region where your inference profiles are configured (e.g. `us-east-1`)
 
 #### Generic Responses Compatible Provider
 
-Use **Generic Responses Compatible Provider** to connect Obot to any Responses-compatible API.
+Use **Generic Responses Compatible Provider** to connect Boeing to any Responses-compatible API.
 
 This provider supports:
 - A provider-level **Base URL** and optional **API Key**
@@ -165,23 +165,23 @@ This provider supports:
 
 ##### Using Ollama
 
-[Ollama](https://ollama.ai/) allows you to run models locally. When Obot runs in Docker, make Ollama reachable from the container:
+[Ollama](https://ollama.ai/) allows you to run models locally. When Boeing runs in Docker, make Ollama reachable from the container:
 
 1. **Expose Ollama to the network**
    Set `OLLAMA_HOST=0.0.0.0` before starting Ollama.
 
-2. **Set Base URL in Obot**
+2. **Set Base URL in Boeing**
    Use one of:
    - `http://host.docker.internal:11434/v1` (recommended for Docker Desktop)
    - `http://<your-host-ip>:11434/v1`
 
-For Linux Docker, add `--add-host=host.docker.internal:host-gateway` (or use another host-networking approach) so `host.docker.internal` resolves inside the Obot container.
+For Linux Docker, add `--add-host=host.docker.internal:host-gateway` (or use another host-networking approach) so `host.docker.internal` resolves inside the Boeing container.
 
 See [Ollama's FAQ](https://docs.ollama.com/faq) for platform-specific details.
 
 ##### LiteLLM config example
 
-If you use LiteLLM, Obot works with LiteLLM's wildcard model list:
+If you use LiteLLM, Boeing works with LiteLLM's wildcard model list:
 
 ```yaml
 model_list:
@@ -191,6 +191,6 @@ model_list:
       api_key: os.environ/OPENAI_API_KEY
 ```
 
-In Obot, models discovered through this provider are currently treated as **Language Model (LLM chat)** models by default.
+In Boeing, models discovered through this provider are currently treated as **Language Model (LLM chat)** models by default.
 
-If your upstream includes non-chat-capable models, use more specific model mappings instead of a broad wildcard, or avoid using these models with Obot.
+If your upstream includes non-chat-capable models, use more specific model mappings instead of a broad wildcard, or avoid using these models with Boeing.

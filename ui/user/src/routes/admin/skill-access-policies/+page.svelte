@@ -144,5 +144,5 @@
 />
 
 <svelte:head>
-	<title>Obot | Skill Access Policies</title>
+	<title>Boeing | Skill Access Policies</title>
 </svelte:head>

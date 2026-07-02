@@ -14,12 +14,12 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/obot-platform/obot/apiclient/types"
-	"github.com/obot-platform/obot/pkg/api"
-	"github.com/obot-platform/obot/pkg/controller/handlers/skillrepository"
-	"github.com/obot-platform/obot/pkg/skillaccessrule"
-	"github.com/obot-platform/obot/pkg/skillformat"
-	v1 "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/pkg/api"
+	"github.com/boeing-ai-gateway/boeing/pkg/controller/handlers/skillrepository"
+	"github.com/boeing-ai-gateway/boeing/pkg/skillaccessrule"
+	"github.com/boeing-ai-gateway/boeing/pkg/skillformat"
+	v1 "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1"
 	apierrors "k8s.io/apimachinery/pkg/api/errors"
 	kclient "sigs.k8s.io/controller-runtime/pkg/client"
 )
@@ -138,8 +138,8 @@ func (h *SkillHandler) Download(req api.Context) error {
 	}
 	defer cleanup()
 
-	if err := injectObotMetadata(skillDir, skill); err != nil {
-		return fmt.Errorf("failed to inject obot metadata into SKILL.md: %w", err)
+	if err := injectBoeingMetadata(skillDir, skill); err != nil {
+		return fmt.Errorf("failed to inject boeing metadata into SKILL.md: %w", err)
 	}
 
 	fileName := sanitizeDownloadFilename(skill.Spec.Name)
@@ -291,7 +291,7 @@ func skillSortName(displayName, name string) string {
 	return name
 }
 
-func injectObotMetadata(skillDir string, skill *v1.Skill) error {
+func injectBoeingMetadata(skillDir string, skill *v1.Skill) error {
 	skillFile := filepath.Join(skillDir, skillformat.SkillMainFile)
 	content, err := os.ReadFile(skillFile)
 	if err != nil {
@@ -306,10 +306,10 @@ func injectObotMetadata(skillDir string, skill *v1.Skill) error {
 	if fm.Metadata == nil {
 		fm.Metadata = make(map[string]string)
 	}
-	fm.Metadata["obot-skill-id"] = skill.Name
-	fm.Metadata["obot-skill-repository-id"] = skill.Spec.RepoID
-	fm.Metadata["obot-commit-sha"] = skill.Spec.CommitSHA
-	fm.Metadata["obot-indexed-at"] = skill.Status.LastIndexedAt.UTC().Format("2006-01-02T15:04:05Z")
+	fm.Metadata["boeing-skill-id"] = skill.Name
+	fm.Metadata["boeing-skill-repository-id"] = skill.Spec.RepoID
+	fm.Metadata["boeing-commit-sha"] = skill.Spec.CommitSHA
+	fm.Metadata["boeing-indexed-at"] = skill.Status.LastIndexedAt.UTC().Format("2006-01-02T15:04:05Z")
 
 	output, err := skillformat.FormatSkillMD(fm, body)
 	if err != nil {

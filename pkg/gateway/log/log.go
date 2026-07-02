@@ -1,7 +1,7 @@
 //nolint:revive
 package log
 
-import "github.com/obot-platform/obot/logger"
+import "github.com/boeing-ai-gateway/boeing/logger"
 
 func NewWithID(id string) *logger.Logger {
 	log := logger.New("gateway")

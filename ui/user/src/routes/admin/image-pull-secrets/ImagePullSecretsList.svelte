@@ -59,7 +59,7 @@
 		<h4 class="text-muted-content text-lg font-semibold">No image pull secrets</h4>
 		{#if !mutationsDisabled}
 			<p class="text-muted-content text-sm font-light">
-				Create a managed image pull secret to let Obot pull private MCP server images.
+				Create a managed image pull secret to let Boeing pull private MCP server images.
 			</p>
 			<button class="btn btn-primary flex items-center gap-1 text-sm" onclick={onCreate}>
 				<Plus class="size-4" />

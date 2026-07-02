@@ -3,7 +3,7 @@ title: Chat Management
 ---
 
 :::warning
-Obot Chat is deprecated as of v0.17.0 and will be removed in a future release. Please use Obot Agent instead, which provides a more flexible and powerful interface.
+Boeing Chat is deprecated as of v0.17.0 and will be removed in a future release. Please use Boeing Agent instead, which provides a more flexible and powerful interface.
 :::
 
 # Chat Management

@@ -3,7 +3,7 @@ package cli
 import (
 	"fmt"
 
-	"github.com/obot-platform/obot/pkg/version"
+	"github.com/boeing-ai-gateway/boeing/pkg/version"
 	"github.com/spf13/cobra"
 )
 

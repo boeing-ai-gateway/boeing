@@ -1,6 +1,6 @@
 import { handleRouteError, HttpError } from '$lib/errors';
-import { NanobotService } from '$lib/services';
-import type { Skill } from '$lib/services/nanobot/types';
+import { BoeingbotService } from '$lib/services';
+import type { Skill } from '$lib/services/boeingbot/types';
 import type { PageLoad } from './$types';
 
 export const load: PageLoad = async ({ fetch, parent, params }) => {
@@ -10,7 +10,7 @@ export const load: PageLoad = async ({ fetch, parent, params }) => {
 	let showLicenseError = false;
 
 	try {
-		skill = await NanobotService.getSkill(id, { fetch });
+		skill = await BoeingbotService.getSkill(id, { fetch });
 	} catch (err) {
 		if (err instanceof HttpError && err.statusCode === 402) {
 			skill = undefined;

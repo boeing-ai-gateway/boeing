@@ -3,12 +3,12 @@ package agent
 import (
 	"strings"
 
-	"github.com/obot-platform/kinm/pkg/apigroup"
-	"github.com/obot-platform/nah/pkg/typed"
-	v1 "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1"
-	"github.com/obot-platform/obot/pkg/storage/registry/generic"
-	"github.com/obot-platform/obot/pkg/storage/scheme"
-	"github.com/obot-platform/obot/pkg/storage/services"
+	"github.com/boeing-ai-gateway/kinm/pkg/apigroup"
+	"github.com/boeing-ai-gateway/nah/pkg/typed"
+	v1 "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1"
+	"github.com/boeing-ai-gateway/boeing/pkg/storage/registry/generic"
+	"github.com/boeing-ai-gateway/boeing/pkg/storage/scheme"
+	"github.com/boeing-ai-gateway/boeing/pkg/storage/services"
 	coordinationv1 "k8s.io/api/coordination/v1"
 	"k8s.io/apiserver/pkg/registry/rest"
 	genericapiserver "k8s.io/apiserver/pkg/server"

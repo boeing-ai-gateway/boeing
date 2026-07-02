@@ -39,7 +39,7 @@ Skills are displayed grouped by their source repository, making it easy to find 
 
 ## Managing Policies
 
-To manage policies, go to **Obot Agent Management > Skill Access Policies**.
+To manage policies, go to **Boeing Agent Management > Skill Access Policies**.
 
 ### Creating a Policy
 

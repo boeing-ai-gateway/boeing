@@ -5,7 +5,7 @@ title: Server Scheduling
 # Server Scheduling
 
 :::note
-This feature is only available for Kubernetes deployments. It does not apply when running Obot with Docker.
+This feature is only available for Kubernetes deployments. It does not apply when running Boeing with Docker.
 :::
 
 Server Scheduling configures pod scheduling behavior for MCP server deployments in Kubernetes. These settings map directly to Kubernetes Deployment spec fields and control where and how MCP server pods run.

@@ -19,16 +19,16 @@ import (
 	"sync"
 	"time"
 
-	types2 "github.com/obot-platform/obot/apiclient/types"
-	"github.com/obot-platform/obot/logger"
-	"github.com/obot-platform/obot/pkg/alias"
-	"github.com/obot-platform/obot/pkg/api"
-	"github.com/obot-platform/obot/pkg/gateway/client"
-	"github.com/obot-platform/obot/pkg/gateway/server/dispatcher"
-	"github.com/obot-platform/obot/pkg/gateway/types"
-	"github.com/obot-platform/obot/pkg/messagepolicy"
-	"github.com/obot-platform/obot/pkg/modelaccesspolicy"
-	v1 "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1"
+	types2 "github.com/boeing-ai-gateway/boeing/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/logger"
+	"github.com/boeing-ai-gateway/boeing/pkg/alias"
+	"github.com/boeing-ai-gateway/boeing/pkg/api"
+	"github.com/boeing-ai-gateway/boeing/pkg/gateway/client"
+	"github.com/boeing-ai-gateway/boeing/pkg/gateway/server/dispatcher"
+	"github.com/boeing-ai-gateway/boeing/pkg/gateway/types"
+	"github.com/boeing-ai-gateway/boeing/pkg/messagepolicy"
+	"github.com/boeing-ai-gateway/boeing/pkg/modelaccesspolicy"
+	v1 "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1"
 	"github.com/tidwall/gjson"
 	"github.com/tidwall/sjson"
 	apierrors "k8s.io/apimachinery/pkg/api/errors"
@@ -46,8 +46,8 @@ var (
 )
 
 const (
-	internalRequestTypeHeader = "X-Nanobot-Internal-Request-Type"
-	threadTitleRequestType    = "nanobot.summary.thread_title"
+	internalRequestTypeHeader = "X-Boeingbot-Internal-Request-Type"
+	threadTitleRequestType    = "boeingbot.summary.thread_title"
 )
 
 func init() {
@@ -158,6 +158,9 @@ func (s *Server) dispatchLLMProxy(req api.Context) error {
 	if err != nil {
 		return fmt.Errorf("failed to get model provider: %w", err)
 	}
+
+	// Load per-user credential for Boeing AI model provider
+	credEnv, personalToken = s.loadPerUserBoeingAICredential(req, userID, modelProvider, credEnv)
 
 	if err = s.db.WithContext(req.Context()).Create(&types.LLMProxyActivity{
 		UserID: userID,
@@ -317,7 +320,7 @@ func (r *responseModifier) modifyResponse(resp *http.Response) error {
 	}
 
 	if r.inputPolicyReplacement != "" {
-		resp.Header.Set("X-Obot-Message-Policy-Replacement", r.inputPolicyReplacement)
+		resp.Header.Set("X-Boeing-Message-Policy-Replacement", r.inputPolicyReplacement)
 	}
 
 	if resp.StatusCode != http.StatusOK || (resp.Request.URL.Path != "/v1/messages" && resp.Request.URL.Path != "/v1/responses") {
@@ -535,7 +538,7 @@ func (r *responseModifier) streamAndEvaluateToolCalls(ctx context.Context, pw *i
 // Text delta chunks are forwarded immediately; once the first tool_call chunk appears,
 // all remaining lines are buffered until the stream ends. After policy evaluation,
 // the buffered lines (including tool calls) are forwarded unmodified, and a violation
-// marker is injected if a policy was violated. The downstream client (nanobot) detects
+// marker is injected if a policy was violated. The downstream client (boeingbot) detects
 // this marker and returns error tool_results instead of executing the tools.
 func (r *responseModifier) streamAndEvaluateToolCallsSSE(ctx context.Context, pw *io.PipeWriter) {
 	var (
@@ -631,7 +634,7 @@ func (r *responseModifier) streamAndEvaluateToolCallsSSE(ctx context.Context, pw
 	}
 
 	// Violation — forward tool calls (to keep conversation history valid)
-	// and inject a violation marker that nanobot can detect.
+	// and inject a violation marker that boeingbot can detect.
 	var explanations []string
 	for _, v := range violations {
 		explanations = append(explanations, v.Explanation)
@@ -641,7 +644,7 @@ func (r *responseModifier) streamAndEvaluateToolCallsSSE(ctx context.Context, pw
 		strings.Join(explanations, "\n"),
 	)
 	violationJSON, _ := json.Marshal(map[string]string{
-		"obot_tool_call_policy_violation": notification,
+		"boeing_tool_call_policy_violation": notification,
 	})
 	violationLine := fmt.Sprintf("data: %s\n\n", violationJSON)
 
@@ -743,7 +746,7 @@ func (r *responseModifier) streamAndEvaluateToolCallsJSON(ctx context.Context, p
 		_, _ = pw.Write(body)
 		return
 	}
-	bodyMap["obot_tool_call_policy_violation"] = notification
+	bodyMap["boeing_tool_call_policy_violation"] = notification
 	modified, err := json.Marshal(bodyMap)
 	if err != nil {
 		_, _ = pw.Write(body)
@@ -912,7 +915,7 @@ func llmTransformRequest(u url.URL, credEnv map[string]string) func(req *http.Re
 
 func addCredHeaders(r *http.Request, credEnv map[string]string) {
 	for k, v := range credEnv {
-		r.Header.Set(fmt.Sprintf("X-Obot-%s", k), v)
+		r.Header.Set(fmt.Sprintf("X-Boeing-%s", k), v)
 	}
 }
 

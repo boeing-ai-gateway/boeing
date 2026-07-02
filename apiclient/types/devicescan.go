@@ -1,13 +1,13 @@
 package types
 
-// DeviceScanManifest is what `obot scan` submits. Server-assigned
+// DeviceScanManifest is what `boeing scan` submits. Server-assigned
 // fields (id, receivedAt, submittedBy) live on DeviceScan instead.
 // Child observations share the same wire type for submission and
 // response — the ID field is server-set and decoded into a zero value
 // on submission, which DeviceScanFromManifest deliberately does not
 // copy. Submitters cannot trample existing row PKs.
 type DeviceScanManifest struct {
-	// ScannerVersion is the obot version that produced the scan.
+	// ScannerVersion is the boeing version that produced the scan.
 	ScannerVersion string `json:"scannerVersion"`
 	// ScannedAt is when the scanner finished collecting on the device.
 	ScannedAt Time `json:"scannedAt"`

@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"path/filepath"
 
-	"github.com/obot-platform/obot/pkg/localagents/assets"
+	"github.com/boeing-ai-gateway/boeing/pkg/localagents/assets"
 )
 
 const (
@@ -52,7 +52,7 @@ func (a SharedAgents) InstallBootstrap(ctx context.Context, home string) (Instal
 		AgentID:     a.ID(),
 		DisplayName: a.DisplayName(),
 		Installed:   installed,
-		Message:     "Installed Obot bootstrap skills for All clients that support ~/.agents",
+		Message:     "Installed Boeing bootstrap skills for All clients that support ~/.agents",
 	}, nil
 }
 

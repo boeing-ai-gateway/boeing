@@ -1,6 +1,6 @@
 # Google Cloud GKE
 
-Deploying Obot to Google Kubernetes Engine follows the standard Helm workflow. As a prerequisite, you'll need the following resources set up in your Google Cloud environment:
+Deploying Boeing to Google Kubernetes Engine follows the standard Helm workflow. As a prerequisite, you'll need the following resources set up in your Google Cloud environment:
 
 * GCP project
 * VPC Network
@@ -14,13 +14,13 @@ Deploying Obot to Google Kubernetes Engine follows the standard Helm workflow. A
 To use the load balancer that Google will create when you deploy the chart, you will need to create your own BackendConfig. Here is an example of a terraform resource that can create the proper BackendConfig:
 
 ```hcl
-resource "kubernetes_manifest" "obot-backendconfig" {
+resource "kubernetes_manifest" "boeing-backendconfig" {
   manifest = {
     "apiVersion" = "cloud.google.com/v1"
     "kind"       = "BackendConfig"
     "metadata" = {
       "name"      = "<name of your backend config>"
-      "namespace" = "<namespace where obot is installed>"
+      "namespace" = "<namespace where boeing is installed>"
     }
     "spec" = {
       "timeoutSec" = 600
@@ -42,13 +42,13 @@ If you plan on using Google Cloud KMS, here is some example terraform that creat
 
 ```hcl
 resource "google_kms_key_ring" "this" {
-  name     = "obot-credentials"
+  name     = "boeing-credentials"
   location = "us-central1"
   project  = "<your google project id>"
 }
 
 resource "google_kms_crypto_key" "this" {
-  name     = "obot-credentials"
+  name     = "boeing-credentials"
   key_ring = google_kms_key_ring.this.id
   purpose  = "ENCRYPT_DECRYPT"
 }
@@ -58,7 +58,7 @@ resource "google_kms_crypto_key_iam_binding" "this" {
   role          = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
 
   members = [
-    "principal://iam.googleapis.com/projects/<your google project number>/locations/global/workloadIdentityPools/<your google project id>.svc.id.goog/subject/ns/<name of the kubernets namespace where obot is deployed>/sa/<name of the service account used by obot>",
+    "principal://iam.googleapis.com/projects/<your google project number>/locations/global/workloadIdentityPools/<your google project id>.svc.id.goog/subject/ns/<name of the kubernets namespace where boeing is deployed>/sa/<name of the service account used by boeing>",
   ]
 }
 ```
@@ -66,14 +66,14 @@ resource "google_kms_crypto_key_iam_binding" "this" {
 More information on the Google Cloud KMS setup can be found [here](/configuration/encryption-providers/google-cloud-kms/).
 
 
-Once you have these resources set up, install the Obot helm chart with:
+Once you have these resources set up, install the Boeing helm chart with:
 
 ```bash
-helm repo add obot https://charts.obot.ai
-helm install obot obot/obot -f <path to your values.yaml>
+helm repo add boeing https://charts.boeing.ai
+helm install boeing boeing/boeing -f <path to your values.yaml>
 ```
 
-Here is an example `values.yaml` file for deploying Obot on GKE:
+Here is an example `values.yaml` file for deploying Boeing on GKE:
 
 ```yaml
 # These settings are required for GKE when using the default Ingress controller.
@@ -90,30 +90,30 @@ ingress:
 serviceAccount:
   # This is important for configuring Google Workload Identity, which we use for Google Cloud KMS access
   create: true
-  name: "<name of the service account to be created and used by obot>"
+  name: "<name of the service account to be created and used by boeing>"
 
 config:
   # configures encryption with Google Cloud KMS. optional, but recommended for production
-  OBOT_SERVER_ENCRYPTION_PROVIDER: "GCP"
-  OBOT_GCP_KMS_KEY_URI: "projects/<your project>/locations/<your location>/keyRings/<your key ring>/cryptoKeys/<your key>"
+  BOEING_SERVER_ENCRYPTION_PROVIDER: "GCP"
+  BOEING_GCP_KMS_KEY_URI: "projects/<your project>/locations/<your location>/keyRings/<your key ring>/cryptoKeys/<your key>"
 
   # database configuration for external db
-  OBOT_SERVER_DSN: "postgresql://<db user>:<db password>@<db host>:<db port>/<db name>?sslmode=<ssl mode>"
+  BOEING_SERVER_DSN: "postgresql://<db user>:<db password>@<db host>:<db port>/<db name>?sslmode=<ssl mode>"
 
   # Enable authentication
-  OBOT_SERVER_ENABLE_AUTHENTICATION: true
-  OBOT_BOOTSTRAP_TOKEN: "<bootstrap password>"
+  BOEING_SERVER_ENABLE_AUTHENTICATION: true
+  BOEING_BOOTSTRAP_TOKEN: "<bootstrap password>"
 
   # Optionally Preseed admin and owner users
-  OBOT_SERVER_AUTH_ADMIN_EMAILS: "<comma separated list of admin emails>"
-  OBOT_SERVER_AUTH_OWNER_EMAILS: "<comma separated list of owner emails>"
+  BOEING_SERVER_AUTH_ADMIN_EMAILS: "<comma separated list of admin emails>"
+  BOEING_SERVER_AUTH_OWNER_EMAILS: "<comma separated list of owner emails>"
 
   # Optionally configure model providers
   OPENAI_API_KEY: "<your openai api key>"
 
 mcpServerDefaults:
   storageClassName: hyperdisk # replace with the name of your StorageClass
-  nanobotWorkspaceSize: 4Gi # Some disk types have a minimum size, read the documentation for the storage type you select.
+  boeingbotWorkspaceSize: 4Gi # Some disk types have a minimum size, read the documentation for the storage type you select.
 ```
 
-With the default configuration on GKE, this will set up ingress to expose Obot through a load balancer. You should also consider adding TLS termination to your load balancer for secure HTTPS access.
+With the default configuration on GKE, this will set up ingress to expose Boeing through a load balancer. You should also consider adding TLS termination to your load balancer for secure HTTPS access.

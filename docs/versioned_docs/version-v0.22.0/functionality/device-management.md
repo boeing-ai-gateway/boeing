@@ -4,7 +4,7 @@ title: Device Management
 
 Device management gives administrators visibility into the AI clients, MCP servers, skills, and plugins configured on user workstations.
 
-Device data is collected by the `obot scan` CLI command and submitted to Obot. Each submitted scan is stored as a point-in-time inventory for that device.
+Device data is collected by the `boeing scan` CLI command and submitted to Boeing. Each submitted scan is stored as a point-in-time inventory for that device.
 
 ## What it does
 
@@ -18,12 +18,12 @@ Device management helps administrators:
 6. Review captured config and manifest files for a specific scan item.
 
 :::note
-Device management is inventory and visibility. It does not install clients, change local client configuration, start MCP servers, or grant access to Obot resources.
+Device management is inventory and visibility. It does not install clients, change local client configuration, start MCP servers, or grant access to Boeing resources.
 :::
 
 ## Device Management views
 
-The Obot admin UI includes a Device Management section with these views:
+The Boeing admin UI includes a Device Management section with these views:
 
 | View | What it shows |
 |------|---------------|
@@ -124,44 +124,44 @@ Plugin details include the client and scope where the plugin was found, plugin m
 
 ## Submitting device scans
 
-Use `obot scan` from a workstation to collect local AI client inventory.
+Use `boeing scan` from a workstation to collect local AI client inventory.
 
 Run a local scan and print a summary table:
 
 ```bash
-obot scan
+boeing scan
 ```
 
 Print the full scan manifest as JSON:
 
 ```bash
-obot scan --json
+boeing scan --json
 ```
 
-Log in to the Obot server that should receive scan results:
+Log in to the Boeing server that should receive scan results:
 
 ```bash
-obot login --url https://obot.example.com
+boeing login --url https://boeing.example.com
 ```
 
 Then submit the scan:
 
 ```bash
-obot scan --submit
+boeing scan --submit
 ```
 
 When `--submit` is used, the CLI prints the local scan result first. After the upload succeeds, it prints the submitted scan ID and server receipt time to stderr.
 
-For unattended jobs, set `OBOT_TOKEN` instead of using browser-based login:
+For unattended jobs, set `BOEING_TOKEN` instead of using browser-based login:
 
 ```bash
-OBOT_TOKEN=<token> \
-obot scan --submit
+BOEING_TOKEN=<token> \
+boeing scan --submit
 ```
 
 ## Supported local clients
 
-`obot scan` detects and inventories these local AI clients:
+`boeing scan` detects and inventories these local AI clients:
 
 | Client | What scan can collect |
 |--------|-----------------------|
@@ -184,7 +184,7 @@ Project-scoped configuration is found by walking the user's home directory. Glob
 Use `--max-depth` to control how deep the project crawl descends below the user's home directory:
 
 ```bash
-obot scan --max-depth 3
+boeing scan --max-depth 3
 ```
 
 The default is `5`. A smaller value finishes faster but may miss deeply nested project configuration. A larger value searches more of the home directory.
@@ -192,7 +192,7 @@ The default is `5`. A smaller value finishes faster but may miss deeply nested p
 Use `--timeout` to limit how long the scan may run:
 
 ```bash
-obot scan --timeout 30
+boeing scan --timeout 30
 ```
 
 The default timeout is `60` seconds. If the timeout expires, the command stops and returns an error.
@@ -201,9 +201,9 @@ You can also enable submission and tune scan behavior through environment variab
 
 | Environment variable | Description |
 |----------------------|-------------|
-| `OBOT_SCAN_SUBMIT` | Submit the scan to Obot when set to `true`. |
-| `OBOT_SCAN_TIMEOUT` | Number of seconds to wait for the scan to complete. |
-| `OBOT_SCAN_MAX_DEPTH` | Maximum project crawl depth below the user's home directory. |
+| `BOEING_SCAN_SUBMIT` | Submit the scan to Boeing when set to `true`. |
+| `BOEING_SCAN_TIMEOUT` | Number of seconds to wait for the scan to complete. |
+| `BOEING_SCAN_MAX_DEPTH` | Maximum project crawl depth below the user's home directory. |
 
 ## What scans include
 
@@ -226,7 +226,7 @@ Captured config and manifest file content may contain whatever is present in tho
 
 Any authenticated user can submit a device scan.
 
-Reading submitted scan data is limited to users with administrative, owner, or auditor access. In the Obot UI, submitted scans appear in the admin Device Management section. Repeated submissions from the same workstation are grouped as scans from the same device.
+Reading submitted scan data is limited to users with administrative, owner, or auditor access. In the Boeing UI, submitted scans appear in the admin Device Management section. Repeated submissions from the same workstation are grouped as scans from the same device.
 
 Admins and owners can delete an individual device scan from the scan detail page.
 
@@ -234,11 +234,11 @@ Admins and owners can delete an individual device scan from the scan detail page
 
 ### Authentication opens a browser
 
-If `OBOT_TOKEN` is not set and no valid token is stored locally, `obot scan --submit` may use the browser-based login flow. For unattended jobs, set `OBOT_TOKEN`.
+If `BOEING_TOKEN` is not set and no valid token is stored locally, `boeing scan --submit` may use the browser-based login flow. For unattended jobs, set `BOEING_TOKEN`.
 
 ### Server submission fails
 
-Check that the configured Obot server is reachable from the workstation and that the token has permission to submit device scans.
+Check that the configured Boeing server is reachable from the workstation and that the token has permission to submit device scans.
 
 ### The scan misses project configuration
 

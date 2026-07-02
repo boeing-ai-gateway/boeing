@@ -7,7 +7,7 @@ import (
 	"path/filepath"
 	"unicode/utf8"
 
-	"github.com/obot-platform/obot/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
 )
 
 // maxFileBytes is the per-file content cap. Files over this are recorded

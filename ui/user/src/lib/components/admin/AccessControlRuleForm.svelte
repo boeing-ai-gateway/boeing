@@ -221,7 +221,7 @@
 
 					return {
 						id: subject.id,
-						displayName: subject.id === '*' ? 'All Obot Users' : subject.id,
+						displayName: subject.id === '*' ? 'All Boeing Users' : subject.id,
 						type: 'Group'
 					};
 				})

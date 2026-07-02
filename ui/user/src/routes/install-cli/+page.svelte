@@ -41,11 +41,11 @@
 	];
 
 	const marks = COMMON_AI_CLIENTS;
-	const installCommand = 'brew install obot-platform/tap/obot';
-	const setupCommand = $derived(`obot setup --url ${page.url.origin}`);
+	const installCommand = 'brew install boeing-ai-gateway/tap/boeing';
+	const setupCommand = $derived(`boeing setup --url ${page.url.origin}`);
 </script>
 
-<Layout title="Obot CLI">
+<Layout title="Boeing CLI">
 	<div class="w-full max-w-7xl mx-auto h-full @container/cli my-6">
 		<div class="paper">
 			<div class="flex flex-col @2xl/cli:flex-row items-center justify-center gap-8">
@@ -54,13 +54,13 @@
 					<h2 class="text-2xl font-bold mb-2">One CLI. Your entire AI tooling.</h2>
 					{#if isAdmin}
 						<p class="font-light">
-							Obot is the open-source platform for hosting, governing, and using Model Context
+							Boeing is the open-source platform for hosting, governing, and using Model Context
 							Protocol servers & skills. Have users run the CLI locally, and bring your team’s AI
 							tooling under one roof.
 						</p>
 					{:else}
 						<p class="font-light">
-							Obot is the open-source platform for hosting, governing, and using Model Context
+							Boeing is the open-source platform for hosting, governing, and using Model Context
 							Protocol servers & skills. Run the CLI locally to start connecting your AI clients and
 							have access to your team's AI tooling in one place.
 						</p>
@@ -84,7 +84,7 @@
 				{/each}
 			</div>
 			<div class="p-8 @2xl/cli:pb-8 pb-0 flex flex-col gap-1">
-				<h3 class="text-2xl font-bold">How to Install Obot CLI</h3>
+				<h3 class="text-2xl font-bold">How to Install Boeing CLI</h3>
 
 				{@render codesnippet('For MacOS, install through Homebrew:', installCommand)}
 
@@ -93,7 +93,7 @@
 				<div class="flex flex-col">
 					<p class="text-sm">For more installation options, click below:</p>
 					<a
-						href="https://github.com/obot-platform/obot/releases/latest"
+						href="https://github.com/boeing-ai-gateway/boeing/releases/latest"
 						class="btn btn-primary mb-3 my-2 w-fit self-center @lg/cli:self-start"
 						target="_blank"
 						rel="noopener noreferrer external"
@@ -118,13 +118,13 @@
 					<AntennaIcon class="@2xl/cli:size-10 size-6 text-primary translate-y-0.5" />
 				</div>
 				<h4 class="text-xl font-semibold text-center my-2">
-					What does <code class="font-mono font-normal mx-2">obot setup</code> do?
+					What does <code class="font-mono font-normal mx-2">boeing setup</code> do?
 				</h4>
 				<ul class="list-disc font-light flex flex-col gap-2 px-4">
 					<li>Detects Cursor and Claude Code on your machine</li>
-					<li>Authenticates and saves your default Obot URL locally</li>
+					<li>Authenticates and saves your default Boeing URL locally</li>
 					<li>
-						Installs Obot bootstrap skills so AI clients know how to work with your org’s MCP
+						Installs Boeing bootstrap skills so AI clients know how to work with your org’s MCP
 						catalog
 					</li>
 				</ul>
@@ -134,20 +134,20 @@
 		<div class="divider"></div>
 
 		<div class="mt-12 flex flex-col gap-4">
-			<h3 class="text-2xl font-bold">Obot CLI Commands</h3>
+			<h3 class="text-2xl font-bold">Boeing CLI Commands</h3>
 
 			<div class="paper">
-				{@render commandPreview('obot setup')}
+				{@render commandPreview('boeing setup')}
 				<p>
-					Use <code class="inline-code">obot setup</code> to authenticate with Obot and install the Obot
+					Use <code class="inline-code">boeing setup</code> to authenticate with Boeing and install the Boeing
 					skills into your AI clients.
 				</p>
 			</div>
 
 			<div class="paper">
-				{@render commandPreview('obot skills')}
+				{@render commandPreview('boeing skills')}
 				<p>
-					Use <code class="inline-code">obot skills</code> to install and manage skills. We support
+					Use <code class="inline-code">boeing skills</code> to install and manage skills. We support
 					Claude, Codex, and all clients that support <code class="inline-code">~/.agents</code>,
 					including:
 				</p>
@@ -160,23 +160,23 @@
 						</p>
 						<div class="mb-2">
 							{@render slashCommandPreview(
-								'/obot-search-skills',
-								'Search Obot for installable skills. (user)'
+								'/boeing-search-skills',
+								'Search Boeing for installable skills. (user)'
 							)}
 						</div>
 						{@render slashCommandPreview(
-							'/obot-install-skill',
-							'Install a skill from Obot. (user)'
+							'/boeing-install-skill',
+							'Install a skill from Boeing. (user)'
 						)}
 					</li>
 				</ul>
 			</div>
 
 			<div class="paper">
-				{@render commandPreview('obot scan')}
+				{@render commandPreview('boeing scan')}
 				<div>
 					<p class="mb-2">
-						Use <code class="inline-code">obot scan</code> to inventory your AI clients, skills, MCP servers,
+						Use <code class="inline-code">boeing scan</code> to inventory your AI clients, skills, MCP servers,
 						and more.
 					</p>
 					<ul class="list-disc font-light flex flex-col gap-2 @lg/cli:px-8 px-4 text-sm">
@@ -189,7 +189,7 @@
 						<li>
 							<p class="mb-2">After reviewing your scan results, submit via:</p>
 							<div class="command-preview">
-								<pre data-prefix="$" class="m-0"><code>obot scan --submit</code></pre>
+								<pre data-prefix="$" class="m-0"><code>boeing scan --submit</code></pre>
 							</div>
 						</li>
 						<li>
@@ -197,8 +197,8 @@
 								Kick off a scan directly from your AI clients using the following skill:
 							</p>
 							{@render slashCommandPreview(
-								'/obot-scan',
-								'Scan local AI client configuration and submit it to Obot. (user)'
+								'/boeing-scan',
+								'Scan local AI client configuration and submit it to Boeing. (user)'
 							)}
 						</li>
 					</ul>
@@ -256,15 +256,15 @@
 {#snippet mockupCode()}
 	<div class="mockup-code w-full max-w-2xl">
 		<pre></pre>
-		<pre data-prefix="$"><code>obot setup</code></pre>
+		<pre data-prefix="$"><code>boeing setup</code></pre>
 		<pre data-prefix=">"><code
 				><CheckIcon class="text-success size-4 inline" /> Connected Cursor and Claude Code</code
 			></pre>
 		<pre></pre>
-		<pre data-prefix="$"><code>obot scan</code></pre>
+		<pre data-prefix="$"><code>boeing scan</code></pre>
 		<pre data-prefix=">"><code>27 MCP servers and 14 skills discovered</code></pre>
 		<pre></pre>
-		<pre data-prefix="$"><code>obot skills search</code></pre>
+		<pre data-prefix="$"><code>boeing skills search</code></pre>
 		<pre data-prefix=">"><code
 				><CheckIcon class="text-success size-4 inline" /> 56 skills available</code
 			></pre>
@@ -274,7 +274,7 @@
 {/snippet}
 
 <svelte:head>
-	<title>Obot CLI | Install</title>
+	<title>Boeing CLI | Install</title>
 </svelte:head>
 
 <style lang="postcss">

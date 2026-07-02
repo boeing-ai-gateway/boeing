@@ -11,29 +11,29 @@ import (
 	"strings"
 
 	"github.com/AlecAivazis/survey/v2"
-	"github.com/obot-platform/cmd"
-	"github.com/obot-platform/obot/apiclient"
-	"github.com/obot-platform/obot/apiclient/types"
-	cliinternal "github.com/obot-platform/obot/pkg/cli/internal"
-	"github.com/obot-platform/obot/pkg/cli/internal/localconfig"
-	"github.com/obot-platform/obot/pkg/localagents"
+	"github.com/boeing-ai-gateway/cmd"
+	"github.com/boeing-ai-gateway/boeing/apiclient"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
+	cliinternal "github.com/boeing-ai-gateway/boeing/pkg/cli/internal"
+	"github.com/boeing-ai-gateway/boeing/pkg/cli/internal/localconfig"
+	"github.com/boeing-ai-gateway/boeing/pkg/localagents"
 	"github.com/spf13/cobra"
 	"golang.org/x/term"
 )
 
 type Setup struct {
 	PromptConfig
-	URL     string `usage:"Obot app URL to configure" local:"true"`
+	URL     string `usage:"Boeing app URL to configure" local:"true"`
 	Clients string `usage:"Comma-separated target clients: none, claude-code, or agents" local:"true"`
 	Yes     bool   `usage:"Accept confirmations and use defaults" local:"true"`
 	Output  string `usage:"Output format: text or json" default:"text" local:"true"`
 
-	root *Obot
+	root *Boeing
 }
 
 func (s *Setup) Customize(c *cobra.Command) {
 	c.Use = "setup"
-	c.Short = "Configure Obot locally and install supported client bootstrap assets"
+	c.Short = "Configure Boeing locally and install supported client bootstrap assets"
 	c.Args = cobra.NoArgs
 	c.AddCommand(cmd.Command(&SetupStatus{}))
 	c.AddCommand(cmd.Command(&SetupDetectClients{}))
@@ -88,13 +88,13 @@ func (s *Setup) run(cmd *cobra.Command, progress setupProgressWriter) error {
 	if _, err := s.root.Client.GetToken(ctx, apiclient.TokenFetchOptions{
 		Scopes: types.DefaultCLIAPIKeyScopes(),
 	}); err != nil {
-		return setupErrorf(setupAuthErrorCode(err), "authenticate with Obot: %w", err)
+		return setupErrorf(setupAuthErrorCode(err), "authenticate with Boeing: %w", err)
 	}
 	if err := progress.emit(setupProgressEvent{Type: setupProgressAuthCompleted, URL: appURL}); err != nil {
 		return err
 	}
 	if err := localconfig.Save(localconfig.Config{DefaultURL: appURL}); err != nil {
-		return setupErrorf(setupErrorConfigSaveFailed, "save Obot config: %w", err)
+		return setupErrorf(setupErrorConfigSaveFailed, "save Boeing config: %w", err)
 	}
 	if err := progress.emit(setupProgressEvent{Type: setupProgressConfigSaved, URL: appURL}); err != nil {
 		return err
@@ -219,7 +219,7 @@ func promptSetupClientsMenu(cmd *cobra.Command, claudeDetected bool) (string, er
 
 	selected := []string{localagents.SharedAgentsID}
 	prompt := &survey.MultiSelect{
-		Message:  "Install Obot bootstrap skills into:",
+		Message:  "Install Boeing bootstrap skills into:",
 		Options:  options,
 		Default:  selected,
 		PageSize: len(options),
@@ -279,7 +279,7 @@ func setupPromptSupportsMenu(cmd *cobra.Command) bool {
 func (s *Setup) resolveAppURL(cmd *cobra.Command) (string, error) {
 	cfg, err := localconfig.Load()
 	if err != nil {
-		return "", fmt.Errorf("load Obot config: %w", err)
+		return "", fmt.Errorf("load Boeing config: %w", err)
 	}
 
 	if strings.TrimSpace(s.URL) != "" {
@@ -288,7 +288,7 @@ func (s *Setup) resolveAppURL(cmd *cobra.Command) (string, error) {
 			return "", setupErrorf(setupErrorInvalidURL, "%w", err)
 		}
 		if cfg.DefaultURL != "" && cfg.DefaultURL != appURL && !s.Yes {
-			return "", setupErrorf(setupErrorInvalidURL, "configured Obot URL is %s; pass --yes to replace it with %s", cfg.DefaultURL, appURL)
+			return "", setupErrorf(setupErrorInvalidURL, "configured Boeing URL is %s; pass --yes to replace it with %s", cfg.DefaultURL, appURL)
 		}
 		return appURL, nil
 	}
@@ -298,10 +298,10 @@ func (s *Setup) resolveAppURL(cmd *cobra.Command) (string, error) {
 			return cfg.DefaultURL, nil
 		}
 		if s.NonInteractive {
-			return "", setupErrorf(setupErrorInvalidURL, "configured Obot URL is %s; pass --yes to use it or pass --url to configure a different URL", cfg.DefaultURL)
+			return "", setupErrorf(setupErrorInvalidURL, "configured Boeing URL is %s; pass --yes to use it or pass --url to configure a different URL", cfg.DefaultURL)
 		}
 
-		ok, err := promptYesNo(cmd, fmt.Sprintf("Current Obot URL: %s\nUse this URL? [Y/n] ", cfg.DefaultURL), true)
+		ok, err := promptYesNo(cmd, fmt.Sprintf("Current Boeing URL: %s\nUse this URL? [Y/n] ", cfg.DefaultURL), true)
 		if err != nil {
 			return "", err
 		}
@@ -311,13 +311,13 @@ func (s *Setup) resolveAppURL(cmd *cobra.Command) (string, error) {
 	}
 
 	if s.Yes {
-		return "", setupErrorf(setupErrorInvalidURL, "--url is required when no configured Obot URL is accepted")
+		return "", setupErrorf(setupErrorInvalidURL, "--url is required when no configured Boeing URL is accepted")
 	}
 	if s.NonInteractive {
-		return "", setupErrorf(setupErrorInvalidURL, "--url is required in non-interactive mode when no configured Obot URL is accepted")
+		return "", setupErrorf(setupErrorInvalidURL, "--url is required in non-interactive mode when no configured Boeing URL is accepted")
 	}
 
-	raw, err := promptLine(cmd, "Obot URL: ")
+	raw, err := promptLine(cmd, "Boeing URL: ")
 	if err != nil {
 		return "", err
 	}

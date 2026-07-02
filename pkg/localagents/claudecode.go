@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"path/filepath"
 
-	"github.com/obot-platform/obot/pkg/devicescan"
-	"github.com/obot-platform/obot/pkg/localagents/assets"
+	"github.com/boeing-ai-gateway/boeing/pkg/devicescan"
+	"github.com/boeing-ai-gateway/boeing/pkg/localagents/assets"
 )
 
 const (
@@ -88,7 +88,7 @@ func (c ClaudeCode) InstallBootstrap(ctx context.Context, home string) (InstallR
 		AgentID:     c.ID(),
 		DisplayName: c.DisplayName(),
 		Installed:   installed,
-		Message:     "Installed Obot bootstrap skills for Claude Code",
+		Message:     "Installed Boeing bootstrap skills for Claude Code",
 	}, nil
 }
 

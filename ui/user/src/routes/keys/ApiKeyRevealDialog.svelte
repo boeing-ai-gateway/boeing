@@ -60,7 +60,7 @@
 			<p class="text-muted text-sm">
 				Learn how to use this API key in the
 				<a
-					href="https://docs.obot.ai/functionality/api-keys/#using-an-api-key"
+					href="https://docs.boeing.ai/functionality/api-keys/#using-an-api-key"
 					target="_blank"
 					rel="noopener noreferrer"
 					class="text-link inline-flex items-center gap-1"

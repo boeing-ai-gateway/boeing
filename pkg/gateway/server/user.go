@@ -7,14 +7,14 @@ import (
 	"strings"
 	"time"
 
-	types2 "github.com/obot-platform/obot/apiclient/types"
-	"github.com/obot-platform/obot/logger"
-	"github.com/obot-platform/obot/pkg/api"
-	"github.com/obot-platform/obot/pkg/gateway/client"
-	"github.com/obot-platform/obot/pkg/gateway/types"
-	"github.com/obot-platform/obot/pkg/proxy"
-	v1 "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1"
-	"github.com/obot-platform/obot/pkg/system"
+	types2 "github.com/boeing-ai-gateway/boeing/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/logger"
+	"github.com/boeing-ai-gateway/boeing/pkg/api"
+	"github.com/boeing-ai-gateway/boeing/pkg/gateway/client"
+	"github.com/boeing-ai-gateway/boeing/pkg/gateway/types"
+	"github.com/boeing-ai-gateway/boeing/pkg/proxy"
+	v1 "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1"
+	"github.com/boeing-ai-gateway/boeing/pkg/system"
 	"gorm.io/gorm"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apiserver/pkg/authentication/user"
@@ -332,7 +332,7 @@ func (s *Server) deleteUser(apiContext api.Context) (err error) {
 	if isDeleteMe {
 		// Tell the browser to remove the access token cookie, so that the user does not immediately attempt to authenticate again.
 		http.SetCookie(apiContext.ResponseWriter, &http.Cookie{
-			Name:     proxy.ObotAccessTokenCookie,
+			Name:     proxy.BoeingAccessTokenCookie,
 			Value:    "",
 			Path:     "/",
 			MaxAge:   -1,

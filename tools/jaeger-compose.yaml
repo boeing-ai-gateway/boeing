@@ -1,7 +1,7 @@
 services:
   jaeger:
     image: cr.jaegertracing.io/jaegertracing/jaeger:2.16.0
-    container_name: obot-jaeger
+    container_name: boeing-jaeger
     restart: unless-stopped
     command:
       - --set=receivers.otlp.protocols.grpc.endpoint=0.0.0.0:4317

@@ -3,7 +3,7 @@ package devicescan
 import (
 	"path"
 
-	"github.com/obot-platform/obot/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
 )
 
 const windsurfGlobalConfigRel = ".codeium/windsurf/mcp_config.json"

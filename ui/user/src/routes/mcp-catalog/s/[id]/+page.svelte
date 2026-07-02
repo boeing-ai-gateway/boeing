@@ -72,5 +72,5 @@
 <McpConnectUrlDialog bind:this={connectUrlDialog} />
 
 <svelte:head>
-	<title>Obot | {title}</title>
+	<title>Boeing | {title}</title>
 </svelte:head>

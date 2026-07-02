@@ -4,28 +4,28 @@ import type { AppPreferences } from '$lib/services';
 export const DEFAULT_LOGOS = {
 	// Logo.svelte variants
 	icon: {
-		default: '/user/images/obot-icon-blue.svg',
-		error: '/user/images/obot-icon-grumpy-blue.svg',
-		warning: '/user/images/obot-icon-surprised-yellow.svg'
+		default: '/user/images/boeing-icon-blue.svg',
+		error: '/user/images/boeing-icon-grumpy-blue.svg',
+		warning: '/user/images/boeing-icon-surprised-yellow.svg'
 	},
 	// BetaLogo.svelte variants
 	beta: {
 		dark: {
-			chat: '/user/images/obot-chat-logo-blue-white-text.svg',
-			enterprise: '/user/images/obot-enterprise-logo-blue-white-text.svg',
-			default: '/user/images/obot-logo-blue-white-text.svg'
+			chat: '/user/images/boeing-chat-logo-blue-white-text.svg',
+			enterprise: '/user/images/boeing-enterprise-logo-blue-white-text.svg',
+			default: '/user/images/boeing-logo-blue-white-text.svg'
 		},
 		light: {
-			chat: '/user/images/obot-chat-logo-blue-black-text.svg',
-			enterprise: '/user/images/obot-enterprise-logo-blue-black-text.svg',
-			default: '/user/images/obot-logo-blue-black-text.svg'
+			chat: '/user/images/boeing-chat-logo-blue-black-text.svg',
+			enterprise: '/user/images/boeing-enterprise-logo-blue-black-text.svg',
+			default: '/user/images/boeing-logo-blue-black-text.svg'
 		}
 	}
 } as const;
 
 /** Default UI font stack; kept in sync with `app.css` (`--theme-font-family` fallback). */
 export const DEFAULT_FONT_FAMILY =
-	'Poppins, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji';
+	'Poppins, ui-sans-serif, system-ui, -apple-system, Segoe UI, Rboeingo, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji';
 
 export const FONT_FAMILY_PRESETS: { label: string; value: string }[] = [
 	{ label: 'Poppins', value: DEFAULT_FONT_FAMILY },

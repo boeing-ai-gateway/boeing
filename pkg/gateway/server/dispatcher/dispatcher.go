@@ -8,16 +8,16 @@ import (
 	"net/url"
 	"strings"
 
-	"github.com/obot-platform/obot/logger"
-	"github.com/obot-platform/obot/pkg/gateway/client"
-	"github.com/obot-platform/obot/pkg/license"
-	"github.com/obot-platform/obot/pkg/mcp"
-	v1 "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1"
-	"github.com/obot-platform/obot/pkg/system"
+	"github.com/boeing-ai-gateway/boeing/logger"
+	"github.com/boeing-ai-gateway/boeing/pkg/gateway/client"
+	"github.com/boeing-ai-gateway/boeing/pkg/license"
+	"github.com/boeing-ai-gateway/boeing/pkg/mcp"
+	v1 "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1"
+	"github.com/boeing-ai-gateway/boeing/pkg/system"
 	kclient "sigs.k8s.io/controller-runtime/pkg/client"
 )
 
-const PostgresConnectionEnvVar = "OBOT_AUTH_PROVIDER_POSTGRES_CONNECTION_DSN"
+const PostgresConnectionEnvVar = "BOEING_AUTH_PROVIDER_POSTGRES_CONNECTION_DSN"
 
 type Dispatcher struct {
 	sessionManager       *mcp.SessionManager

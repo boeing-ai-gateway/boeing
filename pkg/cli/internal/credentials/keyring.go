@@ -28,7 +28,7 @@ func (keyringFuncs) Delete(service, user string) error {
 	return keyringlib.Delete(service, user)
 }
 
-// KeyringStore stores one bearer token per normalized Obot app URL.
+// KeyringStore stores one bearer token per normalized Boeing app URL.
 type KeyringStore struct {
 	service string
 	keyring keyring

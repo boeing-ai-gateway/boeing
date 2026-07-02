@@ -51,7 +51,7 @@ export function isAuthRequiredBundle(bundleId?: string): boolean {
 		'google-search-bundle',
 		'images-bundle',
 		'memory',
-		'obot-search-bundle',
+		'boeing-search-bundle',
 		'time',
 
 		'die-roller',
@@ -190,7 +190,7 @@ export function getSecretBindingEngineError(
 	manifest?: SecretBindingManifest | null
 ): string | undefined {
 	if (!manifestHasSecretBindings(manifest)) return undefined;
-	return 'This MCP server uses Kubernetes Secret bindings and can only be launched when Obot is using the Kubernetes engine.';
+	return 'This MCP server uses Kubernetes Secret bindings and can only be launched when Boeing is using the Kubernetes engine.';
 }
 
 export function requiresUserUpdate(server?: MCPCatalogServer) {
@@ -267,7 +267,7 @@ export function getSource(
 
 	return {
 		sourceType: 'system',
-		source: 'Obot Admin Console'
+		source: 'Boeing Admin Console'
 	};
 }
 
@@ -608,17 +608,17 @@ export function getServerUrl(d: MCPCatalogServer) {
 	return url;
 }
 
-const NANOBOT_AGENT_SERVER_PREFIX = 'nba1';
+const BOEINGBOT_AGENT_SERVER_PREFIX = 'nba1';
 export const compileAvailableMcpServers = (
 	servers: MCPCatalogServer[],
 	userConfiguredServers: MCPCatalogServer[]
 ) => {
 	const serverMap = new Map<string, MCPCatalogServer>();
 	for (const server of [...userConfiguredServers, ...servers]) {
-		const isNanobotAgentServer = server.manifest.name
-			? server.manifest.name.toLowerCase().startsWith(NANOBOT_AGENT_SERVER_PREFIX)
+		const isBoeingbotAgentServer = server.manifest.name
+			? server.manifest.name.toLowerCase().startsWith(BOEINGBOT_AGENT_SERVER_PREFIX)
 			: false;
-		if (!server.deleted && !isNanobotAgentServer) {
+		if (!server.deleted && !isBoeingbotAgentServer) {
 			serverMap.set(server.id, server);
 		}
 	}
@@ -947,7 +947,7 @@ type ToolOverrideLike = { name: string; overrideName?: string; enabled?: boolean
 type ComponentLike = { toolPrefix?: string; toolOverrides?: ToolOverrideLike[] };
 
 // compositeEffectiveToolNames returns every enabled tool's effective name
-// across the composite. Disabled tools are excluded because nanobot does not
+// across the composite. Disabled tools are excluded because boeingbot does not
 // expose them at runtime.
 export function compositeEffectiveToolNames(components: ComponentLike[] | undefined): string[] {
 	const out: string[] = [];

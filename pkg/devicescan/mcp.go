@@ -4,7 +4,7 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/obot-platform/obot/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
 )
 
 // mcpServerSpec is the JSON shape that all JSON-format MCP server entries

@@ -3,11 +3,11 @@ package cleanup
 import (
 	"fmt"
 
-	"github.com/obot-platform/nah/pkg/router"
-	"github.com/obot-platform/obot/pkg/api/handlers"
-	gateway "github.com/obot-platform/obot/pkg/gateway/client"
-	"github.com/obot-platform/obot/pkg/mcp"
-	v1 "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1"
+	"github.com/boeing-ai-gateway/nah/pkg/router"
+	"github.com/boeing-ai-gateway/boeing/pkg/api/handlers"
+	gateway "github.com/boeing-ai-gateway/boeing/pkg/gateway/client"
+	"github.com/boeing-ai-gateway/boeing/pkg/mcp"
+	v1 "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1"
 )
 
 type Credentials struct {

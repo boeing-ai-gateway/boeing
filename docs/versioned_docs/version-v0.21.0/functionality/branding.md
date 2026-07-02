@@ -4,7 +4,7 @@ title: Branding
 
 # Branding
 
-Branding allows administrators to customize the visual appearance of the Obot platform. Access this page from **Branding** in the sidebar.
+Branding allows administrators to customize the visual appearance of the Boeing platform. Access this page from **Branding** in the sidebar.
 
 ## Theme Colors
 
@@ -26,9 +26,9 @@ Upload custom icons and logos to match your organization's branding:
 - **Error Icon**: Icon displayed for error states
 - **Warning Icon**: Icon displayed for warning states
 - **Full Logo**: The main logo shown in the navbar (separate versions for light and dark schemes)
-- **Full Enterprise Logo**: Logo used when running enterprise version of Obot
-- **Full Chat Logo**: Logo shown in the navbar when using the legacy Obot Chat
+- **Full Enterprise Logo**: Logo used when running enterprise version of Boeing
+- **Full Chat Logo**: Logo shown in the navbar when using the legacy Boeing Chat
 
 ## Restoring Defaults
 
-Click **Restore Default** to reset all preferences to the original Obot theme.
+Click **Restore Default** to reset all preferences to the original Boeing theme.

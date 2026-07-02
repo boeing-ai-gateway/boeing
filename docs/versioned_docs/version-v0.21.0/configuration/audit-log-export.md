@@ -1,6 +1,6 @@
 # MCP Audit Log Exports
 
-Obot can export audit logs to various cloud storage providers for long-term retention. This feature supports both one-time exports and scheduled recurring exports.
+Boeing can export audit logs to various cloud storage providers for long-term retention. This feature supports both one-time exports and scheduled recurring exports.
 
 ## Overview
 
@@ -47,7 +47,7 @@ The audit log export feature enables you to:
 
 **Encryption:**
 
-- You can enable server-side encryption (SSE) for your bucket to encrypt your audit logs at rest, using either SSE-S3 or SSE-KMS. For more information, see [Server-Side Encryption](https://docs.aws.amazon.com/AmazonS3/latest/userguide/serv-side-encryption.html). If you are using SSE-KMS, you need to create a KMS key and grant the necessary permissions to the KMS key to the identity associated with your Obot deployment.
+- You can enable server-side encryption (SSE) for your bucket to encrypt your audit logs at rest, using either SSE-S3 or SSE-KMS. For more information, see [Server-Side Encryption](https://docs.aws.amazon.com/AmazonS3/latest/userguide/serv-side-encryption.html). If you are using SSE-KMS, you need to create a KMS key and grant the necessary permissions to the KMS key to the identity associated with your Boeing deployment.
 
 ### Google Cloud Storage (GCS)
 
@@ -131,7 +131,7 @@ Support for S3-compatible storage providers like MinIO, DigitalOcean Spaces, Was
 4. **Test Connection**:
 
    - Use the "Test Connection" button to verify your configuration
-   - This ensures Obot can successfully connect to your storage
+   - This ensures Boeing can successfully connect to your storage
 
 5. **Save Configuration**:
    - Click "Save Credentials" to store your configuration securely
@@ -144,7 +144,7 @@ Provide explicit access keys, service account files, or client secrets. This met
 
 #### Workload Identity (Cloud Providers Only)
 
-Use the identity associated with your Obot deployment. This method is more secure as it doesn't require storing explicit credentials.
+Use the identity associated with your Boeing deployment. This method is more secure as it doesn't require storing explicit credentials.
 
 **Supported for:**
 

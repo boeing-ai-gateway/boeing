@@ -74,10 +74,10 @@
 		const html = document.querySelector('html');
 		if (darkMode.isDark) {
 			html?.classList.add('dark');
-			html?.setAttribute('data-theme', 'nanobotdark');
+			html?.setAttribute('data-theme', 'boeingbotdark');
 		} else {
 			html?.classList.remove('dark');
-			html?.setAttribute('data-theme', 'nanobotlight');
+			html?.setAttribute('data-theme', 'boeingbotlight');
 		}
 
 		// Hide the initial loader

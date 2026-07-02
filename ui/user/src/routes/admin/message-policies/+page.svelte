@@ -161,5 +161,5 @@
 />
 
 <svelte:head>
-	<title>Obot | Message Policies</title>
+	<title>Boeing | Message Policies</title>
 </svelte:head>

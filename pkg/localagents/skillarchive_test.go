@@ -9,7 +9,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/obot-platform/obot/pkg/skillformat"
+	"github.com/boeing-ai-gateway/boeing/pkg/skillformat"
 )
 
 func TestParseSkillArchiveValidRootZip(t *testing.T) {

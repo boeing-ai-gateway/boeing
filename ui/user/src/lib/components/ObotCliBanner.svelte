@@ -34,7 +34,7 @@
 			class="pl-15 md:pl-22 pr-4 py-2 flex flex-col md:flex-row md:justify-between md:items-center gap-1 md:gap-4"
 		>
 			<div>
-				<p class="font-semibold uppercase">Get Started with Obot CLI</p>
+				<p class="font-semibold uppercase">Get Started with Boeing CLI</p>
 				<p class="font-light text-sm">{description}</p>
 			</div>
 			<a

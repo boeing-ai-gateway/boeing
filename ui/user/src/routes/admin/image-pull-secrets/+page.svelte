@@ -356,5 +356,5 @@
 />
 
 <svelte:head>
-	<title>Obot | Image Pull Secrets</title>
+	<title>Boeing | Image Pull Secrets</title>
 </svelte:head>

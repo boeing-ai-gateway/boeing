@@ -7,7 +7,7 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/obot-platform/obot/pkg/gateway/types"
+	"github.com/boeing-ai-gateway/boeing/pkg/gateway/types"
 	"gorm.io/gorm"
 	"gorm.io/gorm/clause"
 	"k8s.io/apimachinery/pkg/runtime/schema"
@@ -15,11 +15,11 @@ import (
 )
 
 var credentialGroupResource = schema.GroupResource{
-	Group:    "obot.obot.ai",
+	Group:    "boeing.boeing.ai",
 	Resource: "credentials",
 }
 
-const credentialEncryptedSecretsKey = "_obot_encrypted_env"
+const credentialEncryptedSecretsKey = "_boeing_encrypted_env"
 
 type ListCredentialsOptions struct {
 	CredentialContexts []string

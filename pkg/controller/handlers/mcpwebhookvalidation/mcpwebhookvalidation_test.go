@@ -3,8 +3,8 @@ package mcpwebhookvalidation
 import (
 	"testing"
 
-	"github.com/obot-platform/obot/apiclient/types"
-	v1 "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
+	v1 "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1"
 )
 
 func TestDesiredSystemServer_CopiesProvidedManifest(t *testing.T) {

@@ -4,8 +4,8 @@ import (
 	"reflect"
 	"strings"
 
-	"github.com/obot-platform/obot/apiclient/types"
-	"github.com/obot-platform/obot/logger"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/logger"
 	kclient "sigs.k8s.io/controller-runtime/pkg/client"
 )
 

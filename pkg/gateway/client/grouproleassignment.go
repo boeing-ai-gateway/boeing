@@ -5,8 +5,8 @@ import (
 	"errors"
 	"fmt"
 
-	types2 "github.com/obot-platform/obot/apiclient/types"
-	"github.com/obot-platform/obot/pkg/gateway/types"
+	types2 "github.com/boeing-ai-gateway/boeing/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/pkg/gateway/types"
 	"golang.org/x/exp/maps"
 	"gorm.io/gorm"
 )

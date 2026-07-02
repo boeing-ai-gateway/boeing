@@ -4,7 +4,7 @@ title: MCP Hosting
 
 # MCP Hosting
 
-The MCP Hosting layer runs and manages MCP servers directly within Obot. It handles deployment, lifecycle management, and runtime isolation for MCP servers.
+The MCP Hosting layer runs and manages MCP servers directly within Boeing. It handles deployment, lifecycle management, and runtime isolation for MCP servers.
 
 ## Runtime Types
 
@@ -16,23 +16,23 @@ The MCP Hosting layer runs and manages MCP servers directly within Obot. It hand
 
 - **[Single-user](../functionality/mcp-servers.md#single-user-server)**: Each user gets their own isolated instance with separate credentials
 - **[Multi-user](../functionality/mcp-servers.md#multi-user-server)**: A shared instance serves multiple users with shared or per-user credentials
-- **[Remote](../functionality/mcp-servers.md#remote-server)**: External MCP servers accessed via HTTP, not hosted by Obot
+- **[Remote](../functionality/mcp-servers.md#remote-server)**: External MCP servers accessed via HTTP, not hosted by Boeing
 - **[Composite](../functionality/mcp-servers.md#composite-server)**: Combines multiple servers into a single virtual server with curated tools
 
 ## Deployment Environments
 
 ### Docker
 
-When running Obot with Docker, MCP servers are deployed as sibling containers:
+When running Boeing with Docker, MCP servers are deployed as sibling containers:
 
-- Obot communicates with the Docker daemon to manage containers
-- Servers run alongside the Obot container
+- Boeing communicates with the Docker daemon to manage containers
+- Servers run alongside the Boeing container
 - Suitable for development and small deployments
 - See [Docker Deployment](../installation/docker-deployment.md) for setup details
 
 ### Kubernetes
 
-For production deployments, Obot can deploy MCP servers to Kubernetes:
+For production deployments, Boeing can deploy MCP servers to Kubernetes:
 
 - Servers run as pods in the cluster
 - Supports resource limits, network policies, and scaling
@@ -40,7 +40,7 @@ For production deployments, Obot can deploy MCP servers to Kubernetes:
 
 ## Authentication
 
-Obot handles OAuth 2.1 flows for MCP servers that require authentication:
+Boeing handles OAuth 2.1 flows for MCP servers that require authentication:
 
 - OAuth credentials stored securely with encryption at rest
 - Automatic token refresh
@@ -51,7 +51,7 @@ See [MCP Server OAuth Configuration](../configuration/mcp-server-oauth-configura
 
 ## Security and Isolation
 
-Adding an MCP server causes Obot to run code on the hosting backend: `npx` and `uvx` servers execute the requested npm/PyPI package, and **containerized** servers run an arbitrary OCI image with a user-supplied command. The [Power User and Power User+ roles](../configuration/user-roles.md#security-model) can deploy servers, so granting those roles is, by design, granting the ability to run code on your infrastructure.
+Adding an MCP server causes Boeing to run code on the hosting backend: `npx` and `uvx` servers execute the requested npm/PyPI package, and **containerized** servers run an arbitrary OCI image with a user-supplied command. The [Power User and Power User+ roles](../configuration/user-roles.md#security-model) can deploy servers, so granting those roles is, by design, granting the ability to run code on your infrastructure.
 
 How well that code is contained depends on the deployment environment:
 

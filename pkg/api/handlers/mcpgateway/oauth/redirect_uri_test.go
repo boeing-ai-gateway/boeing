@@ -3,7 +3,7 @@ package oauth
 import (
 	"testing"
 
-	"github.com/obot-platform/obot/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
 )
 
 func TestIsRedirectURIAllowed(t *testing.T) {

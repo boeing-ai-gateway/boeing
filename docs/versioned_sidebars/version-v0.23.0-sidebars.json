@@ -8,7 +8,7 @@
         "concepts/mcp-hosting",
         "concepts/mcp-registry",
         "concepts/mcp-gateway",
-        "concepts/obot-agent",
+        "concepts/boeing-agent",
         "concepts/architecture"
       ]
     },
@@ -23,7 +23,7 @@
         "functionality/audit-logs-and-usage",
         "functionality/filters",
         "functionality/server-scheduling",
-        "functionality/obot-agent-management",
+        "functionality/boeing-agent-management",
         "functionality/model-access-policies",
         "functionality/llm-gateway",
         "functionality/message-policies",

@@ -245,7 +245,7 @@ type MCPHeader struct {
 }
 
 // MCPSecretBinding references a single key in a pre-existing Kubernetes Secret
-// in the Obot namespace (the namespace where the Obot server runs)
+// in the Boeing namespace (the namespace where the Boeing server runs)
 type MCPSecretBinding struct {
 	Name string `json:"name"`
 	Key  string `json:"key"`
@@ -313,7 +313,7 @@ type MCPServer struct {
 	ServerUserType          ServerUserType `json:"serverUserType,omitempty"`
 	// ConnectURL is the URL clients can use to connect to this MCP server.
 	ConnectURL     string `json:"connectURL,omitempty"`
-	NanobotAgentID string `json:"nanobotAgentID,omitempty"`
+	BoeingbotAgentID string `json:"boeingbotAgentID,omitempty"`
 
 	// NeedsUpdate indicates whether the configuration in this server's catalog entry has drift from this server's configuration.
 	NeedsUpdate bool `json:"needsUpdate,omitempty"`

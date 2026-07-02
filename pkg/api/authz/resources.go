@@ -3,12 +3,15 @@ package authz
 import (
 	"net/http"
 
-	"github.com/obot-platform/obot/apiclient/types"
-	v1 "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
+	v1 "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1"
 )
 
 var apiResources = map[string][]string{
 	types.GroupAPI: {
+		"GET    /api/boeing-ai-credential",
+		"POST   /api/boeing-ai-credential",
+		"DELETE /api/boeing-ai-credential",
 		"GET    /api/all-mcps/servers/{mcpserver_id}",
 		"GET    /api/all-mcps/servers/{mcpserver_id}/tools",
 		"GET    /api/all-mcps/servers/{mcpserver_id}/resources",
@@ -69,10 +72,10 @@ var apiResources = map[string][]string{
 		"DELETE /api/projects/{project_id}",
 		"POST   /api/projects/{project_id}/agents",
 		"GET    /api/projects/{project_id}/agents",
-		"GET    /api/projects/{project_id}/agents/{nanobot_agent_id}",
-		"PUT    /api/projects/{project_id}/agents/{nanobot_agent_id}",
-		"DELETE /api/projects/{project_id}/agents/{nanobot_agent_id}",
-		"POST   /api/projects/{project_id}/agents/{nanobot_agent_id}/launch",
+		"GET    /api/projects/{project_id}/agents/{boeingbot_agent_id}",
+		"PUT    /api/projects/{project_id}/agents/{boeingbot_agent_id}",
+		"DELETE /api/projects/{project_id}/agents/{boeingbot_agent_id}",
+		"POST   /api/projects/{project_id}/agents/{boeingbot_agent_id}/launch",
 	},
 	types.GroupPowerUser: {
 		"GET    /api/workspaces/{workspace_id}",
@@ -149,7 +152,7 @@ type Resources struct {
 	// MCPID can be the ID of an MCPServer, an MCPServerInstance, or MCPServerCatalogEntry. It is used for interaction with the MCP gateway.
 	MCPID               string
 	WorkspaceID         string
-	NanobotAgentID      string
+	BoeingbotAgentID      string
 	ProjectID           string
 	PublishedArtifactID string
 	ArtifactVersion     string
@@ -163,7 +166,7 @@ type ResourcesAuthorized struct {
 	MCPServerInstance     *v1.MCPServerInstance
 	MCPServerCatalogEntry *v1.MCPServerCatalogEntry
 	PowerUserWorkspace    *v1.PowerUserWorkspace
-	NanobotAgent          *v1.NanobotAgent
+	BoeingbotAgent          *v1.BoeingbotAgent
 	Project               *v1.Project
 	PublishedArtifact     *v1.PublishedArtifact
 	Skill                 *v1.Skill
@@ -176,7 +179,7 @@ func (a *Authorizer) evaluateResources(req *http.Request, vars GetVar, user User
 		MCPServerCatalogEntryID: vars("entry_id"),
 		MCPID:                   vars("mcp_id"), // this can be a server ID, server instance ID, or a catalog entry ID
 		WorkspaceID:             vars("workspace_id"),
-		NanobotAgentID:          vars("nanobot_agent_id"),
+		BoeingbotAgentID:          vars("boeingbot_agent_id"),
 		ProjectID:               vars("project_id"),
 		PublishedArtifactID:     vars("artifact_id"),
 		ArtifactVersion:         vars("artifact_version"),
@@ -212,7 +215,7 @@ func (a *Authorizer) evaluateResources(req *http.Request, vars GetVar, user User
 		return false, err
 	}
 
-	if ok, err := a.checkNanobotAgent(req, &resources, user); !ok || err != nil {
+	if ok, err := a.checkBoeingbotAgent(req, &resources, user); !ok || err != nil {
 		return false, err
 	}
 

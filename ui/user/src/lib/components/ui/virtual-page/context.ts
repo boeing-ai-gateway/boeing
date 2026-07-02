@@ -1,6 +1,6 @@
 import { getContext, setContext } from 'svelte';
 
-const CONTEXT_KEY = Symbol('@obot/components/virtual-page');
+const CONTEXT_KEY = Symbol('@boeing/components/virtual-page');
 
 export type VirtualPageContext<T> = {
 	elements: {

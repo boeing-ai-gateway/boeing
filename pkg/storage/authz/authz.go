@@ -5,7 +5,7 @@ import (
 	"slices"
 	"strings"
 
-	"github.com/obot-platform/obot/pkg/serviceaccounts"
+	"github.com/boeing-ai-gateway/boeing/pkg/serviceaccounts"
 	"k8s.io/apiserver/pkg/authorization/authorizer"
 )
 
@@ -27,7 +27,7 @@ func (*Authorizer) Authorize(_ context.Context, a authorizer.Attributes) (author
 	}
 	if a.GetUser().GetName() == "system:serviceaccount:"+serviceaccounts.NetworkPolicyProvider &&
 		a.IsResourceRequest() &&
-		a.GetAPIGroup() == "obot.obot.ai" &&
+		a.GetAPIGroup() == "boeing.boeing.ai" &&
 		a.GetResource() == "mcpnetworkpolicys" &&
 		slices.Contains([]string{"get", "list", "watch"}, a.GetVerb()) {
 		return authorizer.DecisionAllow, "", nil

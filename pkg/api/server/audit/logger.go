@@ -9,8 +9,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/obot-platform/obot/logger"
-	"github.com/obot-platform/obot/pkg/api/server/audit/store"
+	"github.com/boeing-ai-gateway/boeing/logger"
+	"github.com/boeing-ai-gateway/boeing/pkg/api/server/audit/store"
 )
 
 var log = logger.Package()

@@ -6,12 +6,12 @@ import (
 	"time"
 
 	"github.com/golang-jwt/jwt/v5"
-	"github.com/obot-platform/obot/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
 
-const testServerURL = "https://obot.example.com"
+const testServerURL = "https://boeing.example.com"
 
 func newTestTokenService(t *testing.T) *TokenService {
 	t.Helper()

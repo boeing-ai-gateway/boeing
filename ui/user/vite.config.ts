@@ -25,7 +25,8 @@ export default defineConfig(({ mode }) => {
 			port: 5174,
 			proxy: {
 				'/api': proxyConfig,
-				'/oauth2': proxyConfig
+				'/oauth2': proxyConfig,
+				'/mcp-connect': proxyConfig
 			}
 		},
 		plugins: [sveltekit()]

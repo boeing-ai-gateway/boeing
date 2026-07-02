@@ -27,20 +27,20 @@ export const PATH_REDIRECTS: Record<string, string> = {
 	"concepts/admin/access-control": "configuration/user-roles",
 
 	// concepts/chat/* — section removed; map to current agent concept page
-	"concepts/chat/overview": "concepts/obot-agent",
-	"concepts/chat/projects": "concepts/obot-agent",
-	"concepts/chat/tasks": "concepts/obot-agent",
-	"concepts/chat/threads": "concepts/obot-agent",
+	"concepts/chat/overview": "concepts/boeing-agent",
+	"concepts/chat/projects": "concepts/boeing-agent",
+	"concepts/chat/tasks": "concepts/boeing-agent",
+	"concepts/chat/threads": "concepts/boeing-agent",
 
 	// other chat-related pages removed/renamed; map to current agent concept page
-	"concepts/obot-chat": "concepts/obot-agent",
-	"functionality/chat/overview": "concepts/obot-agent",
-	"functionality/chat-management": "concepts/obot-agent",
-	"functionality/agent/overview": "concepts/obot-agent",
+	"concepts/boeing-chat": "concepts/boeing-agent",
+	"functionality/chat/overview": "concepts/boeing-agent",
+	"functionality/chat-management": "concepts/boeing-agent",
+	"functionality/agent/overview": "concepts/boeing-agent",
 
 	// concepts/mcp-gateway sub-pages — restructured into single page
 	"concepts/mcp-gateway/overview": "concepts/mcp-gateway",
-	"concepts/mcp-gateway/obot-registry": "concepts/mcp-registry",
+	"concepts/mcp-gateway/boeing-registry": "concepts/mcp-registry",
 	"concepts/mcp-gateway/registry-api": "concepts/mcp-registry",
 	"concepts/mcp-gateway/servers-and-tools": "concepts/mcp-gateway",
 

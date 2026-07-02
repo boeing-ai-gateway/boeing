@@ -12,13 +12,13 @@ import (
 	"strings"
 	"time"
 
-	nmcp "github.com/obot-platform/nanobot/pkg/mcp"
-	"github.com/obot-platform/obot/apiclient/types"
-	"github.com/obot-platform/obot/pkg/api"
-	gateway "github.com/obot-platform/obot/pkg/gateway/client"
-	gwtypes "github.com/obot-platform/obot/pkg/gateway/types"
-	v1 "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1"
-	"github.com/obot-platform/obot/pkg/system"
+	nmcp "github.com/boeing-ai-gateway/boeingbot/pkg/mcp"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/pkg/api"
+	gateway "github.com/boeing-ai-gateway/boeing/pkg/gateway/client"
+	gwtypes "github.com/boeing-ai-gateway/boeing/pkg/gateway/types"
+	v1 "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1"
+	"github.com/boeing-ai-gateway/boeing/pkg/system"
 	"golang.org/x/oauth2"
 )
 
@@ -233,7 +233,7 @@ func (m *MCPHandler) oauthDebuggerMetadata(server v1.MCPServer) (nmcp.Authorizat
 		}
 	}
 
-	return authServer, nmcp.AuthServerMetadataToClientRegistration(authServer, "Obot MCP OAuth Debugger", system.MCPOAuthCallbackURL(m.serverURL), registration.Scope), nil
+	return authServer, nmcp.AuthServerMetadataToClientRegistration(authServer, "Boeing MCP OAuth Debugger", system.MCPOAuthCallbackURL(m.serverURL), registration.Scope), nil
 }
 
 func registerOAuthDebuggerClient(ctx context.Context, registrationEndpoint string, registration nmcp.ClientRegistrationMetadata) (types.OAuthClient, error) {

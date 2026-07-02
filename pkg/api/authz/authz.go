@@ -5,10 +5,10 @@ import (
 	"net/http"
 	"slices"
 
-	"github.com/obot-platform/obot/apiclient/types"
-	"github.com/obot-platform/obot/pkg/accesscontrolrule"
-	"github.com/obot-platform/obot/pkg/gateway/client"
-	"github.com/obot-platform/obot/pkg/skillaccessrule"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/pkg/accesscontrolrule"
+	"github.com/boeing-ai-gateway/boeing/pkg/gateway/client"
+	"github.com/boeing-ai-gateway/boeing/pkg/skillaccessrule"
 	apierrors "k8s.io/apimachinery/pkg/api/errors"
 	"k8s.io/apiserver/pkg/authentication/user"
 	kclient "sigs.k8s.io/controller-runtime/pkg/client"
@@ -116,7 +116,7 @@ var (
 
 		"/api/projects",
 		"/api/projects/",
-		"GET /api/nanobot-agents",
+		"GET /api/boeingbot-agents",
 	}
 	staticRules = map[string][]string{
 		types.GroupAdmin: adminAndOwnerRules,
@@ -171,7 +171,7 @@ var (
 			"GET /api/devices/clients/",
 			"GET /api/token-usage",
 			"GET /api/total-token-usage",
-			"GET /api/nanobot-agents",
+			"GET /api/boeingbot-agents",
 		},
 		anyGroup: {
 			// Allow access to the oauth2 endpoints
@@ -217,7 +217,7 @@ var (
 			// The auth for this is handled in the HTTP handler
 			"POST /api/mcp-audit-logs",
 
-			// API Key authentication webhook (called by nanobot shim)
+			// API Key authentication webhook (called by boeingbot shim)
 			// This endpoint validates the API key passed in the header
 			"POST /api/api-keys/auth",
 
@@ -309,7 +309,7 @@ var (
 
 		types.GroupDeviceScans: {
 			// Device scans: any authenticated user can submit a scan via
-			// `obot scan` and read the scans they themselves submitted.
+			// `boeing scan` and read the scans they themselves submitted.
 			// Clamp list results to SubmittedBy == req.User.GetUID()
 			"POST /api/devices/scans",
 			"GET /api/devices/scans",

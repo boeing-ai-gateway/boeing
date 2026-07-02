@@ -9,17 +9,17 @@ import (
 	"os"
 	"strings"
 
-	types2 "github.com/obot-platform/obot/apiclient/types"
-	"github.com/obot-platform/obot/pkg/api"
-	"github.com/obot-platform/obot/pkg/gateway/client"
-	"github.com/obot-platform/obot/pkg/gateway/types"
-	"github.com/obot-platform/obot/pkg/hash"
+	types2 "github.com/boeing-ai-gateway/boeing/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/pkg/api"
+	"github.com/boeing-ai-gateway/boeing/pkg/gateway/client"
+	"github.com/boeing-ai-gateway/boeing/pkg/gateway/types"
+	"github.com/boeing-ai-gateway/boeing/pkg/hash"
 	"k8s.io/apiserver/pkg/authentication/authenticator"
 	"k8s.io/apiserver/pkg/authentication/user"
 )
 
 const (
-	ObotBootstrapCookie = "obot-bootstrap"
+	BoeingBootstrapCookie = "boeing-bootstrap"
 	bootstrapUsername   = "bootstrap"
 )
 
@@ -46,7 +46,7 @@ func New(ctx context.Context, serverURL string, c *client.Client, authProviderGe
 		}, nil
 	}
 
-	token := os.Getenv("OBOT_BOOTSTRAP_TOKEN")
+	token := os.Getenv("BOEING_BOOTSTRAP_TOKEN")
 	tokenFromCredential, exists, err := getTokenFromCredential(ctx, c)
 	if err != nil {
 		return nil, err
@@ -102,7 +102,7 @@ func New(ctx context.Context, serverURL string, c *client.Client, authProviderGe
 }
 
 func getTokenFromCredential(ctx context.Context, c *client.Client) (string, bool, error) {
-	tokenCredential, err := c.RevealCredential(ctx, []string{ObotBootstrapCookie}, ObotBootstrapCookie)
+	tokenCredential, err := c.RevealCredential(ctx, []string{BoeingBootstrapCookie}, BoeingBootstrapCookie)
 	if err != nil {
 		if errors.As(err, &client.CredentialNotFoundError{}) {
 			return "", false, nil
@@ -119,8 +119,8 @@ func getTokenFromCredential(ctx context.Context, c *client.Client) (string, bool
 
 func saveTokenToCredential(ctx context.Context, token string, c *client.Client) error {
 	credential := types.Credential{
-		Name:    ObotBootstrapCookie,
-		Context: ObotBootstrapCookie,
+		Name:    BoeingBootstrapCookie,
+		Context: BoeingBootstrapCookie,
 		Secrets: map[string]string{
 			"token": token,
 		},
@@ -149,7 +149,7 @@ func (b *Bootstrap) AuthenticateRequest(req *http.Request) (*authenticator.Respo
 	authHeader := req.Header.Get("Authorization")
 	if authHeader == "" {
 		// Check for the cookie.
-		c, err := req.Cookie(ObotBootstrapCookie)
+		c, err := req.Cookie(BoeingBootstrapCookie)
 		if err != nil || c.Value != b.token {
 			return nil, false, nil
 		}
@@ -169,7 +169,7 @@ func (b *Bootstrap) AuthenticateRequest(req *http.Request) (*authenticator.Respo
 			ProviderUserID:       "bootstrap",
 			HashedProviderUserID: hash.String("bootstrap"),
 		},
-		req.Header.Get("X-Obot-User-Timezone"),
+		req.Header.Get("X-Boeing-User-Timezone"),
 		types2.RoleOwner,
 	)
 	if err != nil {
@@ -214,7 +214,7 @@ func (b *Bootstrap) Login(req api.Context) error {
 	}
 
 	http.SetCookie(req.ResponseWriter, &http.Cookie{
-		Name:     ObotBootstrapCookie,
+		Name:     BoeingBootstrapCookie,
 		Value:    strings.TrimPrefix(auth, "Bearer "),
 		Path:     "/",
 		MaxAge:   60 * 60 * 24 * 7, // 1 week
@@ -228,7 +228,7 @@ func (b *Bootstrap) Login(req api.Context) error {
 
 func (b *Bootstrap) Logout(req api.Context) error {
 	http.SetCookie(req.ResponseWriter, &http.Cookie{
-		Name:     ObotBootstrapCookie,
+		Name:     BoeingBootstrapCookie,
 		Value:    "",
 		Path:     "/",
 		MaxAge:   -1,

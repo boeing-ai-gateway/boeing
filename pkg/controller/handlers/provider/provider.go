@@ -15,18 +15,18 @@ import (
 	"strings"
 	"time"
 
-	"github.com/obot-platform/nah/pkg/apply"
-	"github.com/obot-platform/nah/pkg/name"
-	"github.com/obot-platform/nah/pkg/router"
-	"github.com/obot-platform/obot/apiclient/types"
-	"github.com/obot-platform/obot/logger"
-	"github.com/obot-platform/obot/pkg/api/handlers/providers"
-	gateway "github.com/obot-platform/obot/pkg/gateway/client"
-	"github.com/obot-platform/obot/pkg/gateway/server/dispatcher"
-	gatewaytypes "github.com/obot-platform/obot/pkg/gateway/types"
-	"github.com/obot-platform/obot/pkg/license"
-	v1 "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1"
-	"github.com/obot-platform/obot/pkg/system"
+	"github.com/boeing-ai-gateway/nah/pkg/apply"
+	"github.com/boeing-ai-gateway/nah/pkg/name"
+	"github.com/boeing-ai-gateway/nah/pkg/router"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/logger"
+	"github.com/boeing-ai-gateway/boeing/pkg/api/handlers/providers"
+	gateway "github.com/boeing-ai-gateway/boeing/pkg/gateway/client"
+	"github.com/boeing-ai-gateway/boeing/pkg/gateway/server/dispatcher"
+	gatewaytypes "github.com/boeing-ai-gateway/boeing/pkg/gateway/types"
+	"github.com/boeing-ai-gateway/boeing/pkg/license"
+	v1 "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1"
+	"github.com/boeing-ai-gateway/boeing/pkg/system"
 	"go.yaml.in/yaml/v3"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/fields"
@@ -298,7 +298,7 @@ func (h *Handler) ensureModelProviderCredAndDefaults(ctx context.Context, c kcli
 		return nil
 	}
 
-	credentialEnvVarName := fmt.Sprintf("OBOT_%s_API_KEY", strings.ToUpper(strings.ReplaceAll(modelProviderName, "-", "_")))
+	credentialEnvVarName := fmt.Sprintf("BOEING_%s_API_KEY", strings.ToUpper(strings.ReplaceAll(modelProviderName, "-", "_")))
 
 	// If the model provider exists and the environment variable is set, then ensure the credential exists.
 	var modelProvider v1.ModelProvider
@@ -576,7 +576,7 @@ func removeModelsForProvider(ctx context.Context, c kclient.Client, namespace, n
 
 func (h *Handler) CleanupModelProvider(req router.Request, _ router.Response) error {
 	modelProvider := req.Object.(*v1.ModelProvider)
-	if idx := slices.Index(modelProvider.Finalizers, "obot.obot.ai/tool-reference"); idx != -1 {
+	if idx := slices.Index(modelProvider.Finalizers, "boeing.boeing.ai/tool-reference"); idx != -1 {
 		// Remove the old finalizer.
 		modelProvider.Finalizers = slices.Delete(modelProvider.Finalizers, idx, idx+1)
 		if err := req.Client.Update(req.Ctx, modelProvider); err != nil {

@@ -1,5 +1,5 @@
 {{- if .Values.ingress.enabled -}}
-{{- $fullName := include "obot.fullname" . -}}
+{{- $fullName := include "boeing.fullname" . -}}
 {{- $ingressPaths := .Values.ingress.paths -}}
 {{- $extraPaths := .Values.ingress.extraPaths -}}
 apiVersion: "networking.k8s.io/v1"
@@ -7,7 +7,7 @@ kind: Ingress
 metadata:
   name: {{ $fullName }}
   labels:
-    {{- include "obot.labels" . | nindent 4 }}
+    {{- include "boeing.labels" . | nindent 4 }}
   {{- with .Values.ingress.annotations }}
   annotations:
     {{- toYaml . | nindent 4 }}

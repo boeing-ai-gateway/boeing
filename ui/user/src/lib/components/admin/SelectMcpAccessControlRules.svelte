@@ -102,7 +102,7 @@
 			return group.name ?? group.id ?? subject.id;
 		}
 
-		if (subject.id === '*') return 'All Obot Users';
+		if (subject.id === '*') return 'All Boeing Users';
 		return '';
 	}
 

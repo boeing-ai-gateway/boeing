@@ -6,12 +6,12 @@ import (
 	"slices"
 	"strconv"
 
-	"github.com/obot-platform/nah/pkg/router"
-	"github.com/obot-platform/obot/apiclient/types"
-	"github.com/obot-platform/obot/pkg/accesscontrolrule"
-	gclient "github.com/obot-platform/obot/pkg/gateway/client"
-	v1 "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1"
-	"github.com/obot-platform/obot/pkg/system"
+	"github.com/boeing-ai-gateway/nah/pkg/router"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/pkg/accesscontrolrule"
+	gclient "github.com/boeing-ai-gateway/boeing/pkg/gateway/client"
+	v1 "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1"
+	"github.com/boeing-ai-gateway/boeing/pkg/system"
 	"k8s.io/apimachinery/pkg/fields"
 	kclient "sigs.k8s.io/controller-runtime/pkg/client"
 )
@@ -69,9 +69,9 @@ func (u *UserCleanup) Cleanup(req router.Request, _ router.Response) error {
 	}
 	log.Infof("Deleted projects during user cleanup: userID=%s projects=%d", userID, len(projects.Items))
 
-	// Delete any API keys the user created. Nanobot-agent keys are handled by the
-	// NanobotAgent delete flow above; this sweeps user-created keys plus anything
-	// the nanobot path missed.
+	// Delete any API keys the user created. Boeingbot-agent keys are handled by the
+	// BoeingbotAgent delete flow above; this sweeps user-created keys plus anything
+	// the boeingbot path missed.
 	apiKeys, err := u.gatewayClient.ListAPIKeys(req.Ctx, userDelete.Spec.UserID)
 	if err != nil {
 		return fmt.Errorf("failed to list API keys for user %d: %w", userDelete.Spec.UserID, err)
@@ -98,7 +98,7 @@ func (u *UserCleanup) Cleanup(req router.Request, _ router.Response) error {
 		// Skip multi-user servers in the default MCPCatalog — they should persist after user deletion.
 		// Also skip servers that are associated with an agent because we need the credential to stick
 		// around so we can delete the API key.
-		if server.Spec.MCPCatalogID == system.DefaultCatalog || server.Spec.NanobotAgentID != "" {
+		if server.Spec.MCPCatalogID == system.DefaultCatalog || server.Spec.BoeingbotAgentID != "" {
 			continue
 		}
 		if err := req.Delete(&server); err != nil {

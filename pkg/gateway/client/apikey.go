@@ -8,7 +8,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/obot-platform/obot/pkg/gateway/types"
+	"github.com/boeing-ai-gateway/boeing/pkg/gateway/types"
 	"golang.org/x/crypto/bcrypt"
 	"gorm.io/gorm"
 )

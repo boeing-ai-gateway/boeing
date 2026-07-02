@@ -247,5 +247,5 @@
 />
 
 <svelte:head>
-	<title>Obot | MCP Access Policies</title>
+	<title>Boeing | MCP Access Policies</title>
 </svelte:head>

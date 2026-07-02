@@ -3,9 +3,9 @@ package authz
 import (
 	"net/http"
 
-	"github.com/obot-platform/nah/pkg/router"
-	v1 "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1"
-	"github.com/obot-platform/obot/pkg/system"
+	"github.com/boeing-ai-gateway/nah/pkg/router"
+	v1 "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1"
+	"github.com/boeing-ai-gateway/boeing/pkg/system"
 )
 
 func (a *Authorizer) checkMCPServer(req *http.Request, resources *Resources, u User) (bool, error) {

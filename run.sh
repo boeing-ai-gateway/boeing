@@ -14,12 +14,12 @@ check_postgres_active() {
   exit 1
 }
 
-source /obot-providers/.envrc.providers
+source /boeing-providers/.envrc.providers
 
 mkdir -p /data/cache
 
-if [ -z "$OBOT_SERVER_DSN" ]; then
-  echo "OBOT_SERVER_DSN is not set. Starting PostgreSQL process..."
+if [ -z "$BOEING_SERVER_DSN" ]; then
+  echo "BOEING_SERVER_DSN is not set. Starting PostgreSQL process..."
 
   # Start PostgreSQL in the background
   echo "Starting PostgreSQL server..."
@@ -27,7 +27,7 @@ if [ -z "$OBOT_SERVER_DSN" ]; then
   /usr/bin/docker-entrypoint.sh postgres &
 
   check_postgres_active
-  export OBOT_SERVER_DSN="postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@localhost:5432/${POSTGRES_DB}"
+  export BOEING_SERVER_DSN="postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@localhost:5432/${POSTGRES_DB}"
 fi
 
-exec tini -- obot server
+exec tini -- boeing server

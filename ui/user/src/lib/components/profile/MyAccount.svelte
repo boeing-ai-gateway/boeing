@@ -1,4 +1,5 @@
 <script lang="ts">
+	import BoeingAITokenSetup from '$lib/components/BoeingAITokenSetup.svelte';
 	import Confirm from '$lib/components/Confirm.svelte';
 	import ConfirmDeleteAccount from '$lib/components/ConfirmDeleteAccount.svelte';
 	import Toggle from '$lib/components/Toggle.svelte';
@@ -94,6 +95,12 @@
 			checked={userDeviceSettings.timeFormat === '24h'}
 			onChange={handleDisplay24HourFormatToggle}
 		/>
+	</div>
+	<hr />
+
+	<!-- Boeing AI Token Setup -->
+	<div class="py-3">
+		<BoeingAITokenSetup />
 	</div>
 	<hr />
 

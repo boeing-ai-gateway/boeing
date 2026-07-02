@@ -5,8 +5,8 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/obot-platform/obot/pkg/api"
-	"github.com/obot-platform/obot/pkg/proxy"
+	"github.com/boeing-ai-gateway/boeing/pkg/api"
+	"github.com/boeing-ai-gateway/boeing/pkg/proxy"
 )
 
 func (s *Server) logoutAll(apiContext api.Context) error {
@@ -21,7 +21,7 @@ func (s *Server) logoutAll(apiContext api.Context) error {
 }
 
 func getSessionID(req *http.Request) string {
-	cookie, err := req.Cookie(proxy.ObotAccessTokenCookie)
+	cookie, err := req.Cookie(proxy.BoeingAccessTokenCookie)
 	if err != nil {
 		return ""
 	}

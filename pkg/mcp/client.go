@@ -8,9 +8,9 @@ import (
 	"time"
 
 	"github.com/golang-jwt/jwt/v5"
-	nmcp "github.com/obot-platform/nanobot/pkg/mcp"
-	"github.com/obot-platform/obot/apiclient/types"
-	"github.com/obot-platform/obot/pkg/utils"
+	nmcp "github.com/boeing-ai-gateway/boeingbot/pkg/mcp"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/pkg/utils"
 )
 
 type Client struct {
@@ -38,10 +38,10 @@ func (sm *SessionManager) clientForServer(ctx context.Context, serverConfig Serv
 }
 
 func (sm *SessionManager) clientForServerWithScope(ctx context.Context, clientScope string, serverConfig ServerConfig) (*Client, error) {
-	clientName := "Obot MCP Gateway"
+	clientName := "Boeing MCP Gateway"
 	if serverConfig.Runtime == types.RuntimeRemote && strings.HasPrefix(serverConfig.URL, fmt.Sprintf("%s/mcp-connect/", sm.baseURL)) {
-		// If the URL points back to us, then this is Obot chat. Ensure the client name reflects that.
-		clientName = "Obot Chat"
+		// If the URL points back to us, then this is Boeing chat. Ensure the client name reflects that.
+		clientName = "Boeing Chat"
 	}
 
 	return sm.clientForServerWithOptions(ctx, clientScope, serverConfig, true, nmcp.ClientOption{

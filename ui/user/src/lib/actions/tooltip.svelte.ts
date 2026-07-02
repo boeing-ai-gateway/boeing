@@ -15,8 +15,8 @@ export interface TooltipOptions {
 function resolveDataTheme(trigger: HTMLElement): string {
 	return (
 		trigger.closest('[data-theme]')?.getAttribute('data-theme') ??
-		document.querySelector<HTMLElement>('.nanobot[data-theme]')?.getAttribute('data-theme') ??
-		'nanobotlight'
+		document.querySelector<HTMLElement>('.boeingbot[data-theme]')?.getAttribute('data-theme') ??
+		'boeingbotlight'
 	);
 }
 

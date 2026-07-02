@@ -4,7 +4,7 @@ title: Model Access Policies
 
 ## Overview
 
-Model Access Policies control which users and groups can use which language models in Obot Agent. Administrators create policies to grant model access based on organizational needs—whether that means giving everyone access to standard models, restricting powerful models to specific teams, or anything in between.
+Model Access Policies control which users and groups can use which language models in Boeing Agent. Administrators create policies to grant model access based on organizational needs—whether that means giving everyone access to standard models, restricting powerful models to specific teams, or anything in between.
 
 ## How Policies Work
 
@@ -21,9 +21,9 @@ A policy can grant access to:
 
 - **Individual users** — Select specific people by name
 - **Groups** — Select authentication provider groups (such as "engineering" or "marketing")
-- **Everyone** — Use the "All Obot Users" option to grant access to all authenticated users
+- **Everyone** — Use the "All Boeing Users" option to grant access to all authenticated users
 
-Using "All Obot Users" is convenient for making certain models universally available while using separate policies to grant additional models to specific teams.
+Using "All Boeing Users" is convenient for making certain models universally available while using separate policies to grant additional models to specific teams.
 
 ### Models
 
@@ -35,7 +35,7 @@ When adding models to a policy, you can select:
 - **All models** — Grants access to every available model
 
 :::info Administrators Must Follow Policies
-Administrators do not have automatic access to all models. Like any other user, an administrator must be included in a policy to use a model in Obot Agent.
+Administrators do not have automatic access to all models. Like any other user, an administrator must be included in a policy to use a model in Boeing Agent.
 :::
 
 #### Wildcard Suffix Patterns
@@ -71,9 +71,9 @@ Using aliases provides flexibility: if you later change which model serves as th
 
 ## Fresh Installations
 
-When Obot starts for the first time, a **Default Policy** is automatically created. This policy:
+When Boeing starts for the first time, a **Default Policy** is automatically created. This policy:
 
-- Grants access to **All Obot Users**
+- Grants access to **All Boeing Users**
 - Includes all default model aliases
 
 This ensures that once you configure a model provider, all users can immediately start chatting. You can modify or delete this policy to restrict access as needed.
@@ -91,13 +91,13 @@ You can find and modify this migrated policy on the Model Access Policies page. 
 
 ## Managing Policies
 
-To manage policies, go to **Obot Agent Management > Model Access Policies**.
+To manage policies, go to **Boeing Agent Management > Model Access Policies**.
 
 ### Creating a Policy
 
 1. Click **Create Policy**
 2. Enter a descriptive name
-3. Add subjects (users, groups, or All Obot Users)
+3. Add subjects (users, groups, or All Boeing Users)
 4. Select which models to include
 5. Save the policy
 

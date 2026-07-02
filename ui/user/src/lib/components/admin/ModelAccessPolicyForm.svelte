@@ -104,7 +104,7 @@
 		const regular: ModelResource[] = [];
 
 		for (const modelResource of modelAccessPolicy.models ?? []) {
-			if (modelResource.id.startsWith('obot://')) {
+			if (modelResource.id.startsWith('boeing://')) {
 				aliases.push(modelResource);
 			} else {
 				regular.push(modelResource);
@@ -117,7 +117,7 @@
 	// Convert alias resources to display data
 	let aliasesTableData = $derived.by(() => {
 		return aliasResources.map((resource) => {
-			const aliasName = resource.id.replace('obot://', '');
+			const aliasName = resource.id.replace('boeing://', '');
 			const model = aliasToModelMap.get(aliasName as ModelAlias);
 
 			return {
@@ -141,7 +141,7 @@
 	// Combined table data for all models (aliases + regular models)
 	let combinedModelsTableData = $derived.by(() => {
 		const aliasRows = aliasesTableData.map((alias) => {
-			const aliasName = alias.id.replace('obot://', '');
+			const aliasName = alias.id.replace('boeing://', '');
 			const effectiveModel = aliasToModelMap.get(aliasName as ModelAlias);
 
 			return {
@@ -252,7 +252,7 @@
 
 					return {
 						id: subject.id,
-						displayName: subject.id === '*' ? 'All Obot Users' : subject.id,
+						displayName: subject.id === '*' ? 'All Boeing Users' : subject.id,
 						type: 'Group'
 					};
 				})

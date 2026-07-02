@@ -5,8 +5,8 @@ import (
 	"errors"
 	"time"
 
-	"github.com/obot-platform/obot/logger"
-	"github.com/obot-platform/obot/pkg/gateway/types"
+	"github.com/boeing-ai-gateway/boeing/logger"
+	"github.com/boeing-ai-gateway/boeing/pkg/gateway/types"
 )
 
 var log = logger.Package()

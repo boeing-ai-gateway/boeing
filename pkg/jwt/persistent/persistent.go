@@ -16,12 +16,12 @@ import (
 
 	"github.com/MicahParks/jwkset"
 	"github.com/golang-jwt/jwt/v5"
-	"github.com/obot-platform/obot/apiclient/types"
-	"github.com/obot-platform/obot/logger"
-	"github.com/obot-platform/obot/pkg/api"
-	"github.com/obot-platform/obot/pkg/gateway/client"
-	gatewaytypes "github.com/obot-platform/obot/pkg/gateway/types"
-	"github.com/obot-platform/obot/pkg/system"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/logger"
+	"github.com/boeing-ai-gateway/boeing/pkg/api"
+	"github.com/boeing-ai-gateway/boeing/pkg/gateway/client"
+	gatewaytypes "github.com/boeing-ai-gateway/boeing/pkg/gateway/types"
+	"github.com/boeing-ai-gateway/boeing/pkg/system"
 	"k8s.io/apiserver/pkg/authentication/authenticator"
 	"k8s.io/apiserver/pkg/authentication/user"
 )
@@ -372,7 +372,7 @@ const keyEnvVar = "JWK_KEY"
 func (t *TokenService) replaceKey(ctx context.Context, key ed25519.PrivateKey) error {
 	jwk, err := jwkset.NewJWKFromKey(key, jwkset.JWKOptions{
 		Metadata: jwkset.JWKMetadataOptions{
-			KID: "obot",
+			KID: "boeing",
 		},
 	})
 	if err != nil {

@@ -3,10 +3,10 @@ package server
 import (
 	"net/http"
 
-	"github.com/obot-platform/nah/pkg/router"
-	"github.com/obot-platform/obot/pkg/api"
-	"github.com/obot-platform/obot/pkg/api/server"
-	"github.com/obot-platform/obot/pkg/system"
+	"github.com/boeing-ai-gateway/nah/pkg/router"
+	"github.com/boeing-ai-gateway/boeing/pkg/api"
+	"github.com/boeing-ai-gateway/boeing/pkg/api/server"
+	"github.com/boeing-ai-gateway/boeing/pkg/system"
 )
 
 func (s *Server) AddRoutes(mux *server.Server) {
@@ -28,6 +28,11 @@ func (s *Server) AddRoutes(mux *server.Server) {
 	mux.HandleFunc("GET /api/me", wrap(s.getCurrentUser))
 	mux.HandleFunc("DELETE /api/me", wrap(s.deleteUser))
 	mux.HandleFunc("PATCH /api/me", wrap(s.updateUser))
+
+	// Boeing AI per-user credential management
+	mux.HandleFunc("GET /api/boeing-ai-credential", wrap(s.getBoeingAICredentialStatus))
+	mux.HandleFunc("POST /api/boeing-ai-credential", wrap(s.saveBoeingAICredential))
+	mux.HandleFunc("DELETE /api/boeing-ai-credential", wrap(s.deleteBoeingAICredential))
 	mux.HandleFunc("POST /api/logout-all", wrap(s.logoutAll))
 	mux.HandleFunc("GET /api/users", wrap(s.getUsers))
 	mux.HandleFunc("GET /api/groups", wrap(s.listAuthGroups))
@@ -77,7 +82,7 @@ func (s *Server) AddRoutes(mux *server.Server) {
 	mux.HandleFunc("GET /api/admin-api-keys/{id}", wrap(s.getAnyAPIKey))
 	mux.HandleFunc("DELETE /api/admin-api-keys/{id}", wrap(s.deleteAnyAPIKey))
 
-	// API Key authentication webhook (called by nanobot shim)
+	// API Key authentication webhook (called by boeingbot shim)
 	// This endpoint is unauthenticated - it validates the API key passed in the header
 	mux.HandleFunc("POST /api/api-keys/auth", wrap(s.authenticateAPIKey))
 }

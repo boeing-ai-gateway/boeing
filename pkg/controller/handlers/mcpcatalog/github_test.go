@@ -4,7 +4,7 @@ import (
 	"context"
 	"testing"
 
-	"github.com/obot-platform/obot/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -164,25 +164,25 @@ func TestReadGitCatalog(t *testing.T) {
 	}{
 		{
 			name:       "valid github url with https",
-			catalog:    "https://github.com/obot-platform/test-mcp-catalog",
+			catalog:    "https://github.com/boeing-ai-gateway/test-mcp-catalog",
 			wantErr:    false,
 			numEntries: 3,
 		},
 		{
 			name:       "valid github url without protocol",
-			catalog:    "github.com/obot-platform/test-mcp-catalog",
+			catalog:    "github.com/boeing-ai-gateway/test-mcp-catalog",
 			wantErr:    false,
 			numEntries: 3,
 		},
 		{
 			name:       "valid github url with .git suffix",
-			catalog:    "https://github.com/obot-platform/test-mcp-catalog.git",
+			catalog:    "https://github.com/boeing-ai-gateway/test-mcp-catalog.git",
 			wantErr:    false,
 			numEntries: 3,
 		},
 		{
 			name:       "invalid protocol",
-			catalog:    "http://github.com/obot-platform/test-mcp-catalog",
+			catalog:    "http://github.com/boeing-ai-gateway/test-mcp-catalog",
 			wantErr:    true,
 			numEntries: 0,
 		},

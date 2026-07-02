@@ -934,7 +934,7 @@
 {/snippet}
 
 <svelte:head>
-	<title>Obot | Token Usage</title>
+	<title>Boeing | Token Usage</title>
 </svelte:head>
 
 <style lang="postcss">

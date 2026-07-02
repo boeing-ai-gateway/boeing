@@ -3,7 +3,7 @@ package registry
 import (
 	"testing"
 
-	"github.com/obot-platform/obot/pkg/api/authz"
+	"github.com/boeing-ai-gateway/boeing/pkg/api/authz"
 	"k8s.io/apiserver/pkg/authentication/user"
 )
 

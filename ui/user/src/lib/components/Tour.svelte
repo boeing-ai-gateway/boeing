@@ -94,8 +94,8 @@
 				showButtons: ['next', 'close'],
 				title: '',
 				description: isNewUser
-					? "Looks like it's your first time here! Let's walk you through what Obot has to offer."
-					: "Welcome back! Let's walk you through what Obot has to offer.",
+					? "Looks like it's your first time here! Let's walk you through what Boeing has to offer."
+					: "Welcome back! Let's walk you through what Boeing has to offer.",
 				side: 'top',
 				align: 'center',
 				popoverClass: 'text-sm w-xs! max-w-xs! min-w-xs!',

@@ -1,10 +1,10 @@
 # Docker Deployment
 
-Deploy Obot using Docker for local development, testing, and proof-of-concept scenarios.
+Deploy Boeing using Docker for local development, testing, and proof-of-concept scenarios.
 
 ## Overview
 
-Docker deployment is the fastest way to get Obot running. It's ideal for:
+Docker deployment is the fastest way to get Boeing running. It's ideal for:
 
 - Local development and testing
 - Single-machine deployments
@@ -23,24 +23,24 @@ For production deployments, see [Kubernetes Deployment](/installation/kubernetes
 
 ### Basic Deployment (Built-in PostgreSQL)
 
-Run Obot with the built-in PostgreSQL instance (suitable for development and testing):
+Run Boeing with the built-in PostgreSQL instance (suitable for development and testing):
 
 ```bash
 docker run -d \
-  --name obot \
-  -v obot-data:/data \
+  --name boeing \
+  -v boeing-data:/data \
   -v /var/run/docker.sock:/var/run/docker.sock \
   -p 8080:8080 \
   -e OPENAI_API_KEY=your-openai-key \
-  ghcr.io/obot-platform/obot:latest
+  ghcr.io/boeing-ai-gateway/boeing:latest
 ```
 
 :::important
-Running Obot without authentication is not recommended unless you are behind a secure firewall, as unauthenticated users could launch MCP servers by sending requests to port 8080 on your system.
+Running Boeing without authentication is not recommended unless you are behind a secure firewall, as unauthenticated users could launch MCP servers by sending requests to port 8080 on your system.
 :::
 
 :::warning Host access and trusted users
-This deployment bind-mounts the host Docker socket (`-v /var/run/docker.sock:/var/run/docker.sock`) so Obot can run MCP servers as sibling containers. Any MCP server Obot launches — including a **containerized** server, which runs an arbitrary container image with a user-supplied command — therefore runs on the host Docker daemon, which is equivalent to host-level access on that machine.
+This deployment bind-mounts the host Docker socket (`-v /var/run/docker.sock:/var/run/docker.sock`) so Boeing can run MCP servers as sibling containers. Any MCP server Boeing launches — including a **containerized** server, which runs an arbitrary container image with a user-supplied command — therefore runs on the host Docker daemon, which is equivalent to host-level access on that machine.
 
 Users with the **Power User** or **Power User+** role can deploy MCP servers, so on this deployment they can effectively run code on the host. Use Docker deployment only for development, evaluation, or single-tenant use where all such users are trusted. For multi-tenant deployments or untrusted users, use the [Kubernetes deployment](/installation/kubernetes-deployment/), which runs each MCP server in its own pod and supports stronger isolation controls you configure (restricted Pod Security Admission, a NetworkPolicy, and sandboxed runtimes such as gVisor or Kata Containers). See [User Roles — Security Model](/configuration/user-roles/#security-model).
 :::
@@ -49,36 +49,36 @@ Users with the **Power User** or **Power User+** role can deploy MCP servers, so
 
 ```bash
 docker run -d \
-  --name obot \
-  -v obot-data:/data \
+  --name boeing \
+  -v boeing-data:/data \
   -v /var/run/docker.sock:/var/run/docker.sock \
   -p 8080:8080 \
   -e OPENAI_API_KEY=your-openai-key \
-  -e OBOT_SERVER_ENABLE_AUTHENTICATION=true \
-  -e OBOT_BOOTSTRAP_TOKEN=your-bootstrap-token \
-  ghcr.io/obot-platform/obot:latest
+  -e BOEING_SERVER_ENABLE_AUTHENTICATION=true \
+  -e BOEING_BOOTSTRAP_TOKEN=your-bootstrap-token \
+  ghcr.io/boeing-ai-gateway/boeing:latest
 ```
 
 #### Using a Custom Port
 
-If you want to expose Obot on a different port (e.g., `-p 9999:8080`), you must also set `OBOT_SERVER_HOSTNAME` so that authentication redirects and MCP server connection URLs work correctly:
+If you want to expose Boeing on a different port (e.g., `-p 9999:8080`), you must also set `BOEING_SERVER_HOSTNAME` so that authentication redirects and MCP server connection URLs work correctly:
 
 ```bash
 docker run -d \
-  --name obot \
-  -v obot-data:/data \
+  --name boeing \
+  -v boeing-data:/data \
   -v /var/run/docker.sock:/var/run/docker.sock \
   -p 9999:8080 \
   -e OPENAI_API_KEY=your-openai-key \
-  -e OBOT_SERVER_HOSTNAME=localhost:9999 \
-  -e OBOT_SERVER_ENABLE_AUTHENTICATION=true \
-  -e OBOT_BOOTSTRAP_TOKEN=your-bootstrap-token \
-  ghcr.io/obot-platform/obot:latest
+  -e BOEING_SERVER_HOSTNAME=localhost:9999 \
+  -e BOEING_SERVER_ENABLE_AUTHENTICATION=true \
+  -e BOEING_BOOTSTRAP_TOKEN=your-bootstrap-token \
+  ghcr.io/boeing-ai-gateway/boeing:latest
 ```
 
-## Accessing Obot
+## Accessing Boeing
 
-Once started, access Obot at http://localhost:8080.
+Once started, access Boeing at http://localhost:8080.
 
 If you enabled authentication, use your bootstrap token to log in as the owner and set up an authentication provider. If you didn't supply a bootstrap token, a random one will be generated and can be found in the container's logs by searching for "Bootstrap token".
 
@@ -87,7 +87,7 @@ If you enabled authentication, use your bootstrap token to log in as the owner a
 For local Docker deployments:
 
 - The default local published-workflow store is usually sufficient
-- Keep the Obot data volume mounted if you want published workflows to survive container replacement
+- Keep the Boeing data volume mounted if you want published workflows to survive container replacement
 
 If you want published workflows in Docker to use external object storage instead of local disk, configure the published workflow storage environment variables described in [Server Configuration](../configuration/server-configuration.md) and [Workflow Sharing](../functionality/workflow-sharing.md).
 

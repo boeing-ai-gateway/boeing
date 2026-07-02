@@ -44,4 +44,4 @@ export const groupRoleOptions = [
 	}
 ];
 
-export const OBOT_PLATFORM_REPO = 'https://github.com/obot-platform/';
+export const BOEING_PLATFORM_REPO = 'https://github.com/boeing-ai-gateway/';

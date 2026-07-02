@@ -6,7 +6,7 @@ import (
 	"io"
 
 	gcsstorage "cloud.google.com/go/storage"
-	"github.com/obot-platform/obot/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
 	"google.golang.org/api/option"
 )
 

@@ -5,8 +5,8 @@ import (
 	"net/http"
 	"net/url"
 
-	"github.com/obot-platform/obot/apiclient/types"
-	"github.com/obot-platform/obot/pkg/api"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/pkg/api"
 )
 
 // oauthAuthorization handles the /.well-known/oauth-authorization-server and /.well-known/oauth-authorization-server/{mcp_id} endpoints
@@ -36,7 +36,7 @@ func (h *handler) oauthProtectedResource(req api.Context) error {
 	mcpID := req.PathValue("mcp_id")
 	if mcpID != "" {
 		return req.Write(map[string]any{
-			"resource_name":            "Obot MCP Gateway",
+			"resource_name":            "Boeing MCP Gateway",
 			"resource":                 fmt.Sprintf("%s/mcp-connect/%s", h.baseURL, mcpID),
 			"authorization_servers":    []string{h.baseURL + "/" + mcpID},
 			"bearer_methods_supported": []string{"header"},
@@ -45,7 +45,7 @@ func (h *handler) oauthProtectedResource(req api.Context) error {
 
 	// The client is hitting the "generic" metadata endpoint and is not supplying an MCP ID. Serve the generic metadata.
 	return req.Write(map[string]any{
-		"resource_name":            "Obot MCP Gateway",
+		"resource_name":            "Boeing MCP Gateway",
 		"resource":                 fmt.Sprintf("%s/mcp-connect", h.baseURL),
 		"authorization_servers":    []string{h.baseURL},
 		"bearer_methods_supported": []string{"header"},

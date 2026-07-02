@@ -4,16 +4,16 @@ title: Message Policies
 
 ## Overview
 
-Message Policies let administrators enforce content rules written in natural language on Obot Agent traffic at the LLM proxy layer. A policy can apply to:
+Message Policies let administrators enforce content rules written in natural language on Boeing Agent traffic at the LLM proxy layer. A policy can apply to:
 
 - **User messages** before they are sent to the model
 - **Tool calls** before the agent is allowed to execute them
 - **Both** user messages and tool calls
 
 Message Policies are an **experimental feature** and are disabled by default.
-To enable them, set `OBOT_SERVER_ENABLE_MESSAGE_POLICIES=true` and restart Obot.
+To enable them, set `BOEING_SERVER_ENABLE_MESSAGE_POLICIES=true` and restart Boeing.
 
-When enabled, Obot adds **Message Policies** and **Message Policy Violations** under **Obot Agent Management** in the admin UI.
+When enabled, Boeing adds **Message Policies** and **Message Policy Violations** under **Boeing Agent Management** in the admin UI.
 
 ## How Policies Work
 
@@ -30,16 +30,16 @@ A policy can apply to:
 
 - **Individual users**
 - **Groups** from the authentication provider
-- **All Obot Users**
+- **All Boeing Users**
 
-If a user matches multiple policies, Obot evaluates all of them in parallel.
+If a user matches multiple policies, Boeing evaluates all of them in parallel.
 A message or tool call is allowed only if it passes every applicable policy.
 
 ## Enforcement Flow
 
 ### Subject Matching
 
-Obot determines applicable policies from:
+Boeing determines applicable policies from:
 
 - The authenticated user ID
 - The user's authentication-provider groups
@@ -49,16 +49,16 @@ Policies marked `Both` apply to both user-message checks and tool-call checks.
 
 ### Two-Stage Review
 
-Obot evaluates each applicable policy in two stages:
+Boeing evaluates each applicable policy in two stages:
 
 1. A fast screening pass using the `Chat - Fast` default language model returns only `yes` or `no`.
 2. If the first pass says the content should be blocked, a second review uses the full `Chat` default language model to confirm or overturn that result and produce the user-facing explanation.
 
-If policy evaluation cannot run correctly, Obot fails closed and blocks the content.
+If policy evaluation cannot run correctly, Boeing fails closed and blocks the content.
 
 ## User Message Policies
 
-For user-message enforcement, Obot checks only the **most recent text message** in the request, and only when it is the final message in the conversation payload. This avoids re-evaluating an already-approved user prompt during tool-calling continuations.
+For user-message enforcement, Boeing checks only the **most recent text message** in the request, and only when it is the final message in the conversation payload. This avoids re-evaluating an already-approved user prompt during tool-calling continuations.
 
 If one or more policies are violated:
 
@@ -68,16 +68,16 @@ If one or more policies are violated:
 
 ## Tool Call Policies
 
-For tool-call enforcement, Obot evaluates the tool calls produced by the model rather than normal assistant text.
+For tool-call enforcement, Boeing evaluates the tool calls produced by the model rather than normal assistant text.
 
 Behavior differs slightly by response type, but the effective result is the same:
 
 - Assistant text can continue streaming normally
 - Tool call data is buffered and evaluated before execution
-- If the tool call violates a policy, Obot signals to the Obot Agent that the tool call cannot be executed
+- If the tool call violates a policy, Boeing signals to the Boeing Agent that the tool call cannot be executed
 - The violation is logged with the blocked tool call payload
 
-Obot preserves the tool-call events in the response so conversation state remains valid, but execution is prevented.
+Boeing preserves the tool-call events in the response so conversation state remains valid, but execution is prevented.
 
 ## Violation Logging
 
@@ -92,11 +92,11 @@ Every confirmed violation is stored as a **Message Policy Violation** record. Ea
 - Blocked content
 - Project ID and thread ID when available
 
-Blocked-content payloads are encrypted at rest when Obot encryption is configured; otherwise they may be stored unencrypted. See the Obot encryption configuration documentation for setup details.
+Blocked-content payloads are encrypted at rest when Boeing encryption is configured; otherwise they may be stored unencrypted. See the Boeing encryption configuration documentation for setup details.
 
 ## Reviewing Violations
 
-When the feature is enabled, administrators can open **Obot Agent Management > Message Policy Violations** to review enforcement activity.
+When the feature is enabled, administrators can open **Boeing Agent Management > Message Policy Violations** to review enforcement activity.
 
 The violations view includes:
 
@@ -113,7 +113,7 @@ Only users with the **Auditor** role can see the stored blocked content in the v
 
 ## Managing Policies
 
-To manage policies, go to **Obot Agent Management > Message Policies**.
+To manage policies, go to **Boeing Agent Management > Message Policies**.
 
 ### Creating a Policy
 
@@ -145,12 +145,12 @@ Deleting a policy removes that enforcement rule immediately for the affected use
 Each additional policy added to the system will increase the overall token usage, due to tokens spent during policy evaluation.
 The tokens consumed do not count against the user's token usage.
 
-Adding policies also increases latency between request and response when chatting with the Obot Agent, but since they are executed in parallel,
+Adding policies also increases latency between request and response when chatting with the Boeing Agent, but since they are executed in parallel,
 latency will not scale as much as token usage will when more than one policy is evaluated.
 
 ## Related Topics
 
-- [Obot Agent Management](/functionality/obot-agent-management/) - Overview of the admin area where Message Policies appear
+- [Boeing Agent Management](/functionality/boeing-agent-management/) - Overview of the admin area where Message Policies appear
 - [Model Providers](/configuration/model-providers) - Configure the default `llm` and `llm-mini` aliases used for policy evaluation
-- [Obot Configuration Reference](/configuration/server-configuration) - Enable the feature with server configuration
+- [Boeing Configuration Reference](/configuration/server-configuration) - Enable the feature with server configuration
 - [User Roles](/configuration/user-roles) - Understand Admin, Owner, and Auditor permissions

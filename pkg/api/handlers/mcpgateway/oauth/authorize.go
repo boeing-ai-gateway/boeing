@@ -11,12 +11,12 @@ import (
 	"slices"
 	"strings"
 
-	"github.com/obot-platform/obot/apiclient/types"
-	"github.com/obot-platform/obot/pkg/api"
-	"github.com/obot-platform/obot/pkg/api/handlers"
-	"github.com/obot-platform/obot/pkg/auth"
-	v1 "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1"
-	"github.com/obot-platform/obot/pkg/system"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/pkg/api"
+	"github.com/boeing-ai-gateway/boeing/pkg/api/handlers"
+	"github.com/boeing-ai-gateway/boeing/pkg/auth"
+	v1 "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1"
+	"github.com/boeing-ai-gateway/boeing/pkg/system"
 	"gorm.io/gorm"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
@@ -233,7 +233,7 @@ func (h *handler) authorize(req api.Context) error {
 	return nil
 }
 
-// callback handles the OAuth callback for the first-level Obot-based OAuth.
+// callback handles the OAuth callback for the first-level Boeing-based OAuth.
 func (h *handler) callback(req api.Context) error {
 	var oauthAppAuthRequest v1.OAuthAuthRequest
 	if err := req.Get(&oauthAppAuthRequest, req.PathValue("oauth_auth_request")); err != nil {

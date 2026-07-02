@@ -9,8 +9,8 @@ import (
 	"time"
 
 	"github.com/google/jsonschema-go/jsonschema"
-	"github.com/obot-platform/nanobot/pkg/mcp"
-	otypes "github.com/obot-platform/obot/apiclient/types"
+	"github.com/boeing-ai-gateway/boeingbot/pkg/mcp"
+	otypes "github.com/boeing-ai-gateway/boeing/apiclient/types"
 )
 
 func (sm *SessionManager) ListTools(ctx context.Context, serverConfig ServerConfig) ([]mcp.Tool, error) {
@@ -71,7 +71,7 @@ func ConvertTools(tools []mcp.Tool, unsupportedTools []string) ([]otypes.MCPServ
 // filtering out disabled tools and applying name/description overrides.
 // If overrides are present, they act as an allowlist - only tools explicitly listed are included.
 // toolPrefix, if non-empty, is prepended to every returned tool's Name so previews
-// match what the composite server will expose via nanobot at runtime.
+// match what the composite server will expose via boeingbot at runtime.
 func ApplyToolOverrides(tools []otypes.MCPServerTool, toolOverrides []otypes.ToolOverride, toolPrefix string) []otypes.MCPServerTool {
 	// Build lookup map: toolName -> ToolOverride
 	overrideMap := make(map[string]otypes.ToolOverride, len(toolOverrides))

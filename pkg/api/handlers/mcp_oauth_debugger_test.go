@@ -6,9 +6,9 @@ import (
 	"strings"
 	"testing"
 
-	nmcp "github.com/obot-platform/nanobot/pkg/mcp"
-	v1 "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1"
-	"github.com/obot-platform/obot/pkg/system"
+	nmcp "github.com/boeing-ai-gateway/boeingbot/pkg/mcp"
+	v1 "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1"
+	"github.com/boeing-ai-gateway/boeing/pkg/system"
 	"golang.org/x/oauth2"
 )
 
@@ -27,7 +27,7 @@ func TestOAuthDebuggerMetadata(t *testing.T) {
 	registration := nmcp.ClientRegistrationMetadata{Scope: "read write"}
 	registrationJSON := mustJSON(t, registration)
 
-	m := &MCPHandler{serverURL: "https://obot.example.com"}
+	m := &MCPHandler{serverURL: "https://boeing.example.com"}
 	parsedAuthServer, parsedRegistration, err := m.oauthDebuggerMetadata(v1.MCPServer{
 		Status: v1.MCPServerStatus{
 			OAuthMetadata: &v1.OAuthMetadata{
@@ -45,11 +45,11 @@ func TestOAuthDebuggerMetadata(t *testing.T) {
 	}
 
 	expectedRegistration := nmcp.ClientRegistrationMetadata{
-		RedirectURIs:            []string{"https://obot.example.com/oauth/mcp/callback"},
+		RedirectURIs:            []string{"https://boeing.example.com/oauth/mcp/callback"},
 		TokenEndpointAuthMethod: "client_secret_post",
 		GrantTypes:              []string{"authorization_code", "refresh_token"},
 		ResponseTypes:           []string{"code"},
-		ClientName:              "Obot MCP OAuth Debugger",
+		ClientName:              "Boeing MCP OAuth Debugger",
 		Scope:                   "read write",
 	}
 	if !reflect.DeepEqual(parsedRegistration, expectedRegistration) {
@@ -166,7 +166,7 @@ func TestOAuthDebuggerUsesCIMD(t *testing.T) {
 	}{
 		{
 			name:      "supported without static credentials",
-			serverURL: "https://obot.example.com",
+			serverURL: "https://boeing.example.com",
 			oauthMeta: &v1.OAuthMetadata{
 				ClientIDMetadataDocumentSupported: true,
 			},
@@ -174,7 +174,7 @@ func TestOAuthDebuggerUsesCIMD(t *testing.T) {
 		},
 		{
 			name:      "static credentials win",
-			serverURL: "https://obot.example.com",
+			serverURL: "https://boeing.example.com",
 			oauthMeta: &v1.OAuthMetadata{
 				ClientIDMetadataDocumentSupported: true,
 			},
@@ -183,21 +183,21 @@ func TestOAuthDebuggerUsesCIMD(t *testing.T) {
 		},
 		{
 			name:      "unsupported by auth server",
-			serverURL: "https://obot.example.com",
+			serverURL: "https://boeing.example.com",
 			oauthMeta: &v1.OAuthMetadata{
 				ClientIDMetadataDocumentSupported: false,
 			},
 		},
 		{
-			name:      "obot client id must be https",
-			serverURL: "http://obot.example.com",
+			name:      "boeing client id must be https",
+			serverURL: "http://boeing.example.com",
 			oauthMeta: &v1.OAuthMetadata{
 				ClientIDMetadataDocumentSupported: true,
 			},
 		},
 		{
 			name:      "missing metadata",
-			serverURL: "https://obot.example.com",
+			serverURL: "https://boeing.example.com",
 		},
 	}
 
@@ -220,16 +220,16 @@ func TestOAuthDebuggerCIMDClient(t *testing.T) {
 		TokenEndpoint:         "https://auth.example.com/token",
 	}
 	registration := nmcp.ClientRegistrationMetadata{
-		RedirectURIs:  []string{"https://obot.example.com/oauth/mcp/callback"},
+		RedirectURIs:  []string{"https://boeing.example.com/oauth/mcp/callback"},
 		GrantTypes:    []string{"authorization_code", "refresh_token"},
 		ResponseTypes: []string{"code"},
-		ClientName:    "Obot MCP OAuth Debugger",
+		ClientName:    "Boeing MCP OAuth Debugger",
 		Scope:         "read write",
 	}
 
-	client := (&MCPHandler{serverURL: "https://obot.example.com"}).oauthDebuggerCIMDClient(authServer, registration)
+	client := (&MCPHandler{serverURL: "https://boeing.example.com"}).oauthDebuggerCIMDClient(authServer, registration)
 
-	if client.ClientID != system.OAuthClientIDMetadataURL("https://obot.example.com") {
+	if client.ClientID != system.OAuthClientIDMetadataURL("https://boeing.example.com") {
 		t.Fatalf("expected CIMD client ID, got %q", client.ClientID)
 	}
 	if client.ClientSecret != "" {

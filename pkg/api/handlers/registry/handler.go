@@ -6,15 +6,15 @@ import (
 	"slices"
 	"strings"
 
-	"github.com/obot-platform/obot/apiclient/types"
-	"github.com/obot-platform/obot/pkg/accesscontrolrule"
-	"github.com/obot-platform/obot/pkg/api"
-	"github.com/obot-platform/obot/pkg/api/authz"
-	"github.com/obot-platform/obot/pkg/api/handlers"
-	gateway "github.com/obot-platform/obot/pkg/gateway/client"
-	"github.com/obot-platform/obot/pkg/mcp"
-	v1 "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1"
-	"github.com/obot-platform/obot/pkg/system"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/pkg/accesscontrolrule"
+	"github.com/boeing-ai-gateway/boeing/pkg/api"
+	"github.com/boeing-ai-gateway/boeing/pkg/api/authz"
+	"github.com/boeing-ai-gateway/boeing/pkg/api/handlers"
+	gateway "github.com/boeing-ai-gateway/boeing/pkg/gateway/client"
+	"github.com/boeing-ai-gateway/boeing/pkg/mcp"
+	v1 "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1"
+	"github.com/boeing-ai-gateway/boeing/pkg/system"
 	"k8s.io/apimachinery/pkg/fields"
 	"k8s.io/apiserver/pkg/authentication/user"
 	kclient "sigs.k8s.io/controller-runtime/pkg/client"
@@ -95,7 +95,7 @@ func (h *Handler) collectAccessibleServers(req api.Context, reverseDNS string) (
 			continue
 		}
 
-		mergedCredEnv, err := mcp.MergeBoundCreds(req.Context(), req.LocalK8sClient, req.ObotNamespace, server.Spec.Manifest.Env, server.Spec.Manifest.RemoteConfig, credMap[server.Name])
+		mergedCredEnv, err := mcp.MergeBoundCreds(req.Context(), req.LocalK8sClient, req.BoeingNamespace, server.Spec.Manifest.Env, server.Spec.Manifest.RemoteConfig, credMap[server.Name])
 		if err != nil {
 			continue
 		}
@@ -142,7 +142,7 @@ func (h *Handler) collectAccessibleServers(req api.Context, reverseDNS string) (
 			continue
 		}
 
-		mergedCredEnv, err := mcp.MergeBoundCreds(req.Context(), req.LocalK8sClient, req.ObotNamespace, server.Spec.Manifest.Env, server.Spec.Manifest.RemoteConfig, credMap[server.Name])
+		mergedCredEnv, err := mcp.MergeBoundCreds(req.Context(), req.LocalK8sClient, req.BoeingNamespace, server.Spec.Manifest.Env, server.Spec.Manifest.RemoteConfig, credMap[server.Name])
 		if err != nil {
 			continue
 		}
@@ -184,7 +184,7 @@ func (h *Handler) collectAccessibleServers(req api.Context, reverseDNS string) (
 			continue
 		}
 
-		mergedCredEnv, err := mcp.MergeBoundCreds(req.Context(), req.LocalK8sClient, req.ObotNamespace, server.Spec.Manifest.Env, server.Spec.Manifest.RemoteConfig, credMap[server.Name])
+		mergedCredEnv, err := mcp.MergeBoundCreds(req.Context(), req.LocalK8sClient, req.BoeingNamespace, server.Spec.Manifest.Env, server.Spec.Manifest.RemoteConfig, credMap[server.Name])
 		if err != nil {
 			continue
 		}
@@ -273,7 +273,7 @@ func (h *Handler) collectAccessibleServersNoAuth(req api.Context, reverseDNS str
 		// Get credentials
 		credEnv, _ := h.getCredentialsForServer(req, server, "", system.DefaultCatalog, "")
 
-		mergedCredEnv, err := mcp.MergeBoundCreds(req.Context(), req.LocalK8sClient, req.ObotNamespace, server.Spec.Manifest.Env, server.Spec.Manifest.RemoteConfig, credEnv)
+		mergedCredEnv, err := mcp.MergeBoundCreds(req.Context(), req.LocalK8sClient, req.BoeingNamespace, server.Spec.Manifest.Env, server.Spec.Manifest.RemoteConfig, credEnv)
 		if err != nil {
 			continue
 		}
@@ -823,7 +823,7 @@ func (h *Handler) findMCPServer(req api.Context, serverName, reverseDNS string) 
 		return types.RegistryServerResponse{}, fmt.Errorf("server not found")
 	}
 
-	credEnv, err = mcp.MergeBoundCreds(req.Context(), req.LocalK8sClient, req.ObotNamespace, server.Spec.Manifest.Env, server.Spec.Manifest.RemoteConfig, credEnv)
+	credEnv, err = mcp.MergeBoundCreds(req.Context(), req.LocalK8sClient, req.BoeingNamespace, server.Spec.Manifest.Env, server.Spec.Manifest.RemoteConfig, credEnv)
 	if err != nil {
 		return types.RegistryServerResponse{}, fmt.Errorf("failed to resolve secret bindings: %w", err)
 	}

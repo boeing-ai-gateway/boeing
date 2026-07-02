@@ -9,11 +9,11 @@ import (
 	"slices"
 	"strconv"
 
-	"github.com/obot-platform/obot/apiclient/types"
-	"github.com/obot-platform/obot/pkg/auth"
-	gclient "github.com/obot-platform/obot/pkg/gateway/client"
-	"github.com/obot-platform/obot/pkg/storage"
-	"github.com/obot-platform/obot/pkg/system"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/pkg/auth"
+	gclient "github.com/boeing-ai-gateway/boeing/pkg/gateway/client"
+	"github.com/boeing-ai-gateway/boeing/pkg/storage"
+	"github.com/boeing-ai-gateway/boeing/pkg/system"
 	apierrors "k8s.io/apimachinery/pkg/api/errors"
 	"k8s.io/apiserver/pkg/authentication/user"
 	"sigs.k8s.io/controller-runtime/pkg/client"
@@ -28,14 +28,14 @@ type Context struct {
 	APIBaseURL    string
 
 	// LocalK8sClient is a kclient for the local Kubernetes cluster — the
-	// cluster the obot pod runs in, where source Secrets for
+	// cluster the boeing pod runs in, where source Secrets for
 	// secretBindings live. Nil on the docker backend
 	LocalK8sClient client.Client
 
-	// ObotNamespace is the Kubernetes namespace in which the obot server
+	// BoeingNamespace is the Kubernetes namespace in which the boeing server
 	// runs; mcp.MergeBoundCreds reads source Secrets from here. Empty
 	// when LocalK8sClient is nil.
-	ObotNamespace string
+	BoeingNamespace string
 }
 
 type (
@@ -198,5 +198,5 @@ func (r *Context) AuthProviderNameAndNamespace() (string, string) {
 }
 
 func (r *Context) UserTimezone() string {
-	return r.Request.Header.Get("X-Obot-User-Timezone")
+	return r.Request.Header.Get("X-Boeing-User-Timezone")
 }

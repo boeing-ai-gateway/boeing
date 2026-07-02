@@ -33,11 +33,11 @@
 				title: 'Authentication Method',
 				items: [
 					{
-						id: 'OBOT_AZURE_OPENAI_MODEL_PROVIDER_API_KEY',
+						id: 'BOEING_AZURE_OPENAI_MODEL_PROVIDER_API_KEY',
 						name: 'API Key'
 					},
 					{
-						id: 'OBOT_AZURE_OPENAI_MODEL_PROVIDER_ENDPOINT',
+						id: 'BOEING_AZURE_OPENAI_MODEL_PROVIDER_ENDPOINT',
 						name: 'Microsoft Entra'
 					}
 				]
@@ -46,21 +46,21 @@
 	});
 	let defaultSelectedCollection = $derived.by(() => {
 		if (isAzureOpenAIProvider) {
-			if (values?.['OBOT_AZURE_OPENAI_MODEL_PROVIDER_API_KEY']) {
-				return 'OBOT_AZURE_OPENAI_MODEL_PROVIDER_API_KEY';
+			if (values?.['BOEING_AZURE_OPENAI_MODEL_PROVIDER_API_KEY']) {
+				return 'BOEING_AZURE_OPENAI_MODEL_PROVIDER_API_KEY';
 			}
 
 			const hasMicrosoftEntraValues = [
-				'OBOT_AZURE_OPENAI_MODEL_PROVIDER_ENDPOINT',
-				'OBOT_AZURE_OPENAI_MODEL_PROVIDER_CLIENT_ID',
-				'OBOT_AZURE_OPENAI_MODEL_PROVIDER_CLIENT_SECRET',
-				'OBOT_AZURE_OPENAI_MODEL_PROVIDER_TENANT_ID',
-				'OBOT_AZURE_OPENAI_MODEL_PROVIDER_SUBSCRIPTION_ID',
-				'OBOT_AZURE_OPENAI_MODEL_PROVIDER_RESOURCE_GROUP'
+				'BOEING_AZURE_OPENAI_MODEL_PROVIDER_ENDPOINT',
+				'BOEING_AZURE_OPENAI_MODEL_PROVIDER_CLIENT_ID',
+				'BOEING_AZURE_OPENAI_MODEL_PROVIDER_CLIENT_SECRET',
+				'BOEING_AZURE_OPENAI_MODEL_PROVIDER_TENANT_ID',
+				'BOEING_AZURE_OPENAI_MODEL_PROVIDER_SUBSCRIPTION_ID',
+				'BOEING_AZURE_OPENAI_MODEL_PROVIDER_RESOURCE_GROUP'
 			].some((param) => Boolean(values?.[param]));
 
 			if (hasMicrosoftEntraValues) {
-				return 'OBOT_AZURE_OPENAI_MODEL_PROVIDER_ENDPOINT';
+				return 'BOEING_AZURE_OPENAI_MODEL_PROVIDER_ENDPOINT';
 			}
 
 			return undefined;
@@ -69,7 +69,7 @@
 	});
 	let selectedCollection: string | undefined = $derived(
 		defaultSelectedCollection ??
-			(isAzureOpenAIProvider ? 'OBOT_AZURE_OPENAI_MODEL_PROVIDER_API_KEY' : undefined)
+			(isAzureOpenAIProvider ? 'BOEING_AZURE_OPENAI_MODEL_PROVIDER_API_KEY' : undefined)
 	);
 
 	const requiredConfigurationParameters = $derived.by(() => {
@@ -87,22 +87,22 @@
 				{} as Record<string, ProviderParameter>
 			);
 
-			if (selectedCollection === 'OBOT_AZURE_OPENAI_MODEL_PROVIDER_API_KEY') {
+			if (selectedCollection === 'BOEING_AZURE_OPENAI_MODEL_PROVIDER_API_KEY') {
 				const requiredParamsIds = [
-					'OBOT_AZURE_OPENAI_MODEL_PROVIDER_API_KEY',
-					'OBOT_AZURE_OPENAI_MODEL_PROVIDER_ENDPOINT',
-					'OBOT_AZURE_OPENAI_MODEL_PROVIDER_DEPLOYMENTS'
+					'BOEING_AZURE_OPENAI_MODEL_PROVIDER_API_KEY',
+					'BOEING_AZURE_OPENAI_MODEL_PROVIDER_ENDPOINT',
+					'BOEING_AZURE_OPENAI_MODEL_PROVIDER_DEPLOYMENTS'
 				];
 				return requiredParamsIds.map((id) => asObject?.[id]).filter(Boolean) as ProviderParameter[];
 			}
 
 			const requiredParamsIds = [
-				'OBOT_AZURE_OPENAI_MODEL_PROVIDER_ENDPOINT',
-				'OBOT_AZURE_OPENAI_MODEL_PROVIDER_CLIENT_ID',
-				'OBOT_AZURE_OPENAI_MODEL_PROVIDER_CLIENT_SECRET',
-				'OBOT_AZURE_OPENAI_MODEL_PROVIDER_TENANT_ID',
-				'OBOT_AZURE_OPENAI_MODEL_PROVIDER_SUBSCRIPTION_ID',
-				'OBOT_AZURE_OPENAI_MODEL_PROVIDER_RESOURCE_GROUP'
+				'BOEING_AZURE_OPENAI_MODEL_PROVIDER_ENDPOINT',
+				'BOEING_AZURE_OPENAI_MODEL_PROVIDER_CLIENT_ID',
+				'BOEING_AZURE_OPENAI_MODEL_PROVIDER_CLIENT_SECRET',
+				'BOEING_AZURE_OPENAI_MODEL_PROVIDER_TENANT_ID',
+				'BOEING_AZURE_OPENAI_MODEL_PROVIDER_SUBSCRIPTION_ID',
+				'BOEING_AZURE_OPENAI_MODEL_PROVIDER_RESOURCE_GROUP'
 			];
 
 			return requiredParamsIds.map((id) => asObject?.[id]).filter(Boolean) as ProviderParameter[];
@@ -125,7 +125,7 @@
 			];
 
 			return allParams.filter(
-				(param) => param.name === 'OBOT_AZURE_OPENAI_MODEL_PROVIDER_API_VERSION'
+				(param) => param.name === 'BOEING_AZURE_OPENAI_MODEL_PROVIDER_API_VERSION'
 			) as ProviderParameter[];
 		}
 
@@ -232,14 +232,14 @@
 	}
 
 	const multipValuesInputs = new Set([
-		'OBOT_GITHUB_AUTH_PROVIDER_ALLOW_USERS',
-		'OBOT_GITHUB_AUTH_PROVIDER_TEAMS',
-		'OBOT_GITHUB_AUTH_PROVIDER_REPO',
-		'OBOT_AUTH_PROVIDER_EMAIL_DOMAINS',
-		'OBOT_AZURE_OPENAI_MODEL_PROVIDER_DEPLOYMENTS'
+		'BOEING_GITHUB_AUTH_PROVIDER_ALLOW_USERS',
+		'BOEING_GITHUB_AUTH_PROVIDER_TEAMS',
+		'BOEING_GITHUB_AUTH_PROVIDER_REPO',
+		'BOEING_AUTH_PROVIDER_EMAIL_DOMAINS',
+		'BOEING_AZURE_OPENAI_MODEL_PROVIDER_DEPLOYMENTS'
 	]);
 
-	const booleanInputs = new Set(['OBOT_AUTH_PROVIDER_ENABLE_LOGGING']);
+	const booleanInputs = new Set(['BOEING_AUTH_PROVIDER_ENABLE_LOGGING']);
 </script>
 
 {#snippet booleanToggle(parameter: ProviderParameter)}
@@ -367,7 +367,7 @@
 											<MultiValueInput
 												bind:value={form[parameter.name]}
 												id={parameter.name}
-												labels={parameter.name === 'OBOT_AUTH_PROVIDER_EMAIL_DOMAINS'
+												labels={parameter.name === 'BOEING_AUTH_PROVIDER_EMAIL_DOMAINS'
 													? { '*': 'All domains' }
 													: {}}
 												class={['text-input-filled', error && 'error'].filter(Boolean).join(' ')}

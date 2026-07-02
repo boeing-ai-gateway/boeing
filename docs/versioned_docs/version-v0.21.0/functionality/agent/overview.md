@@ -1,6 +1,6 @@
-# Obot Agent
+# Boeing Agent
 
-Obot Agent is a web-based interface for interacting with AI. Users customize their agent then chat with their agent through conversations.
+Boeing Agent is a web-based interface for interacting with AI. Users customize their agent then chat with their agent through conversations.
 
 ## Conversations
 
@@ -43,4 +43,4 @@ Connect MCP servers to your agent to enable powerful tools and capabilities. Sim
 
 
 :::note
-To re-enable the legacy Obot Chat interface, you can set the `OBOT_SERVER_DISABLE_LEGACY_CHAT` environment variable to `false`. This will allow you to temporarily access the old chat interface, but that functionality will be removed in a future release.
+To re-enable the legacy Boeing Chat interface, you can set the `BOEING_SERVER_DISABLE_LEGACY_CHAT` environment variable to `false`. This will allow you to temporarily access the old chat interface, but that functionality will be removed in a future release.

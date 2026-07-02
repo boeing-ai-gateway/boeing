@@ -29,7 +29,7 @@ jobs:
         run: helm lint chart --set dev.useEmbeddedDb=true
 
       - name: Render Helm chart
-        run: helm template obot chart --namespace obot --set dev.useEmbeddedDb=true
+        run: helm template boeing chart --namespace boeing --set dev.useEmbeddedDb=true
 
   build:
     runs-on: depot-ubuntu-22.04
@@ -42,7 +42,7 @@ jobs:
         uses: azure/setup-helm@v4
 
       - name: Test Helm install
-        run: helm install obot chart --namespace obot --create-namespace --dry-run=client --set dev.useEmbeddedDb=true
+        run: helm install boeing chart --namespace boeing --create-namespace --dry-run=client --set dev.useEmbeddedDb=true
 
       - name: Build Helm chart package
         run: |

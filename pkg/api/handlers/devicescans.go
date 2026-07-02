@@ -7,17 +7,17 @@ import (
 	"strings"
 	"time"
 
-	types "github.com/obot-platform/obot/apiclient/types"
-	"github.com/obot-platform/obot/pkg/api"
-	gateway "github.com/obot-platform/obot/pkg/gateway/client"
-	gtypes "github.com/obot-platform/obot/pkg/gateway/types"
+	types "github.com/boeing-ai-gateway/boeing/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/pkg/api"
+	gateway "github.com/boeing-ai-gateway/boeing/pkg/gateway/client"
+	gtypes "github.com/boeing-ai-gateway/boeing/pkg/gateway/types"
 	"gorm.io/gorm"
 )
 
 // dashboardWindowDefault is the default rolling window applied to GetScanStats.
 const dashboardWindowDefault = 60 * 24 * time.Hour
 
-// DeviceScansHandler serves the `obot scan` ingest + read API
+// DeviceScansHandler serves the `boeing scan` ingest + read API
 type DeviceScansHandler struct{}
 
 func NewDeviceScansHandler() *DeviceScansHandler {

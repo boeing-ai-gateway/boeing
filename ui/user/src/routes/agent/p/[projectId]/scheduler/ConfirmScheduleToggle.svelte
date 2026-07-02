@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Confirm from '$lib/components/Confirm.svelte';
-	import { estimateNextRun, formatScheduleDateTime } from '$lib/components/nanobot/taskSchedule';
+	import { estimateNextRun, formatScheduleDateTime } from '$lib/components/boeingbot/taskSchedule';
 	import { userDeviceSettings } from '$lib/stores';
 
 	interface Props {

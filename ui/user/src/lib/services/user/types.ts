@@ -767,7 +767,7 @@ export interface ToolReferenceList {
 
 export interface Version {
 	sessionStore?: string;
-	obot?: string;
+	boeing?: string;
 	authEnabled?: boolean;
 	enterprise?: boolean;
 	licenseEntitlements?: string[];

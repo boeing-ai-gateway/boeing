@@ -1,5 +1,5 @@
 /**
- * Techy theme for Obot docs
+ * Techy theme for Boeing docs
  */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
@@ -15,7 +15,7 @@
   --ifm-color-primary-lightest: #bfdbfe;
 
   /* Typography */
-  --ifm-font-family-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --ifm-font-family-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Rboeingo, sans-serif;
   --ifm-font-family-monospace: 'JetBrains Mono', SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   --ifm-heading-font-weight: 600;
   --ifm-font-weight-semibold: 500;

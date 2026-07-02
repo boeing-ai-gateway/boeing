@@ -3,7 +3,7 @@ package apiclient
 import (
 	"context"
 
-	"github.com/obot-platform/obot/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
 )
 
 // SubmitDeviceScan posts a device scan submission manifest to the

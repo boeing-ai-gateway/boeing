@@ -28,8 +28,8 @@ import (
 	"github.com/moby/moby/api/types/network"
 	"github.com/moby/moby/api/types/volume"
 	"github.com/moby/moby/client"
-	otypes "github.com/obot-platform/obot/apiclient/types"
-	"github.com/obot-platform/obot/pkg/utils"
+	otypes "github.com/boeing-ai-gateway/boeing/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/pkg/utils"
 	"golang.org/x/sync/singleflight"
 )
 
@@ -68,7 +68,7 @@ func newDockerBackend(ctx context.Context, authEnabled bool, exposedPort int, op
 
 	var (
 		host         string
-		containerEnv = os.Getenv("OBOT_CONTAINER_ENV") == "true"
+		containerEnv = os.Getenv("BOEING_CONTAINER_ENV") == "true"
 		network      = "bridge"
 	)
 	if containerEnv {
@@ -146,7 +146,7 @@ func detectCurrentLocalIP() (string, error) {
 	return ip, nil
 }
 
-func (d *dockerBackend) transformObotHostname(rawURL string) string {
+func (d *dockerBackend) transformBoeingHostname(rawURL string) string {
 	if d.hostBaseURLWithPort == "" || rawURL == "" {
 		return rawURL
 	}
@@ -252,7 +252,7 @@ func (d *dockerBackend) ensureServerDeploymentSlow(ctx context.Context, server S
 		}
 		expectedContainers[server.MCPServerName] = server.Scope
 
-		// If this is a server for a nanobot agent or a provider, return the config pointing to the real server without deploying the shim.
+		// If this is a server for a boeingbot agent or a provider, return the config pointing to the real server without deploying the shim.
 		if !server.NeedsShim() {
 			d.setDeploymentCache(mcpServerName, dockerDeploymentCacheEntry{
 				hash:         serverConfigHash,
@@ -284,10 +284,10 @@ func (d *dockerBackend) ensureServerDeploymentSlow(ctx context.Context, server S
 }
 
 func (d *dockerBackend) ensureDeployment(ctx context.Context, server ServerConfig, mcpServerName string, containerEnv bool, webhooks []Webhook) (ServerConfig, error) {
-	server.TokenExchangeEndpoint = d.transformObotHostname(server.TokenExchangeEndpoint)
-	server.AuthorizeEndpoint = d.transformObotHostname(server.AuthorizeEndpoint)
-	server.AuditLogEndpoint = d.transformObotHostname(server.AuditLogEndpoint)
-	server.JWKSEndpoint = d.transformObotHostname(server.JWKSEndpoint)
+	server.TokenExchangeEndpoint = d.transformBoeingHostname(server.TokenExchangeEndpoint)
+	server.AuthorizeEndpoint = d.transformBoeingHostname(server.AuthorizeEndpoint)
+	server.AuditLogEndpoint = d.transformBoeingHostname(server.AuditLogEndpoint)
+	server.JWKSEndpoint = d.transformBoeingHostname(server.JWKSEndpoint)
 
 	if !d.authEnabled {
 		server.Issuer = ""
@@ -297,12 +297,12 @@ func (d *dockerBackend) ensureDeployment(ctx context.Context, server ServerConfi
 	}
 
 	for i, component := range server.Components {
-		component.URL = d.transformObotHostname(component.URL)
+		component.URL = d.transformBoeingHostname(component.URL)
 		server.Components[i] = component
 	}
 
 	for i, webhook := range webhooks {
-		webhook.URL = d.transformObotHostname(webhook.URL)
+		webhook.URL = d.transformBoeingHostname(webhook.URL)
 		webhooks[i] = webhook
 	}
 
@@ -903,7 +903,7 @@ func (d *dockerBackend) buildServerConfig(server ServerConfig, c *container.Summ
 		AuditLogToken:             server.AuditLogToken,
 		AuditLogMetadata:          server.AuditLogMetadata,
 		ContainerPath:             server.ContainerPath,
-		NanobotAgentName:          server.NanobotAgentName,
+		BoeingbotAgentName:          server.BoeingbotAgentName,
 		PassthroughHeaderNames:    server.PassthroughHeaderNames,
 		PassthroughHeaderValues:   server.PassthroughHeaderValues,
 		StartupTimeout:            server.StartupTimeout,
@@ -957,7 +957,7 @@ func (d *dockerBackend) createAndStartContainer(ctx context.Context, server Serv
 		})
 	}
 
-	if server.NanobotAgentName != "" {
+	if server.BoeingbotAgentName != "" {
 		workspaceName, err = d.ensureWorkspaceVolume(ctx, server, mcpServerName)
 		if err != nil {
 			return "", 0, fmt.Errorf("failed to create workspace volume: %w", err)
@@ -966,7 +966,7 @@ func (d *dockerBackend) createAndStartContainer(ctx context.Context, server Serv
 			volumeMounts = append(volumeMounts, mount.Mount{
 				Type:   mount.TypeVolume,
 				Source: workspaceName,
-				Target: nanobotWorkspaceMountPath,
+				Target: boeingbotWorkspaceMountPath,
 			})
 		}
 	}
@@ -994,41 +994,41 @@ func (d *dockerBackend) createAndStartContainer(ctx context.Context, server Serv
 	// Configure based on runtime
 	switch server.Runtime {
 	case otypes.RuntimeUVX, otypes.RuntimeNPX, otypes.RuntimeRemote, otypes.RuntimeComposite:
-		// Use base image with nanobot
+		// Use base image with boeingbot
 		image = d.containerizedBaseImage
 		if server.Runtime == otypes.RuntimeRemote || server.Runtime == otypes.RuntimeComposite {
 			image = d.remoteShimBaseImage
 			var authWebhookURL string
 			if server.Issuer != "" {
 				// If the issuer is not set then authentication is not on.
-				authWebhookURL = d.transformObotHostname(server.Issuer + "/api/api-keys/auth")
+				authWebhookURL = d.transformBoeingHostname(server.Issuer + "/api/api-keys/auth")
 			}
-			// Set nanobot environment variables
+			// Set boeingbot environment variables
 			env = []string{
-				"NANOBOT_RUN_TRUSTED_ISSUER=" + server.Issuer,
-				"NANOBOT_RUN_OAUTH_JWKSURL=" + server.JWKSEndpoint,
-				"NANOBOT_RUN_TRUSTED_AUDIENCES=" + strings.Join(server.Audiences, ","),
-				"NANOBOT_RUN_OAUTH_CLIENT_ID=" + server.TokenExchangeClientID,
-				"NANOBOT_RUN_OAUTH_CLIENT_SECRET=" + server.TokenExchangeClientSecret,
-				"NANOBOT_RUN_OAUTH_TOKEN_URL=" + server.TokenExchangeEndpoint,
-				"NANOBOT_RUN_OAUTH_AUTHORIZE_URL=" + server.AuthorizeEndpoint,
-				"NANOBOT_RUN_OAUTH_SCOPES=profile",
-				"NANOBOT_RUN_FORCE_FETCH_TOOL_LIST=true",
-				"NANOBOT_DISABLE_HEALTH_CHECKER=true",
-				"NANOBOT_RUN_APIKEY_AUTH_WEBHOOK_URL=" + authWebhookURL,
-				"NANOBOT_RUN_MCPSERVER_ID=" + strings.TrimSuffix(server.MCPServerName, "-shim"),
+				"BOEINGBOT_RUN_TRUSTED_ISSUER=" + server.Issuer,
+				"BOEINGBOT_RUN_OAUTH_JWKSURL=" + server.JWKSEndpoint,
+				"BOEINGBOT_RUN_TRUSTED_AUDIENCES=" + strings.Join(server.Audiences, ","),
+				"BOEINGBOT_RUN_OAUTH_CLIENT_ID=" + server.TokenExchangeClientID,
+				"BOEINGBOT_RUN_OAUTH_CLIENT_SECRET=" + server.TokenExchangeClientSecret,
+				"BOEINGBOT_RUN_OAUTH_TOKEN_URL=" + server.TokenExchangeEndpoint,
+				"BOEINGBOT_RUN_OAUTH_AUTHORIZE_URL=" + server.AuthorizeEndpoint,
+				"BOEINGBOT_RUN_OAUTH_SCOPES=profile",
+				"BOEINGBOT_RUN_FORCE_FETCH_TOOL_LIST=true",
+				"BOEINGBOT_DISABLE_HEALTH_CHECKER=true",
+				"BOEINGBOT_RUN_APIKEY_AUTH_WEBHOOK_URL=" + authWebhookURL,
+				"BOEINGBOT_RUN_MCPSERVER_ID=" + strings.TrimSuffix(server.MCPServerName, "-shim"),
 			}
 
 			if server.Runtime == otypes.RuntimeRemote {
 				env = append(env, []string{
-					"NANOBOT_RUN_AUDIT_LOG_TOKEN=" + server.AuditLogToken,
-					"NANOBOT_RUN_AUDIT_LOG_SEND_URL=" + server.AuditLogEndpoint,
-					"NANOBOT_RUN_AUDIT_LOG_BATCH_SIZE=" + strconv.Itoa(d.auditLogsBatchSize),
-					"NANOBOT_RUN_AUDIT_LOG_FLUSH_INTERVAL_SECONDS=" + strconv.Itoa(d.auditLogsFlushIntervalSeconds),
-					"NANOBOT_RUN_AUDIT_LOG_METADATA=" + server.AuditLogMetadata,
+					"BOEINGBOT_RUN_AUDIT_LOG_TOKEN=" + server.AuditLogToken,
+					"BOEINGBOT_RUN_AUDIT_LOG_SEND_URL=" + server.AuditLogEndpoint,
+					"BOEINGBOT_RUN_AUDIT_LOG_BATCH_SIZE=" + strconv.Itoa(d.auditLogsBatchSize),
+					"BOEINGBOT_RUN_AUDIT_LOG_FLUSH_INTERVAL_SECONDS=" + strconv.Itoa(d.auditLogsFlushIntervalSeconds),
+					"BOEINGBOT_RUN_AUDIT_LOG_METADATA=" + server.AuditLogMetadata,
 				}...)
 
-				for key, value := range nanobotOTELEnv("nanobot-shim", d.transformCollectorEndpoint) {
+				for key, value := range boeingbotOTELEnv("boeingbot-shim", d.transformCollectorEndpoint) {
 					env = append(env, key+"="+string(value))
 				}
 			}
@@ -1036,22 +1036,22 @@ func (d *dockerBackend) createAndStartContainer(ctx context.Context, server Serv
 
 		containerPort = defaultContainerPort
 
-		nanobotVolumeName, err := d.prepareMCPServerNanobotConfig(ctx, server, fileEnvVars, webhooks)
+		boeingbotVolumeName, err := d.prepareMCPServerBoeingbotConfig(ctx, server, fileEnvVars, webhooks)
 		if err != nil {
-			return "", 0, fmt.Errorf("failed to prepare MCP server nanobot config: %w", err)
+			return "", 0, fmt.Errorf("failed to prepare MCP server boeingbot config: %w", err)
 		}
 
 		volumeMounts = append(volumeMounts, mount.Mount{
 			Type:   mount.TypeVolume,
-			Source: nanobotVolumeName,
+			Source: boeingbotVolumeName,
 			Target: "/config",
 		})
 
-		// Use nanobot command
-		cmd = []string{"run", "--disable-ui", "--listen-address", fmt.Sprintf(":%d", defaultContainerPort), "--exclude-built-in-agents", "--config", "/config/nanobot.yaml"}
+		// Use boeingbot command
+		cmd = []string{"run", "--disable-ui", "--listen-address", fmt.Sprintf(":%d", defaultContainerPort), "--exclude-built-in-agents", "--config", "/config/boeingbot.yaml"}
 
-		// Set nanobot environment variables
-		env = append(env, "NANOBOT_RUN_HEALTHZ_PATH=/healthz", "OBOT_KUBERNETES_MODE=true")
+		// Set boeingbot environment variables
+		env = append(env, "BOEINGBOT_RUN_HEALTHZ_PATH=/healthz", "BOEING_KUBERNETES_MODE=true")
 
 	case otypes.RuntimeContainerized:
 		// Use specified container image or base image
@@ -1082,8 +1082,8 @@ func (d *dockerBackend) createAndStartContainer(ctx context.Context, server Serv
 			metaEnvVar = append(metaEnvVar, k)
 		}
 
-		env = append(env, fmt.Sprintf("NANOBOT_META_ENV=%s", strings.Join(metaEnvVar, ",")))
-		env = append(env, "NANOBOT_RUN_HEALTHZ_PATH=/healthz", "OBOT_KUBERNETES_MODE=true")
+		env = append(env, fmt.Sprintf("BOEINGBOT_META_ENV=%s", strings.Join(metaEnvVar, ",")))
+		env = append(env, "BOEINGBOT_RUN_HEALTHZ_PATH=/healthz", "BOEING_KUBERNETES_MODE=true")
 	default:
 		return "", 0, fmt.Errorf("unsupported runtime: %s", server.Runtime)
 	}
@@ -1107,11 +1107,11 @@ func (d *dockerBackend) createAndStartContainer(ctx context.Context, server Serv
 			"mcp.file.env.keys.hash": fileEnvKeysHash,
 		},
 	}
-	if server.NanobotAgentName != "" {
-		config.WorkingDir = nanobotWorkspaceMountPath
-		config.Env = append(config.Env, "NANOBOT_RUN_HEALTHZ_PATH=/healthz", "OBOT_KUBERNETES_MODE=true")
+	if server.BoeingbotAgentName != "" {
+		config.WorkingDir = boeingbotWorkspaceMountPath
+		config.Env = append(config.Env, "BOEINGBOT_RUN_HEALTHZ_PATH=/healthz", "BOEING_KUBERNETES_MODE=true")
 
-		for key, value := range nanobotOTELEnv("nanobot-agent", d.transformCollectorEndpoint) {
+		for key, value := range boeingbotOTELEnv("boeingbot-agent", d.transformCollectorEndpoint) {
 			config.Env = append(config.Env, key+"="+string(value))
 		}
 	}
@@ -1504,9 +1504,9 @@ func (d *dockerBackend) pullImage(ctx context.Context, imageName string, ifNotEx
 	return nil
 }
 
-// prepareMCPServerNanobotConfig creates a volume containing the nanobot.yaml that configures
-// how nanobot proxies to the underlying MCP server (used for UVX/NPX/remote/composite runtimes).
-func (d *dockerBackend) prepareMCPServerNanobotConfig(ctx context.Context, server ServerConfig, envVars map[string]string, webhooks []Webhook) (string, error) {
+// prepareMCPServerBoeingbotConfig creates a volume containing the boeingbot.yaml that configures
+// how boeingbot proxies to the underlying MCP server (used for UVX/NPX/remote/composite runtimes).
+func (d *dockerBackend) prepareMCPServerBoeingbotConfig(ctx context.Context, server ServerConfig, envVars map[string]string, webhooks []Webhook) (string, error) {
 	// Create all environment variables map
 	allEnvVars := make(map[string][]byte, len(server.Env)+len(envVars))
 	headers := make(map[string][]byte, len(server.Headers))
@@ -1529,32 +1529,32 @@ func (d *dockerBackend) prepareMCPServerNanobotConfig(ctx context.Context, serve
 	}
 
 	var (
-		nanobotYAML []byte
+		boeingbotYAML []byte
 		err         error
 	)
 	if server.Runtime == otypes.RuntimeComposite {
-		nanobotYAML, err = constructMCPServerNanobotYAMLForComposite(server.Components)
+		boeingbotYAML, err = constructMCPServerBoeingbotYAMLForComposite(server.Components)
 	} else {
-		nanobotYAML, err = constructMCPServerNanobotYAML(server.MCPServerDisplayName, server.URL, server.Command, server.Args, server.PassthroughHeaderNames, allEnvVars, headers, webhooks)
+		boeingbotYAML, err = constructMCPServerBoeingbotYAML(server.MCPServerDisplayName, server.URL, server.Command, server.Args, server.PassthroughHeaderNames, allEnvVars, headers, webhooks)
 	}
 	if err != nil {
-		return "", fmt.Errorf("failed to construct nanobot YAML: %w", err)
+		return "", fmt.Errorf("failed to construct boeingbot YAML: %w", err)
 	}
 
-	volumeName := server.MCPServerName + "-mcp-server-nanobot-config"
+	volumeName := server.MCPServerName + "-mcp-server-boeingbot-config"
 	_, err = d.client.VolumeCreate(ctx, volume.CreateOptions{
 		Labels: map[string]string{
 			"mcp.server.id": server.MCPServerName,
-			"mcp.purpose":   "mcp-server-nanobot-config",
+			"mcp.purpose":   "mcp-server-boeingbot-config",
 		},
 		Name: volumeName,
 	})
 	if err != nil && !cerrdefs.IsAlreadyExists(err) {
-		return "", fmt.Errorf("failed to create MCP server nanobot config volume: %w", err)
+		return "", fmt.Errorf("failed to create MCP server boeingbot config volume: %w", err)
 	}
 
-	script := fmt.Sprintf("cat > /config/nanobot.yaml << 'EOF'\n%s\nEOF\n", nanobotYAML)
-	if err = d.runInitContainer(ctx, server.MCPServerName+"-nanobot-init", script, []mount.Mount{
+	script := fmt.Sprintf("cat > /config/boeingbot.yaml << 'EOF'\n%s\nEOF\n", boeingbotYAML)
+	if err = d.runInitContainer(ctx, server.MCPServerName+"-boeingbot-init", script, []mount.Mount{
 		{
 			Type:   mount.TypeVolume,
 			Source: volumeName,

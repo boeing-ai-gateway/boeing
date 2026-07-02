@@ -358,7 +358,7 @@
 			}
 		}
 
-		// Include secret-bound fields — their values are not stored by Obot so they
+		// Include secret-bound fields — their values are not stored by Boeing so they
 		// won't appear in revealedValues, but we can still show the binding reference.
 		for (const env of catalogEntry.manifest.env ?? []) {
 			if (env.secretBinding && !revealedValues?.[env.key]) {

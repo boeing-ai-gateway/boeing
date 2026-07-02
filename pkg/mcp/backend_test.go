@@ -7,7 +7,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/obot-platform/obot/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
 )
 
 func TestEnsureServerReadyUsesHealthzPath(t *testing.T) {

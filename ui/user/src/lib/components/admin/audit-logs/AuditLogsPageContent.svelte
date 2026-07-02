@@ -56,7 +56,7 @@
 	let auditLogsResponse = $state<PaginatedResponse<AuditLog>>();
 	const auditLogsTotalItems = $derived(auditLogsResponse?.total ?? 0);
 
-	let pageIndexLocal = localState('@obot/auditlogs/page-index', 0, {
+	let pageIndexLocal = localState('@boeing/auditlogs/page-index', 0, {
 		parse: (ls) => (typeof ls === 'string' ? parseInt(ls) : (ls ?? 0))
 	});
 	const pageIndex = $derived(pageIndexLocal.current ?? 0);

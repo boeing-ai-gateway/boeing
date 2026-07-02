@@ -247,7 +247,7 @@ func testManifestAccess(ctx context.Context, client *http.Client, server string,
 func authenticateAndRetry(ctx context.Context, client *http.Client, headers []string, method, endpoint, registryServer, scope, username, password string) error {
 	challenges := parseAuthChallenges(headers)
 	if len(challenges) == 0 {
-		return fmt.Errorf("registry returned an authentication challenge Obot could not interpret")
+		return fmt.Errorf("registry returned an authentication challenge Boeing could not interpret")
 	}
 
 	var unsupported []string
@@ -377,7 +377,7 @@ func registryRequestWithAuth(ctx context.Context, client *http.Client, method, e
 	if err != nil {
 		return nil, err
 	}
-	req.Header.Set("User-Agent", "obot-image-pull-secret-test")
+	req.Header.Set("User-Agent", "boeing-image-pull-secret-test")
 	req.Header.Set("Accept", accept)
 	if authHeader != "" {
 		req.Header.Set("Authorization", authHeader)

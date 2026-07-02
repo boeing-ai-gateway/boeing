@@ -1,13 +1,13 @@
 package services
 
 import (
-	"github.com/obot-platform/kinm/pkg/db"
-	"github.com/obot-platform/nah/pkg/randomtoken"
-	"github.com/obot-platform/obot/logger"
-	"github.com/obot-platform/obot/pkg/logutil"
-	"github.com/obot-platform/obot/pkg/storage/authn"
-	"github.com/obot-platform/obot/pkg/storage/authz"
-	"github.com/obot-platform/obot/pkg/storage/scheme"
+	"github.com/boeing-ai-gateway/kinm/pkg/db"
+	"github.com/boeing-ai-gateway/nah/pkg/randomtoken"
+	"github.com/boeing-ai-gateway/boeing/logger"
+	"github.com/boeing-ai-gateway/boeing/pkg/logutil"
+	"github.com/boeing-ai-gateway/boeing/pkg/storage/authn"
+	"github.com/boeing-ai-gateway/boeing/pkg/storage/authz"
+	"github.com/boeing-ai-gateway/boeing/pkg/storage/scheme"
 	"k8s.io/apiserver/pkg/authorization/authorizer"
 )
 
@@ -16,7 +16,7 @@ var log = logger.Package()
 type Config struct {
 	StorageListenPort int    `usage:"Port to storage backend will listen on (default: random port)"`
 	StorageToken      string `usage:"Token for storage access, will be generated if not passed"`
-	DSN               string `usage:"Database dsn in driver://connection_string format" default:"sqlite://file:obot.db?_journal=WAL&cache=shared&_busy_timeout=30000"`
+	DSN               string `usage:"Database dsn in driver://connection_string format" default:"sqlite://file:boeing.db?_journal=WAL&cache=shared&_busy_timeout=30000"`
 }
 
 type Services struct {

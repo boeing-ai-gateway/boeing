@@ -1,4 +1,4 @@
-module github.com/obot-platform/obot/logger
+module github.com/boeing-ai-gateway/boeing/logger
 
 go 1.26.4
 

@@ -64,9 +64,9 @@ jobs:
           tags: |
             ghcr.io/${{ github.repository }}:${{ github.ref_name }}
             ghcr.io/${{ github.repository }}-enterprise:${{ github.ref_name }}
-            ${{ github.ref_type == 'tag' && !contains(github.ref_name, '-') && format('docker.io/obot/{0}:{1}', github.event.repository.name, github.ref_name) || '' }}
+            ${{ github.ref_type == 'tag' && !contains(github.ref_name, '-') && format('docker.io/boeing/{0}:{1}', github.event.repository.name, github.ref_name) || '' }}
           build-args: |
-            BASE_IMAGE=ghcr.io/obot-platform/obot/base:latest
+            BASE_IMAGE=ghcr.io/boeing-ai-gateway/boeing/base:latest
 
       - name: Install Cosign
         uses: sigstore/cosign-installer@v3.8.1
@@ -81,7 +81,7 @@ jobs:
           TAGS: >-
             ghcr.io/${{ github.repository }}:${{ github.ref_name }}
             ghcr.io/${{ github.repository }}-enterprise:${{ github.ref_name }}
-            ${{ github.ref_type == 'tag' && !contains(github.ref_name, '-') && format('docker.io/obot/{0}:{1}', github.event.repository.name, github.ref_name) || '' }}
+            ${{ github.ref_type == 'tag' && !contains(github.ref_name, '-') && format('docker.io/boeing/{0}:{1}', github.event.repository.name, github.ref_name) || '' }}
         run: |
           images=""
           for tag in ${TAGS}; do
@@ -97,7 +97,7 @@ jobs:
         run: |
           crane tag ghcr.io/${{ github.repository }}:${{ github.ref_name }} latest
           crane tag ghcr.io/${{ github.repository }}-enterprise:${{ github.ref_name }} latest
-          crane tag docker.io/obot/${{ github.event.repository.name }}:${{ github.ref_name }} latest
+          crane tag docker.io/boeing/${{ github.event.repository.name }}:${{ github.ref_name }} latest
 
   image-scan:
     runs-on: depot-ubuntu-22.04

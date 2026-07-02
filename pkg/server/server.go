@@ -7,11 +7,11 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/obot-platform/obot/logger"
-	"github.com/obot-platform/obot/pkg/api/router"
-	"github.com/obot-platform/obot/pkg/api/static"
-	"github.com/obot-platform/obot/pkg/controller"
-	"github.com/obot-platform/obot/pkg/services"
+	"github.com/boeing-ai-gateway/boeing/logger"
+	"github.com/boeing-ai-gateway/boeing/pkg/api/router"
+	"github.com/boeing-ai-gateway/boeing/pkg/api/static"
+	"github.com/boeing-ai-gateway/boeing/pkg/controller"
+	"github.com/boeing-ai-gateway/boeing/pkg/services"
 	"github.com/rs/cors"
 )
 

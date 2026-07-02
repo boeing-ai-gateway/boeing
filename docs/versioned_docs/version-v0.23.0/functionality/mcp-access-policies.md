@@ -10,7 +10,7 @@ To manage access policies, go to **MCP Management > MCP Access Policies** in the
 
 ## Default Access
 
-By default, there's an "everyone" group that's assigned to all users. This means anyone that logs into Obot will have access to all MCP servers that are covered by an access policy that includes the "everyone" group.
+By default, there's an "everyone" group that's assigned to all users. This means anyone that logs into Boeing will have access to all MCP servers that are covered by an access policy that includes the "everyone" group.
 
 If this default behavior is not what you want, you can restrict access to specific users or groups, or remove the "everyone" group entirely. However, it's recommended that administrators at least should have access to all servers.
 
@@ -40,4 +40,4 @@ This approach ensures that each team only has access to the tools they need whil
 
 ## Related
 
-For programmatic discovery of available servers and how to contribute servers to Obot's default set, see [MCP Registry API](./mcp-registry-api.md).
+For programmatic discovery of available servers and how to contribute servers to Boeing's default set, see [MCP Registry API](./mcp-registry-api.md).

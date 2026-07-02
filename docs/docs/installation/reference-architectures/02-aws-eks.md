@@ -1,6 +1,6 @@
 # Amazon EKS
 
-Deploying Obot to Amazon Elastic Kubernetes Service follows the standard Helm workflow. As a prerequisite, you'll need the following resources set up in your AWS environment:
+Deploying Boeing to Amazon Elastic Kubernetes Service follows the standard Helm workflow. As a prerequisite, you'll need the following resources set up in your AWS environment:
 
 * AWS account
 * VPC with subnets
@@ -15,17 +15,17 @@ If you plan on using AWS KMS, here is some example terraform that creates the ke
 
 ```hcl
 resource "aws_kms_key" "this" {
-  description             = "Obot credentials encryption key"
+  description             = "Boeing credentials encryption key"
   deletion_window_in_days = 10
   enable_key_rotation     = true
 }
 
 resource "aws_kms_alias" "this" {
-  name          = "alias/obot-credentials"
+  name          = "alias/boeing-credentials"
   target_key_id = aws_kms_key.this.key_id
 }
 
-data "aws_iam_policy_document" "obot_kms" {
+data "aws_iam_policy_document" "boeing_kms" {
   statement {
     effect = "Allow"
     actions = [
@@ -38,29 +38,29 @@ data "aws_iam_policy_document" "obot_kms" {
   }
 }
 
-resource "aws_iam_policy" "obot_kms" {
-  name        = "obot-kms-policy"
-  description = "Policy for Obot to use KMS for encryption"
-  policy      = data.aws_iam_policy_document.obot_kms.json
+resource "aws_iam_policy" "boeing_kms" {
+  name        = "boeing-kms-policy"
+  description = "Policy for Boeing to use KMS for encryption"
+  policy      = data.aws_iam_policy_document.boeing_kms.json
 }
 
-# Attach this policy to the IAM role used by the Obot service account
-resource "aws_iam_role_policy_attachment" "obot_kms" {
-  role       = "<name of the IAM role for obot service account>"
-  policy_arn = aws_iam_policy.obot_kms.arn
+# Attach this policy to the IAM role used by the Boeing service account
+resource "aws_iam_role_policy_attachment" "boeing_kms" {
+  role       = "<name of the IAM role for boeing service account>"
+  policy_arn = aws_iam_policy.boeing_kms.arn
 }
 ```
 
 More information on the AWS KMS setup can be found [here](/configuration/encryption-providers/aws-kms/).
 
-Once you have these resources set up, install the Obot helm chart with:
+Once you have these resources set up, install the Boeing helm chart with:
 
 ```bash
-helm repo add obot https://charts.obot.ai
-helm install obot obot/obot -f <path to your values.yaml>
+helm repo add boeing https://charts.boeing.ai
+helm install boeing boeing/boeing -f <path to your values.yaml>
 ```
 
-Here is an example `values.yaml` file for deploying Obot on EKS:
+Here is an example `values.yaml` file for deploying Boeing on EKS:
 
 ```yaml
 # These settings are required for EKS when using the AWS Load Balancer Controller.
@@ -78,32 +78,32 @@ ingress:
 serviceAccount:
   # This is important for configuring IAM roles for service accounts (IRSA), which we use for AWS KMS access
   create: true
-  name: "<name of the service account to be created and used by obot>"
+  name: "<name of the service account to be created and used by boeing>"
   annotations:
-    eks.amazonaws.com/role-arn: "<arn of the IAM role to be assumed by obot>"
+    eks.amazonaws.com/role-arn: "<arn of the IAM role to be assumed by boeing>"
 
 config:
   # configures encryption with AWS KMS. optional, but recommended for production
-  OBOT_SERVER_ENCRYPTION_PROVIDER: "aws"
-  OBOT_AWS_KMS_KEY_ARN: "arn:aws:kms:<region>:<account-id>:key/<key-id>"
+  BOEING_SERVER_ENCRYPTION_PROVIDER: "aws"
+  BOEING_AWS_KMS_KEY_ARN: "arn:aws:kms:<region>:<account-id>:key/<key-id>"
 
   # database configuration for external db
-  OBOT_SERVER_DSN: "postgresql://<db user>:<db password>@<db host>:<db port>/<db name>?sslmode=<ssl mode>"
+  BOEING_SERVER_DSN: "postgresql://<db user>:<db password>@<db host>:<db port>/<db name>?sslmode=<ssl mode>"
 
   # Enable authentication
-  OBOT_SERVER_ENABLE_AUTHENTICATION: true
-  OBOT_BOOTSTRAP_TOKEN: "<bootstrap password>"
+  BOEING_SERVER_ENABLE_AUTHENTICATION: true
+  BOEING_BOOTSTRAP_TOKEN: "<bootstrap password>"
 
   # Optionally Preseed admin and owner users
-  OBOT_SERVER_AUTH_ADMIN_EMAILS: "<comma separated list of admin emails>"
-  OBOT_SERVER_AUTH_OWNER_EMAILS: "<comma separated list of owner emails>"
+  BOEING_SERVER_AUTH_ADMIN_EMAILS: "<comma separated list of admin emails>"
+  BOEING_SERVER_AUTH_OWNER_EMAILS: "<comma separated list of owner emails>"
 
   # Optionally configure model providers
   OPENAI_API_KEY: "<your openai api key>"
   
 mcpServerDefaults:
   storageClassName: ebs # replace with the name of your StorageClass
-  nanobotWorkspaceSize: 1Gi # Some disk types have a minimum size, read the documentation for the storage type you select.
+  boeingbotWorkspaceSize: 1Gi # Some disk types have a minimum size, read the documentation for the storage type you select.
 ```
 
-With the default configuration on EKS, this will set up ingress to expose Obot through an Application Load Balancer using the AWS Load Balancer Controller. Make sure you have the AWS Load Balancer Controller installed in your cluster. You should also consider adding TLS termination to your ALB for secure HTTPS access.
+With the default configuration on EKS, this will set up ingress to expose Boeing through an Application Load Balancer using the AWS Load Balancer Controller. Make sure you have the AWS Load Balancer Controller installed in your cluster. You should also consider adding TLS termination to your ALB for secure HTTPS access.

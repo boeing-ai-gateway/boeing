@@ -64,9 +64,9 @@
 	function convertUserFriendlyEntitlements(entitlements: string[]): string[] {
 		return entitlements.map((entitlement) => {
 			switch (entitlement) {
-				case 'OBOT_ENTERPRISE_AUTH_PROVIDERS':
+				case 'BOEING_ENTERPRISE_AUTH_PROVIDERS':
 					return 'Auth Providers';
-				case 'OBOT_ENTERPRISE_MODEL_PROVIDERS':
+				case 'BOEING_ENTERPRISE_MODEL_PROVIDERS':
 					return 'Model Providers';
 				default:
 					return entitlement;
@@ -85,21 +85,16 @@
 					<div class="flex items-center gap-3">
 						<Info class="size-6" />
 						<div>
-							Interested in purchasing a license or want to learn more? Contact support at <a
-								href="mailto:licensing@obot.ai"
-								class="text-link">licensing@obot.ai</a
-							>.
+							All features are unlocked. No license key required.
 						</div>
 					</div>
 				</div>
 			{:else if license && license.licenseKey && !license.enterprise}
-				<div class="notification-alert p-3 text-sm font-light">
+				<div class="notification-info p-3 text-sm font-light">
 					<div class="flex items-center gap-3">
-						<CircleAlert class="size-6" />
+						<Info class="size-6" />
 						<div>
-							The license key is <b class="font-semibold">invalid</b>. Please contact support at
-							<a href="mailto:licensing@obot.ai" class="text-link">licensing@obot.ai</a> to renew your
-							license.
+							All features are unlocked.
 						</div>
 					</div>
 				</div>
@@ -242,5 +237,5 @@
 />
 
 <svelte:head>
-	<title>Obot | License</title>
+	<title>Boeing | License</title>
 </svelte:head>

@@ -4,12 +4,12 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/obot-platform/obot/apiclient/types"
-	"github.com/obot-platform/obot/pkg/accesscontrolrule"
-	"github.com/obot-platform/obot/pkg/api"
-	gateway "github.com/obot-platform/obot/pkg/gateway/client"
-	"github.com/obot-platform/obot/pkg/mcp"
-	v1 "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/pkg/accesscontrolrule"
+	"github.com/boeing-ai-gateway/boeing/pkg/api"
+	gateway "github.com/boeing-ai-gateway/boeing/pkg/gateway/client"
+	"github.com/boeing-ai-gateway/boeing/pkg/mcp"
+	v1 "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1"
 	"k8s.io/apimachinery/pkg/fields"
 	kclient "sigs.k8s.io/controller-runtime/pkg/client"
 )
@@ -141,7 +141,7 @@ func (p *PowerUserWorkspaceHandler) ListAllServers(req api.Context) error {
 			return fmt.Errorf("failed to determine slug: %w", err)
 		}
 
-		mergedEnv, err := mcp.MergeBoundCreds(req.Context(), req.LocalK8sClient, req.ObotNamespace, server.Spec.Manifest.Env, server.Spec.Manifest.RemoteConfig, credMap[server.Name])
+		mergedEnv, err := mcp.MergeBoundCreds(req.Context(), req.LocalK8sClient, req.BoeingNamespace, server.Spec.Manifest.Env, server.Spec.Manifest.RemoteConfig, credMap[server.Name])
 		if err != nil {
 			return fmt.Errorf("failed to resolve secret bindings for server %s: %w", server.Name, err)
 		}

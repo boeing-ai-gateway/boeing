@@ -5,7 +5,7 @@ description: Managing MCP servers in the MCP Platform
 
 ## Overview
 
-Managing MCP servers in Obot starts with adding them to the platform. Administrators can control which servers are available to users and how they are configured. Servers may be added individually through the UI, or managed via a Git repository.
+Managing MCP servers in Boeing starts with adding them to the platform. Administrators can control which servers are available to users and how they are configured. Servers may be added individually through the UI, or managed via a Git repository.
 
 The choice of server type depends on how the MCP server was developed. All servers that are not remote servers are deployed and managed by the MCP Gateway.
 

@@ -115,7 +115,7 @@
 				<label class="flex flex-col gap-1">
 					<FieldLabel
 						label="Display Name"
-						help="Friendly name shown in the admin list. If omitted, Obot shows the generated secret ID."
+						help="Friendly name shown in the admin list. If omitted, Boeing shows the generated secret ID."
 					/>
 					<input
 						class="input-text-filled"
@@ -205,7 +205,7 @@
 			}}
 		/>
 		<InfoTooltip
-			text="Controls whether Obot maintains and uses this managed image pull secret. Disabled secrets remain configured but are not active."
+			text="Controls whether Boeing maintains and uses this managed image pull secret. Disabled secrets remain configured but are not active."
 			placement="right"
 			class="ml-0.5 size-3.5"
 			classes={{ icon: 'size-3.5' }}
@@ -234,13 +234,13 @@
 		<label class="flex flex-col gap-1">
 			<FieldLabel
 				label="Username"
-				help="Registry username or robot account name used with the password or token."
+				help="Registry username or rboeing account name used with the password or token."
 			/>
 			<input
 				class={inputClass('username')}
 				bind:value={form.username}
 				disabled={mutationsDisabled}
-				placeholder="robot-account"
+				placeholder="rboeing-account"
 				required
 			/>
 			{#if requiredErrors.username}
@@ -252,7 +252,7 @@
 				label="Password"
 				help={currentSecret?.status?.passwordConfigured
 					? 'Leave blank to keep the current stored registry password or token.'
-					: 'Registry password, access token, or robot account token. This is stored as a Kubernetes image pull secret.'}
+					: 'Registry password, access token, or rboeing account token. This is stored as a Kubernetes image pull secret.'}
 			/>
 			<input
 				class={inputClass('password')}
@@ -279,13 +279,13 @@
 		<label class="flex flex-col gap-1">
 			<FieldLabel
 				label="Role ARN"
-				help="AWS IAM role that Obot should assume to request ECR authorization tokens."
+				help="AWS IAM role that Boeing should assume to request ECR authorization tokens."
 			/>
 			<input
 				class={inputClass('roleARN')}
 				bind:value={form.roleARN}
 				disabled={mutationsDisabled}
-				placeholder="arn:aws:iam::123456789012:role/obot-ecr-pull"
+				placeholder="arn:aws:iam::123456789012:role/boeing-ecr-pull"
 				required
 			/>
 			{#if requiredErrors.roleARN}
@@ -346,14 +346,14 @@
 			<FieldLabel
 				label="Issuer URL Override"
 				help={capability.issuerURL
-					? 'Optional HTTPS OIDC issuer URL to use in the AWS trust policy. Leave blank to use the Obot issuer.'
+					? 'Optional HTTPS OIDC issuer URL to use in the AWS trust policy. Leave blank to use the Boeing issuer.'
 					: 'HTTPS OIDC issuer URL to use in the AWS trust policy.'}
 			/>
 			<input
 				class="input-text-filled"
 				bind:value={form.issuerURL}
 				disabled={mutationsDisabled}
-				placeholder="https://obot.example.com"
+				placeholder="https://boeing.example.com"
 			/>
 		</label>
 		<label class="flex flex-col gap-1">

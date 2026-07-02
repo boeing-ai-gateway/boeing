@@ -1,11 +1,11 @@
 package generic
 
 import (
-	"github.com/obot-platform/kinm/pkg/db"
-	"github.com/obot-platform/kinm/pkg/stores"
-	"github.com/obot-platform/kinm/pkg/strategy"
-	"github.com/obot-platform/obot/pkg/storage/scheme"
-	"github.com/obot-platform/obot/pkg/storage/tables"
+	"github.com/boeing-ai-gateway/kinm/pkg/db"
+	"github.com/boeing-ai-gateway/kinm/pkg/stores"
+	"github.com/boeing-ai-gateway/kinm/pkg/strategy"
+	"github.com/boeing-ai-gateway/boeing/pkg/storage/scheme"
+	"github.com/boeing-ai-gateway/boeing/pkg/storage/tables"
 	"k8s.io/apiserver/pkg/registry/rest"
 	kclient "sigs.k8s.io/controller-runtime/pkg/client"
 )

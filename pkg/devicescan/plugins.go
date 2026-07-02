@@ -4,7 +4,7 @@ import (
 	"io/fs"
 	"path"
 
-	"github.com/obot-platform/obot/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
 )
 
 // pluginExts is the file-collection extension allowlist used when

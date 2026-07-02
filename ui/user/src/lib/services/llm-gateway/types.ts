@@ -28,9 +28,9 @@ export const SUPPORTED_PROVIDER_IDS = new Set<string>([
 
 export interface RenderContext {
 	provider: ProviderConnection;
-	/** e.g. https://obot.example.com */
-	obotURL: string;
-	/** e.g. https://obot.example.com/api/llm-proxy/anthropic */
+	/** e.g. https://boeing.example.com */
+	boeingURL: string;
+	/** e.g. https://boeing.example.com/api/llm-proxy/anthropic */
 	baseURL: string;
 	/** First available model name for the provider, used in example invocations. */
 	exampleModel?: string;

@@ -8,14 +8,14 @@ import (
 	"net/url"
 	"strings"
 
-	"github.com/obot-platform/obot/apiclient/types"
-	"github.com/obot-platform/obot/pkg/api"
-	"github.com/obot-platform/obot/pkg/api/handlers"
-	"github.com/obot-platform/obot/pkg/controller/handlers/systemmcpserver"
-	gateway "github.com/obot-platform/obot/pkg/gateway/client"
-	"github.com/obot-platform/obot/pkg/mcp"
-	v1 "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1"
-	"github.com/obot-platform/obot/pkg/system"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/pkg/api"
+	"github.com/boeing-ai-gateway/boeing/pkg/api/handlers"
+	"github.com/boeing-ai-gateway/boeing/pkg/controller/handlers/systemmcpserver"
+	gateway "github.com/boeing-ai-gateway/boeing/pkg/gateway/client"
+	"github.com/boeing-ai-gateway/boeing/pkg/mcp"
+	v1 "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1"
+	"github.com/boeing-ai-gateway/boeing/pkg/system"
 	"go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp"
 	apierrors "k8s.io/apimachinery/pkg/api/errors"
 	"k8s.io/apimachinery/pkg/runtime/schema"
@@ -101,17 +101,17 @@ func (h *Handler) ensureServerIsDeployed(req api.Context) (mcp.ServerConfig, str
 		return mcp.ServerConfig{}, "", false, fmt.Errorf("failed to get mcp server config: %w", err)
 	}
 	if mcpServer.Spec.Template {
-		return mcp.ServerConfig{}, "", false, apierrors.NewNotFound(schema.GroupResource{Group: "obot.obot.ai", Resource: "mcpserver"}, mcpID)
+		return mcp.ServerConfig{}, "", false, apierrors.NewNotFound(schema.GroupResource{Group: "boeing.boeing.ai", Resource: "mcpserver"}, mcpID)
 	}
 
-	// Add-hoc authorization for nanobot agents
-	if mcpServerConfig.NanobotAgentName != "" {
-		var agent v1.NanobotAgent
-		if err = req.Get(&agent, mcpServerConfig.NanobotAgentName); err != nil {
-			return mcp.ServerConfig{}, "", false, fmt.Errorf("failed to get nanobot agent %q: %w", mcpServerConfig.NanobotAgentName, err)
+	// Add-hoc authorization for boeingbot agents
+	if mcpServerConfig.BoeingbotAgentName != "" {
+		var agent v1.BoeingbotAgent
+		if err = req.Get(&agent, mcpServerConfig.BoeingbotAgentName); err != nil {
+			return mcp.ServerConfig{}, "", false, fmt.Errorf("failed to get boeingbot agent %q: %w", mcpServerConfig.BoeingbotAgentName, err)
 		}
 		if agent.Spec.UserID != req.User.GetUID() && (!req.UserCanImpersonate() || !req.UserIsAdmin()) {
-			return mcp.ServerConfig{}, "", false, types.NewErrForbidden("user is not authorized to access nanobot agent %q", mcpServerConfig.NanobotAgentName)
+			return mcp.ServerConfig{}, "", false, types.NewErrForbidden("user is not authorized to access boeingbot agent %q", mcpServerConfig.BoeingbotAgentName)
 		}
 	}
 
@@ -120,7 +120,7 @@ func (h *Handler) ensureServerIsDeployed(req api.Context) (mcp.ServerConfig, str
 		return mcp.ServerConfig{}, "", false, fmt.Errorf("failed to launch mcp server: %w", err)
 	}
 
-	return mcpServerConfig, url, mcpServerConfig.NanobotAgentName != "", nil
+	return mcpServerConfig, url, mcpServerConfig.BoeingbotAgentName != "", nil
 }
 
 func (h *Handler) ensureSystemServerIsDeployed(req api.Context, mcpID string) (mcp.ServerConfig, string, bool, error) {
@@ -130,12 +130,12 @@ func (h *Handler) ensureSystemServerIsDeployed(req api.Context, mcpID string) (m
 	}
 
 	if systemServer.Spec.Manifest.Enabled != nil && !*systemServer.Spec.Manifest.Enabled {
-		return mcp.ServerConfig{}, "", false, apierrors.NewNotFound(schema.GroupResource{Group: "obot.obot.ai", Resource: "systemmcpserver"}, mcpID)
+		return mcp.ServerConfig{}, "", false, apierrors.NewNotFound(schema.GroupResource{Group: "boeing.boeing.ai", Resource: "systemmcpserver"}, mcpID)
 	}
 
 	// Only look up credentials if the manifest has env vars without static values.
 	// This avoids expensive credential lookups on the hot path for servers like
-	// obot-mcp-server where all env vars have static values.
+	// boeing-mcp-server where all env vars have static values.
 	credEnv := make(map[string]string)
 	var needsCredentials bool
 	for _, env := range systemServer.Spec.Manifest.Env {
@@ -175,7 +175,7 @@ func (h *Handler) ensureSystemServerIsDeployed(req api.Context, mcpID string) (m
 		secretsCred = tokenExchangeCred.Secrets
 	}
 
-	credEnv, err = mcp.MergeBoundCreds(req.Context(), req.LocalK8sClient, req.ObotNamespace, systemServer.Spec.Manifest.Env, systemServer.Spec.Manifest.RemoteConfig, credEnv)
+	credEnv, err = mcp.MergeBoundCreds(req.Context(), req.LocalK8sClient, req.BoeingNamespace, systemServer.Spec.Manifest.Env, systemServer.Spec.Manifest.RemoteConfig, credEnv)
 	if err != nil {
 		return mcp.ServerConfig{}, "", false, fmt.Errorf("failed to resolve secret bindings: %w", err)
 	}

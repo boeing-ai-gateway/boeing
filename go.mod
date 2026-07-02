@@ -1,10 +1,16 @@
-module github.com/obot-platform/obot
+module github.com/boeing-ai-gateway/boeing
 
 go 1.26.4
 
 replace (
-	github.com/obot-platform/obot/apiclient => ./apiclient
-	github.com/obot-platform/obot/logger => ./logger
+	github.com/boeing-ai-gateway/boeing/apiclient => ./apiclient
+	github.com/boeing-ai-gateway/boeing/logger => ./logger
+	github.com/boeing-ai-gateway/nah => ../nah
+	github.com/boeing-ai-gateway/kinm => ../kinm
+	github.com/boeing-ai-gateway/cmd => ../cmd
+	github.com/boeing-ai-gateway/boeingbot => ../boeingbot
+	github.com/boeing-ai-gateway/chat-completion-client => ../chat-completion-client
+	github.com/boeing-ai-gateway/mcp-oauth-proxy => ../mcp-oauth-proxy
 )
 
 require (
@@ -36,17 +42,16 @@ require (
 	github.com/google/jsonschema-go v0.4.2
 	github.com/google/uuid v1.6.0
 	github.com/jackc/pgx/v5 v5.9.2
-	github.com/keygen-sh/keygen-go/v3 v3.3.0
 	github.com/moby/moby/api v1.52.0-alpha.1
 	github.com/moby/moby/client v0.1.0-alpha.0
 	github.com/oasdiff/yaml v0.0.0-20250309154309-f31be36b4037
-	github.com/obot-platform/chat-completion-client v0.0.0-20260529163740-88dd50945c18
-	github.com/obot-platform/cmd v0.0.0-20260615195405-fab7a186f46c
-	github.com/obot-platform/kinm v0.0.0-20260420174234-eec2cd66c333
-	github.com/obot-platform/nah v0.0.0-20260424131842-3fc648d20cac
-	github.com/obot-platform/nanobot v0.0.86-0.20260619135558-06f0043756cf
-	github.com/obot-platform/obot/apiclient v0.0.0-20250813183905-ade719c1e8bf
-	github.com/obot-platform/obot/logger v0.0.0-20241217130503-4004a5c69f32
+	github.com/boeing-ai-gateway/chat-completion-client v0.0.0-20260529163740-88dd50945c18
+	github.com/boeing-ai-gateway/cmd v0.0.0-20260615195405-fab7a186f46c
+	github.com/boeing-ai-gateway/kinm v0.0.0-20260420174234-eec2cd66c333
+	github.com/boeing-ai-gateway/nah v0.0.0-20260424131842-3fc648d20cac
+	github.com/boeing-ai-gateway/boeingbot v0.0.86-0.20260619135558-06f0043756cf
+	github.com/boeing-ai-gateway/boeing/apiclient v0.0.0-20250813183905-ade719c1e8bf
+	github.com/boeing-ai-gateway/boeing/logger v0.0.0-20241217130503-4004a5c69f32
 	github.com/pkg/browser v0.0.0-20240102092130-5ac0b6a4141c
 	github.com/prometheus/client_golang v1.23.2
 	github.com/rs/cors v1.11.1
@@ -57,13 +62,7 @@ require (
 	github.com/tidwall/gjson v1.18.0
 	github.com/tidwall/sjson v1.2.5
 	github.com/zalando/go-keyring v0.2.8
-	go.opentelemetry.io/contrib/exporters/autoexport v0.68.0
 	go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp v0.61.0
-	go.opentelemetry.io/otel v1.43.0
-	go.opentelemetry.io/otel/log v0.19.0
-	go.opentelemetry.io/otel/sdk v1.43.0
-	go.opentelemetry.io/otel/sdk/log v0.19.0
-	go.opentelemetry.io/otel/sdk/metric v1.43.0
 	go.yaml.in/yaml/v3 v3.0.4
 	golang.org/x/crypto v0.52.0
 	golang.org/x/exp v0.0.0-20260410095643-746e56fc9e2f
@@ -86,6 +85,12 @@ require (
 	k8s.io/utils v0.0.0-20250604170112-4c0f3b243397
 	sigs.k8s.io/controller-runtime v0.22.5
 	sigs.k8s.io/yaml v1.6.0
+)
+
+require (
+	go.opentelemetry.io/otel v1.43.0 // indirect
+	go.opentelemetry.io/otel/sdk v1.43.0 // indirect
+	go.opentelemetry.io/otel/sdk/metric v1.43.0 // indirect
 )
 
 require (
@@ -179,7 +184,6 @@ require (
 	github.com/google/cel-go v0.26.0 // indirect
 	github.com/google/gnostic-models v0.7.0 // indirect
 	github.com/google/go-cmp v0.7.0 // indirect
-	github.com/google/go-querystring v1.1.0 // indirect
 	github.com/google/pprof v0.0.0-20250630185457-6e76a2b096b5 // indirect
 	github.com/google/s2a-go v0.1.9 // indirect
 	github.com/google/shlex v0.0.0-20191202100458-e7afc7fbc510 // indirect
@@ -191,7 +195,6 @@ require (
 	github.com/grpc-ecosystem/go-grpc-prometheus v1.2.0 // indirect
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.28.0 // indirect
 	github.com/hashicorp/errwrap v1.1.0 // indirect
-	github.com/hashicorp/go-cleanhttp v0.5.1 // indirect
 	github.com/hashicorp/go-multierror v1.1.1 // indirect
 	github.com/huandu/xstrings v1.5.0 // indirect
 	github.com/inconshreveable/mousetrap v1.1.0 // indirect
@@ -206,8 +209,6 @@ require (
 	github.com/json-iterator/go v1.1.12 // indirect
 	github.com/kballard/go-shellquote v0.0.0-20180428030007-95032a82bc51 // indirect
 	github.com/kevinburke/ssh_config v1.2.0 // indirect
-	github.com/keygen-sh/go-update v1.0.0 // indirect
-	github.com/keygen-sh/jsonapi-go v1.2.1 // indirect
 	github.com/klauspost/compress v1.18.2 // indirect
 	github.com/klauspost/cpuid/v2 v2.3.0 // indirect
 	github.com/kylelemons/godebug v1.1.0 // indirect
@@ -235,8 +236,7 @@ require (
 	github.com/ncruces/go-strftime v0.1.9 // indirect
 	github.com/nxadm/tail v1.4.11 // indirect
 	github.com/oasdiff/yaml3 v0.0.0-20250309153720-d2182401db90 // indirect
-	github.com/oasisprotocol/curve25519-voi v0.0.0-20211102120939-d5a936accd94 // indirect
-	github.com/obot-platform/mcp-oauth-proxy v0.0.3-0.20260526141817-32b8278fcf00 // indirect
+	github.com/boeing-ai-gateway/mcp-oauth-proxy v0.0.3-0.20260526141817-32b8278fcf00 // indirect
 	github.com/opencontainers/go-digest v1.0.0 // indirect
 	github.com/opencontainers/image-spec v1.1.1 // indirect
 	github.com/peterbourgon/diskv v2.0.1+incompatible // indirect
@@ -246,7 +246,6 @@ require (
 	github.com/pmezard/go-difflib v1.0.1-0.20181226105442-5d4384ee4fb2 // indirect
 	github.com/prometheus/client_model v0.6.2 // indirect
 	github.com/prometheus/common v0.67.5 // indirect
-	github.com/prometheus/otlptranslator v1.0.0 // indirect
 	github.com/prometheus/procfs v0.20.1 // indirect
 	github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec // indirect
 	github.com/rivo/uniseg v0.4.7 // indirect
@@ -269,20 +268,10 @@ require (
 	go.etcd.io/etcd/client/pkg/v3 v3.6.4 // indirect
 	go.etcd.io/etcd/client/v3 v3.6.4 // indirect
 	go.opentelemetry.io/auto/sdk v1.2.1 // indirect
-	go.opentelemetry.io/contrib/bridges/prometheus v0.68.0 // indirect
 	go.opentelemetry.io/contrib/detectors/gcp v1.39.0 // indirect
 	go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc v0.61.0 // indirect
-	go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploggrpc v0.19.0 // indirect
-	go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploghttp v0.19.0 // indirect
-	go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetricgrpc v1.43.0 // indirect
-	go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetrichttp v1.43.0 // indirect
 	go.opentelemetry.io/otel/exporters/otlp/otlptrace v1.43.0 // indirect
 	go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc v1.43.0 // indirect
-	go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp v1.43.0 // indirect
-	go.opentelemetry.io/otel/exporters/prometheus v0.65.0 // indirect
-	go.opentelemetry.io/otel/exporters/stdout/stdoutlog v0.19.0 // indirect
-	go.opentelemetry.io/otel/exporters/stdout/stdoutmetric v1.43.0 // indirect
-	go.opentelemetry.io/otel/exporters/stdout/stdouttrace v1.43.0 // indirect
 	go.opentelemetry.io/otel/metric v1.43.0 // indirect
 	go.opentelemetry.io/otel/trace v1.43.0 // indirect
 	go.opentelemetry.io/proto/otlp v1.10.0 // indirect

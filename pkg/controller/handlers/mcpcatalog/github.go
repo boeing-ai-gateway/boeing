@@ -74,7 +74,7 @@ func isGitRepoURL(catalogURL string) bool {
 
 // checkGitHubRepoSize checks repo size via the GitHub API before cloning.
 func checkGitHubRepoSize(ctx context.Context, org, repo string, maxSizeMB int, token string) error {
-	if org == "obot-platform" {
+	if org == "boeing-ai-gateway" {
 		return nil
 	}
 

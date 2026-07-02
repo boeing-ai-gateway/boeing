@@ -3,7 +3,7 @@ package dispatcher
 import (
 	"testing"
 
-	"github.com/obot-platform/obot/logger"
+	"github.com/boeing-ai-gateway/boeing/logger"
 	"github.com/sirupsen/logrus"
 )
 

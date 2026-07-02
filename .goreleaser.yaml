@@ -1,6 +1,6 @@
 version: 2
 
-project_name: "obot"
+project_name: "boeing"
 
 builds:
   - id: build-darwin
@@ -11,7 +11,7 @@ builds:
       - amd64
       - arm64
     ldflags:
-      - -X "github.com/obot-platform/obot/pkg/version.Tag=v{{ .Version }}"
+      - -X "github.com/boeing-ai-gateway/boeing/pkg/version.Tag=v{{ .Version }}"
     hooks:
       post:
         - cmd: quill sign-and-notarize "{{ .Path }}" --dry-run={{ .IsSnapshot }} --ad-hoc={{ .IsSnapshot }} -vv
@@ -27,7 +27,7 @@ builds:
       - amd64
       - arm64
     ldflags:
-      - -X "github.com/obot-platform/obot/pkg/version.Tag=v{{ .Version }}"
+      - -X "github.com/boeing-ai-gateway/boeing/pkg/version.Tag=v{{ .Version }}"
 
 archives:
   - formats:
@@ -40,20 +40,20 @@ archives:
 
 release:
   github:
-    owner: "obot-platform"
-    name: "obot"
+    owner: "boeing-ai-gateway"
+    name: "boeing"
   make_latest: false
   prerelease: auto
 
 brews:
-  - name: obot
-    description: "Obot CLI"
+  - name: boeing
+    description: "Boeing CLI"
     install: |
-      bin.install "obot"
-    homepage: "https://github.com/obot-platform/obot"
+      bin.install "boeing"
+    homepage: "https://github.com/boeing-ai-gateway/boeing"
     skip_upload: auto
     directory: "Formula"
     repository:
-      owner: obot-platform
+      owner: boeing-ai-gateway
       name: homebrew-tap
       token: "{{ .Env.TAP_GITHUB_TOKEN }}"

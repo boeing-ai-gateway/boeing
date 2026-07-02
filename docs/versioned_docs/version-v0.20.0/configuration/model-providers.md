@@ -4,7 +4,7 @@ The Model Providers page allows administrators to configure and manage various A
 
 ### Configuring Model Providers
 
-Obot supports a variety of model providers, including:
+Boeing supports a variety of model providers, including:
 
 **Community**
 - OpenAI
@@ -73,7 +73,7 @@ Setting a default model here does not automatically grant users access to it. Us
 
 #### Azure (Enterprise only)
 
-Obot supports two Azure providers, each with a different authentication method. These are compatible with both Azure OpenAI deployments and Foundry deployments.
+Boeing supports two Azure providers, each with a different authentication method. These are compatible with both Azure OpenAI deployments and Foundry deployments.
 
 ##### API Key Authentication
 
@@ -110,7 +110,7 @@ az cognitiveservices account show \
 
 ###### 3. Configure the provider
 
-Obot requires:
+Boeing requires:
 - **Azure Endpoint** — your Azure OpenAI endpoint URL (`https://<resource_name>.openai.azure.com`)
 - **Client ID** — the Entra app's application (client) ID
 - **Client Secret** — the Entra app's client secret
@@ -121,23 +121,23 @@ Obot requires:
 
 You can also optionally specify the API version (defaults to `2025-01-01-preview`).
 
-The service principal requires at minimum the `Cognitive Services OpenAI User` or `Cognitive Services User` role on the account to read deployments. Deployments are discovered automatically — each deployment's base model name becomes the model ID exposed to Obot.
+The service principal requires at minimum the `Cognitive Services OpenAI User` or `Cognitive Services User` role on the account to read deployments. Deployments are discovered automatically — each deployment's base model name becomes the model ID exposed to Boeing.
 
 See the [Microsoft docs](https://learn.microsoft.com/en-us/azure/foundry/foundry-models/how-to/configure-entra-id) for more details.
 
 #### Amazon Bedrock (Enterprise only)
 
-Obot supports two Amazon Bedrock providers, each with a different authentication method.
+Boeing supports two Amazon Bedrock providers, each with a different authentication method.
 
 :::note
-Both Bedrock providers use _AWS Bedrock Inference Profiles_ rather than direct on-demand model access. Inference profiles are resources that route model invocation requests and enable cost tracking — AWS provides system-defined cross-region inference profiles by default for supported models, so no manual setup is typically required. Only models with an available inference profile will appear in Obot. See the [AWS documentation](https://docs.aws.amazon.com/bedrock/latest/userguide/inference-profiles-use.html) for more details.
+Both Bedrock providers use _AWS Bedrock Inference Profiles_ rather than direct on-demand model access. Inference profiles are resources that route model invocation requests and enable cost tracking — AWS provides system-defined cross-region inference profiles by default for supported models, so no manual setup is typically required. Only models with an available inference profile will appear in Boeing. See the [AWS documentation](https://docs.aws.amazon.com/bedrock/latest/userguide/inference-profiles-use.html) for more details.
 :::
 
 ##### Static Credentials
 
 Use the **Amazon Bedrock (Static Credentials)** provider to authenticate with long-lived AWS credentials.
 
-Obot requires:
+Boeing requires:
 - **AWS Access Key ID** — your IAM user's access key
 - **AWS Secret Access Key** — your IAM user's secret key
 - **AWS Region** — the region where your inference profiles are configured (e.g. `us-east-1`)
@@ -147,20 +147,20 @@ Obot requires:
 
 Use the **Amazon Bedrock (API Key)** provider to authenticate with a Bedrock API key.
 
-Obot requires:
+Boeing requires:
 - **API Key** — your Bedrock API key
 - **AWS Region** — the region where your inference profiles are configured (e.g. `us-east-1`)
 
 #### Ollama
 
-[Ollama](https://ollama.ai/) allows you to run LLMs locally. Two configuration steps are required to use it with Obot:
+[Ollama](https://ollama.ai/) allows you to run LLMs locally. Two configuration steps are required to use it with Boeing:
 
-1. **Expose Ollama to the network** - By default, Ollama only binds to `127.0.0.1:11434`. Since Obot runs in a container, `localhost` addresses resolve to Obot's container, not your host. Set `OLLAMA_HOST=0.0.0.0` before starting Ollama, then use your host's IP address in the endpoint URL.
+1. **Expose Ollama to the network** - By default, Ollama only binds to `127.0.0.1:11434`. Since Boeing runs in a container, `localhost` addresses resolve to Boeing's container, not your host. Set `OLLAMA_HOST=0.0.0.0` before starting Ollama, then use your host's IP address in the endpoint URL.
 
 2. **Set the Ollama host**
    ```
    http://<your-host-ip>:11434
    ```
-   - If you are running Obot in Docker, you should use `http://host.docker.internal:11434`. For linux users, run Obot in Docker with this additional flag `--add-host=host.docker.internal:host-gateway` or use an alternative method of allowing the container to access the host network
+   - If you are running Boeing in Docker, you should use `http://host.docker.internal:11434`. For linux users, run Boeing in Docker with this additional flag `--add-host=host.docker.internal:host-gateway` or use an alternative method of allowing the container to access the host network
 
 See [Ollama's FAQ](https://docs.ollama.com/faq) for platform-specific instructions on setting `OLLAMA_HOST`.

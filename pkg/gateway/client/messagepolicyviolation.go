@@ -8,14 +8,14 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/obot-platform/obot/pkg/gateway/types"
+	"github.com/boeing-ai-gateway/boeing/pkg/gateway/types"
 	"gorm.io/gorm"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 	"k8s.io/apiserver/pkg/storage/value"
 )
 
 var messagePolicyViolationGroupResource = schema.GroupResource{
-	Group:    "obot.obot.ai",
+	Group:    "boeing.boeing.ai",
 	Resource: "policyviolations",
 }
 

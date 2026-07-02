@@ -88,12 +88,12 @@
 
 @plugin 'daisyui' {
 	themes:
-		nanobotlight --default,
-		nanobotdark --prefersdark;
+		boeingbotlight --default,
+		boeingbotdark --prefersdark;
 }
 
 @plugin 'daisyui/theme' {
-	name: 'nanobotlight';
+	name: 'boeingbotlight';
 	default: true;
 	prefersdark: false;
 	color-scheme: light;
@@ -129,7 +129,7 @@
 }
 
 @plugin 'daisyui/theme' {
-	name: 'nanobotdark';
+	name: 'boeingbotdark';
 	default: false;
 	prefersdark: true;
 	color-scheme: dark;
@@ -1222,8 +1222,8 @@
 	}
 }
 
-.nanobot .prose,
-.nanobot .milkdown .ProseMirror {
+.boeingbot .prose,
+.boeingbot .milkdown .ProseMirror {
 	& h1 {
 		font-size: 1.5rem;
 		font-weight: 700;
@@ -1282,7 +1282,7 @@
 	}
 }
 
-.nanobot .milkdown .ProseMirror {
+.boeingbot .milkdown .ProseMirror {
 	& h1 {
 		margin-top: 0;
 		margin-bottom: 0;
@@ -1392,7 +1392,7 @@
 }
 
 .milkdown-content,
-.nanobot .prose {
+.boeingbot .prose {
 	& h1,
 	& h2,
 	& h3,
@@ -1541,7 +1541,7 @@
 
 html {
 	--theme-font-family:
-		Poppins, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica Neue, Arial,
+		Poppins, ui-sans-serif, system-ui, -apple-system, Segoe UI, Rboeingo, Helvetica Neue, Arial,
 		Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
 	--primary: var(--theme-primary-light, var(--color-blue-500));
 }

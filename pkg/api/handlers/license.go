@@ -4,9 +4,9 @@ import (
 	"errors"
 	"strings"
 
-	apitypes "github.com/obot-platform/obot/apiclient/types"
-	"github.com/obot-platform/obot/pkg/api"
-	"github.com/obot-platform/obot/pkg/license"
+	apitypes "github.com/boeing-ai-gateway/boeing/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/pkg/api"
+	"github.com/boeing-ai-gateway/boeing/pkg/license"
 )
 
 type LicenseHandler struct {

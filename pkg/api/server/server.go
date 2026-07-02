@@ -11,19 +11,19 @@ import (
 	"strings"
 	"time"
 
-	"github.com/obot-platform/obot/apiclient/types"
-	"github.com/obot-platform/obot/logger"
-	"github.com/obot-platform/obot/pkg/api"
-	"github.com/obot-platform/obot/pkg/api/authn"
-	"github.com/obot-platform/obot/pkg/api/authz"
-	"github.com/obot-platform/obot/pkg/api/server/audit"
-	"github.com/obot-platform/obot/pkg/api/server/ratelimiter"
-	"github.com/obot-platform/obot/pkg/api/server/requestinfo"
-	"github.com/obot-platform/obot/pkg/auth"
-	gclient "github.com/obot-platform/obot/pkg/gateway/client"
-	"github.com/obot-platform/obot/pkg/license"
-	"github.com/obot-platform/obot/pkg/proxy"
-	"github.com/obot-platform/obot/pkg/storage"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/logger"
+	"github.com/boeing-ai-gateway/boeing/pkg/api"
+	"github.com/boeing-ai-gateway/boeing/pkg/api/authn"
+	"github.com/boeing-ai-gateway/boeing/pkg/api/authz"
+	"github.com/boeing-ai-gateway/boeing/pkg/api/server/audit"
+	"github.com/boeing-ai-gateway/boeing/pkg/api/server/ratelimiter"
+	"github.com/boeing-ai-gateway/boeing/pkg/api/server/requestinfo"
+	"github.com/boeing-ai-gateway/boeing/pkg/auth"
+	gclient "github.com/boeing-ai-gateway/boeing/pkg/gateway/client"
+	"github.com/boeing-ai-gateway/boeing/pkg/license"
+	"github.com/boeing-ai-gateway/boeing/pkg/proxy"
+	"github.com/boeing-ai-gateway/boeing/pkg/storage"
 	"go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp"
 	kclient "sigs.k8s.io/controller-runtime/pkg/client"
 
@@ -36,7 +36,7 @@ type Server struct {
 	storageClient           storage.Client
 	gatewayClient           *gclient.Client
 	localK8sClient          kclient.Client
-	obotNamespace           string
+	boeingNamespace           string
 	authenticator           *authn.Authenticator
 	authorizer              *authz.Authorizer
 	proxyManager            *proxy.Manager
@@ -51,7 +51,7 @@ type Server struct {
 	otelHandler http.Handler
 }
 
-func NewServer(storageClient storage.Client, gatewayClient *gclient.Client, localK8sClient kclient.Client, obotNamespace string, authn *authn.Authenticator, authz *authz.Authorizer, proxyManager *proxy.Manager, auditLogger audit.Logger, rateLimiter *ratelimiter.RateLimiter, baseURL string, oauthScopesSupported []string, registryNoAuth bool, licenseProvider *license.Provider) *Server {
+func NewServer(storageClient storage.Client, gatewayClient *gclient.Client, localK8sClient kclient.Client, boeingNamespace string, authn *authn.Authenticator, authz *authz.Authorizer, proxyManager *proxy.Manager, auditLogger audit.Logger, rateLimiter *ratelimiter.RateLimiter, baseURL string, oauthScopesSupported []string, registryNoAuth bool, licenseProvider *license.Provider) *Server {
 	var scope string
 	if len(oauthScopesSupported) > 0 {
 		scope = fmt.Sprintf(", scope=\"%s\"", strings.Join(oauthScopesSupported, " "))
@@ -60,7 +60,7 @@ func NewServer(storageClient storage.Client, gatewayClient *gclient.Client, loca
 		storageClient:           storageClient,
 		gatewayClient:           gatewayClient,
 		localK8sClient:          localK8sClient,
-		obotNamespace:           obotNamespace,
+		boeingNamespace:           boeingNamespace,
 		authenticator:           authn,
 		authorizer:              authz,
 		proxyManager:            proxyManager,
@@ -74,7 +74,7 @@ func NewServer(storageClient storage.Client, gatewayClient *gclient.Client, loca
 	}
 	s.otelHandler = otelhttp.NewHandler(
 		s.mux,
-		"obot/http",
+		"boeing/http",
 		otelhttp.WithFilter(func(r *http.Request) bool {
 			return r.URL.Path != "/api/healthz" && !isStaticAssetPath(r.URL.Path)
 		}),
@@ -115,7 +115,7 @@ func (s *Server) Wrap(f api.HandlerFunc) http.HandlerFunc {
 			if errors.Is(err, proxy.ErrInvalidSession) {
 				// The session is invalid, so tell the browser to delete the cookie so that it won't try it again.
 				http.SetCookie(rw, &http.Cookie{
-					Name:   proxy.ObotAccessTokenCookie,
+					Name:   proxy.BoeingAccessTokenCookie,
 					Value:  "",
 					Path:   "/",
 					MaxAge: -1,
@@ -187,11 +187,11 @@ func (s *Server) Wrap(f api.HandlerFunc) http.HandlerFunc {
 		err = s.providerEntitlementGate.Check(req)
 		if err == nil {
 			if !s.authorizer.Authorize(req, user) {
-				if _, err := req.Cookie(auth.ObotAccessTokenCookie); err == nil && req.URL.Path == "/api/me" {
-					// Tell the browser to delete the obot_access_token cookie.
+				if _, err := req.Cookie(auth.BoeingAccessTokenCookie); err == nil && req.URL.Path == "/api/me" {
+					// Tell the browser to delete the boeing_access_token cookie.
 					// If the user tried to access this path and was unauthorized, then something is wrong with their token.
 					http.SetCookie(rw, &http.Cookie{
-						Name:   auth.ObotAccessTokenCookie,
+						Name:   auth.BoeingAccessTokenCookie,
 						Value:  "",
 						Path:   "/",
 						MaxAge: -1,
@@ -226,7 +226,7 @@ func (s *Server) Wrap(f api.HandlerFunc) http.HandlerFunc {
 				User:           user,
 				APIBaseURL:     s.baseURL,
 				LocalK8sClient: s.localK8sClient,
-				ObotNamespace:  s.obotNamespace,
+				BoeingNamespace:  s.boeingNamespace,
 			})
 		}
 		if errHTTP := (*types.ErrHTTP)(nil); errors.As(err, &errHTTP) {

@@ -3,12 +3,12 @@ package alias
 import (
 	"fmt"
 
-	"github.com/obot-platform/nah/pkg/router"
-	"github.com/obot-platform/nah/pkg/untriggered"
-	"github.com/obot-platform/obot/logger"
-	"github.com/obot-platform/obot/pkg/alias"
-	"github.com/obot-platform/obot/pkg/create"
-	v1 "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1"
+	"github.com/boeing-ai-gateway/nah/pkg/router"
+	"github.com/boeing-ai-gateway/nah/pkg/untriggered"
+	"github.com/boeing-ai-gateway/boeing/logger"
+	"github.com/boeing-ai-gateway/boeing/pkg/alias"
+	"github.com/boeing-ai-gateway/boeing/pkg/create"
+	v1 "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1"
 	apierrors "k8s.io/apimachinery/pkg/api/errors"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime"

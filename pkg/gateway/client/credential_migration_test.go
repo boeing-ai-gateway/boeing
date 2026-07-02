@@ -4,7 +4,7 @@ import (
 	"context"
 	"testing"
 
-	gatewaytypes "github.com/obot-platform/obot/pkg/gateway/types"
+	gatewaytypes "github.com/boeing-ai-gateway/boeing/pkg/gateway/types"
 )
 
 func TestMigrateToolReferenceCredentialContexts(t *testing.T) {

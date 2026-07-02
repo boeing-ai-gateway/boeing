@@ -172,5 +172,5 @@
 />
 
 <svelte:head>
-	<title>Obot | Model Access Policies</title>
+	<title>Boeing | Model Access Policies</title>
 </svelte:head>

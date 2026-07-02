@@ -29,10 +29,10 @@ serve-docs:
 
 # Build the project
 
-GIT_TAG := $(shell git describe --tags --exact-match 2>/dev/null | xargs -I {} echo -X 'github.com/obot-platform/obot/pkg/version.Tag={}')
+GIT_TAG := $(shell git describe --tags --exact-match 2>/dev/null | xargs -I {} echo -X 'github.com/boeing-platform/boeing/pkg/version.Tag={}')
 GO_LD_FLAGS := "-s -w $(GIT_TAG)"
 build:
-	go build -ldflags=$(GO_LD_FLAGS) -o bin/obot .
+	go build -ldflags=$(GO_LD_FLAGS) -o bin/boeing .
 
 dev:
 	./tools/dev.sh $(ARGS)
@@ -50,14 +50,14 @@ otel-jaeger-logs:
 	docker compose -f tools/jaeger-compose.yaml logs -f
 
 telepresence-setup:
-	kubectl create deployment obot-upstream --image=alpine --dry-run=client -o yaml -- sleep infinity | kubectl apply -f -
-	kubectl create service clusterip obot-upstream --tcp=8080:8080 --dry-run=client -o yaml | kubectl apply -f -
-	kubectl patch svc obot-upstream --type='json' -p='[{"op":"replace","path":"/spec/ports/0/name","value":"http"}]'
-	kubectl apply -f tools/obot-proxy.yaml
+	kubectl create deployment boeing-upstream --image=alpine --dry-run=client -o yaml -- sleep infinity | kubectl apply -f -
+	kubectl create service clusterip boeing-upstream --tcp=8080:8080 --dry-run=client -o yaml | kubectl apply -f -
+	kubectl patch svc boeing-upstream --type='json' -p='[{"op":"replace","path":"/spec/ports/0/name","value":"http"}]'
+	kubectl apply -f tools/boeing-proxy.yaml
 	telepresence quit -s
 	telepresence connect
-	kubectl rollout restart deployment/obot-upstream
-	telepresence intercept obot-upstream -p 8080:8080
+	kubectl rollout restart deployment/boeing-upstream
+	telepresence intercept boeing-upstream -p 8080:8080
 
 # Lint the project
 lint: lint-go

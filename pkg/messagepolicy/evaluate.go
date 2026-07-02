@@ -11,12 +11,12 @@ import (
 	"strings"
 	"sync"
 
-	nanobottypes "github.com/obot-platform/nanobot/pkg/types"
-	"github.com/obot-platform/obot/apiclient/types"
-	"github.com/obot-platform/obot/pkg/alias"
-	"github.com/obot-platform/obot/pkg/gateway/server/dispatcher"
-	v1 "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1"
-	"github.com/obot-platform/obot/pkg/system"
+	boeingbottypes "github.com/boeing-ai-gateway/boeingbot/pkg/types"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/pkg/alias"
+	"github.com/boeing-ai-gateway/boeing/pkg/gateway/server/dispatcher"
+	v1 "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1"
+	"github.com/boeing-ai-gateway/boeing/pkg/system"
 	"github.com/tidwall/gjson"
 	kclient "sigs.k8s.io/controller-runtime/pkg/client"
 )
@@ -185,7 +185,7 @@ func (h *Helper) resolveModelByAlias(ctx context.Context, aliasType types.Defaul
 
 	credHeaders := make(map[string]string, len(credEnv))
 	for k, v := range credEnv {
-		credHeaders[fmt.Sprintf("X-Obot-%s", k)] = v
+		credHeaders[fmt.Sprintf("X-Boeing-%s", k)] = v
 	}
 
 	// only add /v1 if the URL has no path.
@@ -208,7 +208,7 @@ type chatMessage struct {
 }
 
 // chatCompletionRequest is the request body for OpenAI-format chat completions.
-// Stream is always set to true to match normal Obot proxy usage patterns.
+// Stream is always set to true to match normal Boeing proxy usage patterns.
 type chatCompletionRequest struct {
 	Model    string        `json:"model"`
 	Messages []chatMessage `json:"messages"`
@@ -235,7 +235,7 @@ type bifrostParams struct {
 // callLLM makes a streaming LLM call to the resolved model provider, using the
 // appropriate API format for the provider's dialect.
 func (h *Helper) callLLM(ctx context.Context, resolved *resolvedModel, messages []chatMessage) (string, error) {
-	if resolved.dialect == string(nanobottypes.DialectBifrostRequest) {
+	if resolved.dialect == string(boeingbottypes.DialectBifrostRequest) {
 		return h.callLLMBifrost(ctx, resolved, messages)
 	}
 	return h.callLLMChatCompletions(ctx, resolved, messages)

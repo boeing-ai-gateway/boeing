@@ -4,7 +4,7 @@
 	import { tooltip } from '$lib/actions/tooltip.svelte';
 	import Confirm from '$lib/components/Confirm.svelte';
 	import Layout from '$lib/components/Layout.svelte';
-	import ObotCliBanner from '$lib/components/ObotCliBanner.svelte';
+	import BoeingCliBanner from '$lib/components/BoeingCliBanner.svelte';
 	import ResponsiveDialog from '$lib/components/ResponsiveDialog.svelte';
 	import Search from '$lib/components/Search.svelte';
 	import IconButton from '$lib/components/primitives/IconButton.svelte';
@@ -13,7 +13,7 @@
 	import Loading from '$lib/icons/Loading.svelte';
 	import { AdminService } from '$lib/services';
 	import type { SkillRepository } from '$lib/services/admin/types';
-	import type { Skill } from '$lib/services/nanobot/types';
+	import type { Skill } from '$lib/services/boeingbot/types';
 	import { errors, profile } from '$lib/stores';
 	import { formatTimeAgo } from '$lib/time';
 	import {
@@ -199,7 +199,7 @@
 
 <Layout classes={{ navbar: 'bg-base-200' }} title="Skills">
 	<div class="flex min-h-full flex-col gap-2">
-		<ObotCliBanner description="Give users easy installation & access to their curated skills." />
+		<BoeingCliBanner description="Give users easy installation & access to their curated skills." />
 		<div class="flex min-h-full flex-col">
 			<div class="bg-base-200 dark:bg-base-100 sticky top-16 left-0 z-20 w-full py-1">
 				<div class="mb-2">
@@ -332,11 +332,9 @@
 		{:else if showLicenseError}
 			<div class="my-12 flex w-md flex-col items-center gap-4 self-center text-center">
 				<TriangleAlert class="size-12 text-warning" />
-				<h4 class="text-muted-content text-lg font-semibold">License Error</h4>
+				<h4 class="text-muted-content text-lg font-semibold">Skills Unavailable</h4>
 				<p class="text-muted-content text-sm font-light">
-					An issue occurred with fetching skills due to licensing. Please resolve outstanding
-					licensing issues or contact support at
-					<a href="mailto:licensing@obot.ai" class="text-link">licensing@obot.ai</a>.
+					An issue occurred with fetching skills. Please check your configuration.
 				</p>
 			</div>
 		{:else}
@@ -621,5 +619,5 @@
 </dialog>
 
 <svelte:head>
-	<title>Obot | Admin - Skills</title>
+	<title>Boeing | Admin - Skills</title>
 </svelte:head>

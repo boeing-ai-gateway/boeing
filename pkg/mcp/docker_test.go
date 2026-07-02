@@ -6,21 +6,21 @@ import (
 	"github.com/moby/moby/api/types/container"
 )
 
-func TestDockerTransformObotHostnameAlwaysRewritesHost(t *testing.T) {
+func TestDockerTransformBoeingHostnameAlwaysRewritesHost(t *testing.T) {
 	d := &dockerBackend{hostBaseURLWithPort: "http://172.17.0.1:8080"}
 
 	tests := map[string]string{
 		"http://localhost:8080/oauth/token":                 "http://172.17.0.1:8080/oauth/token",
-		"http://obot.example.com/oauth/token":               "http://172.17.0.1:8080/oauth/token",
-		"https://obot.example.com/oauth/token?audience=mcp": "http://172.17.0.1:8080/oauth/token?audience=mcp",
-		"http://obot.example.com":                           "http://172.17.0.1:8080",
+		"http://boeing.example.com/oauth/token":               "http://172.17.0.1:8080/oauth/token",
+		"https://boeing.example.com/oauth/token?audience=mcp": "http://172.17.0.1:8080/oauth/token?audience=mcp",
+		"http://boeing.example.com":                           "http://172.17.0.1:8080",
 		"":                                                  "",
 		"not-a-url":                                         "not-a-url",
 	}
 
 	for input, expected := range tests {
-		if result := d.transformObotHostname(input); result != expected {
-			t.Fatalf("transformObotHostname(%q) = %q, want %q", input, result, expected)
+		if result := d.transformBoeingHostname(input); result != expected {
+			t.Fatalf("transformBoeingHostname(%q) = %q, want %q", input, result, expected)
 		}
 	}
 }
@@ -97,16 +97,16 @@ func TestFileEnvKeysHashChangesWithKeySet(t *testing.T) {
 
 func TestApplyServerConfigToContainerConfigOverridesImageAndLabels(t *testing.T) {
 	config := &container.Config{
-		Image:  "ghcr.io/obot-platform/nanobot:v0.0.59",
+		Image:  "ghcr.io/boeing-ai-gateway/boeingbot:v0.0.59",
 		Labels: nil,
 	}
 
 	server := ServerConfig{
 		MCPServerName:  "mcp-server-abc",
-		ContainerImage: "ghcr.io/obot-platform/nanobot:v0.0.65",
+		ContainerImage: "ghcr.io/boeing-ai-gateway/boeingbot:v0.0.65",
 		Runtime:        "containerized",
 		Files: []File{{
-			EnvKey:  "NANOBOT_ENV_FILE",
+			EnvKey:  "BOEINGBOT_ENV_FILE",
 			Data:    "value",
 			Dynamic: true,
 		}},
@@ -129,7 +129,7 @@ func TestApplyServerConfigToContainerConfigOverridesImageAndLabels(t *testing.T)
 
 func TestApplyServerConfigToContainerConfigNoImageNoChanges(t *testing.T) {
 	config := &container.Config{
-		Image: "ghcr.io/obot-platform/nanobot:v0.0.65",
+		Image: "ghcr.io/boeing-ai-gateway/boeingbot:v0.0.65",
 		Labels: map[string]string{
 			"existing": "label",
 		},

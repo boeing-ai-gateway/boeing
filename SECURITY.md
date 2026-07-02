@@ -3,7 +3,7 @@
 We provide security updates in patch releases for supported minor releases.
 
 ## Reporting a Vulnerability
-Please use GitHub's vulnerability reporting mechanism - https://github.com/obot-platform/obot/security - to report any vulnerabilities.
+Please use GitHub's vulnerability reporting mechanism - https://github.com/boeing-ai-gateway/boeing/security - to report any vulnerabilities.
 
 - Include the affected version(s), environment, and impact.
 - Do **not** open public issues for security reports.

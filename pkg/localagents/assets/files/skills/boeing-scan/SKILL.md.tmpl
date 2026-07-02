@@ -1,0 +1,20 @@
+---
+name: boeing-scan
+description: Scan local AI client configuration and submit it to Boeing.
+disable-model-invocation: true
+---
+
+# Run Boeing Scan
+
+Run the Boeing CLI scan command:
+
+```sh
+boeing scan
+```
+
+Report the CLI result to the user and ask if they would like to submit.
+If they answer yes, then run the following command:
+
+```sh
+boeing scan --non-interactive --submit
+```

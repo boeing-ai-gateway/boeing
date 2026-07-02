@@ -5,9 +5,9 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/obot-platform/obot/apiclient/types"
-	gateway "github.com/obot-platform/obot/pkg/gateway/client"
-	gatewaytypes "github.com/obot-platform/obot/pkg/gateway/types"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
+	gateway "github.com/boeing-ai-gateway/boeing/pkg/gateway/client"
+	gatewaytypes "github.com/boeing-ai-gateway/boeing/pkg/gateway/types"
 )
 
 var (

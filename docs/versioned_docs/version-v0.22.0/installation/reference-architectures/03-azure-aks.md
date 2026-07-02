@@ -1,6 +1,6 @@
 # Azure AKS
 
-Deploying Obot to Azure Kubernetes Service follows the standard Helm workflow. As a prerequisite, you'll need the following resources set up in your Azure environment:
+Deploying Boeing to Azure Kubernetes Service follows the standard Helm workflow. As a prerequisite, you'll need the following resources set up in your Azure environment:
 
 * Azure subscription
 * Virtual Network with subnets
@@ -16,7 +16,7 @@ If you plan on using Azure Key Vault, here is some example terraform that create
 
 ```hcl
 resource "azurerm_key_vault" "this" {
-  name                = "obot-credentials-kv"
+  name                = "boeing-credentials-kv"
   location            = azurerm_resource_group.this.location
   resource_group_name = azurerm_resource_group.this.name
   tenant_id           = data.azurerm_client_config.current.tenant_id
@@ -27,7 +27,7 @@ resource "azurerm_key_vault" "this" {
 }
 
 resource "azurerm_key_vault_key" "this" {
-  name         = "obot-credentials"
+  name         = "boeing-credentials"
   key_vault_id = azurerm_key_vault.this.id
   key_type     = "RSA"
   key_size     = 2048
@@ -42,16 +42,16 @@ resource "azurerm_key_vault_key" "this" {
   ]
 }
 
-resource "azurerm_user_assigned_identity" "obot" {
-  name                = "obot-identity"
+resource "azurerm_user_assigned_identity" "boeing" {
+  name                = "boeing-identity"
   location            = azurerm_resource_group.this.location
   resource_group_name = azurerm_resource_group.this.name
 }
 
-resource "azurerm_key_vault_access_policy" "obot" {
+resource "azurerm_key_vault_access_policy" "boeing" {
   key_vault_id = azurerm_key_vault.this.id
   tenant_id    = data.azurerm_client_config.current.tenant_id
-  object_id    = azurerm_user_assigned_identity.obot.principal_id
+  object_id    = azurerm_user_assigned_identity.boeing.principal_id
 
   key_permissions = [
     "Get",
@@ -63,26 +63,26 @@ resource "azurerm_key_vault_access_policy" "obot" {
 }
 
 # Configure federated identity credential for workload identity
-resource "azurerm_federated_identity_credential" "obot" {
-  name                = "obot-federated-identity"
+resource "azurerm_federated_identity_credential" "boeing" {
+  name                = "boeing-federated-identity"
   resource_group_name = azurerm_resource_group.this.name
-  parent_id           = azurerm_user_assigned_identity.obot.id
+  parent_id           = azurerm_user_assigned_identity.boeing.id
   audience            = ["api://AzureADTokenExchange"]
   issuer              = azurerm_kubernetes_cluster.this.oidc_issuer_url
-  subject             = "system:serviceaccount:<namespace where obot is deployed>:<name of the service account used by obot>"
+  subject             = "system:serviceaccount:<namespace where boeing is deployed>:<name of the service account used by boeing>"
 }
 ```
 
 More information on the Azure Key Vault setup can be found [here](/configuration/encryption-providers/azure-key-vault/).
 
-Once you have these resources set up, install the Obot helm chart with:
+Once you have these resources set up, install the Boeing helm chart with:
 
 ```bash
-helm repo add obot https://charts.obot.ai
-helm install obot obot/obot -f <path to your values.yaml>
+helm repo add boeing https://charts.boeing.ai
+helm install boeing boeing/boeing -f <path to your values.yaml>
 ```
 
-Here is an example `values.yaml` file for deploying Obot on AKS:
+Here is an example `values.yaml` file for deploying Boeing on AKS:
 
 ```yaml
 # These settings are required for AKS when using the Azure Application Gateway Ingress Controller or NGINX Ingress Controller.
@@ -99,34 +99,34 @@ ingress:
 serviceAccount:
   # This is important for configuring Azure Workload Identity, which we use for Azure Key Vault access
   create: true
-  name: "<name of the service account to be created and used by obot>"
+  name: "<name of the service account to be created and used by boeing>"
   annotations:
     azure.workload.identity/client-id: "<client id of the managed identity>"
 
 config:
   # configures encryption with Azure Key Vault. optional, but recommended for production
-  OBOT_SERVER_ENCRYPTION_PROVIDER: "azure"
-  OBOT_AZURE_KEY_VAULT_NAME: "<your-keyvault-name>"
-  OBOT_AZURE_KEY_NAME: "<your-key-name>"
-  OBOT_AZURE_KEY_VERSION: "<your-key-version>"
+  BOEING_SERVER_ENCRYPTION_PROVIDER: "azure"
+  BOEING_AZURE_KEY_VAULT_NAME: "<your-keyvault-name>"
+  BOEING_AZURE_KEY_NAME: "<your-key-name>"
+  BOEING_AZURE_KEY_VERSION: "<your-key-version>"
 
   # database configuration for external db
-  OBOT_SERVER_DSN: "postgresql://<db user>:<db password>@<db host>:<db port>/<db name>?sslmode=<ssl mode>"
+  BOEING_SERVER_DSN: "postgresql://<db user>:<db password>@<db host>:<db port>/<db name>?sslmode=<ssl mode>"
 
   # Enable authentication
-  OBOT_SERVER_ENABLE_AUTHENTICATION: true
-  OBOT_BOOTSTRAP_TOKEN: "<bootstrap password>"
+  BOEING_SERVER_ENABLE_AUTHENTICATION: true
+  BOEING_BOOTSTRAP_TOKEN: "<bootstrap password>"
 
   # Optionally Preseed admin and owner users
-  OBOT_SERVER_AUTH_ADMIN_EMAILS: "<comma separated list of admin emails>"
-  OBOT_SERVER_AUTH_OWNER_EMAILS: "<comma separated list of owner emails>"
+  BOEING_SERVER_AUTH_ADMIN_EMAILS: "<comma separated list of admin emails>"
+  BOEING_SERVER_AUTH_OWNER_EMAILS: "<comma separated list of owner emails>"
 
   # Optionally configure model providers
   OPENAI_API_KEY: "<your openai api key>"
 
 mcpServerDefaults:
   storageClassName: azure-disk # replace with the name of your StorageClass
-  nanobotWorkspaceSize: 1Gi # Some disk types have a minimum size, read the documentation for the storage type you select.
+  boeingbotWorkspaceSize: 1Gi # Some disk types have a minimum size, read the documentation for the storage type you select.
 ```
 
-With the default configuration on AKS, this will set up ingress to expose Obot through an Application Gateway or NGINX Ingress Controller. Make sure you have the appropriate ingress controller installed in your cluster. You should also consider adding TLS termination to your ingress for secure HTTPS access.
+With the default configuration on AKS, this will set up ingress to expose Boeing through an Application Gateway or NGINX Ingress Controller. Make sure you have the appropriate ingress controller installed in your cluster. You should also consider adding TLS termination to your ingress for secure HTTPS access.

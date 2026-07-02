@@ -3,7 +3,7 @@ package handlers
 import (
 	"testing"
 
-	"github.com/obot-platform/obot/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )

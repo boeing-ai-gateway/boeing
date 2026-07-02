@@ -2,14 +2,14 @@ apiVersion: apiserver.config.k8s.io/v1
 kind: EncryptionConfiguration
 resources:
   - resources:
-      - credentials.obot.obot.ai
-      - users.obot.obot.ai
-      - identities.obot.obot.ai
-      - mcpoauthtokens.obot.obot.ai
-      - mcpoauthpendingstates.obot.obot.ai
-      - mcpauditlogs.obot.obot.ai
-      - policyviolations.obot.obot.ai
-      - properties.obot.obot.ai
+      - credentials.boeing.boeing.ai
+      - users.boeing.boeing.ai
+      - identities.boeing.boeing.ai
+      - mcpoauthtokens.boeing.boeing.ai
+      - mcpoauthpendingstates.boeing.boeing.ai
+      - mcpauditlogs.boeing.boeing.ai
+      - policyviolations.boeing.boeing.ai
+      - properties.boeing.boeing.ai
     providers:
       - kms:
           apiVersion: v2

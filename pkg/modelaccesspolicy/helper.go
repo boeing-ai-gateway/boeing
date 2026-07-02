@@ -6,10 +6,10 @@ import (
 	"slices"
 	"strings"
 
-	"github.com/obot-platform/nah/pkg/backend"
-	"github.com/obot-platform/obot/apiclient/types"
-	v1 "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1"
-	"github.com/obot-platform/obot/pkg/system"
+	"github.com/boeing-ai-gateway/nah/pkg/backend"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
+	v1 "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1"
+	"github.com/boeing-ai-gateway/boeing/pkg/system"
 	apierrors "k8s.io/apimachinery/pkg/api/errors"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 	kuser "k8s.io/apiserver/pkg/authentication/user"
@@ -116,7 +116,7 @@ func (h *Helper) GetUserAllowedModels(user kuser.Info) (map[string]bool, bool, e
 
 			modelID := model.ID
 			if alias, isAlias := model.IsDefaultModelAliasRef(); isAlias {
-				// The model ID is a default model alias reference (e.g. 'obot://llm')
+				// The model ID is a default model alias reference (e.g. 'boeing://llm')
 				// Look up the current model ID and swap it out
 				// If we can't find it, modelID will be an empty string, which is handled by the model ID check below
 				modelID = aliasModels[alias]

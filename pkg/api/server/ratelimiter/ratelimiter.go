@@ -9,8 +9,8 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/obot-platform/obot/apiclient/types"
-	"github.com/obot-platform/obot/pkg/api/server/requestinfo"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/pkg/api/server/requestinfo"
 	"github.com/sethvargo/go-limiter"
 	"github.com/sethvargo/go-limiter/memorystore"
 	"k8s.io/apiserver/pkg/authentication/user"

@@ -5,9 +5,9 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/obot-platform/obot/apiclient/types"
-	"github.com/obot-platform/obot/pkg/api"
-	"github.com/obot-platform/obot/pkg/bootstrap"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/pkg/api"
+	"github.com/boeing-ai-gateway/boeing/pkg/bootstrap"
 )
 
 // OAuthComplete handles the OAuth callback for setup flow.
@@ -23,7 +23,7 @@ func (h *Handler) OAuthComplete(req api.Context) error {
 		log.Infof("Bypassing setup OAuth completion because authenticated user is already owner")
 		// Delete the bootstrap cookie so that there won't be two types of auth happening at once.
 		http.SetCookie(req.ResponseWriter, &http.Cookie{
-			Name:     bootstrap.ObotBootstrapCookie,
+			Name:     bootstrap.BoeingBootstrapCookie,
 			Value:    "",
 			Path:     "/",
 			MaxAge:   -1,

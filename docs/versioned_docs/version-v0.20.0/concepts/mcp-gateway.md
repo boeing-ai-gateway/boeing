@@ -20,7 +20,7 @@ All other functionality (authorization, audit logging, webhook filters, token ex
 
 ## The MCP Server Shim
 
-Every MCP server runs with a shim. This includes servers deployed by Obot and remote MCP servers. The shim is protocol-aware and handles:
+Every MCP server runs with a shim. This includes servers deployed by Boeing and remote MCP servers. The shim is protocol-aware and handles:
 
 - **Authorization**: Checking access control rules
 - **Audit Logging**: Recording request/response metadata
@@ -49,20 +49,20 @@ This approach provides:
 
 Filters allow inspection and modification of MCP traffic. They can be implemented as MCP filter servers or as HTTP webhook filters.
 
-MCP filter servers are deployed like other MCP servers in Obot, with one additional setting: the filter configuration must identify the tool name that Obot calls for filtering. Existing HTTP webhooks are automatically converted to MCP servers that run alongside the shim.
+MCP filter servers are deployed like other MCP servers in Boeing, with one additional setting: the filter configuration must identify the tool name that Boeing calls for filtering. Existing HTTP webhooks are automatically converted to MCP servers that run alongside the shim.
 
 ## Connecting to the Gateway
 
-### With Obot Agent
+### With Boeing Agent
 
-Obot Agent connects through the gateway automatically. Users select which MCP servers to enable for their agents, conversations, or workflows.
+Boeing Agent connects through the gateway automatically. Users select which MCP servers to enable for their agents, conversations, or workflows.
 
 ### With External Clients
 
 External MCP clients (Claude Desktop, Cursor, VS Code) can connect using the gateway endpoint:
 
 ```
-https://your-obot-instance/mcp-connect/{server-id}
+https://your-boeing-instance/mcp-connect/{server-id}
 ```
 
 All servers are exposed via `streamable-http` transport, regardless of their underlying runtime.

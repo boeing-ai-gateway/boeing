@@ -9,9 +9,9 @@ import (
 	"sync"
 	"time"
 
-	types2 "github.com/obot-platform/obot/apiclient/types"
-	"github.com/obot-platform/obot/pkg/gateway/db"
-	"github.com/obot-platform/obot/pkg/gateway/types"
+	types2 "github.com/boeing-ai-gateway/boeing/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/pkg/gateway/db"
+	"github.com/boeing-ai-gateway/boeing/pkg/gateway/types"
 	"k8s.io/apiserver/pkg/server/options/encryptionconfig"
 	kclient "sigs.k8s.io/controller-runtime/pkg/client"
 )

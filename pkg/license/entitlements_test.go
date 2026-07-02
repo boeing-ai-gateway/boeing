@@ -1,36 +1,60 @@
 package license
 
 import (
-	"errors"
+	"context"
 	"net/http"
+	"net/http/httptest"
 	"testing"
-
-	keygen "github.com/keygen-sh/keygen-go/v3"
-	"github.com/obot-platform/obot/apiclient/types"
 )
 
-func TestMissingAndRequire(t *testing.T) {
-	provider := &Provider{
-		entitlements: map[keygen.EntitlementCode]struct{}{
-			"ENTITLED": {},
-		},
+func TestMissingEntitlementsAlwaysEmpty(t *testing.T) {
+	provider, err := NewProvider(context.Background(), nil, Config{})
+	if err != nil {
+		t.Fatalf("unexpected error: %v", err)
 	}
 
-	missing := provider.MissingEntitlements([]string{"ENTITLED", "MISSING"})
-	if len(missing) != 1 || missing[0] != "MISSING" {
-		t.Fatalf("Missing() = %v, want [MISSING]", missing)
+	missing := provider.MissingEntitlements([]string{"ENTITLED", "MISSING", "ANYTHING"})
+	if len(missing) != 0 {
+		t.Fatalf("MissingEntitlements() = %v, want empty (all granted)", missing)
+	}
+}
+
+func TestRequireEntitlementsAlwaysNil(t *testing.T) {
+	provider, err := NewProvider(context.Background(), nil, Config{})
+	if err != nil {
+		t.Fatalf("unexpected error: %v", err)
 	}
 
-	if err := provider.RequireEntitlements([]string{"ENTITLED"}); err != nil {
-		t.Fatalf("Require() error = %v, want nil", err)
+	if err := provider.RequireEntitlements([]string{"ANY_ENTITLEMENT"}); err != nil {
+		t.Fatalf("RequireEntitlements() error = %v, want nil", err)
+	}
+}
+
+func TestProviderEntitlementGateAlwaysPasses(t *testing.T) {
+	provider, err := NewProvider(context.Background(), nil, Config{})
+	if err != nil {
+		t.Fatalf("unexpected error: %v", err)
 	}
 
-	err := provider.RequireEntitlements([]string{"MISSING"})
-	var httpErr *types.ErrHTTP
-	if !errors.As(err, &httpErr) {
-		t.Fatalf("Require() error = %T, want *types.ErrHTTP", err)
+	gate := NewProviderEntitlementGate(provider, nil)
+
+	req := httptest.NewRequest(http.MethodGet, "/api/llm-proxy/test", nil)
+	if err := gate.Check(req); err != nil {
+		t.Fatalf("Check() error = %v, want nil (no gating)", err)
 	}
-	if httpErr.Code != http.StatusPaymentRequired {
-		t.Fatalf("Require() status = %d, want %d", httpErr.Code, http.StatusPaymentRequired)
+}
+
+func TestConfiguredProviderViolationsAlwaysEmpty(t *testing.T) {
+	provider, err := NewProvider(context.Background(), nil, Config{})
+	if err != nil {
+		t.Fatalf("unexpected error: %v", err)
+	}
+
+	violations, err := provider.ConfiguredProviderViolations(context.Background(), nil)
+	if err != nil {
+		t.Fatalf("ConfiguredProviderViolations() error = %v", err)
+	}
+	if len(violations) != 0 {
+		t.Fatalf("ConfiguredProviderViolations() = %v, want empty", violations)
 	}
 }

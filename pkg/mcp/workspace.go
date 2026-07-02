@@ -1,7 +1,7 @@
 package mcp
 
 const (
-	nanobotWorkspaceMountPath   = "/home/nanobot"
-	nanobotWorkspaceVolumeName  = "workspace"
-	nanobotWorkspaceDefaultSize = "1Gi"
+	boeingbotWorkspaceMountPath   = "/home/boeingbot"
+	boeingbotWorkspaceVolumeName  = "workspace"
+	boeingbotWorkspaceDefaultSize = "1Gi"
 )

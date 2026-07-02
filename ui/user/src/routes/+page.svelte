@@ -22,7 +22,7 @@
 </script>
 
 <svelte:head>
-	<title>Obot - Build AI agents with MCP</title>
+	<title>Boeing - Build AI agents with MCP</title>
 </svelte:head>
 
 {#if !loggedIn}
@@ -47,7 +47,7 @@
 				class="absolute top-1/2 left-1/2 flex w-md -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-4"
 			>
 				<Logo class="h-16" />
-				<h1 class="text-2xl font-semibold">Welcome to Obot</h1>
+				<h1 class="text-2xl font-semibold">Welcome to Boeing</h1>
 				<p class="text-md text-muted-content mb-1 text-center font-light">
 					Log in or create your account to continue
 				</p>
@@ -62,7 +62,7 @@
 								localStorage.setItem('preAuthRedirect', window.location.href);
 								window.location.href = `/oauth2/start?rd=${encodeURIComponent(
 									overrideRedirect !== null ? overrideRedirect : rd
-								)}&obot-auth-provider=${provider.namespace}/${provider.id}`;
+								)}&boeing-auth-provider=${provider.namespace}/${provider.id}`;
 							}}
 						>
 							{#if provider.icon}

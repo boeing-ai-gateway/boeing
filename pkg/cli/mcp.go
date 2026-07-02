@@ -9,18 +9,18 @@ import (
 	"strings"
 	"text/tabwriter"
 
-	"github.com/obot-platform/cmd"
-	"github.com/obot-platform/obot/apiclient"
-	"github.com/obot-platform/obot/apiclient/types"
-	"github.com/obot-platform/obot/pkg/cli/internal"
-	"github.com/obot-platform/obot/pkg/system"
+	"github.com/boeing-ai-gateway/cmd"
+	"github.com/boeing-ai-gateway/boeing/apiclient"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/pkg/cli/internal"
+	"github.com/boeing-ai-gateway/boeing/pkg/system"
 	"github.com/spf13/cobra"
 )
 
 const mcpSearchPageLimit = 100
 
 type MCP struct {
-	root *Obot
+	root *Boeing
 }
 
 func (m *MCP) Customize(c *cobra.Command) {
@@ -40,12 +40,12 @@ type MCPSearch struct {
 	Limit int  `usage:"Maximum number of MCP servers to return; 0 means no limit" default:"50"`
 	JSON  bool `usage:"Print results as JSON"`
 
-	root *Obot
+	root *Boeing
 }
 
 func (m *MCPSearch) Customize(cmd *cobra.Command) {
 	cmd.Use = "search [query...]"
-	cmd.Short = "Search Obot for MCP servers"
+	cmd.Short = "Search Boeing for MCP servers"
 	cmd.Args = cobra.ArbitraryArgs
 }
 
@@ -61,7 +61,7 @@ func (m *MCPSearch) Run(cmd *cobra.Command, args []string) error {
 	if m.JSON && client.Token == "" {
 		token, err := internal.ExistingToken(cmd.Context(), client.BaseURL)
 		if err != nil {
-			return fmt.Errorf(`mcp search --json requires an existing login; run "obot login" first`)
+			return fmt.Errorf(`mcp search --json requires an existing login; run "boeing login" first`)
 		}
 		client = client.WithTokenFetcher(nil).WithToken(token)
 	}
@@ -140,7 +140,7 @@ func normalizeRegistryServers(servers []types.RegistryServerResponse, appURL str
 	result := make([]mcpSearchServer, 0, len(servers))
 	for _, registryServer := range servers {
 		url := firstRegistryRemoteURL(registryServer.Server)
-		configurationRequired := registryServer.Meta.Obot != nil && registryServer.Meta.Obot.ConfigurationRequired
+		configurationRequired := registryServer.Meta.Boeing != nil && registryServer.Meta.Boeing.ConfigurationRequired
 		if configurationRequired && url == "" {
 			url = registryServerConfigurationURL(appURL, registryServer.Server.Name)
 		}
@@ -219,7 +219,7 @@ func registrySearchError(err error) error {
 	}
 	switch httpErr.Code {
 	case http.StatusUnauthorized:
-		return fmt.Errorf(`registry search requires login; run "obot login" first`)
+		return fmt.Errorf(`registry search requires login; run "boeing login" first`)
 	case http.StatusForbidden:
 		return fmt.Errorf("authenticated user is not authorized to access the registry endpoint")
 	default:

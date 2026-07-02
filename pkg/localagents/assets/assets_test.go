@@ -13,37 +13,37 @@ func TestRenderAgentSkillsForClaudeCode(t *testing.T) {
 		t.Fatalf("expected 5 rendered assets, got %d", len(rendered))
 	}
 
-	install := renderedByName(t, rendered, "obot-install-skill")
-	assertContains(t, string(install.Content), "obot skills install --non-interactive --destination ~/.claude/skills <skill>")
+	install := renderedByName(t, rendered, "boeing-install-skill")
+	assertContains(t, string(install.Content), "boeing skills install --non-interactive --destination ~/.claude/skills <skill>")
 	assertNotContains(t, string(install.Content), "--json")
 
-	search := renderedByName(t, rendered, "obot-search-skills")
-	assertContains(t, string(search.Content), "obot skills search --non-interactive \"<query>\"")
-	assertContains(t, string(search.Content), "obot skills search --non-interactive\n")
+	search := renderedByName(t, rendered, "boeing-search-skills")
+	assertContains(t, string(search.Content), "boeing skills search --non-interactive \"<query>\"")
+	assertContains(t, string(search.Content), "boeing skills search --non-interactive\n")
 
-	mcpSearch := renderedByName(t, rendered, "obot-search-mcp-servers")
-	assertContains(t, string(mcpSearch.Content), "Search the configured Obot server for available MCP servers.")
-	assertContains(t, string(mcpSearch.Content), "obot mcp search --non-interactive \"<query>\"")
-	assertContains(t, string(mcpSearch.Content), "obot mcp search --non-interactive\n")
+	mcpSearch := renderedByName(t, rendered, "boeing-search-mcp-servers")
+	assertContains(t, string(mcpSearch.Content), "Search the configured Boeing server for available MCP servers.")
+	assertContains(t, string(mcpSearch.Content), "boeing mcp search --non-interactive \"<query>\"")
+	assertContains(t, string(mcpSearch.Content), "boeing mcp search --non-interactive\n")
 	assertContains(t, string(mcpSearch.Content), "configuration required")
 
-	scan := renderedByName(t, rendered, "obot-scan")
-	assertContains(t, string(scan.Content), "obot scan")
+	scan := renderedByName(t, rendered, "boeing-scan")
+	assertContains(t, string(scan.Content), "boeing scan")
 
-	bootstrap := renderedByName(t, rendered, "obot")
+	bootstrap := renderedByName(t, rendered, "boeing")
 	assertContains(t, string(bootstrap.Content), "rendered for `claude-code`")
-	assertContains(t, string(bootstrap.Content), "obot mcp search")
+	assertContains(t, string(bootstrap.Content), "boeing mcp search")
 }
 
 func TestRenderAgentSkillsForSharedAgents(t *testing.T) {
 	rendered := renderAgentSkillsForTest(t, SharedAgentsTemplateData())
 
-	install := renderedByName(t, rendered, "obot-install-skill")
-	assertContains(t, string(install.Content), "obot skills install --non-interactive --destination ~/.agents/skills <skill>")
+	install := renderedByName(t, rendered, "boeing-install-skill")
+	assertContains(t, string(install.Content), "boeing skills install --non-interactive --destination ~/.agents/skills <skill>")
 
-	bootstrap := renderedByName(t, rendered, "obot")
+	bootstrap := renderedByName(t, rendered, "boeing")
 	assertContains(t, string(bootstrap.Content), "rendered for `agents`")
-	assertContains(t, string(bootstrap.Content), "obot mcp search")
+	assertContains(t, string(bootstrap.Content), "boeing mcp search")
 }
 
 func TestRenderedAssetsHaveDeterministicRelativePaths(t *testing.T) {
@@ -58,11 +58,11 @@ func TestRenderedAssetsHaveDeterministicRelativePaths(t *testing.T) {
 	}
 
 	want := []string{
-		"obot-install-skill/SKILL.md",
-		"obot-scan/SKILL.md",
-		"obot-search-mcp-servers/SKILL.md",
-		"obot-search-skills/SKILL.md",
-		"obot/SKILL.md",
+		"boeing-install-skill/SKILL.md",
+		"boeing-scan/SKILL.md",
+		"boeing-search-mcp-servers/SKILL.md",
+		"boeing-search-skills/SKILL.md",
+		"boeing/SKILL.md",
 	}
 	if strings.Join(got, "\n") != strings.Join(want, "\n") {
 		t.Fatalf("unexpected paths:\n%s", strings.Join(got, "\n"))

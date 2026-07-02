@@ -9,10 +9,10 @@ import (
 	"time"
 
 	"github.com/golang-jwt/jwt/v5"
-	nmcp "github.com/obot-platform/nanobot/pkg/mcp"
-	"github.com/obot-platform/obot/apiclient/types"
-	v1 "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1"
-	"github.com/obot-platform/obot/pkg/system"
+	nmcp "github.com/boeing-ai-gateway/boeingbot/pkg/mcp"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
+	v1 "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1"
+	"github.com/boeing-ai-gateway/boeing/pkg/system"
 	corev1 "k8s.io/api/core/v1"
 	"k8s.io/apimachinery/pkg/api/resource"
 )
@@ -64,7 +64,7 @@ type ServerConfig struct {
 	MCPCatalogName       string `json:"mcpCatalogName"`
 	MCPCatalogEntryName  string `json:"mcpCatalogEntryName"`
 	MCPServerDisplayName string `json:"mcpServerDisplayName"`
-	NanobotAgentName     string `json:"nanobotAgentName"`
+	BoeingbotAgentName     string `json:"boeingbotAgentName"`
 	ComponentMCPServer   bool   `json:"componentMCPServer"`
 	SystemMCPServer      bool   `json:"systemMCPServer"`
 
@@ -86,7 +86,7 @@ type ServerConfig struct {
 }
 
 func (s ServerConfig) NeedsShim() bool {
-	return s.NanobotAgentName == ""
+	return s.BoeingbotAgentName == ""
 }
 
 func CoreResourceRequirements(resources *types.MCPResourceRequirements) (*corev1.ResourceRequirements, error) {
@@ -412,7 +412,7 @@ func ServerToServerConfig(mcpServer v1.MCPServer, audiences []string, issuer, us
 		AuthorizeEndpoint:         fmt.Sprintf("%s/oauth/authorize", issuer),
 		PassthroughHeaderNames:    passthroughHeaderNames,
 		ComponentMCPServer:        mcpServer.Spec.CompositeName != "",
-		NanobotAgentName:          mcpServer.Spec.NanobotAgentID,
+		BoeingbotAgentName:          mcpServer.Spec.BoeingbotAgentID,
 		StartupTimeout:            startupTimeout,
 		Resources:                 resources,
 	}

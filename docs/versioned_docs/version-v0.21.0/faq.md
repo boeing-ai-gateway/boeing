@@ -8,13 +8,13 @@ Docker is suitable for local testing and small-scale deployments. For production
 
 ### Why can’t I see the User Management section?
 
-User Management is only visible when authentication is enabled. Make sure you start Obot with `OBOT_SERVER_ENABLE_AUTHENTICATION=true`. If you don't see the bootstrap token prompt, the environment variable may not be set correctly. Follow the [installation guide](/installation/enabling-authentication/).
+User Management is only visible when authentication is enabled. Make sure you start Boeing with `BOEING_SERVER_ENABLE_AUTHENTICATION=true`. If you don't see the bootstrap token prompt, the environment variable may not be set correctly. Follow the [installation guide](/installation/enabling-authentication/).
 
 ### How do I assign roles to users before they log in?
 
-Currently, users must log in at least once before roles can be assigned. To pre-assign admin roles, set the `OBOT_SERVER_AUTH_ADMIN_EMAILS` environment variable during deployment. 
+Currently, users must log in at least once before roles can be assigned. To pre-assign admin roles, set the `BOEING_SERVER_AUTH_ADMIN_EMAILS` environment variable during deployment. 
 
-### What are the differences between the open source and enterprise versions of Obot?
+### What are the differences between the open source and enterprise versions of Boeing?
 
 Both use the same core codebase, but the enterprise version includes additional closed-source plugins for:
 
@@ -23,7 +23,7 @@ Both use the same core codebase, but the enterprise version includes additional 
 
 ## Integration & Troubleshooting
 
-### How do I connect my IDE or MCP client to an Obot hosted MCP server?
+### How do I connect my IDE or MCP client to a Boeing hosted MCP server?
 
 <details>
 <summary>Step-by-step instructions</summary>
@@ -36,7 +36,7 @@ Both use the same core codebase, but the enterprise version includes additional 
 
 </details>
 
-### Why does my IDE/client (e.g., Cline) fail to connect to Obot with a "Session ID is required" error?
+### Why does my IDE/client (e.g., Cline) fail to connect to Boeing with a "Session ID is required" error?
 
 Some clients do not support the required OAuth flows. As a workaround, use the `mcp-remote` package as a proxy, or check for client updates that add OAuth support.
 
@@ -44,7 +44,7 @@ Some clients do not support the required OAuth flows. As a workaround, use the `
 
 ### How do I request an enterprise trial or proof-of-concept?
 
-- Contact the Obot team directly on Discord, Website, or email.
+- Contact the Boeing team directly on Discord, Website, or email.
 
 ## Miscellaneous
 

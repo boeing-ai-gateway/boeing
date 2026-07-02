@@ -86,13 +86,13 @@ az keyvault key show \
 
 The key version is the last segment of the key ID (after the last slash).
 
-### 6. Run Obot using Docker
+### 6. Run Boeing using Docker
 
-When running Obot with Docker, make sure you include the following environment variables:
+When running Boeing with Docker, make sure you include the following environment variables:
 
-- `OBOT_SERVER_ENCRYPTION_PROVIDER=azure`
-- `OBOT_AZURE_KEY_VAULT_NAME=your-keyvault-name`
-- `OBOT_AZURE_KEY_NAME=your-key-name`
-- `OBOT_AZURE_KEY_VERSION=your-key-version`
+- `BOEING_SERVER_ENCRYPTION_PROVIDER=azure`
+- `BOEING_AZURE_KEY_VAULT_NAME=your-keyvault-name`
+- `BOEING_AZURE_KEY_NAME=your-key-name`
+- `BOEING_AZURE_KEY_VERSION=your-key-version`
 
 When running `docker run`, be sure to include `--add-host=metadata.azure.com:169.254.169.254` to ensure the VM's metadata service is accessible.

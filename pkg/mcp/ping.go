@@ -3,7 +3,7 @@ package mcp
 import (
 	"context"
 
-	nmcp "github.com/obot-platform/nanobot/pkg/mcp"
+	nmcp "github.com/boeing-ai-gateway/boeingbot/pkg/mcp"
 )
 
 func (sm *SessionManager) PingServer(ctx context.Context, serverConfig ServerConfig) (*nmcp.PingResult, error) {

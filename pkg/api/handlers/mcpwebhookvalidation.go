@@ -10,16 +10,16 @@ import (
 	"strings"
 	"time"
 
-	nmcp "github.com/obot-platform/nanobot/pkg/mcp"
-	"github.com/obot-platform/obot/apiclient/types"
-	"github.com/obot-platform/obot/pkg/api"
-	gateway "github.com/obot-platform/obot/pkg/gateway/client"
-	gatewaytypes "github.com/obot-platform/obot/pkg/gateway/types"
-	"github.com/obot-platform/obot/pkg/mcp"
-	v1 "github.com/obot-platform/obot/pkg/storage/apis/obot.obot.ai/v1"
-	"github.com/obot-platform/obot/pkg/system"
-	"github.com/obot-platform/obot/pkg/validation"
-	"github.com/obot-platform/obot/pkg/wait"
+	nmcp "github.com/boeing-ai-gateway/boeingbot/pkg/mcp"
+	"github.com/boeing-ai-gateway/boeing/apiclient/types"
+	"github.com/boeing-ai-gateway/boeing/pkg/api"
+	gateway "github.com/boeing-ai-gateway/boeing/pkg/gateway/client"
+	gatewaytypes "github.com/boeing-ai-gateway/boeing/pkg/gateway/types"
+	"github.com/boeing-ai-gateway/boeing/pkg/mcp"
+	v1 "github.com/boeing-ai-gateway/boeing/pkg/storage/apis/boeing.boeing.ai/v1"
+	"github.com/boeing-ai-gateway/boeing/pkg/system"
+	"github.com/boeing-ai-gateway/boeing/pkg/validation"
+	"github.com/boeing-ai-gateway/boeing/pkg/wait"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
@@ -219,7 +219,7 @@ func (m *MCPWebhookValidationHandler) Configure(req api.Context) error {
 	if webhookValidation.Annotations == nil {
 		webhookValidation.Annotations = make(map[string]string, 1)
 	}
-	webhookValidation.Annotations["obot.obot.ai/configured-at"] = metav1.Now().Format(time.RFC3339)
+	webhookValidation.Annotations["boeing.boeing.ai/configured-at"] = metav1.Now().Format(time.RFC3339)
 
 	if err := req.Update(&webhookValidation); err != nil {
 		return fmt.Errorf("failed to update mcp webhook validation: %w", err)
@@ -239,7 +239,7 @@ func (m *MCPWebhookValidationHandler) Deconfigure(req api.Context) error {
 	}
 
 	if webhookValidation.Annotations != nil {
-		delete(webhookValidation.Annotations, "obot.obot.ai/configured-at")
+		delete(webhookValidation.Annotations, "boeing.boeing.ai/configured-at")
 	}
 
 	if err := req.Update(&webhookValidation); err != nil {

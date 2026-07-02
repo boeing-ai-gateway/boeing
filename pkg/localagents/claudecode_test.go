@@ -7,7 +7,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/obot-platform/obot/pkg/skillformat"
+	"github.com/boeing-ai-gateway/boeing/pkg/skillformat"
 )
 
 func TestClaudeCodeDetectPresentFromConfig(t *testing.T) {
@@ -50,18 +50,18 @@ func TestClaudeCodeInstallBootstrapWritesExpectedSkills(t *testing.T) {
 		t.Fatalf("Installed count = %d, want 5: %#v", len(result.Installed), result.Installed)
 	}
 
-	for _, name := range []string{"obot", "obot-search-skills", "obot-search-mcp-servers", "obot-install-skill", "obot-scan"} {
+	for _, name := range []string{"boeing", "boeing-search-skills", "boeing-search-mcp-servers", "boeing-install-skill", "boeing-scan"} {
 		content := readFile(t, filepath.Join(home, ".claude", "skills", name, skillformat.SkillMainFile))
-		if !strings.Contains(content, "Obot") && !strings.Contains(content, "obot") {
-			t.Fatalf("%s content did not look like an Obot bootstrap skill:\n%s", name, content)
+		if !strings.Contains(content, "Boeing") && !strings.Contains(content, "boeing") {
+			t.Fatalf("%s content did not look like a Boeing bootstrap skill:\n%s", name, content)
 		}
 	}
-	assertFileContains(t, filepath.Join(home, ".claude", "skills", "obot-search-mcp-servers", skillformat.SkillMainFile), "obot mcp search")
+	assertFileContains(t, filepath.Join(home, ".claude", "skills", "boeing-search-mcp-servers", skillformat.SkillMainFile), "boeing mcp search")
 }
 
 func TestClaudeCodeInstallBootstrapOverwritesExistingContent(t *testing.T) {
 	home := t.TempDir()
-	oldSkill := filepath.Join(home, ".claude", "skills", "obot", skillformat.SkillMainFile)
+	oldSkill := filepath.Join(home, ".claude", "skills", "boeing", skillformat.SkillMainFile)
 	if err := os.MkdirAll(filepath.Dir(oldSkill), 0755); err != nil {
 		t.Fatal(err)
 	}

@@ -6,7 +6,7 @@ import (
 )
 
 const (
-	ObotAccessTokenCookie = "obot_access_token"
+	BoeingAccessTokenCookie = "boeing_access_token"
 )
 
 // SerializableRequest represents an HTTP request that can be serialized for authentication flows

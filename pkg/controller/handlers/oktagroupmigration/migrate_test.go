@@ -3,7 +3,7 @@ package oktagroupmigration
 import (
 	"testing"
 
-	types2 "github.com/obot-platform/obot/apiclient/types"
+	types2 "github.com/boeing-ai-gateway/boeing/apiclient/types"
 )
 
 func TestUpdateSubjects(t *testing.T) {

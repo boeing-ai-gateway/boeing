@@ -17,7 +17,7 @@
 		type MCPServerInstance,
 		type MCPServerOAuthCredentialStatus
 	} from '$lib/services';
-	import { OBOT_PLATFORM_REPO } from '$lib/services/admin/constants';
+	import { BOEING_PLATFORM_REPO } from '$lib/services/admin/constants';
 	import {
 		convertEntriesToTableData,
 		deleteMcpServerDeployment,
@@ -347,8 +347,8 @@
 							>
 								<GitBranch class="size-4" />
 								<span class="font-light">
-									{#if d.source.startsWith(OBOT_PLATFORM_REPO)}
-										Obot Catalog
+									{#if d.source.startsWith(BOEING_PLATFORM_REPO)}
+										Boeing Catalog
 									{:else}
 										{d.source?.split('/').pop()}
 									{/if}

@@ -1,20 +1,20 @@
 <script lang="ts">
 	import Confirm from '$lib/components/Confirm.svelte';
-	import ScheduledTaskDialog from '$lib/components/nanobot/ScheduledTaskDialog.svelte';
+	import ScheduledTaskDialog from '$lib/components/boeingbot/ScheduledTaskDialog.svelte';
 	import {
 		formatScheduleDate,
 		formatScheduleDateTime,
 		scheduleSummary
-	} from '$lib/components/nanobot/taskSchedule';
+	} from '$lib/components/boeingbot/taskSchedule';
 	import type {
 		Chat,
 		ProjectLayoutContext,
 		ResourceContents,
 		ScheduledTask
-	} from '$lib/services/nanobot/types';
-	import { PROJECT_LAYOUT_CONTEXT } from '$lib/services/nanobot/types';
+	} from '$lib/services/boeingbot/types';
+	import { PROJECT_LAYOUT_CONTEXT } from '$lib/services/boeingbot/types';
 	import { errors, userDeviceSettings } from '$lib/stores';
-	import { nanobotChat } from '$lib/stores/nanobotChat.svelte';
+	import { boeingbotChat } from '$lib/stores/boeingbotChat.svelte';
 	import { goto } from '$lib/url';
 	import ConfirmScheduleToggle from '../ConfirmScheduleToggle.svelte';
 	import { CalendarClock, PencilLine, Play, Timer, TimerOff, Trash2 } from 'lucide-svelte';
@@ -93,7 +93,7 @@
 	});
 
 	$effect(() => {
-		if (!$nanobotChat?.api || loadedTaskURI === taskURI) return;
+		if (!$boeingbotChat?.api || loadedTaskURI === taskURI) return;
 		loadedTaskURI = taskURI;
 		loadTask();
 		loadSessions();
@@ -118,10 +118,10 @@
 	}
 
 	async function refreshResources() {
-		if (!$nanobotChat?.api) return;
+		if (!$boeingbotChat?.api) return;
 		try {
-			const resources = await $nanobotChat.api.listResources();
-			nanobotChat.update((state) => {
+			const resources = await $boeingbotChat.api.listResources();
+			boeingbotChat.update((state) => {
 				if (state) {
 					state.resources = resources;
 				}
@@ -133,11 +133,11 @@
 	}
 
 	async function loadTask() {
-		if (!$nanobotChat?.api) return;
+		if (!$boeingbotChat?.api) return;
 		loadingTask = true;
 		loadError = '';
 		try {
-			const result = await $nanobotChat.api.readResource(taskURI);
+			const result = await $boeingbotChat.api.readResource(taskURI);
 			task = parseTask(result.contents?.[0]);
 		} catch (error) {
 			loadError = error instanceof Error ? error.message : 'Failed to load schedule';
@@ -148,9 +148,9 @@
 	}
 
 	async function loadSessions() {
-		if (!$nanobotChat?.api) return;
+		if (!$boeingbotChat?.api) return;
 		try {
-			const allSessions = await $nanobotChat.api.listSessions();
+			const allSessions = await $boeingbotChat.api.listSessions();
 			sessions = allSessions.filter((session) => session.taskURI === taskURI);
 		} catch (error) {
 			errors.append(error);
@@ -175,10 +175,10 @@
 	}
 
 	async function handleRunNow() {
-		if (!$nanobotChat?.api || !task) return;
+		if (!$boeingbotChat?.api || !task) return;
 		runningNow = true;
 		try {
-			const response = await $nanobotChat.api.startScheduledTask(task.uri);
+			const response = await $boeingbotChat.api.startScheduledTask(task.uri);
 			goto(`/agent/p/${projectId}?tid=${response.sessionId}`);
 		} catch (error) {
 			errors.append(error);
@@ -188,10 +188,10 @@
 	}
 
 	async function handleToggleEnabled() {
-		if (!$nanobotChat?.api || !task || updatingEnabled) return;
+		if (!$boeingbotChat?.api || !task || updatingEnabled) return;
 		updatingEnabled = true;
 		try {
-			await $nanobotChat.api.updateScheduledTask({
+			await $boeingbotChat.api.updateScheduledTask({
 				uri: task.uri,
 				name: task.name,
 				prompt: task.prompt,
@@ -211,10 +211,10 @@
 	}
 
 	async function handleDeleteTask() {
-		if (!$nanobotChat?.api || !task) return;
+		if (!$boeingbotChat?.api || !task) return;
 		deleting = true;
 		try {
-			await $nanobotChat.api.deleteScheduledTask(task.uri);
+			await $boeingbotChat.api.deleteScheduledTask(task.uri);
 			await refreshResources();
 			goto(`/agent/p/${projectId}/scheduler`);
 		} catch (error) {
@@ -227,7 +227,7 @@
 </script>
 
 <svelte:head>
-	<title>Obot | {task?.name || 'Schedule'}</title>
+	<title>Boeing | {task?.name || 'Schedule'}</title>
 </svelte:head>
 
 <div class="mx-auto flex w-full max-w-4xl flex-col gap-6 px-4 md:px-8" bind:this={taskContainer}>
@@ -425,8 +425,8 @@
 	{/if}
 </div>
 
-{#if $nanobotChat?.api}
-	<ScheduledTaskDialog bind:this={editDialog} api={$nanobotChat.api} onSaved={handleTaskSaved} />
+{#if $boeingbotChat?.api}
+	<ScheduledTaskDialog bind:this={editDialog} api={$boeingbotChat.api} onSaved={handleTaskSaved} />
 {/if}
 
 <Confirm

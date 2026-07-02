@@ -5,11 +5,11 @@ import (
 	"sync"
 	"time"
 
-	"github.com/obot-platform/obot/pkg/api/handlers"
-	"github.com/obot-platform/obot/pkg/api/server"
-	"github.com/obot-platform/obot/pkg/jwt/persistent"
-	"github.com/obot-platform/obot/pkg/mcp"
-	"github.com/obot-platform/obot/pkg/system"
+	"github.com/boeing-ai-gateway/boeing/pkg/api/handlers"
+	"github.com/boeing-ai-gateway/boeing/pkg/api/server"
+	"github.com/boeing-ai-gateway/boeing/pkg/jwt/persistent"
+	"github.com/boeing-ai-gateway/boeing/pkg/mcp"
+	"github.com/boeing-ai-gateway/boeing/pkg/system"
 )
 
 type handler struct {
@@ -45,7 +45,7 @@ func SetupHandlers(oauthChecker *MCPOAuthHandlerFactory, tokenStore mcp.GlobalTo
 	mux.HandleFunc("POST /oauth/token/{mcp_id}", h.token)
 	mux.HandleFunc("POST /oauth/token", h.token)
 
-	// This is the callback that Obot will redirect to after the user has authenticated.
+	// This is the callback that Boeing will redirect to after the user has authenticated.
 	// It prepares the post-login consent screen before continuing to second-level OAuth
 	// or returning the original redirect URI with the authorization code.
 	mux.HandleFunc("GET /oauth/callback/{oauth_auth_request}", h.callback)
@@ -64,7 +64,7 @@ func SetupHandlers(oauthChecker *MCPOAuthHandlerFactory, tokenStore mcp.GlobalTo
 
 	mux.HandleFunc("GET /oauth/jwks.json", h.tokenService.ServeJWKS)
 	mux.HandleFunc("POST /oauth/replace-jwks", h.tokenService.ReplaceJWK)
-	mux.HandleFunc("GET "+system.OAuthClientIDMetadataPath, h.obotClientIDMetadata)
+	mux.HandleFunc("GET "+system.OAuthClientIDMetadataPath, h.boeingClientIDMetadata)
 
 	mux.HandleFunc("GET /api/oauth/composite/{mcp_id}", h.checkCompositeAuth)
 

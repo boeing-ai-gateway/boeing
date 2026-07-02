@@ -5,7 +5,7 @@ description: Managing MCP servers in the MCP Platform
 
 ## Overview
 
-Managing MCP servers in Obot starts with adding them to the platform. Administrators can control which servers are available to users and how they are configured. Servers may be added individually through the UI, or managed via a Git repository.
+Managing MCP servers in Boeing starts with adding them to the platform. Administrators can control which servers are available to users and how they are configured. Servers may be added individually through the UI, or managed via a Git repository.
 
 The choice of server type depends on how the MCP server was developed. All servers that are not remote servers are deployed and managed by the MCP Gateway.
 
@@ -25,7 +25,7 @@ This model provides maximum isolation and is ideal when:
 
 Keep in mind the gateway will deploy these servers in their own environment on a hosted platform. MCP servers that expect local access to the users filesystem, run local executables, or write output to the local disk will not work as expected.
 
-By default, Obot also blocks MCP servers from connecting to `localhost` addresses, private IP addresses, or link-local addresses. Administrators can opt out with `OBOT_SERVER_DISALLOW_LOCALHOST_MCP=false`, `OBOT_SERVER_DISALLOW_PRIVATE_IP_MCP=false`, or `OBOT_SERVER_DISALLOW_LINK_LOCAL_MCP=false`, but should only do so when the server is expected to reach services inside the Obot runtime environment.
+By default, Boeing also blocks MCP servers from connecting to `localhost` addresses, private IP addresses, or link-local addresses. Administrators can opt out with `BOEING_SERVER_DISALLOW_LOCALHOST_MCP=false`, `BOEING_SERVER_DISALLOW_PRIVATE_IP_MCP=false`, or `BOEING_SERVER_DISALLOW_LINK_LOCAL_MCP=false`, but should only do so when the server is expected to reach services inside the Boeing runtime environment.
 
 **Configuration**: Define parameters that users must provide when enabling the server (e.g., API keys). For each parameter, specify a user-friendly name, description, environment variable name, and whether it's required or sensitive. Values are passed as environment variables to the server process.
 
@@ -49,7 +49,7 @@ Multi-user servers still require the user to authenticate to the gateway's confi
 
 ### Multi-user catalog entry
 
-A multi-user catalog entry can be deployed as a shared multi-user server. Instead of creating one server per user when users connect, Obot creates a shared deployment from the catalog entry and then creates per-user MCP server instances for the users who connect to that deployment.
+A multi-user catalog entry can be deployed as a shared multi-user server. Instead of creating one server per user when users connect, Boeing creates a shared deployment from the catalog entry and then creates per-user MCP server instances for the users who connect to that deployment.
 
 Use a multi-user catalog entry when:
 

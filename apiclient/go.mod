@@ -1,9 +1,9 @@
-module github.com/obot-platform/obot/apiclient
+module github.com/boeing-ai-gateway/boeing/apiclient
 
 go 1.26.4
 
 require (
-	github.com/obot-platform/obot/logger v0.0.0-20241217130503-4004a5c69f32
+	github.com/boeing-ai-gateway/boeing/logger v0.0.0-20241217130503-4004a5c69f32
 	github.com/stretchr/testify v1.10.0
 )
 
