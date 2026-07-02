@@ -1,0 +1,129 @@
+name: release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  id-token: write
+  contents: write
+
+jobs:
+  release-tag:
+    runs-on: depot-ubuntu-22.04
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: "1.26"
+
+      - name: Install Quill
+        env:
+          QUILL_TARBALL: quill_0.7.1_linux_amd64.tar.gz
+          QUILL_TARBALL_URL: https://github.com/anchore/quill/releases/download/v0.7.1/quill_0.7.1_linux_amd64.tar.gz
+          QUILL_CHECKSUMS_URL: https://github.com/anchore/quill/releases/download/v0.7.1/quill_0.7.1_checksums.txt
+        run: |
+          quill_dir="$(mktemp -d)"
+          trap 'rm -rf "${quill_dir}"' EXIT
+
+          curl -sSfL -o "${quill_dir}/${QUILL_TARBALL}" "${QUILL_TARBALL_URL}"
+          curl -sSfL -o "${quill_dir}/quill_checksums.txt" "${QUILL_CHECKSUMS_URL}"
+          (
+            cd "${quill_dir}"
+            grep "${QUILL_TARBALL}$" quill_checksums.txt | sha256sum --check -
+            tar -xzf "${QUILL_TARBALL}" quill
+          )
+          sudo install -m 0755 "${quill_dir}/quill" /usr/local/bin/quill
+          quill version
+
+      - name: Trigger providers repo tag workflow
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          token: ${{ secrets.TOOLS_DISPATCH_PAT }}
+          repository: boeing-ai-gateway/providers
+          event-type: release
+          client-payload: '{"tag": "${{ github.ref_name }}"}'
+
+      - name: Trigger tools repo tag workflow
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          token: ${{ secrets.ENTERPRISE_TOOLS_DISPATCH_PAT }}
+          repository: boeing-ai-gateway/enterprise-providers
+          event-type: release
+          client-payload: '{"tag": "${{ github.ref_name }}"}'
+
+      - name: Run GoReleaser
+        uses: goreleaser/goreleaser-action@v6
+        with:
+          version: "~> v2"
+          args: release --clean
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAP_GITHUB_TOKEN: ${{ secrets.TAP_GITHUB_TOKEN }}
+          GORELEASER_CURRENT_TAG: ${{ github.ref_name }}
+          QUILL_SIGN_P12: ${{ secrets.QUILL_SIGN_P12 }}
+          QUILL_SIGN_PASSWORD: ${{ secrets.QUILL_SIGN_PASSWORD }}
+          QUILL_NOTARY_KEY: ${{ secrets.QUILL_NOTARY_KEY }}
+          QUILL_NOTARY_KEY_ID: ${{ secrets.QUILL_NOTARY_KEY_ID }}
+          QUILL_NOTARY_ISSUER: ${{ secrets.QUILL_NOTARY_ISSUER }}
+  winget-release:
+    needs: release-tag
+    if: "! contains(github.ref_name, '-')"
+    runs-on: windows-latest
+    steps:
+      - name: Install winget-create
+        run: |
+          Invoke-WebRequest -Uri 'https://aka.ms/wingetcreate/latest' -OutFile 'wingetcreate.exe'
+      - name: Create WinGet Package Update Pull Request
+        run: |
+          $url = "${{ github.server_url }}/${{ github.repository }}/releases/download/${{ github.ref_name }}/boeing_${{ github.ref_name }}_windows_amd64.zip"
+          ./wingetcreate.exe update --submit --token "${{ secrets.WINGET_GH_TOKEN }}" --urls $url --version "${{ github.ref_name }}" boeing-ai-gateway.boeing
+  chart-release:
+    needs: release-tag
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Helm
+        uses: azure/setup-helm@v4
+
+      - name: Package Helm chart
+        run: helm package chart --destination ./.packaged --version ${{ github.ref_name }} --app-version ${{ github.ref_name }}
+
+      - name: Checkout GitHub Pages Repository
+        uses: actions/checkout@v4
+        with:
+          repository: boeing-ai-gateway/charts
+          token: ${{ secrets.CHARTS_REPO_TOKEN }}
+          path: gh-pages
+
+      - name: Run helm-docs
+        uses: losisin/helm-docs-github-action@v1
+        with:
+          chart-search-root: "./chart"
+          output-file: "../gh-pages/README.md"
+          template-files: "../gh-pages/README.md.gotmpl"
+
+      - name: Update Helm Repo Index
+        run: |
+          cd gh-pages
+          mkdir -p charts
+          mv ../.packaged/* charts/
+          helm repo index . --url https://charts.boeing.ai/ --merge index.yaml
+
+      - name: Commit and Push Changes
+        run: |
+          cd gh-pages
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add --all
+          git commit -m "Release new Helm chart version ${{ github.ref_name }}" || echo "No changes to commit"
+          git push
