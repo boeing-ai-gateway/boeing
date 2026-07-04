@@ -261,7 +261,7 @@
 			id: 'install-cli',
 			href: '/install-cli',
 			icon: LogoIcon,
-			label: 'Boeing CLI',
+			label: 'AI Gateway CLI',
 			collapsible: false
 		},
 		...(agentsFeatureEnabled
@@ -286,7 +286,7 @@
 					{
 						id: 'agent-management',
 						icon: Bot,
-						label: 'Boeing Agent Management',
+						label: 'AI Gateway Agent Management',
 						collapsible: true,
 						items: [
 							{

@@ -346,7 +346,7 @@
 			<FieldLabel
 				label="Issuer URL Override"
 				help={capability.issuerURL
-					? 'Optional HTTPS OIDC issuer URL to use in the AWS trust policy. Leave blank to use the Boeing issuer.'
+					? 'Optional HTTPS OIDC issuer URL to use in the AWS trust policy. Leave blank to use the AI Gateway issuer.'
 					: 'HTTPS OIDC issuer URL to use in the AWS trust policy.'}
 			/>
 			<input

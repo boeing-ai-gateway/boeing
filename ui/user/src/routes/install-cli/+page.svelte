@@ -45,7 +45,7 @@
 	const setupCommand = $derived(`boeing setup --url ${page.url.origin}`);
 </script>
 
-<Layout title="Boeing CLI">
+<Layout title="AI Gateway CLI">
 	<div class="w-full max-w-7xl mx-auto h-full @container/cli my-6">
 		<div class="paper">
 			<div class="flex flex-col @2xl/cli:flex-row items-center justify-center gap-8">
@@ -84,7 +84,7 @@
 				{/each}
 			</div>
 			<div class="p-8 @2xl/cli:pb-8 pb-0 flex flex-col gap-1">
-				<h3 class="text-2xl font-bold">How to Install Boeing CLI</h3>
+				<h3 class="text-2xl font-bold">How to Install AI Gateway CLI</h3>
 
 				{@render codesnippet('For MacOS, install through Homebrew:', installCommand)}
 
@@ -134,7 +134,7 @@
 		<div class="divider"></div>
 
 		<div class="mt-12 flex flex-col gap-4">
-			<h3 class="text-2xl font-bold">Boeing CLI Commands</h3>
+			<h3 class="text-2xl font-bold">AI Gateway CLI Commands</h3>
 
 			<div class="paper">
 				{@render commandPreview('boeing setup')}
@@ -274,7 +274,7 @@
 {/snippet}
 
 <svelte:head>
-	<title>Boeing CLI | Install</title>
+	<title>AI Gateway CLI | Install</title>
 </svelte:head>
 
 <style lang="postcss">

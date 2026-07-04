@@ -59,12 +59,12 @@
 	<div class="flex w-full items-center justify-center">
 		<Logo class="size-18" />
 	</div>
-	<h2 class="mb-8 text-center text-2xl font-semibold">Welcome to Boeing!</h2>
+	<h2 class="mb-8 text-center text-2xl font-semibold">Welcome to Boeing AI Gateway AI Gateway!</h2>
 
 	<div class="w-fit self-center">
 		{#if !isAuthProviderConfigured || !storeData.modelProviderConfigured}
 			{#if isBootstrapUser}
-				<p>Before using Boeing, you'll need to:</p>
+				<p>Before using AI Gateway, you'll need to:</p>
 			{:else}
 				<p class="text-center">
 					You're almost there! You just need to configure your model provider.

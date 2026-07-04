@@ -46,7 +46,7 @@
 				<h4 class="text-lg font-semibold">Wait! You've still got some setup to do!</h4>
 				{#if !isModelProviderConfigured}
 					<p class="text-sm font-light">
-						<b class="font-semibold">Model Provider:</b> To use the Boeing Chat feature, configure a Model
+						<b class="font-semibold">Model Provider:</b> To use the AI Gateway Chat feature, configure a Model
 						Provider.
 					</p>
 				{/if}

@@ -1484,13 +1484,11 @@ func (d *dockerBackend) pullImage(ctx context.Context, imageName string, ifNotEx
 
 	reader, err := d.client.ImagePull(ctx, imageName, image.PullOptions{})
 	if err != nil {
-		if cerrdefs.IsUnauthorized(err) || cerrdefs.IsPermissionDenied(err) || cerrdefs.IsNotFound(err) || cerrdefs.IsInternal(err) && strings.HasSuffix(err.Error(), "unauthorized") {
-			// Check if image exists locally
-			_, err := d.client.ImageInspect(ctx, imageName)
-			if err == nil {
-				// Image exists locally
-				return nil
-			}
+		// If pull fails for any auth/registry reason, check if image exists locally
+		_, inspectErr := d.client.ImageInspect(ctx, imageName)
+		if inspectErr == nil {
+			// Image exists locally, no need to pull
+			return nil
 		}
 		return fmt.Errorf("failed to pull image %s: %w", imageName, err)
 	}

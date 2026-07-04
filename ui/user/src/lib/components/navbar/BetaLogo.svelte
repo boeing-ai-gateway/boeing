@@ -30,12 +30,12 @@
 				: { light: logos.light.default, dark: logos.dark.default }
 	);
 
-	const heightClass = $derived(chat ? 'h-[43px]' : 'h-12');
+	const heightClass = $derived(chat ? 'h-[36px]' : 'h-10');
 	const paddingClass = $derived(chat ? 'pl-[1px]' : '');
 	const imgClass = $derived(twMerge(heightClass, paddingClass));
 </script>
 
-<div class={twMerge('flex shrink-0', klass)}>
-	<img src={logoPair.light} class={twMerge(imgClass, 'dark:hidden')} alt="Boeing logo" />
-	<img src={logoPair.dark} class={twMerge(imgClass, 'hidden dark:block')} alt="Boeing logo" />
+<div class={twMerge('flex shrink-0 items-center gap-2', klass)}>
+	<img src={logoPair.light} class={twMerge(imgClass, 'dark:hidden')} alt="Boeing AI Gateway logo" />
+	<img src={logoPair.dark} class={twMerge(imgClass, 'hidden dark:block')} alt="Boeing AI Gateway logo" />
 </div>
