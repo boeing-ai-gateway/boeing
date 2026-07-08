@@ -118,6 +118,14 @@ func ensureServerReady(ctx context.Context, url string, server ServerConfig) err
 			return nil
 		}
 
+		// A 401/403 means the server is up and responding but requires authentication.
+		// This counts as "ready" for the purposes of the health check.
+		if resp.StatusCode == http.StatusUnauthorized || resp.StatusCode == http.StatusForbidden {
+			_, _ = io.Copy(io.Discard, resp.Body)
+			_ = resp.Body.Close()
+			return nil
+		}
+
 		// We know here that we have a non-200 response.
 		body, _ := io.ReadAll(resp.Body)
 		_ = resp.Body.Close()

@@ -59,7 +59,7 @@
 	<div class="flex w-full items-center justify-center">
 		<Logo class="size-18" />
 	</div>
-	<h2 class="mb-8 text-center text-2xl font-semibold">Welcome to Boeing AI Gateway AI Gateway!</h2>
+	<h2 class="mb-8 text-center text-2xl font-semibold">Welcome to Boeing AI Gateway!</h2>
 
 	<div class="w-fit self-center">
 		{#if !isAuthProviderConfigured || !storeData.modelProviderConfigured}

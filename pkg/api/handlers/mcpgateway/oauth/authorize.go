@@ -572,6 +572,12 @@ func authenticatedOAuthUser(req api.Context, oauthAppAuthRequest v1.OAuthAuthReq
 		return authProviderName, authProviderNamespace, true
 	}
 
+	// In dev mode with bootstrap auth, allow the bootstrap user through the OAuth flow.
+	// This enables MCP OAuth testing without requiring a full auth provider.
+	if req.UserIsAuthenticated() && (req.User.GetName() == "bootstrap" || authProviderName == "bootstrap") {
+		return "bootstrap", "default", true
+	}
+
 	log.Infof("Denied %s because user is not authenticated with a non-bootstrap identity: authRequest=%s", phase, oauthAppAuthRequest.Name)
 	redirectWithAuthorizeError(req, oauthAppAuthRequest.Spec.RedirectURI, Error{
 		Code:        ErrAccessDenied,

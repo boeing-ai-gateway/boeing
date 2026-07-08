@@ -203,6 +203,16 @@ func (s *Server) Wrap(f api.HandlerFunc) http.HandlerFunc {
 					rw.Header().Set("WWW-Authenticate", fmt.Sprintf(`Bearer realm="MCP Registry", resource_metadata="%s/.well-known/oauth-protected-resource/v0.1/servers"`, strings.TrimSuffix(s.baseURL, "/api")))
 				}
 
+				// Set WWW-Authenticate for MCP connect paths to support OAuth discovery (RFC 9728)
+				if strings.HasPrefix(req.URL.Path, "/mcp-connect/") {
+					mcpID := strings.TrimPrefix(req.URL.Path, "/mcp-connect/")
+					if idx := strings.Index(mcpID, "/"); idx != -1 {
+						mcpID = mcpID[:idx]
+					}
+					baseURL := strings.TrimSuffix(s.baseURL, "/api")
+					rw.Header().Set("WWW-Authenticate", fmt.Sprintf(`Bearer resource_metadata="%s/.well-known/oauth-protected-resource/mcp-connect/%s"`, baseURL, mcpID))
+				}
+
 				if authenticated {
 					http.Error(rw, "forbidden", http.StatusForbidden)
 				} else {

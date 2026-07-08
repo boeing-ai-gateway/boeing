@@ -1088,6 +1088,15 @@ func (d *dockerBackend) createAndStartContainer(ctx context.Context, server Serv
 		return "", 0, fmt.Errorf("unsupported runtime: %s", server.Runtime)
 	}
 
+	// Pass proxy environment variables from the host into the container.
+	// This allows containers to reach internal services (e.g., Boeing network)
+	// without needing host network mode (which doesn't work on Windows Docker Desktop).
+	for _, proxyVar := range []string{"HTTP_PROXY", "HTTPS_PROXY", "NO_PROXY", "http_proxy", "https_proxy", "no_proxy"} {
+		if val := os.Getenv(proxyVar); val != "" {
+			env = append(env, proxyVar+"="+val)
+		}
+	}
+
 	// Prepare port binding
 	containerPortStr := fmt.Sprintf("%d/tcp", containerPort)
 

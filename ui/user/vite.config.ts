@@ -26,7 +26,10 @@ export default defineConfig(({ mode }) => {
 			proxy: {
 				'/api': proxyConfig,
 				'/oauth2': proxyConfig,
-				'/mcp-connect': proxyConfig
+				'/oauth': proxyConfig,
+				'/mcp-connect': proxyConfig,
+				'/.well-known': proxyConfig,
+				'/register': proxyConfig
 			}
 		},
 		plugins: [sveltekit()]
